@@ -11,7 +11,11 @@ Welcome to the **Research Data and Methods Workshop Series** by SFB 1252 - Promi
 
 Our workshop series covers fundamental aspects of research methodology, data management, and academic best practices. Whether you're a graduate student, postdoc, or established researcher, these workshops provide valuable insights and practical skills for your research journey.
 
-## Upcoming Workshops
+## Current Workshop Series (Summer 2025)
+
+*Today is July 2nd, 2025 - Workshop series is currently active!*
+
+## Available Workshops
 
 <div class="workshop-grid">
   <div class="workshop-card">

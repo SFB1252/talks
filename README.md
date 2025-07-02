@@ -34,9 +34,18 @@ This repository is configured to work with GitHub Pages automatically. Simply:
 
 1. Push this repository to GitHub
 2. Enable GitHub Pages in repository settings
-3. Your site will be available at `https://yourusername.github.io/repository-name`
+3. Your site will be available at `https://yourusername.github.io/rdm-slides`
 
 GitHub Pages will automatically build the Jekyll site using the configuration provided.
+
+### Link Issues
+
+If links are not working immediately after deployment:
+
+1. **GitHub Pages Build Time**: It can take 5-10 minutes for GitHub Pages to build and deploy your site after pushing changes
+2. **Check Repository Name**: Make sure your repository is named `rdm-slides` or update the `baseurl` in `_config.yml` to match your repository name
+3. **Enable GitHub Pages**: Go to repository Settings → Pages → Source → Deploy from a branch → Select `main` branch
+4. **Wait for Build**: Check the Actions tab to see if the site is still building
 
 ### For Local Development (Optional)
 
@@ -102,4 +111,4 @@ This workshop series is part of the SFB 1252 "Prominence in Language" research i
 
 ---
 
-**Note**: The Jekyll theme is configured to work automatically with GitHub Pages. No local setup is required unless you want to preview changes before publishing.
+**Note**: The Jekyll theme is configured to work automatically with GitHub Pages. Links may take 5-10 minutes to work after initial deployment while GitHub builds the site.
