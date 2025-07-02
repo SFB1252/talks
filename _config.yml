@@ -73,5 +73,3 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-  - "*.pptx"
-  - "*.pdf"
