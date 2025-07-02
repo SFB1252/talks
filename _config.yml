@@ -13,7 +13,6 @@ author:
 # Build settings
 markdown: kramdown
 highlighter: rouge
-theme: minima
 
 # Academic theme configuration
 plugins:
