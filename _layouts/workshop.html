@@ -1,0 +1,103 @@
+---
+layout: default
+---
+
+<article class="workshop">
+  <header class="workshop-header">
+    <h1 class="workshop-title">{{ page.title }}</h1>
+    {% if page.date %}
+      <p class="workshop-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+        {% if page.speaker %} • Speaker: {{ page.speaker }}{% endif %}
+        {% if page.duration %} • Duration: {{ page.duration }}{% endif %}
+      </p>
+    {% endif %}
+  </header>
+
+  <div class="workshop-content">
+    {{ content }}
+  </div>
+
+  {% if page.materials %}
+  <section class="workshop-materials">
+    <h2>Materials</h2>
+    <ul>
+      {% for material in page.materials %}
+        <li><a href="{{ material.url }}">{{ material.title }}</a> - {{ material.description }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if page.resources %}
+  <section class="workshop-resources">
+    <h2>Additional Resources</h2>
+    <ul>
+      {% for resource in page.resources %}
+        <li><a href="{{ resource.url }}" target="_blank">{{ resource.title }}</a> - {{ resource.description }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</article>
+
+<style>
+.workshop-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e1e4e8;
+}
+
+.workshop-title {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.workshop-meta {
+  color: #6a737d;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.workshop-content {
+  line-height: 1.6;
+}
+
+.workshop-materials,
+.workshop-resources {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e1e4e8;
+}
+
+.workshop-materials h2,
+.workshop-resources h2 {
+  color: #2c3e50;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.workshop-materials ul,
+.workshop-resources ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.workshop-materials li,
+.workshop-resources li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.workshop-materials li:before,
+.workshop-resources li:before {
+  content: "📄";
+  position: absolute;
+  left: 0;
+}
+
+.workshop-resources li:before {
+  content: "🔗";
+}
+</style>

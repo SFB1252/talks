@@ -1,0 +1,123 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- seo -%}
+  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  {%- feed_meta -%}
+  {%- if jekyll.environment == 'production' and site.google_analytics -%}
+    {%- include google-analytics.html -%}
+  {%- endif -%}
+  
+  <!-- Academic styling -->
+  <style>
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    .site-header {
+      background-color: #2c3e50;
+      border-bottom: 3px solid #34495e;
+    }
+    
+    .site-title {
+      color: #ecf0f1 !important;
+      font-weight: 600;
+      font-size: 1.5rem;
+    }
+    
+    .site-nav .page-link {
+      color: #bdc3c7;
+    }
+    
+    .site-nav .page-link:hover {
+      color: #ecf0f1;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      color: #2c3e50;
+      font-weight: 600;
+    }
+    
+    .workshop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .workshop-card {
+      border: 1px solid #e1e4e8;
+      border-radius: 8px;
+      padding: 1.5rem;
+      background: #f8f9fa;
+      transition: box-shadow 0.3s ease;
+    }
+    
+    .workshop-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .workshop-card h3 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    
+    .workshop-meta {
+      color: #6a737d;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    
+    .btn-primary {
+      background-color: #3498db;
+      color: white;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 4px;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background-color: #2980b9;
+      text-decoration: none;
+      color: white;
+    }
+    
+    .academic-footer {
+      background-color: #34495e;
+      color: #ecf0f1;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+    
+    blockquote {
+      border-left: 4px solid #3498db;
+      padding-left: 1rem;
+      margin-left: 0;
+      font-style: italic;
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    code {
+      background-color: #f1f2f6;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    }
+    
+    pre {
+      background-color: #f8f9fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 1rem;
+      overflow-x: auto;
+    }
+  </style>
+</head>

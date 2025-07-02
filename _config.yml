@@ -1,0 +1,78 @@
+# Site settings
+title: "Research Data and Methods Workshop Series"
+description: "A comprehensive workshop series covering research data management, ethics, literature management, and corpus linguistics tools for academic researchers."
+baseurl: ""
+url: "https://your-username.github.io/rdm-slides"
+
+# Author information
+author:
+  name: "SFB 1252 - Prominence in Language"
+  email: "contact@sfb1252.uni-koeln.de"
+  affiliation: "University of Cologne"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Academic theme configuration
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Navigation
+header_pages:
+  - README.md
+  - workshops/01-good-academic-practice/README.md
+  - workshops/02-research-data-management/README.md
+  - workshops/03-ethics-approval/README.md
+  - workshops/04-literature-management/README.md
+  - workshops/05-annotation-corpus-tools/README.md
+  - workshops/06-preregistration/README.md
+  - onboarding/README.md
+  - docs/contributing.md
+  - resources/additional-links.md
+
+# Collections
+collections:
+  workshops:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "SFB 1252"
+  - scope:
+      path: ""
+      type: "workshops"
+    values:
+      layout: "workshop"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Academic features
+scholar:
+  style: apa
+  locale: en
+  sort_by: year
+  order: descending
+
+# Exclude files from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - "*.pptx"
+  - "*.pdf"
