@@ -1,0 +1,53 @@
+.uzk15__tweetlist {
+    width:100%;
+    margin:0 0 1.875em
+}
+
+.uzk15__tweetlist .uzk15__twitter-user a {
+    text-decoration: none;
+    color: #3e566c;
+}
+
+.uzk15__tweetlist .uzk15__twitter-user a:hover {
+    color: #ffffff
+}
+
+.uzk15__tweetlist ul {
+    display:block;
+    width:100%;
+    margin:0 0 .9375em;
+    padding:0;
+    overflow:hidden;
+    list-style-type:none
+}
+.uzk15__tweetlist li {
+    display:block;
+    margin:0;
+    padding: .9375em 0;
+    border-bottom:1px solid #dbdbdb
+}
+
+.uzk15__tweetlist li:first-child {
+    border-top:1px solid #dbdbdb
+}
+
+.uzk15__tweetlist img.avatar {
+    position: relative;
+    display: block;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 2.8125em;
+    height: 2.8125em;
+    margin-right: .875em;
+    margin-top: .6em;
+}
+
+.uzk15__tweetlist .tweet-footer,
+.uzk15__tweetlist .tweet-media {
+    margin-top: .875em;
+} 
+
+
+

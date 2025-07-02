@@ -1,0 +1,338 @@
+.dangertx-powermail {
+    width: 100%;
+    clear: left;
+    /*border: 1px solid #dbdbdb;
+    padding: 1em;*/
+    border: 0px ;
+    padding: 0em;
+    padding-bottom: 0;
+    margin-bottom: 1.875em;
+}
+
+.tx-powermail .powermail_select,
+.tx-powermail .powermail_country {
+  width: 100%;
+}
+
+.tx-powermail .powermail_fieldset {
+  clear: left;
+  border: 1px dotted ;
+  /*padding: 1.0em;
+  width:100%;*/
+  margin: 0 0 20px 0;
+
+}
+
+.tx-powermail .powermail_fieldset label {
+    // min-width: 220px;
+    // width: 33%;
+    display: inline-block;
+/*    color: #4C4C4C;*/
+    /*font-family: "OpenSansSemibold", "Arial", "Helvetica", sans-serif;*/
+    font-size: 0.95em;
+    line-height: 1.56em;
+    margin: 0px;
+    padding: 0px;
+}
+
+/*
+.tx-powermail .powermail_fieldset div div {
+    min-width:220px;
+    width:auto;
+    display:inline-block;
+    font-size: 0.88em;
+
+}
+*/
+.col-sm-2 {
+    margin:0;
+    float:left;
+}
+
+label.col-sm-2 {
+    /*min-width:220px;*/
+    min-width:200px;
+    width:33%
+}
+
+.col-sm-10{
+  margin:0;
+  float:left;
+  min-width: 65%;
+}
+
+@media screen and (max-width: 640px){
+  .col-sm-10{
+    min-width: 100%;
+  }
+}
+
+input.col-sm-10,
+textarea.col-sm-10
+{
+    min-width:220px;
+    width:65%;
+
+}
+
+.col-sm-10 input.powermail_input, .col-sm-10 input.powermail_captcha {
+
+  border: 1px solid #ddd;
+  line-height: 2.0em;
+  width:100%;
+  border-radius: 3px;
+  font-family: OpenSansRegular,Arial,Helvetica,sans-serif;
+  font-size: 0.875em;
+}
+
+.powermail_captchaimage {
+  margin-top: 0.5em;
+  width: 100%;
+}
+
+/*
+.tx-powermail .powermail_fieldset div div.radio,
+*/
+
+.tx-powermail .powermail_fieldset div div.radio label{
+  min-width:auto;
+  width:auto;
+}
+
+.tx-powermail .powermail_fieldset div div.radio label input{
+  display:inline-block;
+  float:left;
+  width:auto;
+}
+
+.tx-powermail .powermail_fieldset div input,
+.tx-powermail .powermail_fieldset div textarea{
+  /*width:100%;*/
+
+}
+
+/*
+.powermail_submit {
+  cursor:pointer;
+  border-radius: 3px;
+  margin:5px 0 0 0;
+  padding:5px 20px;
+  color:white;
+  font-weight:normal;
+  background-color:#203c4d!important;
+  border:0px solid #eee;
+}
+*/
+
+/*
+----------------------- SUBMIT BUTTON -----------------------
+*/
+.powermail_submit {
+    margin: 0px 0px 0px 0px!important;
+    color: white!important;
+    background-color: #3e566c!important;
+    padding: 10px!important;
+    border: 0!important;
+    font-size: .875em!important;
+    margin-top: 5px!important;
+    font-family: OpenSansSemibold,Arial,Helvetica,sans-serif!important;
+    font-weight: 400!important;
+}
+
+.powermail_submit:hover{
+  background-color: #002c37!important;
+  cursor: pointer!important;
+}
+
+/*
+----------------------- PAGINATION BUTTONS -----------------------
+*/
+.tx-powermail .btn-default {
+  display: block;
+  text-decoration: none;
+  padding: 0 2px;
+  background: none;
+  float: left;
+  display: inline-block;
+  margin: 10px 10px 15px 0;
+  padding: 6px 11px;
+  outline: 1px solid transparent;
+  color: #3E566C;
+  border: 1px solid #DBDBDB;
+  font-size: medium;
+}
+
+.tx-powermail .btn-default:hover {
+  color: #3E566C;
+  border: 1px solid #3E566C;
+  outline: 1px solid #3E566C;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tx-powermail .btn-warning,
+.tx-powermail .pull-right {
+  color: #3E566C;
+  outline: 1px solid transparent!important;
+  border: 1px solid #DBDBDB!important;
+  text-decoration: none;
+  background-color: #fff;
+  padding: 6px 11px;
+  margin: 10px 10px 15px 0;
+}
+
+.tx-powermail .btn-primary {
+  color: #3E566C;
+  border: 1px solid #3E566C;
+  outline: 1px solid #3E566C;/*
+  outline: 1px solid transparent;
+  border: 1px solid #DBDBDB;*/
+  text-decoration: none;
+  background-color: #fff;
+  padding: 6px 11px;
+  margin: 10px 10px 15px 0;
+}
+
+.tx-powermail .btn-primary:hover {
+  color: #3E566C;
+  border: 1px solid #3E566C;
+  outline: 1px solid #3E566C;
+}
+
+.tx-powermail .btn-warning:hover,
+.tx-powermail .pull-right:hover {
+  color: #3E566C;
+  border: 1px solid #3E566C!important;
+  outline: 1px solid #3E566C!important;
+}
+
+.tx-powermail .btn-group .btn-danger {
+  background-color: #EBCCD1;
+  color: #A94442;
+}
+
+
+
+
+
+.tx-powermail .powermail_fieldset div textarea{
+  width:100%;
+
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  font-family: OpenSansRegular,Arial,Helvetica,sans-serif;
+  font-size: 0.875em;
+}
+
+.tx-powermail .powermail_fieldset  input.powermail_radio{
+  width:auto;
+}
+
+.tx-powermail .powermail_fieldset .powermail_legend{
+/*
+  display:none;
+  color:#bbb;
+  float:right;
+  margin:3px 0 10px 0;
+  white-space:normal;
+*/
+    font-weight:bold;
+}
+
+.tx-powermail .powermail_fieldset .powermail_field.powermail_submit{
+  margin:5px 0 0 0;
+  padding:5px 20px;
+  color:white;
+  font-weight:normal;
+  cursor:pointer;
+  background-color:#203c4d!important;
+  border:0px solid #eee;
+}
+
+
+
+.tx-powermail .powermail_fieldset .powermail_field.powermail_reset {
+  margin:5px 0 0 0;
+  padding:5px 20px;
+  color:white;
+  font-weight:normal;
+  cursor:pointer;
+  background-color:#203c4d!important;
+  border:0px solid #eee;
+}
+
+
+.tx-powermail .powermail_fieldset .powermail_field {
+  width: 70%;
+  margin: 0px;
+/*  border: 1px solid #ddd;*/
+  color: #444;
+  float: right;
+  font-size: inherit;
+  background-color: #fff;
+}
+
+.tx-powermail .powermail_field input[type="radio" i] {
+    /*width:5%;*/
+    margin: 3px 3px 0px 5px;
+  }
+
+.tx-powermail .powermail_field input[type="checkbox" i] {
+    /*width:5%;*/
+    margin: 3px 3px 3px 4px;
+}
+
+
+.tx-powermail .powermail_fieldset .powermail_radio_outer, .tx-powermail .powermail_fieldset .powermail_captcha_outer, .tx-powermail .powermail_fieldset .powermail_check_outer, .tx-powermail .powermail_fieldset .powermail_fieldwrap_text, .tx-powermail .powermail_fieldset .powermail_fieldwrap_file_inner ul:not(.parsley-errors-list) {
+  width:70%;
+  border: 0px solid #bbb;
+  float: right;
+  padding: 3px;
+  list-style: none;
+  margin: 0;
+}
+
+.tx-powermail .powermail_create, .tx-powermail .powermail_confirmation {
+  border: 1px solid #bbb;
+  padding: 10px;
+  margin: 0 0 20px 0;
+  overflow: hidden;
+}
+
+.tx-powermail .powermail_create .powermail_confirmation_submit, .tx-powermail .powermail_create .powermail_confirmation_form, .tx-powermail .powermail_confirmation .powermail_confirmation_submit, .tx-powermail .powermail_confirmation .powermail_confirmation_form {
+  background-color: #203c4d;
+  font-weight:normal;
+}
+
+/* Formatierung Kontrollabfrage nach Eingabe */
+.tx-powermail .powermail_all>dt {
+   padding:8px 30px 8px 0px;
+}
+
+
+.tx-powermail .powermail_all>dd {
+    padding:8px 0px 8px 0px;
+}
+
+/* formularfeld "text einfügen" links floaten" */
+
+ .tx-powermail .powermail_fieldset .powermail_fieldwrap_text  {
+   width:100%;
+
+  border: 0px solid #bbb;
+  float: left!important;
+  padding: 10px 0px 10px 0px;
+  list-style: none;
+  margin: 10px 0px 10px 0px;
+}
+
+.powermail_fieldwrap  {
+   width:100%;
+
+  border: 0px solid #bbb;
+  float: left!important;
+/*  padding: 10px 0px 10px 0px; */
+  list-style: none;
+  margin: 5px 0px 5px 0px;
+/*  margin: 10px 0px 10px 0px; */
+}

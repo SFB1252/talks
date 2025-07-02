@@ -1,0 +1,3515 @@
+
+/* TYPO3 v12 und sein CKEditor 5 fügen in Texten zusätzliche <figures> ein die einen unnötigen Margin haben, dies machen wir hier rückgängig*/
+.uzk15__editorblock figure {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+
+
+@font-face {
+    font-family: 'AlbertSansRegular';
+    src        : url('fonts/albertsans_regular/AlbertSans-VariableFont_wght.woff2');
+    font-weight: normal;
+    font-style : normal;
+}
+@font-face {
+    font-family: 'AlbertSansBold';
+    src        : url('fonts/albertsans_regular/AlbertSans-VariableFont_wght.woff2');
+    font-weight: bold;
+    font-style : normal;
+}
+@font-face {
+    font-family: 'AlbertSansLight';
+    src        : url('fonts/albertsans_regular/AlbertSans-VariableFont_wght.woff2');
+    font-weight: lighter;
+    font-style : normal;
+}
+
+@font-face {
+    font-family: 'AlbertSansItalic';
+    src        : url('fonts/albertsans_italic/AlbertSans-Italic-VariableFont_wght.woff2');
+    font-weight: normal;
+    font-style : normal;
+}
+
+.uzk15__tinymobile {
+    display  : block;
+    font-size: 0.7em;
+}
+
+
+@media screen and (min-width: 480px) {
+    .uzk15__tinymobile {
+        display  : block;
+        font-size: 1em;
+    }
+
+    .uzk15__map div#dsgvo {
+        font-size: 0.6em;
+    }
+}
+
+
+@media screen and (min-width: 1280px) {
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33.uzk15__noimage {
+        min-height: 6.25em;
+    }
+
+    .uzk15__map div#dsgvo {
+        font-size: 0.9em;
+    }
+}
+
+
+
+.uzk15__headerwrapper h2 {
+    z-index: 50
+}
+
+.uzk15__headerwrapper h2 a {
+    color          : #fff;
+    text-decoration: none;
+    z-index        : 50
+}
+
+.uzk15__headerwrapper h2 a:hover {
+    text-decoration: underline
+}
+
+a .uzk15__standard_h1,
+a .uzk15__standard_h2,
+a .uzk15__standard_h3,
+a .uzk15__standard_h4,
+a .uzk15__standard_h5,
+a .uzk15__standard_h6 {
+    text-decoration      : underline;
+    text-decoration-color: #3E566C;
+}
+
+.uzk15__maincontent a {
+    text-decoration-color: #3E566C;
+    color                : #3E566C;
+}
+
+.uzk15__grid_33.default .uzk15__editorblock,
+.uzk15__grid_67.default .uzk15__editorblock,
+.uzk15__grid_100.default .uzk15__editorblock,
+.uzk15__grid_50.default .uzk15__editorblock {
+    margin: 0;
+}
+
+
+/*kleine Bilder in tabellen werden in manchen Browsern ggf nicht korrekt dargestellt wenn "max-width=100% mit dem Padding der Zellen kollidiert*/
+.uzk15__editorblock td img {
+    max-width: initial;
+}
+
+
+.uzk15__editorblock pre {
+    overflow-x      : scroll;
+    background-color: #f0f0f0;
+    border          : 1px solid #a0a0a0;
+    padding         : 3px;
+}
+
+.uzk15__editorblock pre,
+.uzk15__editorblock .uzk15__code,
+.uzk15__editorblock code {
+    font-family: Courier, "Courier New", "FreeMono", monospace;
+}
+
+
+.uzk15__editorblock pre em,
+.uzk15__editorblock em pre,
+.uzk15__editorblock .uzk15__code em,
+.uzk15__editorblock em .uzk15__code,
+.uzk15__editorblock code em,
+.uzk15__editorblock em code {
+    font-family: Courier, "Courier New", "FreeMono", monospace;
+    font-style : italic;
+}
+
+.uzk15__editorblock pre strong,
+.uzk15__editorblock strong pre,
+.uzk15__editorblock .uzk15__code strong,
+.uzk15__editorblock strong .uzk15__code,
+.uzk15__editorblock code strong,
+.uzk15__editorblock strong code {
+    font-family: Courier, "Courier New", "FreeMono", monospace;
+    font-weight: 900;
+}
+
+
+.uzk15__editorblock a h1,
+a .uzk15__standard_h1 {
+    color          : #3e566c;
+    text-decoration: underline;
+}
+
+
+.uzk15_headerdate {
+    margin-top     : 0.5em;
+    text-decoration: none;
+    font-size      : 0.6em;
+    display        : block;
+    color          : #58595b;
+}
+
+
+@media screen and (min-width: 480px) {
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 a {
+        position: relative;
+    }
+
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 a div h2 {
+        min-height: 3.75em;
+    }
+
+
+}
+
+@media screen and (min-width: 560px) {
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 a div p {
+        min-height: 5.5em;
+    }
+}
+
+
+@media screen and (min-width: 640px) {
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 a div p {
+        min-height: 4.125em;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    /*
+     .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 a div h2
+     { min-height: 3.75em; }
+   */
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 a div p {
+        min-height: 5.5em;
+    }
+}
+
+
+
+@media screen and (min-width: 1024px) {
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 {
+        min-height: 13.75em;
+    }
+
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 a div h2 {
+        min-height: 5em;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 a div h2 {
+        min-height: 3.75em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 a div p {
+        min-height: 5.5em;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 a div h2 {
+        min-height: 2.5em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 a div p {
+        min-height: 4.125em;
+    }
+}
+
+.uzk15__mainfooter * {
+    -webkit-transform: none;
+}
+
+
+/* Newsteaser umbenannt, damit mehr als drei Nachrichten angezeigt werden */
+.uzk15__newsteaser_3 {
+    position         : relative;
+    webkit-box-sizing: border-box;
+    moz-box-sizing   : border-box;
+    box-sizing       : border-box;
+    height           : 100%;
+    margin           : 0 0 2.5em 0;
+    padding          : 0;
+    border           : 1px solid #dbdbdb;
+    background-color : #ffffff;
+}
+
+html[data-useragent*='MSIE 10.0'] .uzk15__newsteaser_3 {
+    height: 100%;
+}
+
+.uzk15__newsteaser_3 a {
+    webkit-box-sizing: border-box;
+    moz-box-sizing   : border-box;
+    box-sizing       : border-box;
+    display          : block;
+    width            : 100%;
+    height           : 100%;
+    margin           : 0;
+    padding          : 0;
+    text-decoration  : none;
+    outline          : none;
+    overflow         : hidden;
+    border           : none;
+}
+
+.uzk15__newsteaser_3 a:hover,
+.uzk15__newsteaser_3 a:focus,
+.uzk15__newsteaser_3 a:active {
+    background-color: #32475b;
+}
+
+.uzk15__newsteaser_3 figure {
+    position: relative;
+    display : block;
+    margin  : -1px 0 0 0;
+    padding : 0;
+}
+
+.uzk15__newsteaser_3 figure img {
+    display : block;
+    width   : 100%;
+    margin  : 0;
+    padding : 0;
+    border  : none;
+    overflow: hidden;
+}
+
+.uzk15__newsteaser_3 .uzk15__content {
+    webkit-box-sizing: border-box;
+    moz-box-sizing   : border-box;
+    box-sizing       : border-box;
+    padding          : 1em;
+}
+
+.uzk15__newsteaser_3 a:hover .uzk15__content,
+.uzk15__newsteaser_3 a:focus .uzk15__content,
+.uzk15__newsteaser_3 a:active .uzk15__content {
+    outline: 1px solid #32475b;
+}
+
+.uzk15__newsteaser_3 .uzk15__headline {
+    margin         : 0 0 0 0;
+    padding        : 0;
+    font-family    : OpenSansBold, Arial, Helvetica, sans-serif;
+    font-size      : 1.25em;
+    line-height    : 1.2em;
+    font-weight    : normal;
+    text-decoration: none;
+    color          : #3e566c;
+}
+
+.uzk15__newsteaser_3 a:hover .uzk15__headline,
+.uzk15__newsteaser_3 a:focus .uzk15__headline,
+.uzk15__newsteaser_3 a:active .uzk15__headline {
+    color: #ffffff;
+}
+
+.uzk15__newsteaser_3 .uzk15__description {
+    margin         : 0;
+    padding        : 0;
+    font-size      : 1em;
+    line-height    : 1.375em;
+    font-weight    : normal;
+    text-decoration: none;
+    color          : #595959;
+}
+
+.uzk15__newsteaser_3 a:hover .uzk15__description,
+.uzk15__newsteaser_3 a:focus .uzk15__description,
+.uzk15__newsteaser_3 a:active .uzk15__description {
+    color: #ffffff;
+}
+
+@media screen and (min-width: 560px) {
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 {
+        float        : none;
+        width        : 96.2962%;
+        margin-right : 1.8518%;
+        margin-left  : 1.8518%;
+        margin-bottom: 1.875em;
+        height       : auto;
+        padding      : 0;
+        clear        : both;
+        overflow     : hidden;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 a {
+        position: relative;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 figure {
+        float : left;
+        width : 50%;
+        margin: -1px 0 0 0;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 .uzk15__content {
+        float  : left;
+        width  : 50%;
+        padding: 1em;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 .uzk15__content {
+        padding: 0.5em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33.uzk15__grid_50_special {
+        width       : 46.2964%;
+        margin-right: 1.8518%;
+        margin-left : 1.8518%;
+        float       : left;
+        clear       : none;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 {
+        float        : left;
+        width        : 29.6296%;
+        margin-right : 1.8518%;
+        margin-left  : 1.8518%;
+        margin-bottom: 2.5em;
+        clear        : none;
+        padding      : 0;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33.uzk15__grid_50_special {
+        width: 29.6296%;
+    }
+}
+
+.uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 a {
+    width : 100%;
+    height: 100%;
+}
+
+.uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 figure {
+    display: block;
+    z-index: 997;
+    float  : none;
+    width  : auto;
+    margin : -1px -1px 0 -1px;
+}
+
+.uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 .uzk15__content {
+    float  : none;
+    width  : auto;
+    padding: 1em;
+}
+
+
+
+@media screen and (min-width: 560px) and (max-width: 767px) {
+
+    .uzk15__maincontent .uzk15__grid_33.uzk15__grid_50_special,
+    .uzk15__maincontent .uzk15__grid_50 {
+        float       : left;
+        clear       : none;
+        width       : 46.2964%;
+        margin-right: 1.8518%;
+        margin-left : 1.8518%;
+    }
+}
+
+/*
+   .uzk15__akkordeon-oeffner,.uzk15__akkordeon-inhalt.target, html.no-js .uzk15__akkordeon-inhalt
+   {
+     padding: .46875em 1.2em .46875em .53125em;
+   }
+*/
+.uzk15__nextlevelteaser .uzk15__description {
+    min-height: 8.25em;
+}
+
+.uzk15__nextlevelteaser a .uzk15__description {
+    color: #58595b;
+}
+
+.uzk15__nextlevelteaser a:hover .uzk15__description {
+    color: #ffffff;
+}
+
+.uzk15__nextlevelteaser .uzk15__description.uzk15__grid_100 {
+    min-height: 0;
+}
+
+.uzk15__nextlevelteaser .uzk15__description.uzk15__grid_33 {
+    min-height: 8.25em;
+}
+
+.uzk15__nextlevelteaser .uzk15__description.uzk15__grid_50 {
+    min-height: 3.5em;
+}
+
+
+
+
+
+@media screen and (min-width: 560px) {
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33.uzk15__noimage a {
+        position: relative;
+    }
+}
+
+.uzk15__mainnavigation ul.uzk15__firstlevellinks>li.uzk15__topleveldirectlink>a.uzk15__menuitemactive,
+.uzk15__mainnavigation ul.uzk15__firstlevellinks>li.uzk15__topleveldirectlink>a:focus {
+    color           : #FFFFFF;
+    background-color: #002C37;
+    outline         : 0px none currentColor;
+
+}
+
+.uzk15__mainnavigation ul.uzk15__firstlevellinks>li.uzk15__topleveldirectlink>a.uzk15__menuitemactive,
+.uzk15__mainnavigation ul.uzk15__firstlevellinks>li.uzk15__topleveldirectlink>a:focus {
+    color           : #FFFFFF;
+    background-color: #002C37;
+    outline         : 0px none currentColor;
+}
+
+.uzk15__subpagelinks .uzk15__spacer2 {
+    border-top: 1px solid #8c8c8c;
+    margin    : .625em 0 0 0;
+    width     : 80%;
+}
+
+.uzk15__mainnavigation .uzk15__flyoutwrapper .uzk15__pagelinks>li.uzk15__spacer1 {
+    border-top: 3px solid #8c8c8c;
+    width     : 90%;
+}
+
+.uzk15__mainnavigation .uzk15__flyoutwrapper .uzk15__pagelinks .uzk15__subpagelinks {
+    margin-left : 0px;
+    padding-left: .625em;
+}
+
+
+p.bodytext a {
+    color: #58595b;
+}
+
+p.bodytext a:hover,
+p.bodytext a:focus,
+p.bodytext aa:active {
+    text-decoration : none;
+    color           : #ffffff;
+    outline         : 1px solid transparent;
+    background-color: #3e566c;
+}
+
+.uzk15__addresslist .uzk15__telefonliste {
+    padding-right: 0;
+}
+
+main .uzk15__addresslist dl dt {
+    display  : block;
+    float    : left;
+    min-width: 33px;
+}
+
+aside .uzk15__addresslist label,
+aside .uzk15__addresslist dl dt {
+    display  : block;
+    float    : left;
+    min-width: 62px;
+}
+
+.uzk15__addresslist .uzk15__addressblock {
+    margin-bottom: 0;
+}
+
+.uzk15__addresslist .contact_box div.uzk15__addressblock {
+    min-height: 1.5em;
+}
+
+main .uzk15__addresslist .contact_box dl.uzk15__addressblock,
+main .uzk15__addresslist .contact_box div.uzk15__description {
+    padding-top: 1em;
+}
+
+aside .uzk15__addresslist .contact_box div.uzk15__addressblock {
+    min-height: 1.5em;
+}
+
+.uzk15__addresslist .uzk15__addressblock:nth-child(3) {
+    margin-bottom: .625em;
+}
+
+.uzk15__addresslist .contact_box .uzk15__icons {
+    max-width: 2em;
+}
+
+@media screen and (min-width: 480px) {
+    .uzk15__addresslist .contact_box .uzk15__icons {
+        max-width: 10em;
+    }
+
+    .uzk15__addresslist .contact_box .uzk15__addressblock {
+        padding-right: 10em;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    main .uzk15__addresslist .uzk15__addressblock {
+        margin-bottom: .625em;
+    }
+
+    .uzk15__addresslist .contact_box .uzk15__addressblock {
+        padding-right: 2.2em;
+    }
+
+    .uzk15__addresslist .uzk15__addressblock {
+        max-width: 165px;
+    }
+
+    .uzk15__addresslist .contact_box div.uzk15__addressblock {
+        min-height: 9em;
+    }
+
+    .uzk15__addresslist .contact_box .uzk15__icons {
+        max-width: 2em;
+    }
+
+    main .uzk15__addresslist .contact_box dl.uzk15__addressblock,
+    main .uzk15__addresslist .contact_box div.uzk15__description {
+        padding    : 0 0 0 1em;
+        margin-top : 3.375em;
+        border-left: 1px solid #dbdbdb;
+
+    }
+}
+
+
+@media screen and (min-width: 1280px) {
+    .uzk15__addresslist .uzk15__addressblock {
+        /*firefox kann keine Prozent-Angaben*/
+        max-width: 232px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .uzk15__addresslist .uzk15__addressblock {
+        /*firefox kann keine Prozent-Angaben*/
+        max-width: 265px;
+    }
+}
+
+.uzk15__addresslist .contact_box dl dt {
+    min-width: 33px;
+}
+
+.contact_box {
+    /*Aus irgend einem Grund muss man Firefox sagen, dass das element nur 100%haben darf*/
+    max-width: 100%;
+    display  : -webkit-box;
+    display  : -moz-box;
+    display  : -ms-flexbox;
+    position : relative;
+    /*wichtig für single view*/
+}
+
+.uzk15__addresslist .contact_box ul.uzk15__adressgrouplist {
+    padding: 0 0 0.5em 1.2em;
+}
+
+.uzk15__addresslist .contact_box div.uzk15__description li,
+.uzk15__addresslist .contact_box ul.uzk15__adressgrouplist li {
+    border   : 0;
+    padding  : 0;
+    font-size: .875em;
+    display  : list-item;
+}
+
+
+
+.uzk15__addresslist .contact_box img {
+    display: block;
+    width  : 10em;
+    height : auto;
+}
+
+.uzk15__addresslist .contact_box div.uzk15__description h1 {
+    margin   : 0 0 0.5em 0;
+    font-size: 1.2em;
+}
+
+.uzk15__addresslist .contact_box div.uzk15__description h2 {
+    margin   : 0 0 0.5em 0;
+    font-size: 1.1em;
+}
+
+.uzk15__addresslist .contact_box div.uzk15__description h3 {
+    margin   : 0 0 0.5em 0;
+    font-size: 0.975em;
+}
+
+.uzk15__addresslist .contact_box div.uzk15__description h4 {
+    margin   : 0 0 0.5em 0;
+    font-size: 0.925em;
+}
+
+.uzk15__addresslist .contact_box div.uzk15__description h5 {
+    margin   : 0 0 0.5em 0;
+    font-size: 0.875em;
+}
+
+.uzk15__addresslist .contact_box div.uzk15__description h6 {
+    margin     : 0 0 0.5em 0;
+    font-size  : 0.875em;
+    font-weight: normal;
+}
+
+.uzk15__addresslist img {
+    height: auto;
+}
+
+.uzk15__superhead {
+    display: block;
+}
+
+.uzk15__grid_33 .uzk15__multiteaser ul {
+    column-count: 2;
+    column-gap  : 0.5em;
+    font-size   : 0.875em;
+    padding     : 0;
+    min-height  : 82px;
+}
+
+.uzk15__grid_33 .uzk15__multiteaser ul li a {
+    padding: .5em 0 .5em 0;
+}
+
+.uzk15__grid_33 figure.uzk15__imagelist {
+    border: 0;
+    margin: 0;
+}
+
+
+.uzk15__submenu li.active {
+    color           : #ffffff;
+    background-color: #32475b;
+    border-color    : #32475b;
+    outline         : 1px solid transparent;
+
+}
+
+.uzk15__submenu li.active a {
+    color: #ffffff;
+}
+
+.uzk15__submenu li.sub a {
+    padding    : .3em .3em;
+    margin-left: .6875em;
+}
+
+
+
+div.indent {
+    padding-left: 1.875em;
+}
+
+
+.uzk15__eventlist article {
+    min-height: 3em;
+}
+
+.uzk15__eventlist li:first-child,
+.uzk15__eventlist li {
+    border: 0;
+}
+
+
+.uzk15__akkordeon-inhalt.target,
+html.no-js .uzk15__akkordeon-inhalt {
+    max-height: 20000px;
+}
+
+.uzk15__kontextteaser h1.uzk15__headline {
+    font-size  : 1.5em;
+    line-height: 1.25em;
+    font-weight: normal;
+}
+
+.uzk15__kontextteaser h2.uzk15__headline {
+    /*
+Für die h2 gibt es keine speziellen anpassungen, hier werden die standards von Seitenbau aus ".uzk15__kontextteaser h2.uzk15__headline" in den kontextteaser-definitionen übernommen
+   */
+}
+
+.uzk15__kontextteaser h3.uzk15__headline {
+    font-size  : 0.9em;
+    line-height: 1.25em;
+    font-weight: normal;
+}
+
+.uzk15__kontextteaser h4.uzk15__headline {
+    font-size  : 0.85em;
+    line-height: 1.25em;
+    font-weight: normal;
+}
+
+.uzk15__kontextteaser h5.uzk15__headline {
+    font-size  : 0.8em;
+    line-height: 1.25em;
+    font-weight: normal;
+}
+
+.uzk15__kontextteaser h6.uzk15__headline {
+    font-size  : 0.7em;
+    line-height: 1.25em;
+    font-weight: normal;
+}
+
+
+
+
+
+@media print {
+
+    .uzk15__aheadcontent {
+        height: auto;
+    }
+
+    figure.uzk15__image {
+        border : 0;
+        margin : 0;
+        padding: 0;
+    }
+
+    .uzk15__button {
+        display: none;
+    }
+
+    .uzk15__serviceboxlist {
+        display: none;
+    }
+
+    .uzk15__newsteaser_3 {
+        page-breeak-inside: avoid;
+    }
+
+}
+
+
+.uzk15__maincontent .bx-viewport {
+    padding-bottom: 0;
+}
+
+.uzk15__teasersliderwrapper {
+    padding: 0 0 2.5em;
+}
+
+@media screen and (min-width: 1024px) {
+
+    .uzk15__maincontent .uzk15__grid_33.uzk15__grid_50_special,
+    .uzk15__maincontent .uzk15__grid_33 {
+        width       : 29.58333333333333333333%;
+        margin-right: 1.8575%;
+        margin-left : 1.8575%;
+    }
+}
+
+
+
+
+/*Links in Bildunterschriften im Slider sollen NICHT als Blockelement gerendert werden: */
+.uzk15__imagegallerywrapper .uzk15__image figcaption a {
+    display: inline
+}
+
+
+
+
+/*Die Größe des sliders wird unterhalb von 480px zwar verringert, die Textgröße jedoch nicht angepasst, das holen wir hier nach*/
+.uzk15__mainslider .uzk15__slidecontainer {
+    font-size            : .8em;
+    /*   background-color:transparent;*/
+}
+
+@media screen and (min-width: 480px) {
+    .uzk15__mainslider .uzk15__slidecontainer {
+        font-size: 1em;
+    }
+}
+
+
+/*Fürs debuging benzute Test-Blöcke*/
+.testbox_uzk {
+    height  : 20px;
+    position: absolute;
+    left    : 0;
+    z-index : 9999;
+}
+
+
+
+/*Für die Einbindungen von endnote-Dateien per JavaScript, muss das Verhalten von UL/LI angepasst werden, damit im Pager keine Bullets erscheinen*/
+.uzk15__editorblock ul.jsbiblio-pager>li:before {
+    content: "";
+    display: none;
+}
+
+.jsbiblio-sort,
+.jsbiblio-export,
+.jsbiblio-search {
+    margin-bottom: 1em;
+}
+
+.uzk15__editorblock ul.mapmarker>li.mapbullet:before {
+    position        : absolute;
+    top             : 0;
+    left            : 0;
+    padding         : 0;
+    content         : " ";
+    display         : block;
+    width           : 23px;
+    height          : 39px;
+    z-index         : 0;
+    background-color: transparent;
+    background-image: url("../img/icons/png/Kartenmarke.png");
+}
+
+.uzk15__editorblock ul.mapmarker>li.mapbullet {}
+
+.uzk15__editorblock ul.mapmarker {
+    padding-left: 0;
+
+}
+
+.mapmarkersymbol {
+    color     : #ffffff;
+    height    : 39px;
+    float     : left;
+    width     : 23px;
+    z-index   : 1;
+    position  : absolute;
+    font-size : .75em;
+    text-align: center;
+    padding   : 3px 0 0 0;
+}
+
+.mapmarkertext {
+    margin-left: 32px;
+    min-height : 39px;
+
+
+}
+
+.uzk15__map {
+    margin-bottom: .5em;
+}
+
+.uzk15__editorblock ol li,
+.uzk15__editorblock ul li {
+    margin: 0;
+}
+
+.uzk15__addressblock .uzk15__smalllabel {
+
+    padding-bottom: 0.5em;
+    line-height   : 1.75em;
+    font-size     : 0.5em;
+
+}
+
+.contact_box .uzk15__addressblock .uzk15__bigname {
+    font-size: 1.25em;
+}
+
+.uzk15__addresslist p span.uzk15__first-name,
+.uzk15__addresslist p span.uzk15__middle-name,
+.uzk15__addresslist p span.uzk15__last-name,
+.uzk15__addresslist p span.uzk15__academic-title {
+    display: inline;
+}
+
+
+/* ###### takomat agentur changes ###### */
+
+.playpause {
+    width   : 20px;
+    height  : 20px;
+    position: relative;
+}
+
+.playpause::after {
+    content  : "▶";
+    position : absolute;
+    top      : 0;
+    bottom   : 0;
+    font-size: 150%;
+}
+
+.playpause.playPauseIcon::after {
+    content  : "❚❚";
+    font-size: 150%;
+}
+
+.playpause:hover {
+    cursor: pointer;
+}
+
+/* ###### end takomat agentur changes ###### */
+
+
+
+.uzk15__mainslider .uzk15__controls {
+    background-color: transparent;
+}
+
+
+/* ###### start: Klasse für das Highlighting von Angesprungenen Anchors (Sprungmarken) ###### */
+.uzk15__anchor {
+    background        : #eeb;
+    transition        : background-color 1s;
+    -moz-transition   : background-color 1s;
+    -webkit-transition: background-color 1s;
+    -o-transition     : background-color 1s;
+}
+
+.uzk15__anchorSeen {
+    background-color  : transparent;
+    transition        : background-color 1s;
+    -moz-transition   : background-color 1s;
+    -webkit-transition: background-color 1s;
+    -o-transition     : background-color 1s;
+}
+
+
+
+/* ###### end: Klasse für das Highlighting von Angesprungenen Anchors (Sprungmarken) ###### */
+
+.uzk15__smallprint {
+    width       : 96.2962%;
+    margin-right: 1.8518%;
+    margin-left : 1.8518%;
+    font-size   : .8em;
+
+}
+
+
+
+
+
+.uzk15__inverted_header a,
+.uzk15__editorblock .uzk15__inverted_header a {
+    color: #ffffff;
+}
+
+.uzk15__inverted_header,
+.uzk15__editorblock .uzk15__inverted_header {
+    color           : #ffffff;
+    background-color: #3E566C;
+}
+
+
+
+
+
+
+
+
+
+.uzk15__autordatum a {
+    display        : inline;
+    font-size      : 1em;
+    text-decoration: underline;
+}
+
+.uzk15__copyright {
+    float      : none;
+    display    : inline;
+    margin     : 0;
+    padding    : 0;
+    font-family: OpenSansItalic, Arial, Helvetica, sans-serif;
+}
+
+.uzk15__maincontent .uzk15__grid_25 {
+    float       : left;
+    width       : 21.2964%;
+    margin-right: 1.8518%;
+    margin-left : 1.8518%;
+}
+
+.uzk15__mainfooter .uzk15__socialmedia .uzk15__svg-linkedin {
+    width : 1.875em;
+    height: 1.875em;
+    fill  : #ffffff;
+}
+
+.uzk15__mainsite .uzk15__contextinfo .uzk15__editorblock {
+    width       : 92.5%;
+    margin-right: 3.75%;
+    margin-left : 3.75%;
+}
+
+.uzk15__subsite .uzk15__contextinfo .uzk15__editorblock {
+    width       : 92.5%;
+    margin-right: 3.75%;
+    margin-left : 3.75%;
+}
+
+abbr,
+acronym {
+    border-bottom: .1em dotted;
+    cursor       : help;
+}
+
+figure.uzk15_smallimage {
+    margin: 0px;
+}
+
+p.uzk15__centered,
+p.centered {
+    text-align: center;
+}
+
+p.uzk15__code,
+p.code {
+    padding-left: 30px;
+    border      : 1px dotted #DBDBDB;
+    font-family : Courier, "Courier New", "FreeMono", monospace;
+    display     : block;
+    padding     : 4px;
+    min-width   : 320px;
+    text-align  : left;
+    line-height : 1.2em;
+}
+
+p.uzk15__code em,
+p.code em {
+    font-family: Courier, "Courier New", "FreeMono", monospace;
+    font-style : italic;
+}
+
+span.uzk15__filedescription {
+    color: #58595b;
+}
+
+span.uzk15__address,
+span.address {
+    color      : #3E566C;
+    font-weight: bold;
+}
+
+span.uzk15__code,
+span.code {
+    font-family: Courier, "Courier New", "FreeMono", monospace;
+}
+
+span.uzk15__detail,
+span.detail {
+    color      : #005000;
+    font-weight: bold;
+}
+
+span.uzk15__important,
+span.important {
+    color      : #a00000;
+    font-weight: bold;
+}
+
+span.uzk15__copyright a,
+a span.uzk15__copyright {
+    margin : 0;
+    padding: 0;
+    clear  : both;
+    outline: 0;
+    color  : #58595b;
+}
+
+span.uzk15__wiso {
+    color      : #83b022;
+    font-weight: bold;
+}
+
+span.uzk15__phil {
+    color      : #590f68;
+    font-weight: bold;
+}
+
+span.uzk15__jura {
+    color      : #7d321f;
+    font-weight: bold;
+}
+
+span.uzk15__med {
+    color      : #af121d;
+    font-weight: bold;
+}
+
+span.uzk15__mathnat {
+    color      : #0082c6;
+    font-weight: bold;
+}
+
+span.uzk15__hf {
+    color      : #d8a818;
+    font-weight: bold;
+}
+
+span.uzk15__verw {
+    color      : #90c4eb;
+    font-weight: bold;
+}
+
+
+p.uzk15__light_wiso {
+    min-height      : 1px;
+    border          : 1px solid #83b022;
+    background-color: #e1eccb;
+    padding         : 0.875em 1em;
+}
+
+p.uzk15__light_phil {
+    min-height      : 1px;
+    border          : 1px solid #590f68;
+    background-color: #d7c6db;
+    padding         : 0.875em 1em;
+}
+
+p.uzk15__light_jura {
+    min-height      : 1px;
+    border          : 1px solid #7d321f;
+    background-color: #e0ceca;
+    padding         : 0.875em 1em;
+}
+
+p.uzk15__light_med {
+    min-height      : 1px;
+    border          : 1px solid #af121d;
+    background-color: #ffb39d;
+    padding         : 0.875em 1em;
+}
+
+p.uzk15__light_mathnat {
+    min-height      : 1px;
+    border          : 1px solid #0082c6;
+    background-color: #c3e1f1;
+    padding         : 0.875em 1em;
+}
+
+p.uzk15__light_hf {
+    min-height      : 1px;
+    border          : 1px solid #d8a818;
+    background-color: #f5eac8;
+    padding         : 0.875em 1em;
+}
+
+p.uzk15__light_verw {
+    min-height      : 1px;
+    border          : 1px solid #90c4eb;
+    background-color: #e4f1fa;
+    padding         : 0.875em 1em;
+}
+
+p.uzk15__dark_wiso {
+    background-color: #83b022;
+    padding         : 0.875em 1em;
+    color           : #ffffff;
+}
+
+p.uzk15__dark_phil {
+    background-color: #590f68;
+    padding         : 0.875em 1em;
+    color           : #ffffff;
+}
+
+p.uzk15__dark_jura {
+    background-color: #7d321f;
+    padding         : 0.875em 1em;
+    color           : #ffffff;
+}
+
+p.uzk15__dark_med {
+    background-color: #af121d;
+    padding         : 0.875em 1em;
+    color           : #ffffff;
+}
+
+p.uzk15__dark_mathnat {
+    background-color: #0082c6;
+    padding         : 0.875em 1em;
+    color           : #ffffff;
+}
+
+p.uzk15__dark_hf {
+    background-color: #d8a818;
+    padding         : 0.875em 1em;
+    color           : #ffffff;
+}
+
+p.uzk15__dark_verw {
+    background-color: #90c4eb;
+    padding         : 0.875em 1em;
+    color           : #ffffff;
+}
+
+
+
+
+
+div.uzk15__light_wiso {
+    min-height      : 1px;
+    border          : 0px solid #83b022;
+    background-color: #e1eccb;
+}
+
+div.uzk15__light_phil {
+    min-height      : 1px;
+    border          : 0px solid #590f68;
+    background-color: #d7c6db;
+}
+
+div.uzk15__light_jura {
+    min-height      : 1px;
+    border          : 0px solid #7d321f;
+    background-color: #e0ceca;
+}
+
+div.uzk15__light_med {
+    min-height      : 1px;
+    border          : 0px solid #af121d;
+    background-color: #ecc7c9;
+}
+
+div.uzk15__light_mathnat {
+    min-height      : 1px;
+    border          : 0px solid #0082c6;
+    background-color: #c3e1f1;
+}
+
+div.uzk15__light_hf {
+    min-height      : 1px;
+    border          : 0px solid #d8a818;
+    background-color: #f5eac8;
+}
+
+div.uzk15__light_verw {
+    min-height      : 1px;
+    border          : 0px solid #90c4eb;
+    background-color: #e4f1fa;
+}
+
+div.uzk15__light_background {
+    min-height      : 1px;
+    border          : 0px solid #808080;
+    background-color: #e0e0e0;
+}
+
+div.uzk15__dark_wiso {
+    min-height      : 1px;
+    border          : 0px solid #83b022;
+    background-color: #83b022;
+    color           : #ffffff;
+}
+
+div.uzk15__dark_phil {
+    min-height      : 1px;
+    border          : 0px solid #590f68;
+    background-color: #590f68;
+    color           : #ffffff;
+}
+
+div.uzk15__dark_jura {
+    min-height      : 1px;
+    border          : 0px solid #7d321f;
+    background-color: #7d321f;
+    color           : #ffffff;
+}
+
+div.uzk15__dark_med {
+    min-height      : 1px;
+    border          : 0px solid #af121d;
+    background-color: #af121d;
+    color           : #ffffff;
+}
+
+div.uzk15__dark_mathnat {
+    min-height      : 1px;
+    border          : 0px solid #0082c6;
+    background-color: #0082c6;
+    color           : #ffffff;
+}
+
+div.uzk15__dark_hf {
+    min-height      : 1px;
+    border          : 0px solid #d8a818;
+    background-color: #d8a818;
+    color           : #ffffff;
+}
+
+div.uzk15__dark_verw {
+    min-height      : 1px;
+    border          : 0px solid #90c4eb;
+    background-color: #90c4eb;
+    color           : #ffffff;
+}
+
+div.uzk15__dark_background {
+    min-height      : 1px;
+    border          : 0px solid #808080;
+    background-color: #808080;
+    color           : #ffffff;
+}
+
+.uzk15__dark_wiso p.bodytext a,
+p.uzk15__dark_wiso a {
+    color: #ffffff;
+}
+
+.uzk15__dark_phil p.bodytext a,
+p.uzk15__dark_phil a {
+    color: #ffffff;
+}
+
+.uzk15__dark_jura p.bodytext a,
+p.uzk15__dark_jura a {
+    color: #ffffff;
+}
+
+.uzk15__dark_med p.bodytext a,
+p.uzk15__dark_med a {
+    color: #ffffff;
+}
+
+.uzk15__dark_mathnat p.bodytext a,
+p.uzk15__dark_mathnat a {
+    color: #ffffff;
+}
+
+.uzk15__dark_hf p.bodytext a,
+p.uzk15__dark_hf a {
+    color: #ffffff;
+}
+
+.uzk15__dark_verw p.bodytext a,
+p.uzk15__dark_verw a {
+    color: #ffffff;
+}
+
+.uzk15__dark_background p.bodytext a,
+p.uzk15__dark_background a {
+    color: #ffffff;
+}
+
+
+
+div.uzk15__light_round_wiso {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #83b022;
+    background-color: #e1eccb;
+}
+
+div.uzk15__light_round_phil {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #590f68;
+    background-color: #d7c6db;
+}
+
+div.uzk15__light_round_jura {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #7d321f;
+    background-color: #e0ceca;
+}
+
+div.uzk15__light_round_med {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #af121d;
+    background-color: #ecc7c9;
+}
+
+div.uzk15__light_round_mathnat {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #0082c6;
+    background-color: #c3e1f1;
+}
+
+div.uzk15__light_round_hf {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #d8a818;
+    background-color: #f5eac8;
+}
+
+div.uzk15__light_round_verw {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #90c4eb;
+    background-color: #e4f1fa;
+}
+
+div.uzk15__light_round_background {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #808080;
+    background-color: #e0e0e0;
+}
+
+div.uzk15__dark_round_wiso {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #83b022;
+    background-color: #83b022;
+    color           : #ffffff;
+}
+
+div.uzk15__dark_round_phil {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #590f68;
+    background-color: #590f68;
+    color           : #ffffff;
+}
+
+div.uzk15__dark_round_jura {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #7d321f;
+    background-color: #7d321f;
+    color           : #ffffff;
+}
+
+div.uzk15__dark_round_med {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #af121d;
+    background-color: #af121d;
+    color           : #ffffff;
+}
+
+div.uzk15__dark_round_mathnat {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #0082c6;
+    background-color: #0082c6;
+    color           : #ffffff;
+}
+
+div.uzk15__dark_round_hf {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #d8a818;
+    background-color: #d8a818;
+    color           : #ffffff;
+}
+
+div.uzk15__dark_round_verw {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #90c4eb;
+    background-color: #90c4eb;
+    color           : #ffffff;
+}
+
+div.uzk15__dark_round_background {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #808080;
+    background-color: #808080;
+    color           : #ffffff;
+}
+
+div.uzk15__uzk_background_1 {
+    min-height      : 1px;
+    border          : 0px solid #4a657d;
+    background-color: #4a657d;
+    color           : #ffffff;
+}
+
+div.uzk15__uzk_round_background_1 {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #4a657d;
+    background-color: #4a657d;
+    color           : #ffffff;
+}
+
+div.uzk15__uzk_background_2 {
+    min-height      : 1px;
+    border          : 0px solid #3e566c;
+    background-color: #3e566c;
+    color           : #ffffff;
+}
+
+div.uzk15__uzk_round_background_2 {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #3e566c;
+    background-color: #3e566c;
+    color           : #ffffff;
+}
+
+div.uzk15__uzk_background_3 {
+    min-height      : 1px;
+    border          : 0px solid #32475b;
+    background-color: #32475b;
+    color           : #ffffff;
+}
+
+div.uzk15__uzk_round_background_3 {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #32475b;
+    background-color: #32475b;
+    color           : #ffffff;
+}
+
+div.uzk15__uzk_background_4 {
+    min-height      : 1px;
+    border          : 0px solid #253746;
+    background-color: #253746;
+    color           : #ffffff;
+}
+
+div.uzk15__uzk_round_background_4 {
+    border-radius   : 0.5em;
+    min-height      : 0.5em;
+    border          : 0px solid #253746;
+    background-color: #253746;
+    color           : #ffffff;
+}
+
+div.uzk15__light_background>div,
+div.uzk15__light_background div table.contenttable,
+div.uzk15__light_background div table td,
+div.uzk15__light_background>h1,
+div.uzk15__light_background>h2,
+div.uzk15__light_background>h3,
+div.uzk15__light_background>h4,
+div.uzk15__light_background>h5,
+div.uzk15__light_background>h6,
+div.uzk15__light_background>p,
+div.uzk15__light_hf>div,
+div.uzk15__light_hf div table.contenttable,
+div.uzk15__light_hf div table td,
+div.uzk15__light_hf>h1,
+div.uzk15__light_hf>h2,
+div.uzk15__light_hf>h3,
+div.uzk15__light_hf>h4,
+div.uzk15__light_hf>h5,
+div.uzk15__light_hf>h6,
+div.uzk15__light_jura>div,
+div.uzk15__light_jura div table.contenttable,
+div.uzk15__light_jura div table td,
+div.uzk15__light_jura>h1,
+div.uzk15__light_jura>h2,
+div.uzk15__light_jura>h3,
+div.uzk15__light_jura>h4,
+div.uzk15__light_jura>h5,
+div.uzk15__light_jura>h6,
+div.uzk15__light_mathnat>div,
+div.uzk15__light_mathnat div table.contenttable,
+div.uzk15__light_mathnat div table td,
+div.uzk15__light_mathnat>h1,
+div.uzk15__light_mathnat>h2,
+div.uzk15__light_mathnat>h3,
+div.uzk15__light_mathnat>h4,
+div.uzk15__light_mathnat>h5,
+div.uzk15__light_mathnat>h6,
+div.uzk15__light_med>div,
+div.uzk15__light_med div table.contenttable,
+div.uzk15__light_med div table td,
+div.uzk15__light_med>h1,
+div.uzk15__light_med>h2,
+div.uzk15__light_med>h3,
+div.uzk15__light_med>h4,
+div.uzk15__light_med>h5,
+div.uzk15__light_med>h6,
+div.uzk15__light_phil>div,
+div.uzk15__light_phil div table.contenttable,
+div.uzk15__light_phil div table td,
+div.uzk15__light_phil>h1,
+div.uzk15__light_phil>h2,
+div.uzk15__light_phil>h3,
+div.uzk15__light_phil>h4,
+div.uzk15__light_phil>h5,
+div.uzk15__light_phil>h6,
+div.uzk15__light_round_background>div,
+div.uzk15__light_round_background div table.contenttable,
+div.uzk15__light_round_background div table td,
+div.uzk15__light_round_background>h1,
+div.uzk15__light_round_background>h2,
+div.uzk15__light_round_background>h3,
+div.uzk15__light_round_background>h4,
+div.uzk15__light_round_background>h5,
+div.uzk15__light_round_background>h6,
+div.uzk15__light_round_background>p,
+div.uzk15__light_round_hf>div,
+div.uzk15__light_round_hf div table.contenttable,
+div.uzk15__light_round_hf div table td,
+div.uzk15__light_round_hf>h1,
+div.uzk15__light_round_hf>h2,
+div.uzk15__light_round_hf>h3,
+div.uzk15__light_round_hf>h4,
+div.uzk15__light_round_hf>h5,
+div.uzk15__light_round_hf>h6,
+div.uzk15__light_round_hf>p,
+div.uzk15__light_round_jura>div,
+div.uzk15__light_round_jura div table.contenttable,
+div.uzk15__light_round_jura div table td,
+div.uzk15__light_round_jura>h1,
+div.uzk15__light_round_jura>h2,
+div.uzk15__light_round_jura>h3,
+div.uzk15__light_round_jura>h4,
+div.uzk15__light_round_jura>h5,
+div.uzk15__light_round_jura>h6,
+div.uzk15__light_round_jura>p,
+div.uzk15__light_round_mathnat>div,
+div.uzk15__light_round_mathnat div table.contenttable,
+div.uzk15__light_round_mathnat div table td,
+div.uzk15__light_round_mathnat>h1,
+div.uzk15__light_round_mathnat>h2,
+div.uzk15__light_round_mathnat>h3,
+div.uzk15__light_round_mathnat>h4,
+div.uzk15__light_round_mathnat>h5,
+div.uzk15__light_round_mathnat>h6,
+div.uzk15__light_round_mathnat>p,
+div.uzk15__light_round_med>div,
+div.uzk15__light_round_med div table.contenttable,
+div.uzk15__light_round_med div table td,
+div.uzk15__light_round_med>h1,
+div.uzk15__light_round_med>h2,
+div.uzk15__light_round_med>h3,
+div.uzk15__light_round_med>h4,
+div.uzk15__light_round_med>h5,
+div.uzk15__light_round_med>h6,
+div.uzk15__light_round_med>p,
+div.uzk15__light_round_phil>div,
+div.uzk15__light_round_phil div table.contenttable,
+div.uzk15__light_round_phil div table td,
+div.uzk15__light_round_phil>h1,
+div.uzk15__light_round_phil>h2,
+div.uzk15__light_round_phil>h3,
+div.uzk15__light_round_phil>h4,
+div.uzk15__light_round_phil>h5,
+div.uzk15__light_round_phil>h6,
+div.uzk15__light_round_phil>p,
+div.uzk15__light_round_verw>div,
+div.uzk15__light_round_verw div table.contenttable,
+div.uzk15__light_round_verw div table td,
+div.uzk15__light_round_verw>h1,
+div.uzk15__light_round_verw>h2,
+div.uzk15__light_round_verw>h3,
+div.uzk15__light_round_verw>h4,
+div.uzk15__light_round_verw>h5,
+div.uzk15__light_round_verw>h6,
+div.uzk15__light_round_verw>p,
+div.uzk15__light_round_wiso>div,
+div.uzk15__light_round_wiso div table.contenttable,
+div.uzk15__light_round_wiso div table td,
+div.uzk15__light_round_wiso>h1,
+div.uzk15__light_round_wiso>h2,
+div.uzk15__light_round_wiso>h3,
+div.uzk15__light_round_wiso>h4,
+div.uzk15__light_round_wiso>h5,
+div.uzk15__light_round_wiso>h6,
+div.uzk15__light_round_wiso>p,
+div.uzk15__light_wiso>div,
+div.uzk15__light_wiso div table.contenttable,
+div.uzk15__light_wiso div table td,
+div.uzk15__light_wiso>h1,
+div.uzk15__light_wiso>h2,
+div.uzk15__light_wiso>h3,
+div.uzk15__light_wiso>h4,
+div.uzk15__light_wiso>h5,
+div.uzk15__light_wiso>h6 {
+    color           : #303030;
+    margin-left     : 0;
+    margin-right    : 0;
+    background-color: transparent
+}
+
+
+.uzk15__uzk_background_1>div,
+div.uzk15__uzk_round_background_1>div,
+.uzk15__uzk_background_2>div,
+div.uzk15__uzk_round_background_2>div,
+.uzk15__uzk_background_3>div,
+div.uzk15__uzk_round_background_3>div,
+.uzk15__uzk_background_4>div,
+div.uzk15__uzk_round_background_4>div,
+.uzk15__uzk_background_1 div table.contenttable,
+.uzk15__uzk_background_1 div table td,
+.uzk15__uzk_background_1>h1,
+div.uzk15__uzk_round_background_1 div table.contenttable,
+div.uzk15__uzk_round_background_1 div table td,
+div.uzk15__uzk_round_background_1>h1,
+.uzk15__uzk_background_2 div table.contenttable,
+.uzk15__uzk_background_2 div table td,
+.uzk15__uzk_background_2>h1,
+div.uzk15__uzk_round_background_2 div table.contenttable,
+div.uzk15__uzk_round_background_2 div table td,
+div.uzk15__uzk_round_background_2>h1,
+.uzk15__uzk_background_3 div table.contenttable,
+.uzk15__uzk_background_3 div table td,
+.uzk15__uzk_background_3>h1,
+div.uzk15__uzk_round_background_3 div table.contenttable,
+div.uzk15__uzk_round_background_3 div table td,
+div.uzk15__uzk_round_background_3>h1,
+.uzk15__uzk_background_4 div table.contenttable,
+.uzk15__uzk_background_4 div table td,
+.uzk15__uzk_background_4>h1,
+div.uzk15__uzk_round_background_4 div table.contenttable,
+div.uzk15__uzk_round_background_4 div table td,
+div.uzk15__uzk_round_background_4>h1,
+.uzk15__uzk_background_1>h2,
+div.uzk15__uzk_round_background_1>h2,
+.uzk15__uzk_background_2>h2,
+div.uzk15__uzk_round_background_2>h2,
+.uzk15__uzk_background_3>h2,
+div.uzk15__uzk_round_background_3>h2,
+.uzk15__uzk_background_4>h2,
+div.uzk15__uzk_round_background_4>h2,
+.uzk15__uzk_background_1>h3,
+div.uzk15__uzk_round_background_1>h3,
+.uzk15__uzk_background_2>h3,
+div.uzk15__uzk_round_background_2>h3,
+.uzk15__uzk_background_3>h3,
+div.uzk15__uzk_round_background_3>h3,
+.uzk15__uzk_background_4>h3,
+div.uzk15__uzk_round_background_4>h3,
+.uzk15__uzk_background_1>h4,
+div.uzk15__uzk_round_background_1>h4,
+.uzk15__uzk_background_2>h4,
+div.uzk15__uzk_round_background_2>h4,
+.uzk15__uzk_background_3>h4,
+div.uzk15__uzk_round_background_3>h4,
+.uzk15__uzk_background_4>h4,
+div.uzk15__uzk_round_background_4>h4,
+.uzk15__uzk_background_1>h5,
+div.uzk15__uzk_round_background_1>h5,
+.uzk15__uzk_background_2>h5,
+div.uzk15__uzk_round_background_2>h5,
+.uzk15__uzk_background_3>h5,
+div.uzk15__uzk_round_background_3>h5,
+.uzk15__uzk_background_4>h5,
+div.uzk15__uzk_round_background_4>h5,
+.uzk15__uzk_background_1>h6,
+div.uzk15__uzk_round_background_1>h6,
+.uzk15__uzk_background_2>h6,
+div.uzk15__uzk_round_background_2>h6,
+.uzk15__uzk_background_3>h6,
+div.uzk15__uzk_round_background_3>h6,
+.uzk15__uzk_background_4>h6,
+div.uzk15__uzk_round_background_4>h6,
+.uzk15__uzk_background_1>p,
+div.uzk15__uzk_round_background_1>p,
+.uzk15__uzk_background_2>p,
+div.uzk15__uzk_round_background_2>p,
+.uzk15__uzk_background_3>p,
+div.uzk15__uzk_round_background_3>p,
+.uzk15__uzk_background_4>p,
+div.uzk15__uzk_round_background_4>p,
+div.uzk15__dark_background>div,
+div.uzk15__dark_background div table.contenttable,
+div.uzk15__dark_background div table td,
+div.uzk15__dark_background>h1,
+div.uzk15__dark_background>h2,
+div.uzk15__dark_background>h3,
+div.uzk15__dark_background>h4,
+div.uzk15__dark_background>h5,
+div.uzk15__dark_background>h6,
+div.uzk15__dark_background>p,
+div.uzk15__dark_hf>div,
+div.uzk15__dark_hf div table.contenttable,
+div.uzk15__dark_hf div table td,
+div.uzk15__dark_hf>h1,
+div.uzk15__dark_hf>h2,
+div.uzk15__dark_hf>h3,
+div.uzk15__dark_hf>h4,
+div.uzk15__dark_hf>h5,
+div.uzk15__dark_hf>h6,
+div.uzk15__dark_jura>div,
+div.uzk15__dark_jura div table.contenttable,
+div.uzk15__dark_jura div table td,
+div.uzk15__dark_jura>h1,
+div.uzk15__dark_jura>h2,
+div.uzk15__dark_jura>h3,
+div.uzk15__dark_jura>h4,
+div.uzk15__dark_jura>h5,
+div.uzk15__dark_jura>h6,
+div.uzk15__dark_mathnat>div,
+div.uzk15__dark_mathnat div table.contenttable,
+div.uzk15__dark_mathnat div table td,
+div.uzk15__dark_mathnat>h1,
+div.uzk15__dark_mathnat>h2,
+div.uzk15__dark_mathnat>h3,
+div.uzk15__dark_mathnat>h4,
+div.uzk15__dark_mathnat>h5,
+div.uzk15__dark_mathnat>h6,
+div.uzk15__dark_med>div,
+div.uzk15__dark_med div table.contenttable,
+div.uzk15__dark_med div table td,
+div.uzk15__dark_med>h1,
+div.uzk15__dark_med>h2,
+div.uzk15__dark_med>h3,
+div.uzk15__dark_med>h4,
+div.uzk15__dark_med>h5,
+div.uzk15__dark_med>h6,
+div.uzk15__dark_phil>div,
+div.uzk15__dark_phil div table.contenttable,
+div.uzk15__dark_phil div table td,
+div.uzk15__dark_phil>h1,
+div.uzk15__dark_phil>h2,
+div.uzk15__dark_phil>h3,
+div.uzk15__dark_phil>h4,
+div.uzk15__dark_phil>h5,
+div.uzk15__dark_phil>h6,
+div.uzk15__dark_round_background>div,
+div.uzk15__dark_round_background div table.contenttable,
+div.uzk15__dark_round_background div table td,
+div.uzk15__dark_round_background>h1,
+div.uzk15__dark_round_background>h2,
+div.uzk15__dark_round_background>h3,
+div.uzk15__dark_round_background>h4,
+div.uzk15__dark_round_background>h5,
+div.uzk15__dark_round_background>h6,
+div.uzk15__dark_round_background>p,
+div.uzk15__dark_round_hf>div,
+div.uzk15__dark_round_hf div table.contenttable,
+div.uzk15__dark_round_hf div table td,
+div.uzk15__dark_round_hf>h1,
+div.uzk15__dark_round_hf>h2,
+div.uzk15__dark_round_hf>h3,
+div.uzk15__dark_round_hf>h4,
+div.uzk15__dark_round_hf>h5,
+div.uzk15__dark_round_hf>h6,
+div.uzk15__dark_round_hf>p,
+div.uzk15__dark_round_jura>div,
+div.uzk15__dark_round_jura div table.contenttable,
+div.uzk15__dark_round_jura div table td,
+div.uzk15__dark_round_jura>h1,
+div.uzk15__dark_round_jura>h2,
+div.uzk15__dark_round_jura>h3,
+div.uzk15__dark_round_jura>h4,
+div.uzk15__dark_round_jura>h5,
+div.uzk15__dark_round_jura>h6,
+div.uzk15__dark_round_jura>p,
+div.uzk15__dark_round_mathnat>div,
+div.uzk15__dark_round_mathnat div table.contenttable,
+div.uzk15__dark_round_mathnat div table td,
+div.uzk15__dark_round_mathnat>h1,
+div.uzk15__dark_round_mathnat>h2,
+div.uzk15__dark_round_mathnat>h3,
+div.uzk15__dark_round_mathnat>h4,
+div.uzk15__dark_round_mathnat>h5,
+div.uzk15__dark_round_mathnat>h6,
+div.uzk15__dark_round_mathnat>p,
+div.uzk15__dark_round_med>div,
+div.uzk15__dark_round_med div table.contenttable,
+div.uzk15__dark_round_med div table td,
+div.uzk15__dark_round_med>h1,
+div.uzk15__dark_round_med>h2,
+div.uzk15__dark_round_med>h3,
+div.uzk15__dark_round_med>h4,
+div.uzk15__dark_round_med>h5,
+div.uzk15__dark_round_med>h6,
+div.uzk15__dark_round_med>p,
+div.uzk15__dark_round_phil>div,
+div.uzk15__dark_round_phil div table.contenttable,
+div.uzk15__dark_round_phil div table td,
+div.uzk15__dark_round_phil>h1,
+div.uzk15__dark_round_phil>h2,
+div.uzk15__dark_round_phil>h3,
+div.uzk15__dark_round_phil>h4,
+div.uzk15__dark_round_phil>h5,
+div.uzk15__dark_round_phil>h6,
+div.uzk15__dark_round_phil>p,
+div.uzk15__dark_round_verw>div,
+div.uzk15__dark_round_verw div table.contenttable,
+div.uzk15__dark_round_verw div table td,
+div.uzk15__dark_round_verw>h1,
+div.uzk15__dark_round_verw>h2,
+div.uzk15__dark_round_verw>h3,
+div.uzk15__dark_round_verw>h4,
+div.uzk15__dark_round_verw>h5,
+div.uzk15__dark_round_verw>h6,
+div.uzk15__dark_round_verw>p,
+div.uzk15__dark_round_wiso>div,
+div.uzk15__dark_round_wiso div table.contenttable,
+div.uzk15__dark_round_wiso div table td,
+div.uzk15__dark_round_wiso>h1,
+div.uzk15__dark_round_wiso>h2,
+div.uzk15__dark_round_wiso>h3,
+div.uzk15__dark_round_wiso>h4,
+div.uzk15__dark_round_wiso>h5,
+div.uzk15__dark_round_wiso>h6,
+div.uzk15__dark_round_wiso>p,
+div.uzk15__dark_verw>div,
+div.uzk15__dark_verw div table.contenttable,
+div.uzk15__dark_verw div table td,
+div.uzk15__dark_verw>h1,
+div.uzk15__dark_verw>h2,
+div.uzk15__dark_verw>h3,
+div.uzk15__dark_verw>h4,
+div.uzk15__dark_verw>h5,
+div.uzk15__dark_verw>h6,
+div.uzk15__dark_wiso>div,
+div.uzk15__dark_wiso div table.contenttable,
+div.uzk15__dark_wiso div table td,
+div.uzk15__dark_wiso>h1,
+div.uzk15__dark_wiso>h2,
+div.uzk15__dark_wiso>h3,
+div.uzk15__dark_wiso>h4,
+div.uzk15__dark_wiso>h5,
+div.uzk15__dark_wiso>h6 {
+    color           : #FFFFFF;
+    margin-left     : 0;
+    margin-right    : 0;
+    background-color: transparent
+}
+
+
+
+
+
+
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_wiso,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_phil,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_jura,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_med,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_mathnat,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_hf,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_verw,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_background,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_wiso,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_phil,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_jura,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_med,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_mathnat,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_hf,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_verw,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__uzk_background_1,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__uzk_background_2,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__uzk_background_3,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__uzk_background_4,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_background,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_round_wiso,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_round_phil,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_round_jura,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_round_med,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_round_mathnat,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_round_hf,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_round_verw,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__light_round_background,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_round_wiso,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_round_phil,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_round_jura,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_round_med,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_round_mathnat,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_round_hf,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_round_verw,
+.uzk15__maincontent>.uzk15__editorblock.uzk15__dark_round_background {
+    padding-right : 1.8518%;
+    padding-left  : 1.8518%;
+    padding-bottom: 0.25em;
+    width         : 92.5926%;
+}
+
+
+.uzk15__maincontent div.uzk15__dark_background div.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__dark_hf.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__dark_jura.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__dark_mathnat.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__dark_med.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__dark_phil.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__dark_round_background.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__dark_round_hf.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__dark_round_jura.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__dark_round_mathnat.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__dark_round_med.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__dark_round_phil.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__dark_round_verw.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__dark_round_wiso.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__dark_verw.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__dark_wiso.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_background.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_hf.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_jura.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_mathnat.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_med.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_phil.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_round_background.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_round_hf.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_round_jura.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_round_mathnat.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_round_med.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_round_phil.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_round_verw.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_round_wiso.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_verw.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__light_wiso.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__uzk_background_1.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__uzk_background_2.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__uzk_background_3.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__uzk_background_4.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__uzk_round_background_1.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__uzk_round_background_2.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__uzk_round_background_3.uzk15__editorblock,
+.uzk15__maincontent div.uzk15__uzk_round_background_4.uzk15__editorblock {
+    margin-right: 1.8518%;
+    margin-left : 1.8518%;
+}
+
+.uzk15__mainnavigation .uzk15__flyoutwrapper .uzk15__flyouttop a.uzk15__overviewlink {
+    font-size: 1.25em;
+}
+
+
+.uzk15__mainnavigation .uzk15__flyoutwrapper .uzk15__flyouttop a.uzk15__overviewlink::after {
+    /*
+      Das hier ist der hübschere Pfeil, aber leider ist Windows 7 zu dof dafür:
+      content:" ⮞ "  
+    */
+    content: " ► "
+}
+
+/* 
+    Styling fuer Frontend Login (felogin-Extension) 
+*/
+
+.tx-felogin-pi1 fieldset {
+    display      : block;
+    border       : none;
+    padding      : 0;
+    position     : relative;
+    margin-bottom: 1em;
+}
+
+.tx-felogin-pi1 fieldset legend {
+    visibility: hidden;
+}
+
+.tx-felogin-pi1 input {
+    box-sizing           : border-box;
+    display              : block;
+    margin               : 0 0 0.5em 0;
+    padding              : 0.71429em 0.57143em 0.71429em 0.57143em;
+    font-family          : OpenSansRegular, Arial, Helvetica, sans-serif;
+    font-size            : 0.875em;
+    line-height          : 1;
+    color                : #4c4c4c;
+    background-color     : #ffffff;
+    border               : 1px solid #dbdbdb;
+    width                : 100%;
+    height               : 2em;
+    -webkit-border-radius: 0.125em;
+    -moz-border-radius   : 0.125em;
+    border-radius        : 0.125em;
+}
+
+.tx-felogin-pi1 input[type=submit] {
+    color                : #ffffff;
+    width                : 50%;
+    float                : left;
+    padding              : 5px 15px;
+    cursor               : pointer;
+    background-color     : #32475b;
+    border               : 1px solid #32475b;
+    -webkit-border-radius: 0.125em;
+    -moz-border-radius   : 0.125em;
+    border-radius        : 0.125em;
+}
+
+.tx-felogin-pi1 input[type=submit]:hover {
+    color           : #32475b;
+    background-color: #ffffff;
+    border          : 1px solid #32475b
+}
+
+
+
+@media screen and (min-width: 480px) {
+
+    /* Zwei Zeilen mehr als Desktop-Version für den Nextlevel-Teaser*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.oneline {
+        min-height: 3.75em;
+    }
+
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.twolines {
+        min-height: 5em;
+    }
+
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.threelines {
+        min-height: 6.25em;
+    }
+
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.fourlines {
+        min-height: 7.5em;
+    }
+
+    /*Der Newsteaser ist hier bereits einspaltig und braucht somit keine Min-Heights*/
+}
+
+
+@media screen and (min-width: 560px) {
+
+    /* Eine Zeile mehr als Desktop-Version*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.oneline,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.oneline {
+        min-height: 2.5em;
+    }
+
+    /*Eine Zeile Extra*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.twolines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.twolines {
+        min-height: 3.75em;
+    }
+
+    /*Eine Zeile Extra*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.threelines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.threelines {
+        min-height: 5em;
+    }
+
+    /*Eine Zeile Extra*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.fourlines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.fourlines {
+        min-height: 7.5em;
+    }
+
+    /*Zwei Zeilen Extra*/
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .oneline {
+        min-height: 2.750em;
+    }
+
+    /*Eine Zeile Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .twolines {
+        min-height: 4.125em;
+    }
+
+    /*Eine Zeile Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .threelines {
+        min-height: 6.875em;
+    }
+
+    /*Zwei Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .fourlines {
+        min-height: 8.250em;
+    }
+
+    /*Zwei Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .sixlines {
+        min-height: 11.000em;
+    }
+
+    /*Zwei Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .eightlines {
+        min-height: 16.500em;
+    }
+
+    /*Vier Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .tenlines {
+        min-height: 19.250em;
+    }
+
+    /*Vier Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .sixteenlines {
+        min-height: 31.625em;
+    }
+
+    /*Sieben Zeilen Extra*/
+}
+
+
+@media screen and (min-width: 640px) {
+
+    /* Genausoviele Zeilen wie  Desktop-Version*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.oneline,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.oneline {
+        min-height: 1.25em;
+    }
+
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.twolines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.twolines {
+        min-height: 2.5em;
+    }
+
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.threelines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.threelines {
+        min-height: 3.75em;
+    }
+
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.fourlines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.fourlines {
+        min-height: 5em;
+    }
+
+
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .oneline {
+        min-height: 1.375em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .twolines {
+        min-height: 2.750em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .threelines {
+        min-height: 4.125em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .fourlines {
+        min-height: 5.500em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .sixlines {
+        min-height: 8.250em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .eightlines {
+        min-height: 11.000em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .tenlines {
+        min-height: 13.750em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .sixteenlines {
+        min-height: 22.000em;
+    }
+
+
+}
+
+@media screen and (min-width: 768px) {
+
+    /* Eine Zeile mehr als Desktop-Version*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.oneline,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.oneline {
+        min-height: 2.5em;
+    }
+
+    /*1 Zeile Extra*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.twolines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.twolines {
+        min-height: 3.75em;
+    }
+
+    /*1 Zeile Extra*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.threelines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.threelines {
+        min-height: 5em;
+    }
+
+    /*1 Zeile Extra*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.fourlines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.fourlines {
+        min-height: 7.5em;
+    }
+
+    /*2 Zeilen Extra*/
+
+
+
+
+
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .oneline {
+        min-height: 2.750em;
+    }
+
+    /*1 Zeile Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .twolines {
+        min-height: 4.125em;
+    }
+
+    /*1 Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .threelines {
+        min-height: 6.875em;
+    }
+
+    /*2 Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .fourlines {
+        min-height: 8.250em;
+    }
+
+    /*2 Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .sixlines {
+        min-height: 11.000em;
+    }
+
+    /*2 Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .eightlines {
+        min-height: 15.125em;
+    }
+
+    /*3 Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .tenlines {
+        min-height: 17.875em;
+    }
+
+    /*3 Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .sixteenlines {
+        min-height: 28.875em;
+    }
+
+    /*5 Zeilen Extra*/
+
+
+
+
+}
+
+
+
+@media screen and (min-width: 1024px) {
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 {
+        min-height: 13.75em;
+    }
+
+    /* Zwei Zeilen mehr als Desktop-Version*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.oneline,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.oneline {
+        min-height: 3.75em;
+    }
+
+    /*2 Zeilen Extra*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.twolines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.twolines {
+        min-height: 5em;
+    }
+
+    /*2 Zeilen Extra*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.threelines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.threelines {
+        min-height: 6.25em;
+    }
+
+    /*2 Zeilen Extra*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.fourlines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.fourlines {
+        min-height: 10em;
+    }
+
+    /*4 Zeilen Extra*/
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .oneline {
+        min-height: 2.750em;
+    }
+
+    /*1 Zeile Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .twolines {
+        min-height: 5.500em;
+    }
+
+    /*2 Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .threelines {
+        min-height: 6.875em;
+    }
+
+    /*2 Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .fourlines {
+        min-height: 9.625em;
+    }
+
+    /*3 Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .sixlines {
+        min-height: 13.750em;
+    }
+
+    /*4 Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .eightlines {
+        min-height: 17.875em;
+    }
+
+    /*5 Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .tenlines {
+        min-height: 23.375em;
+    }
+
+    /*7 Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .sixteenlines {
+        min-height: 33.000em;
+    }
+
+    /*8 Zeilen Extra*/
+
+}
+
+@media screen and (min-width: 1280px) {
+
+    /* Eine Zeile mehr als Desktop-Version*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.oneline,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.oneline {
+        min-height: 2.5em;
+    }
+
+    /*Eine Zeile Extra*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.twolines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.twolines {
+        min-height: 3.75em;
+    }
+
+    /*Eine Zeile Extra*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.threelines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.threelines {
+        min-height: 5em;
+    }
+
+    /*Eine Zeile Extra*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.fourlines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.fourlines {
+        min-height: 6.25em;
+    }
+
+    /*Eine Zeile Extra*/
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div p {
+        min-height: 5.5em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .oneline {
+        min-height: 2.750em;
+    }
+
+    /*Eine Zeile Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .twolines {
+        min-height: 4.125em;
+    }
+
+    /*Eine Zeile Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .threelines {
+        min-height: 5.500em;
+    }
+
+    /*Eine Zeile Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .fourlines {
+        min-height: 6.875em;
+    }
+
+    /*Eine Zeile Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .sixlines {
+        min-height: 11.000em;
+    }
+
+    /*Zwei Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .eightlines {
+        min-height: 13.750em;
+    }
+
+    /*Zwei Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .tenlines {
+        min-height: 17.875em;
+    }
+
+    /*Drei Zeilen Extra*/
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .sixteenlines {
+        min-height: 26.125em;
+    }
+
+    /*Drei Zeilen Extra*/
+}
+
+@media screen and (min-width: 1440px) {
+
+    /*Dies ist die Desktop-Version, hieran misst sich die Text-Länge*/
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.oneline,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.oneline {
+        min-height: 1.25em;
+    }
+
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.twolines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.twolines {
+        min-height: 2.5em;
+    }
+
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.threelines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.threelines {
+        min-height: 3.75em;
+    }
+
+    .uzk15__maincontent .uzk15__nextlevelteaser.uzk15__grid_33 div h2.fourlines,
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div h2.fourlines {
+        min-height: 5em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .oneline {
+        min-height: 1.375em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .twolines {
+        min-height: 2.750em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .threelines {
+        min-height: 4.125em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .fourlines {
+        min-height: 5.500em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .sixlines {
+        min-height: 8.250em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .eightlines {
+        min-height: 11.000em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .tenlines {
+        min-height: 13.750em;
+    }
+
+    .uzk15__maincontent .uzk15__newsteaser_3.uzk15__grid_33 div .sixteenlines {
+        min-height: 22.000em;
+    }
+}
+
+/* Pagination */
+
+ul.f3-widget-paginator {
+    padding: 0px;
+    float  : left;
+}
+
+ul.f3-widget-paginator li {
+    /*display: block;
+  padding: 0 2px;
+  background: none;*/
+    float           : left;
+    display         : inline-block;
+    margin          : 0 0px 10px 10px;
+    /*padding       : 5px 10px; */
+    outline         : 1px solid transparent;
+    color           : #3E566C;
+    border          : 1px solid #DBDBDB;
+    background-color: #ffffff;
+}
+
+ul.f3-widget-paginator li.current,
+ul.f3-widget-paginator li:hover {
+    color          : #3E566C;
+    border         : 1px solid #3E566C;
+    outline        : 1px solid #3E566C;
+    text-decoration: none;
+}
+
+ul.f3-widget-paginator li.current,
+ul.f3-widget-paginator li.more-pages {
+    padding: 5px 10px;
+}
+
+ul.f3-widget-paginator li a {
+    /*display: block;*/
+    display        : inline-block;
+    color          : #3E566C;
+    text-align     : center;
+    text-decoration: none;
+    padding        : 5px 10px;
+}
+
+@media screen and (max-width: 480px) {
+    ul.f3-widget-paginator li {
+        float    : left;
+        display  : inline-block;
+        margin   : 0 5px 5px 0;
+        /*padding: 2.5px 5px;*/
+        outline  : 1px solid transparent;
+        color    : #3E566C;
+        border   : 1px solid #DBDBDB;
+    }
+
+    ul.f3-widget-paginator li.current,
+    ul.f3-widget-paginator li.more-pages,
+    ul.f3-widget-paginator li a {
+        padding: 2.5px 5px;
+    }
+}
+
+.uzk15__editorblock strong em,
+.uzk15__editorblock em strong {
+    font-family: OpenSansBoldItalic, Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+
+.uzk15_header_center {
+    text-align: center;
+}
+
+.uzk15_header_left {
+    text-align: left;
+}
+
+.uzk15_header_right {
+    text-align: right;
+}
+
+.uzk15__notification {
+    border : 1px solid red;
+    padding: 1.8518%;
+    margin : 1.8518%;
+    width  : 92.5926%;
+}
+
+.uzk15__notification p,
+.uzk15__notification h2 {
+
+    margin: 0;
+}
+
+
+.uzk15__tree ul {
+    list-style-type: none;
+}
+
+.uzk15__tree ul li {
+    list-style-type: none;
+    word-wrap      : break-word;
+}
+
+.uzk15__tree {
+    text-align: left;
+    display   : block;
+}
+
+.uzk15__tree.main-tree {
+    width  : 100%;
+    display: inline-block;
+    padding: 0;
+}
+
+.uzk15__tree:not(.main-tree) {
+    padding-left: 1.2em;
+}
+
+.uzk15__tree:not(.main-tree) li {
+    overflow: hidden;
+    height  : 0;
+    display : block;
+}
+
+.uzk15__tree label {
+    display      : block;
+    cursor       : pointer;
+    color        : #717780;
+    border-bottom: 1px dashed #b0b9c5;
+    padding      : .125em 1.125em .125em 0;
+}
+
+.uzk15__tree label:before {
+    width        : 1em;
+    height       : 1em;
+    line-height  : 1em;
+    display      : inline-block;
+    content      : "▸";
+    padding-right: 0em;
+}
+
+.uzk15__tree label:hover {
+    color              : #434a58;
+    border-bottom-color: #434a58;
+}
+
+.uzk15__tree .uzk15__tree_link a {
+    padding        : 1.5em 1.125em 0.75em 0;
+    display        : block;
+    border-radius  : 0.2em;
+    color          : #717780;
+    text-decoration: none;
+}
+
+.uzk15__tree .uzk15__tree_link a:hover {
+    color: #434a58;
+}
+
+.uzk15__tree.nested {
+    padding-left: 1.7em;
+}
+
+.uzk15__tree [type="checkbox"] {
+    display: none;
+}
+
+.uzk15__tree [type="checkbox"]:checked+label {
+    color              : #434a58;
+    border-bottom-color: #434a58;
+}
+
+.uzk15__tree [type="checkbox"]:checked+label:before {
+    content: "▾";
+}
+
+.uzk15__tree [type="checkbox"]:checked~ul>li {
+    height: auto;
+}
+
+.uzk15__editorblock ul.uzk15__tree>li:before {
+    position        : initial;
+    top             : initial;
+    left            : initial;
+    content         : "";
+    display         : none;
+    width           : initial;
+    height          : initial;
+    background-color: transparent;
+
+}
+
+span.uzk15__tree_value {
+    color      : #000000;
+    font-weight: 900;
+}
+
+/*
+span.uzk15__tree_key{
+    display:inline-block;
+    min-width: 15em;
+}
+*/
+
+.uzk15__hidenoscript {
+    visibility: hidden;
+}
+
+.uzk15__unobtrusive_info {
+    font-size: .8em;
+    color    : #dbdbdb;
+}
+
+.uzk15__unobtrusive_info:hover {
+    color: #505050;
+}
+
+.uzk15__publication {
+    border       : 1px solid #dbdbdb;
+    padding      : 5px;
+    margin-bottom: 1em;
+}
+
+.uzk15__publication li {
+    list-style-type: none;
+}
+
+.uzk15__publication h1,
+.uzk15__publication h2,
+.uzk15__publication h3,
+.uzk15__publication h4,
+.uzk15__publication h5,
+.uzk15__publication h6 {
+    margin: 0;
+}
+
+.uzk15__publication_list {
+    padding: 0;
+    margin : 0;
+}
+
+.uzk15__publication_list li {
+    list-style-type: none;
+}
+
+.uzk15__publication .uzk15__publication_rec-number {}
+
+.uzk15__publication_ref-type {
+    text-align      : center;
+    border-radius   : 5px;
+    background-color: #e0e0e0;
+    vertical-align  : middle;
+    padding-left    : 5px;
+    padding-right   : 5px;
+    width           : 50%;
+    float           : left;
+
+}
+
+.uzk15__publication_periodical {
+    width: 100%;
+}
+
+.uzk15__publication_ID-numbers {
+
+    text-align      : center;
+    border-radius   : 5px;
+    background-color: #3e566c;
+    color           : #ffffff;
+    vertical-align  : middle;
+    width           : 25%;
+    float           : right;
+
+}
+
+.uzk15__publication_ID-numbers span {
+    display: block;
+
+    margin: auto;
+}
+
+.uzk15__publication_ref-type-6 {
+    background-color: #000000;
+    color           : #ffffff;
+}
+
+/*book*/
+.uzk15__publication_ref-type-27 {
+    background-color: #404040;
+    color           : #ffffff;
+}
+
+/*report*/
+.uzk15__publication_ref-type-19 {
+    background-color: #252f40;
+    color           : #ffffff;
+}
+
+/*Magazine Article*/
+.uzk15__publication_ref-type-47 {
+    background-color: #3b2540;
+    color           : #ffffff;
+}
+
+/*Conference Paper*/
+.uzk15__publication_ref-type-32 {
+    background-color: #402535;
+    color           : #ffffff;
+}
+
+/*Thesis*/
+.uzk15__publication_ref-type-10 {
+    background-color: #403a25;
+    color           : #ffffff;
+}
+
+/*Conference Proceedings*/
+.uzk15__publication_ref-type-5 {
+    background-color: #254025;
+    color           : #ffffff;
+}
+
+/*Book Section*/
+.uzk15__publication_ref-type-17 {
+    background-color: #253340;
+    color           : #ffffff;
+}
+
+/*Journal Article*/
+.uzk15__publication_ref-type-28 {
+    background-color: #400000;
+    color           : #ffffff;
+}
+
+/*Edited Book*/
+
+.uzk15__publication_urls div {
+    float       : left;
+    margin-right: 1em;
+}
+
+.uzk15__web a {
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0id2Vic2l0ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIyMHB4IiBoZWlnaHQ9IjIwcHgiIHZpZXdCb3g9IjAgMCAyMCAyMCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjAgMjA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCgk8cGF0aCBpZD0id2Vic2l0ZV8xXyIgZmlsbD0iIzNlNTY2YyIgZD0iTTE5LjksMC44Yy0wLjEtMC4zLTAuNC0wLjYtMC43LTAuN0wxOC43LDBIOC40QzcuNiwwLDcuMSwwLjYsNy4xLDEuM2MwLDAuNywwLjYsMS4zLDEuMywxLjNoNy4yTDkuMyw4LjkNCgkJYy0wLjUsMC41LTAuNSwxLjMsMCwxLjhjMC41LDAuNSwxLjMsMC41LDEuOCwwbDYuMy02LjN2Ny4yYzAsMC43LDAuNiwxLjMsMS4zLDEuM2MwLjcsMCwxLjMtMC42LDEuMy0xLjNWMS4zTDE5LjksMC44eiBNMTkuOSwwLjgNCgkgICAgICAgIE0xNC45LDIwSDAuN0MwLjMsMjAsMCwxOS43LDAsMTkuNFY1LjFjMC0wLjQsMC4zLTAuNiwwLjctMC42aDcuOWMwLjQsMCwwLjcsMC4zLDAuNywwLjZTOC45LDUuNyw4LjYsNS43SDEuM3YxM2gxMi45di03LjUNCgkJYzAtMC40LDAuMy0wLjYsMC43LTAuNnMwLjcsMC4zLDAuNywwLjZ2OC4yQzE1LjUsMTkuNywxNS4yLDIwLDE0LjksMjB6Ii8+DQoNCjwvc3ZnPg0K);
+}
+
+
+.uzk15__related a {
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0id2Vic2l0ZS1uZWdhdGl2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjIwcHgiIGhlaWdodD0iMjBweCIgdmlld0JveD0iMCAwIDIwIDIwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyMCAyMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggaWQ9IndlYnNpdGUtbmVnYXRpdl8xXyIgIGZpbGw9IiMzZTU2NmMiIGQ9Ik0xNi4yLDBIMy43QzEuNywwLDAsMS43LDAsMy43djEyLjVDMCwxOC4zLDEuNywyMCwzLjcsMjBoMTIuNWMyLjEsMCwzLjgtMS43LDMuOC0zLjhWMy43DQoJQzIwLDEuNywxOC4zLDAsMTYuMiwweiBNMTMuNiwxNi4xYzAsMC4yLTAuMiwwLjQtMC40LDAuNEgzLjljLTAuMiwwLTAuNC0wLjItMC40LTAuNFY2LjhjMC0wLjIsMC4yLTAuNCwwLjQtMC40aDUuMQ0KCWMwLjIsMCwwLjQsMC4yLDAuNCwwLjRTOS4zLDcuMiw5LjEsNy4ySDQuM3Y4LjRoOC40di00LjljMC0wLjIsMC4yLTAuNCwwLjQtMC40czAuNCwwLjIsMC40LDAuNFYxNi4xeiBNMTYuNSwxMS4xDQoJYzAsMC41LTAuNCwwLjgtMC44LDAuOGMtMC41LDAtMC44LTAuNC0wLjgtMC44VjYuNGwtNC4xLDQuMWMtMC4zLDAuMy0wLjksMC4zLTEuMiwwYy0wLjMtMC4zLTAuMy0wLjksMC0xLjJsNC4xLTQuMUg4LjkNCgljLTAuNSwwLTAuOC0wLjQtMC44LTAuOGMwLTAuNSwwLjQtMC44LDAuOC0wLjhoNi43TDE2LDMuNmMwLjIsMC4xLDAuNCwwLjIsMC41LDAuNWwwLjEsMC4zVjExLjF6Ii8+DQo8L3N2Zz4NCg==);
+}
+
+/* Elastic Frame für Wowza Opencast Player*/
+.elastic-frame {
+    position      : relative;
+    padding-bottom: 56.255%;
+    padding-top   : 15px;
+    height        : 0;
+    overflow      : hidden;
+}
+
+.elastic-frame iframe {
+    position    : absolute;
+    top         : 0;
+    left        : 0;
+    width       : 100%;
+    /*    height: 100%;*/
+}
+
+/* inline svg-symbole, z.B. für Spamshutz in email-Adressen*/
+img.svg-icon,
+.uzk15__addresslist img.svg-icon {
+    display   : inline;
+    align-self: center;
+    height    : .875em;
+    width     : .875em;
+    border    : 0;
+    margin    : 0;
+    padding   : 0;
+    float     : none;
+    top       : .125em;
+    position  : relative;
+}
+
+
+
+.uzk15__linkbutton a {
+    color: #fff;
+}
+
+
+.uzk15__linkbutton uzk15_padding a:hover {
+    color: #32475b;
+}
+
+/*
+damit die Adresslisten sich nach oben ausrichten und nicht nach unten:
+*/
+@media screen and (min-width: 1024px) {
+    .uzk15__addresslist .uzk15__addressblock {
+        align-self: flex-start;
+
+    }
+
+    .uzk15__addresslist dl.uzk15__addressblock {
+        padding-top: 1.1em;
+
+    }
+
+
+}
+
+
+/*
+Um die TYPO3-Funktion, bei Tabellen selbst entscheiden zu können, ob sie gestreift oder umrahmt sein soll,
+müssen wir zunächst diese Definition entfernen. 
+TYPO3 sieht allerdings keine separate Option für gestreift+umrahmt vor. Da die Seitenbau definition dies jedoch als Default betrachten, wurde hier den Gestreifen Tabellen ebenfalls der Border wieder hinzugefügt.
+*/
+
+
+
+
+.uzk15__editorblock table.contenttable tr:nth-child(even),
+.uzk15__editorblock table.contenttable tr:nth-child(even) td,
+.uzk15__editorblock table.contenttable tr:nth-child(odd),
+.uzk15__editorblock table.contenttable tr:nth-child(odd) td {
+    background-color: initial;
+}
+
+.uzk15__editorblock table {
+    border-spacing : initial;
+    border-collapse: initial;
+    border         : 0;
+
+}
+
+.uzk15__editorblock table td {
+    border-spacing : initial;
+    border-collapse: initial;
+    border         : 0;
+
+}
+
+.uzk15__editorblock table.contenttable tr:nth-child(even),
+table.studiengangTabelle tr:nth-child(even) {
+    background-color: #e3e8ed;
+}
+
+table.studiengangTabelle {
+    border-spacing : initial;
+    border-collapse: initial;
+    border         : 0;
+
+}
+
+table.studiengangTabelle th {
+    text-align          : left;
+    /*  color           : #ffffff;*/
+    /* border           : 1px solid #3e566c;*/
+    background-clip     : padding-box;
+    border              : 1px solid #dbdbdb;
+
+    /*  background-color: #32475b;*/
+    padding  : 0.2em 1em 0.2em 1em;
+    font-size: .875em;
+}
+
+table.studiengangTabelle td {
+    border-spacing : 0;
+    border-collapse: collapse;
+    border         : 1px solid #dbdbdb;
+    width          : 100%;
+    padding        : 0.2em 1em 0.2em 1em;
+    font-size      : .875em;
+}
+
+.uzk15__editorblock table.contenttable-bordered tr:nth-child(even),
+.uzk15__editorblock table.contenttable-bordered tr:nth-child(even) td {
+    background-color: initial;
+}
+
+
+
+.uzk15__editorblock table.contenttable td {
+    border-spacing : 0;
+    border-collapse: collapse;
+    border         : 1px solid #dbdbdb;
+
+}
+
+
+
+/*
+Das Padding der Tabellen war nicht nur zu groß, sondern bei den TDs und THs auch unterschiedlich. Das kann sehr stöhrend sein.
+*/
+.uzk15__editorblock td,
+.uzk15__editorblock th {
+    padding: 1em;
+}
+
+.uzk15__editorblock th a{
+    color: #fff;
+    text-decoration-color: #fff;
+}
+
+/*
+man kann Links eine Klasse mitgeben, diese klasse dient eher dem Testen, als dass sie sinnvoll genutzt werden soll
+*/
+
+
+a.uzk15__roundedbutton {
+    text-decoration: none;
+}
+
+a.uzk15__roundedbutton h1,
+a.uzk15__roundedbutton h2,
+a.uzk15__roundedbutton h3,
+a.uzk15__roundedbutton h4,
+a.uzk15__roundedbutton h5 {
+    text-decoration: none;
+
+    border-radius   : 0.25em;
+    min-height      : 0.25em;
+    padding         : 0.25em;
+    border          : 1px solid #dbdbdb;
+    background-color: #ffffff;
+    color           : #3e566c;
+}
+
+a.uzk15__roundedbutton h1:hover,
+a.uzk15__roundedbutton h2:hover,
+a.uzk15__roundedbutton h3:hover,
+a.uzk15__roundedbutton h4:hover,
+a.uzk15__roundedbutton h5:hover {
+    text-decoration : none;
+    color           : #ffffff;
+    background-color: #3e566c;
+    border-radius   : 0.25em;
+    min-height      : 0.25em;
+    padding         : 0.25em;
+    border          : 1px solid #dbdbdb;
+}
+
+
+.simpleUZKheader {
+    width           : 100%;
+    background-color: #3e566c;
+    padding         : 2em;
+    color           : #fff;
+}
+
+.simpleUZKpage {
+    max-width: 1440px;
+    margin   : auto;
+
+    font-family     : OpenSansRegular, Arial, Helvetica, sans-serif;
+    font-size       : 100.01%;
+    overflow-y      : scroll;
+    color           : #58595b;
+    background-color: #fff;
+}
+
+
+
+
+/* 
+Der Multiteaser funktionierte nur mit verlinkten Elementen, da einige Definitionen am A-Tag hingen.
+Mit folgenden Zeilen wird dies korrigiert.
+*/
+
+.uzk15__multiteaser ul a {
+    -moz-box-sizing: initial;
+    box-sizing     : initial;
+    padding        : 0;
+    border-top     : 0;
+    border-bottom  : 0;
+    text-decoration: none;
+}
+
+.uzk15__multiteaser ul li {
+    -moz-box-sizing: border-box;
+    box-sizing     : border-box;
+    padding        : .9375em;
+    border-top     : 1px solid #dbdbdb;
+    border-bottom  : 1px solid #dbdbdb;
+    text-decoration: none;
+
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+
+img.studiengangbild {
+    width: 100%;
+}
+
+.studiengang_error {
+    border          : 3px solid #880000;
+    border-radius   : 1em;
+    background-color: #ff8888;
+    padding         : 1em;
+    color           : #000000;
+}
+
+
+
+.studiengang.fak-wiso svg {
+    fill: #83b022;
+}
+
+.studiengang.fak-phil svg {
+    fill: #590f68;
+}
+
+.studiengang.fak-jura svg {
+    fill: #7d321f;
+}
+
+.studiengang.fak-med svg {
+    fill: #af121d;
+}
+
+.studiengang.fak-mathnat svg {
+    fill: #0082c6;
+}
+
+.studiengang.fak-hum svg {
+    fill: #d8a818;
+}
+
+.studiengang.fak-none svg {
+    fill: #90c4eb;
+}
+
+.studiengang.fak-none .uzk15__editorblock table.contenttable tr:nth-child(even),
+.studiengang.fak-none table.studiengangTabelle tr:nth-child(even) {
+    background-color: #e4f1fa;
+
+}
+
+.studiengang.fak-med .uzk15__editorblock table.contenttable tr:nth-child(even),
+.studiengang.fak-med table.studiengangTabelle tr:nth-child(even) {
+    background-color: #ffb39d;
+}
+
+.studiengang.fak-phil .uzk15__editorblock table.contenttable tr:nth-child(even),
+.studiengang.fak-phil table.studiengangTabelle tr:nth-child(even) {
+    background-color: #d7c6db;
+}
+
+.studiengang.fak-wiso .uzk15__editorblock table.contenttable tr:nth-child(even),
+.studiengang.fak-wiso table.studiengangTabelle tr:nth-child(even) {
+    background-color: #e1eccb;
+}
+
+.studiengang.fak-hum .uzk15__editorblock table.contenttable tr:nth-child(even),
+.studiengang.fak-hum table.studiengangTabelle tr:nth-child(even) {
+    background-color: #f5eac8;
+}
+
+.studiengang.fak-mathnat .uzk15__editorblock table.contenttable tr:nth-child(even),
+.studiengang.fak-mathnat table.studiengangTabelle tr:nth-child(even) {
+    background-color: #c3e1f1;
+}
+
+.studiengang.fak-jura .uzk15__editorblock table.contenttable tr:nth-child(even),
+.studiengang.fak-jura table.studiengangTabelle tr:nth-child(even) {
+    background-color: #e0ceca;
+}
+
+svg.studiengang_doc_icon {
+    min-width   : 50px;
+    min-height  : 50px;
+    max-width   : 50px;
+    max-height  : 50px;
+    margin-right: 0.9375em;
+}
+
+.studiengangsbild {
+    margin-top   : 0;
+    margin-bottom: 0;
+}
+
+.uzk15__grid_100 .uzk15__editorblock,
+.uzk15__grid_50 .uzk15__editorblock {
+    margin-right: 0;
+    margin-left : 0;
+}
+
+.studiengangTabelle td p {
+    margin: 0;
+}
+
+/*       ZFL-Anpassungen   */
+
+
+.uzk15__inverted_header,
+.uzk15__editorblock .uzk15__inverted_header {
+    padding: 0.74em;
+}
+
+
+
+
+.uzk15__maincontent .uzk15__uzk_background_1>p:last-child,
+.uzk15__maincontent .uzk15__uzk_background_2>p:last-child,
+.uzk15__maincontent .uzk15__uzk_background_3>p:last-child,
+.uzk15__maincontent .uzk15__uzk_background_4>p:last-child,
+.uzk15__maincontent .uzk15__light_wiso>p:last-child,
+.uzk15__maincontent .uzk15__light_phil>p:last-child,
+.uzk15__maincontent .uzk15__light_jura>p:last-child,
+.uzk15__maincontent .uzk15__light_med>p:last-child,
+.uzk15__maincontent .uzk15__light_mathnat>p:last-child,
+.uzk15__maincontent .uzk15__light_hf>p:last-child,
+.uzk15__maincontent .uzk15__light_verw>p:last-child,
+.uzk15__maincontent .uzk15__light_background>p:last-child,
+.uzk15__maincontent .uzk15__dark_wiso>p:last-child,
+.uzk15__maincontent .uzk15__dark_phil>p:last-child,
+.uzk15__maincontent .uzk15__dark_jura>p:last-child,
+.uzk15__maincontent .uzk15__dark_med>p:last-child,
+.uzk15__maincontent .uzk15__dark_mathnat>p:last-child,
+.uzk15__maincontent .uzk15__dark_hf>p:last-child,
+.uzk15__maincontent .uzk15__dark_verw>p:last-child,
+.uzk15__maincontent .uzk15__dark_background>p:last-child,
+.uzk15__maincontent .uzk15__light_round_wiso>p:last-child,
+.uzk15__maincontent .uzk15__light_round_phil>p:last-child,
+.uzk15__maincontent .uzk15__light_round_jura>p:last-child,
+.uzk15__maincontent .uzk15__light_round_med>p:last-child,
+.uzk15__maincontent .uzk15__light_round_mathnat>p:last-child,
+.uzk15__maincontent .uzk15__light_round_hf>p:last-child,
+.uzk15__maincontent .uzk15__light_round_verw>p:last-child,
+.uzk15__maincontent .uzk15__light_round_background>p:last-child,
+.uzk15__maincontent .uzk15__dark_round_wiso>p:last-child,
+.uzk15__maincontent .uzk15__dark_round_phil>p:last-child,
+.uzk15__maincontent .uzk15__dark_round_jura>p:last-child,
+.uzk15__maincontent .uzk15__dark_round_med>p:last-child,
+.uzk15__maincontent .uzk15__dark_round_mathnat>p:last-child,
+.uzk15__maincontent .uzk15__dark_round_hf>p:last-child,
+.uzk15__maincontent .uzk15__dark_round_verw>p:last-child,
+.uzk15__maincontent .uzk15__dark_round_background>p:last-child {
+    margin-bottom: 0;
+}
+
+.uzk15__maincontent .uzk15__uzk_background_1,
+.uzk15__maincontent .uzk15__uzk_background_2,
+.uzk15__maincontent .uzk15__uzk_background_3,
+.uzk15__maincontent .uzk15__uzk_background_4,
+.uzk15__maincontent .uzk15__light_wiso,
+.uzk15__maincontent .uzk15__light_phil,
+.uzk15__maincontent .uzk15__light_jura,
+.uzk15__maincontent .uzk15__light_med,
+.uzk15__maincontent .uzk15__light_mathnat,
+.uzk15__maincontent .uzk15__light_hf,
+.uzk15__maincontent .uzk15__light_verw,
+.uzk15__maincontent .uzk15__light_background,
+.uzk15__maincontent .uzk15__dark_wiso,
+.uzk15__maincontent .uzk15__dark_phil,
+.uzk15__maincontent .uzk15__dark_jura,
+.uzk15__maincontent .uzk15__dark_med,
+.uzk15__maincontent .uzk15__dark_mathnat,
+.uzk15__maincontent .uzk15__dark_hf,
+.uzk15__maincontent .uzk15__dark_verw,
+.uzk15__maincontent .uzk15__dark_background,
+.uzk15__maincontent .uzk15__light_round_wiso,
+.uzk15__maincontent .uzk15__light_round_phil,
+.uzk15__maincontent .uzk15__light_round_jura,
+.uzk15__maincontent .uzk15__light_round_med,
+.uzk15__maincontent .uzk15__light_round_mathnat,
+.uzk15__maincontent .uzk15__light_round_hf,
+.uzk15__maincontent .uzk15__light_round_verw,
+.uzk15__maincontent .uzk15__light_round_background,
+.uzk15__maincontent .uzk15__dark_round_wiso,
+.uzk15__maincontent .uzk15__dark_round_phil,
+.uzk15__maincontent .uzk15__dark_round_jura,
+.uzk15__maincontent .uzk15__dark_round_med,
+.uzk15__maincontent .uzk15__dark_round_mathnat,
+.uzk15__maincontent .uzk15__dark_round_hf,
+.uzk15__maincontent .uzk15__dark_round_verw,
+.uzk15__maincontent .uzk15__dark_round_background {
+    padding-bottom: 0.8em;
+    padding-top   : 0.8em;
+}
+
+
+.uzk15__editorblock audio,
+.uzk15__grid_100 audio,
+.uzk15__grid_67 audio,
+.uzk15__grid_50 audio,
+.uzk15__grid_33 audio {
+    width: 100%;
+}
+
+/*Auf Wunsch der Wiso (in Abstimmung mit Phil und Pressestelle) am 2.6.22 keine Abstände mehr zwischen aufzählungsebenen*/
+.uzk15__editorblock ol ol,
+.uzk15__editorblock ol ul,
+.uzk15__editorblock ul ol,
+.uzk15__editorblock ul ul {
+    margin-top: 0;
+}
+
+th p.bodytext a {
+    color: #ffffff;
+}
+
+tbody tr th {
+    background-color: transparent;
+}
+
+.uzk15__editorblock code p {
+    font-family: monospace;
+}
+
+.uzk15__google_search_item a:hover {
+    text-decoration : underline;
+    color           : #252f40;
+    background-color: transparent;
+}
+
+.uzk15__google_search_item a {
+    text-decoration : none;
+    color           : #252f40;
+    /*  color       :#ffffff; */
+}
+/*
+.uzk15__google_search_item h2{
+    text-decoration : none;
+    color           :#ffffff;
+    background-color: #3e566c;
+   
+}
+ */
+.uzk15__outercontainer {
+    display              : grid;
+    grid-template-columns: 55px 1fr;
+}
+
+em.uzk__eventlistItem_style {
+    margin: 0;
+}
+
+.uzk15__nocolumnbreak {
+    page-break-inside: avoid;
+    break-inside     : avoid;
+}
+
+
+/*  tt_address zusätze der UniBib                  */
+.addressblock-ucl {
+    min-height: 100px;
+}
+
+.border-left-ucl {
+    border-left: 1px solid #dbdbdb;
+}
+
+.d-block-ucl {
+    display: block;
+}
+.d-inline-ucl {
+    display: inline;
+}
+.d-none-ucl {
+    display: none;
+}
+
+.mb-10-ucl {
+    margin-bottom: 10px;
+}
+
+.mb-20-ucl {
+    margin-bottom: 20px;
+}
+
+.mb-30-ucl {
+    margin-bottom: 30px;
+}
+
+.flex-ucl {
+    display: flex;
+}
+
+.flex-column-ucl {
+    flex-direction: column;
+}
+
+.flex-row-ucl {
+    flex-direction: row;
+}
+
+.smalllabel-ucl {
+    font-size: 0.7rem;
+    min-width: 50px;
+    padding  : 0;
+}
+
+.photo-sm-ucl {
+    width: 8em;
+    height      : auto;
+}
+
+.pl-5-ucl {
+    padding-left: 5px;
+}
+
+.w-25-ucl {
+    width: 25%;
+}
+.w-50-ucl {
+    width: 50%;
+}
+.w-75-ucl {
+    width: 75%;
+}
+.w-100-ucl {
+    width: 25%;
+}
+
+@media screen and (min-width:1024px) {
+    .d-block-lg-ucl {
+        display: block;
+    }
+    .d-inline-lg-ucl {
+        display: inline;
+    }
+    .d-none-lg-ucl {
+        display: none;
+    }
+    .flex-lg-column-ucl {
+        flex-direction: column;
+    }
+    .flex-lg-row-ucl {
+        flex-direction: row;
+    }
+}
+
+.marker-green{
+    background-color: #b0ff80;
+
+}

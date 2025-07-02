@@ -1,0 +1,97 @@
+/*
+ * Erstellt von Lena von der Schuehr 
+*/
+
+
+.uzk15__accordion {
+  border: solid #3e566c 1px;
+}
+
+
+.uzk15__accordion+.uzk15__accordion {
+  /* Wenn wir die Accordions einfach untereinanderklatschen würden, würden sich deren 
+  Rahmen berühren und zu dickeren linien führen. Um dies zu verhinden, haben wir hier 
+  eine difinition, die dazu führt dass Accordions, die auf Accordions folgen oben 
+  keinen eigenen border haben.*/
+  border-top: none;
+}
+
+
+
+
+.uzk15__acc_checkbox {
+  position: absolute;
+  opacity : 0;
+}
+
+.uzk15__acc_header {
+  display        : flex;
+  justify-content: space-between;
+  font-weight    : bold;
+  cursor         : pointer;
+  padding        : 8px;
+}
+
+.uzk15__acc_teaser {
+/*  font-size  : 16px;*/
+  font-weight: 200;
+  margin     : 0;
+}
+
+.uzk15__acc_title {
+  /*font-size  : 24px;
+  line-height: 32px;*/
+  font-weight: 400;
+  color      : #3e566c;
+  margin     : 0.25em 0;
+}
+
+.uzk15__acc_title:hover {
+  text-decoration: underline;
+}
+
+.uzk15__acc_date {
+  /*font-size  : 16px;*/
+  font-weight: 200;
+  margin     : 0;
+}
+
+.uzk15__acc_bodytext {
+  display    : none;
+  /*font-size  : 28px;*/
+  line-height: 2;
+  padding    : 0 14px;
+}
+
+.uzk15__acc_checkbox:checked~.uzk15__acc_bodytext {
+  display: block;
+}
+
+.uzk15__acc_arrow {
+  width       : 0;
+  height      : 0;
+  border-left : 5px solid transparent;
+  border-right: 5px solid transparent;
+  margin      : 19px 24px;
+}
+
+.uzk15__acc_down {
+  border-top: 5px solid black;
+}
+
+.uzk15__acc_up {
+  border-bottom: 5px solid black;
+  display      : none;
+}
+
+.uzk15__acc_checkbox:checked~label>div>.uzk15__acc_down {
+  display: none;
+}
+
+.uzk15__acc_checkbox:checked~label>div>.uzk15__acc_up {
+  display: block;
+}
+
+:target {
+  display: block;
+}

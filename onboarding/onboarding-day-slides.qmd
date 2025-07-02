@@ -1,0 +1,96 @@
+---
+title: "Project S: Onboarding"
+date: 2025-05-15
+author:
+  - "Job Schepens"
+  - "Luke Günther"
+# titlegraphic: logo_prominence-in-language.png
+format: 
+  beamer: 
+    aspectratio: 32
+    navigation: horizontal
+    theme: metropolis
+header-includes: 
+  - \titlegraphic{\begin{tikzpicture}[overlay,remember picture]\node[left=.8cm] at (current page.25){\includegraphics[width=3cm]{logo_prominence-in-language.png}};\end{tikzpicture}}
+  - \usepackage{twemojis}
+---
+
+## Project S: In a nutshell
+\vspace{.25cm}
+1. **Research Data Management**: \
+  collection, curation, publication
+2. **Experimental Design & Statistical Analysis**: \
+  planning, implementation, interpretation
+3. **Technical Support**: \
+  tool infrastructure, programming (R, Python)
+
+\vspace{.5cm}
+::::: {.columns align=top .onlytextwidth}
+::: column
+**Our door is always open!**
+
+2nd floor @ House of Prominence
+
+\vspace{.5cm}
+**Additional resources:**
+
+[`S_FAQ` folder on Sciebo](https://uni-koeln.sciebo.de/s/fvdR9aesnq7O5xu)
+:::
+\hspace{1cm}
+::: column
+**We offer**
+
+- 1:1 meetings
+- Group meetings \
+  (by project/interest)
+- Workshops
+:::
+:::::
+
+## Data Management
+
+**Sciebo** is our collaborative data cloud. \
+This is where all non-sensitive project data should be stored.
+
+\begin{tikzpicture}[remember picture,overlay]
+    \node[xshift=-1.5cm,yshift=-2.25cm] at (current page.north east) {\includegraphics[width=1cm]{sciebo-logo.png}};
+\end{tikzpicture}
+
+\vspace*{-1cm}
+
+If you already have access to your University account, please make sure to **activate** your Sciebo account as well:
+
+1. Go to [**https://hochschulcloud.nrw**](https://hochschulcloud.nrw/en/index.html)
+2. Click on `Registration`
+3. Select `Universität zu Köln`
+4. Log in with your University credentials
+
+You can then access your files at [**https://uni-koeln.sciebo.de**](https://uni-koeln.sciebo.de/login)
+
+<!--
+TODO: Ask for confirmation? Spreadsheet on Sciebo?
+-->
+
+## Upcoming Events
+
+- [**Research Data & Methods**](https://sfb1252.uni-koeln.de/en/early-career/events/workshops/research-data-and-methods) \texttwemoji{star}
+	- 21 May | *Research Data Management* by Felix Rau \
+    (Data Center for the Humanities)
+- [**Digital Humanities Colloquium**](https://lehre.idh.uni-koeln.de/lehrveranstaltungen/sommersemester-2025/digital-humanities-cologne/) \texttwemoji{bookmark tabs}
+  - 22 May | *Adapting Language Models for the Analysis of Real World Textual Data* 
+    by Roman Klinger (Uni Bamberg)
+- [**ReproducibiliTea in the HumaniTeas**](https://ub.uni-koeln.de/en/courses-consultations/specials/reproducibilitea-in-the-humaniteas) \texttwemoji{teacup without handle}
+	- 26 May | *Reproducibility when working with large language models: A hallucination?*
+    by Nils Reiter (Project C11 & S)
+- [**Diversity Week**](https://vielfalt.uni-koeln.de/en/news/diversity-week-you-make-the-difference) \texttwemoji{rainbow flag} \texttwemoji{female sign}\texttwemoji{transgender symbol}
+  - 3 June | FLINTA* discussion group on learning to code \
+    by Elen Le Foll (Project B10)
+
+<!--
+- [**Dinge mit Daten**](https://www.edulabs.uni-koeln.de/ilias.php?baseClass=ilrepositorygui&ref_id=21449&lang=en) (Things with Data)
+  - walk-in sessions organized by University and City Library of Cologne
+-->
+
+## {.standout}
+
+Questions?
