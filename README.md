@@ -34,7 +34,7 @@ This repository is configured to work with GitHub Pages automatically. Simply:
 
 1. Push this repository to GitHub
 2. Enable GitHub Pages in repository settings
-3. Your site will be available at `https://yourusername.github.io/rdm-slides`
+3. Your site will be available at `https://yourusername.github.io/talks`
 
 GitHub Pages will automatically build the Jekyll site using the configuration provided.
 
