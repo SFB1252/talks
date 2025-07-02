@@ -17,7 +17,9 @@ This practical workshop introduces essential tools and techniques for corpus lin
 
 ## Materials
 
-- [📊 Annotation & Corpus Tools](5-schepens-annotation_corpus_tools.pptx) - Presentation slides by Luke Günther
+- [📊 Annotation & Corpus Tools](5-schepens-annotation_corpus_tools.pptx) - Presentation slides by Job Schepens
+
+**Note:** This presentation was generated almost completely with Claude Sonnet 4.
 
 ## Tools Covered
 
