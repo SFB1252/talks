@@ -21,6 +21,10 @@ This practical workshop introduces essential tools and techniques for corpus lin
 
 **Note:** This presentation was generated almost completely with Claude Sonnet 4.
 
+- [🤖 Automatic Annotation Tools](Automatic%20Annotation%20Tools_JobFafa.pptx) - Brown bag lunch presentation by Job Schepens and Fahime Same (formerly INF)
+
+**Note:** This presentation was given during a brown bag lunch session last year.
+
 ## Tools Covered
 
 - **ELAN** - Multimedia annotation tool
