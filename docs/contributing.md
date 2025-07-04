@@ -110,6 +110,25 @@ Each workshop README should include:
 - **Original Content**: Only contribute materials you have rights to share
 - **Accurate Information**: Verify facts and provide reliable sources
 
+## AI-Assisted Development
+
+This website was developed with the assistance of AI tools, following transparent and ethical practices. Contributors should be aware of our approach to AI-assisted development:
+
+### AI Tools and Guidelines
+
+- **Development Process**: See [Website Development Documentation](website-development.md) for details on how AI tools were used
+- **Best Practices**: Review [AI-Assisted Development Guidelines](ai-assisted-development-guidelines.md) for responsible AI use
+- **Quality Assurance**: All AI-generated content undergoes human review and validation
+
+### Contributing with AI Tools
+
+If you use AI tools in your contributions:
+
+- **Transparency**: Clearly document any AI assistance used
+- **Quality Review**: Ensure all AI-generated content is reviewed by qualified humans
+- **Attribution**: Follow our guidelines for proper attribution of AI assistance
+- **Standards**: Maintain the same quality standards as non-AI-assisted work
+
 ## Getting Help
 
 ### Contact Information
@@ -123,6 +142,8 @@ Each workshop README should include:
 - [SFB 1252 Website](https://sfb1252.uni-koeln.de/)
 - [Project S Information](https://sfb1252.uni-koeln.de/projekte/s-data-design-and-sustainability)
 - [University of Cologne Guidelines](https://verwaltung.uni-koeln.de/stabsstelle03.1/content/good_scientific_practice/index_eng.html)
+- [Website Development Documentation](website-development.md)
+- [AI-Assisted Development Guidelines](ai-assisted-development-guidelines.md)
 
 ## License and Copyright
 
