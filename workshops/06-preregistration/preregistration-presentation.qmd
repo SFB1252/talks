@@ -16,7 +16,6 @@ format:
     margin: 0.1
     min-scale: 0.2
     max-scale: 2.0
-    self-contained: true
 ---
 
 ## Overview
@@ -453,6 +452,7 @@ but it's a practice we can integrate into our work flow right away"
 ## Resources for Further Learning
 
 **Essential websites:**
+
 - **Center for Open Science:** [cos.io/prereg](https://www.cos.io/initiatives/prereg)
 - **OSF Preregistration:** [osf.io/prereg](https://osf.io/prereg/)
 - **AsPredicted:** [aspredicted.org](https://aspredicted.org)
@@ -460,6 +460,7 @@ but it's a practice we can integrate into our work flow right away"
 - **Registered Reports:** [cos.io/rr](https://www.cos.io/rr)
 
 **Reading recommendations:**
+
 - The Preregistration Revolution (Nosek et al., 2018)
 - Research Preregistration 101 (APS)
 - A manifesto for reproducible science (Munafò et al., 2017)
@@ -476,6 +477,7 @@ but it's a practice we can integrate into our work flow right away"
 
 
 **Scenarios provided:**
+
 - Prosodic prominence and sentence processing
 - Cross-linguistic comparison of word order effects
 - Bilingual language switching patterns
