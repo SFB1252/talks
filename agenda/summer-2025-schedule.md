@@ -92,6 +92,8 @@
 - Preregistration platforms and templates
 - Creating preregistration plans for different study types
 
+**Materials:** [Preregistration presentation](../workshops/06-preregistration/)
+
 ---
 
 ## Additional Information

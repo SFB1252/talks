@@ -17,7 +17,16 @@ This workshop covers the principles and practice of preregistration in research,
 
 ## Materials
 
-Materials for this workshop will be added here.
+- **[Presentation Slides](preregistration-presentation.qmd)** - Main workshop presentation covering preregistration principles and practice
+- **Required Reading:** Roettger, T. B. (2021). Preregistration in experimental linguistics: Applications, challenges, and limitations. *Linguistics*, 59(5), 1227–1249.
+
+### Presentation Topics
+
+- What is preregistration and why does it matter for linguistics?
+- Common concerns and how to address them
+- Platforms and templates for preregistration
+- Practical implementation steps
+- Examples from psycholinguistic research
 
 ## Preregistration Platforms
 
