@@ -9,10 +9,16 @@ format:
   beamer: 
     aspectratio: 32
     navigation: horizontal
-    theme: metropolis
-header-includes: 
-  - \titlegraphic{\begin{tikzpicture}[overlay,remember picture]\node[left=.8cm] at (current page.25){\includegraphics[width=3cm]{logo_prominence-in-language.png}};\end{tikzpicture}}
-  - \usepackage{twemojis}
+    theme: default
+    header-includes: 
+      - \usepackage{tikz}
+      - \usepackage{twemojis}
+      - \titlegraphic{\begin{tikzpicture}[overlay,remember picture]\node[left=.8cm] at (current page.25){\includegraphics[width=3cm]{logo_prominence-in-language.png}};\end{tikzpicture}}
+  revealjs:
+    theme: default
+    transition: slide
+    background-transition: fade
+    highlight-style: github
 ---
 
 ## Project S: In a nutshell
@@ -52,10 +58,6 @@ header-includes:
 **Sciebo** is our collaborative data cloud. \
 This is where all non-sensitive project data should be stored.
 
-\begin{tikzpicture}[remember picture,overlay]
-    \node[xshift=-1.5cm,yshift=-2.25cm] at (current page.north east) {\includegraphics[width=1cm]{sciebo-logo.png}};
-\end{tikzpicture}
-
 \vspace*{-1cm}
 
 If you already have access to your University account, please make sure to **activate** your Sciebo account as well:
@@ -73,16 +75,16 @@ TODO: Ask for confirmation? Spreadsheet on Sciebo?
 
 ## Upcoming Events
 
-- [**Research Data & Methods**](https://sfb1252.uni-koeln.de/en/early-career/events/workshops/research-data-and-methods) \texttwemoji{star}
+- [**Research Data & Methods**](https://sfb1252.uni-koeln.de/en/early-career/events/workshops/research-data-and-methods)
 	- 21 May | *Research Data Management* by Felix Rau \
     (Data Center for the Humanities)
-- [**Digital Humanities Colloquium**](https://lehre.idh.uni-koeln.de/lehrveranstaltungen/sommersemester-2025/digital-humanities-cologne/) \texttwemoji{bookmark tabs}
+- [**Digital Humanities Colloquium**](https://lehre.idh.uni-koeln.de/lehrveranstaltungen/sommersemester-2025/digital-humanities-cologne/)
   - 22 May | *Adapting Language Models for the Analysis of Real World Textual Data* 
     by Roman Klinger (Uni Bamberg)
-- [**ReproducibiliTea in the HumaniTeas**](https://ub.uni-koeln.de/en/courses-consultations/specials/reproducibilitea-in-the-humaniteas) \texttwemoji{teacup without handle}
+- [**ReproducibiliTea in the HumaniTeas**](https://ub.uni-koeln.de/en/courses-consultations/specials/reproducibilitea-in-the-humaniteas)
 	- 26 May | *Reproducibility when working with large language models: A hallucination?*
     by Nils Reiter (Project C11 & S)
-- [**Diversity Week**](https://vielfalt.uni-koeln.de/en/news/diversity-week-you-make-the-difference) \texttwemoji{rainbow flag} \texttwemoji{female sign}\texttwemoji{transgender symbol}
+- [**Diversity Week**](https://vielfalt.uni-koeln.de/en/news/diversity-week-you-make-the-difference)
   - 3 June | FLINTA* discussion group on learning to code \
     by Elen Le Foll (Project B10)
 
@@ -91,6 +93,4 @@ TODO: Ask for confirmation? Spreadsheet on Sciebo?
   - walk-in sessions organized by University and City Library of Cologne
 -->
 
-## {.standout}
-
-Questions?
+## Questions?
