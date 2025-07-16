@@ -534,6 +534,8 @@ but it's a practice we can integrate into our work flow right away"
 
 *Note: This guidance reflects current best practices and may evolve as the field develops standards.*
 
+**Disclosure for this presentation:** AI assistance (GitHub Copilot) was used for research synthesis, slide structure optimization, and drafting portions of content. All scientific claims were verified against primary sources, and human oversight ensured accuracy and appropriateness for the linguistic research context.
+
 ## References
 
 - **Roettger, T. B. (2021).** Preregistration in experimental linguistics:  
