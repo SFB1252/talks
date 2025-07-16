@@ -14,10 +14,6 @@ format:
       - \usepackage{tikz}
       - \usepackage{twemojis}
       - \titlegraphic{\begin{tikzpicture}[overlay,remember picture]\node[left=.8cm] at (current page.25){\includegraphics[width=3cm]{logo_prominence-in-language.png}};\end{tikzpicture}}
-  revealjs:
-    theme: default
-    transition: slide
-    background-transition: fade
     highlight-style: github
 ---
 
