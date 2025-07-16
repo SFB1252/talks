@@ -10,11 +10,7 @@ format:
     aspectratio: 32
     navigation: horizontal
     theme: default
-    header-includes: 
-      - \usepackage{tikz}
-      - \usepackage{twemojis}
-      - \titlegraphic{\begin{tikzpicture}[overlay,remember picture]\node[left=.8cm] at (current page.25){\includegraphics[width=3cm]{logo_prominence-in-language.png}};\end{tikzpicture}}
-    highlight-style: github
+# titlegraphic: logo_prominence-in-language.png
 ---
 
 ## Project S: In a nutshell
@@ -54,6 +50,10 @@ format:
 **Sciebo** is our collaborative data cloud. \
 This is where all non-sensitive project data should be stored.
 
+\begin{tikzpicture}[remember picture,overlay]
+    \node[xshift=-1.5cm,yshift=-2.25cm] at (current page.north east) {\includegraphics[width=1cm]{sciebo-logo.png}};
+\end{tikzpicture}
+
 \vspace*{-1cm}
 
 If you already have access to your University account, please make sure to **activate** your Sciebo account as well:
@@ -89,4 +89,6 @@ TODO: Ask for confirmation? Spreadsheet on Sciebo?
   - walk-in sessions organized by University and City Library of Cologne
 -->
 
-## Questions?
+## {.standout}
+
+Questions?

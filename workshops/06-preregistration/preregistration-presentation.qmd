@@ -185,6 +185,11 @@ Applications, challenges, and limitations. *Linguistics*, 59(5), 1227-1249.
 
 **Goal:** Be specific enough that a skeptical reader is convinced you planned ahead
 
+## Roettger's Preregistration Checklist
+
+![Comprehensive checklist from Roettger (2021) showing detailed questions for preregistering linguistic experiments](Screenshot 2025-07-16 130859.png)
+
+**Key insight:** Even simple studies involve many analytical decisions that should be planned ahead
 
 ## Templates Available
 
