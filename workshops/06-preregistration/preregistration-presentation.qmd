@@ -4,11 +4,6 @@ subtitle: "Enhancing Transparency and Reproducibility in Language Science"
 author: "Job Schepens, Project S, SFB 1252"
 date: "16. Juli 2025"
 format: 
-  beamer:
-    theme: default
-    aspectratio: 169
-    navigation: horizontal
-    slide-number: true
   revealjs:
     theme: default
     transition: none
@@ -74,7 +69,6 @@ format:
 
 ## The Preregistration Spectrum
 
-::: {.content-visible when-format="revealjs"}
 ```{mermaid}
 graph LR
     A[Simple<br/>Hypotheses & Methods] --> B[Detailed<br/>Analysis Plans] --> C[Registered Reports<br/>Peer Review]
@@ -82,15 +76,6 @@ graph LR
     B --> E[Medium]
     C --> F[Difficult]
 ```
-:::
-
-::: {.content-visible when-format="beamer"}
-**Three Levels of Preregistration:**
-
-1. **Simple:** Basic hypotheses & methods → **Easy**
-2. **Detailed:** Comprehensive analysis plans → **Medium**  
-3. **Registered Reports:** Peer review before data collection → **Difficult**
-:::
 
 Preregistrations can vary from simple outlines to comprehensive analysis plans with pre-written code
 
@@ -313,7 +298,6 @@ Include specifics:
 
 ## Timeline Considerations
 
-::: {.content-visible when-format="revealjs"}
 ```{mermaid}
 gantt
     title Preregistration Timeline
@@ -327,21 +311,6 @@ gantt
     Data collection       :b2, after b1, 8w
     Analysis              :b3, after b2, 4w
 ```
-:::
-
-::: {.content-visible when-format="beamer"}
-**Typical Preregistration Timeline:**
-
-- **Planning Phase (4 weeks):**
-  - Draft preregistration (2 weeks)
-  - Advisor review (1 week)  
-  - Revisions (1 week)
-
-- **Execution Phase (12+ weeks):**
-  - Register study (1 day)
-  - Data collection (8 weeks)
-  - Analysis (4 weeks)
-:::
 
 ## Managing Deviations
 
@@ -543,6 +512,27 @@ but it's a practice we can integrate into our work flow right away"
 
 **Contact:** job.schepens@uni-koeln.de | Project S, SFB 1252
 **Workshop Materials:** Available on SFB 1252 OSF project
+
+## AI Transparency in Research
+
+**As researchers increasingly use AI tools, transparency is essential for maintaining scientific integrity and reproducibility.**
+
+**When preregistering studies that involve AI assistance, consider disclosing:**
+
+- **AI tools used:** Specific models, versions, and platforms (e.g., GPT-4, Claude, GitHub Copilot)
+- **Purpose and scope:** How AI was used - data analysis, coding, writing assistance, stimulus generation  
+- **Human oversight:** Validation procedures and quality control measures
+- **Limitations:** Potential biases, errors, or constraints introduced by AI tools
+- **Reproducibility impact:** How AI use affects replication of methods and results
+
+**Guiding principles (UNESCO AI Ethics, ACL Guidelines):**
+
+- **Transparency:** Clear documentation of AI involvement
+- **Accountability:** Researchers remain responsible for all outputs  
+- **Human dignity:** AI augments rather than replaces human judgment
+- **Reproducibility:** Methods should be replicable by others
+
+*Note: This guidance reflects current best practices and may evolve as the field develops standards.*
 
 ## References
 
