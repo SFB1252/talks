@@ -61,6 +61,27 @@ Our workshop series covers fundamental aspects of research methodology, data man
   </div>
 </div>
 
+## SFB 1252 Retreat Resources
+
+Explore materials from our **July 2025 Retreat** focused on Large Language Models and AI-assisted research methods:
+
+<div class="retreat-section">
+  <h3>🤖 LLM Workshop Materials</h3>
+  <p>Presentations and resources from our structured group discussions on current developments in Natural Language Processing using Large Language Models.</p>
+  
+  <div class="retreat-links">
+    <ul>
+      <li><strong>Prompt Engineering</strong> - Nils Reiter</li>
+      <li><strong>Corpus Generation</strong> - Job Schepens</li>
+      <li><strong>Automatic Annotation</strong> - Ziyue Liu</li>
+      <li><strong>LLM-Assisted Coding</strong> - Philip Georgis</li>
+      <li><strong>Plenary Session</strong> - Job Schepens & Nils Reiter</li>
+    </ul>
+  </div>
+  
+  <a href="{{ '/retreat/' | relative_url }}" class="btn-secondary">View Retreat Materials</a>
+</div>
+
 ## Getting Started
 
 New to our research community? Start with our [onboarding materials]({{ '/onboarding/' | relative_url }}) to get familiar with our research environment and tools.
