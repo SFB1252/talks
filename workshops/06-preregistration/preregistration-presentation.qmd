@@ -9,6 +9,18 @@ format:
     aspectratio: 169
     navigation: horizontal
     slide-number: true
+  revealjs:
+    theme: default
+    transition: none
+    incremental: false
+    slide-number: true
+    preview-links: auto
+    footer: "RDM Workshop - SFB 1252 Prominence in Language"
+    width: 1920
+    height: 1080
+    margin: 0.1
+    min-scale: 0.2
+    max-scale: 2.0
 ---
 
 ## Overview
@@ -62,11 +74,23 @@ format:
 
 ## The Preregistration Spectrum
 
+::: {.content-visible when-format="revealjs"}
+```{mermaid}
+graph LR
+    A[Simple<br/>Hypotheses & Methods] --> B[Detailed<br/>Analysis Plans] --> C[Registered Reports<br/>Peer Review]
+    A --> D[Easy]
+    B --> E[Medium]
+    C --> F[Difficult]
+```
+:::
+
+::: {.content-visible when-format="beamer"}
 **Three Levels of Preregistration:**
 
-1. **Simple:** Basic hypotheses & methods (Easy)
-2. **Detailed:** Comprehensive analysis plans (Medium)  
-3. **Registered Reports:** Peer review before data collection (Difficult)
+1. **Simple:** Basic hypotheses & methods → **Easy**
+2. **Detailed:** Comprehensive analysis plans → **Medium**  
+3. **Registered Reports:** Peer review before data collection → **Difficult**
+:::
 
 Preregistrations can vary from simple outlines to comprehensive analysis plans with pre-written code
 
@@ -289,6 +313,23 @@ Include specifics:
 
 ## Timeline Considerations
 
+::: {.content-visible when-format="revealjs"}
+```{mermaid}
+gantt
+    title Preregistration Timeline
+    dateFormat  YYYY-MM-DD
+    section Planning
+    Draft preregistration    :a1, 2025-01-01, 2w
+    Advisor review          :a2, after a1, 1w
+    Revisions              :a3, after a2, 1w
+    section Execution
+    Register study         :b1, after a3, 1d
+    Data collection       :b2, after b1, 8w
+    Analysis              :b3, after b2, 4w
+```
+:::
+
+::: {.content-visible when-format="beamer"}
 **Typical Preregistration Timeline:**
 
 - **Planning Phase (4 weeks):**
@@ -300,6 +341,7 @@ Include specifics:
   - Register study (1 day)
   - Data collection (8 weeks)
   - Analysis (4 weeks)
+:::
 
 ## Managing Deviations
 
