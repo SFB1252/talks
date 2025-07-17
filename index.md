@@ -84,20 +84,20 @@ Materials from our **July 2025 Retreat** on Large Language Models and AI-assiste
 
 ## Getting Started
 
-New to our research community? Start with our [onboarding materials]({{ '/onboarding/' | relative_url }}) to get familiar with our research environment and tools.
+New to Project S? Start with our [onboarding materials]({{ '/onboarding/' | relative_url }}).
 
 ## Schedule
 
-Check our [summer 2025 schedule]({{ '/agenda/summer-2025-schedule.html' | relative_url }}) for specific dates and times.
+[Summer 2025 schedule]({{ '/agenda/summer-2025-schedule.html' | relative_url }}) for dates and times.
 
 ## Contributing
 
-We welcome contributions to improve our workshop materials. See our [contributing guide]({{ '/docs/contributing.html' | relative_url }}) to learn how you can help.
+See our [contributing guide]({{ '/docs/contributing.html' | relative_url }}) to contribute materials.
 
 ## Additional Resources
 
-Explore our curated collection of [additional resources]({{ '/resources/additional-links.html' | relative_url }}) for further learning and research support.
+[Additional resources]({{ '/resources/additional-links.html' | relative_url }}) for research support.
 
 ---
 
-*This workshop series is part of the SFB 1252 "Prominence in Language" research initiative at the University of Cologne.*
+*SFB 1252 "Prominence in Language" research initiative, University of Cologne.*

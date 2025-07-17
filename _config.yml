@@ -1,6 +1,6 @@
 # Site settings
 title: "Research Data and Methods Workshop Series"
-description: "A comprehensive workshop series covering research data management, ethics, literature management, and corpus linguistics tools for academic researchers."
+description: "Workshop series on research data management, ethics, literature management, and corpus linguistics tools."
 baseurl: "/talks"
 url: "https://your-username.github.io"
 

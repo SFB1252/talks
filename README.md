@@ -1,10 +1,10 @@
 # Research Data and Methods Workshop Series
 
-A comprehensive workshop series covering research data management, ethics, literature management, and corpus linguistics tools for academic researchers at the University of Cologne's SFB 1252 - Prominence in Language.
+Workshop series on research data management, ethics, literature management, and corpus linguistics tools for researchers at the University of Cologne's SFB 1252 - Prominence in Language.
 
 ## About
 
-This repository contains materials for a series of workshops designed to equip researchers with essential skills and knowledge for conducting rigorous academic research. The workshops cover fundamental aspects of research methodology, data management, and academic best practices.
+Repository containing materials for workshops on research methodology, data management, and academic practices.
 
 ## Workshop Series
 
