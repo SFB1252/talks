@@ -6,14 +6,14 @@
 
 ## Overview
 
-This practical workshop introduces essential tools and techniques for corpus linguistics and text annotation, covering both manual and automated approaches to linguistic data analysis.
+Essential tools and techniques for corpus linguistics and text annotation. Manual and automated approaches to linguistic data analysis.
 
 ## Learning Objectives
 
-- Explore tools for corpus creation and management
-- Learn annotation schemes and best practices
-- Understand automated vs. manual annotation approaches
-- Practice with real linguistic data and annotation tools
+- Tools for corpus creation and management
+- Annotation schemes and best practices
+- Automated vs. manual annotation approaches
+- Practice with linguistic data and annotation tools
 
 ## Materials
 

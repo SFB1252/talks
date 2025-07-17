@@ -6,14 +6,14 @@
 
 ## Overview
 
-This workshop provides guidance on obtaining ethics approval for research projects, covering the application process, ethical considerations, and requirements for different types of studies.
+Guidance on obtaining ethics approval for research projects. Application process, ethical considerations, and requirements for different study types.
 
 ## Learning Objectives
 
-- Understand when ethics approval is required
-- Learn about the ethics review process
-- Explore ethical considerations in research design
-- Navigate the application procedures and documentation requirements
+- When ethics approval is required
+- Ethics review process
+- Ethical considerations in research design
+- Application procedures and documentation requirements
 
 ## Materials
 

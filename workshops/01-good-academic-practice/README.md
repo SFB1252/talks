@@ -6,14 +6,14 @@
 
 ## Overview
 
-This workshop covers the fundamental principles of good academic practice in research. Topics include research integrity, ethical conduct, proper citation practices, and responsible data handling.
+Fundamental principles of good academic practice in research. Research integrity, ethical conduct, citation practices, and data handling.
 
 ## Learning Objectives
 
-- Understand the core principles of research integrity
-- Learn about proper attribution and citation practices
-- Recognize and avoid research misconduct
-- Implement best practices for collaborative research
+- Research integrity principles
+- Attribution and citation practices  
+- Recognizing and avoiding research misconduct
+- Best practices for collaborative research
 
 ## Materials
 

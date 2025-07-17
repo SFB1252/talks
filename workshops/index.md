@@ -5,49 +5,49 @@ title: Workshops
 
 # Workshop Series
 
-Our comprehensive workshop series covers essential skills and methodologies for academic research. Each workshop is designed to provide practical, hands-on experience with tools and techniques that will enhance your research capabilities.
+Workshop series covering essential skills and methodologies for academic research.
 
 ## Available Workshops
 
 ### 📚 [Good Academic Practice](01-good-academic-practice/)
 **Foundation • Research Ethics**
 
-Learn the fundamental principles of academic integrity, research ethics, and responsible conduct in research. This foundational workshop covers plagiarism prevention, proper citation practices, and ethical considerations in academic work.
+Academic integrity, research ethics, and responsible conduct in research. Covers plagiarism prevention, citation practices, and ethical considerations.
 
 ---
 
 ### 💾 [Research Data Management](02-research-data-management/)
 **Data • Organization • Preservation**
 
-Master the essentials of organizing, storing, and preserving research data throughout the research lifecycle. Topics include data organization strategies, backup procedures, version control, and long-term preservation.
+Organizing, storing, and preserving research data. Topics include data organization, backup procedures, version control, and preservation.
 
 ---
 
 ### ⚖️ [Ethics Approval](03-ethics-approval/)
 **Ethics • Compliance • Review**
 
-Navigate the ethics approval process and understand requirements for human subjects research. Learn about IRB procedures, consent forms, risk assessment, and compliance requirements.
+Ethics approval process and human subjects research requirements. IRB procedures, consent forms, risk assessment, and compliance.
 
 ---
 
 ### 📖 [Literature Management](04-literature-management/)
 **Zotero • Citations • Bibliography**
 
-Efficiently manage your research literature using modern reference management tools and techniques. Hands-on training with Zotero, citation styles, and bibliography management.
+Reference management tools and techniques. Training with Zotero, citation styles, and bibliography management.
 
 ---
 
 ### 🔧 [Annotation & Corpus Tools](05-annotation-corpus-tools/)
 **Tools • Linguistics • Analysis**
 
-Explore essential tools for corpus linguistics and text annotation, from manual to automated approaches. Learn to use ELAN, WebAnno, CATMA, AntConc, and R packages for linguistic analysis.
+Tools for corpus linguistics and text annotation. ELAN, WebAnno, CATMA, AntConc, and R packages for linguistic analysis.
 
 ---
 
 ### 📋 [Preregistration](06-preregistration/)
 **Planning • Transparency • Reproducibility**
 
-Learn how to preregister your research studies to enhance transparency and reproducibility. Understand the benefits of preregistration and how to create effective study protocols.
+Preregistering research studies for transparency and reproducibility. Creating effective study protocols.
 
 ---
 

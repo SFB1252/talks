@@ -6,14 +6,14 @@
 
 ## Overview
 
-This workshop introduces effective literature management strategies and tools, with a focus on Zotero for organizing, citing, and sharing research sources.
+Literature management strategies and tools, with focus on Zotero for organizing, citing, and sharing research sources.
 
 ## Learning Objectives
 
-- Learn systematic approaches to literature management
-- Master Zotero for reference collection and organization
-- Understand citation styles and automated bibliography generation
-- Explore collaborative features for research teams
+- Systematic approaches to literature management
+- Zotero for reference collection and organization
+- Citation styles and automated bibliography generation
+- Collaborative features for research teams
 
 ## Materials
 

@@ -1,6 +1,6 @@
 # Additional Resources
 
-This document contains curated links and resources related to research data management, open science, and academic best practices that complement the workshop series.
+Links and resources related to research data management, open science, and academic best practices.
 
 ## Research Data Management
 

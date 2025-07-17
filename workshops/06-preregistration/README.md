@@ -6,14 +6,14 @@
 
 ## Overview
 
-This workshop covers the principles and practice of preregistration in research, focusing on how to plan and document research designs before data collection to enhance transparency and reproducibility.
+Principles and practice of preregistration in research. Planning and documenting research designs before data collection to enhance transparency and reproducibility.
 
 ## Learning Objectives
 
-- Understand the importance of preregistration for research integrity
-- Learn how to write effective preregistration documents
-- Explore different preregistration platforms and templates
-- Practice creating preregistration plans for various study types
+- Importance of preregistration for research integrity
+- Writing effective preregistration documents
+- Different preregistration platforms and templates
+- Creating preregistration plans for various study types
 
 ## Materials
 

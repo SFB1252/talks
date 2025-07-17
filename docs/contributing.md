@@ -1,6 +1,6 @@
 # Contributing Guidelines
 
-Thank you for your interest in contributing to the Research Data & Methods Workshop Series repository! This document provides guidelines for contributing materials, improvements, and feedback.
+Guidelines for contributing materials, improvements, and feedback to the Research Data & Methods Workshop Series repository.
 
 ## How to Contribute
 

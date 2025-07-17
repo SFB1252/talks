@@ -5,11 +5,11 @@ title: Home
 
 # Research Data and Methods Workshop Series
 
-Welcome to the **Research Data and Methods Workshop Series** by SFB 1252 - Prominence in Language at the University of Cologne. This comprehensive program is designed to equip researchers with essential skills and knowledge for conducting rigorous academic research.
+Workshop series by SFB 1252 - Prominence in Language at the University of Cologne.
 
 ## About the Series
 
-Our workshop series covers fundamental aspects of research methodology, data management, and academic best practices. Whether you're a graduate student, postdoc, or established researcher, these workshops provide valuable insights and practical skills for your research journey.
+Workshops on research methodology, data management, and academic practices for graduate students, postdocs, and researchers.
 
 ## Current Workshop Series (Summer 2025)
 
@@ -21,53 +21,53 @@ Our workshop series covers fundamental aspects of research methodology, data man
   <div class="workshop-card">
     <h3>📚 Good Academic Practice</h3>
     <div class="workshop-meta">Foundation • Research Ethics</div>
-    <p>Learn the fundamental principles of academic integrity, research ethics, and responsible conduct in research.</p>
+    <p>Academic integrity, research ethics, and responsible conduct.</p>
     <a href="{{ '/workshops/01-good-academic-practice/' | relative_url }}" class="btn-primary">Learn More</a>
   </div>
 
   <div class="workshop-card">
     <h3>💾 Research Data Management</h3>
     <div class="workshop-meta">Data • Organization • Preservation</div>
-    <p>Master the essentials of organizing, storing, and preserving research data throughout the research lifecycle.</p>
+    <p>Organizing, storing, and preserving research data.</p>
     <a href="{{ '/workshops/02-research-data-management/' | relative_url }}" class="btn-primary">Learn More</a>
   </div>
 
   <div class="workshop-card">
     <h3>⚖️ Ethics Approval</h3>
     <div class="workshop-meta">Ethics • Compliance • Review</div>
-    <p>Navigate the ethics approval process and understand requirements for human subjects research.</p>
+    <p>Ethics approval process and human subjects research requirements.</p>
     <a href="{{ '/workshops/03-ethics-approval/' | relative_url }}" class="btn-primary">Learn More</a>
   </div>
 
   <div class="workshop-card">
     <h3>📖 Literature Management</h3>
     <div class="workshop-meta">Zotero • Citations • Bibliography</div>
-    <p>Efficiently manage your research literature using modern reference management tools and techniques.</p>
+    <p>Reference management tools and citation techniques.</p>
     <a href="{{ '/workshops/04-literature-management/' | relative_url }}" class="btn-primary">Learn More</a>
   </div>
 
   <div class="workshop-card">
     <h3>🔧 Annotation & Corpus Tools</h3>
     <div class="workshop-meta">Tools • Linguistics • Analysis</div>
-    <p>Explore essential tools for corpus linguistics and text annotation, from manual to automated approaches.</p>
+    <p>Tools for corpus linguistics and text annotation.</p>
     <a href="{{ '/workshops/05-annotation-corpus-tools/' | relative_url }}" class="btn-primary">Learn More</a>
   </div>
 
   <div class="workshop-card">
     <h3>📋 Preregistration</h3>
     <div class="workshop-meta">Planning • Transparency • Reproducibility</div>
-    <p>Learn how to preregister your research studies to enhance transparency and reproducibility.</p>
+    <p>Preregistering research studies for transparency and reproducibility.</p>
     <a href="{{ '/workshops/06-preregistration/' | relative_url }}" class="btn-primary">Learn More</a>
   </div>
 </div>
 
 ## SFB 1252 Retreat Resources
 
-Explore materials from our **July 2025 Retreat** focused on Large Language Models and AI-assisted research methods:
+Materials from our **July 2025 Retreat** on Large Language Models and AI-assisted research methods:
 
 <div class="retreat-section">
   <h3>🤖 LLM Workshop Materials</h3>
-  <p>Presentations and resources from our structured group discussions on current developments in Natural Language Processing using Large Language Models.</p>
+  <p>Presentations from structured group discussions on NLP using Large Language Models.</p>
   
   <div class="retreat-links">
     <ul>

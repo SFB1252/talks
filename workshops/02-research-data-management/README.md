@@ -6,14 +6,14 @@
 
 ## Overview
 
-This workshop introduces the fundamentals of research data management (RDM), covering best practices for data collection, organization, storage, and sharing throughout the research lifecycle.
+Fundamentals of research data management (RDM). Best practices for data collection, organization, storage, and sharing throughout the research lifecycle.
 
 ## Learning Objectives
 
-- Understand the principles of research data management
-- Learn about data management planning
-- Explore tools and platforms for data storage and sharing
-- Understand legal and ethical considerations in data management
+- Principles of research data management
+- Data management planning
+- Tools and platforms for data storage and sharing
+- Legal and ethical considerations in data management
 
 ## Materials
 
