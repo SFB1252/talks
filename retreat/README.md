@@ -25,7 +25,8 @@ Presentations from the structured group discussion session:
 - **Philip Georgis**: LLM-Assisted Coding  
   [`georgis-LLM-Assisted Coding (SFB 1252 Retreat 2025).pdf`](georgis-LLM-Assisted%20Coding%20%28SFB%201252%20Retreat%202025%29.pdf)
 
-*Note: A presentation from Mark Ellison was also part of this session, but the slides are not available in this directory.*
+- **Mark Ellison**: LLM Applications  
+  [`mark-Klausurtagung-Presentation-20250709.pdf`](mark-Klausurtagung-Presentation-20250709.pdf)
 
 ### Plenary Session
 

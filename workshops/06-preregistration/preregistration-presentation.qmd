@@ -16,6 +16,10 @@ format:
     margin: 0.1
     min-scale: 0.2
     max-scale: 2.0
+  beamer:
+    theme: default
+    aspectratio: 169
+    navigation: horizontal
 ---
 
 ## Overview
@@ -408,7 +412,8 @@ affect pronunciation in spontaneous speech?
 
 **Data:** HCRC Map Task Corpus (Anderson et al., 1991)
 
-**Preregistered decisions:**
+**Preregistered decisions:** 
+
 - **Predictability measure:** Trigram probability from Google Books
 - **Acoustic measure:** Mean F0 of vowel nucleus
 - **Control variables:** Speaker sex, utterance position, word frequency
