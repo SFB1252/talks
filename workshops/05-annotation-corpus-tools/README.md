@@ -1,3 +1,6 @@
+---
+title: "Annotation & Corpus Tools"
+---
 # Tools for Annotation & Corpus Linguistics
 
 **Date:** 2. Juli 2025  

@@ -1,3 +1,6 @@
+---
+title: "Preregistration"
+---
 # Preregistration
 
 **Date:** 16. Juli 2025  

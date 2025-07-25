@@ -1,3 +1,6 @@
+---
+title: "Literature Management"
+---
 # Literature Management
 
 **Date:** 18. Juni 2025  

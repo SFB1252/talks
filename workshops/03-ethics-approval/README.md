@@ -1,3 +1,6 @@
+---
+title: "Ethics Approval"
+---
 # Ethics Approval
 
 **Date:** 4. Juni 2025  
