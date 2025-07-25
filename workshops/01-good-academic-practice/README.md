@@ -1,4 +1,5 @@
 ---
+layout: default
 title: "Good Academic Practice"
 ---
 # Good Academic Practice

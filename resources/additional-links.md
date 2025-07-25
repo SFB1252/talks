@@ -1,4 +1,5 @@
 ---
+layout: default
 title: "Additional Resources"
 ---
 # Additional Resources

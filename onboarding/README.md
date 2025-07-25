@@ -1,4 +1,5 @@
 ---
+layout: default
 title: "Onboarding"
 ---
 # Project S: Onboarding

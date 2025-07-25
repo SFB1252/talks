@@ -1,4 +1,5 @@
 ---
+layout: default
 title: "Ethics Approval"
 ---
 # Ethics Approval
