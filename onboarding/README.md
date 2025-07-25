@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Onboarding"
+permalink: /onboarding/
 ---
 # Project S: Onboarding
 

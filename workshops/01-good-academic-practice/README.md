@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Good Academic Practice"
+permalink: /workshops/01-good-academic-practice/
 ---
 # Good Academic Practice
 
