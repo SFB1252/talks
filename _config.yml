@@ -22,7 +22,7 @@ plugins:
 
 # Navigation
 header_pages:
-  - README.md
+  - index.md
   - workshops/01-good-academic-practice/README.md
   - workshops/02-research-data-management/README.md
   - workshops/03-ethics-approval/README.md
