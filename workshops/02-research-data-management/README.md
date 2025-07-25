@@ -1,3 +1,6 @@
+---
+title: "Research Data Management"
+---
 # Research Data Management
 
 **Date:** 21. Mai 2025  

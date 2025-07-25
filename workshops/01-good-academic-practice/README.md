@@ -1,3 +1,6 @@
+---
+title: "Good Academic Practice"
+---
 # Good Academic Practice
 
 **Date:** 7. Mai 2025  

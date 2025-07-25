@@ -1,3 +1,6 @@
+---
+title: "Additional Resources"
+---
 # Additional Resources
 
 Links and resources related to research data management, open science, and academic best practices.
