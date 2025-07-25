@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Research Data Management"
+permalink: /workshops/02-research-data-management/
 ---
 # Research Data Management
 

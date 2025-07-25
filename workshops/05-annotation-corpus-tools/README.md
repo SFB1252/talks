@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Annotation & Corpus Tools"
+permalink: /workshops/05-annotation-corpus-tools/
 ---
 # Tools for Annotation & Corpus Linguistics
 

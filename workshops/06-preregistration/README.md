@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Preregistration"
+permalink: /workshops/06-preregistration/
 ---
 # Preregistration
 

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Additional Resources"
+permalink: /resources/additional-links/
 ---
 # Additional Resources
 

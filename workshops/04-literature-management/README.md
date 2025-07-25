@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Literature Management"
+permalink: /workshops/04-literature-management/
 ---
 # Literature Management
 

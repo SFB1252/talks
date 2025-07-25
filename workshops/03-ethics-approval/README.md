@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Ethics Approval"
+permalink: /workshops/03-ethics-approval/
 ---
 # Ethics Approval
 
