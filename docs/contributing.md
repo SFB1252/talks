@@ -1,3 +1,8 @@
+
+---
+layout: default
+title: "Contributing Guidelines"
+---
 # Contributing Guidelines
 
 Guidelines for contributing materials, improvements, and feedback to the Research Data & Methods Workshop Series repository.
