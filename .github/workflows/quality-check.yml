@@ -1,0 +1,121 @@
+name: Educational Site Quality Check
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install dependencies
+      run: |
+        bundle install
+        npm install -g markdownlint-cli2
+        npm install -g prettier
+        
+    - name: Check Markdown quality
+      run: markdownlint-cli2 "**/*.md" "!node_modules" "!_site"
+      continue-on-error: true
+      
+    - name: Check code formatting
+      run: prettier --check "**/*.{md,yml,yaml,json,html,css,js}"
+      continue-on-error: true
+      
+    - name: Build Jekyll site
+      run: bundle exec jekyll build
+      env:
+        JEKYLL_ENV: production
+        
+    - name: Test HTML output
+      run: |
+        npm install -g html-validate
+        html-validate _site/**/*.html
+      continue-on-error: true
+      
+    - name: Check for broken links
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        use-quiet-mode: 'yes'
+        use-verbose-mode: 'yes'
+        config-file: '.github/workflows/link-check-config.json'
+      continue-on-error: true
+
+  accessibility-check:
+    runs-on: ubuntu-latest
+    needs: quality-check
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Ruby and build site
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true
+        
+    - name: Build site
+      run: bundle exec jekyll build
+      
+    - name: Run accessibility tests
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install axe-core
+      run: npm install -g @axe-core/cli
+      
+    - name: Test accessibility
+      run: |
+        npx http-server _site -p 8080 &
+        sleep 5
+        axe http://localhost:8080 --exit
+      continue-on-error: true
+
+  educational-metrics:
+    runs-on: ubuntu-latest
+    needs: quality-check
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Count workshop materials
+      run: |
+        echo "Workshop count: $(find workshops -name 'README.md' | wc -l)"
+        echo "Total markdown files: $(find . -name '*.md' -not -path './_site/*' | wc -l)"
+        echo "Images count: $(find . -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.gif' | wc -l)"
+        
+    - name: Check documentation completeness
+      run: |
+        # Check if each workshop has required files
+        for workshop in workshops/*/; do
+          if [ -d "$workshop" ]; then
+            workshop_name=$(basename "$workshop")
+            echo "Checking $workshop_name..."
+            
+            if [ ! -f "$workshop/README.md" ]; then
+              echo "❌ Missing README.md in $workshop_name"
+            else
+              echo "✅ README.md found in $workshop_name"
+            fi
+          fi
+        done

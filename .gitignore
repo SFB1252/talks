@@ -83,7 +83,22 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Development tools
+*.log
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
 # Private directories for discussion
 evaluation/
 participant-tracking/
 mobile-testing/
+
+# Personal development documentation (not for public repo)
+docs/development-setup.md
+docs/development-tools.md
+docs/vscode-setup-summary.md
+
+# Keep VS Code configuration for team development
+# .vscode/ - We want to include this for shared development setup
