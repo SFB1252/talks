@@ -1,17 +1,20 @@
 ---
 layout: default
-title: "Ethics Approval"
+title: 'Ethics Approval'
 permalink: /workshops/03-ethics-approval/
 ---
+
 # Ethics Approval
 
 **Date:** 4. Juni 2025  
-**Speaker:** Sebastian Barsch, Vorsitzender der Ethikkommission der PhilFak, UzK  
+**Speaker:** Sebastian Barsch, Vorsitzender der Ethikkommission der PhilFak,
+UzK  
 **Duration:** 14:00 - 15:30
 
 ## Overview
 
-Guidance on obtaining ethics approval for research projects. Application process, ethical considerations, and requirements for different study types.
+Guidance on obtaining ethics approval for research projects. Application
+process, ethical considerations, and requirements for different study types.
 
 ## Learning Objectives
 
@@ -26,7 +29,8 @@ Materials for this workshop will be added here.
 
 ## Key Resources
 
-- [Ethics Committee of the Faculty of Arts and Humanities](https://phil-fak.uni-koeln.de/forschung/ethikkommission) - Official information and application procedures
+- [Ethics Committee of the Faculty of Arts and Humanities](https://phil-fak.uni-koeln.de/forschung/ethikkommission) -
+  Official information and application procedures
 - [University of Cologne Ethics Guidelines](https://verwaltung.uni-koeln.de/stabsstelle03.1/content/good_scientific_practice/index_eng.html)
 
 ## Additional Resources

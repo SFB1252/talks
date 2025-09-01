@@ -1,30 +1,45 @@
 # Research Data and Methods Workshop Series
 
-Workshop series on research data management, ethics, literature management, and corpus linguistics tools for researchers at the University of Cologne's SFB 1252 - Prominence in Language.
+Workshop series on research data management, ethics, literature management, and
+corpus linguistics tools for researchers at the University of Cologne's SFB
+1252 - Prominence in Language.
 
 ## About
 
-Repository containing materials for workshops on research methodology, data management, and academic practices.
+Repository containing materials for workshops on research methodology, data
+management, and academic practices.
 
 ## Workshop Series
 
 ### 📚 [Good Academic Practice](workshops/01-good-academic-practice/)
-Foundation workshop covering academic integrity, research ethics, and responsible conduct in research.
+
+Foundation workshop covering academic integrity, research ethics, and
+responsible conduct in research.
 
 ### 💾 [Research Data Management](workshops/02-research-data-management/)
-Learn to organize, store, and preserve research data throughout the research lifecycle.
+
+Learn to organize, store, and preserve research data throughout the research
+lifecycle.
 
 ### ⚖️ [Ethics Approval](workshops/03-ethics-approval/)
-Navigate the ethics approval process and understand requirements for human subjects research.
+
+Navigate the ethics approval process and understand requirements for human
+subjects research.
 
 ### 📖 [Literature Management](workshops/04-literature-management/)
-Efficiently manage research literature using modern reference management tools like Zotero.
+
+Efficiently manage research literature using modern reference management tools
+like Zotero.
 
 ### 🔧 [Annotation & Corpus Tools](workshops/05-annotation-corpus-tools/)
-Explore tools for corpus linguistics and text annotation, from manual to automated approaches.
+
+Explore tools for corpus linguistics and text annotation, from manual to
+automated approaches.
 
 ### 📋 [Preregistration](workshops/06-preregistration/)
-Learn to preregister research studies to enhance transparency and reproducibility.
+
+Learn to preregister research studies to enhance transparency and
+reproducibility.
 
 ## Getting Started
 
@@ -36,16 +51,21 @@ This repository is configured to work with GitHub Pages automatically. Simply:
 2. Enable GitHub Pages in repository settings
 3. Your site will be available at `https://yourusername.github.io/talks`
 
-GitHub Pages will automatically build the Jekyll site using the configuration provided.
+GitHub Pages will automatically build the Jekyll site using the configuration
+provided.
 
 ### Link Issues
 
 If links are not working immediately after deployment:
 
-1. **GitHub Pages Build Time**: It can take 5-10 minutes for GitHub Pages to build and deploy your site after pushing changes
-2. **Check Repository Name**: Make sure your repository is named `rdm-slides` or update the `baseurl` in `_config.yml` to match your repository name
-3. **Enable GitHub Pages**: Go to repository Settings → Pages → Source → Deploy from a branch → Select `main` branch
-4. **Wait for Build**: Check the Actions tab to see if the site is still building
+1. **GitHub Pages Build Time**: It can take 5-10 minutes for GitHub Pages to
+   build and deploy your site after pushing changes
+2. **Check Repository Name**: Make sure your repository is named `rdm-slides` or
+   update the `baseurl` in `_config.yml` to match your repository name
+3. **Enable GitHub Pages**: Go to repository Settings → Pages → Source → Deploy
+   from a branch → Select `main` branch
+4. **Wait for Build**: Check the Actions tab to see if the site is still
+   building
 
 ### For Local Development (Optional)
 
@@ -57,16 +77,19 @@ If you want to preview the site locally, you'll need Ruby and Jekyll installed:
    - Linux: Use your package manager: `sudo apt install ruby-full`
 
 2. **Install Bundler**:
+
    ```bash
    gem install bundler
    ```
 
 3. **Install dependencies**:
+
    ```bash
    bundle install
    ```
 
 4. **Run the development server**:
+
    ```bash
    bundle exec jekyll serve
    ```
@@ -99,16 +122,21 @@ If you want to preview the site locally, you'll need Ruby and Jekyll installed:
 
 ## Contributing
 
-We welcome contributions to improve our workshop materials. See our [contributing guide](docs/contributing.md) for details on how to contribute.
+We welcome contributions to improve our workshop materials. See our
+[contributing guide](docs/contributing.md) for details on how to contribute.
 
 ## License
 
-This project is licensed under the terms specified in the [LICENSE](LICENSE) file.
+This project is licensed under the terms specified in the [LICENSE](LICENSE)
+file.
 
 ## Contact
 
-This workshop series is part of the SFB 1252 "Prominence in Language" research initiative at the University of Cologne.
+This workshop series is part of the SFB 1252 "Prominence in Language" research
+initiative at the University of Cologne.
 
 ---
 
-**Note**: The Jekyll theme is configured to work automatically with GitHub Pages. Links may take 5-10 minutes to work after initial deployment while GitHub builds the site.
+**Note**: The Jekyll theme is configured to work automatically with GitHub
+Pages. Links may take 5-10 minutes to work after initial deployment while GitHub
+builds the site.

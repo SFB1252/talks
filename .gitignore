@@ -100,5 +100,10 @@ docs/development-setup.md
 docs/development-tools.md
 docs/vscode-setup-summary.md
 
+# Development scripts (personal use)
+format-code.sh
+format-code.ps1
+check-links.ps1
+
 # Keep VS Code configuration for team development
 # .vscode/ - We want to include this for shared development setup

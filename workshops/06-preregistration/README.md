@@ -1,8 +1,9 @@
 ---
 layout: default
-title: "Preregistration"
+title: 'Preregistration'
 permalink: /workshops/06-preregistration/
 ---
+
 # Preregistration
 
 **Date:** 16. Juli 2025  
@@ -11,7 +12,9 @@ permalink: /workshops/06-preregistration/
 
 ## Overview
 
-Principles and practice of preregistration in research. Planning and documenting research designs before data collection to enhance transparency and reproducibility.
+Principles and practice of preregistration in research. Planning and documenting
+research designs before data collection to enhance transparency and
+reproducibility.
 
 ## Learning Objectives
 
@@ -22,10 +25,15 @@ Principles and practice of preregistration in research. Planning and documenting
 
 ## Materials
 
-- **[Presentation Slides](preregistration-presentation.html)** - Main workshop presentation covering preregistration principles and practice
-- **[Presentation PDF](preregistration-presentation.pdf)** - Downloadable PDF version of the slides
-- **[Presentation Source](preregistration-presentation.qmd)** - Quarto source file for the presentation
-- **Required Reading:** Roettger, T. B. (2021). Preregistration in experimental linguistics: Applications, challenges, and limitations. *Linguistics*, 59(5), 1227–1249.
+- **[Presentation Slides](preregistration-presentation.html)** - Main workshop
+  presentation covering preregistration principles and practice
+- **[Presentation PDF](preregistration-presentation.pdf)** - Downloadable PDF
+  version of the slides
+- **[Presentation Source](preregistration-presentation.qmd)** - Quarto source
+  file for the presentation
+- **Required Reading:** Roettger, T. B. (2021). Preregistration in experimental
+  linguistics: Applications, challenges, and limitations. _Linguistics_, 59(5),
+  1227–1249.
 
 ### Presentation Topics
 
@@ -44,8 +52,11 @@ Principles and practice of preregistration in research. Planning and documenting
 
 ## Additional Resources
 
-- [Center for Open Science](https://www.cos.io/initiatives/prereg) - Preregistration information and templates
+- [Center for Open Science](https://www.cos.io/initiatives/prereg) -
+  Preregistration information and templates
 - [OSF Preregistration](https://osf.io/prereg/) - Platform and guidelines
 - [AsPredicted](https://aspredicted.org/) - Simple preregistration tool
-- [Preregistration Templates](https://osf.io/zab38/) - Various templates for different research types
-- [Why Preregister?](https://www.cos.io/initiatives/prereg) - Benefits and best practices
+- [Preregistration Templates](https://osf.io/zab38/) - Various templates for
+  different research types
+- [Why Preregister?](https://www.cos.io/initiatives/prereg) - Benefits and best
+  practices

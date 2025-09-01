@@ -1,35 +1,35 @@
 # Site settings
-title: "Research Data and Methods Workshop Series"
-description: "Workshop series on research data management, ethics, literature management, and corpus linguistics tools."
-baseurl: "/talks"
-url: "https://sfb1252.github.io"
+title: 'Research Data and Methods Workshop Series'
+description: 'Workshop series on research data management, ethics, literature management, and corpus linguistics tools.'
+baseurl: '/talks'
+url: 'https://sfb1252.github.io'
 
 # Organization information
 organization:
-  name: "SFB 1252 - Prominence in Language"
-  website: "https://sfb1252.uni-koeln.de"
-  university: "University of Cologne"
+  name: 'SFB 1252 - Prominence in Language'
+  website: 'https://sfb1252.uni-koeln.de'
+  university: 'University of Cologne'
 
 # Current semester configuration
 current_semester:
-  name: "Winter 2025-26"
-  status: "active"
-  schedule_file: "winter-2025-26-schedule"
-  start_date: "2025-09-17"
-  end_date: "2025-11-26"
+  name: 'Winter 2025-26'
+  status: 'active'
+  schedule_file: 'winter-2025-26-schedule'
+  start_date: '2025-09-17'
+  end_date: '2025-11-26'
 
 # Workshop logistics
 workshop_logistics:
-  frequency: "Every second Wednesday"
-  duration: "14:00 - 15:30"
-  location: "House of Prominence, Attic (Top floor), Luxemburger Str. 299"
-  contact_email: "jschepen@uni-koeln.de"
+  frequency: 'Every second Wednesday'
+  duration: '14:00 - 15:30'
+  location: 'House of Prominence, Attic (Top floor), Luxemburger Str. 299'
+  contact_email: 'jschepen@uni-koeln.de'
 
 # Author information
 author:
-  name: "SFB 1252 - Prominence in Language"
-  email: "contact@sfb1252.uni-koeln.de"
-  affiliation: "University of Cologne"
+  name: 'SFB 1252 - Prominence in Language'
+  email: 'contact@sfb1252.uni-koeln.de'
+  affiliation: 'University of Cologne'
 
 # Build settings
 markdown: kramdown
@@ -64,20 +64,20 @@ collections:
 # Defaults
 defaults:
   - scope:
-      path: ""
-      type: "posts"
+      path: ''
+      type: 'posts'
     values:
-      layout: "post"
-      author: "SFB 1252"
+      layout: 'post'
+      author: 'SFB 1252'
   - scope:
-      path: ""
-      type: "workshops"
+      path: ''
+      type: 'workshops'
     values:
-      layout: "workshop"
+      layout: 'workshop'
   - scope:
-      path: ""
+      path: ''
     values:
-      layout: "default"
+      layout: 'default'
 
 # Academic features
 scholar:

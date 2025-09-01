@@ -2,12 +2,15 @@
 
 ## LLM Workshop Materials
 
-This folder contains presentations from our July 2025 retreat. There were two sessions focused on Large Language Models and AI-assisted research methods.
+This folder contains presentations from our July 2025 retreat. There were two
+sessions focused on Large Language Models and AI-assisted research methods.
 
 ### Schedule
 
-- **13:15 – 13:55**: Focus on methods: Current developments in Natural Language processing using Large Language Models (Job Schepens & Nils Reiter)
-- **15:00 – 16:00**: Structured group discussions: Large Language Models (Job Schepens & Nils Reiter)
+- **13:15 – 13:55**: Focus on methods: Current developments in Natural Language
+  processing using Large Language Models (Job Schepens & Nils Reiter)
+- **15:00 – 16:00**: Structured group discussions: Large Language Models (Job
+  Schepens & Nils Reiter)
 
 ### Group Discussion Presentations
 
@@ -34,4 +37,3 @@ Presentations from the structured group discussion session:
   [`job-nils-plenary-slides.pdf`](job-nils-plenary-slides.pdf)
 
 ---
-

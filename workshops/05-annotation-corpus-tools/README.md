@@ -1,8 +1,9 @@
 ---
 layout: default
-title: "Annotation & Corpus Tools"
+title: 'Annotation & Corpus Tools'
 permalink: /workshops/05-annotation-corpus-tools/
 ---
+
 # Tools for Annotation & Corpus Linguistics
 
 **Date:** 2. Juli 2025  
@@ -11,7 +12,8 @@ permalink: /workshops/05-annotation-corpus-tools/
 
 ## Overview
 
-Essential tools and techniques for corpus linguistics and text annotation. Manual and automated approaches to linguistic data analysis.
+Essential tools and techniques for corpus linguistics and text annotation.
+Manual and automated approaches to linguistic data analysis.
 
 ## Learning Objectives
 
@@ -22,13 +24,17 @@ Essential tools and techniques for corpus linguistics and text annotation. Manua
 
 ## Materials
 
-- [📊 Annotation & Corpus Tools](5-schepens-annotation_corpus_tools.pptx) - Presentation slides by Job Schepens
+- [📊 Annotation & Corpus Tools](5-schepens-annotation_corpus_tools.pptx) -
+  Presentation slides by Job Schepens
 
-**Note:** This presentation was generated almost completely with Claude Sonnet 4.
+**Note:** This presentation was generated almost completely with Claude
+Sonnet 4.
 
-- [🤖 Automatic Annotation Tools](Automatic%20Annotation%20Tools_JobFafa.pptx) - Brown bag lunch presentation by Job Schepens and Fahime Same (formerly INF)
+- [🤖 Automatic Annotation Tools](Automatic%20Annotation%20Tools_JobFafa.pptx) -
+  Brown bag lunch presentation by Job Schepens and Fahime Same (formerly INF)
 
-**Note:** This presentation was given during a brown bag lunch session last year.
+**Note:** This presentation was given during a brown bag lunch session last
+year.
 
 ## Tools Covered
 
@@ -40,8 +46,13 @@ Essential tools and techniques for corpus linguistics and text annotation. Manua
 
 ## Additional Resources
 
-- [CLARIN-D](https://www.clarin-d.net/) - Digital research infrastructure for humanities
-- [ELAN Documentation](https://archive.mpi.nl/tla/elan) - Multimedia annotation tool
-- [WebAnno Project](https://webanno.github.io/webanno/) - Collaborative annotation platform
-- [Corpus Linguistics Resources](https://corpus-linguistics.net/) - General corpus linguistics information
-- [Natural Language Toolkit (NLTK)](https://www.nltk.org/) - Python library for NLP
+- [CLARIN-D](https://www.clarin-d.net/) - Digital research infrastructure for
+  humanities
+- [ELAN Documentation](https://archive.mpi.nl/tla/elan) - Multimedia annotation
+  tool
+- [WebAnno Project](https://webanno.github.io/webanno/) - Collaborative
+  annotation platform
+- [Corpus Linguistics Resources](https://corpus-linguistics.net/) - General
+  corpus linguistics information
+- [Natural Language Toolkit (NLTK)](https://www.nltk.org/) - Python library for
+  NLP

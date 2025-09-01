@@ -1,11 +1,12 @@
-
 ---
 layout: default
-title: "Contributing Guidelines"
+title: 'Contributing Guidelines'
 ---
+
 # Contributing Guidelines
 
-Guidelines for contributing materials, improvements, and feedback to the Research Data & Methods Workshop Series repository.
+Guidelines for contributing materials, improvements, and feedback to the
+Research Data & Methods Workshop Series repository.
 
 ## How to Contribute
 
@@ -13,8 +14,10 @@ Guidelines for contributing materials, improvements, and feedback to the Researc
 
 If you are a workshop presenter or have materials to share:
 
-- **Slides and Presentations**: Add your materials to the appropriate workshop folder
-- **Handouts and Resources**: Include supplementary materials in the same directory
+- **Slides and Presentations**: Add your materials to the appropriate workshop
+  folder
+- **Handouts and Resources**: Include supplementary materials in the same
+  directory
 - **Update README**: Add links and descriptions to the workshop's README.md file
 
 ### 2. Additional Resources
@@ -32,6 +35,7 @@ If you are a workshop presenter or have materials to share:
 ## File Organization
 
 ### Workshop Structure
+
 ```
 workshops/[workshop-number]-[topic]/
 ├── README.md                    # Workshop description and resources
@@ -43,7 +47,8 @@ workshops/[workshop-number]-[topic]/
 
 - **Directories**: Use lowercase with hyphens (e.g., `research-data-management`)
 - **Files**: Use descriptive names with appropriate extensions
-- **Presentations**: Include presenter name and topic (e.g., `rau-rdm-basics.pdf`)
+- **Presentations**: Include presenter name and topic (e.g.,
+  `rau-rdm-basics.pdf`)
 
 ## Content Guidelines
 
@@ -85,11 +90,13 @@ Each workshop README should include:
 ### File Formats
 
 **Preferred Formats:**
+
 - **Presentations**: PDF (for universal access), PowerPoint, or Quarto/Markdown
 - **Documents**: Markdown, PDF, or plain text
 - **Data**: CSV, JSON, or other open formats
 
 **Avoid:**
+
 - Proprietary formats without open alternatives
 - Large binary files (>50MB)
 - Files requiring special software to view
@@ -117,20 +124,28 @@ Each workshop README should include:
 
 ## AI-Assisted Development
 
-This website was developed with the assistance of AI tools, following transparent and ethical practices. Contributors should be aware of our approach to AI-assisted development:
+This website was developed with the assistance of AI tools, following
+transparent and ethical practices. Contributors should be aware of our approach
+to AI-assisted development:
 
 ### AI Tools and Guidelines
 
-- **Development Process**: See [Website Development Documentation](website-development.md) for details on how AI tools were used
-- **Best Practices**: Review [AI-Assisted Development Guidelines](ai-assisted-development-guidelines.md) for responsible AI use
-- **Quality Assurance**: All AI-generated content undergoes human review and validation
+- **Development Process**: See
+  [Website Development Documentation](website-development.md) for details on how
+  AI tools were used
+- **Best Practices**: Review
+  [AI-Assisted Development Guidelines](ai-assisted-development-guidelines.md)
+  for responsible AI use
+- **Quality Assurance**: All AI-generated content undergoes human review and
+  validation
 
 ### Contributing with AI Tools
 
 If you use AI tools in your contributions:
 
 - **Transparency**: Clearly document any AI assistance used
-- **Quality Review**: Ensure all AI-generated content is reviewed by qualified humans
+- **Quality Review**: Ensure all AI-generated content is reviewed by qualified
+  humans
 - **Attribution**: Follow our guidelines for proper attribution of AI assistance
 - **Standards**: Maintain the same quality standards as non-AI-assisted work
 
@@ -152,8 +167,10 @@ If you use AI tools in your contributions:
 
 ## License and Copyright
 
-By contributing to this repository, you agree that your contributions will be licensed under the same terms as the project (Creative Commons Attribution 4.0 International License), unless otherwise specified.
+By contributing to this repository, you agree that your contributions will be
+licensed under the same terms as the project (Creative Commons Attribution 4.0
+International License), unless otherwise specified.
 
 ---
 
-*Thank you for helping to improve research data and methods education!*
+_Thank you for helping to improve research data and methods education!_

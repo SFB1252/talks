@@ -1,58 +1,58 @@
 # Workshop Schedule Template
-semester: "Winter 2025-26"
-status: "active" # active, archived, upcoming
+semester: 'Winter 2025-26'
+status: 'active' # active, archived, upcoming
 series_info:
-  frequency: "Every second Wednesday"
-  time: "14:00 - 15:30"
-  location: "House of Prominence, Attic (Top floor), Luxemburger Str. 299"
-  organizers: 
-    - name: "Luke Günther"
-      affiliation: "Project S, SFB 1252"
-    - name: "Dr. Job Schepens"
-      affiliation: "Project S, SFB 1252"
-      email: "jschepen@uni-koeln.de"
-      office: "2nd floor @ House of Prominence"
+  frequency: 'Every second Wednesday'
+  time: '14:00 - 15:30'
+  location: 'House of Prominence, Attic (Top floor), Luxemburger Str. 299'
+  organizers:
+    - name: 'Luke Günther'
+      affiliation: 'Project S, SFB 1252'
+    - name: 'Dr. Job Schepens'
+      affiliation: 'Project S, SFB 1252'
+      email: 'jschepen@uni-koeln.de'
+      office: '2nd floor @ House of Prominence'
 
 workshops:
   - id: 1
-    title: "Coding in R - Basics"
-    date: "2025-09-17"
-    time: "14:00 - 15:30"
-    speaker: "Luke Günther"
-    affiliation: "Project S, SFB 1252"
+    title: 'Coding in R - Basics'
+    date: '2025-09-17'
+    time: '14:00 - 15:30'
+    speaker: 'Luke Günther'
+    affiliation: 'Project S, SFB 1252'
     topics:
-      - "Introduction to R programming environment"
-      - "Basic data structures and operations"
-      - "Data import and export procedures"
-      - "Essential R packages for research"
-      - "Best practices for reproducible R code"
+      - 'Introduction to R programming environment'
+      - 'Basic data structures and operations'
+      - 'Data import and export procedures'
+      - 'Essential R packages for research'
+      - 'Best practices for reproducible R code'
     materials: []
-    folder: "07-coding-r-basics"
-    
+    folder: '07-coding-r-basics'
+
   - id: 2
-    title: "Online Experiments"
-    date: "2025-10-01"
-    time: "14:00 - 15:30"
-    speaker: "Onur Özsoy"
-    affiliation: "Project C03, SFB 1252"
+    title: 'Online Experiments'
+    date: '2025-10-01'
+    time: '14:00 - 15:30'
+    speaker: 'Onur Özsoy'
+    affiliation: 'Project C03, SFB 1252'
     topics:
-      - "Designing and implementing online experiments"
-      - "Platform selection and setup (jsPsych, Prolific, MTurk)"
-      - "Participant recruitment and screening"
-      - "Data quality control in online studies"
-      - "Ethical considerations for online research"
+      - 'Designing and implementing online experiments'
+      - 'Platform selection and setup (jsPsych, Prolific, MTurk)'
+      - 'Participant recruitment and screening'
+      - 'Data quality control in online studies'
+      - 'Ethical considerations for online research'
     materials: []
-    folder: "08-online-experiments"
+    folder: '08-online-experiments'
 
 additional_info:
-  target_audience: "From doctoral students to research leaders, everyone is welcome, including guests!"
-  description: "This winter semester focuses on practical computational skills essential for modern linguistic research. The series covers programming fundamentals in R and Python, modern experimental methodologies, advanced statistical modeling, and best practices for reproducible computational research."
+  target_audience: 'From doctoral students to research leaders, everyone is welcome, including guests!'
+  description: 'This winter semester focuses on practical computational skills essential for modern linguistic research. The series covers programming fundamentals in R and Python, modern experimental methodologies, advanced statistical modeling, and best practices for reproducible computational research.'
   prerequisites:
-    - "Basic workshops: No prior programming experience required"
-    - "Advanced workshops (Bayesian models): Basic familiarity with statistical concepts recommended"
-    - "Archiving session: Bring existing data/projects for hands-on practice"
+    - 'Basic workshops: No prior programming experience required'
+    - 'Advanced workshops (Bayesian models): Basic familiarity with statistical concepts recommended'
+    - 'Archiving session: Bring existing data/projects for hands-on practice'
   related_events:
-    - "Digital Humanities Colloquium"
-    - "ReproducibiliTea in the HumaniTeas"
-    - "Diversity Week events"
-  registration: "Please register via email to ensure adequate preparation and materials. Walk-ins are welcome space permitting."
+    - 'Digital Humanities Colloquium'
+    - 'ReproducibiliTea in the HumaniTeas'
+    - 'Diversity Week events'
+  registration: 'Please register via email to ensure adequate preparation and materials. Walk-ins are welcome space permitting.'

@@ -1,10 +1,12 @@
 # Workshop Schedule Template
 
-This template system helps reduce manual updates when creating new semester schedules.
+This template system helps reduce manual updates when creating new semester
+schedules.
 
 ## Data Structure
 
-Workshop schedules are stored as YAML data files in `_data/schedules/` and rendered using Jekyll templates.
+Workshop schedules are stored as YAML data files in `_data/schedules/` and
+rendered using Jekyll templates.
 
 ## Creating a New Schedule
 
@@ -32,6 +34,7 @@ header_pages:
 ## Dynamic Elements
 
 The template system supports:
+
 - Automatic date formatting
 - Speaker information with links
 - Material availability status

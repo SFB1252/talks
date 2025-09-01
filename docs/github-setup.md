@@ -1,6 +1,7 @@
 # GitHub Repository Setup Guide
 
-This document provides instructions for setting up this folder as a GitHub repository and making it available online.
+This document provides instructions for setting up this folder as a GitHub
+repository and making it available online.
 
 ## Repository Structure Overview
 
@@ -56,9 +57,11 @@ git commit -m "Initial commit: Research Data & Methods Workshop Series"
 1. Go to [GitHub.com](https://github.com) and sign in
 2. Click "New repository" or go to [github.com/new](https://github.com/new)
 3. Repository name: `rdm-workshop-series` (or your preferred name)
-4. Description: "Research Data & Methods Workshop Series - SFB 1252 Prominence in Language"
+4. Description: "Research Data & Methods Workshop Series - SFB 1252 Prominence
+   in Language"
 5. Set to **Public** (recommended for open science)
-6. **Do not** initialize with README, .gitignore, or license (we already have these)
+6. **Do not** initialize with README, .gitignore, or license (we already have
+   these)
 7. Click "Create repository"
 
 ### Step 3: Connect Local Repository to GitHub
@@ -74,13 +77,16 @@ Replace `YOUR-USERNAME` with your actual GitHub username.
 ### Step 4: Configure Repository Settings
 
 #### Enable GitHub Pages (Optional)
+
 1. Go to repository Settings → Pages
 2. Source: Deploy from a branch
 3. Branch: main / (root)
 4. This will make your README.md available as a website
 
 #### Add Repository Topics
+
 Add relevant topics to help others discover your repository:
+
 - `research-data-management`
 - `open-science`
 - `workshops`
@@ -90,26 +96,34 @@ Add relevant topics to help others discover your repository:
 - `university-of-cologne`
 
 #### Repository Description
-Use this description:
-"A series of talks and tutorials on research data and methods with a focus on best practices and principles of open science, organized by SFB 1252 'Prominence in Language' at the University of Cologne."
+
+Use this description: "A series of talks and tutorials on research data and
+methods with a focus on best practices and principles of open science, organized
+by SFB 1252 'Prominence in Language' at the University of Cologne."
 
 ## Recommended GitHub Features
 
 ### Issues
+
 Enable issues for:
+
 - Workshop feedback and suggestions
 - Resource recommendations
 - Technical questions
 - Content updates
 
 ### Discussions
+
 Enable discussions for:
+
 - General questions about research methods
 - Community sharing of experiences
 - Announcements about new workshops
 
 ### Releases
+
 Create releases for:
+
 - Each semester's materials
 - Major updates to the workshop series
 - Special workshop collections
@@ -117,18 +131,21 @@ Create releases for:
 ## Maintenance and Updates
 
 ### Regular Updates
+
 - Add new workshop materials after each session
 - Update links and resources as needed
 - Respond to issues and discussions
 - Create releases for each semester
 
 ### Content Guidelines
+
 - Follow the contributing guidelines in `docs/contributing.md`
 - Maintain consistent formatting across all README files
 - Ensure all external links are working
 - Keep the main README.md agenda up to date
 
 ### Collaboration
+
 - Invite workshop organizers as collaborators
 - Set up branch protection rules for the main branch
 - Use pull requests for major changes
@@ -137,13 +154,16 @@ Create releases for:
 ## Additional Features
 
 ### GitHub Actions (Optional)
+
 Consider setting up automated workflows for:
+
 - Link checking
 - Spell checking
 - Automatic issue labeling
 - Release automation
 
 ### Integration with Other Platforms
+
 - Link to institutional repositories
 - Connect with ORCID profiles
 - Reference in academic publications
@@ -159,4 +179,5 @@ For questions about the repository setup or maintenance:
 
 ---
 
-*This repository supports the open science mission of SFB 1252 "Prominence in Language" at the University of Cologne.*
+_This repository supports the open science mission of SFB 1252 "Prominence in
+Language" at the University of Cologne._
