@@ -5,17 +5,20 @@ title: Home
 
 # Research Data and Methods Workshop Series
 
-Workshop series by SFB 1252 - Prominence in Language at the University of Cologne.
+Workshop series by SFB 1252 - Prominence in Language at the University of
+Cologne.
 
 ## About the Series
 
-Workshops on research methodology, data management, and academic practices for graduate students, postdocs, and researchers.
+Workshops on research methodology, data management, and academic practices for
+graduate students, postdocs, and researchers.
 
 ## Current Workshop Series (Winter 2025-26)
 
-*Updated September 2025 - New winter semester series now available!*
+_Updated September 2025 - New winter semester series now available!_
 
 **Key Focus Areas:**
+
 - **Programming Skills**: R basics and Python development
 - **Modern Methodology**: Online experiments and Bayesian analysis
 - **Research Infrastructure**: Data archiving and reproducibility
@@ -82,7 +85,8 @@ Workshops on research methodology, data management, and academic practices for g
 
 ## SFB 1252 Retreat Resources
 
-Materials from our **July 2025 Retreat** on Large Language Models and AI-assisted research methods:
+Materials from our **July 2025 Retreat** on Large Language Models and
+AI-assisted research methods:
 
 <div class="retreat-section">
   <h3>🤖 LLM Workshop Materials</h3>
@@ -105,35 +109,43 @@ Materials from our **July 2025 Retreat** on Large Language Models and AI-assiste
 
 ### Summer 2025 Series (Completed)
 
-The summer 2025 workshop series has been successfully completed! These workshops covered foundational research skills:
+The summer 2025 workshop series has been successfully completed! These workshops
+covered foundational research skills:
 
 - ✅ **Good Academic Practice** (7. Mai 2025)
-- ✅ **Research Data Management** (21. Mai 2025)  
+- ✅ **Research Data Management** (21. Mai 2025)
 - ✅ **Ethics Approval** (4. Juni 2025)
 - ✅ **Literature Management** (18. Juni 2025)
 - ✅ **Annotation & Corpus Tools** (2. Juli 2025)
 - ✅ **Preregistration** (16. Juli 2025)
 
-[View complete summer 2025 materials and schedule]({{ '/agenda/summer-2025-schedule.html' | relative_url }})
+[View complete summer 2025 materials and
+schedule]({{ '/agenda/summer-2025-schedule.html' | relative_url }})
 
 ## Getting Started
 
-New to Project S? Start with our [onboarding materials]({{ '/onboarding/' | relative_url }}).
+New to Project S? Start with our [onboarding
+materials]({{ '/onboarding/' | relative_url }}).
 
 ## Schedule
 
-**Current:** [Winter 2025-26 schedule]({{ '/agenda/winter-2025-26-schedule.html' | relative_url }}) for dates and times.
+**Current:** [Winter 2025-26
+schedule]({{ '/agenda/winter-2025-26-schedule.html' | relative_url }}) for dates
+and times.
 
-**Previous:** [Summer 2025 schedule]({{ '/agenda/summer-2025-schedule.html' | relative_url }}) (archived).
+**Previous:** [Summer 2025
+schedule]({{ '/agenda/summer-2025-schedule.html' | relative_url }}) (archived).
 
 ## Contributing
 
-See our [contributing guide]({{ '/docs/contributing.html' | relative_url }}) to contribute materials.
+See our [contributing guide]({{ '/docs/contributing.html' | relative_url }}) to
+contribute materials.
 
 ## Additional Resources
 
-[Additional resources]({{ '/resources/additional-links.html' | relative_url }}) for research support.
+[Additional resources]({{ '/resources/additional-links.html' | relative_url }})
+for research support.
 
 ---
 
-*SFB 1252 "Prominence in Language" research initiative, University of Cologne.*
+_SFB 1252 "Prominence in Language" research initiative, University of Cologne._

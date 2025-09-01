@@ -1,8 +1,9 @@
 ---
 layout: default
-title: "Good Academic Practice"
+title: 'Good Academic Practice'
 permalink: /workshops/01-good-academic-practice/
 ---
+
 # Good Academic Practice
 
 **Date:** 7. Mai 2025  
@@ -11,12 +12,13 @@ permalink: /workshops/01-good-academic-practice/
 
 ## Overview
 
-Fundamental principles of good academic practice in research. Research integrity, ethical conduct, citation practices, and data handling.
+Fundamental principles of good academic practice in research. Research
+integrity, ethical conduct, citation practices, and data handling.
 
 ## Learning Objectives
 
 - Research integrity principles
-- Attribution and citation practices  
+- Attribution and citation practices
 - Recognizing and avoiding research misconduct
 - Best practices for collaborative research
 

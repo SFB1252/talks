@@ -1,0 +1,111 @@
+name: Weekly Link Check for Educational Resources
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'  # Weekly on Monday at 2 AM UTC
+  workflow_dispatch:     # Allow manual trigger
+
+jobs:
+  workshop-links:
+    runs-on: ubuntu-latest
+    name: Check Workshop Content Links
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Check workshop documentation links
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        use-quiet-mode: 'no'
+        use-verbose-mode: 'yes'
+        config-file: '.github/workflows/link-check-config.json'
+        folder-path: 'workshops'
+        max-depth: 3
+        file-extension: '.md'
+      continue-on-error: true
+      
+    - name: Check agenda and schedule links
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        use-quiet-mode: 'no'
+        config-file: '.github/workflows/link-check-config.json'
+        folder-path: 'agenda'
+        file-extension: '.md'
+      continue-on-error: true
+
+  core-content-links:
+    runs-on: ubuntu-latest
+    name: Check Core Content Links
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Check main documentation pages
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        use-quiet-mode: 'no'
+        config-file: '.github/workflows/link-check-config.json'
+        file-path: './README.md,./index.md'
+      continue-on-error: true
+      
+    - name: Check documentation folder
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        use-quiet-mode: 'no'
+        config-file: '.github/workflows/link-check-config.json'
+        folder-path: 'docs'
+        file-extension: '.md'
+      continue-on-error: true
+
+  educational-resources:
+    runs-on: ubuntu-latest
+    name: Check Educational Resource Links
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Check resources and onboarding
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        use-quiet-mode: 'no'
+        config-file: '.github/workflows/link-check-config.json'
+        folder-path: 'resources,onboarding'
+        file-extension: '.md'
+      continue-on-error: true
+      
+    - name: Check presenter resources
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        use-quiet-mode: 'no'
+        config-file: '.github/workflows/link-check-config.json'
+        folder-path: 'presenter-resources'
+        file-extension: '.md'
+      continue-on-error: true
+
+  link-summary:
+    runs-on: ubuntu-latest
+    name: Link Check Summary
+    needs: [workshop-links, core-content-links, educational-resources]
+    if: always()
+    
+    steps:
+    - name: Generate summary
+      run: |
+        echo "## 📊 Weekly Link Check Summary" >> $GITHUB_STEP_SUMMARY
+        echo "Link check completed for SFB 1252 Workshop Series" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Areas Checked:" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Workshop content and documentation" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Main site pages and agenda" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Educational resources and onboarding" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Presenter resources and templates" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Next Steps:" >> $GITHUB_STEP_SUMMARY
+        echo "- Review any failed checks above" >> $GITHUB_STEP_SUMMARY
+        echo "- Update broken links in workshop materials" >> $GITHUB_STEP_SUMMARY
+        echo "- Consider archiving outdated external resources" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "*This check runs weekly to ensure educational content remains accessible.*" >> $GITHUB_STEP_SUMMARY

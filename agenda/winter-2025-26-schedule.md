@@ -12,7 +12,7 @@
 
 **Date:** 17. September 2025  
 **Time:** 14:00 - 15:30  
-**Speaker:** Luke Günther, *Project S, SFB 1252*
+**Speaker:** Luke Günther, _Project S, SFB 1252_
 
 **Topics:**
 
@@ -28,7 +28,7 @@
 
 **Date:** 1. Oktober 2025  
 **Time:** 14:00 - 15:30  
-**Speaker:** Onur Özsoy, *Project C03, SFB 1252*
+**Speaker:** Onur Özsoy, _Project C03, SFB 1252_
 
 **Topics:**
 
@@ -44,7 +44,8 @@
 
 **Date:** 15. Oktober 2025  
 **Time:** 14:00 - 15:30  
-**Speakers:** Luke Günther, *Project S, SFB 1252* & Sarah Saleh, *Data Center for the Humanities, UoC*
+**Speakers:** Luke Günther, _Project S, SFB 1252_ & Sarah Saleh, _Data Center
+for the Humanities, UoC_
 
 **Topics:**
 
@@ -60,7 +61,7 @@
 
 **Date:** 29. Oktober 2025  
 **Time:** 14:00 - 15:30  
-**Speaker:** Job Schepens, *Project S, SFB 1252*
+**Speaker:** Job Schepens, _Project S, SFB 1252_
 
 **Topics:**
 
@@ -76,7 +77,7 @@
 
 **Date:** 12. November 2025  
 **Time:** 14:00 - 15:30  
-**Speaker:** Job Schepens, *Project S, SFB 1252*
+**Speaker:** Job Schepens, _Project S, SFB 1252_
 
 **Topics:**
 
@@ -92,7 +93,7 @@
 
 **Date:** 26. November 2025  
 **Time:** 14:00 - 15:30  
-**Speaker:** Luke Günther, *Project S, SFB 1252*
+**Speaker:** Luke Günther, _Project S, SFB 1252_
 
 **Topics:**
 
@@ -109,16 +110,21 @@
 
 ### Target Audience
 
-From doctoral students to research leaders, everyone is welcome, including guests!
+From doctoral students to research leaders, everyone is welcome, including
+guests!
 
 ### Series Description
 
-This winter semester focuses on practical computational skills essential for modern linguistic research. The series covers programming fundamentals in R and Python, modern experimental methodologies, advanced statistical modeling, and best practices for reproducible computational research.
+This winter semester focuses on practical computational skills essential for
+modern linguistic research. The series covers programming fundamentals in R and
+Python, modern experimental methodologies, advanced statistical modeling, and
+best practices for reproducible computational research.
 
 ### Prerequisites
 
 - **Basic workshops**: No prior programming experience required
-- **Advanced workshops** (Bayesian models): Basic familiarity with statistical concepts recommended
+- **Advanced workshops** (Bayesian models): Basic familiarity with statistical
+  concepts recommended
 - **Archiving session**: Bring existing data/projects for hands-on practice
 
 ### Contact
@@ -130,7 +136,9 @@ This winter semester focuses on practical computational skills essential for mod
 
 ### Related Events
 
-For additional training opportunities, see the [Project S Onboarding materials](../onboarding/) which include information about:
+For additional training opportunities, see the
+[Project S Onboarding materials](../onboarding/) which include information
+about:
 
 - Digital Humanities Colloquium
 - ReproducibiliTea in the HumaniTeas
@@ -138,11 +146,13 @@ For additional training opportunities, see the [Project S Onboarding materials](
 
 ### Registration
 
-Please register via email to ensure adequate preparation and materials. Walk-ins are welcome space permitting.
+Please register via email to ensure adequate preparation and materials. Walk-ins
+are welcome space permitting.
 
 ### Calendar
 
-📅 **[Download Calendar (.ics)](../calendar/winter-2025-26.ics)** - Import all workshops into your calendar app
+📅 **[Download Calendar (.ics)](../calendar/winter-2025-26.ics)** - Import all
+workshops into your calendar app
 
 Individual workshop calendar links available on each workshop page.
 

@@ -1,8 +1,9 @@
 ---
 layout: default
-title: "Research Data Management"
+title: 'Research Data Management'
 permalink: /workshops/02-research-data-management/
 ---
+
 # Research Data Management
 
 **Date:** 21. Mai 2025  
@@ -11,7 +12,9 @@ permalink: /workshops/02-research-data-management/
 
 ## Overview
 
-Fundamentals of research data management (RDM). Best practices for data collection, organization, storage, and sharing throughout the research lifecycle.
+Fundamentals of research data management (RDM). Best practices for data
+collection, organization, storage, and sharing throughout the research
+lifecycle.
 
 ## Learning Objectives
 
@@ -22,7 +25,8 @@ Fundamentals of research data management (RDM). Best practices for data collecti
 
 ## Materials
 
-- [📄 DCH Basics of RDM SFB1252](2-rau-DCH_Basics_of_RDM_SFB1252.pdf) - Presentation slides by Felix Rau
+- [📄 DCH Basics of RDM SFB1252](2-rau-DCH_Basics_of_RDM_SFB1252.pdf) -
+  Presentation slides by Felix Rau
 
 ## Additional Resources
 

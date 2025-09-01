@@ -6,7 +6,9 @@
 
 ## Overview
 
-Introduction to R programming for research applications. This foundational workshop covers the R environment, basic programming concepts, data handling, and best practices for reproducible code.
+Introduction to R programming for research applications. This foundational
+workshop covers the R environment, basic programming concepts, data handling,
+and best practices for reproducible code.
 
 ## Learning Objectives
 
@@ -31,11 +33,13 @@ Introduction to R programming for research applications. This foundational works
 
 ## Prerequisites
 
-No prior programming experience required. Participants should have R and RStudio installed on their laptops.
+No prior programming experience required. Participants should have R and RStudio
+installed on their laptops.
 
 ## Materials
 
 Materials will be provided during the workshop, including:
+
 - Installation guide
 - Hands-on exercises
 - Sample datasets
@@ -46,16 +50,19 @@ Materials will be provided during the workshop, including:
 Before the workshop, please:
 
 1. Install R from [https://cran.r-project.org/](https://cran.r-project.org/)
-2. Install RStudio Desktop from [https://posit.co/downloads/](https://posit.co/downloads/)
+2. Install RStudio Desktop from
+   [https://posit.co/downloads/](https://posit.co/downloads/)
 3. Test that both programs open successfully
 
 ## Additional Resources
 
 - [R for Data Science](https://r4ds.had.co.nz/) - Comprehensive online book
-- [RStudio Cheat Sheets](https://posit.co/resources/cheatsheets/) - Quick reference guides
+- [RStudio Cheat Sheets](https://posit.co/resources/cheatsheets/) - Quick
+  reference guides
 - [Swirl](https://swirlstats.com/) - Interactive R programming lessons
 - [R Documentation](https://www.rdocumentation.org/) - Function reference
 
 ## Follow-up
 
-This workshop prepares participants for the advanced "Computational Reproducibility Session using R" workshop later in the semester.
+This workshop prepares participants for the advanced "Computational
+Reproducibility Session using R" workshop later in the semester.

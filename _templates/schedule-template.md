@@ -9,9 +9,13 @@ data_file: winter-2025-26
 
 **Series Information:**
 
-- **When:** {{ schedule.series_info.frequency }}, {{ schedule.series_info.time }}
+- **When:** {{ schedule.series_info.frequency }},
+  {{ schedule.series_info.time }}
 - **Where:** {{ schedule.series_info.location }}
-- **Organizers:** {% for organizer in schedule.series_info.organizers %}{{ organizer.name }}, {{ organizer.affiliation }}{% unless forloop.last %} & {% endunless %}{% endfor %}
+- **Organizers:**
+  {% for organizer in schedule.series_info.organizers %}{{ organizer.name }},
+  {{ organizer.affiliation }}{% unless forloop.last %} &
+  {% endunless %}{% endfor %}
 
 ## Workshop Schedule
 
@@ -21,22 +25,21 @@ data_file: winter-2025-26
 
 **Date:** {{ workshop.date | date: "%d. %B %Y" }}  
 **Time:** {{ workshop.time }}  
-**Speaker:** {{ workshop.speaker }}, *{{ workshop.affiliation }}*
+**Speaker:** {{ workshop.speaker }}, _{{ workshop.affiliation }}_
 
 **Topics:**
 
 {% for topic in workshop.topics %}
-- {{ topic }}
-{% endfor %}
 
-{% if workshop.materials.size > 0 %}
-**Materials:**
+- {{ topic }} {% endfor %}
+
+{% if workshop.materials.size > 0 %} **Materials:**
 {% for material in workshop.materials %}
-- [{{ material.title }}]({{ material.url }})
-{% endfor %}
-{% endif %}
+
+- [{{ material.title }}]({{ material.url }}) {% endfor %} {% endif %}
 
 ---
+
 {% endfor %}
 
 ## Additional Information
@@ -52,24 +55,27 @@ data_file: winter-2025-26
 ### Prerequisites
 
 {% for prereq in schedule.additional_info.prerequisites %}
-- {{ prereq }}
-{% endfor %}
+
+- {{ prereq }} {% endfor %}
 
 ### Contact
 
 {% for organizer in schedule.series_info.organizers %}
+
 - **{{ organizer.name }}**, {{ organizer.affiliation }}
-{% if organizer.email %}  - Email: {{ organizer.email }}{% endif %}
-{% if organizer.office %}  - Office: {{ organizer.office }}{% endif %}
-{% endfor %}
+  {% if organizer.email %} - Email: {{ organizer.email }}{% endif %}
+  {% if organizer.office %} - Office: {{ organizer.office }}{% endif %}
+  {% endfor %}
 
 ### Related Events
 
-For additional training opportunities, see the [Project S Onboarding materials](../onboarding/) which include information about:
+For additional training opportunities, see the
+[Project S Onboarding materials](../onboarding/) which include information
+about:
 
 {% for event in schedule.additional_info.related_events %}
-- {{ event }}
-{% endfor %}
+
+- {{ event }} {% endfor %}
 
 ### Registration
 

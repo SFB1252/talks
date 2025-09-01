@@ -17,17 +17,18 @@
       }
     },
     {
-      "files": "*.yml",
+      "files": ["*.yml", "*.yaml"],
       "options": {
         "tabWidth": 2,
         "printWidth": 120
       }
     },
     {
-      "files": "*.yaml",
+      "files": ["*.html"],
       "options": {
-        "tabWidth": 2,
-        "printWidth": 120
+        "parser": "html",
+        "printWidth": 120,
+        "htmlWhitespaceSensitivity": "ignore"
       }
     }
   ]

@@ -1,8 +1,9 @@
 ---
 layout: default
-title: "Literature Management"
+title: 'Literature Management'
 permalink: /workshops/04-literature-management/
 ---
+
 # Literature Management
 
 **Date:** 18. Juni 2025  
@@ -11,7 +12,8 @@ permalink: /workshops/04-literature-management/
 
 ## Overview
 
-Literature management strategies and tools, with focus on Zotero for organizing, citing, and sharing research sources.
+Literature management strategies and tools, with focus on Zotero for organizing,
+citing, and sharing research sources.
 
 ## Learning Objectives
 
@@ -22,17 +24,22 @@ Literature management strategies and tools, with focus on Zotero for organizing,
 
 ## Materials
 
-- [📄 Zotero Workshop](4-schwiertz-Zotero.pdf) - Presentation slides by Gabrielle Schwiertz
+- [📄 Zotero Workshop](4-schwiertz-Zotero.pdf) - Presentation slides by
+  Gabrielle Schwiertz
 
 ## Key Resources
 
-- [EduLabs Zotero Course](https://www.edulabs.uni-koeln.de/ilias.php?baseClass=ilrepositorygui&ref_id=30037) - Comprehensive Zotero tutorial and materials
-- [Zotero Official Website](https://www.zotero.org/) - Download and documentation
-- [University and City Library of Cologne](https://ub.uni-koeln.de/) - Additional library services
+- [EduLabs Zotero Course](https://www.edulabs.uni-koeln.de/ilias.php?baseClass=ilrepositorygui&ref_id=30037) -
+  Comprehensive Zotero tutorial and materials
+- [Zotero Official Website](https://www.zotero.org/) - Download and
+  documentation
+- [University and City Library of Cologne](https://ub.uni-koeln.de/) -
+  Additional library services
 
 ## Additional Resources
 
 - [Zotero Documentation](https://www.zotero.org/support/)
-- [Citation Style Language](https://citationstyles.org/) - Understanding citation formats
+- [Citation Style Language](https://citationstyles.org/) - Understanding
+  citation formats
 - [Mendeley](https://www.mendeley.com/) - Alternative reference manager
 - [EndNote](https://endnote.com/) - Professional reference management
