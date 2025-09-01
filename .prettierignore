@@ -1,0 +1,17 @@
+# Prettier ignore file
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+node_modules/
+vendor/
+Gemfile.lock
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+.git/
+.vscode/
+*.log
