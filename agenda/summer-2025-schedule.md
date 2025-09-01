@@ -1,4 +1,6 @@
-# Research Data & Methods - Summer Semester 2025 Schedule
+# Research Data & Methods - Summer Semester 2025 Schedule (ARCHIVED)
+
+**⚠️ This workshop series has been completed. For current workshops, see [Winter 2025-26 Schedule](winter-2025-26-schedule.md)**
 
 **Series Information:**
 - **When:** Every second Wednesday, 14:00 - 15:30

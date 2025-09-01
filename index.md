@@ -11,9 +11,14 @@ Workshop series by SFB 1252 - Prominence in Language at the University of Cologn
 
 Workshops on research methodology, data management, and academic practices for graduate students, postdocs, and researchers.
 
-## Current Workshop Series (Summer 2025)
+## Current Workshop Series (Winter 2025-26)
 
-*Today is July 2nd, 2025 - Workshop series is currently active!*
+*Updated September 2025 - New winter semester series now available!*
+
+**Key Focus Areas:**
+- **Programming Skills**: R basics and Python development
+- **Modern Methodology**: Online experiments and Bayesian analysis
+- **Research Infrastructure**: Data archiving and reproducibility
 
 ## Available Workshops
 
@@ -59,6 +64,20 @@ Workshops on research methodology, data management, and academic practices for g
     <p>Preregistering research studies for transparency and reproducibility.</p>
     <a href="{{ '/workshops/06-preregistration/' | relative_url }}" class="btn-primary">Learn More</a>
   </div>
+
+  <div class="workshop-card winter-highlight">
+    <h3>💻 Coding in R - Basics</h3>
+    <div class="workshop-meta">Programming • R • Data Analysis</div>
+    <p>Introduction to R programming for research applications.</p>
+    <a href="{{ '/workshops/07-coding-r-basics/' | relative_url }}" class="btn-primary">Learn More</a>
+  </div>
+
+  <div class="workshop-card winter-highlight">
+    <h3>🌐 Online Experiments</h3>
+    <div class="workshop-meta">Digital Research • Platforms • Data Quality</div>
+    <p>Designing and implementing online experiments.</p>
+    <a href="{{ '/workshops/08-online-experiments/' | relative_url }}" class="btn-primary">Learn More</a>
+  </div>
 </div>
 
 ## SFB 1252 Retreat Resources
@@ -82,13 +101,30 @@ Materials from our **July 2025 Retreat** on Large Language Models and AI-assiste
   <a href="{{ '/retreat/' | relative_url }}" class="btn-secondary">View Retreat Materials</a>
 </div>
 
+## Archived Workshops
+
+### Summer 2025 Series (Completed)
+
+The summer 2025 workshop series has been successfully completed! These workshops covered foundational research skills:
+
+- ✅ **Good Academic Practice** (7. Mai 2025)
+- ✅ **Research Data Management** (21. Mai 2025)  
+- ✅ **Ethics Approval** (4. Juni 2025)
+- ✅ **Literature Management** (18. Juni 2025)
+- ✅ **Annotation & Corpus Tools** (2. Juli 2025)
+- ✅ **Preregistration** (16. Juli 2025)
+
+[View complete summer 2025 materials and schedule]({{ '/agenda/summer-2025-schedule.html' | relative_url }})
+
 ## Getting Started
 
 New to Project S? Start with our [onboarding materials]({{ '/onboarding/' | relative_url }}).
 
 ## Schedule
 
-[Summer 2025 schedule]({{ '/agenda/summer-2025-schedule.html' | relative_url }}) for dates and times.
+**Current:** [Winter 2025-26 schedule]({{ '/agenda/winter-2025-26-schedule.html' | relative_url }}) for dates and times.
+
+**Previous:** [Summer 2025 schedule]({{ '/agenda/summer-2025-schedule.html' | relative_url }}) (archived).
 
 ## Contributing
 
