@@ -3,80 +3,208 @@ layout: default
 title: Workshops
 ---
 
-# Workshop Series
+# Research Data & Methods Workshop Series
 
-Workshop series covering essential skills and methodologies for academic research.
+Comprehensive workshop series covering essential skills and methodologies for academic research in the digital age.
 
-## Available Workshops
+## 📅 Current Semester: Winter 2025-26
+
+*New workshops focusing on programming skills and modern research methods*
+
+### 💻 [Coding in R - Basics](07-coding-r-basics/)
+**Programming • R • Data Analysis • NEW**
+
+Introduction to R programming for research applications. Learn data structures, import/export procedures, basic statistical analysis, and reproducible code practices.
+
+**Topics covered:**
+- R syntax and data structures
+- Data import/export (CSV, Excel, databases)
+- Basic data manipulation and visualization
+- Reproducible workflows with R Markdown
+
+---
+
+### 🌐 [Online Experiments](08-online-experiments/)
+**Digital Research • Platforms • Data Quality • NEW**
+
+Design and implement online experiments using modern web platforms. Focus on participant recruitment, data quality control, and ethical considerations.
+
+**Topics covered:**
+- Platform comparison (jsPsych, Qualtrics, PsyToolkit, etc.)
+- Participant recruitment strategies
+- Quality control and attention checks
+- Data privacy and ethical considerations
+
+---
+
+## 📚 Core Workshop Series
+
+*Foundational skills for all researchers*
 
 ### 📚 [Good Academic Practice](01-good-academic-practice/)
-**Foundation • Research Ethics**
+**Foundation • Research Ethics • Required**
 
-Academic integrity, research ethics, and responsible conduct in research. Covers plagiarism prevention, citation practices, and ethical considerations.
+Academic integrity, research ethics, and responsible conduct in research. Essential foundation for all academic work.
+
+**Key areas:**
+- Plagiarism prevention and detection
+- Proper citation and attribution
+- Research misconduct awareness
+- Collaborative research ethics
 
 ---
 
 ### 💾 [Research Data Management](02-research-data-management/)
-**Data • Organization • Preservation**
+**Data • Organization • Preservation • Essential**
 
-Organizing, storing, and preserving research data. Topics include data organization, backup procedures, version control, and preservation.
+Comprehensive approach to organizing, storing, and preserving research data throughout the project lifecycle.
+
+**Topics covered:**
+- Data organization strategies
+- Backup and version control systems
+- Metadata and documentation
+- Long-term preservation planning
 
 ---
 
 ### ⚖️ [Ethics Approval](03-ethics-approval/)
-**Ethics • Compliance • Review**
+**Ethics • Compliance • Review • Required**
 
-Ethics approval process and human subjects research requirements. IRB procedures, consent forms, risk assessment, and compliance.
+Navigate the ethics approval process for human subjects research. Understanding IRB requirements and compliance.
+
+**Key components:**
+- IRB/Ethics committee procedures
+- Consent form development
+- Risk assessment and mitigation
+- Ongoing compliance requirements
 
 ---
 
 ### 📖 [Literature Management](04-literature-management/)
-**Zotero • Citations • Bibliography**
+**Zotero • Citations • Bibliography • Essential**
 
-Reference management tools and techniques. Training with Zotero, citation styles, and bibliography management.
+Master reference management tools and citation techniques for efficient literature review and writing.
+
+**Skills developed:**
+- Zotero setup and organization
+- Citation style management
+- Collaborative bibliography development
+- Integration with writing tools
 
 ---
 
 ### 🔧 [Annotation & Corpus Tools](05-annotation-corpus-tools/)
-**Tools • Linguistics • Analysis**
+**Tools • Linguistics • Analysis • Specialized**
 
-Tools for corpus linguistics and text annotation. ELAN, WebAnno, CATMA, AntConc, and R packages for linguistic analysis.
+Professional tools for corpus linguistics, text annotation, and linguistic analysis.
+
+**Tools covered:**
+- ELAN for multimodal annotation
+- WebAnno for collaborative annotation
+- CATMA for text analysis
+- AntConc for corpus linguistics
+- R packages for linguistic analysis
 
 ---
 
 ### 📋 [Preregistration](06-preregistration/)
-**Planning • Transparency • Reproducibility**
+**Planning • Transparency • Reproducibility • Important**
 
-Preregistering research studies for transparency and reproducibility. Creating effective study protocols.
+Learn to preregister research studies for enhanced transparency and reproducibility.
 
----
-
-## Workshop Format
-
-Each workshop typically includes:
-
-- **Theoretical Background**: Understanding the concepts and principles
-- **Practical Exercises**: Hands-on experience with tools and techniques
-- **Real-world Examples**: Case studies from actual research projects
-- **Q&A Sessions**: Interactive discussion and problem-solving
-- **Take-home Materials**: Resources for continued learning
-
-## Prerequisites
-
-Most workshops are designed for researchers at all levels, from graduate students to established academics. Specific technical requirements or recommended background knowledge are listed in each workshop's individual page.
-
-## Schedule
-
-For current workshop dates and registration information, please check our [summer 2025 schedule](../agenda/summer-2025-schedule.html).
-
-## Getting Help
-
-If you have questions about any workshop or need additional support, please:
-
-1. Check the individual workshop pages for detailed information
-2. Review our [additional resources](../resources/additional-links.html)
-3. Contact the workshop organizers through the information provided in each workshop description
+**Learning outcomes:**
+- Understanding preregistration benefits
+- Creating effective study protocols
+- Platform navigation (OSF, AsPredicted)
+- Handling deviations and updates
 
 ---
 
-*All workshops are part of the SFB 1252 "Prominence in Language" research initiative at the University of Cologne.*
+## 🎯 Workshop Learning Paths
+
+### 🚀 **Quick Start Path** (Essential for all researchers)
+1. [Good Academic Practice](01-good-academic-practice/) - Research ethics foundation
+2. [Literature Management](04-literature-management/) - Organize your sources
+3. [Research Data Management](02-research-data-management/) - Protect your data
+
+### 🔬 **Experimental Research Path**
+1. [Ethics Approval](03-ethics-approval/) - Get approval for human subjects research
+2. [Preregistration](06-preregistration/) - Plan transparent studies
+3. [Online Experiments](08-online-experiments/) - Conduct digital research
+
+### 📊 **Data Analysis Path**
+1. [Research Data Management](02-research-data-management/) - Organize your data
+2. [Coding in R - Basics](07-coding-r-basics/) - Learn statistical programming
+3. [Annotation & Corpus Tools](05-annotation-corpus-tools/) - Advanced text analysis
+
+### 🎓 **Complete Academic Researcher**
+Follow all workshops in the order that best fits your research timeline and needs.
+
+---
+
+## 📋 Workshop Details
+
+### Format & Duration
+- **Duration**: 2-3 hours per workshop
+- **Format**: Interactive sessions with theory and hands-on practice
+- **Materials**: All presentations and exercises available online
+- **Certificate**: Attendance certificates available upon request
+
+### What to Expect
+Each workshop includes:
+
+- **📖 Theoretical Background**: Understanding core concepts and principles
+- **💻 Practical Exercises**: Hands-on experience with tools and techniques  
+- **🔍 Real-world Examples**: Case studies from actual research projects
+- **❓ Q&A Sessions**: Interactive discussion and problem-solving
+- **📦 Take-home Materials**: Resources and templates for continued learning
+
+### Prerequisites & Preparation
+- **General**: Most workshops suitable for all levels (grad students to faculty)
+- **Technical**: Specific requirements listed on individual workshop pages
+- **Preparation**: Recommended readings and setup instructions provided in advance
+- **Equipment**: Bring your laptop; software installation help available
+
+---
+
+## 📅 Registration & Schedule
+
+### Current Schedule
+**[Winter 2025-26 Schedule](../agenda/winter-2025-26-schedule.html)** - Registration and dates
+
+### Past Workshops
+**[Summer 2025 Archive](../agenda/summer-2025-schedule.html)** - Completed workshop materials
+
+---
+
+## 🆘 Getting Help & Support
+
+### Before Workshops
+1. **Check Prerequisites**: Review individual workshop pages for requirements
+2. **Software Setup**: Follow setup guides or attend office hours
+3. **Questions**: Contact workshop leaders via email (listed in schedule)
+
+### During Workshops  
+1. **Technical Issues**: On-site technical support available
+2. **Accessibility**: Accommodations available upon request
+3. **Materials**: Digital copies of all materials provided
+
+### After Workshops
+1. **Follow-up**: Additional resources and advanced tutorials linked
+2. **Community**: Join our discussion forum for ongoing questions
+3. **One-on-one**: Individual consultations available by appointment
+
+---
+
+## 🏛️ About SFB 1252
+
+This workshop series is part of **SFB 1252 "Prominence in Language"** research initiative at the University of Cologne. Our mission is to advance research methods and provide comprehensive training for the next generation of researchers.
+
+**Learn more:**
+- [SFB 1252 Project Overview](https://sfb1252.uni-koeln.de/)
+- [Contributing to Workshops](../docs/contributing.html)
+- [Additional Resources](../resources/additional-links.html)
+
+---
+
+*Questions? Contact the workshop organizers through the information provided in the [current schedule](../agenda/winter-2025-26-schedule.html).*
