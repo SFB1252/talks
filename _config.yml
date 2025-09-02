@@ -6,7 +6,7 @@ url: 'https://sfb1252.github.io'
 
 # Organization information
 organization:
-  name: 'SFB 1252 - Prominence in Language'
+  name: 'CRC 1252 - Prominence in Language'
   website: 'https://sfb1252.uni-koeln.de'
   university: 'University of Cologne'
 
@@ -23,12 +23,12 @@ workshop_logistics:
   frequency: 'Every second Wednesday'
   duration: '14:00 - 15:30'
   location: 'House of Prominence, Attic (Top floor), Luxemburger Str. 299'
-  contact_email: 'jschepen@uni-koeln.de'
+  contact_email: 'sfb1252-service@uni-koeln.de'
 
 # Author information
 author:
-  name: 'SFB 1252 - Prominence in Language'
-  email: 'contact@sfb1252.uni-koeln.de'
+  name: 'CRC 1252 - Prominence in Language'
+  email: 'sfb1252-service@uni-koeln.de'
   affiliation: 'University of Cologne'
 
 # Build settings
@@ -68,7 +68,7 @@ defaults:
       type: 'posts'
     values:
       layout: 'post'
-      author: 'SFB 1252'
+      author: 'CRC 1252'
   - scope:
       path: ''
       type: 'workshops'
