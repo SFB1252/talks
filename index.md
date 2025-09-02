@@ -5,7 +5,7 @@ title: Home
 
 # Research Data and Methods Workshop Series
 
-Workshop series by SFB 1252 - Prominence in Language at the University of
+Workshop series by CRC 1252 - Prominence in Language at the University of
 Cologne.
 
 ## About the Series
@@ -83,7 +83,7 @@ _Updated September 2025 - New winter semester series now available!_
   </div>
 </div>
 
-## SFB 1252 Retreat Resources
+## CRC 1252 Retreat Resources
 
 Materials from our **July 2025 Retreat** on Large Language Models and
 AI-assisted research methods:
@@ -122,6 +122,42 @@ covered foundational research skills:
 [View complete summer 2025 materials and
 schedule]({{ '/agenda/summer-2025-schedule.html' | relative_url }})
 
+## Workshop Flyers
+
+Download promotional materials for our workshop series:
+
+### Summer 2025 Flyer
+[📄 Download Summer 2025 Flyer (PDF)]({{ '/flyers/2025_rdm-flyer_summer-semester/2025-05-08_rdm-summer-flyer.pdf' | relative_url }})
+
+### Winter 2025-26 Flyers
+- [📄 Download Winter Flyer (PDF - August 25)]({{ '/flyers/2025_rdm-flyer_winter-semester/2025-08-25_rdm-winter-flyer.pdf' | relative_url }})
+
+## Workshop Evaluation [TODO]
+
+We value your feedback to improve our workshop series. All evaluations are **internal and anonymous**.
+
+### Post-Workshop Evaluation 
+[📝 Complete Anonymous Evaluation](https://forms.uni-koeln.de/some-form-link) (Internal CRC 1252 access only)
+
+### Evaluation Guidelines
+- Evaluations are collected immediately after each workshop
+- All responses are anonymous and confidential
+- Feedback is used internally to improve future workshops
+- Results are shared with presenters for continuous improvement
+
+## Community Chat [TODO]
+
+Join our community discussions on the University of Cologne Matrix chat server.
+
+### CRC 1252 Chatroom
+[💬 Join CRC 1252 Matrix Chat](https://matrix.uni-koeln.de/#/#crc1252:uni-koeln.de)
+
+### Chat Guidelines
+- Open to all CRC 1252 members
+- Discussion topics: research methods, data management, workshop feedback
+- Respectful and professional communication
+- Internal discussions only
+
 ## Getting Started
 
 New to Project S? Start with our [onboarding
@@ -148,4 +184,4 @@ for research support.
 
 ---
 
-_SFB 1252 "Prominence in Language" research initiative, University of Cologne._
+_CRC 1252 "Prominence in Language" research initiative, University of Cologne._

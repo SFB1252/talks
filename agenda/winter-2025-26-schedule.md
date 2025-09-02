@@ -4,7 +4,7 @@
 
 - **When:** Every second Wednesday, 14:00 - 15:30
 - **Where:** House of Prominence, Attic (Top floor), Luxemburger Str. 299
-- **Organizers:** Luke Günther & Dr. Job Schepens, Project S, SFB 1252
+- **Organizers:** Dr. Job Schepens & Luke Günther, Project S, CRC 1252
 
 ## Workshop Schedule
 
@@ -12,7 +12,7 @@
 
 **Date:** 17. September 2025  
 **Time:** 14:00 - 15:30  
-**Speaker:** Luke Günther, _Project S, SFB 1252_
+**Speaker:** Luke Günther, _Project S, CRC 1252_
 
 **Topics:**
 
@@ -28,7 +28,7 @@
 
 **Date:** 1. Oktober 2025  
 **Time:** 14:00 - 15:30  
-**Speaker:** Onur Özsoy, _Project C03, SFB 1252_
+**Speaker:** Onur Özsoy, _Project C03, CRC 1252_
 
 **Topics:**
 
@@ -44,7 +44,7 @@
 
 **Date:** 15. Oktober 2025  
 **Time:** 14:00 - 15:30  
-**Speakers:** Luke Günther, _Project S, SFB 1252_ & Sarah Saleh, _Data Center
+**Speakers:** Luke Günther, _Project S, CRC 1252_ & Sarah Saleh, _Data Center
 for the Humanities, UoC_
 
 **Topics:**
@@ -61,7 +61,7 @@ for the Humanities, UoC_
 
 **Date:** 29. Oktober 2025  
 **Time:** 14:00 - 15:30  
-**Speaker:** Job Schepens, _Project S, SFB 1252_
+**Speaker:** Job Schepens, _Project S, CRC 1252_
 
 **Topics:**
 
@@ -77,7 +77,7 @@ for the Humanities, UoC_
 
 **Date:** 12. November 2025  
 **Time:** 14:00 - 15:30  
-**Speaker:** Job Schepens, _Project S, SFB 1252_
+**Speaker:** Job Schepens, _Project S, CRC 1252_
 
 **Topics:**
 
@@ -93,7 +93,7 @@ for the Humanities, UoC_
 
 **Date:** 26. November 2025  
 **Time:** 14:00 - 15:30  
-**Speaker:** Luke Günther, _Project S, SFB 1252_
+**Speaker:** Luke Günther, _Project S, CRC 1252_
 
 **Topics:**
 
@@ -129,9 +129,9 @@ best practices for reproducible computational research.
 
 ### Contact
 
-- **Luke Günther**, Project S, SFB 1252
-- **Dr. Job Schepens**, Project S, SFB 1252
-  - Email: jschepen(at)uni-koeln.de
+- **Dr. Job Schepens**, Project S, CRC 1252
+- **Luke Günther**, Project S, CRC 1252
+  - Email: sfb1252-service@uni-koeln.de
   - Office: 2nd floor @ House of Prominence
 
 ### Related Events
@@ -158,4 +158,4 @@ Individual workshop calendar links available on each workshop page.
 
 ---
 
-Part of SFB 1252 "Prominence in Language" - University of Cologne
+Part of CRC 1252 "Prominence in Language" - University of Cologne

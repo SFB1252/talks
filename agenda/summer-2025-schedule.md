@@ -7,7 +7,7 @@
 
 - **When:** Every second Wednesday, 14:00 - 15:30
 - **Where:** House of Prominence, Attic (Top floor), Luxemburger Str. 299
-- **Organizers:** Luke Günther & Dr. Job Schepens, Project S, SFB 1252
+- **Organizers:** Dr. Job Schepens & Luke Günther, Project S, CRC 1252
 
 ## Workshop Schedule
 
@@ -15,7 +15,7 @@
 
 **Date:** 7. Mai 2025  
 **Time:** 14:00 - 15:30  
-**Speakers:** Luke Günther & Job Schepens, _Project S, SFB 1252_
+**Speakers:** Luke Günther & Job Schepens, _Project S, CRC 1252_
 
 **Topics:**
 
@@ -87,7 +87,7 @@ UzK_
 
 **Date:** 2. Juli 2025  
 **Time:** 14:00 - 15:30  
-**Speaker:** Luke Günther, _Project S, SFB 1252_
+**Speaker:** Luke Günther, _Project S, CRC 1252_
 
 **Topics:**
 
@@ -105,7 +105,7 @@ UzK_
 
 **Date:** 16. Juli 2025  
 **Time:** 14:00 - 15:30  
-**Speaker:** Job Schepens, _Project S, SFB 1252_
+**Speaker:** Job Schepens, _Project S, CRC 1252_
 
 **Topics:**
 
@@ -135,9 +135,9 @@ reproducibility with R and Python.
 
 ### Contact
 
-- **Luke Günther**, Project S, SFB 1252
-- **Dr. Job Schepens**, Project S, SFB 1252
-  - Email: jschepen(at)uni-koeln.de
+- **Dr. Job Schepens**, Project S, CRC 1252
+- **Luke Günther**, Project S, CRC 1252
+  - Email: sfb1252-service@uni-koeln.de
   - Office: 2nd floor @ House of Prominence
 
 ### Related Events
@@ -152,4 +152,4 @@ about:
 
 ---
 
-_Part of SFB 1252 "Prominence in Language" - University of Cologne_
+_Part of CRC 1252 "Prominence in Language" - University of Cologne_

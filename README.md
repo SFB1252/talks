@@ -1,7 +1,7 @@
 # Research Data and Methods Workshop Series
 
 Workshop series on research data management, ethics, literature management, and
-corpus linguistics tools for researchers at the University of Cologne's SFB
+corpus linguistics tools for researchers at the University of Cologne's CRC
 1252 - Prominence in Language.
 
 ## About
@@ -116,7 +116,7 @@ If you want to preview the site locally, you'll need Ruby and Jekyll installed:
 - Professional academic design
 - Responsive layout for mobile and desktop
 - Workshop grid layout for easy navigation
-- Institutional branding for SFB 1252
+- Institutional branding for CRC 1252
 - SEO optimization
 - Academic typography and styling
 
@@ -132,7 +132,7 @@ file.
 
 ## Contact
 
-This workshop series is part of the SFB 1252 "Prominence in Language" research
+This workshop series is part of the CRC 1252 "Prominence in Language" research
 initiative at the University of Cologne.
 
 ---
