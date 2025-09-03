@@ -107,4 +107,11 @@ check-links.ps1
 
 # Keep VS Code configuration for team development
 # .vscode/ - We want to include this for shared development setup
--e "\nsite/\n.cache/\nmkdocs-env/\n*.pyc\n__pycache__/" 
+
+# MkDocs build outputs and cache
+site/
+.cache/
+mkdocs-env/
+
+# Generated web files
+agenda/Research Data and Methods_files/
