@@ -1,0 +1,189 @@
+/* Custom styles for Research Data and Methods Workshop Series */
+
+/* Workshop Grid Layout */
+.workshop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.workshop-card {
+  background: var(--md-default-fg-color--light);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.workshop-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.workshop-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--md-primary-fg-color);
+  font-size: 1.25rem;
+}
+
+.workshop-meta {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.workshop-card p {
+  margin-bottom: 1.5rem;
+  color: var(--md-default-fg-color--dark);
+  line-height: 1.5;
+}
+
+/* Button Styles */
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.btn-primary {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
+
+.btn-primary:hover {
+  background: var(--md-primary-fg-color--dark);
+  color: var(--md-primary-bg-color);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--md-primary-fg-color);
+  border: 2px solid var(--md-primary-fg-color);
+}
+
+.btn-secondary:hover {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  transform: translateY(-1px);
+}
+
+/* Winter Highlight Styling */
+.winter-highlight {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 0 0 2px var(--md-accent-fg-color--transparent);
+}
+
+.winter-highlight h3 {
+  color: var(--md-accent-fg-color);
+}
+
+/* Retreat Section */
+.retreat-section {
+  background: var(--md-code-bg-color);
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.retreat-section h3 {
+  color: var(--md-primary-fg-color);
+  margin-top: 0;
+}
+
+.retreat-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.retreat-links li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.retreat-links li:last-child {
+  border-bottom: none;
+}
+
+.retreat-links strong {
+  color: var(--md-default-fg-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .workshop-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .workshop-card {
+    padding: 1rem;
+  }
+
+  .retreat-section {
+    padding: 1.5rem;
+  }
+}
+
+/* Academic Theme Colors */
+:root {
+  --workshop-primary: #1976d2;
+  --workshop-secondary: #424242;
+  --workshop-accent: #ff9800;
+  --workshop-success: #4caf50;
+  --workshop-info: #2196f3;
+  --workshop-warning: #ff9800;
+  --workshop-error: #f44336;
+}
+
+/* Custom link styling */
+.workshop-card a:not(.btn-primary):not(.btn-secondary) {
+  color: var(--md-primary-fg-color);
+  text-decoration: none;
+}
+
+.workshop-card a:not(.btn-primary):not(.btn-secondary):hover {
+  text-decoration: underline;
+}
+
+/* Form styling for future use */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--md-primary-fg-color);
+  box-shadow: 0 0 0 2px var(--md-primary-fg-color--transparent);
+}

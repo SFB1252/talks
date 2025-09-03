@@ -1,0 +1,29 @@
+\frametitle{Data Management}
+\phantomsection\label{data-management}
+\textbf{Sciebo} is our collaborative data cloud.\\
+This is where all non-sensitive project data should be stored.
+
+\begin{tikzpicture}[remember picture,overlay]
+    \node[xshift=-1.5cm,yshift=-2.25cm] at (current page.north east) {\includegraphics[width=1cm]{sciebo-logo.png}};
+\end{tikzpicture}
+
+\vspace*{-1cm}
+
+If you already have access to your University account, please make sure
+to \textbf{activate} your Sciebo account as well:
+
+\begin{enumerate}
+\tightlist
+\item
+  Go to
+  \href{https://hochschulcloud.nrw/en/index.html}{\textbf{https://hochschulcloud.nrw}}
+\item
+  Click on \texttt{Registration}
+\item
+  Select \texttt{Universität\ zu\ Köln}
+\item
+  Log in with your University credentials
+\end{enumerate}
+
+You can then access your files at
+\href{https://uni-koeln.sciebo.de/login}{\textbf{https://uni-koeln.sciebo.de}}

@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//SFB1252//Research Data Methods//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+
+BEGIN:VEVENT
+UID:workshop-1@sfb1252.uni-koeln.de
+DTSTART:20250917T120000Z
+DTEND:20250917T133000Z
+SUMMARY:Coding in R - Basics
+DESCRIPTION:Introduction to R programming for research applications.\n\nSpeaker: Luke Günther, Project S SFB 1252\n\nTopics:\n- Introduction to R programming environment\n- Basic data structures and operations\n- Data import and export procedures\n- Essential R packages for research\n- Best practices for reproducible R code\n\nMore info: https://sfb1252.github.io/talks/workshops/07-coding-r-basics/
+LOCATION:House of Prominence, Attic, Luxemburger Str. 299, Cologne
+ORGANIZER;CN=SFB 1252:mailto:jschepen@uni-koeln.de
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-2@sfb1252.uni-koeln.de
+DTSTART:20251001T120000Z
+DTEND:20251001T133000Z
+SUMMARY:Online Experiments
+DESCRIPTION:Designing and implementing online experiments for linguistic research.\n\nSpeaker: Onur Özsoy, Project C03 SFB 1252\n\nTopics:\n- Designing and implementing online experiments\n- Platform selection and setup (jsPsych, Prolific, MTurk)\n- Participant recruitment and screening\n- Data quality control in online studies\n- Ethical considerations for online research\n\nMore info: https://sfb1252.github.io/talks/workshops/08-online-experiments/
+LOCATION:House of Prominence, Attic, Luxemburger Str. 299, Cologne
+ORGANIZER;CN=SFB 1252:mailto:jschepen@uni-koeln.de
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-3@sfb1252.uni-koeln.de
+DTSTART:20251015T120000Z
+DTEND:20251015T133000Z
+SUMMARY:Archiving Session
+DESCRIPTION:Long-term data preservation and archiving strategies.\n\nSpeakers: Luke Günther & Sarah Saleh\n\nTopics:\n- Long-term data preservation strategies\n- Digital archiving standards and formats\n- Institutional repository usage\n- Metadata creation and documentation\n- Legal requirements for data archiving\n\nMore info: https://sfb1252.github.io/talks/
+LOCATION:House of Prominence, Attic, Luxemburger Str. 299, Cologne
+ORGANIZER;CN=SFB 1252:mailto:jschepen@uni-koeln.de
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-4@sfb1252.uni-koeln.de
+DTSTART:20251029T130000Z
+DTEND:20251029T143000Z
+SUMMARY:Coding in Python/VSCode and LLMs
+DESCRIPTION:Python development and AI-assisted coding.\n\nSpeaker: Job Schepens, Project S SFB 1252\n\nTopics:\n- Python development environment setup with VSCode\n- Essential Python libraries for research\n- Version control integration with Git\n- AI-assisted coding with Large Language Models\n- Code quality and documentation best practices\n\nMore info: https://sfb1252.github.io/talks/
+LOCATION:House of Prominence, Attic, Luxemburger Str. 299, Cologne
+ORGANIZER;CN=SFB 1252:mailto:jschepen@uni-koeln.de
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-5@sfb1252.uni-koeln.de
+DTSTART:20251112T130000Z
+DTEND:20251112T143000Z
+SUMMARY:Bayesian Regression Models
+DESCRIPTION:Introduction to Bayesian statistical modeling.\n\nSpeaker: Job Schepens, Project S SFB 1252\n\nTopics:\n- Introduction to Bayesian statistical thinking\n- Bayesian vs. frequentist approaches\n- Implementing Bayesian regression in R\n- Prior specification and model checking\n- Interpreting Bayesian results and credible intervals\n\nMore info: https://sfb1252.github.io/talks/
+LOCATION:House of Prominence, Attic, Luxemburger Str. 299, Cologne
+ORGANIZER;CN=SFB 1252:mailto:jschepen@uni-koeln.de
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-6@sfb1252.uni-koeln.de
+DTSTART:20251126T130000Z
+DTEND:20251126T143000Z
+SUMMARY:Computational Reproducibility Session using R
+DESCRIPTION:Reproducible research workflows and best practices.\n\nSpeaker: Luke Günther, Project S SFB 1252\n\nTopics:\n- Reproducible research workflows in R\n- R Markdown and Quarto for dynamic documents\n- Package management with renv\n- Containerization approaches\n- Version control best practices for R projects\n- Creating reproducible analysis pipelines\n\nMore info: https://sfb1252.github.io/talks/
+LOCATION:House of Prominence, Attic, Luxemburger Str. 299, Cologne
+ORGANIZER;CN=SFB 1252:mailto:jschepen@uni-koeln.de
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+
+END:VCALENDAR

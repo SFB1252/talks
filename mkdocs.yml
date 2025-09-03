@@ -1,0 +1,101 @@
+# MkDocs configuration for Research Data and Methods Workshop Series
+site_name: 'Research Data and Methods Workshop Series'
+site_description: 'Workshop series on research data management, ethics, literature management, and corpus linguistics tools.'
+site_url: 'https://sfb1252.github.io/talks'
+
+# Repository information
+repo_url: 'https://github.com/sfb1252/talks'
+repo_name: 'sfb1252/talks'
+
+# Theme configuration
+theme:
+  name: 'material'
+  language: 'en'
+  palette:
+    primary: 'blue'
+    accent: 'blue'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+
+# Plugins
+plugins:
+  - search
+  - minify:
+      minify_html: true
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+  - git-committers:
+      repository: sfb1252/talks
+      branch: main
+
+# Customization
+extra:
+  generator: false
+  social:
+    - icon: 'fontawesome/solid/university'
+      link: 'https://sfb1252.uni-koeln.de'
+      name: 'CRC 1252 - University of Cologne'
+
+# Extensions
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+
+# Navigation structure
+nav:
+  - Home: 'index.md'
+  - Schedule:
+      - Winter 2025-26: 'agenda/winter-2025-26-schedule.md'
+      - Summer 2025: 'agenda/summer-2025-schedule.md'
+  - Workshops:
+      - Overview: 'workshops/index.md'
+      - '01 - Good Academic Practice': 'workshops/01-good-academic-practice/README.md'
+      - '02 - Research Data Management': 'workshops/02-research-data-management/README.md'
+      - '03 - Ethics Approval': 'workshops/03-ethics-approval/README.md'
+      - '04 - Literature Management': 'workshops/04-literature-management/README.md'
+      - '05 - Annotation & Corpus Tools': 'workshops/05-annotation-corpus-tools/README.md'
+      - '06 - Preregistration': 'workshops/06-preregistration/README.md'
+      - '07 - Coding in R Basics': 'workshops/07-coding-r-basics/README.md'
+      - '08 - Online Experiments': 'workshops/08-online-experiments/README.md'
+  - Resources:
+      - Onboarding: 'onboarding/README.md'
+      - Additional Links: 'resources/additional-links.md'
+      - Retreat Materials: 'retreat/README.md'
+  - Documentation:
+      - Contributing: 'contributing.md'
+      - Website Development: 'website-development.md'
+      - GitHub Setup: 'github-setup.md'
+      - AI-Assisted Development: 'ai-assisted-development-guidelines.md'
+      - Development Setup: 'development-setup.md'
+      - Development Tools: 'development-tools.md'
+      - VS Code Setup: 'vscode-setup-summary.md'
+      - Matrix Admin: 'matrix-admin-checklist.md'
+      - Matrix Setup: 'matrix-space-setup.md'
+
+# Additional CSS and JS
+extra_css:
+  - 'stylesheets/custom.css'
+
+extra_javascript:
+  - 'javascript/custom.js'
