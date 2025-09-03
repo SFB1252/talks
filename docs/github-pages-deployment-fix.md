@@ -1,6 +1,7 @@
 # GitHub Pages Deployment Fix for Organization Repositories
 
 ## 🎯 **Primary Issue**
+
 Organization repositories have stricter permission controls than personal repositories, causing `GITHUB_TOKEN` permission denials when using third-party actions like `peaceiris/actions-gh-pages`.
 
 ## ✅ **Solution 1: GitHub's Official Pages Action (Implemented)**
@@ -8,12 +9,14 @@ Organization repositories have stricter permission controls than personal reposi
 Your workflow has been updated to use GitHub's built-in Pages deployment system, which is the recommended modern approach.
 
 ### **Key Changes Made:**
+
 - Moved permissions to workflow level for better security
 - Replaced `peaceiris/actions-gh-pages@v3` with official GitHub actions
 - Added proper artifact upload/download pattern
 - Removed need for `gh-pages` branch management
 
 ### **Required Repository Settings:**
+
 1. Go to **Settings** → **Pages**
 2. Set **Source** to **GitHub Actions** (not "Deploy from a branch")
 3. This enables the new Pages API that the workflow uses
@@ -21,6 +24,7 @@ Your workflow has been updated to use GitHub's built-in Pages deployment system,
 ## 🔧 **Alternative Solutions (If Needed)**
 
 ### **Option 2: Personal Access Token (PAT)**
+
 If you need to stick with the old approach:
 
 ```yaml
@@ -32,11 +36,13 @@ If you need to stick with the old approach:
 ```
 
 **PAT Requirements:**
+
 - **Scope needed:** `repo` (full control of private repositories)
 - **For public repos:** `public_repo` might be sufficient
 - **Add as repository secret:** `PAGES_PAT`
 
 ### **Option 3: Organization Token**
+
 For organization-wide deployments:
 
 1. Create organization secret
@@ -46,16 +52,19 @@ For organization-wide deployments:
 ## 🔍 **Troubleshooting Steps**
 
 ### **1. Check Repository Settings**
+
 - **Settings** → **Actions** → **General**
 - Workflow permissions: "Read and write permissions"
 - Allow GitHub Actions to create and approve pull requests: ✅
 
 ### **2. Organization Settings**
-- **Settings** → **Actions** → **General** 
+
+- **Settings** → **Actions** → **General**
 - Check if Actions are restricted for the organization
 - Ensure workflow permissions allow Pages deployment
 
 ### **3. Branch Protection**
+
 - If `main` branch has protection rules
 - Ensure GitHub Actions can push to protected branches
 - Or use the new Actions-based deployment (recommended)
@@ -82,4 +91,5 @@ For organization-wide deployments:
 - [Organization Permissions](https://docs.github.com/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization)
 
 ---
-*Updated: September 3, 2025*
+
+_Updated: September 3, 2025_
