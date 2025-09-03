@@ -144,18 +144,29 @@ We value your feedback to improve our workshop series. All evaluations are **int
 - Feedback is used internally to improve future workshops
 - Results are shared with presenters for continuous improvement
 
-## Community Chat [TODO]
+## Community Chat
 
-Join our community discussions on the University of Cologne Matrix chat server.
+Join our CRC 1252 community on Matrix! We've set up a dedicated space with multiple channels for different types of discussions.
 
-### CRC 1252 Chatroom
-[💬 Join CRC 1252 Matrix Chat](https://matrix.uni-koeln.de/#/#sfb1252-rdm:uni.koeln.de)
+### 🚀 Quick Start
+**Recommended client:** [FluffyChat](https://fluffychat.im) (excellent for Matrix Spaces)
+
+**Join our space:** [SFB 1252 - Talks & Workshops](https://matrix.to/#/#sfb1252-talks:uni.koeln.de)
+
+### 📋 Available Rooms
+
+1. **[General Discussion](https://matrix.to/#/#sfb1252-general:uni.koeln.de)** - Main chat for workshop coordination and general topics
+2. **[Technical Support](https://matrix.to/#/#sfb1252-tech:uni.koeln.de)** - Help with tools, software, and technical questions  
+3. **[Resources & Links](https://matrix.to/#/#sfb1252-resources:uni.koeln.de)** - Share useful research resources and links
+
+### 💡 New to Matrix?
+See our [Matrix Setup Guide](matrix-space-setup.md) for detailed instructions on joining and using the University of Cologne Matrix server.
 
 ### Chat Guidelines
-- Open to all CRC 1252 members
-- Discussion topics: research methods, data management, workshop feedback
-- Respectful and professional communication
-- Internal discussions only
+- Open to all CRC 1252 members and workshop participants
+- Professional and respectful communication
+- Use appropriate channels for different topics
+- Share resources and ask questions freely
 
 ## Getting Started
 

@@ -7,6 +7,9 @@ site_url: 'https://sfb1252.github.io/talks'
 repo_url: 'https://github.com/sfb1252/talks'
 repo_name: 'sfb1252/talks'
 
+# Documentation directory
+docs_dir: 'docs'
+
 # Theme configuration
 theme:
   name: 'material'
