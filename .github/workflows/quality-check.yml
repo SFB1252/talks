@@ -14,11 +14,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
-          ruby-version: '3.0'
-          bundler-cache: true
+          python-version: '3.x'
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -27,27 +26,27 @@ jobs:
 
       - name: Install dependencies
         run: |
-          bundle install
+          pip install -r requirements.txt
           npm install -g markdownlint-cli2
           npm install -g prettier
 
       - name: Check Markdown quality
-        run: markdownlint-cli2 "**/*.md" "!node_modules" "!_site"
+        run: markdownlint-cli2 "**/*.md" "!node_modules" "!site"
         continue-on-error: true
 
       - name: Check code formatting
         run: prettier --check "**/*.{md,yml,yaml,json}" --ignore-path .prettierignore
         continue-on-error: true
 
-      - name: Build Jekyll site
-        run: bundle exec jekyll build
+      - name: Build MkDocs site
+        run: python -m mkdocs build
         env:
-          JEKYLL_ENV: production
+          MKDOCS_ENV: production
 
       - name: Test HTML output
         run: |
           npm install -g html-validate
-          html-validate _site/**/*.html
+          html-validate site/**/*.html
         continue-on-error: true
 
   accessibility-check:
@@ -58,14 +57,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Ruby and build site
-        uses: ruby/setup-ruby@v1
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
-          ruby-version: '3.0'
-          bundler-cache: true
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
       - name: Build site
-        run: bundle exec jekyll build
+        run: python -m mkdocs build
 
       - name: Run accessibility tests
         uses: actions/setup-node@v4
@@ -77,7 +78,7 @@ jobs:
 
       - name: Test accessibility
         run: |
-          npx http-server _site -p 8080 &
+          npx http-server site -p 8080 &
           sleep 5
           axe http://localhost:8080 --exit
         continue-on-error: true
@@ -94,7 +95,7 @@ jobs:
         run: |
           echo "📊 SFB 1252 Workshop Series Metrics:"
           echo "Workshop count: $(find workshops -name 'README.md' | wc -l)"
-          echo "Total markdown files: $(find . -name '*.md' -not -path './_site/*' | wc -l)"
+          echo "Total markdown files: $(find . -name '*.md' -not -path './site/*' | wc -l)"
           echo "Images count: $(find . -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.gif' | wc -l)"
           echo ""
           echo "📋 Quality Checks Performed:"
