@@ -10,6 +10,7 @@ repo_name: 'sfb1252/talks'
 # Theme configuration
 theme:
   name: 'material'
+  version: '9.6.18'
   language: 'en'
   palette:
     primary: 'blue'
@@ -30,14 +31,15 @@ theme:
 # Plugins
 plugins:
   - search
-  - minify:
-      minify_html: true
-  - git-revision-date-localized:
-      enable_creation_date: true
-      type: timeago
-  - git-committers:
-      repository: sfb1252/talks
-      branch: main
+  # Disabled for debugging
+  # - minify:
+  #     minify_html: true
+  # - git-revision-date-localized:
+  #     enable_creation_date: true
+  #     type: timeago
+  # - git-committers:
+  #     repository: sfb1252/talks
+  #     branch: main
 
 # Customization
 extra:
