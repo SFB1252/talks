@@ -30,15 +30,14 @@ theme:
 # Plugins
 plugins:
   - search
-  # Temporarily disabled for debugging
-  # - minify:
-  #     minify_html: true
-  # - git-revision-date-localized:
-  #     enable_creation_date: true
-  #     type: timeago
-  # - git-committers:
-  #     repository: sfb1252/talks
-  #     branch: main
+  - minify:
+      minify_html: true
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+  - git-committers:
+      repository: sfb1252/talks
+      branch: main
 
 # Customization
 extra:
