@@ -1,0 +1,1 @@
+This folder contains the flyer for the 25/26 winter edition of our Research Data & Methods event series, created using Inkscape.
