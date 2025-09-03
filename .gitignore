@@ -93,7 +93,6 @@ yarn-error.log*
 # Private directories for discussion
 evaluation/
 participant-tracking/
-mobile-testing/
 
 # Personal development documentation (not for public repo)
 docs/development-setup.md
