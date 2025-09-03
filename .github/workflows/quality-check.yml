@@ -76,6 +76,9 @@ jobs:
       - name: Install axe-core
         run: npm install -g @axe-core/cli
 
+      - name: Install ChromeDriver
+        run: npx browser-driver-manager install chrome
+
       - name: Test accessibility
         run: |
           npx http-server site -p 8080 &
