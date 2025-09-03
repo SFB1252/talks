@@ -1,0 +1,1749 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Workshop series on research data management, ethics, literature management, and corpus linguistics tools.">
+      
+      
+      
+        <link rel="canonical" href="https://sfb1252.github.io/talks/website-development/">
+      
+      
+        <link rel="prev" href="../contributing/">
+      
+      
+        <link rel="next" href="../github-setup/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Website Development - Research Data and Methods Workshop Series</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#website-development-documentation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Research Data and Methods Workshop Series" class="md-header__button md-logo" aria-label="Research Data and Methods Workshop Series" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Research Data and Methods Workshop Series
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Website Development
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sfb1252/talks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sfb1252/talks
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../agenda/winter-2025-26-schedule/" class="md-tabs__link">
+          
+  
+  
+  Schedule
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../workshops/" class="md-tabs__link">
+          
+  
+  
+  Workshops
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../onboarding/" class="md-tabs__link">
+          
+  
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../contributing/" class="md-tabs__link">
+          
+  
+  
+  Documentation
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Research Data and Methods Workshop Series" class="md-nav__button md-logo" aria-label="Research Data and Methods Workshop Series" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Research Data and Methods Workshop Series
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sfb1252/talks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sfb1252/talks
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Schedule
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Schedule
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/winter-2025-26-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Winter 2025-26
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/summer-2025-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Summer 2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Workshops
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Workshops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/01-good-academic-practice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Good Academic Practice
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/02-research-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Research Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/03-ethics-approval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Ethics Approval
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/04-literature-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Literature Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/05-annotation-corpus-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - Annotation & Corpus Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/06-preregistration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Preregistration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/07-coding-r-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Coding in R Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/08-online-experiments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Online Experiments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Onboarding
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/additional-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Additional Links
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../retreat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Retreat Materials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Documentation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Website Development
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Website Development
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#development-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technology Stack
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technology Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Technologies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-assisted-development-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI-Assisted Development Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-initial-planning-and-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Initial Planning and Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ai-assisted-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. AI-Assisted Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-human-oversight-and-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Human Oversight and Review
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-structure-and-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Structure and Organization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-assistance-methodology" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Assistance Methodology
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Assistance Methodology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prompt-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Engineering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-control-measures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Control Measures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transparency-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transparency Standards
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#content-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Content Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Content Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workshop-materials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workshop Materials
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-and-hosting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment and Hosting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment and Hosting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-pages-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Pages Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintenance Workflow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lessons-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lessons Learned
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lessons Learned">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#effective-ai-collaboration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Effective AI Collaboration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technical-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Insights
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#planned-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Planned Enhancements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-integration-opportunities" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Integration Opportunities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ethical-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ethical Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ethical Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#academic-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Academic Integrity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-assurance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Assurance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contact-and-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contact and Support
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references-and-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      References and Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GitHub Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-assisted-development-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI-Assisted Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development-setup.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Development Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development-tools.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Development Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vscode-setup-summary.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VS Code Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matrix-admin-checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Matrix Admin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matrix-space-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Matrix Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="website-development-documentation">Website Development Documentation</h1>
+<p>This document provides a comprehensive overview of how this Research Data and
+Methods Workshop Series website was developed using AI-assisted tools and modern
+web development practices.</p>
+<h2 id="development-overview">Development Overview</h2>
+<p>This Jekyll-based website was created through a collaborative process between
+human researchers and AI assistance, specifically using Claude Sonnet 4 via
+OpenRouter with the Cline development environment. This approach demonstrates
+how AI tools can be effectively integrated into academic web development while
+maintaining quality standards and transparency.</p>
+<h2 id="technology-stack">Technology Stack</h2>
+<h3 id="core-technologies">Core Technologies</h3>
+<ul>
+<li><strong>Static Site Generator</strong>: Jekyll</li>
+<li><strong>Markup Language</strong>: Markdown with Liquid templating</li>
+<li><strong>Styling</strong>: CSS with responsive design principles</li>
+<li><strong>Hosting</strong>: GitHub Pages</li>
+<li><strong>Version Control</strong>: Git/GitHub</li>
+</ul>
+<h3 id="ai-assisted-development-tools">AI-Assisted Development Tools</h3>
+<ul>
+<li><strong>AI Model</strong>: Claude Sonnet 4 (Anthropic)</li>
+<li><strong>API Service</strong>: OpenRouter</li>
+<li><strong>Development Environment</strong>: Cline (VS Code extension)</li>
+<li><strong>Human Oversight</strong>: Continuous review and quality assurance</li>
+</ul>
+<h2 id="development-workflow">Development Workflow</h2>
+<h3 id="1-initial-planning-and-architecture">1. Initial Planning and Architecture</h3>
+<p>The development process began with human-defined requirements:</p>
+<ul>
+<li>Academic workshop series presentation</li>
+<li>Clear navigation and organization</li>
+<li>Responsive design for multiple devices</li>
+<li>Easy content management for workshop organizers</li>
+<li>Integration with existing academic workflows</li>
+</ul>
+<h3 id="2-ai-assisted-implementation">2. AI-Assisted Implementation</h3>
+<p><strong>Content Generation:</strong></p>
+<ul>
+<li>AI assistance in structuring workshop descriptions</li>
+<li>Template creation for consistent formatting</li>
+<li>Navigation menu organization</li>
+<li>Responsive layout implementation</li>
+</ul>
+<p><strong>Code Development:</strong></p>
+<ul>
+<li>Jekyll configuration and setup</li>
+<li>HTML template creation with Liquid syntax</li>
+<li>CSS styling for academic presentation</li>
+<li>Markdown content structuring</li>
+</ul>
+<p><strong>Quality Assurance:</strong></p>
+<ul>
+<li>Human review of all AI-generated content</li>
+<li>Testing across different devices and browsers</li>
+<li>Validation of academic standards and accessibility</li>
+<li>Iterative refinement based on feedback</li>
+</ul>
+<h3 id="3-human-oversight-and-review">3. Human Oversight and Review</h3>
+<p>Every AI-generated component underwent human review:</p>
+<ul>
+<li><strong>Content Accuracy</strong>: Verification of workshop information</li>
+<li><strong>Technical Quality</strong>: Code review and testing</li>
+<li><strong>Academic Standards</strong>: Compliance with institutional guidelines</li>
+<li><strong>Accessibility</strong>: Ensuring inclusive design principles</li>
+</ul>
+<h2 id="file-structure-and-organization">File Structure and Organization</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>rdm-workshop-series/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── _config.yml                    # Jekyll configuration
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── _includes/                     # Reusable template components
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   ├── head.html                 # HTML head section
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   ├── header.html               # Site navigation
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   ├── footer.html               # Site footer with disclaimer
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│   └── social.html               # Social media links
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├── _layouts/                      # Page templates
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   ├── default.html              # Base layout
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   └── workshop.html             # Workshop-specific layout
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>├── index.md                       # Homepage content
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>├── workshops/                     # Workshop materials
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>├── docs/                          # Documentation
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>├── onboarding/                    # Onboarding materials
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>└── resources/                     # Additional resources
+</code></pre></div>
+<h2 id="ai-assistance-methodology">AI Assistance Methodology</h2>
+<h3 id="prompt-engineering">Prompt Engineering</h3>
+<ul>
+<li>Clear, specific instructions for each development task</li>
+<li>Iterative refinement of requirements</li>
+<li>Context-aware requests building on previous work</li>
+<li>Academic tone and style guidelines</li>
+</ul>
+<h3 id="quality-control-measures">Quality Control Measures</h3>
+<ul>
+<li><strong>Human Review</strong>: Every AI output reviewed before implementation</li>
+<li><strong>Testing Protocol</strong>: Systematic testing of functionality and appearance</li>
+<li><strong>Version Control</strong>: Git tracking of all changes with descriptive commits</li>
+<li><strong>Documentation</strong>: Comprehensive documentation of AI assistance</li>
+</ul>
+<h3 id="transparency-standards">Transparency Standards</h3>
+<ul>
+<li>Clear attribution of AI assistance in development</li>
+<li>Documentation of AI tools and methods used</li>
+<li>Distinction between AI-generated and human-created content</li>
+<li>Open source approach for reproducibility</li>
+</ul>
+<h2 id="content-management">Content Management</h2>
+<h3 id="workshop-materials">Workshop Materials</h3>
+<ul>
+<li>Standardized README templates for each workshop</li>
+<li>Consistent metadata and formatting</li>
+<li>Integration with Jekyll's collection system</li>
+<li>Easy addition of new workshops and materials</li>
+</ul>
+<h3 id="documentation">Documentation</h3>
+<ul>
+<li>Comprehensive guides for contributors</li>
+<li>Technical documentation for maintenance</li>
+<li>Guidelines for AI-assisted development</li>
+<li>Best practices for academic web development</li>
+</ul>
+<h2 id="deployment-and-hosting">Deployment and Hosting</h2>
+<h3 id="github-pages-integration">GitHub Pages Integration</h3>
+<ul>
+<li>Automatic deployment from main branch</li>
+<li>Custom domain configuration capability</li>
+<li>SSL certificate management</li>
+<li>CDN distribution for performance</li>
+</ul>
+<h3 id="maintenance-workflow">Maintenance Workflow</h3>
+<ul>
+<li>Regular content updates through Git</li>
+<li>Automated Jekyll builds</li>
+<li>Link checking and validation</li>
+<li>Performance monitoring</li>
+</ul>
+<h2 id="lessons-learned">Lessons Learned</h2>
+<h3 id="effective-ai-collaboration">Effective AI Collaboration</h3>
+<ul>
+<li><strong>Clear Communication</strong>: Specific, detailed prompts yield better results</li>
+<li><strong>Iterative Development</strong>: Building complexity gradually works best</li>
+<li><strong>Human Expertise</strong>: AI complements but doesn't replace human judgment</li>
+<li><strong>Quality Assurance</strong>: Systematic review processes are essential</li>
+</ul>
+<h3 id="technical-insights">Technical Insights</h3>
+<ul>
+<li><strong>Jekyll Benefits</strong>: Excellent for academic content management</li>
+<li><strong>Responsive Design</strong>: Mobile-first approach ensures accessibility</li>
+<li><strong>Performance</strong>: Static sites provide fast, reliable user experience</li>
+<li><strong>Maintainability</strong>: Clear structure facilitates ongoing updates</li>
+</ul>
+<h2 id="future-development">Future Development</h2>
+<h3 id="planned-enhancements">Planned Enhancements</h3>
+<ul>
+<li>Interactive workshop scheduling system</li>
+<li>Integration with institutional calendar systems</li>
+<li>Enhanced search functionality</li>
+<li>Multi-language support</li>
+</ul>
+<h3 id="ai-integration-opportunities">AI Integration Opportunities</h3>
+<ul>
+<li>Automated content updates from workshop materials</li>
+<li>Intelligent tagging and categorization</li>
+<li>Accessibility improvements through AI analysis</li>
+<li>Performance optimization suggestions</li>
+</ul>
+<h2 id="ethical-considerations">Ethical Considerations</h2>
+<h3 id="academic-integrity">Academic Integrity</h3>
+<ul>
+<li>Transparent disclosure of AI assistance</li>
+<li>Proper attribution of all sources</li>
+<li>Compliance with institutional AI policies</li>
+<li>Respect for intellectual property rights</li>
+</ul>
+<h3 id="quality-assurance">Quality Assurance</h3>
+<ul>
+<li>Human oversight of all AI-generated content</li>
+<li>Regular review and validation processes</li>
+<li>Adherence to academic standards</li>
+<li>Continuous improvement based on feedback</li>
+</ul>
+<h2 id="contact-and-support">Contact and Support</h2>
+<p>For questions about the development process or technical implementation:</p>
+<ul>
+<li><strong>Technical Issues</strong>: Create an issue in the GitHub repository</li>
+<li><strong>Development Questions</strong>: Contact the development team</li>
+<li><strong>AI Methodology</strong>: Refer to the AI-assisted development guidelines</li>
+</ul>
+<h2 id="references-and-resources">References and Resources</h2>
+<ul>
+<li><a href="https://jekyllrb.com/docs/">Jekyll Documentation</a></li>
+<li><a href="https://docs.github.com/en/pages">GitHub Pages Guide</a></li>
+<li><a href="https://docs.anthropic.com/">Anthropic Claude Documentation</a></li>
+<li><a href="https://openrouter.ai/docs">OpenRouter API Documentation</a></li>
+<li><a href="https://www.w3.org/WAI/WCAG21/quickref/">Academic Web Development Best Practices</a></li>
+</ul>
+<hr />
+<p><em>This documentation serves as a model for transparent AI-assisted academic web
+development and is part of the SFB 1252 "Prominence in Language" open science
+initiative.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://sfb1252.uni-koeln.de" target="_blank" rel="noopener" title="CRC 1252 - University of Cologne" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M271.9 20.2c-9.8-5.6-21.9-5.6-31.8 0l-224 128c-12.6 7.2-18.8 22-15.1 36S17.5 208 32 208h32v208l-51.2 38.4C4.7 460.4 0 469.9 0 480c0 17.7 14.3 32 32 32h448c17.7 0 32-14.3 32-32 0-10.1-4.7-19.6-12.8-25.6L448 416V208h32c14.5 0 27.2-9.8 30.9-23.8s-2.5-28.8-15.1-36l-224-128zM400 208v208h-64V208zm-112 0v208h-64V208zm-112 0v208h-64V208zm80-112a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+        <script src="../javascript/custom.js"></script>
+      
+    
+  </body>
+</html>

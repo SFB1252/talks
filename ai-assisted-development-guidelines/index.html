@@ -1,0 +1,1817 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Workshop series on research data management, ethics, literature management, and corpus linguistics tools.">
+      
+      
+      
+        <link rel="canonical" href="https://sfb1252.github.io/talks/ai-assisted-development-guidelines/">
+      
+      
+        <link rel="prev" href="../github-setup/">
+      
+      
+        <link rel="next" href="../matrix-admin-checklist/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>AI-Assisted Development - Research Data and Methods Workshop Series</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai-assisted-development-guidelines" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Research Data and Methods Workshop Series" class="md-header__button md-logo" aria-label="Research Data and Methods Workshop Series" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Research Data and Methods Workshop Series
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AI-Assisted Development
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sfb1252/talks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sfb1252/talks
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../agenda/winter-2025-26-schedule/" class="md-tabs__link">
+          
+  
+  
+  Schedule
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../workshops/" class="md-tabs__link">
+          
+  
+  
+  Workshops
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../onboarding/" class="md-tabs__link">
+          
+  
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../contributing/" class="md-tabs__link">
+          
+  
+  
+  Documentation
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Research Data and Methods Workshop Series" class="md-nav__button md-logo" aria-label="Research Data and Methods Workshop Series" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Research Data and Methods Workshop Series
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sfb1252/talks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sfb1252/talks
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Schedule
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Schedule
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/winter-2025-26-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Winter 2025-26
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/summer-2025-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Summer 2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Workshops
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Workshops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/01-good-academic-practice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Good Academic Practice
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/02-research-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Research Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/03-ethics-approval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Ethics Approval
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/04-literature-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Literature Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/05-annotation-corpus-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - Annotation & Corpus Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/06-preregistration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Preregistration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/07-coding-r-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Coding in R Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/08-online-experiments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Online Experiments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Onboarding
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/additional-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Additional Links
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../retreat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Retreat Materials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Documentation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../website-development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Website Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GitHub Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    AI-Assisted Development
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI-Assisted Development
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Principles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-transparency-and-attribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Transparency and Attribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-human-oversight-and-quality-assurance" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Human Oversight and Quality Assurance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-academic-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Academic Integrity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Guidelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-development-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Development Planning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#during-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      During Development
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-development-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Post-Development Review
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specific-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specific Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specific Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#content-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Content Creation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Development
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-and-user-experience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design and User Experience
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risk-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Risk Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Risk Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Pitfalls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mitigation-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mitigation Strategies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#institutional-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Institutional Compliance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Institutional Compliance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#policy-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Policy Alignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reporting-and-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reporting and Documentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evolving-technology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evolving Technology
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#community-building" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community Building
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources-and-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources and References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources and References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ai-tools-and-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Tools and Platforms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#academic-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Academic Guidelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices Resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contact-and-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contact and Support
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development-setup.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Development Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development-tools.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Development Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vscode-setup-summary.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VS Code Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matrix-admin-checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Matrix Admin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matrix-space-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Matrix Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ai-assisted-development-guidelines">AI-Assisted Development Guidelines</h1>
+<p>This document establishes best practices and guidelines for using AI tools in
+academic web development projects, based on the experience of developing this
+Research Data and Methods Workshop Series website.</p>
+<h2 id="overview">Overview</h2>
+<p>AI-assisted development can significantly enhance productivity and quality in
+academic web projects when implemented with proper oversight, transparency, and
+ethical considerations. These guidelines ensure responsible use of AI tools
+while maintaining academic integrity and quality standards.</p>
+<h2 id="core-principles">Core Principles</h2>
+<h3 id="1-transparency-and-attribution">1. Transparency and Attribution</h3>
+<p><strong>Full Disclosure</strong></p>
+<ul>
+<li>Clearly document all AI tools used in the development process</li>
+<li>Specify AI models, versions, and service providers</li>
+<li>Distinguish between AI-generated and human-created content</li>
+<li>Maintain detailed records of AI assistance throughout the project</li>
+</ul>
+<p><strong>Proper Attribution</strong></p>
+<ul>
+<li>Credit AI tools in project documentation</li>
+<li>Include AI assistance in acknowledgments where appropriate</li>
+<li>Follow institutional guidelines for AI attribution</li>
+<li>Respect intellectual property and licensing requirements</li>
+</ul>
+<h3 id="2-human-oversight-and-quality-assurance">2. Human Oversight and Quality Assurance</h3>
+<p><strong>Continuous Review</strong></p>
+<ul>
+<li>Every AI-generated output must be reviewed by qualified humans</li>
+<li>Implement systematic quality control processes</li>
+<li>Validate technical accuracy and academic standards</li>
+<li>Ensure compliance with accessibility and usability requirements</li>
+</ul>
+<p><strong>Expert Validation</strong></p>
+<ul>
+<li>Subject matter experts should review content accuracy</li>
+<li>Technical experts should validate code quality and security</li>
+<li>Academic standards should be verified by qualified reviewers</li>
+<li>User experience should be tested with real users</li>
+</ul>
+<h3 id="3-academic-integrity">3. Academic Integrity</h3>
+<p><strong>Ethical Use</strong></p>
+<ul>
+<li>Comply with institutional AI policies and guidelines</li>
+<li>Respect copyright and intellectual property rights</li>
+<li>Maintain academic honesty in all AI-assisted work</li>
+<li>Follow disciplinary standards for AI use in research</li>
+</ul>
+<p><strong>Quality Standards</strong></p>
+<ul>
+<li>Maintain the same quality standards as non-AI-assisted work</li>
+<li>Ensure AI assistance enhances rather than replaces human expertise</li>
+<li>Validate all claims and information provided by AI tools</li>
+<li>Apply critical thinking to all AI-generated suggestions</li>
+</ul>
+<h2 id="implementation-guidelines">Implementation Guidelines</h2>
+<h3 id="pre-development-planning">Pre-Development Planning</h3>
+<p><strong>Define Scope and Boundaries</strong></p>
+<ul>
+<li>Clearly identify which tasks will use AI assistance</li>
+<li>Establish quality criteria and review processes</li>
+<li>Define roles and responsibilities for human oversight</li>
+<li>Set up documentation and tracking systems</li>
+</ul>
+<p><strong>Tool Selection</strong></p>
+<ul>
+<li>Choose AI tools appropriate for the specific tasks</li>
+<li>Evaluate tool capabilities and limitations</li>
+<li>Consider privacy and security implications</li>
+<li>Ensure compliance with institutional policies</li>
+</ul>
+<p><strong>Team Preparation</strong></p>
+<ul>
+<li>Train team members on AI tool usage and limitations</li>
+<li>Establish communication protocols for AI-assisted work</li>
+<li>Define review and approval processes</li>
+<li>Create templates for documentation and attribution</li>
+</ul>
+<h3 id="during-development">During Development</h3>
+<p><strong>Prompt Engineering Best Practices</strong></p>
+<ul>
+<li>Use clear, specific, and detailed prompts</li>
+<li>Provide sufficient context for AI understanding</li>
+<li>Break complex tasks into smaller, manageable components</li>
+<li>Iterate and refine prompts based on output quality</li>
+</ul>
+<p><strong>Quality Control Workflow</strong></p>
+<ol>
+<li><strong>AI Generation</strong>: Use AI tools to create initial content or code</li>
+<li><strong>Initial Review</strong>: Quick assessment of output relevance and quality</li>
+<li><strong>Technical Validation</strong>: Detailed review of technical accuracy</li>
+<li><strong>Content Review</strong>: Verification of factual accuracy and appropriateness</li>
+<li><strong>Integration Testing</strong>: Ensure compatibility with existing systems</li>
+<li><strong>Final Approval</strong>: Sign-off by qualified human reviewer</li>
+</ol>
+<p><strong>Documentation Requirements</strong></p>
+<ul>
+<li>Record all AI tools and versions used</li>
+<li>Document prompts and AI responses for significant contributions</li>
+<li>Track iterations and refinements</li>
+<li>Maintain version control with clear commit messages</li>
+</ul>
+<h3 id="post-development-review">Post-Development Review</h3>
+<p><strong>Comprehensive Assessment</strong></p>
+<ul>
+<li>Evaluate overall quality and effectiveness of AI assistance</li>
+<li>Identify areas where AI was most and least helpful</li>
+<li>Document lessons learned and best practices</li>
+<li>Assess compliance with guidelines and standards</li>
+</ul>
+<p><strong>Ongoing Maintenance</strong></p>
+<ul>
+<li>Establish procedures for updating AI-assisted content</li>
+<li>Plan for regular review and validation cycles</li>
+<li>Monitor for changes in AI tool capabilities or policies</li>
+<li>Update documentation and attribution as needed</li>
+</ul>
+<h2 id="specific-use-cases">Specific Use Cases</h2>
+<h3 id="content-creation">Content Creation</h3>
+<p><strong>Appropriate Uses</strong></p>
+<ul>
+<li>Generating initial drafts of documentation</li>
+<li>Creating templates and boilerplate content</li>
+<li>Structuring information and organizing content</li>
+<li>Improving clarity and readability of existing text</li>
+</ul>
+<p><strong>Quality Assurance</strong></p>
+<ul>
+<li>Verify factual accuracy of all AI-generated content</li>
+<li>Ensure consistency with institutional voice and style</li>
+<li>Check for appropriate academic tone and language</li>
+<li>Validate citations and references</li>
+</ul>
+<h3 id="code-development">Code Development</h3>
+<p><strong>Appropriate Uses</strong></p>
+<ul>
+<li>Generating boilerplate code and templates</li>
+<li>Creating CSS styles and responsive layouts</li>
+<li>Implementing standard functionality and features</li>
+<li>Debugging and optimization suggestions</li>
+</ul>
+<p><strong>Quality Assurance</strong></p>
+<ul>
+<li>Review code for security vulnerabilities</li>
+<li>Test functionality across different browsers and devices</li>
+<li>Validate accessibility compliance</li>
+<li>Ensure code maintainability and documentation</li>
+</ul>
+<h3 id="design-and-user-experience">Design and User Experience</h3>
+<p><strong>Appropriate Uses</strong></p>
+<ul>
+<li>Creating responsive layout structures</li>
+<li>Generating color schemes and typography suggestions</li>
+<li>Implementing accessibility features</li>
+<li>Optimizing user interface elements</li>
+</ul>
+<p><strong>Quality Assurance</strong></p>
+<ul>
+<li>Test with real users and gather feedback</li>
+<li>Validate accessibility with automated and manual testing</li>
+<li>Ensure cross-platform compatibility</li>
+<li>Review against design principles and best practices</li>
+</ul>
+<h2 id="risk-management">Risk Management</h2>
+<h3 id="common-pitfalls">Common Pitfalls</h3>
+<p><strong>Over-Reliance on AI</strong></p>
+<ul>
+<li>Maintain human expertise and critical thinking</li>
+<li>Avoid accepting AI suggestions without proper review</li>
+<li>Ensure human understanding of all implemented solutions</li>
+<li>Balance efficiency gains with quality requirements</li>
+</ul>
+<p><strong>Inadequate Review</strong></p>
+<ul>
+<li>Implement systematic review processes</li>
+<li>Allocate sufficient time for quality assurance</li>
+<li>Involve multiple reviewers for complex components</li>
+<li>Document review decisions and rationale</li>
+</ul>
+<p><strong>Attribution Failures</strong></p>
+<ul>
+<li>Maintain detailed records of AI assistance</li>
+<li>Follow institutional attribution requirements</li>
+<li>Update documentation as AI contributions evolve</li>
+<li>Ensure transparency in all project communications</li>
+</ul>
+<h3 id="mitigation-strategies">Mitigation Strategies</h3>
+<p><strong>Robust Review Processes</strong></p>
+<ul>
+<li>Multi-stage review with different perspectives</li>
+<li>Automated testing and validation tools</li>
+<li>Regular quality audits and assessments</li>
+<li>Continuous improvement of review procedures</li>
+</ul>
+<p><strong>Clear Documentation</strong></p>
+<ul>
+<li>Comprehensive tracking of AI tool usage</li>
+<li>Detailed attribution and acknowledgment practices</li>
+<li>Regular updates to documentation and guidelines</li>
+<li>Transparent communication with stakeholders</li>
+</ul>
+<p><strong>Ongoing Education</strong></p>
+<ul>
+<li>Stay current with AI tool developments and best practices</li>
+<li>Participate in professional development and training</li>
+<li>Share experiences and lessons learned with the community</li>
+<li>Contribute to the development of field-wide standards</li>
+</ul>
+<h2 id="institutional-compliance">Institutional Compliance</h2>
+<h3 id="policy-alignment">Policy Alignment</h3>
+<p><strong>Institutional Requirements</strong></p>
+<ul>
+<li>Review and comply with institutional AI policies</li>
+<li>Align with academic integrity standards</li>
+<li>Follow data privacy and security requirements</li>
+<li>Respect intellectual property guidelines</li>
+</ul>
+<p><strong>Disciplinary Standards</strong></p>
+<ul>
+<li>Adhere to field-specific guidelines for AI use</li>
+<li>Follow professional organization recommendations</li>
+<li>Maintain consistency with peer practices</li>
+<li>Contribute to the development of community standards</li>
+</ul>
+<h3 id="reporting-and-documentation">Reporting and Documentation</h3>
+<p><strong>Project Documentation</strong></p>
+<ul>
+<li>Include AI assistance in project reports and documentation</li>
+<li>Provide detailed methodology descriptions</li>
+<li>Document quality assurance processes</li>
+<li>Share lessons learned and best practices</li>
+</ul>
+<p><strong>Institutional Reporting</strong></p>
+<ul>
+<li>Follow institutional requirements for AI use reporting</li>
+<li>Participate in policy development and review processes</li>
+<li>Contribute to institutional learning and improvement</li>
+<li>Support the development of institutional best practices</li>
+</ul>
+<h2 id="future-considerations">Future Considerations</h2>
+<h3 id="evolving-technology">Evolving Technology</h3>
+<p><strong>Staying Current</strong></p>
+<ul>
+<li>Monitor developments in AI tools and capabilities</li>
+<li>Evaluate new tools and techniques as they become available</li>
+<li>Update guidelines and practices based on technological advances</li>
+<li>Participate in professional communities and discussions</li>
+</ul>
+<p><strong>Adaptation and Improvement</strong></p>
+<ul>
+<li>Regularly review and update these guidelines</li>
+<li>Incorporate feedback from users and stakeholders</li>
+<li>Learn from successes and failures in AI-assisted projects</li>
+<li>Contribute to the broader conversation about AI in academia</li>
+</ul>
+<h3 id="community-building">Community Building</h3>
+<p><strong>Knowledge Sharing</strong></p>
+<ul>
+<li>Share experiences and best practices with the academic community</li>
+<li>Contribute to conferences, publications, and professional discussions</li>
+<li>Collaborate with other institutions on AI guidelines and standards</li>
+<li>Support the development of field-wide best practices</li>
+</ul>
+<p><strong>Mentorship and Training</strong></p>
+<ul>
+<li>Train new team members in AI-assisted development practices</li>
+<li>Mentor other institutions in implementing AI guidelines</li>
+<li>Contribute to educational resources and training materials</li>
+<li>Support the development of AI literacy in academia</li>
+</ul>
+<h2 id="resources-and-references">Resources and References</h2>
+<h3 id="ai-tools-and-platforms">AI Tools and Platforms</h3>
+<ul>
+<li><a href="https://www.anthropic.com/">Anthropic Claude</a></li>
+<li><a href="https://openrouter.ai/">OpenRouter API</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev">Cline VS Code Extension</a></li>
+</ul>
+<h3 id="academic-guidelines">Academic Guidelines</h3>
+<ul>
+<li><a href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics">UNESCO AI Ethics Recommendation</a></li>
+<li><a href="https://www.acm.org/code-of-ethics">ACM Code of Ethics</a></li>
+<li><a href="https://standards.ieee.org/initiatives/artificial-intelligence-systems/">IEEE Standards for AI</a></li>
+</ul>
+<h3 id="best-practices-resources">Best Practices Resources</h3>
+<ul>
+<li><a href="https://www.partnershiponai.org/">Partnership on AI</a></li>
+<li><a href="https://inventory.algorithmwatch.org/">AI Ethics Guidelines Global Inventory</a></li>
+<li><a href="https://ai.google/responsibilities/responsible-ai-practices/">Responsible AI Practices</a></li>
+</ul>
+<h2 id="contact-and-support">Contact and Support</h2>
+<p>For questions about these guidelines or AI-assisted development practices:</p>
+<ul>
+<li><strong>Guidelines Questions</strong>: Contact the development team</li>
+<li><strong>Institutional Policy</strong>: Consult with institutional AI policy offices</li>
+<li><strong>Technical Support</strong>: Refer to tool-specific documentation and support</li>
+<li><strong>Community Discussion</strong>: Participate in relevant professional forums</li>
+</ul>
+<hr />
+<p><em>These guidelines are part of the SFB 1252 "Prominence in Language" commitment
+to transparent and responsible use of AI in academic research and development.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://sfb1252.uni-koeln.de" target="_blank" rel="noopener" title="CRC 1252 - University of Cologne" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M271.9 20.2c-9.8-5.6-21.9-5.6-31.8 0l-224 128c-12.6 7.2-18.8 22-15.1 36S17.5 208 32 208h32v208l-51.2 38.4C4.7 460.4 0 469.9 0 480c0 17.7 14.3 32 32 32h448c17.7 0 32-14.3 32-32 0-10.1-4.7-19.6-12.8-25.6L448 416V208h32c14.5 0 27.2-9.8 30.9-23.8s-2.5-28.8-15.1-36l-224-128zM400 208v208h-64V208zm-112 0v208h-64V208zm-112 0v208h-64V208zm80-112a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+        <script src="../javascript/custom.js"></script>
+      
+    
+  </body>
+</html>

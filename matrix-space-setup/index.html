@@ -1,0 +1,1900 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Workshop series on research data management, ethics, literature management, and corpus linguistics tools.">
+      
+      
+      
+        <link rel="canonical" href="https://sfb1252.github.io/talks/matrix-space-setup/">
+      
+      
+        <link rel="prev" href="../matrix-admin-checklist/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Matrix Setup - Research Data and Methods Workshop Series</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-join-the-sfb-1252-talks-workshops-matrix-space" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Research Data and Methods Workshop Series" class="md-header__button md-logo" aria-label="Research Data and Methods Workshop Series" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Research Data and Methods Workshop Series
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Matrix Setup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sfb1252/talks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sfb1252/talks
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../agenda/winter-2025-26-schedule/" class="md-tabs__link">
+          
+  
+  
+  Schedule
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../workshops/" class="md-tabs__link">
+          
+  
+  
+  Workshops
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../onboarding/" class="md-tabs__link">
+          
+  
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../contributing/" class="md-tabs__link">
+          
+  
+  
+  Documentation
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Research Data and Methods Workshop Series" class="md-nav__button md-logo" aria-label="Research Data and Methods Workshop Series" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Research Data and Methods Workshop Series
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sfb1252/talks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sfb1252/talks
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Schedule
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Schedule
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/winter-2025-26-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Winter 2025-26
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agenda/summer-2025-schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Summer 2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Workshops
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Workshops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/01-good-academic-practice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01 - Good Academic Practice
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/02-research-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02 - Research Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/03-ethics-approval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03 - Ethics Approval
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/04-literature-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04 - Literature Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/05-annotation-corpus-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05 - Annotation & Corpus Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/06-preregistration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06 - Preregistration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/07-coding-r-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07 - Coding in R Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshops/08-online-experiments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08 - Online Experiments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Onboarding
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/additional-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Additional Links
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../retreat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Retreat Materials
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Documentation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../website-development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Website Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GitHub Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-assisted-development-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI-Assisted Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development-setup.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Development Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development-tools.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Development Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vscode-setup-summary.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VS Code Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matrix-admin-checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Matrix Admin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Matrix Setup
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Matrix Setup
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start Guide
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qr-code-for-sfb-1252-talks-matrix-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      QR Code for SFB 1252 Talks Matrix Space
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guidelines-for-the-matrix-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guidelines for the Matrix Space
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guidelines for the Matrix Space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#community-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community Guidelines
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is Matrix?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-already-have-a-university-of-cologne-matrix-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      I Already Have a University of Cologne Matrix Account
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-do-not-have-a-matrix-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      I Do Not Have a Matrix Account
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I Do Not Have a Matrix Account">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#university-of-cologne-staff-members" class="md-nav__link">
+    <span class="md-ellipsis">
+      University of Cologne Staff Members
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-participants-and-guests" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Participants and Guests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix-clients-and-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matrix Clients and Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Matrix Clients and Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mobile-experience-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      📱 Mobile Experience Tips
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notification-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notification Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notification Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#university-staff-unikoeln-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      University Staff (uni.koeln server)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#browser-notification-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Browser Notification Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frequently-asked-questions-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frequently Asked Questions (FAQ)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Frequently Asked Questions (FAQ)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-matrix-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a Matrix Space?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-matrix-secure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is Matrix secure?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-i-use-multiple-devices-with-my-matrix-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can I use multiple devices with my Matrix account?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-long-are-chat-histories-stored" class="md-nav__link">
+    <span class="md-ellipsis">
+      How long are chat histories stored?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#who-can-see-my-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Who can see my messages?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-find-specific-content-or-people" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I find specific content or people?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-if-i-need-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      What if I need help?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-invitation-link-doesnt-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      The invitation link doesn't work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-get-a-permissions-error-when-joining" class="md-nav__link">
+    <span class="md-ellipsis">
+      I get a permissions error when joining
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#im-not-receiving-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      I'm not receiving notifications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#space-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Space Organization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started Checklist
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="how-to-join-the-sfb-1252-talks-workshops-matrix-space">How to Join the SFB 1252 Talks &amp; Workshops Matrix Space</h1>
+<p>Quick Start Guide for Research Data and Methods Workshops</p>
+<h2 id="quick-start-guide">Quick Start Guide</h2>
+<ol>
+<li><strong>Have a Matrix account</strong>: Use your existing University of Cologne account or
+   create one (see options below)</li>
+<li><strong>Join via link</strong>: Click this invitation link: <code>#sfb1252-talks:uni.koeln</code> or
+   scan the QR code below</li>
+<li><strong>Choose client</strong>: Select your preferred Matrix client (Element recommended)</li>
+<li><strong>Accept invitation</strong>: Click "Join" or "Accept" when prompted</li>
+<li><strong>Explore</strong>: Join rooms within the space that interest you</li>
+</ol>
+<h2 id="qr-code-for-sfb-1252-talks-matrix-space">QR Code for SFB 1252 Talks Matrix Space</h2>
+<!-- TODO: Generate QR code for the space invitation link -->
+
+<p><em>Scan this QR code with your mobile device to join the SFB 1252 Talks &amp;
+Workshops Matrix space</em></p>
+<h2 id="guidelines-for-the-matrix-space">Guidelines for the Matrix Space</h2>
+<p>The purpose of this Matrix space is to foster connection, exchange, and support
+among participants of our Research Data and Methods workshops and talks. We aim
+to create a respectful, inclusive, and supportive environment where everyone
+feels comfortable sharing ideas, knowledge, successes, and questions related to
+research methods and data management.</p>
+<p>To ensure a positive experience for all, please follow these community
+guidelines. Note that inappropriate posts may be moderated (deleted or hidden)
+by moderators and violations of these guidelines may result in exclusion from
+the platform.</p>
+<h3 id="community-guidelines">Community Guidelines</h3>
+<ol>
+<li>
+<p><strong>Be Respectful and Inclusive</strong></p>
+</li>
+<li>
+<p>Treat all members with courtesy and respect</p>
+</li>
+<li>Disagreement is fine, but personal attacks, harassment, or any form of
+     discrimination will not be tolerated</li>
+<li>
+<p>Welcome newcomers and help them feel included</p>
+</li>
+<li>
+<p><strong>Stay Research-Focused</strong></p>
+</li>
+<li>
+<p>Keep discussions relevant to research data management, methods, and
+     academic practice</p>
+</li>
+<li>Use designated channels for specific topics (see room descriptions)</li>
+<li>
+<p>Off-topic conversations should be in the designated general chat room</p>
+</li>
+<li>
+<p><strong>Protect Privacy and Confidentiality</strong></p>
+</li>
+<li>
+<p>Do not share personal or confidential research data without consent</p>
+</li>
+<li>Be mindful of sharing information about ongoing research projects</li>
+<li>
+<p>Respect institutional confidentiality policies</p>
+</li>
+<li>
+<p><strong>Be Constructive and Helpful</strong></p>
+</li>
+<li>
+<p>Share resources, experiences, and knowledge that benefit the community</p>
+</li>
+<li>Ask questions freely - no question is too basic</li>
+<li>
+<p>Provide constructive feedback and support to fellow researchers</p>
+</li>
+<li>
+<p><strong>Use Clear Communication</strong></p>
+</li>
+<li>
+<p>Be concise and clear in your messages</p>
+</li>
+<li>Use formatting (bullet points, paragraphs) for readability</li>
+<li>
+<p>Avoid voice messages in favor of text when possible</p>
+</li>
+<li>
+<p><strong>No Spam or Self-Promotion</strong></p>
+</li>
+<li>
+<p>Avoid unsolicited advertisements or excessive self-promotion</p>
+</li>
+<li>Sharing relevant academic events, resources, or opportunities is welcome
+     when helpful</li>
+<li>
+<p>Keep announcements in the appropriate channels</p>
+</li>
+<li>
+<p><strong>Use Threads and Mentions Appropriately</strong></p>
+</li>
+<li>
+<p>Use threads for follow-up discussions to keep conversations organized</p>
+</li>
+<li>Mention individuals (@username) only when necessary</li>
+<li>
+<p>Use @room sparingly and only for important announcements</p>
+</li>
+<li>
+<p><strong>Report Issues</strong></p>
+</li>
+<li>Report inappropriate behavior privately to moderators</li>
+<li>Do not address behavioral issues publicly in the channels</li>
+</ol>
+<p><em>Last modified: September 3, 2025</em></p>
+<h2 id="what-is-matrix">What Is Matrix?</h2>
+<p>Matrix is a federated communication platform where you can use any Matrix
+account to participate in chats across the network. The University of Cologne
+provides Matrix as an official communication platform for all staff members with
+personal accounts.</p>
+<h2 id="i-already-have-a-university-of-cologne-matrix-account">I Already Have a University of Cologne Matrix Account</h2>
+<p>If you already have a UoC Matrix account, joining the SFB 1252 space is
+straightforward:</p>
+<ol>
+<li>
+<p><strong>Use the invitation link</strong>: Click this link to open the Matrix space
+   invitation: <code>#sfb1252-talks:uni.koeln</code></p>
+</li>
+<li>
+<p><strong>Choose your client</strong>: When you click the link, you will be asked which
+   Matrix client you want to use:</p>
+</li>
+<li>
+<p><strong>FluffyChat</strong>: Excellent for space navigation with a modern interface</p>
+</li>
+<li><strong>Element Web</strong>: Available at https://chat.extern.uni-koeln.de/ for browser
+     access</li>
+<li>
+<p>If you already have a preferred client installed, select it from the
+     options</p>
+</li>
+<li>
+<p><strong>Authorization</strong>: You may need to authorize your client to open Matrix links
+   if this is your first time</p>
+</li>
+<li>
+<p><strong>Accept the invitation</strong>: Once the link opens in your client, you will see
+   an invitation to join the SFB 1252 space. Click "Join" or "Accept"</p>
+</li>
+<li>
+<p><strong>Explore the space</strong>: After joining, you'll see our three main rooms:</p>
+</li>
+<li><strong>SFB General</strong>: Welcome, announcements, and general SFB 1252 discussions</li>
+<li><strong>Research Data Management</strong>: RDM topics, tools, and best practices</li>
+<li><strong>Katzentisch</strong>: Off-topic chat, memes, and general fun (because every
+     serious research group needs a silly corner)</li>
+</ol>
+<p>💡 <strong>Client Recommendations</strong>:</p>
+<ul>
+<li><strong>FluffyChat</strong>: Excellent space support with a modern, user-friendly interface</li>
+<li><strong>Element</strong>: Full-featured reference client, available at
+  https://chat.extern.uni-koeln.de/</li>
+<li>Both clients work great with Matrix Spaces and the uni.koeln server</li>
+</ul>
+<h2 id="i-do-not-have-a-matrix-account">I Do Not Have a Matrix Account</h2>
+<h3 id="university-of-cologne-staff-members">University of Cologne Staff Members</h3>
+<p><strong>Recommended Option</strong>: Use your institutional Matrix account</p>
+<ol>
+<li><strong>Access the university Matrix server</strong>: Go to
+   https://chat.extern.uni-koeln.de/</li>
+<li><strong>Login process</strong>:</li>
+<li>Select "Login on own server (not matrix.org)"</li>
+<li>Enter server address: <code>uni.koeln</code></li>
+<li>Choose "SAML Login"</li>
+<li>Log in with your university personnel account and password</li>
+<li><strong>Client setup</strong>: Install Element or another Matrix client and configure it
+   with:</li>
+<li>Homeserver: <code>uni.koeln</code></li>
+<li>Login method: SAML/SSO</li>
+<li><strong>Join the space</strong>: Use the invitation link above after logging in</li>
+</ol>
+<h3 id="external-participants-and-guests">External Participants and Guests</h3>
+<p>If you're not a University of Cologne staff member, you can still join using
+these options:</p>
+<ol>
+<li>
+<p><strong>Academic Cloud option</strong> (for university and research institution members):</p>
+</li>
+<li>
+<p>If your institution provides Matrix accounts, use those</p>
+</li>
+<li>For Max Planck Society (MPG) members and others: visit
+     chat.academiccloud.de</li>
+<li>
+<p>Log in with your institutional credentials via federated SSO</p>
+</li>
+<li>
+<p><strong>Create a free account</strong> on public homeservers:</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Homeserver</th>
+<th>Description</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>matrix.org</td>
+<td>The main public homeserver</td>
+<td><a href="https://app.element.io/#/register">Register</a></td>
+</tr>
+<tr>
+<td>nitro.chat</td>
+<td>An alternative public homeserver</td>
+<td><a href="https://app.nitro.chat/#/register">Register</a></td>
+</tr>
+<tr>
+<td>tchncs.de</td>
+<td>A community-run homeserver</td>
+<td><a href="https://app.tchncs.de/#/register">Register</a></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><strong>After creating your account</strong>: Use the invitation link at the beginning of
+   this guide to join the SFB 1252 Matrix space</li>
+</ol>
+<h2 id="matrix-clients-and-applications">Matrix Clients and Applications</h2>
+<p>You can access Matrix through various client applications:</p>
+<table>
+<thead>
+<tr>
+<th>Client</th>
+<th>Operating Systems</th>
+<th>Key Features</th>
+<th>Links</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FluffyChat</td>
+<td>Windows, macOS, Linux, iOS, Android, Web</td>
+<td>User-friendly design, excellent space support, simplified interface</td>
+<td><a href="https://fluffychat.im/web/">Web</a>, <a href="https://fluffychat.im/">Download</a></td>
+</tr>
+<tr>
+<td>Element</td>
+<td>Windows, macOS, Linux, iOS, Android, Web</td>
+<td>Full feature support with E2EE, Reference client</td>
+<td><a href="https://chat.extern.uni-koeln.de/">Web</a>, <a href="https://element.io/get-started">Download</a></td>
+</tr>
+<tr>
+<td>Nheko</td>
+<td>Windows, macOS, Linux</td>
+<td>Native desktop app, Good performance</td>
+<td><a href="https://nheko-reborn.github.io/">Download</a></td>
+</tr>
+<tr>
+<td>SchildiChat</td>
+<td>Windows, macOS, Linux, Android, Web</td>
+<td>Based on Element, UI improvements</td>
+<td><a href="https://app.schildi.chat/">Web</a>, <a href="https://schildi.chat/">Download</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="mobile-experience-tips">📱 Mobile Experience Tips</h3>
+<ul>
+<li><strong>Performance</strong>: Native apps like FluffyChat provide excellent performance and
+  reliable push notifications</li>
+<li><strong>FluffyChat Mobile</strong>: Particularly good space navigation and modern UI on
+  mobile devices</li>
+<li><strong>Element Mobile</strong>: Also available from app stores with full functionality</li>
+<li><strong>University setup</strong>: Use server address <code>uni.koeln</code> when setting up any
+  mobile client</li>
+<li><strong>Notifications</strong>: Both FluffyChat and Element handle notifications well on
+  mobile</li>
+</ul>
+<h2 id="notification-configuration">Notification Configuration</h2>
+<h3 id="university-staff-unikoeln-server">University Staff (uni.koeln server)</h3>
+<p>The University of Cologne Matrix server has end-to-end encryption (E2EE) enabled
+by default in all rooms. This provides enhanced security but requires proper
+setup:</p>
+<ol>
+<li><strong>Security Key Setup</strong>: After first login, immediately create and save your
+   security key in a password manager</li>
+<li><strong>Device Verification</strong>: New devices/clients must be verified using your
+   security key or an existing active session</li>
+<li><strong>Client Choice</strong>: Both FluffyChat and Element handle E2EE and notifications
+   well - choose based on your preference</li>
+<li><strong>Desktop Client Recommended</strong>: Install either FluffyChat or Element desktop
+   client for reliable notifications</li>
+</ol>
+<h3 id="browser-notification-issues">Browser Notification Issues</h3>
+<p>Common problems with browser notifications:</p>
+<ul>
+<li>Notifications don't work when the browser is closed</li>
+<li>Permissions must be explicitly granted when prompted</li>
+<li>Unreliable on some operating systems</li>
+</ul>
+<p><strong>Troubleshooting steps</strong>:</p>
+<ul>
+<li>Check browser notification permissions in settings</li>
+<li>Ensure system "Do Not Disturb" mode is disabled</li>
+<li>For reliable notifications, install FluffyChat or Element desktop client</li>
+</ul>
+<h2 id="frequently-asked-questions-faq">Frequently Asked Questions (FAQ)</h2>
+<h3 id="what-is-a-matrix-space">What is a Matrix Space?</h3>
+<p>A Space is similar to a Discord server or Slack workspace - a collection of
+related rooms organized in a hierarchy for our workshop community.</p>
+<h3 id="is-matrix-secure">Is Matrix secure?</h3>
+<p>Yes, the University of Cologne Matrix installation offers end-to-end encryption
+for all communications. This means only you and the intended recipients can read
+your messages.</p>
+<h3 id="can-i-use-multiple-devices-with-my-matrix-account">Can I use multiple devices with my Matrix account?</h3>
+<p>Yes, you can log in from multiple devices simultaneously. Messages and history
+will sync across all devices. New devices must be verified for security.</p>
+<h3 id="how-long-are-chat-histories-stored">How long are chat histories stored?</h3>
+<p>According to university policy, chat histories in Matrix are stored for up to
+six months before being deleted. This applies to all chat types (groups, direct
+messages, etc.).</p>
+<h3 id="who-can-see-my-messages">Who can see my messages?</h3>
+<ul>
+<li>Messages in public rooms within the space can be seen by all space members</li>
+<li>Direct messages are only visible to participants and are encrypted</li>
+<li>All messages are tied to your Matrix ID (MXID)</li>
+</ul>
+<h3 id="how-do-i-find-specific-content-or-people">How do I find specific content or people?</h3>
+<p>Use the search function in your Matrix client. Both FluffyChat and Element have
+good search capabilities - look for the search icon or use keyboard shortcuts
+(Ctrl+F or Cmd+F in Element).</p>
+<h3 id="what-if-i-need-help">What if I need help?</h3>
+<ul>
+<li>For university Matrix technical support: Contact the
+  <a href="https://itcc.uni-koeln.de/helpdesk">ITCC Helpdesk</a></li>
+<li>For space-specific questions: Ask in the #general room or contact space
+  moderators</li>
+<li>For workshop content questions: Use the #q-a room within the space</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="the-invitation-link-doesnt-work">The invitation link doesn't work</h3>
+<ul>
+<li>Try manually searching for <code>#sfb1252-talks:uni.koeln</code> in your client's room
+  directory</li>
+<li>Ensure you're logged into the correct homeserver (<code>uni.koeln</code> for university
+  staff)</li>
+<li>Clear your browser cache if using the web client</li>
+</ul>
+<h3 id="i-get-a-permissions-error-when-joining">I get a permissions error when joining</h3>
+<ul>
+<li>Verify your Matrix account is properly set up</li>
+<li>Contact a space administrator for assistance</li>
+<li>Check if your homeserver can federate with uni.koeln</li>
+</ul>
+<h3 id="im-not-receiving-notifications">I'm not receiving notifications</h3>
+<ul>
+<li>Install a desktop client instead of using the browser</li>
+<li>Check your device's notification settings</li>
+<li>Verify your security key setup if using the university server</li>
+</ul>
+<hr />
+<h2 id="space-organization">Space Organization</h2>
+<p>Our Matrix space is organized into three focused rooms:</p>
+<ul>
+<li><strong>🏛️ SFB General</strong>: Welcome, important announcements, general SFB 1252
+  discussions, and workshop-related topics</li>
+<li><strong>📊 Research Data Management</strong>: Dedicated space for RDM discussions, tools,
+  best practices, and data management questions</li>
+<li><strong>🐱 Katzentisch</strong>: Off-topic conversations, memes, coffee break chat, and
+  anything that doesn't fit elsewhere (every serious research group needs a
+  place to be silly)</li>
+</ul>
+<h2 id="getting-started-checklist">Getting Started Checklist</h2>
+<ul>
+<li>[ ] Create or access your Matrix account</li>
+<li>[ ] Install a Matrix client (Element recommended)</li>
+<li>[ ] Join the SFB 1252 Talks &amp; Workshops space</li>
+<li>[ ] Set up notifications and security features</li>
+<li>[ ] Introduce yourself in the #general room</li>
+<li>[ ] Join rooms that match your interests</li>
+<li>[ ] Review the community guidelines</li>
+</ul>
+<hr />
+<p><em>This guide is maintained by the SFB 1252 Research Data and Methods team. For
+questions or suggestions, please contact us through the Matrix space or via our
+usual communication channels.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://sfb1252.uni-koeln.de" target="_blank" rel="noopener" title="CRC 1252 - University of Cologne" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M271.9 20.2c-9.8-5.6-21.9-5.6-31.8 0l-224 128c-12.6 7.2-18.8 22-15.1 36S17.5 208 32 208h32v208l-51.2 38.4C4.7 460.4 0 469.9 0 480c0 17.7 14.3 32 32 32h448c17.7 0 32-14.3 32-32 0-10.1-4.7-19.6-12.8-25.6L448 416V208h32c14.5 0 27.2-9.8 30.9-23.8s-2.5-28.8-15.1-36l-224-128zM400 208v208h-64V208zm-112 0v208h-64V208zm-112 0v208h-64V208zm80-112a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+        <script src="../javascript/custom.js"></script>
+      
+    
+  </body>
+</html>
