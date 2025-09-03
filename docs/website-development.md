@@ -1,32 +1,25 @@
 # Website Development Documentation
 
-This document provides a comprehensive overview of how this Research Data and
-Methods Workshop Series website was developed using AI-assisted tools and modern
-web development practices.
+This document provides a comprehensive overview of how this Research Data and Methods Workshop Series website was developed using AI-assisted tools and modern web development practices.
 
 ## Development Overview
 
-This Jekyll-based website was created through a collaborative process between
-human researchers and AI assistance, specifically using Claude Sonnet 4 via
-OpenRouter with the Cline development environment. This approach demonstrates
-how AI tools can be effectively integrated into academic web development while
-maintaining quality standards and transparency.
+This MkDocs-based website was created through a collaborative process between human researchers and AI assistance, specifically using Grok via xAI with the VS Code development environment. This approach demonstrates how AI tools can be effectively integrated into academic web development while maintaining quality standards and transparency.
 
 ## Technology Stack
 
 ### Core Technologies
 
-- **Static Site Generator**: Jekyll
-- **Markup Language**: Markdown with Liquid templating
-- **Styling**: CSS with responsive design principles
+- **Static Site Generator**: MkDocs
+- **Markup Language**: Markdown with Python-Markdown extensions
+- **Styling**: Material theme with custom CSS
 - **Hosting**: GitHub Pages
 - **Version Control**: Git/GitHub
 
 ### AI-Assisted Development Tools
 
-- **AI Model**: Claude Sonnet 4 (Anthropic)
-- **API Service**: OpenRouter
-- **Development Environment**: Cline (VS Code extension)
+- **AI Model**: Grok (xAI)
+- **Development Environment**: VS Code
 - **Human Oversight**: Continuous review and quality assurance
 
 ## Development Workflow
@@ -52,10 +45,10 @@ The development process began with human-defined requirements:
 
 **Code Development:**
 
-- Jekyll configuration and setup
-- HTML template creation with Liquid syntax
+- MkDocs configuration and setup
+- Markdown content structuring with extensions
 - CSS styling for academic presentation
-- Markdown content structuring
+- Plugin configuration for enhanced functionality
 
 **Quality Assurance:**
 
@@ -76,21 +69,20 @@ Every AI-generated component underwent human review:
 ## File Structure and Organization
 
 ```
-rdm-workshop-series/
-├── _config.yml                    # Jekyll configuration
-├── _includes/                     # Reusable template components
-│   ├── head.html                 # HTML head section
-│   ├── header.html               # Site navigation
-│   ├── footer.html               # Site footer with disclaimer
-│   └── social.html               # Social media links
-├── _layouts/                      # Page templates
-│   ├── default.html              # Base layout
-│   └── workshop.html             # Workshop-specific layout
-├── index.md                       # Homepage content
-├── workshops/                     # Workshop materials
-├── docs/                          # Documentation
-├── onboarding/                    # Onboarding materials
-└── resources/                     # Additional resources
+talks/
+├── mkdocs.yml                    # MkDocs configuration
+├── docs/                          # Documentation source files
+│   ├── index.md                   # Homepage content
+│   ├── agenda/                    # Workshop schedules
+│   ├── workshops/                 # Workshop materials
+│   ├── docs/                      # Documentation pages
+│   ├── onboarding/                # Onboarding materials
+│   ├── resources/                 # Additional resources
+│   ├── stylesheets/               # Custom CSS
+│   └── javascript/                # Custom JavaScript
+├── flyers/                        # Promotional materials
+├── mobile-testing/                # Browser automation tools
+└── .github/                       # GitHub Actions workflows
 ```
 
 ## AI Assistance Methodology
@@ -122,7 +114,7 @@ rdm-workshop-series/
 
 - Standardized README templates for each workshop
 - Consistent metadata and formatting
-- Integration with Jekyll's collection system
+- Integration with MkDocs navigation system
 - Easy addition of new workshops and materials
 
 ### Documentation
@@ -144,9 +136,19 @@ rdm-workshop-series/
 ### Maintenance Workflow
 
 - Regular content updates through Git
-- Automated Jekyll builds
+- Automated MkDocs builds
 - Link checking and validation
 - Performance monitoring
+
+## MkDocs Configuration
+
+The site uses the Material theme with the following key features:
+
+- **Navigation**: Tabbed navigation with expandable sections
+- **Search**: Built-in search with suggestions and highlighting
+- **Code**: Syntax highlighting with line numbers and copy buttons
+- **Extensions**: Python-Markdown extensions for enhanced formatting
+- **Plugins**: Search functionality and other enhancements
 
 ## Lessons Learned
 
@@ -159,7 +161,8 @@ rdm-workshop-series/
 
 ### Technical Insights
 
-- **Jekyll Benefits**: Excellent for academic content management
+- **MkDocs Benefits**: Excellent for documentation and academic content
+- **Material Theme**: Professional appearance with extensive customization
 - **Responsive Design**: Mobile-first approach ensures accessibility
 - **Performance**: Static sites provide fast, reliable user experience
 - **Maintainability**: Clear structure facilitates ongoing updates
@@ -206,14 +209,12 @@ For questions about the development process or technical implementation:
 
 ## References and Resources
 
-- [Jekyll Documentation](https://jekyllrb.com/docs/)
+- [MkDocs Documentation](https://www.mkdocs.org/)
+- [Material Theme Documentation](https://squidfunk.github.io/mkdocs-material/)
 - [GitHub Pages Guide](https://docs.github.com/en/pages)
-- [Anthropic Claude Documentation](https://docs.anthropic.com/)
-- [OpenRouter API Documentation](https://openrouter.ai/docs)
+- [Python-Markdown Extensions](https://facelessuser.github.io/pymdown-extensions/)
 - [Academic Web Development Best Practices](https://www.w3.org/WAI/WCAG21/quickref/)
 
 ---
 
-_This documentation serves as a model for transparent AI-assisted academic web
-development and is part of the SFB 1252 "Prominence in Language" open science
-initiative._
+_This documentation serves as a model for transparent AI-assisted academic web development and is part of the SFB 1252 "Prominence in Language" open science initiative._
