@@ -126,19 +126,23 @@ schedule](agenda/summer-2025-schedule.md)
 Download promotional materials for our workshop series:
 
 ### Summer 2025 Flyer
+
 [📄 Download Summer 2025 Flyer (PDF)](flyers/2025_rdm-flyer_summer-semester/2025-05-08_rdm-summer-flyer.pdf)
 
 ### Winter 2025-26 Flyers
+
 - [📄 Download Winter Flyer (PDF - August 25)](flyers/2025_rdm-flyer_winter-semester/2025-08-25_rdm-winter-flyer.pdf)
 
 ## Workshop Evaluation [TODO]
 
 We value your feedback to improve our workshop series. All evaluations are **internal and anonymous**.
 
-### Post-Workshop Evaluation 
+### Post-Workshop Evaluation
+
 [📝 Complete Anonymous Evaluation](https://forms.uni-koeln.de/some-form-link) (Internal CRC 1252 access only)
 
 ### Evaluation Guidelines
+
 - Evaluations are collected immediately after each workshop
 - All responses are anonymous and confidential
 - Feedback is used internally to improve future workshops
@@ -149,6 +153,7 @@ We value your feedback to improve our workshop series. All evaluations are **int
 Join our CRC 1252 community on Matrix! We've set up a dedicated space with multiple channels for different types of discussions.
 
 ### 🚀 Quick Start
+
 **Recommended client:** [FluffyChat](https://fluffychat.im) (excellent for Matrix Spaces)
 
 **Join our space:** [SFB 1252 - Talks & Workshops](https://matrix.to/#/#sfb1252-talks:uni.koeln.de)
@@ -156,13 +161,15 @@ Join our CRC 1252 community on Matrix! We've set up a dedicated space with multi
 ### 📋 Available Rooms
 
 1. **[General Discussion](https://matrix.to/#/#sfb1252-general:uni.koeln.de)** - Main chat for workshop coordination and general topics
-2. **[Technical Support](https://matrix.to/#/#sfb1252-tech:uni.koeln.de)** - Help with tools, software, and technical questions  
+2. **[Technical Support](https://matrix.to/#/#sfb1252-tech:uni.koeln.de)** - Help with tools, software, and technical questions
 3. **[Resources & Links](https://matrix.to/#/#sfb1252-resources:uni.koeln.de)** - Share useful research resources and links
 
 ### 💡 New to Matrix?
+
 See our [Matrix Setup Guide](matrix-space-setup.md) for detailed instructions on joining and using the University of Cologne Matrix server.
 
 ### Chat Guidelines
+
 - Open to all CRC 1252 members and workshop participants
 - Professional and respectful communication
 - Use appropriate channels for different topics
