@@ -155,14 +155,12 @@ Join our community discussions on the University of Cologne Matrix chat server.
 
 ### SFB 1252 Talks & Workshops Matrix Space
 
-[💬 Join SFB 1252 Matrix Space](#sfb1252-talks:uni.koeln)
+[💬 Join SFB 1252 Matrix Space](https://matrix.to/#/#sfb1252-talks:uni.koeln)
 
 Our Matrix space has three focused rooms:
 
 - **🏛️ SFB General** - Announcements, introductions, and general discussions
-- **📊 Research Data Management**
-  ([#sfb1252-rdm:uni.koeln](#sfb1252-rdm:uni.koeln)) - RDM topics, tools, and
-  best practices
+- **📊 Research Data Management** ([#sfb1252-rdm:uni.koeln](https://matrix.to/#/#sfb1252-rdm:uni.koeln)) - RDM topics, tools, and best practices
 - **🐱 Katzentisch** - Off-topic chat, memes, and coffee break fun
 
 ### How to Join
