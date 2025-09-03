@@ -149,7 +149,7 @@ We value your feedback to improve our workshop series. All evaluations are **int
 Join our community discussions on the University of Cologne Matrix chat server.
 
 ### CRC 1252 Chatroom
-[💬 Join CRC 1252 Matrix Chat](https://matrix.uni-koeln.de/#/#crc1252:uni-koeln.de)
+[💬 Join CRC 1252 Matrix Chat](https://matrix.uni-koeln.de/#/#sfb1252-rdm:uni.koeln.de)
 
 ### Chat Guidelines
 - Open to all CRC 1252 members
