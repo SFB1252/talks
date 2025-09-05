@@ -15,7 +15,7 @@ theme:
   name: "material"
   version: "9.6.18"
   language: "en"
-  logo: "docs/logo/logo.png"
+  logo: "logo.png"
   palette:
     primary: "blue"
     accent: "blue"
