@@ -80,6 +80,34 @@ _Updated September 2025 - New winter semester series now available!_
     <p>Designing and implementing online experiments.</p>
     <a href="workshops/08-online-experiments/" class="btn-primary">Learn More</a>
   </div>
+
+  <div class="workshop-card winter-highlight">
+    <h3>🗄️ Archiving Session</h3>
+    <div class="workshop-meta">Preservation • Metadata • Repositories</div>
+    <p>Long-term data preservation, standards, and UoC repository usage.</p>
+    <a href="workshops/09-archiving-session/" class="btn-primary">Learn More</a>
+  </div>
+
+  <div class="workshop-card winter-highlight">
+    <h3>🐍 Coding in Python/VSCode and LLMs</h3>
+    <div class="workshop-meta">Python • VSCode • AI-Assisted Coding</div>
+    <p>Python setup, core libraries, Git integration, and LLM-assisted coding.</p>
+    <a href="workshops/10-coding-python-vscode-llms/" class="btn-primary">Learn More</a>
+  </div>
+
+  <div class="workshop-card winter-highlight">
+    <h3>📈 Bayesian Regression Models</h3>
+    <div class="workshop-meta">Statistics • Modeling • Inference</div>
+    <p>Bayesian regression in R with priors, checking, and interpretation.</p>
+    <a href="workshops/11-bayesian-regression-models/" class="btn-primary">Learn More</a>
+  </div>
+
+  <div class="workshop-card winter-highlight">
+    <h3>🔁 Computational Reproducibility using R</h3>
+    <div class="workshop-meta">R • renv • Quarto • Pipelines</div>
+    <p>Reproducible workflows with R Markdown/Quarto, renv, and pipelines.</p>
+    <a href="workshops/12-computational-reproducibility-r/" class="btn-primary">Learn More</a>
+  </div>
 </div>
 
 ## CRC 1252 Retreat Resources
