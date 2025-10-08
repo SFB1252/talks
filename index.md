@@ -1,13 +1,6 @@
----
-title: Home
----
+This repository now uses MkDocs. The canonical homepage is at:
 
-# Research Data and Methods Workshop Series
-
-Workshop series by CRC 1252 - Prominence in Language at the University of
-Cologne.
-
-## About the Series
+./docs/index.md
 
 Workshops on research methodology, data management, and academic practices for
 graduate students, postdocs, and researchers.
@@ -106,7 +99,7 @@ AI-assisted research methods:
 
 ## Archived Workshops
 
-### Summer 2025 Series (Completed)
+### Summer 2025 Series
 
 The summer 2025 workshop series has been successfully completed! These workshops
 covered foundational research skills:
@@ -149,9 +142,9 @@ We value your feedback to improve our workshop series. All evaluations are
 - Feedback is used internally to improve future workshops
 - Results are shared with presenters for continuous improvement
 
-## Community Chat
+## Chat
 
-Join our community discussions on the University of Cologne Matrix chat server.
+Join our discussions on the University of Cologne Matrix chat server.
 
 ### SFB 1252 Talks & Workshops Matrix Space
 

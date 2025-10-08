@@ -137,7 +137,7 @@ best practices for reproducible computational research.
 ### Related Events
 
 For additional training opportunities, see the
-[Project S Onboarding materials](../onboarding/) which include information
+[Project S Onboarding materials](../onboarding/README.md) which include information
 about:
 
 - Digital Humanities Colloquium
