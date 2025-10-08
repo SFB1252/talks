@@ -1,5 +1,10 @@
 # Research Data and Methods Workshop Series
 
+[![Site](https://img.shields.io/badge/site-online-blue?logo=github&logoColor=white)](https://sfb1252.github.io/talks)
+[![Schedule](https://img.shields.io/badge/schedule-Winter_2025--26-blueviolet)](https://sfb1252.github.io/talks/agenda/winter-2025-26-schedule/)
+[![Docs](https://img.shields.io/badge/docs-MkDocs%20Material-3DDC84?logo=readthedocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
+[![License](https://img.shields.io/github/license/sfb1252/talks)](LICENSE)
+
 Workshop series on research data management, ethics, literature management, and
 corpus linguistics tools for researchers at the University of Cologne's CRC
 1252 - Prominence in Language.
@@ -32,8 +37,11 @@ Local development requires Python. Recommended steps:
 ```powershell
 # From the repo root
 python -m venv .venv
-. .venv/Scripts/Activate.ps1
+. .\.venv\Scripts\Activate.ps1
+# If requirements.txt exists:
 pip install -r requirements.txt
+# Otherwise:
+# pip install mkdocs mkdocs-material
 mkdocs serve
 ```
 

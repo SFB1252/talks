@@ -1,8 +1,3 @@
----
-layout: default
-title: Workshops
----
-
 # Research Data & Methods Workshop Series
 
 Comprehensive workshop series covering essential skills and methodologies for
@@ -12,7 +7,7 @@ academic research in the digital age.
 
 _New workshops focusing on programming skills and modern research methods_
 
-### 💻 [Coding in R - Basics](07-coding-r-basics/README.md)
+### 💻 [Coding in R - Basics](07-coding-r-basics/index.md)
 
 **Programming • R • Data Analysis • NEW**
 
@@ -29,7 +24,7 @@ practices.
 
 ---
 
-### 🌐 [Online Experiments](08-online-experiments/README.md)
+### 🌐 [Online Experiments](08-online-experiments/index.md)
 
 **Digital Research • Platforms • Data Quality • NEW**
 
@@ -49,7 +44,7 @@ participant recruitment, data quality control, and ethical considerations.
 
 _Foundational skills for all researchers_
 
-### 📚 [Good Academic Practice](01-good-academic-practice/README.md)
+### 📚 [Good Academic Practice](01-good-academic-practice/index.md)
 
 **Foundation • Research Ethics • Required**
 
@@ -65,7 +60,7 @@ Essential foundation for all academic work.
 
 ---
 
-### 💾 [Research Data Management](02-research-data-management/README.md)
+### 💾 [Research Data Management](02-research-data-management/index.md)
 
 **Data • Organization • Preservation • Essential**
 
@@ -81,7 +76,7 @@ throughout the project lifecycle.
 
 ---
 
-### ⚖️ [Ethics Approval](03-ethics-approval/README.md)
+### ⚖️ [Ethics Approval](03-ethics-approval/index.md)
 
 **Ethics • Compliance • Review • Required**
 
@@ -97,7 +92,7 @@ IRB requirements and compliance.
 
 ---
 
-### 📖 [Literature Management](04-literature-management/README.md)
+### 📖 [Literature Management](04-literature-management/index.md)
 
 **Zotero • Citations • Bibliography • Essential**
 
@@ -113,7 +108,7 @@ literature review and writing.
 
 ---
 
-### 🔧 [Annotation & Corpus Tools](05-annotation-corpus-tools/README.md)
+### 🔧 [Annotation & Corpus Tools](05-annotation-corpus-tools/index.md)
 
 **Tools • Linguistics • Analysis • Specialized**
 
@@ -130,7 +125,7 @@ analysis.
 
 ---
 
-### 📋 [Preregistration](06-preregistration/README.md)
+### 📋 [Preregistration](06-preregistration/index.md)
 
 **Planning • Transparency • Reproducibility • Important**
 
@@ -148,35 +143,35 @@ reproducibility.
 
 ## 🎯 Workshop Learning Paths
 
-### 🚀 **Quick Start Path** (Essential for all researchers)
+### 🚀 Quick Start Path (Essential for all researchers)
 
-1. [Good Academic Practice](01-good-academic-practice/README.md) - Research ethics
+1. [Good Academic Practice](01-good-academic-practice/index.md) - Research ethics
    foundation
-2. [Literature Management](04-literature-management/README.md) - Organize your sources
-3. [Research Data Management](02-research-data-management/README.md) - Protect your data
+2. [Literature Management](04-literature-management/index.md) - Organize your sources
+3. [Research Data Management](02-research-data-management/index.md) - Protect your data
 
-### 🔬 **Experimental Research Path**
+### 🔬 Experimental Research Path
 
-1. [Ethics Approval](03-ethics-approval/README.md) - Get approval for human subjects
+1. [Ethics Approval](03-ethics-approval/index.md) - Get approval for human subjects
    research
-2. [Preregistration](06-preregistration/README.md) - Plan transparent studies
-3. [Online Experiments](08-online-experiments/README.md) - Conduct digital research
+2. [Preregistration](06-preregistration/index.md) - Plan transparent studies
+3. [Online Experiments](08-online-experiments/index.md) - Conduct digital research
 
-### 📊 **Data Analysis Path**
+### 📈 Data Analysis Path
 
-1. [Research Data Management](02-research-data-management/README.md) - Organize your data
-2. [Coding in R - Basics](07-coding-r-basics/README.md) - Learn statistical programming
-3. [Annotation & Corpus Tools](05-annotation-corpus-tools/README.md) - Advanced text
+1. [Research Data Management](02-research-data-management/index.md) - Organize your data
+2. [Coding in R - Basics](07-coding-r-basics/index.md) - Learn statistical programming
+3. [Annotation & Corpus Tools](05-annotation-corpus-tools/index.md) - Advanced text
    analysis
 
-### 🎓 **Complete Academic Researcher**
+### 🎓 Complete Academic Researcher
 
 Follow all workshops in the order that best fits your research timeline and
 needs.
 
 ---
 
-## 📋 Workshop Details
+## 📎 Workshop Details
 
 ### Format & Duration
 
@@ -216,28 +211,6 @@ Registration and dates
 
 **[Summer 2025 Archive](../agenda/summer-2025-schedule.md)** - Completed
 workshop materials
-
----
-
-## 🆘 Getting Help & Support
-
-### Before Workshops
-
-1. **Check Prerequisites**: Review individual workshop pages for requirements
-2. **Software Setup**: Follow setup guides or attend office hours
-3. **Questions**: Contact workshop leaders via email (listed in schedule)
-
-### During Workshops
-
-1. **Technical Issues**: On-site technical support available
-2. **Accessibility**: Accommodations available upon request
-3. **Materials**: Digital copies of all materials provided
-
-### After Workshops
-
-1. **Follow-up**: Additional resources and advanced tutorials linked
-2. **Community**: Join our discussion forum for ongoing questions
-3. **One-on-one**: Individual consultations available by appointment
 
 ---
 

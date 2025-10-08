@@ -40,7 +40,7 @@
 - Legal and ethical considerations
 
 **Materials:**
-[DCH Basics of RDM presentation](../workshops/02-research-data-management/)
+[DCH Basics of RDM presentation](../workshops/02-research-data-management/index.md)
 
 ---
 
@@ -77,7 +77,7 @@ UzK_
 - Collaborative features for research teams
 
 **Materials:**
-[Zotero Workshop presentation](../workshops/04-literature-management/)  
+[Zotero Workshop presentation](../workshops/04-literature-management/index.md)  
 **Key Resource:**
 [EduLabs Zotero Course](https://www.edulabs.uni-koeln.de/ilias.php?baseClass=ilrepositorygui&ref_id=30037)
 
@@ -97,7 +97,7 @@ UzK_
 - Hands-on practice with linguistic data
 
 **Materials:**
-[Annotation & Corpus Tools presentation](../workshops/05-annotation-corpus-tools/)
+[Annotation & Corpus Tools presentation](../workshops/05-annotation-corpus-tools/index.md)
 
 ---
 
@@ -114,7 +114,7 @@ UzK_
 - Preregistration platforms and templates
 - Creating preregistration plans for different study types
 
-**Materials:** [Preregistration presentation](../workshops/06-preregistration/)
+**Materials:** [Preregistration presentation](../workshops/06-preregistration/index.md)
 
 ---
 
@@ -143,7 +143,7 @@ reproducibility with R and Python.
 ### Related Events
 
 For additional training opportunities, see the
-[Project S Onboarding materials](../onboarding/) which include information
+[Project S Onboarding materials](../onboarding/README.md) which include information
 about:
 
 - Digital Humanities Colloquium
