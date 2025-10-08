@@ -15,7 +15,7 @@ and discussions.
 
 1. Introduce yourself in #SFB General
 2. Join the conversations that interest you most
-3. Check our [community guidelines](link-to-guidelines)
+3. Check our [community guidelines](./ai-assisted-development-guidelines.md)
 4. Feel free to share memes in #Katzentisch - we believe serious research needs
    silly moments!
 
