@@ -16,9 +16,8 @@ Sustainability) services and resources within SFB 1252 "Prominence in Language".
 
 ## Project S Services
 
-1. **Research Data Management**: Collection, curation, publication
-2. **Experimental Design & Statistical Analysis**: Planning, implementation,
-   interpretation
+1. **Research Data Management**
+2. **Experimental Design & Statistical Analysis**
 3. **Technical Support**: Tool infrastructure, programming (R, Python)
 
 ## Materials
