@@ -24,10 +24,10 @@ Sustainability) services and resources within SFB 1252 "Prominence in Language".
 
 - [📊 Onboarding Slides](onboarding-day-slides.qmd) - Quarto presentation
   introducing Project S
-- New materials (mirroring to website):
-  - [📁 Archiving FAQ (PDF)](files/archiving-faq.pdf) — see also the [web version](archiving-faq.md)
+- Mirroring from Sciebo S_FAQ folder:
+  - [📁 Archiving FAQ (PDF)](files/archiving-faq.pdf)
   - [📄 Project S in a Nutshell (Intro Flyer, PDF)](files/s-in-a-nutshell.pdf)
-  - Mirroring status: pending upload of PDFs to `docs/onboarding/files/` (add a "Last mirrored" date after copying)
+  - Last mirrored: October 8 2025
 
 ## Key Information
 
