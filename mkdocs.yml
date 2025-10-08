@@ -85,6 +85,10 @@ nav:
       - "06 - Preregistration": "workshops/06-preregistration/README.md"
       - "07 - Coding in R Basics": "workshops/07-coding-r-basics/README.md"
       - "08 - Online Experiments": "workshops/08-online-experiments/README.md"
+      - "09 - Archiving Session": "workshops/09-archiving-session/README.md"
+      - "10 - Coding in Python/VSCode and LLMs": "workshops/10-coding-python-vscode-llms/README.md"
+      - "11 - Bayesian Regression Models": "workshops/11-bayesian-regression-models/README.md"
+      - "12 - Computational Reproducibility Session using R": "workshops/12-computational-reproducibility-r/README.md"
   - Resources:
       - Onboarding: "onboarding/README.md"
       - Additional Links: "resources/additional-links.md"
