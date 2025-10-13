@@ -4,228 +4,113 @@ title: Home
 
 # Research Data and Methods Workshop Series
 
-Workshop series by CRC 1252 - Prominence in Language at the University of
-Cologne.
+Workshop series by CRC 1252 - Prominence in Language at the University of Cologne.
 
-## About the Series
-
-Workshops on research methodology, data management, and academic practices for
-graduate students, postdocs, and researchers.
+Workshops on research methodology, data management, and academic practices for graduate students, postdocs, and researchers.
 
 ## Current Workshop Series (Winter 2025-26)
 
-_Updated September 2025 - New winter semester series now available!_
-
-**Key Focus Areas:**
+The winter 2025-26 series focuses on programming skills, modern methodology, and research infrastructure:
 
 - **Programming Skills**: R basics and Python development
-- **Modern Methodology**: Online experiments and Bayesian analysis
+- **Modern Methodology**: Online experiments and Bayesian analysis  
 - **Research Infrastructure**: Data archiving and reproducibility
+
+[View Winter 2025-26 Schedule →](agenda/winter-2025-26-schedule.md)
+
+---
 
 ## Available Workshops
 
-<div class="workshop-grid">
-  <div class="workshop-card">
-    <h3>📚 Good Academic Practice</h3>
-    <div class="workshop-meta">Foundation • Research Ethics</div>
-    <p>Academic integrity, research ethics, and responsible conduct.</p>
-    <a href="workshops/01-good-academic-practice/" class="btn-primary">Learn More</a>
-  </div>
+### Core Research Skills
 
-  <div class="workshop-card">
-    <h3>💾 Research Data Management</h3>
-    <div class="workshop-meta">Data • Organization • Preservation</div>
-    <p>Organizing, storing, and preserving research data.</p>
-    <a href="workshops/02-research-data-management/" class="btn-primary">Learn More</a>
-  </div>
+1. **[Good Academic Practice](workshops/01-good-academic-practice/index.md)** - Academic integrity, research ethics, and responsible conduct
+2. **[Research Data Management](workshops/02-research-data-management/index.md)** - Organizing, storing, and preserving research data
+3. **[Ethics Approval](workshops/03-ethics-approval/index.md)** - Ethics approval process and human subjects research requirements
+4. **[Literature Management](workshops/04-literature-management/index.md)** - Reference management tools (Zotero) and citation techniques
+5. **[Annotation & Corpus Tools](workshops/05-annotation-corpus-tools/index.md)** - Tools for corpus linguistics and text annotation
+6. **[Preregistration](workshops/06-preregistration/index.md)** - Preregistering research studies for transparency and reproducibility
 
-  <div class="workshop-card">
-    <h3>⚖️ Ethics Approval</h3>
-    <div class="workshop-meta">Ethics • Compliance • Review</div>
-    <p>Ethics approval process and human subjects research requirements.</p>
-    <a href="workshops/03-ethics-approval/" class="btn-primary">Learn More</a>
-  </div>
+### Programming & Technical Skills (Winter 2025-26 Series)
 
-  <div class="workshop-card">
-    <h3>📖 Literature Management</h3>
-    <div class="workshop-meta">Zotero • Citations • Bibliography</div>
-    <p>Reference management tools and citation techniques.</p>
-    <a href="workshops/04-literature-management/" class="btn-primary">Learn More</a>
-  </div>
+7. **[Coding in R - Basics](workshops/07-coding-r-basics/index.md)** - Introduction to R programming for research applications
+8. **[Online Experiments](workshops/08-online-experiments/index.md)** - Designing and implementing online experiments
+9. **[Archiving Session](workshops/09-archiving-session/index.md)** - Long-term data preservation, standards, and UoC repository usage
+10. **[Coding in Python/VSCode and LLMs](workshops/10-coding-python-vscode-llms/index.md)** - Python setup, core libraries, Git integration, and LLM-assisted coding
+11. **[Bayesian Regression Models](workshops/11-bayesian-regression-models/index.md)** - Bayesian regression in R with priors, checking, and interpretation
+12. **[Computational Reproducibility using R](workshops/12-computational-reproducibility-r/index.md)** - Reproducible workflows with R Markdown/Quarto, renv, and pipelines
 
-  <div class="workshop-card">
-    <h3>🔧 Annotation & Corpus Tools</h3>
-    <div class="workshop-meta">Tools • Linguistics • Analysis</div>
-    <p>Tools for corpus linguistics and text annotation.</p>
-    <a href="workshops/05-annotation-corpus-tools/" class="btn-primary">Learn More</a>
-  </div>
+**View the [complete workshop catalog](workshops/index.md)** for detailed information about each session.
 
-  <div class="workshop-card">
-    <h3>📋 Preregistration</h3>
-    <div class="workshop-meta">Planning • Transparency • Reproducibility</div>
-    <p>Preregistering research studies for transparency and reproducibility.</p>
-    <a href="workshops/06-preregistration/" class="btn-primary">Learn More</a>
-  </div>
+**Current schedule:** See [Winter 2025-26 schedule](agenda/winter-2025-26-schedule.md) for dates and registration.
 
-  <div class="workshop-card winter-highlight">
-    <h3>💻 Coding in R - Basics</h3>
-    <div class="workshop-meta">Programming • R • Data Analysis</div>
-    <p>Introduction to R programming for research applications.</p>
-    <a href="workshops/07-coding-r-basics/" class="btn-primary">Learn More</a>
-  </div>
-
-  <div class="workshop-card winter-highlight">
-    <h3>🌐 Online Experiments</h3>
-    <div class="workshop-meta">Digital Research • Platforms • Data Quality</div>
-    <p>Designing and implementing online experiments.</p>
-    <a href="workshops/08-online-experiments/" class="btn-primary">Learn More</a>
-  </div>
-
-  <div class="workshop-card winter-highlight">
-    <h3>🗄️ Archiving Session</h3>
-    <div class="workshop-meta">Preservation • Metadata • Repositories</div>
-    <p>Long-term data preservation, standards, and UoC repository usage.</p>
-    <a href="workshops/09-archiving-session/" class="btn-primary">Learn More</a>
-  </div>
-
-  <div class="workshop-card winter-highlight">
-    <h3>🐍 Coding in Python/VSCode and LLMs</h3>
-    <div class="workshop-meta">Python • VSCode • AI-Assisted Coding</div>
-    <p>Python setup, core libraries, Git integration, and LLM-assisted coding.</p>
-    <a href="workshops/10-coding-python-vscode-llms/" class="btn-primary">Learn More</a>
-  </div>
-
-  <div class="workshop-card winter-highlight">
-    <h3>📈 Bayesian Regression Models</h3>
-    <div class="workshop-meta">Statistics • Modeling • Inference</div>
-    <p>Bayesian regression in R with priors, checking, and interpretation.</p>
-    <a href="workshops/11-bayesian-regression-models/" class="btn-primary">Learn More</a>
-  </div>
-
-  <div class="workshop-card winter-highlight">
-    <h3>🔁 Computational Reproducibility using R</h3>
-    <div class="workshop-meta">R • renv • Quarto • Pipelines</div>
-    <p>Reproducible workflows with R Markdown/Quarto, renv, and pipelines.</p>
-    <a href="workshops/12-computational-reproducibility-r/" class="btn-primary">Learn More</a>
-  </div>
-</div>
+---
 
 ## CRC 1252 Retreat Resources
 
-Materials from our **July 2025 Retreat** on Large Language Models and
-AI-assisted research methods:
+Materials from our **July 2025 Retreat** on Large Language Models and AI-assisted research methods.
 
-<div class="retreat-section">
-  <h3>🤖 LLM Workshop Materials</h3>
-  <p>Presentations from structured group discussions on NLP using Large Language Models.</p>
-  
-  <div class="retreat-links">
-    <ul>
-      <li><strong>Prompt Engineering</strong> - Nils Reiter</li>
-      <li><strong>Corpus Generation</strong> - Job Schepens</li>
-      <li><strong>Automatic Annotation</strong> - Ziyue Liu</li>
-      <li><strong>LLM-Assisted Coding</strong> - Philip Georgis</li>
-      <li><strong>Plenary Session</strong> - Job Schepens & Nils Reiter</li>
-    </ul>
-  </div>
-  
-  <a href="retreat/" class="btn-secondary">View Retreat Materials</a>
-</div>
+**Workshop presentations** from structured group discussions on NLP using Large Language Models:
+
+- **Prompt Engineering** - Nils Reiter
+- **Corpus Generation** - Job Schepens
+- **Automatic Annotation** - Ziyue Liu
+- **LLM-Assisted Coding** - Philip Georgis
+- **Plenary Session** - Job Schepens & Nils Reiter
+
+[View all retreat materials →](retreat/README.md)
+
+---
 
 ## Archived Workshops
 
-### Summer 2025 Series (Completed)
+### Summer 2025 Series
 
-The summer 2025 workshop series has been successfully completed! These workshops
-covered foundational research skills:
+The summer 2025 workshop series has been completed. Materials are still available:
 
-- ✅ **Good Academic Practice** (7. Mai 2025)
-- ✅ **Research Data Management** (21. Mai 2025)
-- ✅ **Ethics Approval** (4. Juni 2025)
-- ✅ **Literature Management** (18. Juni 2025)
-- ✅ **Annotation & Corpus Tools** (2. Juli 2025)
-- ✅ **Preregistration** (16. Juli 2025)
+- Good Academic Practice (May 7, 2025)
+- Research Data Management (May 21, 2025)
+- Ethics Approval (June 4, 2025)
+- Literature Management (June 18, 2025)
+- Annotation & Corpus Tools (July 2, 2025)
+- Preregistration (July 16, 2025)
 
-[View complete summer 2025 materials and
-schedule](agenda/summer-2025-schedule.md)
+[View complete summer 2025 materials and schedule →](agenda/summer-2025-schedule.md)
+
+---
 
 ## Workshop Flyers
 
-Download promotional materials for our workshop series:
+Download promotional materials:
 
-### Summer 2025 Flyer
+- [Summer 2025 Flyer (PDF)](flyers/2025_rdm-flyer_summer-semester/2025-05-08_rdm-summer-flyer.pdf)
+- [Winter 2025-26 Flyer (PDF)](flyers/2025_rdm-flyer_winter-semester/2025-08-25_rdm-winter-flyer.pdf)
 
-[📄 Download Summer 2025 Flyer (PDF)](flyers/2025_rdm-flyer_summer-semester/2025-05-08_rdm-summer-flyer.pdf)
-
-### Winter 2025-26 Flyers
-
-- [📄 Download Winter Flyer (PDF - August 25)](flyers/2025_rdm-flyer_winter-semester/2025-08-25_rdm-winter-flyer.pdf)
-
-## Workshop Evaluation [TODO]
-
-We value your feedback to improve our workshop series. All evaluations are **internal and anonymous**.
-
-### Post-Workshop Evaluation
-
-[📝 Complete Anonymous Evaluation](https://forms.uni-koeln.de/some-form-link) (Internal CRC 1252 access only)
-
-### Evaluation Guidelines
-
-- Evaluations are collected immediately after each workshop
-- All responses are anonymous and confidential
-- Feedback is used internally to improve future workshops
-- Results are shared with presenters for continuous improvement
+---
 
 ## Community Chat
 
-Join our CRC 1252 community on Matrix! We've set up a dedicated space with multiple channels for different types of discussions.
+Join our CRC 1252 community on Matrix for workshop coordination and discussion.
 
-### 🚀 Quick Start
+**Join:** [SFB 1252 - Talks & Workshops](https://matrix.to/#/#sfb1252-talks:uni.koeln.de)
 
-**Recommended client:** [FluffyChat](https://fluffychat.im) (excellent for Matrix Spaces)
+**Recommended client:** [FluffyChat](https://fluffychat.im)
 
-**Join our space:** [SFB 1252 - Talks & Workshops](https://matrix.to/#/#sfb1252-talks:uni.koeln.de)
+**Available rooms:**
 
-### 📋 Available Rooms
+- [General Discussion](https://matrix.to/#/#sfb1252-general:uni.koeln.de) - Workshop coordination and general topics
+- [Technical Support](https://matrix.to/#/#sfb1252-tech:uni.koeln.de) - Help with tools and software
+- [Resources & Links](https://matrix.to/#/#sfb1252-resources:uni.koeln.de) - Share research resources
 
-1. **[General Discussion](https://matrix.to/#/#sfb1252-general:uni.koeln.de)** - Main chat for workshop coordination and general topics
-2. **[Technical Support](https://matrix.to/#/#sfb1252-tech:uni.koeln.de)** - Help with tools, software, and technical questions
-3. **[Resources & Links](https://matrix.to/#/#sfb1252-resources:uni.koeln.de)** - Share useful research resources and links
+See our [Matrix Setup Guide](matrix/space-setup.md) for detailed instructions.
 
-### 💡 New to Matrix?
+---
 
-See our [Matrix Setup Guide](matrix-space-setup.md) for detailed instructions on joining and using the University of Cologne Matrix server.
+## Additional Information
 
-### Chat Guidelines
-
-- Open to all CRC 1252 members and workshop participants
-- Professional and respectful communication
-- Use appropriate channels for different topics
-- Share resources and ask questions freely
-
-## Getting Started
-
-New to Project S? Start with our [onboarding
-materials](onboarding/README.md).
-
-## Schedule
-
-**Current:** [Winter 2025-26
-schedule](agenda/winter-2025-26-schedule.md) for dates
-and times.
-
-**Previous:** [Summer 2025
-schedule](agenda/summer-2025-schedule.md) (archived).
-
-## Contributing
-
-See our [contributing guide](contributing.md) to
-contribute materials.
-
-## Additional Resources
-
-[Additional resources](resources/additional-links.md)
-for research support.
+- **Getting Started:** [Onboarding materials](onboarding/README.md) for new CRC 1252 members
+- **Contributing:** See our [contributing guide](about/contributing.md) to contribute materials
+- **Resources:** [Additional resources](resources/additional-links.md) for research support
 
 ---
 

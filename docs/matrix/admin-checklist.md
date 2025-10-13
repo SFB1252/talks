@@ -77,7 +77,7 @@ For each room:
 
 ### 8. Create Documentation
 
-- [ ] Finalize setup guide (matrix-space-setup.md)
+- [ ] Finalize setup guide (space-setup.md)
 - [ ] Prepare welcome message template
 - [ ] Create QR codes for easy joining
 - [ ] Document moderation procedures

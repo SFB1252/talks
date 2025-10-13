@@ -5,41 +5,33 @@ repository and making it available online.
 
 ## Repository Structure Overview
 
-The repository is now organized with the following structure:
+The repository is organized with the following structure:
 
 ```
-rdm-workshop-series/
-├── README.md                          # Main repository overview with agenda
+talks/
+├── README.md                          # Main repository overview
 ├── LICENSE                           # Creative Commons Attribution 4.0
 ├── .gitignore                        # Git ignore file
-├── agenda/
-│   ├── summer-2025-schedule.md       # Detailed workshop schedule
-│   ├── Research Data and Methods.htm # Original HTML agenda
-│   └── Research Data and Methods_files/ # Supporting files
-├── workshops/
-│   ├── 01-good-academic-practice/
-│   │   └── README.md
-│   ├── 02-research-data-management/
-│   │   ├── README.md
-│   │   └── 2-rau-DCH_Basics_of_RDM_SFB1252.pdf
-│   ├── 03-ethics-approval/
-│   │   └── README.md
-│   ├── 04-literature-management/
-│   │   ├── README.md
-│   │   └── 4-schwiertz-Zotero.pdf
-│   ├── 05-annotation-corpus-tools/
-│   │   ├── README.md
-│   │   └── 5-schepens-annotation_corpus_tools.pptx
-│   └── 06-preregistration/
-│       └── README.md
-├── onboarding/
-│   ├── README.md
-│   └── onboarding-day-slides.qmd
-├── resources/
-│   └── additional-links.md
-└── docs/
-    ├── contributing.md
-    └── github-setup.md (this file)
+├── mkdocs.yml                        # MkDocs configuration
+├── requirements.txt                  # Python dependencies
+├── docs/                             # All documentation (MkDocs source)
+│   ├── index.md                      # Front page
+│   ├── agenda/                       # Workshop schedules
+│   │   ├── winter-2025-26-schedule.md
+│   │   └── summer-2025-schedule.md
+│   ├── workshops/                    # Workshop materials (01-12)
+│   │   ├── 01-good-academic-practice/
+│   │   ├── 02-research-data-management/
+│   │   ├── 03-ethics-approval/
+│   │   └── ...
+│   ├── calendar/                     # Calendar files
+│   ├── flyers/                       # Promotional materials
+│   ├── onboarding/                   # Onboarding materials
+│   ├── resources/                    # Additional resources
+│   ├── retreat/                      # Retreat materials
+│   ├── presenter-resources/          # Presenter guidelines
+│   └── evaluation/                   # Workshop evaluation system
+└── site/                             # Built static site (generated)
 ```
 
 ## Setting Up the GitHub Repository
@@ -139,7 +131,7 @@ Create releases for:
 
 ### Content Guidelines
 
-- Follow the contributing guidelines in `docs/contributing.md`
+- Follow the contributing guidelines in `docs/about/contributing.md`
 - Maintain consistent formatting across all README files
 - Ensure all external links are working
 - Keep the main README.md agenda up to date

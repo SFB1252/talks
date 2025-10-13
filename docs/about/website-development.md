@@ -74,13 +74,16 @@ talks/
 ├── docs/                          # Documentation source files
 │   ├── index.md                   # Homepage content
 │   ├── agenda/                    # Workshop schedules
-│   ├── workshops/                 # Workshop materials
-│   ├── docs/                      # Documentation pages
+│   ├── workshops/                 # Workshop materials (01-12)
+│   ├── calendar/                  # Calendar integration files
+│   ├── flyers/                    # Promotional materials
 │   ├── onboarding/                # Onboarding materials
 │   ├── resources/                 # Additional resources
+│   ├── retreat/                   # Retreat materials
+│   ├── presenter-resources/       # Presenter guidelines
+│   ├── evaluation/                # Workshop evaluation system
 │   ├── stylesheets/               # Custom CSS
 │   └── javascript/                # Custom JavaScript
-├── flyers/                        # Promotional materials
 ├── mobile-testing/                # Browser automation tools
 └── .github/                       # GitHub Actions workflows
 ```

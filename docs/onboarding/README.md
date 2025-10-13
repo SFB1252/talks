@@ -1,9 +1,3 @@
----
-layout: default
-title: 'Onboarding'
-permalink: /onboarding/
----
-
 # Project S: Onboarding
 
 **Date:** 15. Mai 2025  
@@ -25,7 +19,7 @@ Sustainability) services and resources within SFB 1252 "Prominence in Language".
 - [📊 Onboarding Slides](onboarding-day-slides.qmd) - Quarto presentation
   introducing Project S
 - Mirroring from Sciebo S_FAQ folder:
-  - [📁 Archiving FAQ (PDF)](files/archiving-faq.pdf)
+  - [📁 Archiving FAQ (PDF)](../archiving/archiving-faq.pdf)
   - [📄 Project S in a Nutshell (Intro Flyer, PDF)](files/s-in-a-nutshell.pdf)
   - Last mirrored: October 8 2025
 

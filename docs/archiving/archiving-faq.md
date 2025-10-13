@@ -18,4 +18,4 @@ This page mirrors the Archiving FAQ PDF for easier browsing.
 We will expand this page using content from the maintained PDF. For now, please
 refer to the PDF for the authoritative version and detailed answers.
 
-[Download the PDF](./files/archiving-faq.pdf)
+[Download the PDF](./archiving-faq.pdf)

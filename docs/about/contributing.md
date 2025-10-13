@@ -1,8 +1,3 @@
----
-layout: default
-title: 'Contributing Guidelines'
----
-
 # Contributing Guidelines
 
 Guidelines for contributing materials, improvements, and feedback to the
@@ -134,7 +129,7 @@ to AI-assisted development:
   [Website Development Documentation](website-development.md) for details on how
   AI tools were used
 - **Best Practices**: Review
-  [AI-Assisted Development Guidelines](ai-assisted-development-guidelines.md)
+  [AI-Assisted Development Guidelines](ai-assisted-development.md)
   for responsible AI use
 - **Quality Assurance**: All AI-generated content undergoes human review and
   validation
@@ -163,7 +158,7 @@ If you use AI tools in your contributions:
 - [Project S Information](https://sfb1252.uni-koeln.de/projekte/s-data-design-and-sustainability)
 - [University of Cologne Guidelines](https://verwaltung.uni-koeln.de/stabsstelle03.1/content/good_scientific_practice/index_eng.html)
 - [Website Development Documentation](website-development.md)
-- [AI-Assisted Development Guidelines](ai-assisted-development-guidelines.md)
+- [AI-Assisted Development Guidelines](ai-assisted-development.md)
 
 ## License and Copyright
 
