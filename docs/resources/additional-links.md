@@ -1,9 +1,3 @@
----
-layout: default
-title: 'Additional Resources'
-permalink: /resources/additional-links/
----
-
 # Additional Resources
 
 Links and resources related to research data management, open science, and

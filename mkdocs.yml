@@ -72,9 +72,6 @@ markdown_extensions:
 # Navigation structure
 nav:
   - Home: "index.md"
-  - Schedule:
-      - Winter 2025-26: "agenda/winter-2025-26-schedule.md"
-      - Summer 2025: "agenda/summer-2025-schedule.md"
   - Workshops:
       - Overview: "workshops/index.md"
       - "01 - Good Academic Practice": "workshops/01-good-academic-practice/index.md"
@@ -93,16 +90,24 @@ nav:
       - Onboarding: "onboarding/README.md"
       - Additional Links: "resources/additional-links.md"
       - Retreat Materials: "retreat/README.md"
-  - Documentation:
-      - Contributing: "contributing.md"
-      - Website Development: "website-development.md"
-      - GitHub Setup: "github-setup.md"
-      - AI-Assisted Development: "ai-assisted-development-guidelines.md"
-      - Development Setup: "development-setup.md"
-      - Development Tools: "development-tools.md"
-      - VS Code Setup: "vscode-setup-summary.md"
-      - Matrix Admin: "matrix-admin-checklist.md"
-      - Matrix Setup: "matrix-space-setup.md"
+      - Presenter Resources: "presenter-resources/README.md"
+  - Schedule:
+      - Winter 2025-26: "agenda/winter-2025-26-schedule.md"
+      - Summer 2025 (Archived): "agenda/summer-2025-schedule.md"
+  - Archiving:
+      - FAQ: "archiving/archiving-faq.md"
+  - Development:
+      - Setup: "development/setup.md"
+      - Tools: "development/tools.md"
+      - VS Code Setup: "development/vscode-setup.md"
+  - Matrix:
+      - Space Setup: "matrix/space-setup.md"
+      - Admin Checklist: "matrix/admin-checklist.md"
+  - About:
+      - Contributing: "about/contributing.md"
+      - GitHub Setup: "about/github-setup.md"
+      - Website Development: "about/website-development.md"
+      - AI-Assisted Development: "about/ai-assisted-development.md"
 
 # Additional CSS and JS
 extra_css:

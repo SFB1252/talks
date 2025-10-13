@@ -1,48 +1,53 @@
 /* Custom styles for Research Data and Methods Workshop Series */
 
-/* Workshop Grid Layout */
-.workshop-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .workshop-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
-.workshop-card {
-  background: var(--md-default-fg-color--light);
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 8px;
-  padding: 1.5rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  text-align: center;
+/* Logo styling */
+.md-header__button.md-logo {
+  margin-right: 0.5rem;
 }
 
-.workshop-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.md-header__button.md-logo img {
+  height: 32px;
+  width: auto;
+  max-width: 120px;
 }
 
-.workshop-card h3 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  color: var(--md-primary-fg-color);
-  font-size: 1.25rem;
-}
-
-.workshop-meta {
-  color: var(--md-default-fg-color--light);
-  font-size: 0.875rem;
-  font-weight: 500;
+/* Form styling for future use */
+.form-group {
   margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
-.workshop-card p {
-  margin-bottom: 1.5rem;
-  color: var(--md-default-fg-color--dark);
-  line-height: 1.5;
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--md-primary-fg-color);
+  box-shadow: 0 0 0 2px var(--md-primary-fg-color--transparent);
+}
+
 
 /* Button Styles */
 .btn-primary,

@@ -56,7 +56,7 @@ researchers.
 **Learn more:**
 
 - [SFB 1252 Project Overview](https://sfb1252.uni-koeln.de/)
-- [Contributing to Workshops](../contributing.md)
+- [Contributing to Workshops](../about/contributing.md)
 - [Additional Resources](../resources/additional-links.md)
 
 ---

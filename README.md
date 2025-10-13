@@ -4,6 +4,13 @@
 [![Schedule](https://img.shields.io/badge/schedule-Winter_2025--26-blueviolet)](https://sfb1252.github.io/talks/agenda/winter-2025-26-schedule/)
 [![Docs](https://img.shields.io/badge/docs-MkDocs%20Material-3DDC84?logo=readthedocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
 [![License](https://img.shields.io/github/license/sfb1252/talks)](LICENSE)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen?logo=github-actions)](https://github.com/SFB1252/talks)
+[![Python](https://img.shields.io/badge/python-3.8+-blue?logo=python&logoColor=white)](https://www.python.org)
+[![MkDocs](https://img.shields.io/badge/MkDocs-1.6+-lightblue?logo=markdown&logoColor=white)](https://www.mkdocs.org)
+[![Workshops](https://img.shields.io/badge/workshops-12-orange)](https://sfb1252.github.io/talks/workshops/)
+[![Made with](https://img.shields.io/badge/made%20with-❤️%20in%20Cologne-red)](https://www.uni-koeln.de)
+[![Open Science](https://img.shields.io/badge/Open%20Science-✓-success)](https://sfb1252.github.io/talks)
+[![Research Data](https://img.shields.io/badge/Research%20Data-Management-informational)](https://sfb1252.github.io/talks/workshops/02-research-data-management/)
 
 Workshop series on research data management, ethics, literature management, and
 corpus linguistics tools for researchers at the University of Cologne's CRC
@@ -68,10 +75,16 @@ GitHub Pages to update.
 ```
 ├── docs/                       # All site content (MkDocs source)
 │   ├── index.md                # Front page
-│   ├── agenda/                 # Schedules
-│   ├── workshops/              # Workshop pages
+│   ├── agenda/                 # Workshop schedules
+│   ├── workshops/              # Workshop materials (01-12)
+│   ├── calendar/               # Calendar integration files
+│   ├── flyers/                 # Promotional materials
 │   ├── resources/              # Additional resources
-│   └── ...
+│   ├── onboarding/             # Onboarding materials
+│   ├── retreat/                # Retreat materials
+│   ├── presenter-resources/    # Presenter guidelines
+│   ├── evaluation/             # Workshop evaluation system
+│   └── stylesheets/            # Custom CSS
 ├── site/                       # Built static site (mkdocs build output)
 ├── mkdocs.yml                  # MkDocs configuration
 ├── requirements.txt            # Python deps for MkDocs/Material
