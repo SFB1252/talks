@@ -156,7 +156,7 @@ If you use AI tools in your contributions:
 
 - [SFB 1252 Website](https://sfb1252.uni-koeln.de/)
 - [Project S Information](https://sfb1252.uni-koeln.de/projekte/s-data-design-and-sustainability)
-- [University of Cologne Guidelines](https://verwaltung.uni-koeln.de/stabsstelle03.1/content/good_scientific_practice/index_eng.html)
+- [University of Cologne Guidelines](https://uni-koeln.de/forschung/ueberblick/wissenschaftliche-grundsaetze/gute-wissenschaftliche-praxis)
 - [Website Development Documentation](website-development.md)
 - [AI-Assisted Development Guidelines](ai-assisted-development.md)
 

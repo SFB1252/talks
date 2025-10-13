@@ -1,58 +1,218 @@
 # SFB 1252 Website Testing & Browser Automation
 
-This directory contains tools for testing the SFB 1252 Research Data and Methods Workshop Series website, including automated browser testing using AI.
+This directory contains tools for testing the SFB 1252 Research Data and Methods Workshop Series website, including automated browser testing using AI with **browser-use 0.7.9** featuring **Actor Use**.
 
-## 🤖 AI-Powered Browser Automation
+## 🎯 What's New in 0.7.9
 
-### Quick Start with Gemini 2.5 Flash
+### Actor Use 🤖
+- **Mix deterministic and agentic automations** - Combine predictable steps with AI intelligence
+- **Query elements by natural language** - No more CSS selectors or XPath!
+- **Built into Browser Use** - Works automatically, no special configuration
 
-We use Google's **Gemini 2.5 Flash** model for balanced performance: **fast + cheap + clever**.
+Example queries:
+- "Find the blue button in the top right corner"
+- "Click all links that go to matrix.to"  
+- "Verify the FluffyChat recommendation text exists"
 
-1. **Install Dependencies:**
+### Gemini Flash Latest
+- **Model:** `gemini-flash-latest` (auto-updates to newest version)
+- **Currently:** Gemini 2.5 Flash Preview (September 2025)
+- **30% faster** than previous versions
+- **More accurate** element detection with thinking capabilities
+- **Cost-effective** for automation tasks
+- **Auto-updates** with 2-week notice before version changes
 
-   ```bash
-   pip install -r mobile-testing/requirements.txt
-   playwright install
-   ```
+## 🚀 Quick Start
 
-2. **Get Google API Key:**
+### 1. Install Browser-Use 0.7.9
 
-   - Visit: https://aistudio.google.com/app/apikey
-   - Create a new API key
-   - Copy the key
+```bash
+pip install -r mobile-testing/requirements.txt
+playwright install
+```
 
-3. **Configure Environment:**
+### 2. Set Up Environment
 
-   ```bash
-   # Edit .env file in project root
-   GOOGLE_API_KEY=your_actual_api_key_here
-   ```
+Create a `.env` file in the project root:
 
-4. **Run Setup Check:**
+```bash
+GOOGLE_API_KEY=your_api_key_here
+```
 
-   ```bash
-   python mobile-testing/setup_browser_automation.py
-   ```
+Get your API key: https://aistudio.google.com/app/apikey
 
-5. **Start Website Inspection:**
-   ```bash
-   python mobile-testing/browser_site_inspection.py
-   ```
+### 3. Run Website Inspection
 
-### What the Automation Does
+```bash
+python mobile-testing/browser_site_inspection_final.py
+```
 
-The browser automation script will:
+The script will:
+- ✅ Navigate to the SFB 1252 website
+- ✅ Use **Actor Use** to intelligently detect elements
+- ✅ Verify Matrix integration (links, rooms, FluffyChat recommendation)
+- ✅ Check for [TODO] markers
+- ✅ Verify all 12 workshops are listed
+- ✅ Generate a detailed inspection report
 
-- ✅ Verify Matrix integration functionality
-- ✅ Check for proper matrix.to links (not broken anchor links)
-- ✅ Confirm FluffyChat is recommended
-- ✅ Test three Matrix rooms setup
-- ✅ Look for remaining "[TODO]" markers
-- ✅ Take screenshots for documentation
-- ✅ Test responsive design
-- ✅ Generate detailed inspection reports
+## 🔌 MCP Server Integration (Optional)
 
-## 📱 Manual Mobile Responsiveness Testing
+Use browser-use directly from **VS Code GitHub Copilot**!
+
+### Configuration
+
+Already set up in your `mcp.json`:
+
+```json
+{
+  "browser-use": {
+    "command": "uvx",
+    "args": ["--from", "browser-use[cli]", "browser-use", "--mcp"],
+    "env": {
+      "GOOGLE_API_KEY": "your-key-here",
+      "PYTHONIOENCODING": "utf-8"
+    }
+  }
+}
+```
+
+### Usage Examples
+
+Ask GitHub Copilot in VS Code:
+
+```
+Use browser-use to navigate to https://sfb1252.github.io/talks/ 
+and verify the Matrix integration is working correctly
+```
+
+```
+Use browser-use to check all links on the front page 
+and report any broken links
+```
+
+```
+Use browser-use to take a screenshot of the Community Chat section
+```
+
+### Available MCP Tools
+
+The browser-use MCP server provides 14 tools:
+
+**Direct Browser Control:**
+- `browser_navigate` - Navigate to a URL
+- `browser_click` - Click an element
+- `browser_type` - Type text  
+- `browser_get_state` - Get page state
+- `browser_scroll` - Scroll the page
+
+**Tab Management:**
+- `browser_list_tabs` - List all tabs
+- `browser_switch_tab` - Switch tabs
+- `browser_close_tab` - Close a tab
+
+**Content Extraction:**
+- `browser_extract_content` - Extract structured data
+
+**Autonomous Agent:**
+- `retry_with_browser_use_agent` - Full AI automation
+
+## 🎭 Actor Use in Action
+
+### Natural Language Element Queries
+
+**Old Way (Manual Selectors):**
+```python
+links = await page.locator("a[href*='matrix.to']").all()
+```
+
+**New Way (Actor Use):**
+```python
+# Just describe what you want in natural language
+task = "Find all links that go to matrix.to"
+# Actor Use handles element detection automatically!
+```
+
+### Mixed Automation Example
+
+```python
+# Combine deterministic steps with AI intelligence:
+
+1. Navigate to URL (deterministic)
+2. "Find the Community Chat section" (AI with Actor Use)
+3. "Click the first Matrix room link" (AI with Actor Use)  
+4. Verify URL contains "matrix.to" (deterministic)
+```
+
+Actor Use intelligently handles the ambiguous parts!
+
+## � Test Results & Action Items
+
+### Latest Comprehensive Test (October 13, 2025)
+
+**Overall Score:** **8/10 - Production Ready** ✅
+
+**Quick Summary:**
+- ✅ All 12 workshop pages verified
+- ✅ Matrix integration 100% functional  
+- ✅ All navigation works perfectly
+- ✅ No TODO markers found
+- ❌ 1 critical issue: Broken University of Cologne Guidelines link (404)
+- ⚠️ 2 minor enhancements needed: Calendar subscriptions & contact form
+
+**Cost:** $0.27 total for complete site audit
+
+**See full results:** [TESTING-RESULTS.md](TESTING-RESULTS.md)
+
+### Two Test Scripts Available
+
+#### 1. Matrix-Focused Test (Quick - 2 min)
+```bash
+python mobile-testing/browser_site_inspection_final.py
+```
+- **Duration:** ~2 minutes
+- **Cost:** ~$0.03
+- **Coverage:** Matrix integration, 7 verification points
+- **Use for:** Daily checks before deployments
+
+#### 2. Comprehensive Site Test (Full - 6 min)
+```bash
+python mobile-testing/comprehensive_site_test.py
+```
+- **Duration:** ~6 minutes  
+- **Cost:** ~$0.24
+- **Coverage:** 10 major sections, 175 checkpoints
+- **Use for:** Weekly audits, major updates
+- **Output:** JSON, HTML, and TXT reports in `reports/` directory
+
+### Generated Reports
+
+After running comprehensive test, view the beautiful HTML report:
+```powershell
+start mobile-testing/reports/comprehensive_report_*.html
+```
+
+Reports include:
+- Executive summary with production readiness score
+- Section-by-section analysis (Navigation, Workshops, Matrix, Resources, etc.)
+- Critical issues highlighted in red
+- Minor enhancements in yellow
+- Actionable recommendations with priority levels
+
+### Monthly Testing Recommendations
+
+**Regular Schedule:**
+- **Daily:** Matrix-focused test before deployments (~$0.90/month)
+- **Weekly:** Comprehensive test for audits (~$2/month)
+- **Total:** ~$2.90/month
+
+**Cost vs. Value:**
+- Manual testing: $50-100/hour developer time
+- Automated testing: $3/month
+- **Savings: ~$47-97 per month** 🎉
+
+---
+
+## �📱 Manual Mobile Responsiveness Testing
 
 ### Why Mobile Responsiveness Matters
 

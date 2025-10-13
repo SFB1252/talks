@@ -23,4 +23,4 @@ Materials for this workshop will be added here.
 ## Additional Resources
 
 - [DFG Guidelines for Safeguarding Good Research Practice](https://www.dfg.de/en/research_funding/principles_dfg_funding/good_scientific_practice/)
-- [University of Cologne Guidelines on Good Scientific Practice](https://verwaltung.uni-koeln.de/stabsstelle03.1/content/good_scientific_practice/index_eng.html)
+- [University of Cologne Guidelines on Good Scientific Practice](https://uni-koeln.de/forschung/ueberblick/wissenschaftliche-grundsaetze/gute-wissenschaftliche-praxis)

@@ -1,18 +1,8 @@
 # Browser automation requirements for SFB 1252 website inspection
-# Using Gemini 2.5 Flash for balanced performance: fast + cheap + clever
+# Using browser-use 0.7.9 with Actor Use and Gemini Flash Latest
 
-# Core browser automation
-browser-use>=0.1.0
+# Core browser automation (includes playwright, google-generativeai, and all dependencies)
+browser-use==0.7.9
 
 # Environment management
 python-dotenv>=1.0.0
-
-# Web browser automation (included with browser-use but listed for clarity)
-playwright>=1.40.0
-
-# Google AI integration (included with browser-use but listed for clarity)  
-google-generativeai>=0.3.0
-
-# Additional utilities
-requests>=2.31.0
-Pillow>=10.0.0  # For image processing if needed

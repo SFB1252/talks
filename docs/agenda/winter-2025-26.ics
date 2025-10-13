@@ -1,0 +1,93 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//SFB 1252//Research Data & Methods Workshop Series//EN
+CALNAME:SFB 1252 Winter 2025-26 Workshops
+X-WR-CALNAME:SFB 1252 Winter 2025-26 Workshops
+X-WR-TIMEZONE:Europe/Berlin
+X-WR-CALDESC:Research Data and Methods Workshop Series - Winter Semester 2025-26
+
+BEGIN:VEVENT
+UID:workshop-07-coding-r-basics@sfb1252.uni-koeln.de
+DTSTAMP:20251013T120000Z
+DTSTART:20250917T120000Z
+DTEND:20250917T133000Z
+SUMMARY:Workshop 7: Coding in R - Basics
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\, Cologne
+DESCRIPTION:Introduction to R programming environment\, basic data structures and operations\, data import/export\, essential packages\, and best practices for reproducible code.\n\nSpeaker: Luke Günther\, Project S\, CRC 1252\n\nMore info: https://sfb1252.github.io/talks/workshops/07-coding-r-basics/
+URL:https://sfb1252.github.io/talks/workshops/07-coding-r-basics/
+ORGANIZER;CN=Job Schepens & Luke Günther:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-08-online-experiments@sfb1252.uni-koeln.de
+DTSTAMP:20251013T120000Z
+DTSTART:20251001T120000Z
+DTEND:20251001T133000Z
+SUMMARY:Workshop 8: Online Experiments
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\, Cologne
+DESCRIPTION:Designing and implementing online experiments\, platform selection (jsPsych\, Prolific\, MTurk)\, participant recruitment\, data quality control\, and ethical considerations.\n\nSpeaker: Onur Özsoy\, Project C03\, CRC 1252\n\nMore info: https://sfb1252.github.io/talks/workshops/08-online-experiments/
+URL:https://sfb1252.github.io/talks/workshops/08-online-experiments/
+ORGANIZER;CN=Job Schepens & Luke Günther:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-09-archiving-session@sfb1252.uni-koeln.de
+DTSTAMP:20251013T120000Z
+DTSTART:20251015T120000Z
+DTEND:20251015T133000Z
+SUMMARY:Workshop 9: Archiving Session
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\, Cologne
+DESCRIPTION:Long-term data preservation strategies\, digital archiving standards\, institutional repository usage (UoC guidelines)\, metadata creation\, and legal requirements.\n\nSpeakers: Luke Günther (Project S\, CRC 1252) & Sarah Saleh (Data Center for the Humanities\, UoC)\n\nMore info: https://sfb1252.github.io/talks/workshops/09-archiving-session/
+URL:https://sfb1252.github.io/talks/workshops/09-archiving-session/
+ORGANIZER;CN=Job Schepens & Luke Günther:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-10-coding-python-vscode-llms@sfb1252.uni-koeln.de
+DTSTAMP:20251013T120000Z
+DTSTART:20251029T130000Z
+DTEND:20251029T143000Z
+SUMMARY:Workshop 10: Coding in Python/VSCode and LLMs
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\, Cologne
+DESCRIPTION:Python development environment setup with VSCode\, essential libraries (pandas\, numpy\, matplotlib)\, Git integration\, AI-assisted coding with LLMs\, and code quality best practices.\n\nSpeaker: Job Schepens\, Project S\, CRC 1252\n\nMore info: https://sfb1252.github.io/talks/workshops/10-coding-python-vscode-llms/
+URL:https://sfb1252.github.io/talks/workshops/10-coding-python-vscode-llms/
+ORGANIZER;CN=Job Schepens & Luke Günther:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-11-bayesian-regression@sfb1252.uni-koeln.de
+DTSTAMP:20251013T120000Z
+DTSTART:20251112T130000Z
+DTEND:20251112T143000Z
+SUMMARY:Workshop 11: Bayesian Regression Models
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\, Cologne
+DESCRIPTION:Introduction to Bayesian statistical thinking\, Bayesian vs. frequentist approaches\, implementing Bayesian regression in R (brms\, rstanarm)\, prior specification\, and interpreting results.\n\nSpeaker: Job Schepens\, Project S\, CRC 1252\n\nMore info: https://sfb1252.github.io/talks/workshops/11-bayesian-regression-models/
+URL:https://sfb1252.github.io/talks/workshops/11-bayesian-regression-models/
+ORGANIZER;CN=Job Schepens & Luke Günther:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-12-computational-reproducibility@sfb1252.uni-koeln.de
+DTSTAMP:20251013T120000Z
+DTSTART:20251126T130000Z
+DTEND:20251126T143000Z
+SUMMARY:Workshop 12: Computational Reproducibility using R
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\, Cologne
+DESCRIPTION:Reproducible research workflows in R\, R Markdown and Quarto for dynamic documents\, package management with renv\, containerization\, version control best practices\, and creating reproducible analysis pipelines.\n\nSpeaker: Luke Günther\, Project S\, CRC 1252\n\nMore info: https://sfb1252.github.io/talks/workshops/12-computational-reproducibility-r/
+URL:https://sfb1252.github.io/talks/workshops/12-computational-reproducibility-r/
+ORGANIZER;CN=Job Schepens & Luke Günther:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+END:VCALENDAR

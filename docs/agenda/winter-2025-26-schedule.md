@@ -6,6 +6,18 @@
 - **Where:** House of Prominence, Attic (Top floor), Luxemburger Str. 299
 - **Organizers:** Dr. Job Schepens & Luke Günther, Project S, CRC 1252
 
+## 📅 Subscribe to Calendar
+
+Never miss a workshop! Add all sessions to your calendar:
+
+- **[📥 Download iCal file](winter-2025-26.ics)** - Import into any calendar app (Outlook, Apple Calendar, Thunderbird, etc.)
+- **[📆 Add to Google Calendar](https://calendar.google.com/calendar/render?cid=webcal://sfb1252.github.io/talks/agenda/winter-2025-26.ics)** - Subscribe directly in Google Calendar
+- **[🍎 Apple Calendar](webcal://sfb1252.github.io/talks/agenda/winter-2025-26.ics)** - One-click subscription for iOS/macOS
+
+*Calendar includes all 6 workshops with dates, times, locations, descriptions, and direct links.*
+
+---
+
 ## Workshop Schedule
 
 ### 1. Coding in R - Basics
@@ -105,3 +117,16 @@ for the Humanities, UoC_
 - Creating reproducible analysis pipelines
 
 ---
+
+## Quick Reference
+
+**📍 Location:** House of Prominence, Attic (Top floor)  
+**📮 Address:** Luxemburger Str. 299, 50939 Cologne  
+**⏰ Time:** Wednesdays, 14:00 - 15:30 (every second week)  
+**📧 Contact:** [Dr. Job Schepens](mailto:job.schepens@uni-koeln.de) & [Luke Günther](mailto:luke.guenther@uni-koeln.de)
+
+**💬 Join the discussion:** [Matrix Community Chat](https://matrix.to/#/#sfb1252-talks:uni.koeln.de)
+
+---
+
+_Part of CRC 1252 "Prominence in Language" research initiative, University of Cologne._
