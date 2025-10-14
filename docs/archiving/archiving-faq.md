@@ -3,7 +3,7 @@
 This page mirrors the Archiving FAQ PDF for easier browsing.
 
 - Source PDF: "Archiving FAQ" (internal Sciebo)
-- Last mirrored to website: TBD (set after copying PDF here)
+- Last mirrored to website: 06.10.2025
 
 ## Topics
 
