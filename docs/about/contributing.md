@@ -125,9 +125,8 @@ to AI-assisted development:
 
 ### AI Tools and Guidelines
 
-- **Development Process**: See
-  [Website Development Documentation](website-development.md) for details on how
-  AI tools were used
+- **Development Process**: This website was developed using AI tools following
+  transparent and ethical practices
 - **Best Practices**: Review
   [AI-Assisted Development Guidelines](ai-assisted-development.md)
   for responsible AI use
@@ -157,7 +156,6 @@ If you use AI tools in your contributions:
 - [SFB 1252 Website](https://sfb1252.uni-koeln.de/)
 - [Project S Information](https://sfb1252.uni-koeln.de/projekte/s-data-design-and-sustainability)
 - [University of Cologne Guidelines](https://uni-koeln.de/forschung/ueberblick/wissenschaftliche-grundsaetze/gute-wissenschaftliche-praxis)
-- [Website Development Documentation](website-development.md)
 - [AI-Assisted Development Guidelines](ai-assisted-development.md)
 
 ## License and Copyright

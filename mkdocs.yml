@@ -96,17 +96,16 @@ nav:
       - Summer 2025 (Archived): "agenda/summer-2025-schedule.md"
   - Archiving:
       - FAQ: "archiving/archiving-faq.md"
-  - Development:
-      - Setup: "development/setup.md"
-      - Tools: "development/tools.md"
-      - VS Code Setup: "development/vscode-setup.md"
+  # - Development:
+  #     - Setup: "development/setup.md"
+  #     - Tools: "development/tools.md"
+  #     - VS Code Setup: "development/vscode-setup.md"
   - Matrix:
       - Space Setup: "matrix/space-setup.md"
       - Admin Checklist: "matrix/admin-checklist.md"
   - About:
       - Contributing: "about/contributing.md"
       - GitHub Setup: "about/github-setup.md"
-      - Website Development: "about/website-development.md"
       - AI-Assisted Development: "about/ai-assisted-development.md"
 
 # Additional CSS and JS
