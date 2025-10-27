@@ -94,7 +94,7 @@ GitHub Pages to update.
 ## Contributing
 
 We welcome contributions to improve our workshop materials. See our
-[contributing guide](about/contributing.md) for details on how to contribute.
+[contributing guide](docs/about/contributing.md) for details on how to contribute.
 
 ## License
 
