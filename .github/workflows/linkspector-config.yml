@@ -1,0 +1,37 @@
+dirs:
+  - ./docs
+  - ./
+
+excludedDirs:
+  - ./node_modules
+  - ./mkdocs-env
+  - ./site
+  - ./.git
+  - ./.vscode
+
+ignorePatterns:
+  - pattern: '^http://localhost'
+  - pattern: '^https://localhost'
+  - pattern: '^http://127.0.0.1'
+  - pattern: '^https://127.0.0.1'
+  - pattern: '^https://example.com'
+  - pattern: '^mailto:'
+  - pattern: '^tel:'
+  - pattern: '^#'
+  - pattern: '^javascript:'
+  - pattern: 'discord\.gg'
+  - pattern: 'twitter\.com'
+  - pattern: 'linkedin\.com'
+  - pattern: 'facebook\.com'
+
+aliveStatusCodes:
+  - 200
+  - 201
+  - 204
+  - 206
+  - 301
+  - 302
+  - 304
+
+useGitIgnore: true
+followRedirects: true
