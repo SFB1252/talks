@@ -20,7 +20,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         reporter: github-check
         fail_level: warning
-        config_file: '.github/workflows/linkspector-config.yml'
+        config_file: '.linkspector.yml'
         show_stats: true
 
   link-summary:
