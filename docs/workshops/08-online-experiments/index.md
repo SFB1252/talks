@@ -175,8 +175,6 @@ Contact: ooezsoy@uni-koeln.de
   programming guide
 - [Prolific Academic](https://www.prolific.co/) - Participant recruitment
   platform
-- [Online Experiment Guidelines](https://docs.google.com/document/d/1VYYI5b4u0c0BtL7tDJwBf6XTXqXZSVRSB9Y8qG9Y9Rs/edit) -
-  Best practices
 - [Ethics in Online Research](https://www.bps.org.uk/news-and-policy/ethics-guidelines-internet-mediated-research-2017) -
   BPS Guidelines
 

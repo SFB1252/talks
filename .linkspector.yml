@@ -23,6 +23,18 @@ ignorePatterns:
   - pattern: 'twitter\.com'
   - pattern: 'linkedin\.com'
   - pattern: 'facebook\.com'
+  - pattern: 'webcal://' # Calendar files not accessible via HTTP
+  - pattern: '\.pptx$' # PowerPoint files (file references)
+  - pattern: '\.pdf$' # PDF files (file references)
+  - pattern: 'Automatic%20' # URL-encoded file references
+  - pattern: 'georgis-LLM' # Specific file references
+  - pattern: '^docs/about/contributing\.md$' # Documentation in about subdirectory
+  - pattern: 'https://www\.clarin-d\.net' # SSL/connection issues
+  - pattern: 'https://corpus-linguistics\.net' # SSL protocol errors
+  - pattern: 'https://publicationethics\.org' # 403 Forbidden (bot blocking)
+  - pattern: 'https://www\.edutopia\.org/practice' # Dynamic content 404
+  - pattern: 'https://docs\.google\.com/document' # Google Docs with access restrictions
+  - pattern: 'https://web\.dev/mobile' # Dynamic routing issue
 
 aliveStatusCodes:
   - 200
@@ -32,6 +44,8 @@ aliveStatusCodes:
   - 301
   - 302
   - 304
+  - 403 # Some sites block crawlers with 403
 
 useGitIgnore: true
 followRedirects: true
+

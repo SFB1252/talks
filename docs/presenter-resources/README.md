@@ -159,7 +159,7 @@ iterative improvement based on feedback.
 
 - [University Teaching Resources](https://www.edulabs.uni-koeln.de/)
 - [Workshop Design Principles](https://carpentries.github.io/instructor-training/)
-- [Interactive Teaching Techniques](https://www.edutopia.org/practice)
+- [Interactive Teaching Techniques](https://www.edutopia.org)
 
 ### Technical Tools
 

@@ -32,7 +32,7 @@ format:
 \vspace{.5cm}
 **Additional resources:**
 
-[`S_FAQ` folder on Sciebo](https://uni-koeln.sciebo.de/s/fvdR9aesnq7O5xu)
+[`S_FAQ` folder on Sciebo](https://uni-koeln.sciebo.de/f/990545907)
 :::
 \hspace{1cm}
 ::: column

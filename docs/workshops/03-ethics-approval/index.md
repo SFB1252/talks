@@ -25,7 +25,7 @@ Materials for this workshop will be added here.
 
 - [Ethics Committee of the Faculty of Arts and Humanities](https://phil-fak.uni-koeln.de/forschung/ethikkommission) -
   Official information and application procedures
-- [University of Cologne Ethics Guidelines](https://verwaltung.uni-koeln.de/stabsstelle03.1/content/good_scientific_practice/index_eng.html)
+- [University of Cologne Good Scientific Practice Guidelines](https://ub.uni-koeln.de/en/research-publishing/good-scientific-practice)
 
 ## Additional Resources
 

@@ -46,7 +46,5 @@ year.
   tool
 - [WebAnno Project](https://webanno.github.io/webanno/) - Collaborative
   annotation platform
-- [Corpus Linguistics Resources](https://corpus-linguistics.net/) - General
-  corpus linguistics information
 - [Natural Language Toolkit (NLTK)](https://www.nltk.org/) - Python library for
   NLP

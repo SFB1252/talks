@@ -165,7 +165,6 @@ these options:
    | ---------- | -------------------------------- | --------------------------------------------- |
    | matrix.org | The main public homeserver       | [Register](https://app.element.io/#/register) |
    | nitro.chat | An alternative public homeserver | [Register](https://app.nitro.chat/#/register) |
-   | tchncs.de  | A community-run homeserver       | [Register](https://app.tchncs.de/#/register)  |
 
 3. **After creating your account**: Use the invitation link at the beginning of
    this guide to join the SFB 1252 Matrix space
