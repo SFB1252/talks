@@ -30,10 +30,7 @@ ignorePatterns:
   - pattern: 'georgis-LLM' # Specific file references
   - pattern: 'https://uni-koeln\.sciebo\.de/f/990545907' # Internal Sciebo folder (not accessible from external checks)
   - pattern: 'https://www\.clarin-d\.net' # SSL/connection issues
-  - pattern: 'https://corpus-linguistics\.net' # SSL protocol errors
-  - pattern: 'https://publicationethics\.org' # 403 Forbidden (bot blocking)
-  - pattern: 'https://www\.edutopia\.org/practice' # Dynamic content 404
-  - pattern: 'https://docs\.google\.com/document' # Google Docs with access restrictions
+  - pattern: 'https://www\.unesco\.org/en/artificial-intelligence' # Connection reset (transient network issues)
   - pattern: 'https://web\.dev/mobile' # Dynamic routing issue
 
 aliveStatusCodes:
