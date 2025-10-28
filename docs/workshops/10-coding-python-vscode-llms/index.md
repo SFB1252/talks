@@ -8,23 +8,119 @@
 
 Set up a productive Python development environment with VSCode, essential research libraries, and modern AI-assisted coding practices with LLMs. Includes Git integration and code quality tips.
 
+This workshop covers practical Python development for linguistic research, with hands-on examples, statistical analysis, and LLM-assisted coding workflows.
+
 ## Learning Objectives
 - Configure Python and VSCode for research workflows
 - Use pandas, numpy, matplotlib effectively
 - Integrate Git and version control with VSCode
 - Apply AI-assisted coding patterns responsibly
 - Improve code quality and documentation
+- Build reproducible data analysis pipelines
 
 ## Topics Covered
-- Python + VSCode environment setup
-- Core libraries: pandas, numpy, matplotlib
-- Git integration and workflows
-- LLM-assisted coding in practice
-- Code quality and documentation best practices
+- Python + VSCode environment setup (Windows, macOS, Linux)
+- Core libraries: pandas, numpy, scipy, matplotlib, seaborn
+- Git integration and collaborative workflows
+- LLM-assisted coding tools (GitHub Copilot, Continue, Cline)
+- Statistical analysis for linguistic data
+- Code quality, testing, and documentation
+- Virtual environments and dependency management
 
 ## Materials
-- Slides (to be added)
-- Example notebooks/scripts (to be added)
 
-## Related
-- See schedule entry in `agenda/winter-2025-26-schedule.md` for context.
+### Slides & Resources
+- **[Workshop Presentation (Quarto)](https://github.com/jobschepens/py-rdm/blob/main/slides.qmd)** - Full workshop slides source code
+  - Python environment setup
+  - LLM configuration and best practices
+  - Code examples and async agents
+
+**View Slides:**
+- **[HTML Version](https://jobschepens.github.io/py-rdm/slides.html)** - Interactive slides (best for viewing)
+- **[PDF Version](https://github.com/jobschepens/py-rdm/raw/main/slides.pdf)** - Printable PDF format
+
+### Code Repository
+- **[py-rdm GitHub Repository](https://github.com/jobschepens/py-rdm)** - Complete workshop materials
+  - Example analyses (head nods, clause mates)
+  - Starter scripts and templates
+  - Requirements and setup instructions
+
+### Quick Start
+```bash
+# Clone the repository
+git clone https://github.com/jobschepens/py-rdm.git
+cd py-rdm
+
+# Set up Python environment
+python -m venv .venv
+source .venv/bin/activate  # macOS/Linux
+# or: .venv\Scripts\Activate.ps1  # Windows PowerShell
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Explore examples
+python head-nods-example/job-testanalysis2/code/sample_size_analysis.py
+python clause-mates-example/job-testanalysis/code/analyze_pronoun_thematic_roles.py
+```
+
+## Example Projects
+
+The repository includes an example analysis:
+
+### Head Nods Analysis
+- Statistical comparison of head nod characteristics across languages
+- Sample size assessment and power analysis
+- Normality testing and Mann-Whitney U tests
+
+## Tools & Setup
+
+### Recommended Environment
+- **Python**: 3.9+ (3.11+ recommended)
+- **Editor**: [Visual Studio Code](https://code.visualstudio.com/)
+- **Terminal**: PowerShell (Windows), Bash (macOS/Linux)
+- **Version Control**: Git with GitHub
+
+### Essential VS Code Extensions
+- **Python** (Microsoft) - Language support
+- **Jupyter** (Microsoft) - Notebook support
+- **Pylance** (Microsoft) - Type checking
+
+### LLM Integration (Optional)
+- **GitHub Copilot Chat** - Code completion and chat
+- **Continue** - LLM integration with multiple providers
+- **Cline** - Autonomous coding agent
+
+## Repository Structure
+
+```
+py-rdm/
+├── head-nods-example/          # Head nods analysis
+├── example-scripts/             # Helper scripts (env loading, etc.)
+├── slides.qmd                   # Workshop presentation
+├── requirements.txt             # Python dependencies
+├── .gitignore                   # Git ignore rules
+└── README.md                    # Full documentation
+```
+
+## For Participants
+
+### Folder Organization Template
+```
+analyses-your-name/
+├── code/
+│   ├── data_cleaning.py
+│   ├── analysis.py
+│   └── visualization.py
+├── processed_data/
+│   └── cleaned_data.csv
+├── results/
+│   ├── plots/
+│   ├── summary.csv
+│   └── report.md
+└── README.md
+```
+
+---
+
+**Last updated:** October 2025
