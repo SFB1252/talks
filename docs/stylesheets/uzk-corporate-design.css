@@ -1,0 +1,378 @@
+/* ============================================
+   University of Cologne Corporate Design
+   Official Branding Guidelines (Sept 2023)
+   ============================================ */
+
+/* 
+ * UzK Official Colors (from Corporate Branding Handbook)
+ * Primary: #005176 (University Blue)
+ * Accent 1: #009dcc (Turquoise)
+ * Accent 2: #ea564f (Coral)
+ * 
+ * Official Fonts:
+ * - Albert Sans (sans-serif) - Google Font
+ * - Source Serif (serif) - Google Font
+ * - Fallback: Arial
+ */
+
+:root {
+  /* UzK Corporate Colors */
+  --uzk-blue: #005176;
+  --uzk-blue-dark: #003d59;
+  --uzk-blue-light: #006a9a;
+  --uzk-turquoise: #009dcc;
+  --uzk-turquoise-light: #33b3d9;
+  --uzk-coral: #ea564f;
+  --uzk-coral-light: #ee7971;
+  --uzk-black: #000000;
+  --uzk-gray-dark: #666666;
+  --uzk-gray: #999999;
+  --uzk-gray-light: #CCCCCC;
+  --uzk-gray-lightest: #F0F0F0;
+  --uzk-white: #FFFFFF;
+}
+
+/* Import official UzK fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Source+Serif+4:wght@300;400;600;700&display=swap');
+
+/* Override Material theme primary colors with UzK Blue */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--uzk-blue);
+  --md-primary-fg-color--light: var(--uzk-blue-light);
+  --md-primary-fg-color--dark: var(--uzk-blue-dark);
+  --md-accent-fg-color: var(--uzk-turquoise);
+  --md-accent-fg-color--transparent: rgba(0, 157, 204, 0.1);
+  
+  /* Apply Albert Sans as default font */
+  --md-text-font: "Albert Sans", Arial, sans-serif;
+  --md-code-font: "Roboto Mono", monospace;
+}
+
+/* Header styling with UzK branding */
+.md-header {
+  background-color: var(--uzk-blue);
+  color: var(--uzk-white);
+  min-height: 140px;  /* Taller header for much larger logo */
+  padding: 10px 0;  /* Add padding for better spacing */
+}
+
+.md-header__title {
+  color: var(--uzk-white);
+  font-family: "Albert Sans", Arial, sans-serif;
+  font-weight: 600;
+}
+
+.md-header__button {
+  color: var(--uzk-white);
+}
+
+/* Navigation tabs with UzK colors */
+.md-tabs {
+  background-color: var(--uzk-blue-dark);
+}
+
+.md-tabs__link {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Albert Sans", Arial, sans-serif;
+}
+
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  color: var(--uzk-white);
+}
+
+/* Links with UzK Blue and Turquoise accents */
+.md-content a {
+  color: var(--uzk-blue);
+  text-decoration: none;
+}
+
+.md-content a:hover {
+  color: var(--uzk-turquoise);
+  text-decoration: underline;
+}
+
+/* Buttons with UzK styling */
+.md-button {
+  background-color: var(--uzk-blue);
+  color: var(--uzk-white);
+  border: 2px solid var(--uzk-blue);
+  font-family: "Albert Sans", Arial, sans-serif;
+  font-weight: 500;
+}
+
+.md-button:hover {
+  background-color: var(--uzk-turquoise);
+  border-color: var(--uzk-turquoise);
+}
+
+.md-button--primary {
+  background-color: var(--uzk-blue);
+  border-color: var(--uzk-blue);
+  color: var(--uzk-white);
+}
+
+.md-button--primary:hover {
+  background-color: var(--uzk-turquoise);
+  border-color: var(--uzk-turquoise);
+}
+
+/* Footer with UzK branding */
+.md-footer {
+  background-color: var(--uzk-gray-dark);
+  color: var(--uzk-white);
+}
+
+.md-footer__inner {
+  padding: 2rem 0;
+}
+
+.md-footer__link {
+  color: var(--uzk-white);
+  text-decoration: none;
+}
+
+.md-footer__link:hover {
+  color: var(--uzk-gray-light);
+  text-decoration: underline;
+}
+
+/* Custom footer section for UzK links */
+.uzk-footer {
+  background-color: var(--uzk-gray-dark);
+  color: var(--uzk-white);
+  padding: 2rem 0;
+  margin-top: 3rem;
+  border-top: 3px solid var(--uzk-blue);
+}
+
+.uzk-footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.uzk-footer__section h4 {
+  color: var(--uzk-white);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Albert Sans", Arial, sans-serif;
+}
+
+.uzk-footer__section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.uzk-footer__section li {
+  margin-bottom: 0.5rem;
+}
+
+.uzk-footer__section a {
+  color: var(--uzk-gray-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-family: "Albert Sans", Arial, sans-serif;
+}
+
+.uzk-footer__section a:hover {
+  color: var(--uzk-turquoise);
+  text-decoration: underline;
+}
+
+.uzk-footer__copyright {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--uzk-gray);
+  color: var(--uzk-gray-light);
+  font-size: 0.85rem;
+  font-family: "Albert Sans", Arial, sans-serif;
+}
+
+/* Logo styling - ensure SFB logo displays prominently */
+.md-header__button.md-logo img {
+  height: 120px;  /* MUCH larger - make it really prominent! */
+  width: auto;
+  max-width: 400px;  /* Allow logo to be very wide */
+  filter: none;  /* Remove white filter to show original logo colors */
+  padding: 10px 0;  /* Add vertical padding for better spacing */
+}
+
+/* Site title styling to match SFB hierarchy */
+.md-header__title {
+  color: var(--uzk-white);
+  font-family: "Albert Sans", Arial, sans-serif;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+/* Add subtle subtitle under site name */
+.md-header__title::after {
+  content: "SFB 1252 - Universität zu Köln";
+  font-size: 0.7em;
+  font-weight: 400;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+/* Admonitions with UzK colors */
+.md-typeset .admonition.note {
+  border-left-color: var(--uzk-blue);
+}
+
+.md-typeset .admonition.note > .admonition-title {
+  background-color: rgba(0, 81, 118, 0.1);
+}
+
+.md-typeset .admonition.info {
+  border-left-color: var(--uzk-turquoise);
+}
+
+.md-typeset .admonition.info > .admonition-title {
+  background-color: rgba(0, 157, 204, 0.1);
+}
+
+.md-typeset .admonition.warning {
+  border-left-color: var(--uzk-coral);
+}
+
+.md-typeset .admonition.warning > .admonition-title {
+  background-color: rgba(234, 86, 79, 0.1);
+}
+
+/* Workshop cards with UzK accents */
+.workshop-card {
+  border-left: 4px solid var(--uzk-blue);
+}
+
+.workshop-card:hover {
+  border-left-color: var(--uzk-turquoise);
+  box-shadow: 0 4px 12px rgba(0, 81, 118, 0.15);
+}
+
+/* Code blocks subtle UzK accent */
+.md-typeset code {
+  background-color: var(--uzk-gray-lightest);
+}
+
+/* Search highlighting with UzK colors */
+.md-search-result__meta {
+  background-color: var(--uzk-blue);
+}
+
+.md-search-result__article--document:hover {
+  background-color: rgba(0, 81, 118, 0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .uzk-footer__container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .md-header__button.md-logo img {
+    height: 70px;  /* Still quite large on mobile */
+    padding: 6px 0;
+  }
+  
+  .md-header {
+    min-height: 90px;  /* Adjust header height for mobile */
+  }
+}
+
+/* Accessibility - ensure sufficient contrast */
+.md-typeset {
+  color: var(--uzk-black);
+  font-family: "Albert Sans", Arial, sans-serif;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  color: var(--uzk-blue);
+  font-family: "Albert Sans", Arial, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase; /* UzK style: headlines in capitals */
+  letter-spacing: 0.5px;
+}
+
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+  color: var(--uzk-blue);
+  font-family: "Albert Sans", Arial, sans-serif;
+  font-weight: 600;
+}
+
+/* Body text can use Source Serif for better readability */
+.md-typeset p {
+  font-family: "Albert Sans", Arial, sans-serif;
+}
+
+/* Button Styles from custom.css - update to use UzK colors */
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-family: "Albert Sans", Arial, sans-serif;
+}
+
+.btn-primary {
+  background: var(--uzk-blue);
+  color: var(--uzk-white);
+}
+
+.btn-primary:hover {
+  background: var(--uzk-turquoise);
+  color: var(--uzk-white);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--uzk-blue);
+  border: 2px solid var(--uzk-blue);
+}
+
+.btn-secondary:hover {
+  background: var(--uzk-blue);
+  color: var(--uzk-white);
+  transform: translateY(-1px);
+}
+
+/* Accent highlights with turquoise */
+.winter-highlight {
+  border-color: var(--uzk-turquoise);
+  box-shadow: 0 0 0 2px rgba(0, 157, 204, 0.2);
+}
+
+.winter-highlight h3 {
+  color: var(--uzk-turquoise);
+}
+
+/* Print styles - maintain UzK branding */
+@media print {
+  .md-header,
+  .md-tabs {
+    background-color: var(--uzk-blue) !important;
+    color: var(--uzk-white) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

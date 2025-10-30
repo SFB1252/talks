@@ -16,11 +16,15 @@ theme:
   version: "9.6.18"
   language: "en"
   logo: "logo.png"
+  favicon: "logo.png"
   palette:
+    # University of Cologne Corporate Design Colors
+    # Primary: University Blue (#005176)
+    # Accent: Turquoise (#009dcc)
     primary: "blue"
-    accent: "blue"
+    accent: "cyan"
   font:
-    text: "Roboto"
+    text: "Albert Sans"
     code: "Roboto Mono"
   features:
     - navigation.tabs
@@ -51,8 +55,16 @@ extra:
   generator: false
   social:
     - icon: "fontawesome/solid/university"
+      link: "https://www.uni-koeln.de"
+      name: "Universität zu Köln"
+    - icon: "fontawesome/solid/flask"
       link: "https://sfb1252.uni-koeln.de"
-      name: "CRC 1252 - University of Cologne"
+      name: "CRC 1252 - Prominence in Language"
+  # University of Cologne footer links
+  copyright: |
+    &copy; 2024 SFB 1252 - Universität zu Köln<br>
+    <a href="https://sfb1252.uni-koeln.de" target="_blank">SFB 1252 Homepage</a> | 
+    <a href="https://www.uni-koeln.de" target="_blank">Universität zu Köln</a>
 
 # Extensions
 markdown_extensions:
@@ -110,6 +122,7 @@ nav:
 
 # Additional CSS and JS
 extra_css:
+  - "stylesheets/uzk-corporate-design.css"
   - "stylesheets/custom.css"
 
 extra_javascript:
