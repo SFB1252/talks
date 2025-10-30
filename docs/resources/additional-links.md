@@ -82,9 +82,7 @@ academic best practices.
 
 - [ELAN](https://archive.mpi.nl/tla/elan) - Multimedia annotation tool
 - [WebAnno](https://webanno.github.io/webanno/) - Web-based annotation platform
-- [CATMA](https://catma.de/) - Computer Assisted Text Markup and Analysis
-- [AntConc](https://www.laurenceanthony.net/software/antconc/) - Corpus analysis
-  toolkit
+
 
 ### Programming and Analysis
 

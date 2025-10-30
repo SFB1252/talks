@@ -100,8 +100,7 @@ Contact: ooezsoy@uni-koeln.de
 2) General guidelines for ET: https://hu.berlin/ET
 3) HU Berlin farm: https://korpling.german.hu-berlin.de/ibex/
 4) Explore a demo and copy into your account: https://farm.pcibex.net/r/jsBNEF/
-5) Try running a demo study: https://farm.pcibex.net/p/XmseQO/ [broken]
-6) Example experiment components: translation tasks, Stroop task, survey.
+5) Example experiment components: translation tasks, Stroop task, survey.
 
 ### Analysis
 - "Jump to R" indicated for analysis workflow; details not included on slides.
@@ -161,7 +160,6 @@ Contact: ooezsoy@uni-koeln.de
 - ET guidelines: https://hu.berlin/ET
 - HU Berlin farm: https://korpling.german.hu-berlin.de/ibex/
 - Demo (copy to your account): https://farm.pcibex.net/r/jsBNEF/
-- Demo (run study): https://farm.pcibex.net/p/XmseQO/ [broken]
 - WebGazer.js: https://webgazer.cs.brown.edu/
 - PCIbex docs: https://doc.pcibex.net/
 - Zehr & Schwarz (2018): https://doi.org/10.17605/OSF.IO/MD832
