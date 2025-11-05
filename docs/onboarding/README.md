@@ -1,6 +1,6 @@
 # Project S: Onboarding
 
-**Date:** 15. Mai 2025  
+**Date:** 15. Mai 2025
 **Speakers:** Job Schepens & Luke Günther, Project S, SFB 1252
 
 ## Overview
@@ -25,7 +25,7 @@ Sustainability) services and resources within SFB 1252 "Prominence in Language".
 
 ## Key Information
 
-**Location:** 2nd floor @ House of Prominence  
+**Location:** 2nd floor @ House of Prominence
 **Office Hours:** Our door is always open!
 
 **We offer:**

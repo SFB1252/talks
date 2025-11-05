@@ -33,7 +33,7 @@ jobs:
           npm install -g prettier
 
       - name: Check Markdown quality
-        run: markdownlint-cli2 "docs/**/*.md" "!node_modules" "!site"
+        run: markdownlint-cli2 --config .markdownlint-cli2.jsonc "docs/**/*.md" "!node_modules" "!site"
         continue-on-error: true
 
       - name: Check code formatting
@@ -76,7 +76,11 @@ jobs:
           node-version: '18'
 
       - name: Install accessibility tools
-        run: npm install -g @axe-core/cli http-server
+        run: npm install -g @axe-core/cli http-server browser-driver-manager
+        continue-on-error: true
+
+      - name: Sync ChromeDriver with Chrome version
+        run: npx browser-driver-manager install chrome
         continue-on-error: true
 
       - name: Test accessibility
