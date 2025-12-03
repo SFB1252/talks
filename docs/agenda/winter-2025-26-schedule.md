@@ -11,10 +11,7 @@
 Never miss a workshop! Add all sessions to your calendar:
 
 - **[📥 Download iCal file](winter-2025-26.ics)** - Import into any calendar app (Outlook, Apple Calendar, Thunderbird, etc.)
-- **[📆 Add to Google Calendar](https://calendar.google.com/calendar/render?cid=webcal://sfb1252.github.io/talks/agenda/winter-2025-26.ics)** - Subscribe directly in Google Calendar
-- **[🍎 Apple Calendar](webcal://sfb1252.github.io/talks/agenda/winter-2025-26.ics)** - One-click subscription for iOS/macOS
-
-*Calendar includes all 6 workshops with dates, times, locations, descriptions, and direct links.*
+- **[📥 Download iCal file with additional meetings](../calendar/winter-2025-26-extended.ics)** - All 14 workshops through April 2026
 
 ---
 
@@ -115,6 +112,110 @@ for the Humanities, UoC_
 - Containerization approaches (Docker, renv)
 - Version control best practices for R projects
 - Creating reproducible analysis pipelines
+
+---
+
+### 7. Bayesian Model Comparison Using Cross-Validation
+
+**Date:** 17. December 2025  
+**Time:** 14:00 - 15:30  
+**Speaker:** Job Schepens, _Project S, CRC 1252_
+
+**Topics:**
+
+- Model comparison using cross-validation
+- LOO-CV and WAIC in practice
+
+---
+
+### 8. Bayesian Hypothesis Testing Using ROPE
+
+**Date:** 7. January 2026  
+**Time:** 14:00 - 15:30  
+**Speaker:** Job Schepens, _Project S, CRC 1252_
+
+**Topics:**
+
+- Region of Practical Equivalence (ROPE)
+- Bayesian hypothesis testing framework
+
+---
+
+### 9. Advanced R: Working with Data Frames
+
+**Date:** 21. January 2026  
+**Time:** 14:00 - 15:30  
+**Speaker:** Luke Günther, _Project S, CRC 1252_
+
+**Topics:**
+
+- Advanced dplyr and tidyr operations
+- Data transformation and reshaping techniques
+
+---
+
+### 10. Taking Care of Your Data: From Backups to Publication
+
+**Date:** 4. February 2026  
+**Time:** 14:00 - 15:30  
+**Speaker:** Luke Günther, _Project S, CRC 1252_
+
+**Topics:**
+
+- Data lifecycle management
+- Backup strategies and publication preparation
+
+---
+
+### 11. Shiny: Creating Dynamic Web Apps from Data
+
+**Date:** 18. February 2026  
+**Time:** 14:00 - 15:30  
+**Speaker:** Luke Günther, _Project S, CRC 1252_
+
+**Topics:**
+
+- Introduction to Shiny framework
+- Building interactive data applications
+
+---
+
+### 12. Sample Size and Power Analysis
+
+**Date:** 4. March 2026  
+**Time:** 14:00 - 15:30  
+**Speaker:** Job Schepens, _Project S, CRC 1252_
+
+**Topics:**
+
+- Statistical power and sample size calculation
+- Effect size estimation
+
+---
+
+### 13. Let's Rant: Open Debugging
+
+**Date:** 1. April 2026  
+**Time:** 14:00 - 15:30  
+**Speaker:** Luke Günther, _Project S, CRC 1252_
+
+**Topics:**
+
+- Debugging strategies and best practices
+- Interactive problem-solving session
+
+---
+
+### 14. Bayes Factor
+
+**Date:** 15. April 2026  
+**Time:** 14:00 - 15:30  
+**Speaker:** Job Schepens, _Project S, CRC 1252_
+
+**Topics:**
+
+- Bayes Factors for model selection
+- Hypothesis testing applications
 
 ---
 

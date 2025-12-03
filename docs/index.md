@@ -22,7 +22,7 @@ The winter 2025-26 series focuses on programming skills, modern methodology, and
 
 ## Available Workshops
 
-### Core Research Skills
+### Core Research Skills (Summer 2025 Series)
 
 1. **[Good Academic Practice](workshops/01-good-academic-practice/index.md)** - Academic integrity, research ethics, and responsible conduct
 2. **[Research Data Management](workshops/02-research-data-management/index.md)** - Organizing, storing, and preserving research data
@@ -39,6 +39,14 @@ The winter 2025-26 series focuses on programming skills, modern methodology, and
 10. **[Coding in Python/VSCode and LLMs](workshops/10-coding-python-vscode-llms/index.md)** - Python setup, core libraries, Git integration, and LLM-assisted coding
 11. **[Bayesian Regression Models](workshops/11-bayesian-regression-models/index.md)** - Bayesian regression in R with priors, checking, and interpretation
 12. **[Computational Reproducibility using R](workshops/12-computational-reproducibility-r/index.md)** - Reproducible workflows with R Markdown/Quarto, renv, and pipelines
+13. **[Bayesian Model Comparison Using Cross-Validation](workshops/13-bayesian-model-comparison-cv/index.md)** - Comparing Bayesian models using cross-validation techniques
+14. **[Bayesian Hypothesis Testing Using ROPE](workshops/14-bayesian-rope-testing/index.md)** - Bayesian hypothesis testing with the Region of Practical Equivalence (ROPE)
+15. **[Advanced R: Working with Data Frames](workshops/15-advanced-r-dataframes/index.md)** - Dive deep into advanced data manipulation techniques with R's data frames 
+16. **[Taking Care of Your Data: From Backups to Publication](workshops/16-data-management-lifecycle/index.md)** - Data lifecycle, from backups to publishing
+17. **[Shiny: Creating Dynamic Web Apps from Data](workshops/17-shiny-web-apps/index.md)** - An introduction to creating interactive web applications from your data using Shiny
+18. **[Sample Size and Power Analysis](workshops/18-power-analysis/index.md)** - Principles of sample size calculation and power analysis
+19. **[Let's Rant: Open Debugging](workshops/19-open-debugging/index.md)** - An interactive and open session on debugging strategies and best practices
+20. **[Bayes Factor](workshops/20-bayes-factor/index.md)** - Bayes Factors for model selection and hypothesis testing
 
 **View the [complete workshop catalog](workshops/index.md)** for detailed information about each session.
 
@@ -62,33 +70,17 @@ Materials from our **July 2025 Retreat** on Large Language Models and AI-assiste
 
 ---
 
-## Archived Workshops
-
-### Summer 2025 Series
-
-The summer 2025 workshop series has been completed. Materials are still available:
-
-- Good Academic Practice (May 7, 2025)
-- Research Data Management (May 21, 2025)
-- Ethics Approval (June 4, 2025)
-- Literature Management (June 18, 2025)
-- Annotation & Corpus Tools (July 2, 2025)
-- Preregistration (July 16, 2025)
-
-[View complete summer 2025 materials and schedule →](agenda/summer-2025-schedule.md)
-
----
-
 ## Workshop Flyers
 
 Download promotional materials:
 
 - [Summer 2025 Flyer (PDF)](flyers/2025_rdm-flyer_summer-semester/2025-05-08_rdm-summer-flyer.pdf)
 - [Winter 2025-26 Flyer (PDF)](flyers/2025_rdm-flyer_winter-semester/2025-08-25_rdm-winter-flyer.pdf)
+- [Winter 2025-26 Flyer Part 2 (PDF)](flyers/2025_rdm-flyer_winter-semester/2025-12-03_rdm-winter-flyer.pdf)
 
 ---
 
-## Community Chat
+## Chat
 
 Join our CRC 1252 community on Matrix for workshop coordination and discussion.
 

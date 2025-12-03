@@ -1,0 +1,96 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//SFB1252//Research Data Methods//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+
+
+BEGIN:VEVENT
+UID:workshop-7@sfb1252.uni-koeln.de
+DTSTART:20251217T130000Z
+DTEND:20251217T143000Z
+SUMMARY:Bayesian Model Comparison Using Cross-Validation
+LOCATION:House of Prominence, Attic, Luxemburger Str. 299, Cologne
+ORGANIZER;CN=SFB 1252:mailto:jschepen@uni-koeln.de
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-8@sfb1252.uni-koeln.de
+DTSTART:20260107T130000Z
+DTEND:20260107T143000Z
+SUMMARY:Bayesian Hypothesis Testing Using ROPE
+LOCATION:House of Prominence, Attic, Luxemburger Str. 299, Cologne
+ORGANIZER;CN=SFB 1252:mailto:jschepen@uni-koeln.de
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-9@sfb1252.uni-koeln.de
+DTSTART:20260121T130000Z
+DTEND:20260121T143000Z
+SUMMARY:Advanced R: Working with Data Frames
+LOCATION:House of Prominence, Attic, Luxemburger Str. 299, Cologne
+ORGANIZER;CN=SFB 1252:mailto:jschepen@uni-koeln.de
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-10@sfb1252.uni-koeln.de
+DTSTART:20260204T130000Z
+DTEND:20260204T143000Z
+SUMMARY:Taking Care of Your Data: From Backups to Publication
+LOCATION:House of Prominence, Attic, Luxemburger Str. 299, Cologne
+ORGANIZER;CN=SFB 1252:mailto:jschepen@uni-koeln.de
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-11@sfb1252.uni-koeln.de
+DTSTART:20260218T130000Z
+DTEND:20260218T143000Z
+SUMMARY:Shiny: Creating Dynamic Web Apps from Data
+LOCATION:House of Prominence, Attic, Luxemburger Str. 299, Cologne
+ORGANIZER;CN=SFB 1252:mailto:jschepen@uni-koeln.de
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-12@sfb1252.uni-koeln.de
+DTSTART:20260304T130000Z
+DTEND:20260304T143000Z
+SUMMARY:Sample Size and Power Analysis
+LOCATION:House of Prominence, Attic, Luxemburger Str. 299, Cologne
+ORGANIZER;CN=SFB 1252:mailto:jschepen@uni-koeln.de
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-13@sfb1252.uni-koeln.de
+DTSTART:20260401T120000Z
+DTEND:20260401T133000Z
+SUMMARY:Let's Rant: Open Debugging
+LOCATION:House of Prominence, Attic, Luxemburger Str. 299, Cologne
+ORGANIZER;CN=SFB 1252:mailto:jschepen@uni-koeln.de
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-14@sfb1252.uni-koeln.de
+DTSTART:20260415T120000Z
+DTEND:20260415T133000Z
+SUMMARY:Bayes Factor
+LOCATION:House of Prominence, Attic, Luxemburger Str. 299, Cologne
+ORGANIZER;CN=SFB 1252:mailto:jschepen@uni-koeln.de
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+
+END:VCALENDAR
