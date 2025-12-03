@@ -17,7 +17,7 @@ Never miss a workshop! Add all sessions to your calendar:
 
 ## Workshop Schedule
 
-### 1. Coding in R - Basics
+### 7. [Coding in R - Basics](../workshops/07-coding-r-basics/index.md)
 
 **Date:** 17. September 2025  
 **Time:** 14:00 - 15:30  
@@ -33,7 +33,7 @@ Never miss a workshop! Add all sessions to your calendar:
 
 ---
 
-### 2. Online Experiments
+### 8. [Online Experiments](../workshops/08-online-experiments/index.md)
 
 **Date:** 1. Oktober 2025  
 **Time:** 14:00 - 15:30  
@@ -49,7 +49,7 @@ Never miss a workshop! Add all sessions to your calendar:
 
 ---
 
-### 3. Archiving Session
+### 9. [Archiving Session](../workshops/09-archiving-session/index.md)
 
 **Date:** 15. Oktober 2025  
 **Time:** 14:00 - 15:30  
@@ -66,7 +66,7 @@ for the Humanities, UoC_
 
 ---
 
-### 4. Coding in Python/VSCode and LLMs
+### 10. [Coding in Python/VSCode and LLMs](../workshops/10-coding-python-vscode-llms/index.md)
 
 **Date:** 29. Oktober 2025  
 **Time:** 14:00 - 15:30  
@@ -82,7 +82,7 @@ for the Humanities, UoC_
 
 ---
 
-### 5. Bayesian Regression Models
+### 11. [Bayesian Regression Models](../workshops/11-bayesian-regression-models/index.md)
 
 **Date:** 12. November 2025  
 **Time:** 14:00 - 15:30  
@@ -98,7 +98,7 @@ for the Humanities, UoC_
 
 ---
 
-### 6. Computational Reproducibility Session using R
+### 12. [Computational Reproducibility Session using R](../workshops/12-computational-reproducibility-r/index.md)
 
 **Date:** 26. November 2025  
 **Time:** 14:00 - 15:30  
@@ -115,7 +115,7 @@ for the Humanities, UoC_
 
 ---
 
-### 7. Bayesian Model Comparison Using Cross-Validation
+### 13. [Bayesian Model Comparison Using Cross-Validation](../workshops/13-bayesian-model-comparison-cv/index.md)
 
 **Date:** 17. December 2025  
 **Time:** 14:00 - 15:30  
@@ -128,7 +128,7 @@ for the Humanities, UoC_
 
 ---
 
-### 8. Bayesian Hypothesis Testing Using ROPE
+### 14. [Bayesian Hypothesis Testing Using ROPE](../workshops/14-bayesian-rope-testing/index.md)
 
 **Date:** 7. January 2026  
 **Time:** 14:00 - 15:30  
@@ -141,7 +141,7 @@ for the Humanities, UoC_
 
 ---
 
-### 9. Advanced R: Working with Data Frames
+### 15. [Advanced R: Working with Data Frames](../workshops/15-advanced-r-dataframes/index.md)
 
 **Date:** 21. January 2026  
 **Time:** 14:00 - 15:30  
@@ -154,7 +154,7 @@ for the Humanities, UoC_
 
 ---
 
-### 10. Taking Care of Your Data: From Backups to Publication
+### 16. [Taking Care of Your Data: From Backups to Publication](../workshops/16-data-management-lifecycle/index.md)
 
 **Date:** 4. February 2026  
 **Time:** 14:00 - 15:30  
@@ -167,7 +167,7 @@ for the Humanities, UoC_
 
 ---
 
-### 11. Shiny: Creating Dynamic Web Apps from Data
+### 17. [Shiny: Creating Dynamic Web Apps from Data](../workshops/17-shiny-web-apps/index.md)
 
 **Date:** 18. February 2026  
 **Time:** 14:00 - 15:30  
@@ -180,7 +180,7 @@ for the Humanities, UoC_
 
 ---
 
-### 12. Sample Size and Power Analysis
+### 18. [Sample Size and Power Analysis](../workshops/18-power-analysis/index.md)
 
 **Date:** 4. March 2026  
 **Time:** 14:00 - 15:30  
@@ -193,7 +193,7 @@ for the Humanities, UoC_
 
 ---
 
-### 13. Let's Rant: Open Debugging
+### 19. [Let's Rant: Open Debugging](../workshops/19-open-debugging/index.md)
 
 **Date:** 1. April 2026  
 **Time:** 14:00 - 15:30  
@@ -206,7 +206,7 @@ for the Humanities, UoC_
 
 ---
 
-### 14. Bayes Factor
+### 20. [Bayes Factor](../workshops/20-bayes-factor/index.md)
 
 **Date:** 15. April 2026  
 **Time:** 14:00 - 15:30  

@@ -11,7 +11,7 @@
 
 ## Workshop Schedule
 
-### 1. Good Academic Practice
+### 1. [Good Academic Practice](../workshops/01-good-academic-practice/index.md)
 
 **Date:** 7. Mai 2025  
 **Time:** 14:00 - 15:30  
@@ -26,7 +26,7 @@
 
 ---
 
-### 2. Research Data Management
+### 2. [Research Data Management](../workshops/02-research-data-management/index.md)
 
 **Date:** 21. Mai 2025  
 **Time:** 14:00 - 15:30  
@@ -44,7 +44,7 @@
 
 ---
 
-### 3. Ethics Approval
+### 3. [Ethics Approval](../workshops/03-ethics-approval/index.md)
 
 **Date:** 4. Juni 2025  
 **Time:** 14:00 - 15:30  
@@ -63,7 +63,7 @@ UzK_
 
 ---
 
-### 4. Literature Management
+### 4. [Literature Management](../workshops/04-literature-management/index.md)
 
 **Date:** 18. Juni 2025  
 **Time:** 14:00 - 15:30  
@@ -83,7 +83,7 @@ UzK_
 
 ---
 
-### 5. Tools for Annotation & Corpus Linguistics
+### 5. [Tools for Annotation & Corpus Linguistics](../workshops/05-annotation-corpus-tools/index.md)
 
 **Date:** 2. Juli 2025  
 **Time:** 14:00 - 15:30  
@@ -101,7 +101,7 @@ UzK_
 
 ---
 
-### 6. Preregistration
+### 6. [Preregistration](../workshops/06-preregistration/index.md)
 
 **Date:** 16. Juli 2025  
 **Time:** 14:00 - 15:30  
