@@ -11,7 +11,7 @@
 Never miss a workshop! Add all sessions to your calendar:
 
 - **[📥 Download iCal file](winter-2025-26.ics)** - Import into any calendar app (Outlook, Apple Calendar, Thunderbird, etc.)
-- **[📥 Download iCal file with additional meetings](../calendar/winter-2025-26-extended.ics)** - All 14 workshops through April 2026
+- **[📥 Download iCal file with additional meetings](../calendar/winter-2025-26-extended.ics)** - Additional workshops through April 2026
 
 ---
 
