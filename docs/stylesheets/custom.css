@@ -202,3 +202,28 @@
   width: auto;
   max-width: 120px;
 }
+/* ===========================
+   Accessibility Fixes
+   =========================== */
+
+/* Fix: Ensure links are distinguishable from text without relying solely on color */
+.md-content a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.md-content a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Exception for buttons and styled links that already have visual distinction */
+.md-button,
+.btn-primary,
+.btn-secondary,
+.md-tabs__link,
+.md-nav__link,
+.md-footer__link,
+.md-logo {
+  text-decoration: none !important;
+}
