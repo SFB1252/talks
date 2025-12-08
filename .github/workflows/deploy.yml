@@ -46,6 +46,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Build site
+        env:
+          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.MKDOCS_GIT_COMMITTERS_APIKEY }}
         run: python -m mkdocs build
 
       - name: Setup Pages
@@ -80,4 +82,6 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Test build
+        env:
+          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.MKDOCS_GIT_COMMITTERS_APIKEY }}
         run: python -m mkdocs build --strict
