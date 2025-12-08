@@ -43,20 +43,24 @@ Workshops on research methodology, data management, and academic practices for g
 
 Download promotional materials:
 
-<figure markdown>
-  ![Summer 2025 Flyer](flyers/2025_rdm-flyer_summer-semester/2025-05-08_rdm-summer-flyer.pdf){ width="600" }
-  <figcaption>Summer 2025 Flyer - [Download PDF](flyers/2025_rdm-flyer_summer-semester/2025-05-08_rdm-summer-flyer.pdf)</figcaption>
-</figure>
+<div class="grid cards" markdown>
 
-<figure markdown>
-  ![Winter 2025-26 Flyer](flyers/2025_rdm-flyer_winter-semester/2025-08-25_rdm-winter-flyer.png){ width="600" }
-  <figcaption>Winter 2025-26 Flyer - [Download PDF](flyers/2025_rdm-flyer_winter-semester/2025-08-25_rdm-winter-flyer.pdf)</figcaption>
-</figure>
+-   <figure markdown="span">
+      ![Summer 2025 Flyer](flyers/2025_rdm-flyer_summer-semester/2025-05-08_rdm-summer-flyer.png){ width="400" data-gallery="flyers" }
+      <figcaption>Summer 2025 Flyer - <a href="flyers/2025_rdm-flyer_summer-semester/2025-05-08_rdm-summer-flyer.pdf">Download PDF</a></figcaption>
+    </figure>
 
-<figure markdown>
-  ![Winter 2025-26 Flyer Part 2](flyers/2025_rdm-flyer_winter-semester/2025-12-03_rdm-winter-flyer.png){ width="600" }
-  <figcaption>Winter 2025-26 Flyer Part 2 - [Download PDF](flyers/2025_rdm-flyer_winter-semester/2025-12-03_rdm-winter-flyer.pdf)</figcaption>
-</figure>
+-   <figure markdown="span">
+      ![Winter 2025-26 Flyer](flyers/2025_rdm-flyer_winter-semester/2025-08-25_rdm-winter-flyer.png){ width="400" data-gallery="flyers" }
+      <figcaption>Winter 2025-26 Flyer - <a href="flyers/2025_rdm-flyer_winter-semester/2025-08-25_rdm-winter-flyer.pdf">Download PDF</a></figcaption>
+    </figure>
+
+-   <figure markdown="span">
+      ![Winter 2025-26 Flyer Part 2](flyers/2025_rdm-flyer_winter-semester/2025-12-03_rdm-winter-flyer.png){ width="400" data-gallery="flyers" }
+      <figcaption>Winter 2025-26 Flyer Part 2 - <a href="flyers/2025_rdm-flyer_winter-semester/2025-12-03_rdm-winter-flyer.pdf">Download PDF</a></figcaption>
+    </figure>
+
+</div>
 
 
 ---
