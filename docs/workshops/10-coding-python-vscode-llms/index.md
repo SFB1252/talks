@@ -36,11 +36,13 @@ This workshop covers practical Python development for linguistic research, with 
   - Code examples and async agents
 
 **View Slides:**
-- **[HTML Version](https://jobschepens.github.io/py-rdm/slides.html)** - Interactive slides (best for viewing)
+- **[HTML Version on GIT.NRW](https://py-rdm-f36267.pages.git.nrw/)** - Slides hosted on GIT.NRW (looks better in some browsers)
+- **[HTML Version](https://jobschepens.github.io/py-rdm/slides.html)** - Slides hosted on GitHub 
 - **[PDF Version](https://github.com/jobschepens/py-rdm/raw/main/slides.pdf)** - Printable PDF format
 
 ### Code Repository
-- **[py-rdm GitHub Repository](https://github.com/jobschepens/py-rdm)** - Complete workshop materials
+- **[py-rdm GIT.NRW Repository](https://gitlab.git.nrw/jschepen/py-rdm)** - Workshop materials hosted on GIT.NRW
+- **[py-rdm GitHub Repository](https://github.com/jobschepens/py-rdm)** - Workshop materials hosted on GitHub
   - Example analyses (head nods, clause mates)
   - Starter scripts and templates
   - Requirements and setup instructions
