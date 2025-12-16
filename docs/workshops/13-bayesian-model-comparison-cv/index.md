@@ -28,6 +28,8 @@ This workshop introduces Bayesian model comparison techniques using cross-valida
 
 ## Materials
 
+We are using the same repository as last time: **brms-ws** (https://github.com/jobschepens/brms-ws)
+
 We will be using examples from two online books, specifically the chapters on the `loo_compare()` function:
 
 - Kurz, A. S. (2023). *Statistical rethinking with brms, ggplot2, and the tidyverse: Second edition*. https://bookdown.org/content/4857/ (chapter 7 "Ulysses' Compass" is a good introduction)
