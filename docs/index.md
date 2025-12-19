@@ -77,7 +77,7 @@ Materials from our **July 2025 Retreat** on Large Language Models and AI-assiste
 - **LLM-Assisted Coding** - Philip Georgis
 - **Plenary Session** - Job Schepens & Nils Reiter
 
-[View all retreat materials →](retreat/README.md)
+[View all retreat materials →](resources/retreat/README.md)
 
 ---
 
@@ -101,9 +101,9 @@ See our [Matrix Setup Guide](matrix/space-setup.md) for detailed instructions.
 
 ## Additional Information
 
-- **Getting Started:** [Onboarding materials](onboarding/README.md) for new CRC 1252 members
+- **Getting Started:** [Onboarding materials](resources/onboarding/README.md) for new CRC 1252 members
 - **Contributing:** See our [contributing guide](about/contributing.md) to contribute materials
-- **Resources:** [Additional resources](resources/additional-links.md) for research support
+- **Resources:** [Additional resources](resources/additional-links/additional-links.md) for research support
 
 ---
 

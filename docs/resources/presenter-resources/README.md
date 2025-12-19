@@ -170,10 +170,10 @@ iterative improvement based on feedback.
 ### SFB 1252 Resources
 
 - [Project Overview](https://sfb1252.uni-koeln.de/)
-- [Past Workshop Materials](../workshops/index.md)
+- [Past Workshop Materials](../../workshops/index.md)
 - [Onboarding Resources](../onboarding/README.md)
 
 ---
 
 **Questions?** Contact the workshop organizers or visit our
-[contributing guidelines](../about/contributing.md).
+[contributing guidelines](../../about/contributing.md).

@@ -8,7 +8,7 @@
 ### Related Events
 
 For additional training opportunities, see the
-[Project S Onboarding materials](../onboarding/README.md) which include information
+[Project S Onboarding materials](../resources/onboarding/README.md) which include information
 about:
 
 - Digital Humanities Colloquium

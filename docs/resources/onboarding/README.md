@@ -53,7 +53,7 @@ Sciebo is our collaborative data cloud for all non-sensitive project data.
 
 - [S_FAQ folder on Sciebo](https://uni-koeln.sciebo.de/f/990545907) -
   Frequently asked questions and resources
-- [Research Data & Methods Workshop Series](../workshops/index.md) - Ongoing workshop
+- [Research Data & Methods Workshop Series](../../workshops/index.md) - Ongoing workshop
   series
 - [Project S Website](https://sfb1252.uni-koeln.de/projekte/s-data-design-and-sustainability)
 
