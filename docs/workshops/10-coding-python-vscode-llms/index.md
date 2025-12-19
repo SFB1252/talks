@@ -35,6 +35,10 @@ This workshop covers practical Python development for linguistic research, with 
   - LLM configuration and best practices
   - Code examples and async agents
 
+**Further GWDG courses:**
+- **[Effectively Utilize AI Tools in Research](https://docs.hpc.gwdg.de/training/self_paced/effectively_utilize_ai_tools_in_research/index.html)**
+- **[AI Competence Training](https://docs.hpc.gwdg.de/training/self_paced/ai_competence_training/index.html)**
+
 **View Slides:**
 - **[HTML Version on GIT.NRW](https://py-rdm-f36267.pages.git.nrw/)** - Slides hosted on GIT.NRW (looks better in some browsers)
 - **[HTML Version](https://jobschepens.github.io/py-rdm/slides.html)** - Slides hosted on GitHub 

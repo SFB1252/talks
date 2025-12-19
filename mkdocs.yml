@@ -49,8 +49,8 @@ plugins:
   - git-committers:
       repository: sfb1252/talks
       branch: main
-      token: !ENV MKDOCS_GIT_COMMITTERS_APIKEY
-
+      token: !ENV MKDOCS_GIT_COMMITTERS_APIKEY # (1)! 
+ 
 # Customization
 extra:
   generator: false
@@ -108,15 +108,15 @@ nav:
       - "19 - Let's Rant: Open Debugging": "workshops/19-open-debugging/index.md"
       - "20 - Bayes Factor": "workshops/20-bayes-factor/index.md"
   - Resources:
-      - Onboarding: "onboarding/README.md"
-      - Additional Links: "resources/additional-links.md"
-      - Retreat Materials: "retreat/README.md"
-      - Presenter Resources: "presenter-resources/README.md"
+      - Onboarding: "resources/onboarding/README.md"
+      - Archiving: "resources/archiving/archiving-faq.md"
+      - Retreat Materials: "resources/retreat/README.md"
+      - Presenter Resources: "resources/presenter-resources/README.md"
+      - Additional Links: "resources/additional-links/additional-links.md"
   - Schedule:
       - Winter 2025-26: "agenda/winter-2025-26-schedule.md"
       - Summer 2025 (Archived): "agenda/summer-2025-schedule.md"
-  - Archiving:
-      - FAQ: "archiving/archiving-faq.md"
+
   # - Development:
   #     - Setup: "development/setup.md"
   #     - Tools: "development/tools.md"
