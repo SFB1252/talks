@@ -28,7 +28,10 @@ This workshop introduces Bayesian model comparison techniques using cross-valida
 
 ## Materials
 
-We are using the same repository as last time: **brms-ws** (https://github.com/jobschepens/brms-ws)
+We are using the same repository as last time: **[brms-ws](https://github.com/jobschepens/brms-ws)**.
+
+The main notebook for this session is on model comparison with cross-validation:
+- **[View the rendered notebook: 05_loo.html](https://jobschepens.github.io/brms-ws/05_loo.html)**
 
 We will be using examples from two online books, specifically the chapters on the `loo_compare()` function:
 
