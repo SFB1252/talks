@@ -108,9 +108,11 @@ nav:
       - "19 - Let's Rant: Open Debugging": "workshops/19-open-debugging/index.md"
       - "20 - Bayes Factor": "workshops/20-bayes-factor/index.md"
   - Resources:
+      - Overview: "resources/index.md"
       - Onboarding: "resources/onboarding/README.md"
       - Archiving: "resources/archiving/archiving-faq.md"
-      - Retreat Materials: "resources/retreat/README.md"
+      - LLM Workshop (December 2025): "resources/llm-workshop/llm-workshop.md"
+      - SFB 1252 Retreat Materials (July 2025): "resources/retreat/README.md"
       - Presenter Resources: "resources/presenter-resources/README.md"
       - Additional Links: "resources/additional-links/additional-links.md"
   - Schedule:
