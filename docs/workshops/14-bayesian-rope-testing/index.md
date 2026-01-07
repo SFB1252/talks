@@ -8,17 +8,18 @@ This workshop covers Bayesian hypothesis testing using the Region of Practical E
 
 ## Learning Objectives
 
-- Understand ROPE methodology
-- Apply Bayesian hypothesis testing framework
-- Define meaningful effect sizes
-- Interpret ROPE-based decisions
+- Understand ROPE methodology for practical significance
+- Estimate effect sizes in factorial designs
+- Apply HDI+ROPE decision framework
+- Use emmeans and marginaleffects for comparisons
 
 ## Topics Covered
 
 - Region of Practical Equivalence (ROPE) concept
-- Bayesian hypothesis testing framework
-- Effect size specification
-- Implementation in R with bayestestR
+- Setting defensible ROPE boundaries
+- Effect size estimation with emmeans and marginaleffects
+- Combining ROPE with effect estimates
+- Implementation in R (bayestestR, emmeans, marginaleffects)
 
 ## Prerequisites
 

@@ -8,18 +8,18 @@ This workshop introduces Bayes Factors as a tool for model selection and hypothe
 
 ## Learning Objectives
 
-- Understand Bayes Factor methodology
-- Interpret Bayes Factor values
-- Compare nested and non-nested models
-- Implement Bayes Factors in R
+- Understand Bayes Factors as evidence ratios
+- Use Savage-Dickey method for hypothesis testing
+- Interpret Bayes Factor scales (Jeffreys, Lee & Wagenmakers)
+- Distinguish Bayes Factors from ROPE and LOO
 
 ## Topics Covered
 
-- Introduction to Bayes Factors
-- Bayes Factor interpretation guidelines
-- Model comparison techniques
-- Computing Bayes Factors in R
-- Advantages and limitations
+- Savage-Dickey density ratio method
+- Using hypothesis() in brms
+- Bridge sampling for complex models
+- Bayes Factor interpretation and sensitivity
+- Integration with ROPE for complete inference
 
 ## Prerequisites
 
