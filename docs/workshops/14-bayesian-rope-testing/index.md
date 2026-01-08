@@ -29,7 +29,8 @@ This workshop covers Bayesian hypothesis testing using the Region of Practical E
 
 ## Materials
 
-Materials will be available after the workshop.
+- **[Rendered Tutorial](https://jobschepens.github.io/brms-ws/06_rope.html)** — Interactive HTML notebook with all code and examples
+- **[GitHub Repository](https://github.com/jobschepens/brms-ws)** — Full workshop materials, source code, and Docker setup
 
 ## Instructor
 
