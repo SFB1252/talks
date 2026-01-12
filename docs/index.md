@@ -26,12 +26,12 @@ Workshops on research methodology, data management, and academic practices for g
 12. **[Computational Reproducibility using R](workshops/12-computational-reproducibility-r/index.md)** (26 November 2025) - Reproducible workflows with R Markdown/Quarto, renv, and pipelines
 13. **[Bayesian Model Comparison Using Cross-Validation](workshops/13-bayesian-model-comparison-cv/index.md)** (17 December 2025) - Comparing Bayesian models using cross-validation techniques
 14. **[Bayesian Hypothesis Testing Using ROPE](workshops/14-bayesian-rope-testing/index.md)** (7 January 2026) - Bayesian hypothesis testing with the Region of Practical Equivalence (ROPE)
-15. **[Advanced R: Working with Data Frames](workshops/15-advanced-r-dataframes/index.md)** (21 January 2026) - Dive deep into advanced data manipulation techniques with R's data frames 
+15. **[Bayes Factor](workshops/20-bayes-factor/index.md)** (21 January 2026) - Bayes Factors for model selection and hypothesis testing
 16. **[Taking Care of Your Data: From Backups to Publication](workshops/16-data-management-lifecycle/index.md)** (4 February 2026) - Data lifecycle, from backups to publishing
 17. **[Shiny: Creating Dynamic Web Apps from Data](workshops/17-shiny-web-apps/index.md)** (18 February 2026) - An introduction to creating interactive web applications from your data using Shiny
 18. **[Sample Size and Power Analysis](workshops/18-power-analysis/index.md)** (4 March 2026) - Principles of sample size calculation and power analysis
 19. **[Let's Rant: Open Debugging](workshops/19-open-debugging/index.md)** (1 April 2026) - An interactive and open session on debugging strategies and best practices
-20. **[Bayes Factor](workshops/20-bayes-factor/index.md)** (15 April 2026) - Bayes Factors for model selection and hypothesis testing
+20. **[Advanced R: Working with Data Frames](workshops/15-advanced-r-dataframes/index.md)** (15 April 2026) - Dive deep into advanced data manipulation techniques with R's data frames 
 
 **View the [complete workshop catalog](workshops/index.md)** for detailed information about each session.
 

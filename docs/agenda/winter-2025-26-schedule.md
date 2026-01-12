@@ -141,16 +141,16 @@ for the Humanities, UoC_
 
 ---
 
-### 15. [Advanced R: Working with Data Frames](../workshops/15-advanced-r-dataframes/index.md)
+### 15. [Bayes Factor](../workshops/20-bayes-factor/index.md)
 
 **Date:** 21. January 2026  
 **Time:** 14:00 - 15:30  
-**Speaker:** Luke Günther, _Project S, CRC 1252_
+**Speaker:** Job Schepens, _Project S, CRC 1252_
 
 **Topics:**
 
-- Advanced dplyr and tidyr operations
-- Data transformation and reshaping techniques
+- Bayes Factors for model selection
+- Hypothesis testing applications
 
 ---
 
@@ -206,16 +206,16 @@ for the Humanities, UoC_
 
 ---
 
-### 20. [Bayes Factor](../workshops/20-bayes-factor/index.md)
+### 20. [Advanced R: Working with Data Frames](../workshops/15-advanced-r-dataframes/index.md)
 
 **Date:** 15. April 2026  
 **Time:** 14:00 - 15:30  
-**Speaker:** Job Schepens, _Project S, CRC 1252_
+**Speaker:** Luke Günther, _Project S, CRC 1252_
 
 **Topics:**
 
-- Bayes Factors for model selection
-- Hypothesis testing applications
+- Advanced dplyr and tidyr operations
+- Data transformation and reshaping techniques
 
 ---
 
