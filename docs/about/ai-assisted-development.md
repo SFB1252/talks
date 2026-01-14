@@ -1,15 +1,7 @@
 # AI-Assisted Development Guidelines
 
-This document establishes best practices and guidelines for using AI tools in
-academic web development projects, based on the experience of developing this
-Research Data and Methods Workshop Series website.
-
-## Overview
-
-AI-assisted development can significantly enhance productivity and quality in
-academic web projects when implemented with proper oversight, transparency, and
-ethical considerations. These guidelines ensure responsible use of AI tools
-while maintaining academic integrity and quality standards.
+This page describes some practices for using AI tools in
+academic web development projects.
 
 ## Core Principles
 
@@ -95,14 +87,9 @@ while maintaining academic integrity and quality standards.
 - Break complex tasks into smaller, manageable components
 - Iterate and refine prompts based on output quality
 
-**Quality Control Workflow**
+**Quality Control**
 
-1. **AI Generation**: Use AI tools to create initial content or code
-2. **Initial Review**: Quick assessment of output relevance and quality
-3. **Technical Validation**: Detailed review of technical accuracy
-4. **Content Review**: Verification of factual accuracy and appropriateness
-5. **Integration Testing**: Ensure compatibility with existing systems
-6. **Final Approval**: Sign-off by qualified human reviewer
+- A systematic quality control process must be followed, as outlined in the "Human Oversight and Quality Assurance" principle.
 
 **Documentation Requirements**
 
@@ -140,10 +127,7 @@ while maintaining academic integrity and quality standards.
 
 **Quality Assurance**
 
-- Verify factual accuracy of all AI-generated content
-- Ensure consistency with institutional voice and style
-- Check for appropriate academic tone and language
-- Validate citations and references
+- All AI-generated content must be reviewed for factual accuracy and consistency with institutional standards, as outlined in the "Human Oversight and Quality Assurance" principle.
 
 ### Code Development
 
@@ -156,10 +140,7 @@ while maintaining academic integrity and quality standards.
 
 **Quality Assurance**
 
-- Review code for security vulnerabilities
-- Test functionality across different browsers and devices
-- Validate accessibility compliance
-- Ensure code maintainability and documentation
+- All AI-generated code must be reviewed for security, functionality, and accessibility, as outlined in the "Human Oversight and Quality Assurance" principle.
 
 ### Design and User Experience
 
@@ -172,58 +153,16 @@ while maintaining academic integrity and quality standards.
 
 **Quality Assurance**
 
-- Test with real users and gather feedback
-- Validate accessibility with automated and manual testing
-- Ensure cross-platform compatibility
-- Review against design principles and best practices
+- All AI-generated design elements must be tested for usability and cross-platform compatibility, as outlined in the "Human Oversight and Quality Assurance" principle.
 
 ## Risk Management
 
-### Common Pitfalls
-
-**Over-Reliance on AI**
+### Over-Reliance on AI
 
 - Maintain human expertise and critical thinking
 - Avoid accepting AI suggestions without proper review
 - Ensure human understanding of all implemented solutions
 - Balance efficiency gains with quality requirements
-
-**Inadequate Review**
-
-- Implement systematic review processes
-- Allocate sufficient time for quality assurance
-- Involve multiple reviewers for complex components
-- Document review decisions and rationale
-
-**Attribution Failures**
-
-- Maintain detailed records of AI assistance
-- Follow institutional attribution requirements
-- Update documentation as AI contributions evolve
-- Ensure transparency in all project communications
-
-### Mitigation Strategies
-
-**Robust Review Processes**
-
-- Multi-stage review with different perspectives
-- Automated testing and validation tools
-- Regular quality audits and assessments
-- Continuous improvement of review procedures
-
-**Clear Documentation**
-
-- Comprehensive tracking of AI tool usage
-- Detailed attribution and acknowledgment practices
-- Regular updates to documentation and guidelines
-- Transparent communication with stakeholders
-
-**Ongoing Education**
-
-- Stay current with AI tool developments and best practices
-- Participate in professional development and training
-- Share experiences and lessons learned with the community
-- Contribute to the development of field-wide standards
 
 ## Institutional Compliance
 
@@ -243,21 +182,11 @@ while maintaining academic integrity and quality standards.
 - Maintain consistency with peer practices
 - Contribute to the development of community standards
 
-### Reporting and Documentation
+### Project Documentation
 
-**Project Documentation**
-
-- Include AI assistance in project reports and documentation
-- Provide detailed methodology descriptions
+- Provide detailed methodology descriptions for AI use
 - Document quality assurance processes
 - Share lessons learned and best practices
-
-**Institutional Reporting**
-
-- Follow institutional requirements for AI use reporting
-- Participate in policy development and review processes
-- Contribute to institutional learning and improvement
-- Support the development of institutional best practices
 
 ## Future Considerations
 
@@ -279,27 +208,9 @@ while maintaining academic integrity and quality standards.
 
 ### Community Building
 
-**Knowledge Sharing**
-
-- Share experiences and best practices with the academic community
-- Contribute to conferences, publications, and professional discussions
-- Collaborate with other institutions on AI guidelines and standards
-- Support the development of field-wide best practices
-
-**Mentorship and Training**
-
-- Train new team members in AI-assisted development practices
-- Mentor other institutions in implementing AI guidelines
-- Contribute to educational resources and training materials
-- Support the development of AI literacy in academia
+- Contribute to the academic community's understanding of AI by sharing best practices, participating in professional discussions, and supporting training initiatives.
 
 ## Resources and References
-
-### AI Tools and Platforms
-
-- [Anthropic Claude](https://www.anthropic.com/)
-- [OpenRouter API](https://openrouter.ai/)
-- [Cline VS Code Extension](https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev)
 
 ### Academic Guidelines
 
@@ -313,16 +224,3 @@ while maintaining academic integrity and quality standards.
 - [AI Ethics Guidelines Global Inventory](https://inventory.algorithmwatch.org/)
 - [Responsible AI Practices](https://ai.google/responsibilities/responsible-ai-practices/)
 
-## Contact and Support
-
-For questions about these guidelines or AI-assisted development practices:
-
-- **Guidelines Questions**: Contact the development team
-- **Institutional Policy**: Consult with institutional AI policy offices
-- **Technical Support**: Refer to tool-specific documentation and support
-- **Community Discussion**: Participate in relevant professional forums
-
----
-
-_These guidelines are part of the SFB 1252 "Prominence in Language" commitment
-to transparent and responsible use of AI in academic research and development._
