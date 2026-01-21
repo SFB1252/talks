@@ -29,7 +29,9 @@ This workshop introduces Bayes Factors as a tool for model selection and hypothe
 
 ## Materials
 
-Materials will be available after the workshop.
+- [Sequential Testing: ROPE vs Bayes Factor vs LOO](https://jobschepens.github.io/brms-ws/06_sequential_testing.html)
+- [Sequential Testing: ROPE vs Bayes Factor vs LOO (Continuous)](https://jobschepens.github.io/brms-ws/06_sequential_testing_cont.html)
+- [Hypothesis Testing with Bayes Factors](https://jobschepens.github.io/brms-ws/07_bayes_factors.html)
 
 ## Instructor
 
