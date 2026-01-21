@@ -222,5 +222,4 @@ academic web development projects.
 
 - [Partnership on AI](https://www.partnershiponai.org/)
 - [AI Ethics Guidelines Global Inventory](https://inventory.algorithmwatch.org/)
-- [Responsible AI Practices](https://ai.google/responsibilities/responsible-ai-practices/)
 
