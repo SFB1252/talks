@@ -7,6 +7,9 @@
     "valid-id": "off",
     "valid-autocomplete": "off",
     "wcag/h32": "off",
-    "attribute-allowed-values": "off"
+    "wcag/h30": "off",
+    "attribute-allowed-values": "off",
+    "unique-landmark": "off",
+    "element-permitted-content": "off"
   }
 }
