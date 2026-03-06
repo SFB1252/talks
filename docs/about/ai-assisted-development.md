@@ -1,225 +1,176 @@
 # AI-Assisted Development Guidelines
 
-This page describes some practices for using AI tools in
-academic web development projects.
+AI tools are increasingly part of research and software development workflows. This page collects practical guidance, institutional policies, and critical perspectives to help you use them thoughtfully — knowing what the tools do well, where they fall short, and what your obligations are in an academic context.
 
-## Core Principles
+The goal is not to discourage use, but to support informed and responsible practice.
 
-### 1. Transparency and Attribution
+## Regulatory and Institutional Framework
 
-**Full Disclosure**
+### EU AI Act (2024/1689)
 
-- Clearly document all AI tools used in the development process
-- Specify AI models, versions, and service providers
-- Distinguish between AI-generated and human-created content
-- Maintain detailed records of AI assistance throughout the project
+The EU AI Act establishes obligations for both AI providers and organizations that deploy AI. Key points relevant to academic work:
 
-**Proper Attribution**
+- Systems are classified by risk level: prohibited, high-risk, general purpose with systemic risk, limited risk, minimal risk
+- Current large language models (e.g., GPT-4 variants) likely qualify as General Purpose AI with systemic risk
+- AI literacy obligations apply to organizations deploying AI
+- Prohibited practices include: social scoring, manipulative or deceptive AI, emotion recognition and biometric identification in certain contexts
+- [EU AI Act Compliance Checker](https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/)
 
-- Credit AI tools in project documentation
-- Include AI assistance in acknowledgments where appropriate
-- Follow institutional guidelines for AI attribution
-- Respect intellectual property and licensing requirements
+### University of Cologne KI-Richtlinie (27 January 2026)
 
-### 2. Human Oversight and Quality Assurance
+The [UzK KI-Richtlinie](https://am.uni-koeln.de/e45267/data/records54900/AM_2026-02_KI_RL_ger.pdf) is binding for all university employees and those working in research and teaching. It provides a structured framework for responsible AI use — covering data protection, transparency, and human oversight — and aligns with both GDPR and the EU AI Act.
 
-**Continuous Review**
+**Eight Protection Goals (§2 Schutzziele)**
 
-- Every AI-generated output must be reviewed by qualified humans
-- Implement systematic quality control processes
-- Validate technical accuracy and academic standards
-- Ensure compliance with accessibility and usability requirements
+1. **Information security** — follow institutional information security policies
+2. **Data protection** — all personal data processing must be GDPR-compliant
+3. **Fairness** — minimize discrimination and unequal treatment
+4. **Human control** — named person with final responsibility required per application; decisions with legal effect cannot occur without human review (§2.4b: *"Für jede KI-gestützte Anwendung ist eine namentlich benannte Rolle mit menschlicher Letztverantwortung festzulegen"*)
+5. **Transparency** — AI systems must be recognizable as such; data processing must be auditable
+6. **Reliability** — suitability must be tested; measures against hallucination and confabulation required
+7. **Security** — full IT security requirements apply (confidentiality, integrity, availability)
+8. **Legality** — compliance with copyright, confidentiality, and anti-discrimination law
 
-**Expert Validation**
+**Key Obligations**
 
-- Subject matter experts should review content accuracy
-- Technical experts should validate code quality and security
-- Academic standards should be verified by qualified reviewers
-- User experience should be tested with real users
+| Requirement | Rule |
+|---|---|
+| Approved tools (§4, §7) | Only [KI-Whitelist](https://itcc.uni-koeln.de/services/software/kuenstliche-intelligenz/ki-whitelist) tools for official use |
+| Low-risk exception (§10) | Browser-based tools off-whitelist permitted if no sensitive data is entered |
+| Input data (§8) | Sensitive data (personal, confidential, trade secrets, research secrets) prohibited in public cloud; self-hosted/private cloud only |
+| Output verification (§9.1) | Mandatory check for correctness, validity, completeness, hallucinations, and bias before publication |
+| Marking (§9.2) | All AI-generated content must be labeled as such |
+| Deepfakes (§9.4) | Require documented supervisor approval; synthetic nature must be disclosed |
+| AI recognition (§12.3) | Systems interacting with people must be identifiable as AI |
+| Documentation (§12.4) | Processing must be documented to meet GDPR Art. 30 and AI Act accountability requirements |
+| Competency (§6) | Risk-appropriate AI training required; participation counts as working time |
 
-### 3. Academic Integrity
+**Risk-Appropriate Human Control (Annex 2.7)**
 
-**Ethical Use**
+- **High-risk** → Human-in-the-Loop: mandatory approval before AI output takes effect (e.g., hiring, grading, legal decisions)
+- **Medium-risk** → Human-on-the-Loop: ongoing monitoring with intervention rights
+- **Low-risk** → Post-control: random or case-based review
 
-- Comply with institutional AI policies and guidelines
-- Respect copyright and intellectual property rights
-- Maintain academic honesty in all AI-assisted work
-- Follow disciplinary standards for AI use in research
+### Other Applicable Guidelines
 
-**Quality Standards**
+- **DFG**: Transparency and existing research integrity standards — [wissenschaftliche-integritaet.de](https://wissenschaftliche-integritaet.de/verwendung-generativer-modelle/)
+- **ACL**: Transparency and accountability in NLP research — [Responsible NLP Research](https://aclrollingreview.org/responsibleNLPresearch/)
+- **Wikipedia**: Verification-first; no generating articles from scratch — [guidance](https://en.wikipedia.org/wiki/Wikipedia:Writing_articles_with_large_language_models)
 
-- Maintain the same quality standards as non-AI-assisted work
-- Ensure AI assistance enhances rather than replaces human expertise
-- Validate all claims and information provided by AI tools
-- Apply critical thinking to all AI-generated suggestions
+## Critical Perspective
 
-## Implementation Guidelines
+Compliance checklists and tool policies are useful, but they are no substitute for developing genuine understanding of what these tools do and do not do well. Researchers are well-placed to engage critically — and there is a growing literature helping to do exactly that.
 
-### Pre-Development Planning
+Several recurring concerns are worth keeping in mind:
 
-**Define Scope and Boundaries**
+- **Deskilling**: routine reliance on AI output without active engagement can gradually erode the researcher's own competency and judgment (Anthropic, 2024; Bouchard, 2025)
+- **Hallucination and confabulation**: outputs can be fluent and confident while being factually wrong; detecting errors often requires the domain expertise the tool is being asked to substitute for
+- **Systematic bias**: outputs reflect patterns in training data, which may encode historical biases — relevant wherever AI informs decisions about people
+- **Security vulnerabilities**: AI-generated code can introduce subtle bugs or exploitable weaknesses that are easy to miss in review
+- **Literacy paradox**: research suggests that lower AI literacy correlates with greater uncritical receptivity to AI output (Tully et al., 2025) — familiarity is a genuine protection
 
-- Clearly identify which tasks will use AI assistance
-- Establish quality criteria and review processes
-- Define roles and responsibilities for human oversight
-- Set up documentation and tracking systems
+As Guest et al. (2025) argue, the risk is not technology per se but the normalization of uncritical adoption: *"Universities need to take their role seriously to safeguard higher education, critical thinking, expertise, academic freedom, and scientific integrity."*
 
-**Tool Selection**
+For a broad critical perspective, see [Prof. Dr. Dagmar Monett's bibliography of 80+ critical AI books](https://monettdiaz.com/books-critical-ai.html).
 
-- Choose AI tools appropriate for the specific tasks
-- Evaluate tool capabilities and limitations
-- Consider privacy and security implications
-- Ensure compliance with institutional policies
+## Practical Guidelines
 
-**Team Preparation**
+### Tool Selection and Data Handling
 
-- Train team members on AI tool usage and limitations
-- Establish communication protocols for AI-assisted work
-- Define review and approval processes
-- Create templates for documentation and attribution
+A quick check before starting:
 
-### During Development
+1. Is the tool on the [KI-Whitelist](https://itcc.uni-koeln.de/services/software/kuenstliche-intelligenz/ki-whitelist)? If not, the §10 exception applies only if no sensitive data will be entered — worth confirming before you start.
+2. What is the risk level of the application? Define an appropriate level of human oversight (see Annex 2.7 table in the regulatory section above).
+3. Is there a named person with final responsibility for this application? (§2.4b)
 
-**Prompt Engineering Best Practices**
+Data protection is the most common practical issue: avoid entering the following into public cloud AI services (§8):
 
-- Use clear, specific, and detailed prompts
-- Provide sufficient context for AI understanding
-- Break complex tasks into smaller, manageable components
-- Iterate and refine prompts based on output quality
+- Personal data of any kind
+- Confidential institutional information
+- Trade secrets or proprietary content
+- Unpublished research findings or data
 
-**Quality Control**
+If you are unsure whether something counts as sensitive, treat it as sensitive.
 
-- A systematic quality control process must be followed, as outlined in the "Human Oversight and Quality Assurance" principle.
+### Output Verification
 
-**Documentation Requirements**
+Verifying AI output before use is both good research practice and a requirement under §9.1. In practice, this means:
 
-- Record all AI tools and versions used
-- Document prompts and AI responses for significant contributions
-- Track iterations and refinements
-- Maintain version control with clear commit messages
+- Checking factual correctness against authoritative sources — not other AI outputs
+- Actively looking for hallucinations: incorrectly cited references, non-existent functions or libraries, fabricated statistics
+- Considering whether the output reflects systematic bias that could affect people
+- Asking whether the output actually addresses the question you asked
+- Marking AI-generated passages clearly in the final product (§9.2)
 
-### Post-Development Review
-
-**Comprehensive Assessment**
-
-- Evaluate overall quality and effectiveness of AI assistance
-- Identify areas where AI was most and least helpful
-- Document lessons learned and best practices
-- Assess compliance with guidelines and standards
-
-**Ongoing Maintenance**
-
-- Establish procedures for updating AI-assisted content
-- Plan for regular review and validation cycles
-- Monitor for changes in AI tool capabilities or policies
-- Update documentation and attribution as needed
-
-## Specific Use Cases
-
-### Content Creation
-
-**Appropriate Uses**
-
-- Generating initial drafts of documentation
-- Creating templates and boilerplate content
-- Structuring information and organizing content
-- Improving clarity and readability of existing text
-
-**Quality Assurance**
-
-- All AI-generated content must be reviewed for factual accuracy and consistency with institutional standards, as outlined in the "Human Oversight and Quality Assurance" principle.
+How much scrutiny is appropriate scales with risk: a formatting suggestion needs less verification than production code, which needs less than AI-assisted decisions that affect people.
 
 ### Code Development
 
-**Appropriate Uses**
+AI tools can meaningfully speed up routine coding tasks — boilerplate, refactoring, documentation, test generation. The key to using them well is active rather than passive engagement: treat generated code as a draft that needs reading, not a solution that needs running.
 
-- Generating boilerplate code and templates
-- Creating CSS styles and responsive layouts
-- Implementing standard functionality and features
-- Debugging and optimization suggestions
+Practically:
 
-**Quality Assurance**
+- Read and understand generated code before using it — not just that it runs, but what it does and why
+- Check for incorrect function calls, non-existent libraries, and introduced vulnerabilities
+- Apply standard software engineering criteria (KISS, DRY, YAGNI, separation of concerns) to keep generated code maintainable
+- Mark AI-generated sections in code comments
 
-- All AI-generated code must be reviewed for security, functionality, and accessibility, as outlined in the "Human Oversight and Quality Assurance" principle.
+A useful heuristic: if you couldn't explain a piece of code to a colleague, it needs more review before it goes into the project. Over-reliance often shows up as accumulating complexity — code that grows harder to read, modify, or debug over time.
 
-### Design and User Experience
+For a practical discussion of review strategies, including fast and slow review modes, see: [Code Review Strategies in AI-Assisted Programming](https://jobschepens.github.io/personal-page/clausemate-review-dense.html)
 
-**Appropriate Uses**
+### Documentation
 
-- Creating responsive layout structures
-- Generating color schemes and typography suggestions
-- Implementing accessibility features
-- Optimizing user interface elements
+Keeping a brief record of AI use serves both research reproducibility and institutional compliance (§12.4). Useful things to record:
 
-**Quality Assurance**
+- Tools and model versions used
+- Which outputs were accepted, rejected, or substantially modified
+- How output was verified
+- Risk classification and the person responsible
+- Any GDPR-relevant data processing (required for GDPR Art. 30 records)
 
-- All AI-generated design elements must be tested for usability and cross-platform compatibility, as outlined in the "Human Oversight and Quality Assurance" principle.
+## Quick Checklist (UzK)
 
-## Risk Management
+A practical reference for AI use at UzK — covers the main requirements from the KI-Richtlinie:
 
-### Over-Reliance on AI
-
-- Maintain human expertise and critical thinking
-- Avoid accepting AI suggestions without proper review
-- Ensure human understanding of all implemented solutions
-- Balance efficiency gains with quality requirements
-
-## Institutional Compliance
-
-### Policy Alignment
-
-**Institutional Requirements**
-
-- Review and comply with institutional AI policies
-- Align with academic integrity standards
-- Follow data privacy and security requirements
-- Respect intellectual property guidelines
-
-**Disciplinary Standards**
-
-- Adhere to field-specific guidelines for AI use
-- Follow professional organization recommendations
-- Maintain consistency with peer practices
-- Contribute to the development of community standards
-
-### Project Documentation
-
-- Provide detailed methodology descriptions for AI use
-- Document quality assurance processes
-- Share lessons learned and best practices
-
-## Future Considerations
-
-### Evolving Technology
-
-**Staying Current**
-
-- Monitor developments in AI tools and capabilities
-- Evaluate new tools and techniques as they become available
-- Update guidelines and practices based on technological advances
-- Participate in professional communities and discussions
-
-**Adaptation and Improvement**
-
-- Regularly review and update these guidelines
-- Incorporate feedback from users and stakeholders
-- Learn from successes and failures in AI-assisted projects
-- Contribute to the broader conversation about AI in academia
-
-### Community Building
-
-- Contribute to the academic community's understanding of AI by sharing best practices, participating in professional discussions, and supporting training initiatives.
+1. ☐ Tool on [KI-Whitelist](https://itcc.uni-koeln.de/services/software/kuenstliche-intelligenz/ki-whitelist) or §10 exception confirmed
+2. ☐ Named person with final responsibility designated (§2.4b)
+3. ☐ Risk level assessed; appropriate control model defined (Annex 2.7)
+4. ☐ No sensitive data entered into public cloud services (§8)
+5. ☐ Output verification process established (§9.1)
+6. ☐ AI-generated content marking in place (§9.2)
+7. ☐ AI system identifiable as AI to affected persons (§12.3)
+8. ☐ Documentation meets GDPR Art. 30 and AI Act requirements (§12.4)
+9. ☐ All eight Schutzziele addressed (§2)
+10. ☐ Required competency training completed or planned (§6)
 
 ## Resources and References
 
-### Academic Guidelines
+### Policies and Regulations
 
-- [UNESCO AI Ethics Recommendation](https://www.unesco.org/en/artificial-intelligence/recommendation-ethics)
+- [University of Cologne KI-Richtlinie](https://am.uni-koeln.de/e45267/data/records54900/AM_2026-02_KI_RL_ger.pdf) (January 2026)
+- [UzK KI-Whitelist](https://itcc.uni-koeln.de/services/software/kuenstliche-intelligenz/ki-whitelist)
+- [EU AI Act Compliance Checker](https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/)
+- [DFG Guidelines on Generative Models](https://wissenschaftliche-integritaet.de/verwendung-generativer-modelle/)
+- [ACL Responsible NLP Research](https://aclrollingreview.org/responsibleNLPresearch/)
 - [ACM Code of Ethics](https://www.acm.org/code-of-ethics)
+- [UNESCO AI Ethics Recommendation](https://www.unesco.org/en/artificial-intelligence/recommendation-ethics)
 - [IEEE Standards for AI](https://standards.ieee.org/initiatives/artificial-intelligence-systems/)
 
-### Best Practices Resources
+### Critical and Practical Resources
 
-- [Partnership on AI](https://www.partnershiponai.org/)
+- [Open Source AI Contribution Policies](https://github.com/melissawm/open-source-ai-contribution-policies)
 - [AI Ethics Guidelines Global Inventory](https://inventory.algorithmwatch.org/)
+- [Prof. Dr. Dagmar Monett's Critical AI Bibliography](https://monettdiaz.com/books-critical-ai.html)
+- [Simon Willison: The Lethal Trifecta](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (on AI security risks)
+- Schepens, J. (2025). [Code Review Strategies in AI-Assisted Programming](https://jobschepens.github.io/personal-page/clausemate-review-dense.html)
+
+### Selected Literature
+
+- Guest, O., et al. (2025). "Against Uncritical Adoption of 'AI' in Academia." [https://philpapers.org/rec/GUEATU](https://philpapers.org/rec/GUEATU)
+- Van Rooij, I., & Guest, O. (2025). "The Myth of AI Acceleration."
+- Anthropic (2024). "AI-Assisted Coding Effects." [https://www.anthropic.com/research/AI-assistance-coding-skills](https://www.anthropic.com/research/AI-assistance-coding-skills)
+- Tully, S. M., Longoni, C., & Appel, G. (2025). Lower Artificial Intelligence Literacy Predicts Greater AI Receptivity. *Journal of Marketing*, 89(5), 1–20. [https://doi.org/10.1177/00222429251314491](https://doi.org/10.1177/00222429251314491)
+- Veldhuis, A., Lo, P. Y., Kenny, S., & Antle, A. N. (2025). Critical Artificial Intelligence Literacy: A Scoping Review and Framework Synthesis. *International Journal of Child-Computer Interaction*, 43, 100708. [https://doi.org/10.1016/j.ijcci.2024.100708](https://doi.org/10.1016/j.ijcci.2024.100708)
+- Bouchard, J. (2025). ChatGPT and the Separation between Knowledge and Knower. *Education and Information Technologies*, 30(8), 10091–110. [https://doi.org/10.1007/s10639-024-13249-y](https://doi.org/10.1007/s10639-024-13249-y)
 
