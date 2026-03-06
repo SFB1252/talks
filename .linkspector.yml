@@ -33,6 +33,7 @@ ignorePatterns:
   - pattern: 'https://www\.clarin-d\.net' # SSL/connection issues
   - pattern: 'https://www\.unesco\.org/en/artificial-intelligence' # Connection reset (transient network issues)
   - pattern: 'https://web\.dev/mobile' # Dynamic routing issue
+  - pattern: 'https://standards\.ieee\.org/initiatives/artificial-intelligence-systems' # Slow response causing timeout
 
 aliveStatusCodes:
   - 200
