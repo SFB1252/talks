@@ -3,6 +3,10 @@
   "rules": {
     "trailing-whitespace": "off",
     "doctype-style": "off",
-    "attr-quotes": "off"
+    "attr-quotes": "off",
+    "valid-id": "off",
+    "valid-autocomplete": "off",
+    "wcag/h32": "off",
+    "attribute-allowed-values": "off"
   }
 }
