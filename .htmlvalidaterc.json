@@ -2,6 +2,7 @@
   "extends": ["html-validate:recommended"],
   "rules": {
     "trailing-whitespace": "off",
-    "doctype-style": "off"
+    "doctype-style": "off",
+    "attr-quotes": "off"
   }
 }

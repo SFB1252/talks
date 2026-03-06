@@ -87,7 +87,11 @@ jobs:
         run: |
           npx http-server site -p 8080 &
           sleep 5
-          npx @axe-core/cli http://localhost:8080 --exit
+          # Disable two rules that are false positives in the MkDocs Material theme:
+          # - aria-dialog-name: the search dialog (.md-search) is a theme element we cannot modify
+          # - landmark-complementary-is-top-level: the ToC aside is nested by the theme layout
+          npx @axe-core/cli http://localhost:8080 --exit \
+            --disable aria-dialog-name,landmark-complementary-is-top-level
         continue-on-error: true
 
   educational-metrics:
