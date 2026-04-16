@@ -6,18 +6,13 @@ Quick Start Guide for Research Data and Methods Workshops
 
 1. **Have a Matrix account**: Use your existing University of Cologne account or
    create one (see options below)
-2. **Join via link**: Click this invitation link: `#sfb1252-talks:uni.koeln` or
-   scan the QR code below
+2. **Join via direct link**: Open [SFB 1252 Talks & Workshops](https://matrix.to/#/#sfb1252-talks:uni.koeln.de)
 3. **Choose client**: Select your preferred Matrix client (Element recommended)
 4. **Accept invitation**: Click "Join" or "Accept" when prompted
 5. **Explore**: Join rooms within the space that interest you
 
-## QR Code for SFB 1252 Talks Matrix Space
-
-<!-- TODO: Generate QR code for the space invitation link -->
-
-_Scan this QR code with your mobile device to join the SFB 1252 Talks &
-Workshops Matrix space_
+If the direct link does not open automatically, search for the room alias
+`#sfb1252-talks:uni.koeln` inside your Matrix client.
 
 ## Guidelines for the Matrix Space
 
@@ -98,7 +93,7 @@ If you already have a UoC Matrix account, joining the SFB 1252 space is
 straightforward:
 
 1. **Use the invitation link**: Click this link to open the Matrix space
-   invitation: `#sfb1252-talks:uni.koeln`
+   invitation: [SFB 1252 Talks & Workshops](https://matrix.to/#/#sfb1252-talks:uni.koeln.de)
 
 2. **Choose your client**: When you click the link, you will be asked which
    Matrix client you want to use:
@@ -263,16 +258,18 @@ good search capabilities - look for the search icon or use keyboard shortcuts
 
 - For university Matrix technical support: Contact the
   [ITCC Helpdesk](https://itcc.uni-koeln.de/helpdesk)
-- For space-specific questions: Ask in the #general room or contact space
-  moderators
-- For workshop content questions: Use the #q-a room within the space
+- For space-specific questions: Ask in the main SFB 1252 Matrix space or contact
+  the workshop organizers
+- For workshop content questions: Use the relevant room inside the space
 
 ## Troubleshooting
 
 ### The invitation link doesn't work
 
-- Try manually searching for `#sfb1252-talks:uni.koeln` in your client's room
-  directory
+- Open the direct join link again:
+  [https://matrix.to/#/#sfb1252-talks:uni.koeln.de](https://matrix.to/#/#sfb1252-talks:uni.koeln.de)
+- If needed, manually search for `#sfb1252-talks:uni.koeln` in your client's
+  room directory
 - Ensure you're logged into the correct homeserver (`uni.koeln` for university
   staff)
 - Clear your browser cache if using the web client

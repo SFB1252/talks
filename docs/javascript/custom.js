@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    renderNextSessionCard();
+    renderHomepageSessions();
 });
 
 // Add any global functions or utilities here
@@ -78,15 +78,8 @@ function toSiteUrl(docPath) {
     return docPath;
 }
 
-function renderNextSessionCard() {
-    const card = document.getElementById('next-session-card');
-    const dataRoot = document.getElementById('session-data');
+function getCologneTodayUtc() {
     const cologneTimeZone = 'Europe/Berlin';
-
-    if (!card || !dataRoot) {
-        return;
-    }
-
     const cologneTodayParts = new Intl.DateTimeFormat('en-CA', {
         timeZone: cologneTimeZone,
         year: 'numeric',
@@ -97,22 +90,55 @@ function renderNextSessionCard() {
     const todayYear = Number(cologneTodayParts.find(part => part.type === 'year')?.value);
     const todayMonth = Number(cologneTodayParts.find(part => part.type === 'month')?.value);
     const todayDay = Number(cologneTodayParts.find(part => part.type === 'day')?.value);
-    const todayUtc = Date.UTC(todayYear, todayMonth - 1, todayDay);
 
-    const sessions = Array.from(dataRoot.querySelectorAll('[data-session-date]'))
+    return Date.UTC(todayYear, todayMonth - 1, todayDay);
+}
+
+function formatSessionDate(utcDate) {
+    return new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/Berlin',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    }).format(new Date(utcDate));
+}
+
+function parseHomepageSessions() {
+    const dataRoot = document.getElementById('session-data');
+
+    if (!dataRoot) {
+        return [];
+    }
+
+    return Array.from(dataRoot.querySelectorAll('[data-session-date]'))
         .map(node => {
             const [year, month, day] = node.dataset.sessionDate.split('-').map(Number);
             return {
+                number: Number(node.dataset.sessionNumber),
+                series: node.dataset.sessionSeries,
+                seriesOrder: Number(node.dataset.sessionSeriesOrder || 0),
                 title: node.dataset.sessionTitle,
+                summary: node.dataset.sessionSummary || '',
                 url: toSiteUrl(node.dataset.sessionUrl),
                 cancelled: node.dataset.sessionCancelled === 'true',
                 utcDate: Date.UTC(year, month - 1, day)
             };
-        })
+        });
+}
+
+function renderNextSessionCard(sessions) {
+    const card = document.getElementById('next-session-card');
+
+    if (!card) {
+        return;
+    }
+
+    const todayUtc = getCologneTodayUtc();
+    const upcomingSessions = sessions
         .filter(session => !session.cancelled && session.utcDate >= todayUtc)
         .sort((a, b) => a.utcDate - b.utcDate);
 
-    if (!sessions.length) {
+    if (!upcomingSessions.length) {
         card.innerHTML = `
             <p class="next-session-label">Next upcoming session</p>
             <p class="next-session-title">No upcoming session is currently listed.</p>
@@ -121,14 +147,9 @@ function renderNextSessionCard() {
         return;
     }
 
-    const next = sessions[0];
+    const next = upcomingSessions[0];
     const days = Math.round((next.utcDate - todayUtc) / (1000 * 60 * 60 * 24));
-    const formattedDate = new Intl.DateTimeFormat('en-GB', {
-        timeZone: cologneTimeZone,
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-    }).format(new Date(next.utcDate));
+    const formattedDate = formatSessionDate(next.utcDate);
 
     card.innerHTML = `
         <p class="next-session-label">Next upcoming session</p>
@@ -136,6 +157,70 @@ function renderNextSessionCard() {
         <p class="next-session-meta">${formattedDate}</p>
         <p class="next-session-countdown">${days === 0 ? 'Today' : `${days} day${days === 1 ? '' : 's'} to go`}</p>
     `;
+}
+
+function renderAvailableWorkshops(sessions) {
+    const container = document.getElementById('available-workshops-list');
+
+    if (!container) {
+        return;
+    }
+
+    const groupedSessions = sessions.reduce((accumulator, session) => {
+        if (!accumulator.has(session.series)) {
+            accumulator.set(session.series, []);
+        }
+
+        accumulator.get(session.series).push(session);
+        return accumulator;
+    }, new Map());
+
+    const seriesOrder = [...groupedSessions.keys()].sort((left, right) => {
+        const leftOrder = groupedSessions.get(left)[0]?.seriesOrder ?? 0;
+        const rightOrder = groupedSessions.get(right)[0]?.seriesOrder ?? 0;
+        return rightOrder - leftOrder;
+    });
+
+    const sectionsHtml = seriesOrder.map(series => {
+        const sessionItems = groupedSessions
+            .get(series)
+            .slice()
+            .sort((left, right) => right.utcDate - left.utcDate)
+            .map(session => {
+                const cancelledSuffix = session.cancelled ? ', cancelled' : '';
+                const cancelledSummary = session.cancelled ? ' This session was cancelled.' : '';
+                const summary = `${session.summary || ''}${cancelledSummary}`.trim();
+
+                return `
+                    <li value="${session.number}">
+                        <strong><a href="${session.url}">${session.title}</a></strong> (${formatSessionDate(session.utcDate)}${cancelledSuffix})${summary ? ` - ${summary}` : ''}
+                    </li>
+                `;
+            })
+            .join('');
+
+        return `
+            <section class="homepage-workshop-group">
+                <h3>${series}</h3>
+                <ol class="homepage-workshop-list" reversed>
+                    ${sessionItems}
+                </ol>
+            </section>
+        `;
+    }).join('');
+
+    container.innerHTML = sectionsHtml;
+}
+
+function renderHomepageSessions() {
+    const sessions = parseHomepageSessions();
+
+    if (!sessions.length) {
+        return;
+    }
+
+    renderNextSessionCard(sessions);
+    renderAvailableWorkshops(sessions);
 }
 
 // Analytics or tracking code can be added here if needed

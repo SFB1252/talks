@@ -17,70 +17,40 @@ Workshops on research methodology, data management, and academic practices for g
 </div>
 
 <div id="session-data" hidden>
-  <div data-session-title="Good Academic Practice" data-session-date="2025-05-07" data-session-url="workshops/01-good-academic-practice/index.md"></div>
-  <div data-session-title="Research Data Management" data-session-date="2025-05-21" data-session-url="workshops/02-research-data-management/index.md"></div>
-  <div data-session-title="Ethics Approval" data-session-date="2025-06-04" data-session-url="workshops/03-ethics-approval/index.md"></div>
-  <div data-session-title="Literature Management" data-session-date="2025-06-18" data-session-url="workshops/04-literature-management/index.md"></div>
-  <div data-session-title="Annotation & Corpus Tools" data-session-date="2025-07-02" data-session-url="workshops/05-annotation-corpus-tools/index.md"></div>
-  <div data-session-title="Preregistration" data-session-date="2025-07-16" data-session-url="workshops/06-preregistration/index.md"></div>
-  <div data-session-title="Coding in R - Basics" data-session-date="2025-09-17" data-session-url="workshops/07-coding-r-basics/index.md"></div>
-  <div data-session-title="Online Experiments" data-session-date="2025-10-01" data-session-url="workshops/08-online-experiments/index.md"></div>
-  <div data-session-title="Archiving Session" data-session-date="2025-10-15" data-session-url="workshops/09-archiving-session/index.md"></div>
-  <div data-session-title="Coding in Python/VSCode and LLMs" data-session-date="2025-10-29" data-session-url="workshops/10-coding-python-vscode-llms/index.md"></div>
-  <div data-session-title="Bayesian Regression Models" data-session-date="2025-11-12" data-session-url="workshops/11-bayesian-regression-models/index.md"></div>
-  <div data-session-title="Computational Reproducibility using R" data-session-date="2025-11-26" data-session-url="workshops/12-computational-reproducibility-r/index.md"></div>
-  <div data-session-title="Bayesian Model Comparison Using Cross-Validation" data-session-date="2025-12-17" data-session-url="workshops/13-bayesian-model-comparison-cv/index.md"></div>
-  <div data-session-title="Bayesian Hypothesis Testing Using ROPE" data-session-date="2026-01-07" data-session-url="workshops/14-bayesian-rope-testing/index.md"></div>
-  <div data-session-title="Bayes Factor" data-session-date="2026-01-21" data-session-url="workshops/20-bayes-factor/index.md"></div>
-  <div data-session-title="Taking Care of Your Data: From Backups to Publication" data-session-date="2026-02-04" data-session-url="workshops/16-data-management-lifecycle/index.md"></div>
-  <div data-session-title="Shiny: Creating Dynamic Web Apps from Data" data-session-date="2026-02-18" data-session-url="workshops/17-shiny-web-apps/index.md"></div>
-  <div data-session-title="Sample Size and Power Analysis" data-session-date="2026-03-04" data-session-url="workshops/18-power-analysis/index.md"></div>
-  <div data-session-title="Let's Rant: Open Debugging" data-session-date="2026-04-01" data-session-url="workshops/19-open-debugging/index.md" data-session-cancelled="true"></div>
-  <div data-session-title="Advanced R: Working with Data Frames" data-session-date="2026-04-15" data-session-url="workshops/15-advanced-r-dataframes/index.md"></div>
-  <div data-session-title="Version Control I: Getting Started with Git, GitHub, and gitlab.nrw" data-session-date="2026-05-06" data-session-url="agenda/summer-2026-draft-schedule.md"></div>
-  <div data-session-title="Version Control II: Collaboration Workflows with GitHub and gitlab.nrw" data-session-date="2026-05-20" data-session-url="agenda/summer-2026-draft-schedule.md"></div>
-  <div data-session-title="LaTeX I: Getting Started with Academic Writing in LaTeX" data-session-date="2026-06-03" data-session-url="agenda/summer-2026-draft-schedule.md"></div>
-  <div data-session-title="LaTeX II: Longer Documents, Collaboration, and Thesis Workflows" data-session-date="2026-06-17" data-session-url="agenda/summer-2026-draft-schedule.md"></div>
-  <div data-session-title="Licensing of Published Datasets and Scripts" data-session-date="2026-07-15" data-session-url="agenda/summer-2026-draft-schedule.md"></div>
+  <div data-session-number="1" data-session-series="Summer 2025 Workshops" data-session-series-order="1" data-session-title="Good Academic Practice" data-session-summary="Academic integrity, research ethics, and responsible conduct" data-session-date="2025-05-07" data-session-url="workshops/01-good-academic-practice/index.md"></div>
+  <div data-session-number="2" data-session-series="Summer 2025 Workshops" data-session-series-order="1" data-session-title="Research Data Management" data-session-summary="Organizing, storing, and preserving research data" data-session-date="2025-05-21" data-session-url="workshops/02-research-data-management/index.md"></div>
+  <div data-session-number="3" data-session-series="Summer 2025 Workshops" data-session-series-order="1" data-session-title="Ethics Approval" data-session-summary="Ethics approval process and human subjects research requirements" data-session-date="2025-06-04" data-session-url="workshops/03-ethics-approval/index.md"></div>
+  <div data-session-number="4" data-session-series="Summer 2025 Workshops" data-session-series-order="1" data-session-title="Literature Management" data-session-summary="Reference management tools (Zotero) and citation techniques" data-session-date="2025-06-18" data-session-url="workshops/04-literature-management/index.md"></div>
+  <div data-session-number="5" data-session-series="Summer 2025 Workshops" data-session-series-order="1" data-session-title="Annotation &amp; Corpus Tools" data-session-summary="Tools for corpus linguistics and text annotation" data-session-date="2025-07-02" data-session-url="workshops/05-annotation-corpus-tools/index.md"></div>
+  <div data-session-number="6" data-session-series="Summer 2025 Workshops" data-session-series-order="1" data-session-title="Preregistration" data-session-summary="Preregistering research studies for transparency and reproducibility" data-session-date="2025-07-16" data-session-url="workshops/06-preregistration/index.md"></div>
+  <div data-session-number="7" data-session-series="Winter 2025-26 Workshops" data-session-series-order="2" data-session-title="Coding in R - Basics" data-session-summary="Introduction to R programming for research applications" data-session-date="2025-09-17" data-session-url="workshops/07-coding-r-basics/index.md"></div>
+  <div data-session-number="8" data-session-series="Winter 2025-26 Workshops" data-session-series-order="2" data-session-title="Online Experiments" data-session-summary="Designing and implementing online experiments" data-session-date="2025-10-01" data-session-url="workshops/08-online-experiments/index.md"></div>
+  <div data-session-number="9" data-session-series="Winter 2025-26 Workshops" data-session-series-order="2" data-session-title="Archiving Session" data-session-summary="Long-term data preservation, standards, and UoC repository usage" data-session-date="2025-10-15" data-session-url="workshops/09-archiving-session/index.md"></div>
+  <div data-session-number="10" data-session-series="Winter 2025-26 Workshops" data-session-series-order="2" data-session-title="Coding in Python/VSCode and LLMs" data-session-summary="Python setup, core libraries, Git integration, and LLM-assisted coding" data-session-date="2025-10-29" data-session-url="workshops/10-coding-python-vscode-llms/index.md"></div>
+  <div data-session-number="11" data-session-series="Winter 2025-26 Workshops" data-session-series-order="2" data-session-title="Bayesian Regression Models" data-session-summary="Bayesian regression in R with priors, checking, and interpretation" data-session-date="2025-11-12" data-session-url="workshops/11-bayesian-regression-models/index.md"></div>
+  <div data-session-number="12" data-session-series="Winter 2025-26 Workshops" data-session-series-order="2" data-session-title="Computational Reproducibility using R" data-session-summary="Reproducible workflows with R Markdown/Quarto, renv, and pipelines" data-session-date="2025-11-26" data-session-url="workshops/12-computational-reproducibility-r/index.md"></div>
+  <div data-session-number="13" data-session-series="Winter 2025-26 Workshops" data-session-series-order="2" data-session-title="Bayesian Model Comparison Using Cross-Validation" data-session-summary="Comparing Bayesian models using cross-validation techniques" data-session-date="2025-12-17" data-session-url="workshops/13-bayesian-model-comparison-cv/index.md"></div>
+  <div data-session-number="14" data-session-series="Winter 2025-26 Workshops" data-session-series-order="2" data-session-title="Bayesian Hypothesis Testing Using ROPE" data-session-summary="Bayesian hypothesis testing with the Region of Practical Equivalence (ROPE)" data-session-date="2026-01-07" data-session-url="workshops/14-bayesian-rope-testing/index.md"></div>
+  <div data-session-number="15" data-session-series="Winter 2025-26 Workshops" data-session-series-order="2" data-session-title="Bayes Factor" data-session-summary="Bayes Factors for model selection and hypothesis testing" data-session-date="2026-01-21" data-session-url="workshops/20-bayes-factor/index.md"></div>
+  <div data-session-number="16" data-session-series="Winter 2025-26 Workshops" data-session-series-order="2" data-session-title="Taking Care of Your Data: From Backups to Publication" data-session-summary="Data lifecycle, from backups to publishing" data-session-date="2026-02-04" data-session-url="workshops/16-data-management-lifecycle/index.md"></div>
+  <div data-session-number="17" data-session-series="Winter 2025-26 Workshops" data-session-series-order="2" data-session-title="Shiny: Creating Dynamic Web Apps from Data" data-session-summary="An introduction to creating interactive web applications from your data using Shiny" data-session-date="2026-02-18" data-session-url="workshops/17-shiny-web-apps/index.md"></div>
+  <div data-session-number="18" data-session-series="Winter 2025-26 Workshops" data-session-series-order="2" data-session-title="Sample Size and Power Analysis" data-session-summary="Principles of sample size calculation and power analysis" data-session-date="2026-03-04" data-session-url="workshops/18-power-analysis/index.md"></div>
+  <div data-session-number="19" data-session-series="Winter 2025-26 Workshops" data-session-series-order="2" data-session-title="Let's Rant: Open Debugging" data-session-summary="" data-session-date="2026-04-01" data-session-url="workshops/19-open-debugging/index.md" data-session-cancelled="true"></div>
+  <div data-session-number="20" data-session-series="Winter 2025-26 Workshops" data-session-series-order="2" data-session-title="Advanced R: Working with Data Frames" data-session-summary="Practical data wrangling with dplyr and tidyr, based on Elen Le Foll's chapter draft and related tutorials" data-session-date="2026-04-15" data-session-url="workshops/15-advanced-r-dataframes/index.md"></div>
+  <div data-session-number="21" data-session-series="Summer 2026 Workshops (Draft)" data-session-series-order="3" data-session-title="Version Control I: Getting Started with Git, GitHub, and gitlab.nrw" data-session-summary="A practical introduction to version control for research workflows" data-session-date="2026-05-06" data-session-url="agenda/summer-2026-draft-schedule.md"></div>
+  <div data-session-number="22" data-session-series="Summer 2026 Workshops (Draft)" data-session-series-order="3" data-session-title="Version Control II: Collaboration Workflows with GitHub and gitlab.nrw" data-session-summary="Branches, pull requests, merge requests, and collaborative project organization" data-session-date="2026-05-20" data-session-url="agenda/summer-2026-draft-schedule.md"></div>
+  <div data-session-number="23" data-session-series="Summer 2026 Workshops (Draft)" data-session-series-order="3" data-session-title="LaTeX I: Getting Started with Academic Writing in LaTeX" data-session-summary="A beginner-friendly introduction to document structure, references, and templates" data-session-date="2026-06-03" data-session-url="agenda/summer-2026-draft-schedule.md"></div>
+  <div data-session-number="24" data-session-series="Summer 2026 Workshops (Draft)" data-session-series-order="3" data-session-title="LaTeX II: Longer Documents, Collaboration, and Thesis Workflows" data-session-summary="Managing larger writing projects, bibliographies, and collaborative workflows" data-session-date="2026-06-17" data-session-url="agenda/summer-2026-draft-schedule.md"></div>
+  <div data-session-number="25" data-session-series="Summer 2026 Workshops (Draft)" data-session-series-order="3" data-session-title="Licensing of Published Datasets and Scripts" data-session-summary="Which licenses are recommendable for data and code, and why" data-session-date="2026-07-15" data-session-url="agenda/summer-2026-draft-schedule.md"></div>
 </div>
 
 ---
 
 ## Available Workshops
 
-### Summer 2026 Workshops (Draft)
-
-25. **[Licensing of Published Datasets and Scripts](agenda/summer-2026-draft-schedule.md)** (15 July 2026) - Which licenses are recommendable for data and code, and why
-24. **[LaTeX II: Longer Documents, Collaboration, and Thesis Workflows](agenda/summer-2026-draft-schedule.md)** (17 June 2026) - Managing larger writing projects, bibliographies, and collaborative workflows
-23. **[LaTeX I: Getting Started with Academic Writing in LaTeX](agenda/summer-2026-draft-schedule.md)** (3 June 2026) - A beginner-friendly introduction to document structure, references, and templates
-22. **[Version Control II: Collaboration Workflows with GitHub and gitlab.nrw](agenda/summer-2026-draft-schedule.md)** (20 May 2026) - Branches, pull requests, merge requests, and collaborative project organization
-21. **[Version Control I: Getting Started with Git, GitHub, and gitlab.nrw](agenda/summer-2026-draft-schedule.md)** (6 May 2026) - A practical introduction to version control for research workflows
-
-### Winter 2025-26 Workshops
-
-20. **[Advanced R: Working with Data Frames](workshops/15-advanced-r-dataframes/index.md)** (15 April 2026) - Practical data wrangling with `dplyr` and `tidyr`, based on Elen Le Foll's chapter draft and related tutorials
-19. **[Let's Rant: Open Debugging](workshops/19-open-debugging/index.md)** (1 April 2026, cancelled) - This session was cancelled
-18. **[Sample Size and Power Analysis](workshops/18-power-analysis/index.md)** (4 March 2026) - Principles of sample size calculation and power analysis
-17. **[Shiny: Creating Dynamic Web Apps from Data](workshops/17-shiny-web-apps/index.md)** (18 February 2026) - An introduction to creating interactive web applications from your data using Shiny
-16. **[Taking Care of Your Data: From Backups to Publication](workshops/16-data-management-lifecycle/index.md)** (4 February 2026) - Data lifecycle, from backups to publishing
-15. **[Bayes Factor](workshops/20-bayes-factor/index.md)** (21 January 2026) - Bayes Factors for model selection and hypothesis testing
-14. **[Bayesian Hypothesis Testing Using ROPE](workshops/14-bayesian-rope-testing/index.md)** (7 January 2026) - Bayesian hypothesis testing with the Region of Practical Equivalence (ROPE)
-13. **[Bayesian Model Comparison Using Cross-Validation](workshops/13-bayesian-model-comparison-cv/index.md)** (17 December 2025) - Comparing Bayesian models using cross-validation techniques
-12. **[Computational Reproducibility using R](workshops/12-computational-reproducibility-r/index.md)** (26 November 2025) - Reproducible workflows with R Markdown/Quarto, renv, and pipelines
-11. **[Bayesian Regression Models](workshops/11-bayesian-regression-models/index.md)** (12 November 2025) - Bayesian regression in R with priors, checking, and interpretation
-10. **[Coding in Python/VSCode and LLMs](workshops/10-coding-python-vscode-llms/index.md)** (29 October 2025) - Python setup, core libraries, Git integration, and LLM-assisted coding
-9. **[Archiving Session](workshops/09-archiving-session/index.md)** (15 October 2025) - Long-term data preservation, standards, and UoC repository usage
-8. **[Online Experiments](workshops/08-online-experiments/index.md)** (1 October 2025) - Designing and implementing online experiments
-7. **[Coding in R - Basics](workshops/07-coding-r-basics/index.md)** (17 September 2025) - Introduction to R programming for research applications
-
-### Summer 2025 Workshops
-
-6. **[Preregistration](workshops/06-preregistration/index.md)** (16 July 2025) - Preregistering research studies for transparency and reproducibility
-5. **[Annotation & Corpus Tools](workshops/05-annotation-corpus-tools/index.md)** (2 July 2025) - Tools for corpus linguistics and text annotation
-4. **[Literature Management](workshops/04-literature-management/index.md)** (18 June 2025) - Reference management tools (Zotero) and citation techniques
-3. **[Ethics Approval](workshops/03-ethics-approval/index.md)** (4 June 2025) - Ethics approval process and human subjects research requirements
-2. **[Research Data Management](workshops/02-research-data-management/index.md)** (21 May 2025) - Organizing, storing, and preserving research data
-1. **[Good Academic Practice](workshops/01-good-academic-practice/index.md)** (7 May 2025) - Academic integrity, research ethics, and responsible conduct
+<div id="available-workshops-list">
+  <p class="next-session-meta">Loading workshop list...</p>
+</div>
 
 **View the [complete workshop catalog](workshops/index.md)** for detailed information about each session.
 
@@ -188,21 +158,22 @@ Materials from our **July 2025 Retreat** on Large Language Models and AI-assiste
 
 ---
 
-## Chat (under construction)
+## Matrix Community
 
-Join our CRC 1252 community on Matrix for workshop coordination and discussion.
+Use our Matrix space for workshop coordination, follow-up questions, and sharing resources between sessions.
 
 **Join:** [SFB 1252 - Talks & Workshops](https://matrix.to/#/#sfb1252-talks:uni.koeln.de)
 
-**Recommended client:** [FluffyChat](https://fluffychat.im)
+**Recommended clients:** [FluffyChat](https://fluffychat.im) or [Element](https://chat.extern.uni-koeln.de/)
 
-**Available rooms:**
+**What you will find there:**
 
-- [General Discussion](https://matrix.to/#/#sfb1252-general:uni.koeln.de) - Workshop coordination and general topics
-- [Technical Support](https://matrix.to/#/#sfb1252-tech:uni.koeln.de) - Help with tools and software
-- [Resources & Links](https://matrix.to/#/#sfb1252-resources:uni.koeln.de) - Share research resources
+- Announcements and workshop coordination
+- Questions about tools, methods, and setup
+- Shared links and follow-up resources
+- General exchange with other CRC members
 
-See our [Matrix Setup Guide](matrix/space-setup.md) for detailed instructions.
+See the [Matrix setup guide](matrix/space-setup.md) if you need help creating an account or joining from a specific client.
 
 ---
 

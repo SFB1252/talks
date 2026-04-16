@@ -145,6 +145,22 @@
   margin: 1.2rem 0 0.8rem;
 }
 
+.homepage-workshop-group {
+  margin-bottom: 1.5rem;
+}
+
+.homepage-workshop-group h3 {
+  margin-bottom: 0.55rem;
+}
+
+.homepage-workshop-list {
+  margin-top: 0;
+}
+
+.homepage-workshop-list li {
+  margin-bottom: 0.35rem;
+}
+
 .schedule-link-card {
   margin: 0;
   padding: 0.9rem 1rem;
