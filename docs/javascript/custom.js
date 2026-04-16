@@ -58,23 +58,53 @@ function toggleWorkshopDetails(workshopId) {
     }
 }
 
+function toSiteUrl(docPath) {
+    if (!docPath) {
+        return '#';
+    }
+
+    if (/^(https?:)?\/\//.test(docPath) || docPath.startsWith('#') || docPath.startsWith('/')) {
+        return docPath;
+    }
+
+    if (docPath.endsWith('index.md')) {
+        return docPath.slice(0, -'index.md'.length);
+    }
+
+    if (docPath.endsWith('.md')) {
+        return docPath.slice(0, -'.md'.length) + '/';
+    }
+
+    return docPath;
+}
+
 function renderNextSessionCard() {
     const card = document.getElementById('next-session-card');
     const dataRoot = document.getElementById('session-data');
+    const cologneTimeZone = 'Europe/Berlin';
 
     if (!card || !dataRoot) {
         return;
     }
 
-    const today = new Date();
-    const todayUtc = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+    const cologneTodayParts = new Intl.DateTimeFormat('en-CA', {
+        timeZone: cologneTimeZone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    }).formatToParts(new Date());
+
+    const todayYear = Number(cologneTodayParts.find(part => part.type === 'year')?.value);
+    const todayMonth = Number(cologneTodayParts.find(part => part.type === 'month')?.value);
+    const todayDay = Number(cologneTodayParts.find(part => part.type === 'day')?.value);
+    const todayUtc = Date.UTC(todayYear, todayMonth - 1, todayDay);
 
     const sessions = Array.from(dataRoot.querySelectorAll('[data-session-date]'))
         .map(node => {
             const [year, month, day] = node.dataset.sessionDate.split('-').map(Number);
             return {
                 title: node.dataset.sessionTitle,
-                url: node.dataset.sessionUrl,
+                url: toSiteUrl(node.dataset.sessionUrl),
                 cancelled: node.dataset.sessionCancelled === 'true',
                 utcDate: Date.UTC(year, month - 1, day)
             };
@@ -94,6 +124,7 @@ function renderNextSessionCard() {
     const next = sessions[0];
     const days = Math.round((next.utcDate - todayUtc) / (1000 * 60 * 60 * 24));
     const formattedDate = new Intl.DateTimeFormat('en-GB', {
+        timeZone: cologneTimeZone,
         day: 'numeric',
         month: 'long',
         year: 'numeric'
