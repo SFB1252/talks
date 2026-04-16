@@ -1,7 +1,8 @@
 # Research Data & Methods - Summer Semester 2025 Schedule (ARCHIVED)
 
-**⚠️ This workshop series has been completed. For current workshops, see
-[Winter 2025-26 Schedule](winter-2025-26-schedule.md)**
+<div class="archive-notice">
+  <p><strong>This workshop series has been completed.</strong> For later workshops, see <a href="winter-2025-26-schedule/">Winter 2025-26 Schedule</a>.</p>
+</div>
 
 **Series Information:**
 

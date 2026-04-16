@@ -25,7 +25,7 @@ theme:
     accent: "cyan"
   font:
     text: "Albert Sans"
-    code: "Roboto Mono"
+    code: "Fira Code"
   features:
     - navigation.tabs
     - navigation.sections

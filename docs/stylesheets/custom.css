@@ -1,257 +1,18 @@
-/* Custom styles for Research Data and Methods Workshop Series */
+/* ============================================
+   Site Components and Accessibility
+   ============================================ */
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .workshop-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-}
-
-/* Logo styling */
-.md-header__button.md-logo {
-  margin-right: 0.5rem;
-}
-
-.md-header__button.md-logo img {
-  height: 32px;
-  width: auto;
-  max-width: 120px;
-}
-
-/* Form styling for future use */
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: var(--md-primary-fg-color);
-  box-shadow: 0 0 0 2px var(--md-primary-fg-color--transparent);
-}
-
-
-/* Button Styles */
-.btn-primary,
-.btn-secondary {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  border: none;
-  cursor: pointer;
-  font-size: 0.875rem;
-}
-
-.btn-primary {
-  background: var(--md-primary-fg-color);
-  color: var(--md-primary-bg-color);
-}
-
-.btn-primary:hover {
-  background: var(--md-primary-fg-color--dark);
-  color: var(--md-primary-bg-color);
-  transform: translateY(-1px);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--md-primary-fg-color);
-  border: 2px solid var(--md-primary-fg-color);
-}
-
-.btn-secondary:hover {
-  background: var(--md-primary-fg-color);
-  color: var(--md-primary-bg-color);
-  transform: translateY(-1px);
-}
-
-/* Winter Highlight Styling */
-.winter-highlight {
-  border-color: var(--md-accent-fg-color);
-  box-shadow: 0 0 0 2px var(--md-accent-fg-color--transparent);
-}
-
-.winter-highlight h3 {
-  color: var(--md-accent-fg-color);
-}
-
-/* Retreat Section */
-.retreat-section {
-  background: var(--md-code-bg-color);
-  border-radius: 8px;
-  padding: 2rem;
-  margin: 2rem 0;
-}
-
-.retreat-section h3 {
-  color: var(--md-primary-fg-color);
-  margin-top: 0;
-}
-
-.retreat-links ul {
-  list-style: none;
-  padding: 0;
-}
-
-.retreat-links li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--md-default-fg-color--lightest);
-}
-
-.retreat-links li:last-child {
-  border-bottom: none;
-}
-
-.retreat-links strong {
-  color: var(--md-default-fg-color);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .workshop-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .workshop-card {
-    padding: 1rem;
-  }
-
-  .retreat-section {
-    padding: 1.5rem;
-  }
-}
-
-/* Academic Theme Colors */
-:root {
-  --workshop-primary: #1976d2;
-  --workshop-secondary: #424242;
-  --workshop-accent: #ff9800;
-  --workshop-success: #4caf50;
-  --workshop-info: #2196f3;
-  --workshop-warning: #ff9800;
-  --workshop-error: #f44336;
-}
-
-/* Custom link styling */
-.workshop-card a:not(.btn-primary):not(.btn-secondary) {
-  color: var(--md-primary-fg-color);
-  text-decoration: none;
-}
-
-.workshop-card a:not(.btn-primary):not(.btn-secondary):hover {
-  text-decoration: underline;
-}
-
-/* Form styling for future use */
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: var(--md-primary-fg-color);
-  box-shadow: 0 0 0 2px var(--md-primary-fg-color--transparent);
-}
-/* Logo styling */
-.md-header__button.md-logo {
-  margin-right: 0.5rem;
-}
-
-.md-header__button.md-logo img {
-  height: 32px;
-  width: auto;
-  max-width: 120px;
-}
-/* ===========================
-   Accessibility Fixes
-   =========================== */
-
-/* Fix: Ensure links are distinguishable from text without relying solely on color */
+/* Links should be distinguishable without color alone */
 .md-content a {
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
+  text-underline-offset: 0.14em;
 }
 
 .md-content a:hover {
   text-decoration-thickness: 2px;
 }
 
-.next-session-card {
-  border: 2px solid var(--md-primary-fg-color);
-  border-radius: 10px;
-  padding: 1rem 1.25rem;
-  margin: 1rem 0 1.5rem;
-  background: rgba(0, 81, 118, 0.05);
-}
-
-.next-session-card p {
-  margin: 0.15rem 0;
-}
-
-.next-session-label {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--md-primary-fg-color);
-}
-
-.next-session-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-}
-
-.next-session-meta {
-  color: var(--md-default-fg-color--light);
-}
-
-.next-session-countdown {
-  font-weight: 700;
-  color: var(--md-accent-fg-color);
-}
-
-/* Exception for buttons and styled links that already have visual distinction */
 .md-button,
 .btn-primary,
 .btn-secondary,
@@ -260,4 +21,215 @@
 .md-footer__link,
 .md-logo {
   text-decoration: none !important;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 0.72rem 1.35rem;
+  border-radius: 999px;
+  font-family: "Albert Sans", Arial, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--uzk-blue);
+  border: 2px solid var(--uzk-blue);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--uzk-turquoise);
+  border-color: var(--uzk-turquoise);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--uzk-blue);
+  color: var(--uzk-blue);
+}
+
+.btn-secondary:hover {
+  background: var(--uzk-blue);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-family: "Albert Sans", Arial, sans-serif;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--uzk-border);
+  border-radius: 10px;
+  font-family: "Albert Sans", Arial, sans-serif;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--uzk-blue);
+  box-shadow: 0 0 0 3px rgba(0, 157, 204, 0.16);
+}
+
+.next-session-card {
+  border: 1px solid var(--uzk-border);
+  border-left: 6px solid var(--uzk-turquoise);
+  border-radius: var(--uzk-radius);
+  padding: 1.1rem 1.25rem;
+  margin: 1rem 0 1.6rem;
+  background: linear-gradient(135deg, rgba(0, 81, 118, 0.05), rgba(0, 157, 204, 0.08));
+  box-shadow: var(--uzk-shadow);
+}
+
+.next-session-card p {
+  margin: 0.12rem 0;
+}
+
+.next-session-label {
+  color: var(--uzk-muted);
+  font-family: "Albert Sans", Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.next-session-title {
+  font-family: "Albert Sans", Arial, sans-serif;
+  font-size: 1.32rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.next-session-title a {
+  text-decoration: none;
+}
+
+.next-session-title a:hover {
+  text-decoration: underline;
+}
+
+.next-session-meta {
+  color: var(--uzk-muted);
+  font-family: "Albert Sans", Arial, sans-serif;
+}
+
+.next-session-countdown {
+  color: var(--uzk-blue-dark);
+  font-family: "Albert Sans", Arial, sans-serif;
+  font-weight: 700;
+}
+
+.schedule-links {
+  display: grid;
+  gap: 0.85rem;
+  margin: 1.2rem 0 0.8rem;
+}
+
+.schedule-link-card {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--uzk-border);
+  border-radius: var(--uzk-radius);
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(16, 38, 49, 0.04);
+}
+
+.schedule-link-card strong {
+  font-family: "Albert Sans", Arial, sans-serif;
+}
+
+.archive-notice {
+  margin: 1rem 0 1.4rem;
+  padding: 0.95rem 1rem;
+  border-left: 5px solid var(--uzk-coral);
+  border-radius: 0 12px 12px 0;
+  background: rgba(234, 86, 79, 0.08);
+  color: var(--uzk-text);
+  box-shadow: 0 8px 20px rgba(234, 86, 79, 0.08);
+}
+
+.archive-notice p {
+  margin: 0;
+}
+
+.retreat-section {
+  margin: 2.4rem 0;
+  padding: 1.5rem 1.35rem;
+  border: 1px solid var(--uzk-border);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(0, 81, 118, 0.04), rgba(0, 157, 204, 0.06));
+  box-shadow: var(--uzk-shadow);
+}
+
+.retreat-section h2,
+.retreat-section h3 {
+  margin-top: 0;
+}
+
+.retreat-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.retreat-links li {
+  margin: 0;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--uzk-border);
+}
+
+.retreat-links li:last-child {
+  border-bottom: none;
+}
+
+.md-typeset .grid.cards figure {
+  height: 100%;
+}
+
+.md-typeset .grid.cards figcaption {
+  margin-top: 0.8rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--uzk-border);
+  color: var(--uzk-muted);
+  font-family: "Albert Sans", Arial, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.md-typeset .grid.cards figcaption a {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .next-session-card {
+    padding: 0.95rem 1rem;
+  }
+
+  .next-session-title {
+    font-size: 1.15rem;
+  }
+
+  .retreat-section {
+    padding: 1.2rem 1rem;
+  }
 }
