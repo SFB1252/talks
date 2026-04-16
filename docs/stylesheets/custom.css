@@ -41,6 +41,12 @@
   color: #fff;
 }
 
+.btn-primary:link,
+.btn-primary:visited,
+.btn-primary:focus {
+  color: #fff;
+}
+
 .btn-primary:hover {
   background: var(--uzk-turquoise);
   border-color: var(--uzk-turquoise);
@@ -54,10 +60,21 @@
   color: var(--uzk-blue);
 }
 
+.btn-secondary:link,
+.btn-secondary:visited,
+.btn-secondary:focus {
+  color: var(--uzk-blue);
+}
+
 .btn-secondary:hover {
   background: var(--uzk-blue);
   color: #fff;
   transform: translateY(-1px);
+}
+
+.btn-secondary:hover,
+.btn-secondary:active {
+  color: #fff;
 }
 
 .form-group {
