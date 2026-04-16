@@ -12,18 +12,26 @@ Workshops on research methodology, data management, and academic practices for g
 
 ## Available Workshops
 
+### Summer 2025 Workshops
+
 1. **[Good Academic Practice](workshops/01-good-academic-practice/index.md)** (7 May 2025) - Academic integrity, research ethics, and responsible conduct
 2. **[Research Data Management](workshops/02-research-data-management/index.md)** (21 May 2025) - Organizing, storing, and preserving research data
 3. **[Ethics Approval](workshops/03-ethics-approval/index.md)** (4 June 2025) - Ethics approval process and human subjects research requirements
 4. **[Literature Management](workshops/04-literature-management/index.md)** (18 June 2025) - Reference management tools (Zotero) and citation techniques
 5. **[Annotation & Corpus Tools](workshops/05-annotation-corpus-tools/index.md)** (2 July 2025) - Tools for corpus linguistics and text annotation
 6. **[Preregistration](workshops/06-preregistration/index.md)** (16 July 2025) - Preregistering research studies for transparency and reproducibility
+
+### Winter 2025-26 Workshops
+
 7. **[Coding in R - Basics](workshops/07-coding-r-basics/index.md)** (17 September 2025) - Introduction to R programming for research applications
 8. **[Online Experiments](workshops/08-online-experiments/index.md)** (1 October 2025) - Designing and implementing online experiments
 9. **[Archiving Session](workshops/09-archiving-session/index.md)** (15 October 2025) - Long-term data preservation, standards, and UoC repository usage
 10. **[Coding in Python/VSCode and LLMs](workshops/10-coding-python-vscode-llms/index.md)** (29 October 2025) - Python setup, core libraries, Git integration, and LLM-assisted coding
 11. **[Bayesian Regression Models](workshops/11-bayesian-regression-models/index.md)** (12 November 2025) - Bayesian regression in R with priors, checking, and interpretation
 12. **[Computational Reproducibility using R](workshops/12-computational-reproducibility-r/index.md)** (26 November 2025) - Reproducible workflows with R Markdown/Quarto, renv, and pipelines
+
+### Winter 2025-26 Workshops Part 2
+
 13. **[Bayesian Model Comparison Using Cross-Validation](workshops/13-bayesian-model-comparison-cv/index.md)** (17 December 2025) - Comparing Bayesian models using cross-validation techniques
 14. **[Bayesian Hypothesis Testing Using ROPE](workshops/14-bayesian-rope-testing/index.md)** (7 January 2026) - Bayesian hypothesis testing with the Region of Practical Equivalence (ROPE)
 15. **[Bayes Factor](workshops/20-bayes-factor/index.md)** (21 January 2026) - Bayes Factors for model selection and hypothesis testing
@@ -32,6 +40,14 @@ Workshops on research methodology, data management, and academic practices for g
 18. **[Sample Size and Power Analysis](workshops/18-power-analysis/index.md)** (4 March 2026) - Principles of sample size calculation and power analysis
 19. **[Let's Rant: Open Debugging](workshops/19-open-debugging/index.md)** (1 April 2026, cancelled) - This session was cancelled
 20. **[Advanced R: Working with Data Frames](workshops/15-advanced-r-dataframes/index.md)** (15 April 2026) - Practical data wrangling with `dplyr` and `tidyr`, based on Elen Le Foll's chapter draft and related tutorials
+
+### Summer 2026 Workshops (Draft)
+
+21. **Version Control I: Getting Started with Git, GitHub, and gitlab.nrw** (6 May 2026) - A practical introduction to version control for research workflows
+22. **Version Control II: Collaboration Workflows with GitHub and gitlab.nrw** (20 May 2026) - Branches, pull requests, merge requests, and collaborative project organization
+23. **LaTeX I: Getting Started with Academic Writing in LaTeX** (3 June 2026) - A beginner-friendly introduction to document structure, references, and templates
+24. **LaTeX II: Longer Documents, Collaboration, and Thesis Workflows** (17 June 2026) - Managing larger writing projects, bibliographies, and collaborative workflows
+25. **Licensing of Published Datasets and Scripts** (15 July 2026) - Which licenses are recommendable for data and code, and why
 
 **View the [complete workshop catalog](workshops/index.md)** for detailed information about each session.
 
