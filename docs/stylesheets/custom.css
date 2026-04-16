@@ -217,6 +217,40 @@
   text-decoration-thickness: 2px;
 }
 
+.next-session-card {
+  border: 2px solid var(--md-primary-fg-color);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0 1.5rem;
+  background: rgba(0, 81, 118, 0.05);
+}
+
+.next-session-card p {
+  margin: 0.15rem 0;
+}
+
+.next-session-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--md-primary-fg-color);
+}
+
+.next-session-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.next-session-meta {
+  color: var(--md-default-fg-color--light);
+}
+
+.next-session-countdown {
+  font-weight: 700;
+  color: var(--md-accent-fg-color);
+}
+
 /* Exception for buttons and styled links that already have visual distinction */
 .md-button,
 .btn-primary,
