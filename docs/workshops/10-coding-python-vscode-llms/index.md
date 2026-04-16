@@ -1,8 +1,18 @@
 # Coding in Python/VSCode and LLMs
 
-**Date:** 29. Oktober 2025  
-**Time:** 14:00 - 15:30  
-**Speaker:** Job Schepens (Project S, CRC 1252)
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 29 October 2025 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speaker | Job Schepens, Project S, CRC 1252 |
+| Prerequisites | No formal prerequisites listed on this page. |
+| Materials status | Slides and repository resources are available below. |
+| Slides / recording | Slides are linked below; no recording is listed. |
+
+</div>
 
 ## Overview
 

@@ -1,9 +1,18 @@
 # Ethics Approval
 
-**Date:** 4. Juni 2025  
-**Speaker:** Sebastian Barsch, Vorsitzender der Ethikkommission der PhilFak,
-UzK  
-**Duration:** 14:00 - 15:30
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 4 June 2025 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speaker | Sebastian Barsch, Vorsitzender der Ethikkommission der PhilFak, UzK |
+| Prerequisites | No formal prerequisites listed. |
+| Materials status | Workshop outline is available; dedicated materials are not yet linked. |
+| Slides / recording | No slides or recording are currently listed. |
+
+</div>
 
 ## Overview
 

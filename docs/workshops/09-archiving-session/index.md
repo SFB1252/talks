@@ -1,8 +1,18 @@
 # Archiving Session
 
-**Date:** 15. Oktober 2025  
-**Time:** 14:00 - 15:30  
-**Speakers:** Luke Günther (Project S, CRC 1252) & Sarah Saleh (Data Center for the Humanities, UoC)
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 15 October 2025 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speakers | Luke Günther (Project S, CRC 1252) & Sarah Saleh (Data Center for the Humanities, UoC) |
+| Prerequisites | No formal prerequisites listed. |
+| Materials status | Slide and template placeholders are listed; further materials are still being added. |
+| Slides / recording | Slides are not yet linked; no recording is listed. |
+
+</div>
 
 ## Overview
 

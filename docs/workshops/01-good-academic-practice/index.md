@@ -1,8 +1,18 @@
 # Good Academic Practice
 
-**Date:** 7. Mai 2025  
-**Speakers:** Luke Günther & Job Schepens, Project S, SFB 1252  
-**Duration:** 14:00 - 15:30
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 7 May 2025 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speakers | Luke Günther & Job Schepens, Project S, CRC 1252 |
+| Prerequisites | No formal prerequisites listed. |
+| Materials status | Workshop outline is available; dedicated materials are not yet linked. |
+| Slides / recording | No slides or recording are currently listed. |
+
+</div>
 
 ## Overview
 

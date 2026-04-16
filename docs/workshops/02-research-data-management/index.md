@@ -1,8 +1,18 @@
 # Research Data Management
 
-**Date:** 21. Mai 2025  
-**Speaker:** Felix Rau, Data Center for the Humanities, UoC  
-**Duration:** 14:00 - 15:30
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 21 May 2025 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speaker | Felix Rau, Data Center for the Humanities, UoC |
+| Prerequisites | No formal prerequisites listed. |
+| Materials status | Slides are available below. |
+| Slides / recording | Slides are linked below; no recording is listed. |
+
+</div>
 
 ## Overview
 

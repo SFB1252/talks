@@ -1,8 +1,18 @@
 # Bayesian Mixed Effects Models with brms for Linguists
 
-**Date:** 12. November 2025  
-**Time:** 14:00 - 15:30  
-**Speaker:** Job Schepens (Project S, CRC 1252)
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 12 November 2025 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speaker | Job Schepens, Project S, CRC 1252 |
+| Prerequisites | No formal prerequisites listed on this page. |
+| Materials status | Workshop materials and references are available below. |
+| Slides / recording | No slide deck or recording is currently listed; repository materials are linked below. |
+
+</div>
 
 ## Workshop Summary
 

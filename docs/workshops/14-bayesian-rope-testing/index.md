@@ -2,6 +2,20 @@
 
 **Workshop 14 - Winter Semester 2025-26**
 
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 7 January 2026 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speaker | Job Schepens, Project S, CRC 1252 |
+| Prerequisites | See prerequisites below. |
+| Materials status | Tutorial and repository materials are available below. |
+| Slides / recording | No slide deck or recording is currently listed. |
+
+</div>
+
 ## Overview
 
 This workshop covers Bayesian hypothesis testing using the Region of Practical Equivalence (ROPE) approach.

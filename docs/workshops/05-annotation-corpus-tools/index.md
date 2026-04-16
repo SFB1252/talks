@@ -1,8 +1,18 @@
 # Tools for Annotation & Corpus Linguistics
 
-**Date:** 2. Juli 2025  
-**Speaker:** Luke Günther, Project S, SFB 1252  
-**Duration:** 14:00 - 15:30
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 2 July 2025 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speaker | Luke Günther, Project S, CRC 1252 |
+| Prerequisites | No formal prerequisites listed. |
+| Materials status | Presentation materials are available below. |
+| Slides / recording | Slides are linked below; no recording is listed. |
+
+</div>
 
 ## Overview
 

@@ -141,7 +141,7 @@ body {
 .md-typeset blockquote,
 .md-typeset table {
   color: var(--uzk-text);
-  font-family: "Source Serif 4", Georgia, serif;
+  font-family: "Albert Sans", Arial, sans-serif;
   font-size: 1.02em;
 }
 

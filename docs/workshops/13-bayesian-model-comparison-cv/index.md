@@ -2,6 +2,20 @@
 
 **Workshop 13 - Winter Semester 2025-26**
 
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 17 December 2025 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speaker | Job Schepens, Project S, CRC 1252 |
+| Prerequisites | See prerequisites below. |
+| Materials status | Notebook and repository materials are available below; additional materials may follow. |
+| Slides / recording | No slide deck or recording is currently listed. |
+
+</div>
+
 ## Overview
 
 This workshop introduces Bayesian model comparison techniques using cross-validation methods for robust model selection.

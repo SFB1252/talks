@@ -2,6 +2,20 @@
 
 **Workshop 18 - Winter Semester 2025-26**
 
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 4 March 2026 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speaker | Job Schepens, Project S, CRC 1252 |
+| Prerequisites | See prerequisites below. |
+| Materials status | Simulation report and repository materials are available below. |
+| Slides / recording | No slide deck or recording is currently listed. |
+
+</div>
+
 ## Overview
 
 This workshop covers the principles of statistical power and sample size calculation for robust research design, with a focus on Bayesian sequential designs using HDI/ROPE criteria. The workshop explores practical approaches to determining sample sizes when both detection (PRESENT) and exclusion (ABSENT) decisions are required simultaneously.

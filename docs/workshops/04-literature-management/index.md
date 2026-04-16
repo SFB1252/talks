@@ -1,8 +1,18 @@
 # Literature Management
 
-**Date:** 18. Juni 2025  
-**Speaker:** Gabrielle Schwiertz, USB, UzK  
-**Duration:** 14:00 - 15:30
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 18 June 2025 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speaker | Gabrielle Schwiertz, USB, UzK |
+| Prerequisites | No formal prerequisites listed. |
+| Materials status | Slides are available below. |
+| Slides / recording | Slides are linked below; no recording is listed. |
+
+</div>
 
 ## Overview
 

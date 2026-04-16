@@ -1,8 +1,18 @@
 # Computational Reproducibility Session using R
 
-**Date:** 26. November 2025  
-**Time:** 14:00 - 15:30  
-**Speaker:** Luke Günther (Project S, CRC 1252)
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 26 November 2025 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speaker | Luke Günther, Project S, CRC 1252 |
+| Prerequisites | No formal prerequisites listed on this page. |
+| Materials status | Placeholder materials are listed; additional resources may still be added. |
+| Slides / recording | Slides are marked as still to be added; no recording is listed. |
+
+</div>
 
 ## Overview
 

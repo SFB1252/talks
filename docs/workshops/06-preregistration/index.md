@@ -1,8 +1,18 @@
 # Preregistration
 
-**Date:** 16. Juli 2025  
-**Speaker:** Job Schepens, Project S, SFB 1252  
-**Duration:** 14:00 - 15:30
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 16 July 2025 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speaker | Job Schepens, Project S, CRC 1252 |
+| Prerequisites | No formal prerequisites listed. |
+| Materials status | Slides and supporting materials are available below. |
+| Slides / recording | HTML slides, PDF slides, and source files are linked below; no recording is listed. |
+
+</div>
 
 ## Overview
 

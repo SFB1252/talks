@@ -1,8 +1,18 @@
 # Online Experiments
 
-**Date:** 1. Oktober 2025  
-**Speaker:** Onur Özsoy, Project C03, SFB 1252  
-**Duration:** 14:00 - 15:30
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 1 October 2025 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speaker | Onur Özsoy, Project C03, CRC 1252 |
+| Prerequisites | See prerequisites below. |
+| Materials status | Slides, code, and example data are available below. |
+| Slides / recording | Slides are linked below; no recording is listed. |
+
+</div>
 
 ## Presenter Materials
 

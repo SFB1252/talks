@@ -2,6 +2,20 @@
 
 **Workshop 20 - Winter Semester 2025-26**
 
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 15 April 2026 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne, with Zoom for remote participation |
+| Host | Job Schepens, Project S, CRC 1252 |
+| Prerequisites | See prerequisites below. |
+| Materials status | Guided resource links are available below. |
+| Slides / recording | No slide deck or recording is currently listed. |
+
+</div>
+
 ## Overview
 
 This workshop focused on practical data wrangling in R using data frames and

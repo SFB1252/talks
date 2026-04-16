@@ -1,8 +1,18 @@
 # Coding in R - Basics
 
-**Date:** 17. September 2025  
-**Speaker:** Luke Günther, Project S, SFB 1252  
-**Duration:** 14:00 - 15:30
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 17 September 2025 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speaker | Luke Günther, Project S, CRC 1252 |
+| Prerequisites | No prior programming experience required; R and RStudio should be installed in advance. |
+| Materials status | Preparation notes and participant materials are described below. |
+| Slides / recording | No slides or recording are currently listed. |
+
+</div>
 
 ## Overview
 

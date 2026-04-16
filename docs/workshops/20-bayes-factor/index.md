@@ -2,6 +2,20 @@
 
 **Workshop 15 - Winter Semester 2025-26**
 
+<div class="session-meta" markdown="1">
+
+| Field | Details |
+| --- | --- |
+| Date | 21 January 2026 |
+| Time | 14:00 - 15:30 |
+| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
+| Speaker | Job Schepens, Project S, CRC 1252 |
+| Prerequisites | See prerequisites below. |
+| Materials status | Resource links are available below. |
+| Slides / recording | No slide deck or recording is currently listed. |
+
+</div>
+
 ## Overview
 
 This workshop introduces Bayes Factors as a tool for model selection and hypothesis testing in Bayesian statistics.
