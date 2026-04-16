@@ -103,6 +103,28 @@ function formatSessionDate(utcDate) {
     }).format(new Date(utcDate));
 }
 
+function getCalendarUrlForSeries(series) {
+    const calendarBySeries = {
+        'Summer 2026 Workshops (Draft)': 'agenda/summer-2026-draft.ics',
+        'Winter 2025-26 Workshops': 'agenda/winter-2025-26.ics'
+    };
+
+    return toSiteUrl(calendarBySeries[series] || 'workshops/index.md');
+}
+
+function renderSessionActions(primaryUrl, series) {
+    const calendarUrl = getCalendarUrlForSeries(series);
+
+    return `
+        <div class="next-session-actions">
+            <a class="btn-primary next-session-primary-action" href="${primaryUrl}">Open Session</a>
+            <a class="btn-secondary" href="${calendarUrl}">Subscribe to Calendar</a>
+            <a class="btn-secondary" href="${toSiteUrl('workshops/index.md')}">Browse Workshops</a>
+            <a class="btn-secondary" href="https://matrix.to/#/#sfb1252-talks:uni.koeln.de">Join Matrix</a>
+        </div>
+    `;
+}
+
 function parseHomepageSessions() {
     const dataRoot = document.getElementById('session-data');
 
@@ -143,6 +165,7 @@ function renderNextSessionCard(sessions) {
             <p class="next-session-label">Next upcoming session</p>
             <p class="next-session-title">No upcoming session is currently listed.</p>
             <p class="next-session-meta">See the draft schedule for future updates.</p>
+            ${renderSessionActions(toSiteUrl('workshops/index.md'), '')}
         `;
         return;
     }
@@ -156,6 +179,7 @@ function renderNextSessionCard(sessions) {
         <p class="next-session-title"><a href="${next.url}">${next.title}</a></p>
         <p class="next-session-meta">${formattedDate}</p>
         <p class="next-session-countdown">${days === 0 ? 'Today' : `${days} day${days === 1 ? '' : 's'} to go`}</p>
+        ${renderSessionActions(next.url, next.series)}
     `;
 }
 

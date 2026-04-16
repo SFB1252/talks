@@ -9,6 +9,12 @@
 - **Format:** Short top-down introductions followed by guided hands-on work
 - **Organizers:** Dr. Job Schepens & Luke Günther, Project S, CRC 1252
 
+## Subscribe to Calendar
+
+Add the current draft schedule to your calendar:
+
+- **[Download iCal file](summer-2026-draft.ics)** - Import into Outlook, Apple Calendar, Thunderbird, and other calendar apps
+
 ## Draft Format
 
 The current idea for Summer 2026 is to keep sessions practical and accessible:

@@ -139,6 +139,25 @@
   font-weight: 700;
 }
 
+.next-session-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.next-session-actions .btn-primary,
+.next-session-actions .btn-secondary {
+  min-height: 2.8rem;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.next-session-primary-action {
+  box-shadow: 0 8px 18px rgba(0, 81, 118, 0.18);
+}
+
 .schedule-links {
   display: grid;
   gap: 0.85rem;
@@ -243,6 +262,15 @@
 
   .next-session-title {
     font-size: 1.15rem;
+  }
+
+  .next-session-actions {
+    flex-direction: column;
+  }
+
+  .next-session-actions .btn-primary,
+  .next-session-actions .btn-secondary {
+    width: 100%;
   }
 
   .retreat-section {
