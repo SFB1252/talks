@@ -35,7 +35,8 @@
   cursor: pointer;
 }
 
-.btn-primary {
+.btn-primary,
+.md-content a.btn-primary {
   background: var(--uzk-blue);
   border: 2px solid var(--uzk-blue);
   color: #fff;
@@ -43,18 +44,25 @@
 
 .btn-primary:link,
 .btn-primary:visited,
-.btn-primary:focus {
+.btn-primary:focus,
+.md-content a.btn-primary:link,
+.md-content a.btn-primary:visited,
+.md-content a.btn-primary:focus {
   color: #fff;
+  text-decoration: none;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.md-content a.btn-primary:hover {
   background: var(--uzk-turquoise);
   border-color: var(--uzk-turquoise);
   color: #fff;
+  text-decoration: none;
   transform: translateY(-1px);
 }
 
-.btn-secondary {
+.btn-secondary,
+.md-content a.btn-secondary {
   background: transparent;
   border: 2px solid var(--uzk-blue);
   color: var(--uzk-blue);
@@ -62,19 +70,28 @@
 
 .btn-secondary:link,
 .btn-secondary:visited,
-.btn-secondary:focus {
+.btn-secondary:focus,
+.md-content a.btn-secondary:link,
+.md-content a.btn-secondary:visited,
+.md-content a.btn-secondary:focus {
   color: var(--uzk-blue);
+  text-decoration: none;
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover,
+.md-content a.btn-secondary:hover {
   background: var(--uzk-blue);
   color: #fff;
+  text-decoration: none;
   transform: translateY(-1px);
 }
 
 .btn-secondary:hover,
-.btn-secondary:active {
+.btn-secondary:active,
+.md-content a.btn-secondary:hover,
+.md-content a.btn-secondary:active {
   color: #fff;
+  text-decoration: none;
 }
 
 .form-group {
