@@ -41,7 +41,7 @@ University of Cologne
 
 ## Session Details
 
-**Date:** 15 April 2026  
+**Date:** 21 January 2026  
 **Time:** 14:00 - 15:30  
 **Location:** House of Prominence, Attic, Luxemburger Str. 299, Cologne
 

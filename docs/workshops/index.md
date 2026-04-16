@@ -7,9 +7,10 @@ academic research in the digital age.
 
 ### Format & Duration
 
-- **Duration**: 2-3 hours per workshop
+- **Duration**: 14:00 - 15:30 per workshop
 - **Format**: Interactive sessions with theory and hands-on practice
-- **Materials**: All presentations and exercises available online
+- **Materials**: Resources are being completed and published online as quickly as
+  possible
 - **Certificate**: Attendance certificates available upon request
 
 ### What to Expect
@@ -34,14 +35,15 @@ Each workshop includes:
 
 ## 📅 Registration & Schedule
 
-### Current Schedule
+### Upcoming Schedule
 
-**[Winter 2025-26 Schedule](../agenda/winter-2025-26-schedule.md)** -
-Registration and dates
-
+The next workshop schedule is currently in preparation.
 ### Past Workshops
 
-**[Summer 2025 Archive](../agenda/summer-2025-schedule.md)** - Completed
+**[Winter 2025-26 Schedule](../agenda/winter-2025-26-schedule.md)** -
+Workshop dates and materials
+
+**[Summer 2025 Archive](../agenda/summer-2025-schedule.md)** - 
 workshop materials
 
 ---
@@ -62,4 +64,4 @@ researchers.
 ---
 
 _Questions? Contact the workshop organizers through the information provided in
-the [current schedule](../agenda/winter-2025-26-schedule.md)._
+the [Winter 2025-26 schedule](../agenda/winter-2025-26-schedule.md)._

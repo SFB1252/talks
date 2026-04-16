@@ -35,7 +35,9 @@ Workshops on research methodology, data management, and academic practices for g
 
 **View the [complete workshop catalog](workshops/index.md)** for detailed information about each session.
 
-**Current schedule:** See [Winter 2025-26 schedule](agenda/winter-2025-26-schedule.md) for dates and registration.
+**Latest archive:** See the [Winter 2025-26 schedule](agenda/winter-2025-26-schedule.md) for workshop dates and materials.
+
+**Next schedule:** A new workshop schedule is currently in preparation.
 
 ---
 
