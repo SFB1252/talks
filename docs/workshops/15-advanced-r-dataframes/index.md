@@ -1,6 +1,6 @@
 # Advanced R: Working with Data Frames
 
-**Workshop 15 - Winter Semester 2025-26**
+**Workshop 20 - Winter Semester 2025-26**
 
 ## Overview
 

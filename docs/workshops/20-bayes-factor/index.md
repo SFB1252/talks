@@ -1,6 +1,6 @@
 # Bayes Factor
 
-**Workshop 20 - Winter Semester 2025-26**
+**Workshop 15 - Winter Semester 2025-26**
 
 ## Overview
 
