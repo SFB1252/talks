@@ -55,9 +55,9 @@ Workshops on research methodology, data management, and academic practices for g
 **View the [complete workshop catalog](workshops/index.md)** for detailed information about each session.
 
 <div class="schedule-links">
-  <p class="schedule-link-card"><strong>Next schedule:</strong> See the <a href="agenda/summer-2026-draft-schedule/">Summer 2026 draft schedule</a>.</p>
-  <p class="schedule-link-card"><strong>Winter 2025-26 archive:</strong> See the <a href="agenda/winter-2025-26-schedule/">Winter 2025-26 archive</a> for completed workshop dates and materials.</p>
-  <p class="schedule-link-card"><strong>Summer 2025 archive:</strong> See the <a href="agenda/summer-2025-schedule/">Summer 2025 archive</a> for completed workshop dates and materials.</p>
+  <p class="schedule-link-card" markdown="1"><strong>Next schedule:</strong> See the [Summer 2026 draft schedule](agenda/summer-2026-draft-schedule.md).</p>
+  <p class="schedule-link-card" markdown="1"><strong>Winter 2025-26 archive:</strong> See the [Winter 2025-26 archive](agenda/winter-2025-26-schedule.md) for completed workshop dates and materials.</p>
+  <p class="schedule-link-card" markdown="1"><strong>Summer 2025 archive:</strong> See the [Summer 2025 archive](agenda/summer-2025-schedule.md) for completed workshop dates and materials.</p>
 </div>
 
 
@@ -138,7 +138,7 @@ Download promotional materials:
 
 ---
 
-<div class="retreat-section">
+<div class="retreat-section" markdown="block">
 
 ## CRC 1252 Retreat Resources
 
