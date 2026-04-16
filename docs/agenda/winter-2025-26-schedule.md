@@ -197,12 +197,10 @@ for the Humanities, UoC_
 
 **Date:** 1. April 2026  
 **Time:** 14:00 - 15:30  
+**Status:** Cancelled  
 **Speaker:** Luke Günther, _Project S, CRC 1252_
 
-**Topics:**
-
-- Debugging strategies and best practices
-- Interactive problem-solving session
+This session was cancelled.
 
 ---
 

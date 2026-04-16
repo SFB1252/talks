@@ -2,9 +2,13 @@
 
 **Workshop 19 - Winter Semester 2025-26**
 
+**Status:** Cancelled
+
 ## Overview
 
-This interactive workshop provides a collaborative environment for debugging code and solving programming challenges together.
+This workshop was planned as an interactive session for debugging code and
+solving programming challenges together, but the 1 April 2026 session was
+cancelled.
 
 ## Learning Objectives
 
@@ -28,7 +32,7 @@ This interactive workshop provides a collaborative environment for debugging cod
 
 ## Materials
 
-Materials will be available after the workshop.
+No materials are available because this session was cancelled.
 
 ## Instructor
 
@@ -40,7 +44,8 @@ University of Cologne
 
 **Date:** 1 April 2026  
 **Time:** 14:00 - 15:30  
-**Location:** House of Prominence, Attic, Luxemburger Str. 299, Cologne
+**Location:** House of Prominence, Attic, Luxemburger Str. 299, Cologne  
+**Status:** Cancelled
 
 ---
 
