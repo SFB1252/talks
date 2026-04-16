@@ -31,7 +31,7 @@ Workshops on research methodology, data management, and academic practices for g
 17. **[Shiny: Creating Dynamic Web Apps from Data](workshops/17-shiny-web-apps/index.md)** (18 February 2026) - An introduction to creating interactive web applications from your data using Shiny
 18. **[Sample Size and Power Analysis](workshops/18-power-analysis/index.md)** (4 March 2026) - Principles of sample size calculation and power analysis
 19. **[Let's Rant: Open Debugging](workshops/19-open-debugging/index.md)** (1 April 2026) - An interactive and open session on debugging strategies and best practices
-20. **[Advanced R: Working with Data Frames](workshops/15-advanced-r-dataframes/index.md)** (15 April 2026) - Dive deep into advanced data manipulation techniques with R's data frames 
+20. **[Advanced R: Working with Data Frames](workshops/15-advanced-r-dataframes/index.md)** (15 April 2026) - Practical data wrangling with `dplyr` and `tidyr`, based on Elen Le Foll's chapter draft and related tutorials
 
 **View the [complete workshop catalog](workshops/index.md)** for detailed information about each session.
 

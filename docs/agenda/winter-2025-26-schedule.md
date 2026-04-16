@@ -210,12 +210,13 @@ for the Humanities, UoC_
 
 **Date:** 15. April 2026  
 **Time:** 14:00 - 15:30  
-**Speaker:** Luke Günther, _Project S, CRC 1252_
+**Host:** Job Schepens, _Project S, CRC 1252_
 
 **Topics:**
 
-- Advanced dplyr and tidyr operations
-- Data transformation and reshaping techniques
+- Practical data wrangling with `dplyr` and `tidyr`
+- Guided walkthrough of Elen Le Foll's data wrangling chapter
+- Discussion of other resources such as DataCamp and Data Carpentry
 
 ---
 

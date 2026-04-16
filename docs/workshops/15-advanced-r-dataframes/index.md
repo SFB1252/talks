@@ -4,21 +4,23 @@
 
 ## Overview
 
-This workshop covers advanced data manipulation techniques using R's data frame operations and tidyverse tools.
+This workshop focused on practical data wrangling in R using data frames and
+the tidyverse, with an emphasis on working through real examples together.
 
 ## Learning Objectives
 
-- Master advanced dplyr operations
-- Perform efficient data transformations
-- Work with nested data structures
-- Optimize performance for large datasets
+- Use `dplyr` verbs confidently for filtering, selecting, mutating, and
+  summarizing data
+- Understand core data wrangling workflows with pipes
+- Practice reshaping and cleaning tabular data with `tidyr`
+- Compare different learning resources for continuing with data frame work in R
 
 ## Topics Covered
 
-- Advanced dplyr and tidyr operations
-- Data transformation pipelines
-- Data reshaping techniques
-- Performance optimization
+- Core `dplyr` workflows for data wrangling
+- Data transformation pipelines with the pipe
+- Reshaping and tidying data with `tidyr`
+- Guided discussion of example-driven learning materials
 
 ## Prerequisites
 
@@ -28,19 +30,25 @@ This workshop covers advanced data manipulation techniques using R's data frame 
 
 ## Materials
 
-Materials will be available after the workshop.
+- [Elen Le Foll: Data Wrangling chapter draft](https://elenlefoll.github.io/RstatsTextbook/9_DataWrangling.html)
+- [DataCamp: Intermediate R](https://app.datacamp.com/learn/courses/intermediate-r)
+- [Data Carpentry: Starting with Data](https://datacarpentry.github.io/r-socialsci/02-starting-with-data.html)
 
-## Instructor
+## Host
 
-**Luke Günther**  
+**Job Schepens**  
 _Project S, SFB 1252_  
 University of Cologne
 
+_Originally scheduled with Luke Günther; hosted by Job Schepens for this
+session._
+
 ## Session Details
 
-**Date:** 21 January 2026  
+**Date:** 15 April 2026  
 **Time:** 14:00 - 15:30  
-**Location:** House of Prominence, Attic, Luxemburger Str. 299, Cologne
+**Location:** House of Prominence, Attic, Luxemburger Str. 299, Cologne  
+**Online:** Zoom
 
 ---
 
