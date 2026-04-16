@@ -37,7 +37,51 @@ Workshops on research methodology, data management, and academic practices for g
 
 **Latest archive:** See the [Winter 2025-26 schedule](agenda/winter-2025-26-schedule.md) for workshop dates and materials.
 
-**Next schedule:** A new workshop schedule is currently in preparation.
+**Next schedule:** See the [Summer 2026 draft schedule](agenda/summer-2026-draft-schedule.md).
+
+---
+
+## Possible Future Topics
+
+Topics we may look at in future workshops, reading groups, or practical
+sessions:
+
+### Tools & Workflows
+
+- Basic introductions to LaTeX, GitHub, Python, R, AI assistance, annotation tools etc. 
+- R Markdown / Quarto for documents, presentations, `reveal.js`, and `pandoc`
+- Collaborative writing, version control, and workflow / pipeline design
+- Open source alternatives to closed-source software, applications, and online services
+
+### Data, Annotation & Research Practice
+
+- Research data management
+- Data archives, data sharing, and NFDI
+- Introduction to multimedia annotation tools such as ELAN, Praat, and Inception
+- Backups, data protection, privacy, encryption, and scheduled backups
+- Quality assessment and metadata validation
+
+### Statistics & Data Analysis
+
+- Basic introductions to statistics such as significance testing and regression modeling
+- GAMs
+- Statistics best practices
+- Data analysis sessions using participants' own data
+
+### Open Research & Publishing
+
+- Open science, open access, open source, and open data
+- Dissemination, preprints, repositories, FAIR practices, metadata, and licenses
+
+### AI & Current Methods
+
+- AI in linguistics and scientific workflows, including best practices for using generative AI assistants
+- Open science practices in LLMs and current AI technology
+
+### Alternative Formats
+
+- Reading group sessions
+- Presentations of work in progress
 
 ---
 
@@ -60,6 +104,11 @@ Download promotional materials:
 -   <figure markdown="span">
       ![Winter 2025-26 Flyer Part 2](flyers/2025_rdm-flyer_winter-semester/2025-12-03_rdm-winter-flyer.png){ width="400" data-gallery="flyers" }
       <figcaption>Winter 2025-26 Flyer Part 2 - <a href="flyers/2025_rdm-flyer_winter-semester/2025-12-03_rdm-winter-flyer.pdf">Download PDF</a></figcaption>
+    </figure>
+
+-   <figure markdown="span">
+      ![Summer 2026 Draft Flyer](flyers/2026_rdm-flyer_summer-semester/2026-04-16_rdm-summer-2026-draft-flyer-1.png){ width="400" data-gallery="flyers" }
+      <figcaption>Summer 2026 Draft Flyer - <a href="flyers/2026_rdm-flyer_summer-semester/2026-04-16_rdm-summer-2026-draft-flyer.pdf">Download PDF</a></figcaption>
     </figure>
 
 </div>

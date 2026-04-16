@@ -37,13 +37,15 @@ Each workshop includes:
 
 ### Upcoming Schedule
 
-The next workshop schedule is currently in preparation.
+**[Summer 2026 Draft Schedule](../agenda/summer-2026-draft-schedule.md)** -
+Introductory and hands-on sessions currently under development
+
 ### Past Workshops
 
 **[Winter 2025-26 Schedule](../agenda/winter-2025-26-schedule.md)** -
 Workshop dates and materials
 
-**[Summer 2025 Archive](../agenda/summer-2025-schedule.md)** - 
+**[Summer 2025 Archive](../agenda/summer-2025-schedule.md)** -
 workshop materials
 
 ---
