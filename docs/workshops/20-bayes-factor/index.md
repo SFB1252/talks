@@ -1,64 +1,6 @@
 # Bayes Factor
 
-**Workshop 15 - Winter Semester 2025-26**
+<meta http-equiv="refresh" content="0; url=../15-bayes-factor/">
+<link rel="canonical" href="../15-bayes-factor/">
 
-<div class="session-meta" markdown="1">
-
-| Field | Details |
-| --- | --- |
-| Date | 21 January 2026 |
-| Time | 14:00 - 15:30 |
-| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
-| Speaker | Job Schepens, Project S, CRC 1252 |
-| Prerequisites | See prerequisites below. |
-| Materials status | Resource links are available below. |
-| Slides / recording | No slide deck or recording is currently listed. |
-
-</div>
-
-## Overview
-
-This workshop introduces Bayes Factors as a tool for model selection and hypothesis testing in Bayesian statistics.
-
-## Learning Objectives
-
-- Understand Bayes Factors as evidence ratios
-- Use Savage-Dickey method for hypothesis testing
-- Interpret Bayes Factor scales (Jeffreys, Lee & Wagenmakers)
-- Distinguish Bayes Factors from ROPE and LOO
-
-## Topics Covered
-
-- Savage-Dickey density ratio method
-- Using hypothesis() in brms
-- Bridge sampling for complex models
-- Bayes Factor interpretation and sensitivity
-- Integration with ROPE for complete inference
-
-## Prerequisites
-
-- Basic knowledge of Bayesian statistics
-- Familiarity with R programming
-- Understanding of hypothesis testing
-
-## Materials
-
-- [Sequential Testing: ROPE vs Bayes Factor vs LOO](https://jobschepens.github.io/brms-ws/06_sequential_testing.html)
-- [Sequential Testing: ROPE vs Bayes Factor vs LOO (Continuous)](https://jobschepens.github.io/brms-ws/06_sequential_testing_cont.html)
-- [Hypothesis Testing with Bayes Factors](https://jobschepens.github.io/brms-ws/07_bayes_factors.html)
-
-## Instructor
-
-**Job Schepens**  
-_Project S, SFB 1252_  
-University of Cologne
-
-## Session Details
-
-**Date:** 21 January 2026  
-**Time:** 14:00 - 15:30  
-**Location:** House of Prominence, Attic, Luxemburger Str. 299, Cologne
-
----
-
-[← Back to Workshop Overview](../index.md)
+This workshop page moved to [Workshop 15: Bayes Factor](../15-bayes-factor/index.md).

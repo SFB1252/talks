@@ -145,7 +145,7 @@ for the Humanities, UoC_
 
 ---
 
-### 15. [Bayes Factor](../workshops/20-bayes-factor/index.md)
+### 15. [Bayes Factor](../workshops/15-bayes-factor/index.md)
 
 **Date:** 21. January 2026  
 **Time:** 14:00 - 15:30  
@@ -208,7 +208,7 @@ This session was cancelled.
 
 ---
 
-### 20. [Advanced R: Working with Data Frames](../workshops/15-advanced-r-dataframes/index.md)
+### 20. [Advanced R: Working with Data Frames](../workshops/20-advanced-r-dataframes/index.md)
 
 **Date:** 15. April 2026  
 **Time:** 14:00 - 15:30  
