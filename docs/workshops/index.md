@@ -42,11 +42,11 @@ Introductory and hands-on sessions currently under development
 
 ### Past Workshops
 
-**[Winter 2025-26 Schedule](../agenda/winter-2025-26-schedule.md)** -
-Workshop dates and materials
+**[Winter 2025-26 Archive](../agenda/winter-2025-26-schedule.md)** -
+Completed workshop dates and materials
 
 **[Summer 2025 Archive](../agenda/summer-2025-schedule.md)** -
-workshop materials
+Completed workshop materials
 
 ---
 
