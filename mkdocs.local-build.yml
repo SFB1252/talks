@@ -110,7 +110,6 @@ nav:
       - Archiving: "resources/archiving/archiving-faq.md"
       - LLM Workshop (December 2025): "resources/llm-workshop/llm-workshop.md"
       - SFB 1252 Retreat Materials (July 2025): "resources/retreat/README.md"
-      - Presenter Resources: "resources/presenter-resources/README.md"
       - Additional Links: "resources/additional-links/additional-links.md"
   - Schedule:
       - Winter 2025-26 (Archived): "agenda/winter-2025-26-schedule.md"
@@ -126,6 +125,7 @@ nav:
       - Admin Checklist: "matrix/admin-checklist.md"
   - About:
       - Contributing: "about/contributing.md"
+      - Presenter Resources: "resources/presenter-resources/README.md"
       - GitHub Setup: "about/github-setup.md"
       - AI-Assisted Development: "about/ai-assisted-development.md"
 

@@ -14,6 +14,15 @@ academic best practices.
 - [University and City Library of Cologne](https://ub.uni-koeln.de/) - Library
   services and support
 
+### Local Courses and Event Series
+
+- [ReproducibiliTea in the HumaniTeas](https://ub.uni-koeln.de/en/courses-consultations/specials/reproducibilitea-in-the-humaniteas) -
+  Open-science and reproducibility discussion series at the University and City
+  Library of Cologne
+- [Dinge mit Daten](https://ub.uni-koeln.de/kurse-beratung/kurse/dinge-mit-daten) -
+  University and City Library of Cologne support sessions on data-related tools,
+  workflows, and questions
+
 ### National and International
 
 - [FAIR Data Principles](https://www.go-fair.org/fair-principles/) - Findable,

@@ -253,36 +253,6 @@
   width: 12rem;
 }
 
-.retreat-section {
-  margin: 2.4rem 0;
-  padding: 1.5rem 1.35rem;
-  border: 1px solid var(--uzk-border);
-  border-radius: 16px;
-  background: linear-gradient(180deg, rgba(0, 81, 118, 0.04), rgba(0, 157, 204, 0.06));
-  box-shadow: var(--uzk-shadow);
-}
-
-.retreat-section h2,
-.retreat-section h3 {
-  margin-top: 0;
-}
-
-.retreat-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0 0;
-}
-
-.retreat-links li {
-  margin: 0;
-  padding: 0.55rem 0;
-  border-bottom: 1px solid var(--uzk-border);
-}
-
-.retreat-links li:last-child {
-  border-bottom: none;
-}
-
 .md-typeset .grid.cards figure {
   height: 100%;
 }
@@ -317,9 +287,5 @@
   .next-session-actions .btn-primary,
   .next-session-actions .btn-secondary {
     width: 100%;
-  }
-
-  .retreat-section {
-    padding: 1.2rem 1rem;
   }
 }

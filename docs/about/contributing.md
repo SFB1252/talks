@@ -3,6 +3,10 @@
 Guidelines for contributing materials, improvements, and feedback to the
 Research Data & Methods Workshop Series repository.
 
+If you are preparing to teach a session, see the
+[Presenter Resources](../resources/presenter-resources/README.md) for
+presenter-facing guidance on workshop design, materials, and technical setup.
+
 ## How to Contribute
 
 ### 1. Workshop Materials

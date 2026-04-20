@@ -55,11 +55,10 @@ Workshops on research methodology, data management, and academic practices for g
 **View the [complete workshop catalog](workshops/index.md)** for detailed information about each session.
 
 <div class="schedule-links">
-  <p class="schedule-link-card" markdown="1"><strong>Next schedule:</strong> See the [Summer 2026 draft schedule](agenda/summer-2026-draft-schedule.md).</p>
-  <p class="schedule-link-card" markdown="1"><strong>Winter 2025-26 archive:</strong> See the [Winter 2025-26 archive](agenda/winter-2025-26-schedule.md) for completed workshop dates and materials.</p>
-  <p class="schedule-link-card" markdown="1"><strong>Summer 2025 archive:</strong> See the [Summer 2025 archive](agenda/summer-2025-schedule.md) for completed workshop dates and materials.</p>
+  <p class="schedule-link-card"><strong>Next schedule:</strong> See the <a href="agenda/summer-2026-draft-schedule.md">Summer 2026 draft schedule</a>.</p>
+  <p class="schedule-link-card"><strong>Winter 2025-26 archive:</strong> See the <a href="agenda/winter-2025-26-schedule.md">Winter 2025-26 archive</a> for completed workshop dates and materials.</p>
+  <p class="schedule-link-card"><strong>Summer 2025 archive:</strong> See the <a href="agenda/summer-2025-schedule.md">Summer 2025 archive</a> for completed workshop dates and materials.</p>
 </div>
-
 
 ---
 
@@ -70,7 +69,7 @@ sessions:
 
 ### Tools & Workflows
 
-- Basic introductions to LaTeX, GitHub, Python, R, AI assistance, annotation tools etc. 
+- Basic introductions to LaTeX, GitHub, Python, R, AI assistance, annotation tools etc.
 - R Markdown / Quarto for documents, presentations, `reveal.js`, and `pandoc`
 - Collaborative writing, version control, and workflow / pipeline design
 - Open source alternatives to closed-source software, applications, and online services
@@ -132,27 +131,6 @@ Download promotional materials:
       ![Summer 2026 Draft Flyer](flyers/2026_rdm-flyer_summer-semester/2026-04-16_rdm-summer-2026-draft-flyer-1.png){ width="400" data-gallery="flyers" }
       <figcaption>Summer 2026 Draft Flyer - <a href="flyers/2026_rdm-flyer_summer-semester/2026-04-16_rdm-summer-2026-draft-flyer.pdf">Download PDF</a></figcaption>
     </figure>
-
-</div>
-
-
----
-
-<div class="retreat-section" markdown="block">
-
-## CRC 1252 Retreat Resources
-
-Materials from our **July 2025 Retreat** on Large Language Models and AI-assisted research methods.
-
-**Workshop presentations** from structured group discussions on NLP using Large Language Models:
-
-- **Prompt Engineering** - Nils Reiter
-- **Corpus Generation** - Job Schepens
-- **Automatic Annotation** - Ziyue Liu
-- **LLM-Assisted Coding** - Philip Georgis
-- **Plenary Session** - Job Schepens & Nils Reiter
-
-[View all retreat materials →](resources/retreat/README.md)
 
 </div>
 
