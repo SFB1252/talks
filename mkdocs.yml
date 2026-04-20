@@ -107,6 +107,7 @@ nav:
       - "18 - Sample Size and Power Analysis": "workshops/18-power-analysis/index.md"
       - "19 - Let's Rant: Open Debugging": "workshops/19-open-debugging/index.md"
       - "20 - Advanced R: Working with Data Frames": "workshops/20-advanced-r-dataframes/index.md"
+  - MediaPipe: "mediapipe/index.md"
   - Resources:
       - Overview: "resources/index.md"
       - Onboarding: "resources/onboarding/README.md"
