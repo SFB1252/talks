@@ -1,1 +1,1 @@
-This folder contains Summer 2026 flyer drafts created in Typst.
+This folder contains Summer 2026 flyer materials created in Typst.

@@ -1,6 +1,6 @@
-This folder contains draft flyer materials for the Summer 2026 edition of the
+This folder contains flyer materials for the Summer 2026 edition of the
 Research Data & Methods event series.
 
-Current draft source:
+Current source:
 
-- 2026-04-16 is a Typst-based poster draft for the Summer 2026 planning cycle.
+- 2026-04-16 is the Typst-based poster source for the Summer 2026 flyer.

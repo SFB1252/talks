@@ -41,7 +41,7 @@ Workshops on research methodology, data management, and academic practices for g
   <div data-session-number="22" data-session-series="Summer 2026 Workshops" data-session-series-order="3" data-session-title="Version Control II: Collaboration Workflows with GitHub and gitlab.nrw" data-session-summary="Branches, pull requests, merge requests, and collaborative project organization" data-session-date="2026-05-20" data-session-url="workshops/22-version-control-collaboration-workflows/index.md"></div>
   <div data-session-number="23" data-session-series="Summer 2026 Workshops" data-session-series-order="3" data-session-title="LaTeX I: Getting Started with Academic Writing in LaTeX" data-session-summary="A beginner-friendly introduction to document structure, references, and templates" data-session-date="2026-06-03" data-session-url="workshops/23-latex-getting-started/index.md"></div>
   <div data-session-number="24" data-session-series="Summer 2026 Workshops" data-session-series-order="3" data-session-title="LaTeX II: Longer Documents, Collaboration, and Thesis Workflows" data-session-summary="Managing larger writing projects, bibliographies, and collaborative workflows" data-session-date="2026-06-17" data-session-url="workshops/24-latex-thesis-workflows/index.md"></div>
-  <div data-session-number="25" data-session-series="Summer 2026 Workshops" data-session-series-order="3" data-session-title="Licensing of Published Datasets and Scripts" data-session-summary="Which licenses are recommendable for data and code, and why" data-session-date="2026-07-15" data-session-url="agenda/summer-2026-draft-schedule.md"></div>
+  <div data-session-number="25" data-session-series="Summer 2026 Workshops" data-session-series-order="3" data-session-title="Licensing of Published Datasets and Scripts" data-session-summary="Which licenses are recommendable for data and code, and why" data-session-date="2026-07-15" data-session-url="agenda/summer-2026-schedule.md"></div>
 </div>
 
 ---
@@ -55,7 +55,7 @@ Workshops on research methodology, data management, and academic practices for g
 **View the [complete workshop catalog](workshops/index.md)** for detailed information about each session.
 
 <div class="schedule-links">
-  <p class="schedule-link-card"><strong>Next schedule:</strong> See the <a href="agenda/summer-2026-draft-schedule.md">Summer 2026 schedule</a>.</p>
+  <p class="schedule-link-card"><strong>Next schedule:</strong> See the <a href="agenda/summer-2026-schedule.md">Summer 2026 schedule</a>.</p>
   <p class="schedule-link-card"><strong>Winter 2025-26 archive:</strong> See the <a href="agenda/winter-2025-26-schedule.md">Winter 2025-26 archive</a> for completed workshop dates and materials.</p>
   <p class="schedule-link-card"><strong>Summer 2025 archive:</strong> See the <a href="agenda/summer-2025-schedule.md">Summer 2025 archive</a> for completed workshop dates and materials.</p>
 </div>
@@ -128,8 +128,8 @@ Download promotional materials:
     </figure>
 
 -   <figure markdown="span">
-      ![Summer 2026 Flyer](flyers/2026_rdm-flyer_summer-semester/2026-04-16_rdm-summer-2026-draft-flyer-1.png){ width="400" data-gallery="flyers" }
-      <figcaption>Summer 2026 Flyer - <a href="flyers/2026_rdm-flyer_summer-semester/2026-04-16_rdm-summer-2026-draft-flyer.pdf">Download PDF</a></figcaption>
+      ![Summer 2026 Flyer](flyers/2026_rdm-flyer_summer-semester/2026-04-16_rdm-summer-2026-flyer-1.png){ width="400" data-gallery="flyers" }
+      <figcaption>Summer 2026 Flyer - <a href="flyers/2026_rdm-flyer_summer-semester/2026-04-16_rdm-summer-2026-flyer.pdf">Download PDF</a></figcaption>
     </figure>
 
 </div>

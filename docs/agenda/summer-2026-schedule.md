@@ -11,7 +11,7 @@
 
 Add the current schedule to your calendar:
 
-- **[Download iCal file](summer-2026-draft.ics)** - Import into Outlook, Apple Calendar, Thunderbird, and other calendar apps
+- **[Download iCal file](summer-2026.ics)** - Import into Outlook, Apple Calendar, Thunderbird, and other calendar apps
 
 ## Workshop Format
 
