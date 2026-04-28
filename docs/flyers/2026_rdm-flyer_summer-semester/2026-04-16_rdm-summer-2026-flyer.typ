@@ -63,18 +63,6 @@
   #circle(radius: 48mm, stroke: 1pt + uzk-turquoise)
 ]
 
-#place(top + right, dx: -4mm, dy: 10mm)[
-  #rotate(12deg)[
-    #block(
-      inset: (x: 10pt, y: 7pt),
-      fill: rgb("f8f8f8"),
-      stroke: 1.1pt + uzk-coral,
-    )[
-      #text(size: 14pt, weight: "bold", fill: uzk-blue-dark)[DRAFT SCHEDULE]
-    ]
-  ]
-]
-
 #stack(spacing: 3pt)[
   #text(size: 17pt, weight: "bold")[SFB 1252 Prominence in Language]
 
