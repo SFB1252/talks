@@ -1,10 +1,11 @@
 BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//SFB 1252//Research Data & Methods Workshop Series//EN
-CALNAME:SFB 1252 Summer 2026 Workshops
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
 X-WR-CALNAME:SFB 1252 Summer 2026 Workshops
 X-WR-TIMEZONE:Europe/Berlin
-X-WR-CALDESC:Research Data and Methods Workshop Series - Summer Semester 2026 Schedule
+X-WR-CALDESC:Research Data and Methods Workshop Series - Summer Semester 2026
 
 BEGIN:VEVENT
 UID:workshop-21-version-control-i@sfb1252.uni-koeln.de
@@ -12,9 +13,13 @@ DTSTAMP:20260416T120000Z
 DTSTART:20260506T120000Z
 DTEND:20260506T133000Z
 SUMMARY:Workshop 21: Version Control I
-LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\, Cologne
-DESCRIPTION:Getting started with Git\, GitHub\, and gitlab.nrw for research workflows.\n\nHost: TBC\n\nMore info: https://sfb1252.github.io/talks/workshops/21-version-control-getting-started/
-URL:https://sfb1252.github.io/talks/workshops/21-version-control-getting-started/
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
+ Cologne
+DESCRIPTION:Getting started with Git\, GitHub\, and gitlab.nrw for research
+  workflows.\n\nHost: TBC\n\nMore info: https://sfb1252.github.io/talks/wo
+ rkshops/21-version-control-getting-started/
+URL:https://sfb1252.github.io/talks/workshops/21-version-control-getting-st
+ arted/
 ORGANIZER;CN=Job Schepens & Luke Günther:mailto:info@sfb1252.uni-koeln.de
 STATUS:CONFIRMED
 SEQUENCE:0
@@ -26,9 +31,14 @@ DTSTAMP:20260416T120000Z
 DTSTART:20260520T120000Z
 DTEND:20260520T133000Z
 SUMMARY:Workshop 22: Version Control II
-LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\, Cologne
-DESCRIPTION:Collaboration workflows with GitHub and gitlab.nrw\, including branches\, pull requests\, and merge requests.\n\nHost: TBC\n\nMore info: https://sfb1252.github.io/talks/workshops/22-version-control-collaboration-workflows/
-URL:https://sfb1252.github.io/talks/workshops/22-version-control-collaboration-workflows/
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
+ Cologne
+DESCRIPTION:Collaboration workflows with GitHub and gitlab.nrw\, including
+  branches\, pull requests\, and merge requests.\n\nHost: TBC\n\nMore info
+ : https://sfb1252.github.io/talks/workshops/22-version-control-collaborati
+ on-workflows/
+URL:https://sfb1252.github.io/talks/workshops/22-version-control-collaborat
+ ion-workflows/
 ORGANIZER;CN=Job Schepens & Luke Günther:mailto:info@sfb1252.uni-koeln.de
 STATUS:CONFIRMED
 SEQUENCE:0
@@ -40,8 +50,11 @@ DTSTAMP:20260416T120000Z
 DTSTART:20260603T120000Z
 DTEND:20260603T133000Z
 SUMMARY:Workshop 23: LaTeX I
-LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\, Cologne
-DESCRIPTION:Getting started with academic writing in LaTeX\, including document structure\, references\, and templates.\n\nHost: TBC\n\nMore info: https://sfb1252.github.io/talks/workshops/23-latex-getting-started/
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
+ Cologne
+DESCRIPTION:Getting started with academic writing in LaTeX\, including doc
+ ument structure\, references\, and templates.\n\nHost: TBC\n\nMore info: 
+ https://sfb1252.github.io/talks/workshops/23-latex-getting-started/
 URL:https://sfb1252.github.io/talks/workshops/23-latex-getting-started/
 ORGANIZER;CN=Job Schepens & Luke Günther:mailto:info@sfb1252.uni-koeln.de
 STATUS:CONFIRMED
@@ -54,8 +67,11 @@ DTSTAMP:20260416T120000Z
 DTSTART:20260617T120000Z
 DTEND:20260617T133000Z
 SUMMARY:Workshop 24: LaTeX II
-LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\, Cologne
-DESCRIPTION:Longer documents\, collaboration\, bibliographies\, and thesis workflows in LaTeX.\n\nHost: TBC\n\nMore info: https://sfb1252.github.io/talks/workshops/24-latex-thesis-workflows/
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
+ Cologne
+DESCRIPTION:Longer documents\, collaboration\, bibliographies\, and thesis
+  workflows in LaTeX.\n\nHost: TBC\n\nMore info: https://sfb1252.github.io/
+ talks/workshops/24-latex-thesis-workflows/
 URL:https://sfb1252.github.io/talks/workshops/24-latex-thesis-workflows/
 ORGANIZER;CN=Job Schepens & Luke Günther:mailto:info@sfb1252.uni-koeln.de
 STATUS:CONFIRMED
@@ -68,8 +84,11 @@ DTSTAMP:20260416T120000Z
 DTSTART:20260715T120000Z
 DTEND:20260715T133000Z
 SUMMARY:Workshop 25: Licensing of Published Datasets and Scripts
-LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\, Cologne
-DESCRIPTION:Licensing options for datasets\, code\, and teaching materials\, with practical guidance for open research workflows.\n\nHost: TBC\n\nMore info: https://sfb1252.github.io/talks/agenda/summer-2026-schedule/
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
+ Cologne
+DESCRIPTION:Licensing options for datasets\, code\, and teaching materials
+ \, with practical guidance for open research workflows.\n\nHost: TBC\n\nM
+ ore info: https://sfb1252.github.io/talks/agenda/summer-2026-schedule/
 URL:https://sfb1252.github.io/talks/agenda/summer-2026-schedule/
 ORGANIZER;CN=Job Schepens & Luke Günther:mailto:info@sfb1252.uni-koeln.de
 STATUS:CONFIRMED
