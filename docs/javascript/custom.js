@@ -105,7 +105,7 @@ function formatSessionDate(utcDate) {
 
 function getCalendarUrlForSeries(series) {
     const calendarBySeries = {
-        'Summer 2026 Workshops (Draft)': 'agenda/summer-2026-draft.ics',
+        'Summer 2026 Workshops': 'agenda/summer-2026-draft.ics',
         'Winter 2025-26 Workshops': 'agenda/winter-2025-26.ics'
     };
 

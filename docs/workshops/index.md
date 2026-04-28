@@ -37,8 +37,8 @@ Each workshop includes:
 
 ### Upcoming Schedule
 
-**[Summer 2026 Draft Schedule](../agenda/summer-2026-draft-schedule.md)** -
-Introductory and hands-on sessions currently under development
+**[Summer 2026 Schedule](../agenda/summer-2026-draft-schedule.md)** -
+Upcoming introductory and hands-on sessions
 
 ### Past Workshops
 

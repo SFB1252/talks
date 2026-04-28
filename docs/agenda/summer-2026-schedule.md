@@ -1,6 +1,4 @@
-# Research Data & Methods - Summer Semester 2026 Draft Schedule
-
-**⚠️ This is a draft schedule and may still change.**
+# Research Data & Methods - Summer Semester 2026 Schedule
 
 **Series Information:**
 
@@ -11,22 +9,22 @@
 
 ## Subscribe to Calendar
 
-Add the current draft schedule to your calendar:
+Add the current schedule to your calendar:
 
 - **[Download iCal file](summer-2026-draft.ics)** - Import into Outlook, Apple Calendar, Thunderbird, and other calendar apps
 
-## Draft Format
+## Workshop Format
 
-The current idea for Summer 2026 is to keep sessions practical and accessible:
+The Summer 2026 series is designed to keep sessions practical and accessible:
 
 - Start with a very basic 15-minute introduction to the main tool or concept
 - Continue with hands-on work using existing resources where possible
 - Emphasize introduction, orientation, and practice over extended discussion
 - Send out a short description and relevant links one week before each session
 
-## Draft Workshop Schedule
+## Workshop Schedule
 
-### 21. Version Control I: Getting Started with Git, GitHub, and gitlab.nrw
+### 21. [Version Control I: Getting Started with Git, GitHub, and gitlab.nrw](../workshops/21-version-control-getting-started/index.md)
 
 **Date:** 6. May 2026  
 **Time:** 14:00 - 15:30  
@@ -39,15 +37,19 @@ The current idea for Summer 2026 is to keep sessions practical and accessible:
 - Creating and navigating accounts on GitHub and gitlab.nrw
 - First hands-on steps with cloning, editing, committing, and pushing
 
-**Possible Resources:**
+**Resources:**
 
-- [GitHub Skills](https://skills.github.com/)
+- [Software Carpentry Git novice lesson repository](https://github.com/swcarpentry/git-novice)
 - [Software Carpentry: Version Control with Git](https://swcarpentry.github.io/git-novice/)
-- [GitLab documentation](https://docs.gitlab.com/)
+- [GitLab novice instructor notes](https://carpentries-incubator.github.io/gitlab-novice/instructor/index.html)
+- [GitLab tutorial: Make your first Git commit](https://docs.gitlab.com/tutorials/make_first_git_commit/)
+- [GitLab 101 course](https://university.gitlab.com/courses/gitlab101)
+- [git.nrw documentation](https://git.nrw/en/docs/)
+- [git.nrw beginner level guide](https://git.nrw/en/levels/beginner/)
 
 ---
 
-### 22. Version Control II: Collaboration Workflows with GitHub and gitlab.nrw
+### 22. [Version Control II: Collaboration Workflows with GitHub and gitlab.nrw](../workshops/22-version-control-collaboration-workflows/index.md)
 
 **Date:** 20. May 2026  
 **Time:** 14:00 - 15:30  
@@ -68,7 +70,7 @@ The current idea for Summer 2026 is to keep sessions practical and accessible:
 
 ---
 
-### 23. LaTeX I: Getting Started with Academic Writing in LaTeX
+### 23. [LaTeX I: Getting Started with Academic Writing in LaTeX](../workshops/23-latex-getting-started/index.md)
 
 **Date:** 3. June 2026  
 **Time:** 14:00 - 15:30  
@@ -89,7 +91,7 @@ The current idea for Summer 2026 is to keep sessions practical and accessible:
 
 ---
 
-### 24. LaTeX II: Longer Documents, Collaboration, and Thesis Workflows
+### 24. [LaTeX II: Longer Documents, Collaboration, and Thesis Workflows](../workshops/24-latex-thesis-workflows/index.md)
 
 **Date:** 17. June 2026  
 **Time:** 14:00 - 15:30  
@@ -131,9 +133,8 @@ The current idea for Summer 2026 is to keep sessions practical and accessible:
 
 ---
 
-## Notes for Planning
+## Series Notes
 
 - The series is intentionally introductory and hands-on.
 - Sessions should prioritize orientation and concrete first steps over discussion-heavy formats.
 - Existing external learning resources can carry much of the hands-on component.
-- Additional sessions could be added later depending on interest and speaker availability.

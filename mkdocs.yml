@@ -107,6 +107,10 @@ nav:
       - "18 - Sample Size and Power Analysis": "workshops/18-power-analysis/index.md"
       - "19 - Let's Rant: Open Debugging": "workshops/19-open-debugging/index.md"
       - "20 - Advanced R: Working with Data Frames": "workshops/20-advanced-r-dataframes/index.md"
+      - "21 - Version Control I: Getting Started with Git, GitHub, and gitlab.nrw": "workshops/21-version-control-getting-started/index.md"
+      - "22 - Version Control II: Collaboration Workflows with GitHub and gitlab.nrw": "workshops/22-version-control-collaboration-workflows/index.md"
+      - "23 - LaTeX I: Getting Started with Academic Writing in LaTeX": "workshops/23-latex-getting-started/index.md"
+      - "24 - LaTeX II: Longer Documents, Collaboration, and Thesis Workflows": "workshops/24-latex-thesis-workflows/index.md"
   - MediaPipe: "mediapipe/index.md"
   - Resources:
       - Overview: "resources/index.md"
@@ -118,7 +122,7 @@ nav:
   - Schedule:
       - Winter 2025-26 (Archived): "agenda/winter-2025-26-schedule.md"
       - Summer 2025 (Archived): "agenda/summer-2025-schedule.md"
-      - Summer 2026 (Draft): "agenda/summer-2026-draft-schedule.md"
+      - Summer 2026: "agenda/summer-2026-draft-schedule.md"
 
   # - Development:
   #     - Setup: "development/setup.md"
