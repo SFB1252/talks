@@ -45,6 +45,7 @@ gitlab.nrw can support personal and collaborative projects.
 - [GitLab 101 course](https://university.gitlab.com/courses/gitlab101)
 - [git.nrw documentation](https://git.nrw/en/docs/)
 - [git.nrw beginner level guide](https://git.nrw/en/levels/beginner/)
+- [Happy Git and GitHub for the useR](https://happygitwithr.com/)
 
 ## Additional Resources
 
