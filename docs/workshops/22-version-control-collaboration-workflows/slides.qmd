@@ -307,6 +307,38 @@ Even in a team of two, the habit of reviewing each other's PRs pays off quickly 
 :::
 
 
+## Good Practices: PR / MR Frequency {.smaller}
+
+**Not per commit, not per day — per logical unit of work**
+
+- Open a PR / MR when a **self-contained piece of work is ready for review**
+- This might be a few commits or a few dozen — size matters more than time
+
+**Signs it's time to open a PR / MR**
+
+- A feature, fix, or section is complete and coherent on its own
+- You want feedback before going further
+- The branch has diverged enough that merging later would be painful
+
+**Keep PRs / MRs small and focused**
+
+- One PR per feature / fix / task — not one PR for everything done this week
+- Smaller PRs are reviewed faster and more carefully
+- Large PRs ("mega-PR") tend to get rubber-stamped
+
+**Rules of thumb**
+
+| Situation | Recommended cadence |
+|---|---|
+| Active collaboration | Open a PR after each task (hours to 1–2 days of work) |
+| Solo research project | Open a PR at each meaningful milestone |
+| Shared writing (docs/papers) | One PR per section or revision round |
+
+::: {.callout-tip}
+If in doubt: open early and mark it **Draft** — you get feedback sooner and the review stays manageable.
+:::
+
+
 ## Pull Requests and Merge Requests
 
 **GitHub** calls them *Pull Requests* (PRs)  
