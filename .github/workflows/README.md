@@ -1,112 +1,58 @@
 # GitHub Actions Workflows
 
-This directory contains automated workflows for maintaining the quality of the SFB 1252 Research Data & Methods Workshop Series website.
+This directory contains automated workflows for the SFB 1252 Research Data & Methods Workshop Series site (MkDocs, deployed to GitHub Pages).
 
-## 🔄 Active Workflows
+## Active Workflows
 
-### `quality-check.yml` - Continuous Quality Assurance
-**Triggers:** Every push to main/develop, every pull request
-**Purpose:** Fast quality checks for development workflow
+### `deploy.yml` — Build & Deploy
+**Triggers:** Push to `main` (full deploy), pull requests to `main` (test build only)
 
-**What it checks:**
-- ✅ Markdown quality and style (markdownlint)
-- ✅ Code formatting consistency (Prettier) 
-- ✅ Jekyll build validation
-- ✅ HTML output validation
-- ✅ Accessibility compliance (WCAG)
-- ✅ Educational content metrics
+- Renders Quarto presentations (`slides.qmd` → `slides.html`) before the MkDocs build
+- Builds the MkDocs site and deploys to GitHub Pages (main branch only)
+- PR builds run the same steps without deploying, to catch regressions early
 
-**Runtime:** ~2-3 minutes
+### `quality-check.yml` — Continuous Quality Assurance
+**Triggers:** Push to `main`/`develop`, pull requests to `main`
 
-### `weekly-link-check.yml` - Comprehensive Link Validation
-**Triggers:** Weekly (Mondays at 2 AM UTC), manual dispatch
-**Purpose:** Thorough validation of all educational resource links
+- Markdown linting (markdownlint-cli2)
+- Code formatting check (Prettier)
+- MkDocs build validation
+- HTML output validation (html-validate)
+- Accessibility audit (axe-core)
+- Workshop content metrics (file counts)
 
-**What it checks:**
-- 🔗 Workshop content and documentation links
-- 🔗 Main site pages and schedules  
-- 🔗 Educational resources and onboarding materials
-- 🔗 Presenter resources and templates
-- 🔗 External academic and tool references
+### `weekly-link-check.yml` — Link Validation
+**Triggers:** Weekly (Mondays at 2 AM UTC), push to `main`, manual dispatch
 
-**Runtime:** ~10-15 minutes
+- Runs [linkspector](https://github.com/UmbrellaDocs/linkspector) against all docs using `.linkspector.yml`
+- Generates a step summary with results
+- Fails on warnings to catch broken links early
 
-## 🎯 Design Philosophy
+## Configuration Files
 
-### Fast Feedback for Development
-The main quality check workflow prioritizes speed to provide quick feedback during development. Link checking is separated because:
+- **`.linkspector.yml`** (repo root) — ignore patterns for link checks (social media, mailto, generated files, etc.)
+- **`link-check-config.json`** — additional linkspector options
 
-- **Internal navigation** is more critical than external link validation
-- **Academic links** change infrequently and don't need constant validation  
-- **Development speed** shouldn't be slowed by comprehensive external checks
-- **Weekly validation** catches external changes while maintaining fast CI/CD
+## 📦 Action Versions & Maintenance Notes
 
-### Educational Content Focus
-Both workflows are optimized for educational content:
+| Action | Version | Notes |
+|---|---|---|
+| `actions/checkout` | `@v6` | Latest as of May 2026 |
+| `actions/setup-python` | `@v6` | Latest as of May 2026 |
+| `actions/setup-node` | `@v6` | Latest as of May 2026 (v6.4.0) |
+| `actions/cache` | `@v5` | v5 runs on Node.js 24 runtime |
+| `quarto-dev/quarto-actions/setup` | `@v2` | Internally pins `actions/cache` at a SHA that uses Node.js 20 |
 
-- **Workshop structure validation** ensures all required files exist
-- **Accessibility checking** ensures content is inclusive
-- **Content metrics** track the growth of educational materials
-- **Presenter resources** are validated separately for workshop leaders
+### Node.js deprecation warning
+`quarto-dev/quarto-actions/setup@v2` internally uses a SHA-pinned `actions/cache` that still runs on Node.js 20. This is not directly upgradeable. Both jobs in `deploy.yml` set:
 
-## 🛠️ Configuration Files
-
-### `link-check-config.json`
-Optimized configuration for educational sites:
-- Faster timeouts for development efficiency
-- Ignores social media and temporary links
-- Handles academic site redirects properly
-- Excludes localhost and development URLs
-
-## 🚀 Local Development
-
-For quick development feedback, use the local tools:
-
-```powershell
-# Quick internal link check
-.\check-links.ps1
-
-# Format code (if available)
-.\format-code.ps1
-```
-
-## 📊 Monitoring
-
-### Workflow Status
-- **Green builds** = All quality checks passing
-- **Yellow builds** = Warnings but functional (common with academic links)
-- **Red builds** = Critical issues need attention
-
-### Weekly Reports
-The weekly link check generates summary reports showing:
-- Number of workshop materials
-- Link validation results by content area
-- Recommendations for content maintenance
-
-## 🔧 Customization
-
-### Adjusting Link Check Frequency
-Edit the cron schedule in `weekly-link-check.yml`:
 ```yaml
-schedule:
-  - cron: '0 2 * * 1'  # Weekly Monday 2 AM
-  # - cron: '0 2 * * *'  # Daily 2 AM  
-  # - cron: '0 2 1 * *'  # Monthly 1st day 2 AM
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 ```
 
-### Adding New Quality Checks
-Add steps to `quality-check.yml` for additional validation:
-- Spell checking
-- Image optimization validation
-- Performance testing
-- SEO analysis
+This opts the job into Node.js 24 and silences the deprecation warning. Remove once `quarto-dev/quarto-actions` ships a version with an updated internal dependency.
 
-### Excluding Content from Checks
-Update `.prettierignore` or link check patterns to exclude:
-- Generated content
-- External legacy files
-- Work-in-progress materials
+### Generated file links (linkspector)
+Quarto-rendered `slides.html` files are gitignored (built by CI). The pattern `slides\.html$` is excluded in `.linkspector.yml` to prevent false-positive 404 errors during link checks.
 
----
-
-*These workflows ensure the SFB 1252 workshop series maintains high quality while supporting efficient educational content development.*
