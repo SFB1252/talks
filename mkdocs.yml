@@ -49,7 +49,7 @@ plugins:
   - git-committers:
       repository: sfb1252/talks
       branch: main
-      token: !ENV MKDOCS_GIT_COMMITTERS_APIKEY # (1)! 
+      token: !ENV [MKDOCS_GIT_COMMITTERS_APIKEY, ""] # (1)! 
  
 # Customization
 extra:

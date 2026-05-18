@@ -1,13 +1,13 @@
 # Research Data and Methods Workshop Series
 
 [![Site](https://img.shields.io/badge/site-online-blue?logo=github&logoColor=white)](https://sfb1252.github.io/talks)
-[![Schedule](https://img.shields.io/badge/schedule-Winter_2025--26-blueviolet)](https://sfb1252.github.io/talks/agenda/winter-2025-26-schedule/)
+[![Schedule](https://img.shields.io/badge/schedule-Summer_2026-blueviolet)](https://sfb1252.github.io/talks/agenda/summer-2026-schedule/)
 [![Docs](https://img.shields.io/badge/docs-MkDocs%20Material-3DDC84?logo=readthedocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
 [![License](https://img.shields.io/github/license/sfb1252/talks)](LICENSE)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen?logo=github-actions)](https://github.com/SFB1252/talks)
-[![Python](https://img.shields.io/badge/python-3.8+-blue?logo=python&logoColor=white)](https://www.python.org)
-[![MkDocs](https://img.shields.io/badge/MkDocs-1.6+-lightblue?logo=markdown&logoColor=white)](https://www.mkdocs.org)
-[![Workshops](https://img.shields.io/badge/workshops-12-orange)](https://sfb1252.github.io/talks/workshops/)
+[![Python](https://img.shields.io/badge/python-3.11+-blue?logo=python&logoColor=white)](https://www.python.org)
+[![MkDocs](https://img.shields.io/badge/MkDocs-1.5+-lightblue?logo=markdown&logoColor=white)](https://www.mkdocs.org)
+[![Workshops](https://img.shields.io/badge/workshops-24-orange)](https://sfb1252.github.io/talks/workshops/)
 [![Made with](https://img.shields.io/badge/made%20with-❤️%20in%20Cologne-red)](https://www.uni-koeln.de)
 [![Open Science](https://img.shields.io/badge/Open%20Science-✓-success)](https://sfb1252.github.io/talks)
 [![Research Data](https://img.shields.io/badge/Research%20Data-Management-informational)](https://sfb1252.github.io/talks/workshops/02-research-data-management/)
@@ -17,7 +17,7 @@ corpus linguistics tools for researchers at the University of Cologne's CRC
 1252 - Prominence in Language.
 
 - Live site: https://sfb1252.github.io/talks
-- Winter 2025-26 schedule: docs/agenda/winter-2025-26-schedule.md
+- Summer 2026 schedule: docs/agenda/summer-2026-schedule.md
 
 ## About
 
@@ -26,12 +26,10 @@ built with MkDocs and the Material theme.
 
 ## Quick links (current series)
 
-- 07 — Coding in R Basics: https://sfb1252.github.io/talks/workshops/07-coding-r-basics/
-- 08 — Online Experiments: https://sfb1252.github.io/talks/workshops/08-online-experiments/
-- 09 — Archiving Session: https://sfb1252.github.io/talks/workshops/09-archiving-session/
-- 10 — Coding in Python/VSCode and LLMs: https://sfb1252.github.io/talks/workshops/10-coding-python-vscode-llms/
-- 11 — Bayesian Regression Models: https://sfb1252.github.io/talks/workshops/11-bayesian-regression-models/
-- 12 — Computational Reproducibility using R: https://sfb1252.github.io/talks/workshops/12-computational-reproducibility-r/
+- 21 — Version Control I: Getting Started: https://sfb1252.github.io/talks/workshops/21-version-control-getting-started/
+- 22 — Version Control II: Collaboration Workflows: https://sfb1252.github.io/talks/workshops/22-version-control-collaboration-workflows/
+- 23 — LaTeX I: Getting Started: https://sfb1252.github.io/talks/workshops/23-latex-getting-started/
+- 24 — LaTeX II: Longer Documents and Thesis Workflows: https://sfb1252.github.io/talks/workshops/24-latex-thesis-workflows/
 
 ## Getting started (MkDocs)
 
@@ -76,7 +74,7 @@ GitHub Pages to update.
 ├── docs/                       # All site content (MkDocs source)
 │   ├── index.md                # Front page
 │   ├── agenda/                 # Workshop schedules
-│   ├── workshops/              # Workshop materials (01-12)
+│   ├── workshops/              # Workshop materials (01-24)
 │   ├── calendar/               # Calendar integration files
 │   ├── flyers/                 # Promotional materials
 │   ├── resources/              # Additional resources
