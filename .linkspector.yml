@@ -28,6 +28,7 @@ ignorePatterns:
   - pattern: '\.pdf$' # PDF files (file references)
   - pattern: 'Automatic%20' # URL-encoded file references
   - pattern: 'georgis-LLM' # Specific file references
+  - pattern: 'slides\.html$' # Quarto-generated slide files (built by CI, not committed)
   - pattern: 'https://farm.pcibex\.ne/p/XmseQO/' # [broken]
   - pattern: 'https://uni-koeln\.sciebo\.de/f/990545907' # Internal Sciebo folder (not accessible from external checks)
   - pattern: 'https://www\.clarin-d\.net' # SSL/connection issues
