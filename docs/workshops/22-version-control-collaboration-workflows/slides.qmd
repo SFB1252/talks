@@ -1,0 +1,645 @@
+---
+title: "Version Control II"
+subtitle: "Collaboration Workflows with GitHub and gitlab.nrw"
+author:
+  - name: "Job Schepens"
+    id: js
+    orcid: 0000-0003-1271-2526
+    email: job.schepens@uni-koeln.de
+    affiliation:
+      - name: Universität zu Köln
+        department: CRC 1252 Prominence in Language, Project S
+        city: Cologne, Germany
+        url: https://jobschepens.github.io/personal-page/
+date: "20 May 2026"
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../../stylesheets/mytheme.scss]
+    logo: ../../logo.png
+    slide-number: true
+    scrollable: true
+    mouse-wheel: true
+    footer: "RDM Workshop Series · SFB 1252 Prominence in Language · Universität zu Köln"
+    output-file: slides.html
+    embed-resources: true
+    transition: none
+    background-transition: none
+---
+
+## Overview
+
+- **Why** branches, pull requests, and merge requests matter
+- **Forks vs branches** — when to use which
+- **Collaboration workflows** — from solo to team to open-source
+- **Good commit and branch practices**
+- **How** to review and discuss changes before merging
+- **What** good project structure looks like for shared research repos
+- **Hands-on:** opening a pull request / merge request together
+
+::: {.callout-tip}
+**Prerequisite:** Basic Git workflow — clone, commit, push (Session 21)
+:::
+
+
+## Recap: Where We Left Off {.smaller}
+
+:::: {.columns}
+::: {.column}
+**Session 21 covered**
+
+- What version control is and why it matters
+- Repositories, commits, remotes
+- GitHub vs GitLab vs gitlab.nrw
+- Clone → edit → commit → push
+:::
+::: {.column}
+**Today adds**
+
+- Working in parallel without conflicts
+- Forks and branches as collaboration tools
+- Proposing and reviewing changes
+- Organizing shared projects
+- Communicating through the platform
+:::
+::::
+
+
+## Before We Start: Check Your Git Identity
+
+Git embeds your name and email in every commit. Check they're set:
+
+```bash
+git config user.name          # check current value
+git config user.email         # check current value
+```
+
+If not set, configure them now:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@uni-koeln.de"
+```
+
+::: {.callout-note}
+`--global` applies to all repositories on your machine. Omit it to set it for the current repository only.
+:::
+
+
+## The Problem with Working on `main`
+
+Two collaborators, one branch — things go wrong fast:
+
+```
+Person A: edit → commit → push ✓  (accepted)
+Person B: edit → commit → push ✗  (rejected: not up to date)
+                    ↓
+               git pull → CONFLICT in analysis.R
+                    ↓
+          must resolve manually before pushing
+```
+
+- Mistakes land directly in the shared version with no review
+- Hard to separate "finished work" from "work in progress"
+
+> Branches and forks isolate work until it's ready to be shared.
+
+
+## What Is a Branch?
+
+A branch is a **parallel line of work inside the same repository**.
+
+```bash
+git switch -c my-feature    # create and switch to a new branch
+# ... make commits ...
+git push origin my-feature  # push the branch to the remote
+```
+
+- `main` stays stable while you work
+- Your work is isolated until you're ready
+- Others can review before anything is merged
+- Easy to delete after merging — no trace left in `main`
+
+
+## What Is a Fork?
+
+A fork is a **copy of an entire repository under your own account**.
+
+- Created on the platform (GitHub / gitlab.nrw) with one click
+- You have full write access to your fork
+- The original repository is unaffected
+- You can propose changes back via a pull request / merge request
+
+```
+original:   jobschepens/newproject     (you have read access)
+your fork:  your-username/newproject  (you have full access)
+```
+
+
+## Forks vs Branches: Key Differences {.smaller}
+
+| | **Branch** | **Fork** |
+|---|---|---|
+| Lives in | Same repository | Separate copy of the repository |
+| Who uses it | Someone with write access | Anyone, including outside contributors |
+| Visibility | Visible to all repo members | Lives on your own account |
+| Use case | Internal team collaboration | Contributing to repos you don't own |
+| Sync with original | No extra setup — pull from the same remote | Manual (`git fetch upstream`) |
+| Typical in | Research group repos | Open-source, cross-institute work |
+
+::: {.callout-tip}
+**Rule of thumb:** If you have write access → use a branch. If you don't → fork.
+:::
+
+
+## Four Common Collaboration Workflows {.smaller}
+
+| Workflow | Who it's for | Core pattern |
+|---|---|---|
+| **Centralized** | Small team, everyone trusted | Commit directly to `main` |
+| **Feature branch** | Team with code review | Branch → PR → merge |
+| **Fork & PR** | Open or cross-institute | Fork → branch → PR → merge |
+| **Gitflow** | Software with releases | `main` + `develop` + feature/release branches |
+
+For most **research group projects**: **Feature branch** workflow is the right balance.  
+For **contributing to someone else's repo**: **Fork & PR** workflow.
+
+*See Advanced Topics for Gitflow details.*
+
+
+## Workflow 1: Centralized {.smaller}
+
+Everyone commits directly to `main`. Simple, but fragile.
+
+```
+Person A:  edit → commit → push → main ✓
+Person B:  edit → commit → push → main ✗ (conflict!)
+```
+
+**When it works:**
+
+- Solo researcher
+- Very small team with near-zero overlap
+- Quick one-off fixes
+
+**When it breaks:**
+
+- Two people edit the same file at the same time
+- A mistake goes straight to the shared version
+- No review step before changes take effect
+
+
+## Workflow 2: Feature Branch {.smaller}
+
+The standard for team research projects.
+
+```
+main ──────────────────────────────────► stable
+        │                       ▲
+        └── feature-branch ────►│ (PR → review → merge)
+```
+
+**Full cycle:**
+
+```bash
+git switch -c add-exclusion-criteria   # 1. create branch
+# edit files
+git add .                              # 2. stage
+git commit -m "Add participant exclusion criteria"  # 3. commit
+git push origin add-exclusion-criteria # 4. push branch
+# → open PR on GitHub / MR on gitlab.nrw
+# → review, discuss, approve
+# → merge into main
+git switch main && git pull            # 5. update local main
+```
+
+
+## Workflow 3: Fork & Pull Request {.smaller}
+
+For contributing to a repository you do not own.
+
+```
+jobschepens/newproject  (original)
+        │
+        └── fork ──► your-username/newproject  (your copy)
+                          │
+                          └── branch ──► PR ──► original main
+```
+
+**Full cycle:**
+
+```bash
+# 1. Fork on GitHub/gitlab.nrw (platform UI)
+git clone https://github.com/your-username/newproject  # 2. clone your fork
+git remote add upstream https://github.com/jobschepens/newproject  # 3. link original
+git switch -c fix-typo-in-readme       # 4. branch in your fork
+# edit, commit
+git push origin fix-typo-in-readme    # 5. push to your fork
+# → open PR: your fork → original repo
+# → maintainer reviews and merges
+git fetch upstream && git merge upstream/main  # 6. sync fork later
+```
+
+
+## Good Practices: When and How to Commit {.smaller}
+
+**Commit one logical change at a time**
+
+- Each commit should do *one thing* and be describable in a single sentence
+- Don't bundle unrelated edits (e.g., fixing a typo + restructuring a script)
+
+**Commit when the work is in a coherent state**
+
+- After completing a self-contained step: added a function, wrote a section, fixed a specific bug
+- Not mid-sentence, not with broken code that won't run
+- Think: *"If I had to revert to this commit, would it make sense?"*
+
+**How often?**
+
+- More often is better than less — small commits are easier to review and revert
+- A few commits per work session is normal; dozens is fine too
+- Avoid "one giant commit at the end of the day"
+
+
+## Writing Good Commit Messages
+
+```
+Bad:   "fixed stuff"
+Bad:   "update"
+Good:  "Fix participant exclusion logic for Study 1"
+Good:  "Add descriptive stats table for German adult data"
+```
+
+**Format that works:**
+
+```
+Short summary (50 chars or less)
+
+Optional longer explanation after a blank line.
+What changed, why, and any relevant context.
+```
+
+
+## Good Practices: Branches and Reviews {.smaller}
+
+**Branch naming**
+
+```
+feature/add-exclusion-criteria
+fix/typo-in-consent-form
+docs/update-readme-methods
+```
+
+Use a prefix (`feature/`, `fix/`, `docs/`) so the purpose is clear at a glance.
+
+**Keep branches short-lived**
+
+- Merge or rebase against `main` frequently to avoid drift
+- Delete branches after merging — they clutter the repo and create confusion
+
+**Review culture**
+
+- A review comment is not a criticism — it is a question or a suggestion
+- Respond to every comment, even if just *"Done"* or *"Disagree, here's why"*
+- Approve when you are satisfied, not just when you are tired of reviewing
+
+::: {.callout-note}
+Even in a team of two, the habit of reviewing each other's PRs pays off quickly — errors get caught, decisions get documented.
+:::
+
+
+## Pull Requests and Merge Requests
+
+**GitHub** calls them *Pull Requests* (PRs)  
+**GitLab / gitlab.nrw** calls them *Merge Requests* (MRs)  
+→ Same idea, different name.
+
+A PR / MR is a **formal proposal** to merge one branch into another:
+
+1. You push your branch (or fork)
+2. You open a PR / MR with a description
+3. A collaborator reviews and comments
+4. Changes are discussed and revised
+5. The branch is merged (or closed)
+
+
+## How to Open a PR on GitHub {.smaller}
+
+1. Push your branch: `git push origin branch-name`
+2. Go to the repository on **github.com**
+3. GitHub shows a yellow banner: *"branch-name had recent pushes"* → click **Compare & pull request**
+4. Fill in the title and description
+5. Set the **base branch** (usually `main`) and **compare branch** (your branch)
+6. Click **Create pull request**
+7. Request a reviewer on the right sidebar
+
+::: {.callout-tip}
+If the banner doesn't appear, go to the **Pull requests** tab → **New pull request**, then select your branch.
+:::
+
+
+## How to Open an MR on gitlab.nrw {.smaller}
+
+1. Push your branch: `git push origin branch-name`
+2. Go to the repository on **gitlab.nrw**
+3. GitLab shows a blue banner: *"You pushed to branch-name"* → click **Create merge request**
+4. Fill in the title and description
+5. Set **Source branch** (your branch) and **Target branch** (usually `main`)
+6. Assign a reviewer under *Reviewers*
+7. Click **Create merge request**
+
+::: {.callout-tip}
+Alternatively: left sidebar → **Merge requests** → **New merge request**, then pick your branch.
+:::
+
+
+## Anatomy of a Good PR / MR {.smaller}
+
+:::: {.columns}
+::: {.column}
+**Title**  
+Short, specific, action-oriented  
+*"Add regression table for English data"*
+
+**Description**  
+- What changed and why
+- Any decisions or trade-offs made
+- Reviewer instructions if needed
+- Links to related issues: `Closes #12`
+:::
+::: {.column}
+**Review checklist**  
+- Does the code/text do what it claims?
+- Are there errors or unclear sections?
+- Are commit messages informative?
+- Is anything missing?
+:::
+::::
+
+::: {.callout-note}
+Even solo researchers benefit: a PR forces you to write down *what* you did and *why*.
+:::
+
+
+## Reviewing Changes
+
+On GitHub / gitlab.nrw you can:
+
+- Browse the **diff** — exactly what changed line by line
+- Leave **inline comments** on specific lines
+- Use **suggestions** to propose exact text changes
+- **Approve** or **request changes** before merging
+
+```diff
+- participants were recruited via email
++ Participants were recruited via email (N = 48; see consent form).
+```
+
+
+## Merge Strategies {.smaller}
+
+| Strategy | What it does | When to use |
+|---|---|---|
+| **Merge commit** | Keeps all commits, adds a merge commit | Default; preserves full history |
+| **Squash and merge** | Combines all commits into one | Messy branch history |
+| **Rebase and merge** | Replays commits linearly on top of main | Clean linear history |
+
+For research work: **merge commit** is usually fine and most transparent.
+
+::: {.callout-warning}
+**Rebase rewrites commit hashes.** Never rebase a branch that others are also working on — it rewrites history and will conflict with anyone who pulled the old version.
+:::
+
+
+## Merge Conflicts: What They Are and How to Resolve Them {.smaller}
+
+A conflict occurs when two branches changed the **same lines** of the same file differently.
+
+```
+<<<<<<< HEAD (your branch)
+Participants were recruited via email (N = 48).
+=======
+Participants were recruited via the university mailing list.
+>>>>>>> main
+```
+
+**Steps to resolve:**
+
+1. Open the conflicted file — look for `<<<<<<<` markers
+2. Decide which version to keep (or combine them)
+3. Delete all conflict markers
+4. `git add <file>` to mark as resolved
+5. `git commit` to finish the merge
+
+::: {.callout-tip}
+VS Code and most Git GUIs have a visual conflict editor — you don't have to edit the markers by hand.
+:::
+
+
+## Issues: Tracking Work and Discussions
+
+Issues are not just for bugs — use them for:
+
+- **Tasks:** *"Write methods section for Study 2"*
+- **Questions:** *"Should we exclude participants below 18?"*
+- **Decisions:** *"Agreed: use APA 7th edition throughout"*
+
+Link issues to PRs/MRs with keywords:  
+`Closes #12` in a PR description will auto-close issue #12 on merge.
+
+
+## Project Structure for Shared Repositories {.smaller}
+
+A clear structure reduces confusion for everyone:
+
+```
+my-project/
+├── README.md          ← what is this, how to use it
+├── data/
+│   ├── raw/           ← never modified, version controlled
+│   └── processed/
+├── scripts/           ← analysis code
+├── docs/              ← notes, pre-registrations, papers
+├── results/           ← outputs (often in .gitignore)
+└── CONTRIBUTING.md    ← how to contribute (for shared repos)
+```
+
+::: {.callout-tip}
+A good README is often more valuable than comments in code.
+:::
+
+
+## GitHub vs gitlab.nrw: Key Differences {.smaller}
+
+| Feature | GitHub | gitlab.nrw |
+|---|---|---|
+| Hosting | Public cloud (Microsoft) | NRW university infrastructure |
+| Data residency | US servers | Germany / NRW |
+| Suitable for | Public/open-source projects | Sensitive or unpublished research |
+| CI/CD | GitHub Actions | GitLab CI/CD |
+| Account | Personal GitHub account | University login (Shibboleth) |
+
+**Recommendation for CRC 1252:**  
+Use **gitlab.nrw** for unpublished data and analysis; **GitHub** for public dissemination.
+
+
+## Hands-On Exercise {.smaller}
+
+Work in pairs — choose your workflow:
+
+**Option A — Feature branch (you have write access):**
+
+1. Clone the demo repo and create a branch
+2. Add your name to `contributors.md`, commit and push
+3. Open a PR / MR on the platform, have your partner review and merge
+
+**Option B — Fork & PR (external contributor):**
+
+1. Fork the demo repo on the platform
+2. Clone your fork, make a change, push to your fork
+3. Open a PR from your fork to the original repo
+
+::: {.callout-note}
+Demo repo: <https://github.com/jobschepens/newproject>
+:::
+
+
+## Common Pitfalls and How to Avoid Them {.smaller}
+
+| Pitfall | What goes wrong | Fix |
+|---|---|---|
+| Long-lived branches | Diverges from main, painful to merge | Merge or rebase often |
+| Giant commits | Hard to review, hard to revert | Commit small, logical units |
+| Force-pushing shared branches | Rewrites history others have built on | Only force-push your own private branches |
+| Stale fork | Your fork falls behind the original | Sync regularly with `git fetch upstream` |
+| No description in PR | Reviewer has no context | Always write at least two sentences |
+| Merging without review | Defeats the purpose | Require review before merge (see Advanced: Branch Protection) |
+
+
+## Summary
+
+:::: {.columns}
+::: {.column}
+**Concepts**
+
+- **Branch** = parallel work within a repo
+- **Fork** = your own copy of a repo
+- PRs / MRs formalize the review process
+- Issues track tasks and decisions
+- Choose workflow by access level and team size
+:::
+::: {.column}
+**Core commands**
+
+```bash
+# Feature branch workflow
+git switch -c branch-name
+git push origin branch-name
+# → open PR / MR on platform (web UI)
+git switch main && git pull
+
+# Fork workflow (after forking on platform)
+git remote add upstream <original-url>
+git fetch upstream
+git merge upstream/main
+```
+:::
+::::
+
+
+## Resources
+
+- [GitHub Docs: Collaborating with pull requests](https://docs.github.com/en/pull-requests)
+- [GitLab Docs: Merge requests](https://docs.gitlab.com/ee/user/project/merge_requests/)
+- [Happy Git and GitHub for the useR](https://happygitwithr.com/)
+- [Atlassian: Comparing workflows](https://www.atlassian.com/git/tutorials/comparing-workflows)
+- [Conventional Commits](https://www.conventionalcommits.org/) — commit message standard
+- [gitlab.nrw documentation](https://git.nrw/en/docs/)
+
+
+## Further Reading {.smaller}
+
+**Beginner-friendly**
+
+- [GitHub Skills: Introduction to GitHub](https://github.com/skills/introduction-to-github) — interactive, browser-based exercises
+- [GitLab tutorial: Make your first Git commit](https://docs.gitlab.com/tutorials/make_first_git_commit/) — step-by-step with screenshots
+- [git.nrw beginner level guide](https://git.nrw/en/levels/beginner/)
+
+**Going deeper**
+
+- [Pro Git (free book)](https://git-scm.com/book/en/v2) — ch. 3 (branching), ch. 5 (distributed workflows)
+- [Atlassian Git tutorials](https://www.atlassian.com/git/tutorials) — branching, merging, rebasing explained with visuals
+- [Oh Shit, Git!?!](https://ohshitgit.com/) — plain-English fixes for common mistakes
+
+**For research specifically**
+
+- [Happy Git and GitHub for the useR](https://happygitwithr.com/) — Jenny Bryan's practical guide, R-focused but broadly applicable
+- [The Turing Way: Version Control](https://the-turing-way.netlify.app/reproducible-research/vcs.html) — research-oriented best practices
+- [Software Carpentry: Version Control with Git](https://swcarpentry.github.io/git-novice/) — self-paced lesson used in workshops worldwide
+
+
+---
+
+
+# Advanced Topics {background-color="#005176"}
+
+
+## Advanced: Gitflow {.smaller}
+
+Used in software development with versioned releases. Rarely needed for research, but good to know.
+
+```
+main      ──────────────────────────── v1.0 ──── v2.0
+develop   ──────────────────────────────────────────►
+               │              ▲
+               └── feature ──►│
+```
+
+- `main` only ever contains released, stable versions
+- `develop` is the integration branch
+- Feature branches merge into `develop`
+- Release branches cut from `develop` → `main`
+
+::: {.callout-note}
+For a research analysis pipeline with versioned outputs, a simplified Gitflow (just `main` + `develop`) can help.
+:::
+
+
+## Advanced: Staging Part of a File (`git add -p`) {.smaller}
+
+If one file has multiple unrelated changes, you can stage them separately:
+
+```bash
+git add -p analysis.R
+```
+
+Git shows each change ("hunk") one at a time and asks what to do:
+
+| Key | Action |
+|---|---|
+| `y` | Stage this hunk |
+| `n` | Skip this hunk |
+| `s` | Split into smaller hunks |
+| `q` | Quit |
+
+This lets a single file produce multiple focused commits — useful when you fixed a bug and refactored code in the same session.
+
+
+## Advanced: Branch Protection Rules {.smaller}
+
+Branch protection rules prevent direct pushes to important branches and enforce review workflows.
+
+**On GitHub:** Settings → Branches → Add branch protection rule  
+**On gitlab.nrw:** Settings → Repository → Protected branches
+
+Common settings for a research repo:
+
+- **Require a pull request before merging** — no direct push to `main`
+- **Require approvals** — at least 1 reviewer must approve
+- **Require status checks** — CI must pass before merge
+- **Restrict who can push** — limit to maintainers
+
+::: {.callout-tip}
+Even a two-person project benefits: it makes the PR workflow mandatory and prevents accidental direct pushes to `main`.
+:::
+

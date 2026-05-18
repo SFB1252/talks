@@ -1,0 +1,207 @@
+/*-- scss:defaults --*/
+
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&family=Source+Serif+4:wght@300;400;600;700&display=swap");
+
+/* UzK color system */
+$uzk-blue: #005176 !default;
+$uzk-blue-dark: #003d59 !default;
+$uzk-blue-light: #006a9a !default;
+$uzk-turquoise: #009dcc !default;
+$uzk-coral: #ea564f !default;
+$uzk-text: #102631 !default;
+$uzk-muted: #547685 !default;
+$uzk-surface: #f4fafc !default;
+
+/* Theme defaults */
+$body-bg: #ffffff !default;
+$body-color: $uzk-text !default;
+$font-family-sans-serif: "Albert Sans", Arial, sans-serif !default;
+$font-family-monospace: "Fira Code", "Source Code Pro", Menlo, Consolas, Monaco, monospace !default;
+$presentation-font-size-root: 28px !default;
+
+$presentation-heading-font: "Albert Sans", Arial, sans-serif !default;
+$presentation-heading-color: $uzk-blue !default;
+$presentation-heading-text-transform: uppercase !default;
+$presentation-heading-letter-spacing: 0.5px !default;
+$presentation-heading-font-weight: 600 !default;
+$presentation-heading-text-shadow: none !default;
+
+$link-color: $uzk-blue !default;
+$link-color-hover: $uzk-turquoise !default;
+$selection-bg: rgba($uzk-turquoise, 0.3) !default;
+$selection-color: $uzk-blue-dark !default;
+$presentation-list-bullet-color: $uzk-turquoise !default;
+
+$code-color: $uzk-blue-dark !default;
+$code-block-border-color: mix($uzk-blue, #ffffff, 30%) !default;
+$input-panel-bg: rgba(0, 81, 118, 0.08) !default;
+$dark-bg-text-color: #ffffff !default;
+$light-bg-text-color: $uzk-text !default;
+
+/*-- scss:rules --*/
+
+:root {
+  --r-bold-color: #{$uzk-blue-dark};
+  --r-italic-color: #{$uzk-muted};
+  --r-inline-code-color: #{$code-color};
+  --r-list-bullet-color: #{$presentation-list-bullet-color};
+}
+
+.reveal {
+  font-family: "Albert Sans", Arial, sans-serif;
+  color: $uzk-text;
+  font-size: 28px;
+
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+  }
+
+  h2 {
+    font-size: 1.35em;
+    margin-bottom: 0.4em;
+  }
+
+  h3 {
+    font-size: 1.1em;
+    margin-bottom: 0.3em;
+  }
+
+  strong,
+  b {
+    &:not(.callout-title strong, .callout-title b) {
+      color: var(--r-bold-color);
+    }
+  }
+
+  em,
+  i {
+    color: var(--r-italic-color);
+  }
+
+  code {
+    color: var(--r-inline-code-color);
+  }
+
+  ul,
+  ol {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+
+    li {
+      margin-top: 0.15em;
+      margin-bottom: 0.15em;
+    }
+
+    li::marker {
+      color: var(--r-list-bullet-color);
+    }
+  }
+
+  p {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+  }
+
+  blockquote {
+    font-size: 0.85em;
+    padding: 0.45em;
+    margin: 0.45em 0;
+    border-left: 5px solid $uzk-coral;
+    background: $uzk-surface;
+    box-shadow: none;
+    font-style: normal;
+  }
+
+  table {
+    font-size: 0.74em;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+  }
+
+  table th {
+    color: $uzk-blue;
+  }
+
+  table th,
+  table td {
+    padding: 0.28em 0.48em;
+  }
+
+  pre {
+    font-size: 0.55em;
+    margin: 0.5em 0;
+    border-left: 4px solid $uzk-turquoise;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  code {
+    font-size: 0.9em;
+  }
+
+  .footer,
+  .slide-number {
+    color: $uzk-muted;
+  }
+
+  .smaller {
+    font-size: 0.56em;
+    line-height: 1.32;
+  }
+
+  .smallest {
+    font-size: 0.46em;
+    line-height: 1.2;
+  }
+
+  .tiny {
+    font-size: 0.38em;
+    line-height: 1.25;
+  }
+
+  .columns {
+    display: flex;
+    gap: 1em;
+  }
+
+  .column {
+    flex: 1;
+  }
+
+  .slides {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.compact {
+  margin-top: 0.18em !important;
+  margin-bottom: 0.18em !important;
+}
+
+.compact li {
+  margin-top: 0.08em !important;
+  margin-bottom: 0.08em !important;
+}
+
+.reveal .slides section.wide-figure-slide {
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+}
+
+.reveal .slides section.wide-figure-slide h2 {
+  font-size: 1.18em;
+  margin-bottom: 0.18em;
+}
+
+.reveal .slides section.wide-figure-slide p {
+  margin-top: 0.15em;
+  margin-bottom: 0.15em;
+}
+
+.reveal .slides section.wide-figure-slide img {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}

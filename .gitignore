@@ -73,6 +73,11 @@ secrets.txt
 *.key
 *.pem
 
+# Quarto
+.quarto/
+_freeze/
+docs/workshops/**/slides.html
+
 # Build Outputs
 _site/
 dist/

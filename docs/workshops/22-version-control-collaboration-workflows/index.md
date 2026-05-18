@@ -9,8 +9,8 @@
 | Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
 | Speakers | TBC |
 | Prerequisites | Familiarity with basic Git concepts such as repositories and commits is recommended. |
-| Materials status | Workshop outline is available; dedicated materials are not yet linked. |
-| Slides / recording | No slides or recording are currently listed. |
+| Materials status | Draft slides are available below. |
+| Slides / recording | [HTML slides](slides.html) are linked below; no recording is currently listed. |
 
 </div>
 
@@ -36,7 +36,9 @@ review, and project organization for shared research work.
 
 ## Materials
 
-Materials for this workshop will be added here.
+- **[Presentation Slides](slides.html)** — Main workshop presentation covering
+  collaboration workflows with GitHub and gitlab.nrw
+- **[Presentation Source](slides.qmd)** — Quarto source file for the presentation
 
 ## Additional Resources
 

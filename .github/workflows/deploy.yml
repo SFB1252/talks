@@ -45,6 +45,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render Quarto presentations
+        run: |
+          quarto render docs/workshops/22-version-control-collaboration-workflows/slides.qmd
+
       - name: Build site
         env:
           MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.MKDOCS_GIT_COMMITTERS_APIKEY }}
@@ -80,6 +87,13 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render Quarto presentations
+        run: |
+          quarto render docs/workshops/22-version-control-collaboration-workflows/slides.qmd
 
       - name: Test build
         env:
