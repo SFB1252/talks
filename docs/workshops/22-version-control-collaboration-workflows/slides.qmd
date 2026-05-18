@@ -67,22 +67,18 @@ format:
 
 ## Before We Start: Check Your Git Identity
 
-Git embeds your name and email in every commit. Check they're set:
+Git embeds your name and email in every commit. Check they're configured in your tool:
 
-```bash
-git config user.name          # check current value
-git config user.email         # check current value
-```
+**VS Code:** Open the terminal panel (`` Ctrl+` ``) and run `git config user.name` to check. To set: open **Settings** → search *git user* → fill in `Git: User Name` and `Git: User Email`.
 
-If not set, configure them now:
+**GitHub Desktop:** Preferences (`Ctrl+,`) → **Git** tab → Name and Email fields.
 
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "you@uni-koeln.de"
-```
+**RStudio:** Tools → Terminal → type `git config user.name` to check. Set via **Tools → Global Options → Git/SVN** or in the terminal.
 
 ::: {.callout-note}
-`--global` applies to all repositories on your machine. Omit it to set it for the current repository only.
+Your identity only needs to be set once per machine. GitHub Desktop usually pre-fills it from your GitHub account.
+
+**CLI:** `git config --global user.name "Your Name"` and `git config --global user.email "you@uni-koeln.de"`
 :::
 
 
@@ -109,11 +105,12 @@ Person B: edit → commit → push ✗  (rejected: not up to date)
 
 A branch is a **parallel line of work inside the same repository**.
 
-```bash
-git switch -c my-feature    # create and switch to a new branch
-# ... make commits ...
-git push origin my-feature  # push the branch to the remote
-```
+| Tool | How to create a branch |
+|---|---|
+| **GitHub Desktop** | Branch menu → **New Branch** → type a name → **Create Branch** |
+| **VS Code** | Click the branch name in the status bar → **Create new branch** |
+| **RStudio** | Git pane → branch dropdown → **New Branch** |
+| **github.com** | Repository → branch dropdown → type a new name → **Create branch** |
 
 - `main` stays stable while you work
 - Your work is isolated until you're ready
@@ -199,19 +196,21 @@ main ─────────────────────────
         └── feature-branch ────►│ (PR → review → merge)
 ```
 
-**Full cycle:**
+**Full cycle in your tool:**
 
-```bash
-git switch -c add-exclusion-criteria   # 1. create branch
-# edit files
-git add .                              # 2. stage
-git commit -m "Add participant exclusion criteria"  # 3. commit
-git push origin add-exclusion-criteria # 4. push branch
-# → open PR on GitHub / MR on gitlab.nrw
-# → review, discuss, approve
-# → merge into main
-git switch main && git pull            # 5. update local main
-```
+1. **Create branch** — Branch menu / status bar / Git pane → New Branch
+2. **Edit files** — work as normal in your editor
+3. **Stage & commit** — tick changed files, write a message, click **Commit**
+   - GitHub Desktop: left panel → check files → write summary → **Commit to branch**
+   - VS Code: Source Control panel (Ctrl+Shift+G) → stage (+) → message → ✓
+   - RStudio: Git pane → check boxes → **Commit** → write message → **Commit**
+4. **Push** — click **Push origin** / **Sync** / **Push**
+5. **Open PR / MR** — platform will show a banner → **Compare & pull request**
+6. **After merge** — switch back to `main` and pull to get the latest
+
+::: {.callout-note}
+CLI equivalent: `git switch -c branch-name` → edit → `git add . && git commit -m "msg"` → `git push origin branch-name`
+:::
 
 
 ## Workflow 3: Fork & Pull Request {.smaller}
@@ -228,17 +227,17 @@ jobschepens/newproject  (original)
 
 **Full cycle:**
 
-```bash
-# 1. Fork on GitHub/gitlab.nrw (platform UI)
-git clone https://github.com/your-username/newproject  # 2. clone your fork
-git remote add upstream https://github.com/jobschepens/newproject  # 3. link original
-git switch -c fix-typo-in-readme       # 4. branch in your fork
-# edit, commit
-git push origin fix-typo-in-readme    # 5. push to your fork
-# → open PR: your fork → original repo
-# → maintainer reviews and merges
-git fetch upstream && git merge upstream/main  # 6. sync fork later
-```
+1. **Fork** — on github.com / gitlab.nrw: click **Fork** (top right of the repo page)
+2. **Clone your fork** — GitHub Desktop: **File → Clone Repository** → choose your fork
+3. **Create a branch** — Branch menu → New Branch
+4. **Edit, stage, and commit** — same as the feature branch workflow
+5. **Push** — **Push origin**
+6. **Open PR** — github.com shows a banner on your fork → **Compare & pull request** → target: the original repo
+7. **Sync your fork later** — github.com: your fork page → **Sync fork** button; GitHub Desktop: Branch → **Merge into current branch** → choose `upstream/main`
+
+::: {.callout-note}
+CLI equivalent: `git remote add upstream <original-url>` → `git fetch upstream` → `git merge upstream/main`
+:::
 
 
 ## Good Practices: When and How to Commit {.smaller}
@@ -325,31 +324,42 @@ A PR / MR is a **formal proposal** to merge one branch into another:
 
 ## How to Open a PR on GitHub {.smaller}
 
-1. Push your branch: `git push origin branch-name`
-2. Go to the repository on **github.com**
-3. GitHub shows a yellow banner: *"branch-name had recent pushes"* → click **Compare & pull request**
-4. Fill in the title and description
-5. Set the **base branch** (usually `main`) and **compare branch** (your branch)
-6. Click **Create pull request**
-7. Request a reviewer on the right sidebar
+**Via github.com (any tool):**
+
+1. Push your branch to GitHub
+2. Go to the repository on **github.com** — a yellow banner appears: *"branch-name had recent pushes"*
+3. Click **Compare & pull request**
+4. Fill in the title and description; set **base** = `main`, **compare** = your branch
+5. Assign a reviewer in the right sidebar → **Create pull request**
+
+**Via GitHub Desktop:**
+
+1. After pushing, GitHub Desktop shows a **Create Pull Request** button — click it
+2. Your browser opens the PR form on github.com — fill in and submit
 
 ::: {.callout-tip}
-If the banner doesn't appear, go to the **Pull requests** tab → **New pull request**, then select your branch.
+If the banner doesn't appear: **Pull requests** tab → **New pull request** → select your branch.
 :::
 
 
 ## How to Open an MR on gitlab.nrw {.smaller}
 
-1. Push your branch: `git push origin branch-name`
-2. Go to the repository on **gitlab.nrw**
-3. GitLab shows a blue banner: *"You pushed to branch-name"* → click **Create merge request**
-4. Fill in the title and description
-5. Set **Source branch** (your branch) and **Target branch** (usually `main`)
-6. Assign a reviewer under *Reviewers*
-7. Click **Create merge request**
+**Via gitlab.nrw (any tool):**
+
+1. Push your branch to gitlab.nrw
+2. Go to the repository — a blue banner appears: *"You pushed to branch-name"*
+3. Click **Create merge request**
+4. Fill in the title and description; set **Source branch** = your branch, **Target branch** = `main`
+5. Assign a reviewer under *Reviewers* → **Create merge request**
+
+**Via VS Code with GitLab extension:**
+
+1. Push your branch
+2. Open the Command Palette (`Ctrl+Shift+P`) → **GitLab: Create Merge Request**
+3. Fill in the form that opens in the browser
 
 ::: {.callout-tip}
-Alternatively: left sidebar → **Merge requests** → **New merge request**, then pick your branch.
+Alternatively: left sidebar → **Merge requests** → **New merge request** → pick your branch.
 :::
 
 
@@ -415,24 +425,26 @@ For research work: **merge commit** is usually fine and most transparent.
 
 A conflict occurs when two branches changed the **same lines** of the same file differently.
 
-```
-<<<<<<< HEAD (your branch)
-Participants were recruited via email (N = 48).
-=======
-Participants were recruited via the university mailing list.
->>>>>>> main
-```
+**VS Code** — opens a visual editor automatically:
 
-**Steps to resolve:**
+- Click **Resolve in Merge Editor** on the conflicted file
+- Choose **Accept Current**, **Accept Incoming**, or **Accept Both**
+- Save → click **Complete Merge** in the editor toolbar
 
-1. Open the conflicted file — look for `<<<<<<<` markers
-2. Decide which version to keep (or combine them)
-3. Delete all conflict markers
-4. `git add <file>` to mark as resolved
-5. `git commit` to finish the merge
+**GitHub Desktop** — highlights conflicted files in red:
 
-::: {.callout-tip}
-VS Code and most Git GUIs have a visual conflict editor — you don't have to edit the markers by hand.
+- Click **Open in editor** next to the conflicted file
+- VS Code opens with the merge editor (same as above)
+- After saving, return to GitHub Desktop → the file is now staged → **Commit merge**
+
+**RStudio** — Git pane shows conflicted files with an orange U marker:
+
+- Open the file — conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) are visible
+- Edit manually to keep the correct version, delete the markers
+- Stage the file in the Git pane → **Commit**
+
+::: {.callout-note}
+Conflicts look scarier than they are — you just choose which version to keep.
 :::
 
 
@@ -485,22 +497,24 @@ Use **gitlab.nrw** for unpublished data and analysis; **GitHub** for public diss
 
 ## Hands-On Exercise {.smaller}
 
-Work in pairs — choose your workflow:
+Work in pairs — choose your workflow and tool (GitHub Desktop, VS Code, or RStudio):
 
 **Option A — Feature branch (you have write access):**
 
-1. Clone the demo repo and create a branch
-2. Add your name to `contributors.md`, commit and push
-3. Open a PR / MR on the platform, have your partner review and merge
+1. Clone <https://github.com/jobschepens/newproject> via your tool's **Clone** dialog
+2. Create a new branch (Branch menu / status bar / Git pane)
+3. Add your name to `contributors.md`, stage and commit
+4. Push → open a PR on github.com → have your partner review and merge
 
 **Option B — Fork & PR (external contributor):**
 
-1. Fork the demo repo on the platform
-2. Clone your fork, make a change, push to your fork
-3. Open a PR from your fork to the original repo
+1. Click **Fork** on <https://github.com/jobschepens/newproject>
+2. Clone *your fork* via GitHub Desktop: **File → Clone Repository**
+3. Create a branch, make a change, commit, push
+4. Open a PR from your fork → original repo on github.com
 
-::: {.callout-note}
-Demo repo: <https://github.com/jobschepens/newproject>
+::: {.callout-tip}
+Not sure which option? Start with **Option A** — it's the most common workflow.
 :::
 
 
@@ -511,7 +525,7 @@ Demo repo: <https://github.com/jobschepens/newproject>
 | Long-lived branches | Diverges from main, painful to merge | Merge or rebase often |
 | Giant commits | Hard to review, hard to revert | Commit small, logical units |
 | Force-pushing shared branches | Rewrites history others have built on | Only force-push your own private branches |
-| Stale fork | Your fork falls behind the original | Sync regularly with `git fetch upstream` |
+| Stale fork | Your fork falls behind the original | Use **Sync fork** on github.com or **Branch → Merge into current branch → upstream/main** in GitHub Desktop |
 | No description in PR | Reviewer has no context | Always write at least two sentences |
 | Merging without review | Defeats the purpose | Require review before merge (see Advanced: Branch Protection) |
 
@@ -529,20 +543,19 @@ Demo repo: <https://github.com/jobschepens/newproject>
 - Choose workflow by access level and team size
 :::
 ::: {.column}
-**Core commands**
+**The GUI cycle (any tool)**
 
-```bash
-# Feature branch workflow
-git switch -c branch-name
-git push origin branch-name
-# → open PR / MR on platform (web UI)
-git switch main && git pull
+1. Clone the repo
+2. Create a branch
+3. Edit → stage → commit
+4. Push
+5. Open PR / MR on the platform
+6. Review → merge
+7. Switch back to `main` → pull
 
-# Fork workflow (after forking on platform)
-git remote add upstream <original-url>
-git fetch upstream
-git merge upstream/main
-```
+::: {.callout-note .smaller}
+**CLI reference:** `git switch -c branch` → `git add . && git commit -m "msg"` → `git push origin branch` → `git switch main && git pull`
+:::
 :::
 ::::
 
@@ -641,5 +654,85 @@ Common settings for a research repo:
 
 ::: {.callout-tip}
 Even a two-person project benefits: it makes the PR workflow mandatory and prevents accidental direct pushes to `main`.
+:::
+
+
+## CLI Reference: Feature Branch Workflow {.smaller}
+
+For reference — all steps of the feature branch workflow on the command line:
+
+```bash
+# 1. Create and switch to a new branch
+git switch -c feature/add-exclusion-criteria
+
+# 2. Stage and commit changes
+git add .                    # stage all changes (or: git add filename)
+git commit -m "Add participant exclusion criteria"
+
+# 3. Push branch to remote
+git push origin feature/add-exclusion-criteria
+
+# → open PR on github.com / MR on gitlab.nrw (web UI)
+
+# 4. After merge: update local main
+git switch main
+git pull
+
+# 5. Clean up (optional)
+git branch -d feature/add-exclusion-criteria
+```
+
+
+## CLI Reference: Fork & PR Workflow {.smaller}
+
+For reference — full fork workflow on the command line:
+
+```bash
+# After forking on the platform (web UI):
+
+# 1. Clone your fork
+git clone https://github.com/your-username/newproject
+cd newproject
+
+# 2. Link the original repo as 'upstream'
+git remote add upstream https://github.com/jobschepens/newproject
+
+# 3. Create a branch, edit, commit, push
+git switch -c fix/typo-in-readme
+git add .
+git commit -m "Fix typo in README"
+git push origin fix/typo-in-readme
+
+# → open PR: your fork → original repo (web UI)
+
+# 4. Sync your fork after the PR is merged
+git fetch upstream
+git switch main
+git merge upstream/main
+```
+
+
+## CLI Reference: Resolving a Merge Conflict {.smaller}
+
+```bash
+# Git marks the conflict in the file like this:
+# <<<<<<< HEAD (your branch)
+# Participants were recruited via email (N = 48).
+# =======
+# Participants were recruited via the university mailing list.
+# >>>>>>> main
+
+# 1. Open the file and choose which version to keep
+#    (delete the markers and unwanted lines)
+
+# 2. Stage the resolved file
+git add analysis.R
+
+# 3. Complete the merge
+git commit
+```
+
+::: {.callout-note}
+VS Code, GitHub Desktop, and RStudio all have visual merge editors — you don't need to edit the markers manually.
 :::
 
