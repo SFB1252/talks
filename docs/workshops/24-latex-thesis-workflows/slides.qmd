@@ -1,0 +1,536 @@
+---
+title: "LaTeX II: Thesis Workflows, Bibliography, and Advanced Tools"
+subtitle: "Multi-file Projects, Zotero, Quarto, and TikZ"
+author:
+  - name: "Job Schepens"
+    id: js
+    orcid: 0000-0003-1271-2526
+    email: job.schepens@uni-koeln.de
+    affiliation:
+      - name: Universität zu Köln
+        department: CRC 1252 Prominence in Language, Project S
+        city: Cologne, Germany
+        url: https://jobschepens.github.io/personal-page/
+date: "17 June 2026"
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../../stylesheets/mytheme.scss]
+    logo: ../../logo.png
+    slide-number: true
+    scrollable: true
+    mouse-wheel: true
+    footer: "RDM Workshop Series · SFB 1252 Prominence in Language · Universität zu Köln"
+    output-file: slides.html
+    embed-resources: true
+    transition: none
+    background-transition: none
+---
+
+## Overview
+
+Building on Session 1, this session covers:
+
+- **Longer documents** — multi-file project structure for theses and dissertations
+- **Bibliography management** — `.bib` files, `biblatex`, and citation commands
+- **Zotero + BetterBibTeX** — reference management with continuous auto-export
+- **Quarto** — literate programming combining R/Python code with LaTeX output
+- **TikZ** — programmatic figures and diagrams written directly in LaTeX
+- **Templates** — journal submission files and university thesis templates
+- **Debugging** — reading error messages and fixing common problems
+
+::: {.callout-tip}
+**Prerequisites:** familiarity with LaTeX document structure, basic commands, and environments from Session 1.
+:::
+
+
+## Session 1 Recap {.smaller}
+
+| Concept | Key points |
+|---|---|
+| Document structure | Preamble + body; `\documentclass`, `\usepackage` |
+| Commands | `\command[opt]{arg}` — backslash notation |
+| Environments | `\begin{name}` … `\end{name}` blocks |
+| Text formatting | `\textbf`, `\textit`, `\section`, `\itemize` |
+| Math | `$...$` inline; `\[...\]` display; `equation` for numbered |
+| Figures and tables | `figure` and `table` float environments with `\label`/`\ref` |
+| Distributions | TeX Live (recommended); MiKTeX; TinyTeX |
+| Editors | Overleaf, Prism, TeXlyre, TeXstudio, VS Code |
+
+
+## Document Classes for Longer Works {.smaller}
+
+For documents longer than a typical journal article, choose the right `\documentclass`:
+
+| Class | Use for | Key structure commands |
+|---|---|---|
+| `article` | Papers, short reports | `\section`, `\subsection` |
+| `report` | Bachelor/master theses, technical reports | `\chapter`, `\section` |
+| `book` | PhD theses, monographs | `\part`, `\chapter`, `\section` |
+| `beamer` | Presentations | `\frame`, `\begin{block}` |
+
+Most universities provide a custom class (e.g. `unikoeln-thesis`) that presets all formatting.
+
+**Useful preamble options for longer documents:**
+
+```latex
+\documentclass[12pt, a4paper, twoside, openright]{report}
+\usepackage{hyperref}     % clickable cross-references and PDF metadata
+\usepackage{cleveref}     % smart refs: \cref{fig:x} → "Figure 1"
+\usepackage{microtype}    % improved line breaking and spacing
+\usepackage{setspace}     % line spacing (\onehalfspacing, \doublespacing)
+```
+
+
+## Multi-file Projects: `\input` and `\include` {.smaller}
+
+For long documents, split your `.tex` source into multiple files.
+
+**`\input{filename}` — inline inclusion:**
+
+```latex
+% main.tex
+\documentclass{report}
+\begin{document}
+\input{chapters/introduction}
+\input{chapters/methods}
+\input{chapters/results}
+\end{document}
+```
+
+- Inserts the file content directly — equivalent to copy-pasting
+- Can be nested; no page break is forced
+
+**`\include{filename}` — chapter inclusion with page break:**
+
+```latex
+\include{chapters/introduction}  % forces a new page before and after
+```
+
+- Supports `\includeonly{chapter1,chapter3}` to compile only selected chapters — faster iteration on large documents
+
+::: {.callout-note}
+Use `\input` for small fragments (preamble settings, custom commands). Use `\include` for major structural divisions like chapters.
+:::
+
+
+## Recommended Thesis Folder Structure
+
+```
+my-thesis/
+├── main.tex              ← root document
+├── preamble.tex          ← packages and settings (\input'd)
+├── chapters/
+│   ├── 01-introduction.tex
+│   ├── 02-methods.tex
+│   ├── 03-results.tex
+│   └── 04-discussion.tex
+├── appendices/
+│   └── appendix-a.tex
+├── figures/
+│   ├── fig-methods.pdf
+│   └── fig-results.pdf
+├── references.bib        ← bibliography database
+└── output/
+    └── thesis.pdf
+```
+
+**Keep figures as vector PDFs** — they scale perfectly at any zoom level and stay sharp in print.
+
+::: {.callout-tip}
+Put this folder in a Git repository from day one. Version control for a thesis is invaluable — you can always go back to an earlier version.
+:::
+
+
+## Bibliography: How It Works {.smaller}
+
+LaTeX separates the bibliography **database** (a `.bib` file) from the **formatting style** (applied at compile time).
+
+**Compilation pipeline with `biblatex` + `biber`:**
+
+```
+pdflatex main.tex     → reads .aux file, notes citation keys
+biber main            → processes main.bib, produces sorted bibliography
+pdflatex main.tex     → inserts formatted references
+pdflatex main.tex     → resolves all cross-references
+```
+
+Most editors (VS Code, Overleaf, TeXstudio) run these steps automatically.
+
+**Choose your backend:**
+
+| Backend | Style package | When to use |
+|---|---|---|
+| `biber` | `biblatex` | Recommended for new projects; Unicode-aware; flexible |
+| `BibTeX` | `natbib` | Legacy; required by some older journal templates |
+
+**Minimum `biblatex` setup:**
+
+```latex
+\usepackage[backend=biber, style=apa]{biblatex}
+\addbibresource{references.bib}
+...
+\printbibliography
+```
+
+
+## The `.bib` File {.smaller}
+
+A `.bib` file is a plain-text database of references. Each entry has a **type**, a **cite key**, and **fields**:
+
+```bibtex
+@article{schepens2024prominence,
+  author    = {Schepens, Job and Smith, Anna},
+  title     = {Prominence in Language},
+  journal   = {Language and Cognition},
+  year      = {2024},
+  volume    = {16},
+  pages     = {123--145},
+  doi       = {10.1017/langcog.2024.12},
+}
+
+@book{chomsky1965aspects,
+  author    = {Chomsky, Noam},
+  title     = {Aspects of the Theory of Syntax},
+  publisher = {MIT Press},
+  address   = {Cambridge, MA},
+  year      = {1965},
+}
+```
+
+Common entry types: `@article`, `@book`, `@incollection`, `@inproceedings`, `@phdthesis`, `@misc`
+
+::: {.callout-note}
+The cite key (e.g. `schepens2024prominence`) is what you use in `\cite{...}` commands. BetterBibTeX generates these automatically from Zotero.
+:::
+
+
+## Zotero: Building Your Reference Library {.smaller}
+
+[**Zotero**](https://www.zotero.org) is a free, open-source reference manager widely used in academia.
+
+**Collecting references:**
+
+- **Browser connector** imports references from publisher websites, Google Scholar, PubMed with one click
+- Drag-and-drop PDFs → Zotero extracts metadata automatically
+- Add by DOI, ISBN, or arXiv ID directly
+
+**Organising your library:**
+
+- Collections and sub-collections (like folders)
+- Tags for thematic grouping; related items for linking connected works
+
+**Generating citations:**
+
+- Word processor plugins (Word, LibreOffice) for inline citations
+- Supports thousands of citation styles (APA, MLA, Chicago, linguistics styles …)
+
+| | |
+|---|---|
+| Download | [zotero.org](https://www.zotero.org) |
+| Browser connector | [zotero.org/download/connectors](https://www.zotero.org/download/connectors) |
+
+::: {.callout-tip}
+Prism (OpenAI) and TeXlyre both include Zotero integration panels for searching and importing references directly within the editor.
+:::
+
+
+## BetterBibTeX: Continuous Auto-export {.smaller}
+
+[**BetterBibTeX**](https://retorque.re/zotero-better-bibtex/) (BBT) is a Zotero plugin that connects your Zotero library directly to your LaTeX project.
+
+**Install:** Zotero → Tools → Plugins → Install from file (download `.xpi` from [retorque.re/zotero-better-bibtex](https://retorque.re/zotero-better-bibtex/))
+
+**Cite keys:**
+
+BBT generates a stable, customisable cite key for every item:
+
+- Default pattern: `[auth:lower][year][veryshorttitle]` → `schepens2024prominence`
+- Configure globally: Preferences → Better BibTeX → Citation Keys
+- Pin individual keys to prevent them from changing
+
+**Setting up auto-export — set it and forget it:**
+
+1. Right-click a Zotero collection → **Export Collection…**
+2. Format: **Better BibLaTeX** (or Better BibTeX)
+3. Check **Keep updated**
+4. Save as `references.bib` in your LaTeX project folder
+
+::: {.callout-tip}
+With **Keep updated** enabled, every time you add, edit, or delete a reference in Zotero, the `.bib` file regenerates automatically. Your LaTeX project always has fresh, correct references — no manual exports needed.
+:::
+
+
+## Citation Commands in `biblatex` {.smaller}
+
+With `\usepackage[backend=biber, style=apa]{biblatex}` and `\addbibresource{references.bib}`:
+
+| Command | Output |
+|---|---|
+| `\cite{key}` | (Author, Year) |
+| `\parencite{key}` | (Author, Year) — parenthetical |
+| `\textcite{key}` | Author (Year) — narrative |
+| `\autocite{key}` | Style-determined; adapts to context |
+| `\cites{key1}{key2}` | Multiple citations |
+| `\footcite{key}` | Footnote citation |
+
+**Example text:**
+
+```latex
+\textcite{schepens2024prominence} argue that prominence is cross-linguistic.
+Several studies support this claim \parencite{chomsky1965aspects, schepens2024prominence}.
+```
+
+**Print the bibliography:**
+
+```latex
+\printbibliography                        % full bibliography
+\printbibliography[heading=bibintoc]      % include in table of contents
+\printbibliography[type=article]          % filter by entry type
+```
+
+
+## Quarto: Literate Programming Meets LaTeX {.smaller}
+
+[**Quarto**](https://quarto.org) is a scientific publishing system that produces PDF output via LaTeX while keeping analysis code and prose in a single source file.
+
+**A Quarto document (`.qmd`):**
+
+````markdown
+---
+title: "My Analysis"
+format: pdf
+---
+
+## Introduction
+
+We analysed **N = 42** participants.
+
+```{{r}}
+#| label: fig-histogram
+#| fig-cap: "Distribution of scores"
+hist(rnorm(100))
+```
+
+As shown in @fig-histogram, scores are normally distributed.
+````
+
+- Write in **Markdown** (with LaTeX commands where needed)
+- Embed **R, Python, or Julia** code chunks — output appears in the compiled PDF
+- Cross-references (`@fig-histogram`), citations (`@key`), and equations all work out of the box
+
+::: {.callout-note}
+Quarto is the successor to R Markdown. It supports multiple languages and output formats (PDF, HTML, DOCX, slides) from the same source file.
+:::
+
+
+## Quarto PDF Output and LaTeX Options {.smaller}
+
+Quarto converts `.qmd` → LaTeX → PDF via a TeX Live installation.
+
+**Configure LaTeX in the YAML header:**
+
+```yaml
+---
+title: "Thesis Chapter"
+format:
+  pdf:
+    documentclass: report
+    papersize: a4
+    fontsize: 12pt
+    geometry: margin=2.5cm
+    keep-tex: true          # inspect the generated .tex file
+    include-in-header: preamble.tex   # your custom packages
+    cite-method: biblatex
+    bibliography: references.bib
+    biblio-style: apa
+---
+```
+
+**Why `keep-tex: true`?**
+
+- Lets you inspect and modify the generated LaTeX if something doesn't look right
+- Some journals require a `.tex` submission file — Quarto can generate it
+
+::: {.callout-tip}
+Install Quarto from [quarto.org/docs/get-started](https://quarto.org/docs/get-started/). With TinyTeX (`tinytex::install_tinytex()` in R), PDF output works immediately — no separate TeX Live install needed.
+:::
+
+
+## TikZ: Programmatic Figures {.smaller}
+
+[**TikZ**](https://ctan.org/pkg/pgf) ("TikZ ist kein Zeichenprogramm") is a LaTeX package for creating figures programmatically — directly in your `.tex` source.
+
+**Why TikZ?**
+
+- Figures are plain text — version-controlled alongside your paper
+- Perfect vector output at any scale
+- Consistent fonts and styling with the surrounding document
+- Highly precise control over every element
+
+**Minimal setup:**
+
+```latex
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}  % load useful libraries
+```
+
+**Drawing shapes and paths:**
+
+```latex
+\begin{tikzpicture}
+  \draw[thick, fill=blue!20] (0,0) rectangle (3,2);
+  \draw[red, ->] (0,0) -- (3,2) node[right] {diagonal};
+  \node[circle, draw, fill=green!30] at (1.5,1) {center};
+\end{tikzpicture}
+```
+
+::: {.callout-note}
+TikZ has a steep learning curve. [tikz.dev](https://tikz.dev) and the PGF/TikZ manual on CTAN are comprehensive references. Start small and build up.
+:::
+
+
+## TikZ: Common Use Cases {.smaller}
+
+**Flowcharts and process diagrams:**
+
+```latex
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+\begin{tikzpicture}[node distance=1.5cm]
+  \node[draw, rectangle] (A) {Step 1};
+  \node[draw, rectangle, below of=A] (B) {Step 2};
+  \node[draw, diamond, below of=B] (C) {Decision?};
+  \draw[->] (A) -- (B);  \draw[->] (B) -- (C);
+\end{tikzpicture}
+```
+
+**Plots via PGFPlots:**
+
+```latex
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\begin{tikzpicture}
+  \begin{axis}[xlabel={$x$}, ylabel={$f(x)$}]
+    \addplot[blue, thick]{x^2};
+  \end{axis}
+\end{tikzpicture}
+```
+
+**Syntax trees (linguistics):**
+
+```latex
+\usepackage{tikz-qtree}
+\begin{tikzpicture}
+  \Tree [.S [.NP Det N ] [.VP V [.NP Det N ] ] ]
+\end{tikzpicture}
+```
+
+::: {.callout-tip}
+For complex figures, consider generating them in Python (`matplotlib` PGF backend) or R (`tikzDevice`) and importing the resulting `.tex` fragment.
+:::
+
+
+## Templates: Journals and Theses {.smaller}
+
+**Journal templates** provide `.cls` and `.sty` files that enforce house style:
+
+| Source | What you get |
+|---|---|
+| [Overleaf Gallery — Journals](https://www.overleaf.com/gallery/tagged/academic-journal) | Templates for hundreds of journals |
+| Publisher websites | ACL, IEEE, Springer, Elsevier all provide LaTeX kits |
+| CTAN journal classes | `elsarticle`, `acmart`, `IEEEtran` and many more |
+
+**Thesis templates:**
+
+| Source | Link |
+|---|---|
+| Overleaf Thesis Gallery | [overleaf.com/gallery/tagged/thesis](https://www.overleaf.com/gallery/tagged/thesis) |
+| Universität zu Köln | Check your faculty's doctoral office for approved templates |
+| GitHub | Search `latex thesis template <university>` |
+
+**Starting from a template:**
+
+1. Download the template folder
+2. Fill in `main.tex`; delete the placeholder content
+3. Point `\addbibresource` to your Zotero-exported `.bib` file
+4. Compile and iteratively fix errors
+
+
+## Debugging LaTeX: Reading Error Messages {.smaller}
+
+LaTeX error messages appear in the log file. The key pattern:
+
+```
+! LaTeX Error: File `missfont.fd' not found.
+l.42 \begin{document}
+```
+
+- `!` marks the error type
+- The next line describes the problem
+- `l.42` tells you the source line where LaTeX stopped
+
+**Common errors and fixes:**
+
+| Error | Likely cause | Fix |
+|---|---|---|
+| `Undefined control sequence` | Typo in command or missing package | Check spelling; add the right `\usepackage` |
+| `Missing $ inserted` | Math symbol outside math mode | Wrap in `$...$` |
+| `File not found` | Missing image or `.bib` file | Check filename and path |
+| `Runaway argument` | Unclosed `{` brace | Count `{` and `}` carefully |
+| `Too many }'s` | Extra closing brace | Remove the extra `}` |
+
+::: {.callout-tip}
+Compile often — catching one error at a time is much easier than debugging 20 at once. Search the error message on [tex.stackexchange.com](https://tex.stackexchange.com) — most errors are already answered there.
+:::
+
+
+## Summary
+
+:::: {.columns}
+::: {.column}
+**Document organisation**
+
+- `report`/`book` class for long documents
+- `\input` / `\include` for multi-file projects
+- Recommended folder structure for theses
+
+**Bibliography workflow**
+
+- Zotero collects and organises references
+- BetterBibTeX auto-exports a continuously updated `.bib` file
+- `biblatex` + `biber` for modern citation management
+:::
+::: {.column}
+**Advanced tools**
+
+- **Quarto** — analysis + prose in one file; PDF via LaTeX
+- **TikZ** — programmatic vector figures in LaTeX
+- **Templates** — start from a journal or thesis template
+
+**Debugging**
+
+- Read the error message and the line number
+- Compile often; fix one error at a time
+
+::: {.callout-note .smaller}
+All materials: [dkz2r.de/tags/latex](https://www.dkz2r.de/tags/latex/)
+:::
+:::
+::::
+
+
+## Resources
+
+- [lshort — The Not So Short Introduction to LaTeX](https://www.ctan.org/pkg/lshort)
+- [Zotero — Reference Manager](https://www.zotero.org)
+- [BetterBibTeX for Zotero](https://retorque.re/zotero-better-bibtex/)
+- [biblatex documentation (CTAN)](https://ctan.org/pkg/biblatex)
+- [Quarto — Scientific Publishing](https://quarto.org)
+- [TikZ & PGF documentation](https://ctan.org/pkg/pgf)
+- [tikz.dev — TikZ reference](https://tikz.dev)
+- [PGFPlots — plots in LaTeX](https://ctan.org/pkg/pgfplots)
+- [Overleaf thesis templates](https://www.overleaf.com/gallery/tagged/thesis)
+- [DKZ.2R: LaTeX for Novices — Academic Publishing](https://dkz2r.github.io/latex-novice-academic-publishing/)
+- [Prism — OpenAI's AI-native LaTeX workspace](https://prism.openai.com)
+- [TeXlyre — Open-source, local-first LaTeX editor](https://texlyre.github.io/texlyre/)
+- [tex.stackexchange.com](https://tex.stackexchange.com)

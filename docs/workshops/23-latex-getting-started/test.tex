@@ -1,0 +1,135 @@
+% ============================================================
+%  Short Research Paper — APA 7th edition template
+%  Requires: biblatex-apa (backend=biber), TeX Live 2020+
+% ============================================================
+\documentclass[man, 12pt, a4paper]{apa7}
+% 'man'   = manuscript mode (double-spaced, title page, running head)
+% 'jou'   = journal mode   (single-spaced, two-column — uncomment to switch)
+% 'doc'   = document mode  (single-spaced, one-column)
+
+% ------ Encoding & fonts ------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% ------ Language ------
+\usepackage[american]{babel}
+\usepackage{csquotes}          % recommended with biblatex
+
+% ------ Bibliography: APA 7 ------
+\usepackage[style=apa, backend=biber]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+\addbibresource{references.bib}  % ← point to your Zotero/BetterBibTeX export
+
+% ------ Graphics & tables ------
+\usepackage{graphicx}
+\usepackage{booktabs}          % \toprule, \midrule, \bottomrule
+\usepackage{tabularx}
+
+% ------ Math (optional) ------
+\usepackage{amsmath}
+
+% ------ Hyperlinks (apa7 loads hyperref internally; configure via \hypersetup) ------
+\hypersetup{hidelinks}
+
+% ============================================================
+%  Document metadata — fill in before compiling
+% ============================================================
+\title{Your Paper Title: Subtitle if Needed}
+
+\authorsnames{First Author, Second Author}
+\authorsaffiliations{Department of Linguistics, Universität zu Köln}
+
+\note{
+  % Optional author note: funding, conflicts of interest, acknowledgements.
+  This research was supported by Deutsche Forschungsgemeinschaft (DFG)
+  grant number XXX.\\
+  Correspondence: \href{mailto:author@uni-koeln.de}{author@uni-koeln.de}
+}
+
+\abstract{
+  Write a concise summary of the paper (150–250 words for APA).
+  Include the research question, method, key results, and main conclusion.
+  Do not cite references in the abstract.
+}
+
+\keywords{keyword one, keyword two, keyword three}
+
+% ============================================================
+\begin{document}
+
+\maketitle
+
+% ============================================================
+\section{Introduction}
+% ============================================================
+
+Introduce the research problem and motivate the study.
+Cite relevant prior work \parencite{AuthorYearShortTitle}
+and situate your contribution.
+\textcite{AuthorYearShortTitle} showed that \ldots
+
+% ============================================================
+\section{Method}
+% ============================================================
+
+\subsection{Participants}
+
+Describe the sample (N, demographics, recruitment).
+
+\subsection{Materials and Procedure}
+
+Describe stimuli, measures, and experimental procedure.
+Report ethical approval if applicable.
+
+% ============================================================
+\section{Results}
+% ============================================================
+
+Report your findings.
+All statistical values should include effect sizes and confidence intervals
+in line with APA 7 reporting standards.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Descriptive statistics.}
+  \label{tab:descriptives}
+  \begin{tabularx}{\linewidth}{lXX}
+    \toprule
+    Variable & $M$ & $SD$ \\
+    \midrule
+    Measure A & 0.00 & 0.00 \\
+    Measure B & 0.00 & 0.00 \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Table~\ref{tab:descriptives} shows the descriptive statistics.
+Figure~\ref{fig:results} illustrates \ldots
+
+\begin{figure}[htbp]
+  \centering
+  % \includegraphics[width=\linewidth]{figures/results.pdf}
+  \caption{Caption describing the figure. \textit{Note.} Additional notes if needed.}
+  \label{fig:results}
+\end{figure}
+
+% ============================================================
+\section{Discussion}
+% ============================================================
+
+Interpret your results in relation to the research question.
+Discuss limitations and directions for future research.
+
+% ============================================================
+\section{Conclusion}
+% ============================================================
+
+Briefly restate the main finding and its significance.
+
+% ============================================================
+%  References — generated automatically from references.bib
+% ============================================================
+\printbibliography
+
+\end{document}
+

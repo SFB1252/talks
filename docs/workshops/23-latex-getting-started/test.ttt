@@ -1,0 +1,15 @@
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[htbp]
+  \centering
+  \caption{Descriptive statistics.}
+  \label{tab:descriptives}
+  \begin{tabularx}{\linewidth}{lXX}
+    \toprule
+    Variable & $M$ & $SD$ \\
+    \midrule
+    Measure A & 0.00 & 0.00 \\
+    Measure B & 0.00 & 0.00 \\
+    \bottomrule
+  \end{tabularx}
+\end{table*}

@@ -1,0 +1,8 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[htbp]
+  \centering
+  % \includegraphics[width=\linewidth]{figures/results.pdf}
+  \caption{Caption describing the figure. \textit{Note.} Additional notes if needed.}
+  \label{fig:results}
+\end{figure*}

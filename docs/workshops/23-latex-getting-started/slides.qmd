@@ -1,0 +1,676 @@
+---
+title: "Getting Started with LaTeX"
+subtitle: "Documents, Distributions, and Collaborative Writing"
+author:
+  - name: "Job Schepens"
+    id: js
+    orcid: 0000-0003-1271-2526
+    email: job.schepens@uni-koeln.de
+    affiliation:
+      - name: Universität zu Köln
+        department: CRC 1252 Prominence in Language, Project S
+        city: Cologne, Germany
+        url: https://jobschepens.github.io/personal-page/
+date: "17 June 2026"
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../../stylesheets/mytheme.scss]
+    logo: ../../logo.png
+    slide-number: true
+    scrollable: true
+    mouse-wheel: true
+    footer: "RDM Workshop Series · SFB 1252 Prominence in Language · Universität zu Köln"
+    output-file: slides.html
+    embed-resources: true
+    transition: none
+    background-transition: none
+---
+
+## Overview
+
+- **What** LaTeX is — document structure, commands, environments
+- **Basic markup** — text formatting, math, figures, tables, cross-references
+- **Distributions** — how to install LaTeX on your machine
+- **Editors** — Overleaf, Prism (OpenAI), TeXlyre, TeXstudio, VS Code
+- **Bibliography basics** — Zotero and BetterBibTeX (preview; more in Session 2)
+- **Hands-on:** writing a minimal document together
+
+::: {.callout-tip}
+**No prior LaTeX experience required.** We start from scratch.
+Session 2 covers thesis document structure, Quarto, TikZ, and advanced bibliography management.
+:::
+
+
+## What Is LaTeX?
+
+LaTeX is a **document preparation system** based on plain-text markup.
+
+```latex
+\documentclass{article}
+\begin{document}
+
+Hello, \textbf{world}!
+
+\end{document}
+```
+
+- You write markup in a `.tex` file — LaTeX compiles it to PDF
+- Separates **content** from **formatting** — you describe *what* something is, not how it looks
+- The standard for academic publishing in linguistics, mathematics, and many sciences
+
+::: {.callout-note}
+LaTeX is not a word processor. You never see the final layout while typing — you compile to see the result.
+:::
+
+
+## Document Structure {.smaller}
+
+Every LaTeX document has two parts: the **preamble** and the **body**.
+
+```latex
+\documentclass[12pt,a4paper]{article}  % document class + options
+
+% --- Preamble: load packages and configure settings ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{My Paper}
+\author{Jane Doe}
+\date{\today}
+
+% --- Body: the typeset content ---
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+Text goes here.
+
+\end{document}
+```
+
+- `\documentclass` sets the layout template (`article`, `report`, `book`, `beamer` …)
+- Load packages in the preamble with `\usepackage{name}`
+- Everything between `\begin{document}` and `\end{document}` is compiled
+
+
+## Commands and Environments
+
+**Commands** start with a backslash and take optional `[…]` and required `{…}` arguments:
+
+```latex
+\textbf{bold text}
+\section{Introduction}
+\includegraphics[width=0.8\linewidth]{figure.pdf}
+```
+
+**Environments** wrap a block of content between `\begin{name}` and `\end{name}`:
+
+```latex
+\begin{itemize}
+  \item First point
+  \item Second point
+\end{itemize}
+
+\begin{equation}
+  E = mc^2
+\end{equation}
+```
+
+**Comments** begin with `%` and are ignored by the compiler:
+
+```latex
+% This is a comment
+This text \textit{will} appear.  % inline comment
+```
+
+::: {.callout-tip}
+The most common beginner mistake is forgetting `\end{name}` to close an environment.
+:::
+
+
+## Text Formatting and Lists {.smaller}
+
+**Inline formatting:**
+
+| Syntax | Result |
+|---|---|
+| `\textbf{text}` | **bold** |
+| `\textit{text}` | *italic* |
+| `\underline{text}` | underlined |
+| `\texttt{text}` | `monospace` |
+| `\emph{text}` | *context-sensitive emphasis* |
+
+**Sectioning commands:**
+
+```latex
+\section{First Section}       % numbered 1, 2, 3 …
+\subsection{A Subsection}     % 1.1, 1.2 …
+\subsubsection{Deeper}        % 1.1.1 …
+```
+
+**Lists:**
+
+```latex
+\begin{itemize}          % unordered (bullets)
+  \item First item
+  \item Second item
+\end{itemize}
+
+\begin{enumerate}        % ordered (numbers)
+  \item Step one
+  \item Step two
+\end{enumerate}
+```
+
+
+## Math in LaTeX {.smaller}
+
+LaTeX's math typesetting is unmatched among document preparation tools.
+
+**Inline math** — wrap in `$…$`:
+
+```latex
+Einstein showed that $E = mc^2$.
+The mean is $\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$.
+```
+
+**Display math** — `\[…\]` or `equation` for a numbered equation:
+
+```latex
+\[
+  \int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}
+\]
+
+\begin{equation}
+  \label{eq:bayes}
+  P(H \mid D) = \frac{P(D \mid H)\,P(H)}{P(D)}
+\end{equation}
+```
+
+**Common symbols:**
+
+| Syntax | Symbol |
+|---|---|
+| `\alpha`, `\beta`, `\gamma` | α β γ |
+| `\frac{a}{b}` | fraction |
+| `x^{2}`, `x_{i}` | superscript, subscript |
+| `\sum`, `\int`, `\infty` | Σ ∫ ∞ |
+
+::: {.callout-tip}
+The `amsmath` package adds `align`, `cases`, and `pmatrix` environments for complex expressions.
+:::
+
+
+## Figures, Tables, and Cross-references {.smaller}
+
+**Inserting a figure:**
+
+```latex
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\linewidth]{myfigure.pdf}
+  \caption{A descriptive caption.}
+  \label{fig:myfigure}
+\end{figure}
+```
+
+**A simple table:**
+
+```latex
+\begin{table}[htbp]
+  \centering
+  \caption{Summary statistics.}
+  \label{tab:summary}
+  \begin{tabular}{lcc}
+    \hline
+    Variable & Mean & SD \\
+    \hline
+    Age & 32.4 & 5.1 \\
+    Score & 78.2 & 8.3 \\
+    \hline
+  \end{tabular}
+\end{table}
+```
+
+**Cross-references — `\label` to mark, `\ref` to cite:**
+
+```latex
+See Figure~\ref{fig:myfigure} and Table~\ref{tab:summary}.
+Equation~\ref{eq:bayes} shows Bayes' theorem.
+```
+
+LaTeX resolves all numbers automatically — renumbering never breaks references.
+
+::: {.callout-note}
+`[htbp]` tells LaTeX where to place the float: **h**ere, **t**op, **b**ottom, or a separate **p**age.
+:::
+
+
+## Advantages of LaTeX {.smaller}
+
+**Consistent, professional typography — automatically**
+
+- Fonts, text sizes, line heights, and layout follow the rules you set once
+- No manual reformatting when you restructure a document
+- Handles citations, cross-references, figure/table numbering automatically
+
+**Designed for complex documents**
+
+- Mathematical formulas, linguistic examples, tables, figures — first-class support
+- Long documents (theses, books) stay manageable
+- Style files from journals mean submission-ready formatting with minimal effort
+
+**Plain text — version-control friendly**
+
+- `.tex` files are plain text: diff them, track them in Git, collaborate via pull requests
+- No binary format that breaks between software versions
+
+::: {.callout-tip}
+Source: [LaTeX/Introduction — Wikibooks](https://en.wikibooks.org/wiki/LaTeX/Introduction)
+:::
+
+
+## LaTeX and Reproducible Research
+
+LaTeX integrates well with reproducible research workflows:
+
+| Approach | How it works |
+|---|---|
+| **Plain LaTeX** | Write `.tex` by hand; import figures from separate scripts |
+| **R Markdown** | Mix R code and LaTeX-style text; compile to PDF via LaTeX |
+| **Quarto** | Successor to R Markdown; supports Python, R, Julia; PDF output via LaTeX |
+| **Jupyter + LaTeX** | Figures generated in a notebook; imported into the `.tex` manuscript |
+
+::: {.callout-note}
+For fully reproducible manuscripts, literate programming tools (R Markdown, Quarto) are often preferred over plain `.tex` files — they keep the analysis and the document in one place.
+
+See: [The Turing Way — Literate Programming](https://book.the-turing-way.org/reproducible-research/case-studies/case-study-statistical/#literate-programming)
+:::
+
+
+## Key Resource 1: lshort
+
+**"The Not So Short Introduction to LaTeX"** (`lshort`)
+
+> *lshort started as a translation and rationalisation of a ground-breaking German-language introduction to LaTeX. It has since taken on a momentum of its own, and has itself been translated into a number of languages.*
+
+- The most widely recommended beginner reference
+- Available in many languages
+- Covers everything from basic formatting to math, figures, and bibliography
+
+::: {.callout-tip}
+Download or read online: [https://www.ctan.org/pkg/lshort](https://www.ctan.org/pkg/lshort)
+:::
+
+
+## Key Resource 2: DKZ.2R Workshop Materials {.smaller}
+
+**"LaTeX for Novices: Academic Publishing"**  
+from the Rhine-Ruhr Center for Scientific Data Literacy (DKZ.2R)
+
+- Follows the **Carpentries** workshop template — structured, hands-on lessons
+- Tested and refined over **four deliveries**
+- Covers the full workflow: from a blank document to a formatted academic paper
+
+| Resource | Link |
+|---|---|
+| Lesson website | [dkz2r.github.io/latex-novice-academic-publishing](https://dkz2r.github.io/latex-novice-academic-publishing/) |
+| Source on GitHub | [github.com/dkz2r/latex-novice-academic-publishing](https://github.com/dkz2r/latex-novice-academic-publishing) |
+| Past workshops | [dkz2r.de/tags/latex](https://www.dkz2r.de/tags/latex/) |
+
+::: {.callout-note}
+Today's hands-on section follows this workshop's materials. You can work through the full lesson at your own pace after today.
+:::
+
+
+## More Learning Resources
+
+**Reference documentation**
+
+- [Overleaf Learn](https://www.overleaf.com/learn) — searchable, example-rich LaTeX documentation
+- [LaTeX/Introduction — Wikibooks](https://en.wikibooks.org/wiki/LaTeX/Introduction) — free, community-maintained textbook
+
+**Quick lookup**
+
+- [CTAN](https://ctan.org) — the Comprehensive TeX Archive Network; every LaTeX package with documentation
+- [tex.stackexchange.com](https://tex.stackexchange.com) — Q&A for LaTeX questions; most errors are already answered there
+
+::: {.callout-tip}
+When you get a LaTeX error, copy the error message into a search engine together with *"tex stackexchange"* — there is almost always a thread with a working answer.
+:::
+
+
+## Collaborative LaTeX: Overleaf
+
+**Overleaf** is a web-based LaTeX editor with real-time collaboration.
+
+- Write and compile LaTeX entirely in the browser — no local installation needed
+- Share documents with co-authors; see each other's edits live
+- Track changes and add comments
+- Directly submit to many journals (e.g., PLOS, IOP, arXiv)
+
+**At the University of Cologne — via Sciebo:**
+
+| | |
+|---|---|
+| Launch Overleaf via Sciebo | [uni-koeln.sciebo.de → Apps → Overleaf](https://uni-koeln.sciebo.de/apps/overleaf_nextcloud/launcher/launch) |
+| Sciebo Overleaf documentation | [docs.sciebo.de → Apps → Overleaf](https://docs.sciebo.de/en/docs/apps/overleaf/) |
+
+::: {.callout-note}
+The Sciebo-linked Overleaf instance keeps your files on university infrastructure. Files are stored in your Sciebo (Nextcloud) account, not on Overleaf's servers.
+:::
+
+
+## LaTeX Distributions {.smaller}
+
+A **LaTeX distribution** bundles the compiler, packages, and fonts you need to compile `.tex` files locally.
+
+| Distribution | Platform | Notes |
+|---|---|---|
+| **TeX Live** | Linux, macOS, Windows | Most complete; strongly recommended by the VS Code LaTeX extension |
+| **MiKTeX** | Windows (also Linux/macOS) | Installs missing packages on the fly; lighter initial install |
+| **TinyTeX** | Windows, Linux, macOS | Minimal, R-friendly; install from R with `tinytex::install_tinytex()` |
+
+**Which should I use?**
+
+- **VS Code** users: install **TeX Live** for the smoothest experience
+- **R / RStudio** users writing in R Markdown or Quarto: **TinyTeX** is the easiest path
+- **Windows** users who want a GUI installer: **MiKTeX** is straightforward
+
+::: {.callout-tip}
+If you are unsure, install **TeX Live** — it is the most complete and avoids missing-package errors.
+:::
+
+
+## The Local Installation Problem {.smaller}
+
+Before choosing an editor, it is worth being honest about why many researchers avoid local LaTeX altogether.
+
+**Common complaints (from practitioners):**
+
+> "LaTeX is such a nightmare to work with locally."
+
+> "Just install LaTeX is really not a valid response when the LaTeX toolchain is a genuine nightmare to work with."
+
+- Package version mismatches between collaborators produce different output from the same source file
+- Merging collaborative edits in Git is difficult with scientific, nuanced prose
+- Installing, updating, and debugging the toolchain takes real effort
+
+**Web-based editors solve most of this:**
+
+- Everyone compiles with the same packages and options — no version drift
+- Collaborative editing without merge conflicts
+- No local installation required
+- Templates are built in; the distribution stays up-to-date automatically
+
+::: {.callout-note}
+Using Overleaf, Prism, or TeXlyre is not a compromise — for many workflows it is the right first choice.
+:::
+
+
+## Editors for LaTeX {.smaller}
+
+You can write LaTeX in any text editor, but dedicated tools add compilation, preview, and autocomplete.
+
+| Editor | Type | Best for |
+|---|---|---|
+| **Overleaf** | Web-based | Collaboration; most popular in academia |
+| **Prism** (OpenAI) | Web-based, AI-native | AI-assisted writing, citations, proofreading; free |
+| **TeXlyre** | Web-based, open-source | Privacy-first; offline; self-hostable; real-time collaboration |
+| **TeXstudio** | Desktop | Dedicated LaTeX GUI; built-in PDF viewer |
+| **VS Code + LaTeX Workshop** | Desktop + extension | Researchers already using VS Code |
+
+::: {.callout-note}
+All web-based editors require no local LaTeX installation. For local editing, VS Code + LaTeX Workshop or TeXstudio both work well with TeX Live.
+:::
+
+
+## Prism — AI-Native LaTeX Workspace {.smaller}
+
+[**Prism**](https://prism.openai.com) is OpenAI's free, cloud-based LaTeX editor designed for scientific writing.
+
+**Key features:**
+
+- **Free** with unlimited collaborators and unlimited compile time
+- **AI assistant** powered by ChatGPT, integrated throughout the writing workflow:
+  - Proofreading, summarising, and restructuring your text
+  - Literature search with direct citation import
+  - Image-to-LaTeX and voice-to-code conversion
+- **Project-aware AI** — the assistant understands the full context of your manuscript, including past drafts and revisions
+- Zotero integration for citation search and import
+- Real-time collaboration with inline comments
+- Built-in error checking, citation management, and equation conversion
+
+::: {.callout-tip}
+Start writing at [prism.openai.com](https://prism.openai.com) — no local installation needed.
+:::
+
+
+## TeXlyre — Open-Source, Local-First LaTeX {.smaller}
+
+[**TeXlyre**](https://texlyre.github.io/texlyre/) is a free, open-source, browser-based LaTeX and Typst editor with a strong focus on privacy and offline capability.
+
+**Key features:**
+
+- **Local-first** — all documents stored in your browser (IndexedDB); works fully offline
+- **Real-time collaboration** via WebRTC peer-to-peer — no central server sees your content
+- In-browser LaTeX compilation using TeX Live 2026 (WASM) — supports pdfTeX, XeTeX, LuaTeX
+- **SyncTeX** — click source to jump to PDF position and vice versa
+- Integrated Draw.io diagram editor for collaborative figures
+- Zotero and OpenAlex reference search and import panel
+- Inline math preview and editing with MathLive virtual keyboard
+- Git backup to GitHub, GitLab, Gitea, or Codeberg
+- **Self-hostable** — run your own instance on university or personal infrastructure
+
+| | |
+|---|---|
+| Try online | [texlyre.github.io/texlyre](https://texlyre.github.io/texlyre/) |
+| Source code | [github.com/TeXlyre/texlyre](https://github.com/TeXlyre/texlyre) |
+| License | AGPL-3.0 (funded by NLnet / NGI0 Commons Fund) |
+
+
+## VS Code — LaTeX Workshop Extension {.smaller}
+
+**VS Code + LaTeX Workshop** is a powerful local setup for researchers already using VS Code.
+
+- Syntax highlighting, snippet completion, build on save
+- Side-by-side PDF preview (**SyncTeX**: click source → jumps to PDF position and vice versa)
+- Linting via `lacheck` / `chktex`; auto-formatter via `latexindent`
+- Works alongside Git for version control of your source files
+
+Install guide: [github.com/James-Yu/LaTeX-Workshop/wiki/Install](https://github.com/James-Yu/LaTeX-Workshop/wiki/Install)
+
+::: {.callout-note}
+LaTeX Workshop requires a local TeX Live (or MiKTeX) installation to compile documents.
+:::
+
+
+## Alternatives to LaTeX {.smaller}
+
+LaTeX is the standard in many fields, but other tools are worth knowing:
+
+| Tool | Type | Notes |
+|---|---|---|
+| **Typst** | Markup → PDF | Modern typesetting language; much faster compilation; growing package ecosystem; simpler syntax than LaTeX |
+| **Quarto / MyST** | Literate programming | R, Python, Julia code + prose in one file; PDF via LaTeX; ideal for reproducible research |
+| **Lattics** | Writing app | Markdown-based academic writing environment; knowledge graph for literature notes |
+| **Obsidian** | Knowledge management | Markdown; excellent for note-taking and literature review; not a publishing tool |
+| **Typora** | Markdown editor | Clean live-preview Markdown editor; limited support for complex academic formatting |
+
+::: {.callout-tip}
+**Typst** is the most direct LaTeX alternative for new documents. **Quarto** is often the better choice for researchers who run analysis code alongside their writing.
+:::
+
+
+## Additional Tools
+
+**`latexindent`** — automatic formatting for `.tex` files
+
+- Reformats indentation and spacing in your source code
+- Integrated into VS Code LaTeX Workshop (runs on save if configured)
+- Documentation: [ctan.org/tex-archive/support/latexindent](https://ctan.org/tex-archive/support/latexindent)
+
+**Other useful utilities**
+
+| Tool | Purpose |
+|---|---|
+| `biber` / `BibTeX` | Bibliography management; processes `.bib` files |
+| `makeindex` / `xindy` | Generates indices |
+| `latexmk` | Automates the multi-pass compilation process |
+| `pdftk` / `ghostscript` | Post-processing and merging PDF output |
+
+::: {.callout-tip}
+TeX Live includes most of these tools by default — you rarely need to install them separately.
+:::
+
+
+## Bibliography Tools: A First Look {.smaller}
+
+LaTeX handles bibliographies through external tools. Two key tools in the academic workflow:
+
+**Zotero — reference manager**
+
+- Free, open-source reference manager
+- Browser connector: one-click import from publishers, Google Scholar, PubMed
+- Organises your library; generates citations in thousands of styles
+- Website: [zotero.org](https://www.zotero.org)
+
+**BetterBibTeX — seamless LaTeX integration**
+
+- Zotero plugin that auto-exports your library to a `.bib` file
+- Generates stable, customisable cite keys (e.g. `schepens2024prominence`)
+- **Continuous auto-export** — every time you add or edit a reference in Zotero, the `.bib` file regenerates automatically; your LaTeX project always has fresh references
+
+::: {.callout-note}
+**Session 2** covers the full BetterBibTeX workflow, `.bib` file structure, `biblatex`/`biber`, and citation commands in depth.
+:::
+
+
+## AI and LaTeX {.smaller}
+
+**The opportunity**
+
+LaTeX's plain-text format makes it unusually well-suited for AI assistance:
+
+- AI tools can generate, edit, and fix `.tex` directly — something not possible with binary word-processor formats
+- Useful for: fixing compilation errors, generating boilerplate, converting equations, reformatting tables
+
+**The concern — an editor's perspective**
+
+AI writing tools also lower the barrier to submitting *scientifically empty* manuscripts:
+
+> "From my perspective as a journal editor, these tools cause many more problems than they solve. A significant fraction of submissions are now vibe-written and come from folks looking to boost their CV — this just wastes already-stretched reviewer time."
+
+> "The hard part always has been, and always will be, understanding the research context and producing novel and interesting work. Connecting this together in a paper is a learnable skill, but it is really a minimal part of the process."
+
+**A useful distinction for workshop participants:**
+
+| Use of AI | Assessment |
+|---|---|
+| Fix a LaTeX error, reformat a table | Generally fine |
+| Improve clarity of your own text | Fine with care |
+| Generate scientific content, arguments, or citations | Problematic |
+
+
+## Coming in Session 2 {.smaller}
+
+The next workshop builds on today's foundations:
+
+| Topic | What you will learn |
+|---|---|
+| **Thesis document structure** | `\input`, `\include`, multi-file projects, `report`/`book` class |
+| **Bibliography deep dive** | `.bib` files, `biblatex`, `biber`, citation commands |
+| **Zotero + BetterBibTeX** | Auto-export, cite keys, keeping references in sync |
+| **Quarto** | Literate programming: R/Python + LaTeX in a single source file |
+| **TikZ** | Programmatic vector figures and diagrams directly in LaTeX |
+| **Templates** | Journal submission files; university thesis templates |
+| **Debugging** | Reading error messages; common pitfalls |
+
+::: {.callout-tip}
+All materials will be posted at [dkz2r.de/tags/latex](https://www.dkz2r.de/tags/latex/) after the workshop.
+:::
+
+
+## Hands-On Exercise {.smaller}
+
+Work through the DKZ.2R lesson at [dkz2r.github.io/latex-novice-academic-publishing](https://dkz2r.github.io/latex-novice-academic-publishing/):
+
+**Step 1 — Set up your editor (choose one):**
+
+- **Overleaf (no install):** log in via [Sciebo → Apps → Overleaf](https://uni-koeln.sciebo.de/apps/overleaf_nextcloud/launcher/launch) → New Project → Blank
+- **Local (VS Code):** confirm TeX Live is installed, open an empty folder, create `main.tex`
+
+**Step 2 — Write a minimal document:**
+
+```latex
+\documentclass{article}
+\title{My First Document}
+\author{Your Name}
+\date{\today}
+\begin{document}
+\maketitle
+Hello, LaTeX!
+\end{document}
+```
+
+**Step 3 — Compile and explore:**
+
+- Add a section, a list, and a simple equation
+- Try importing a figure or adding a bibliography entry
+
+::: {.callout-tip}
+Stuck? Check [tex.stackexchange.com](https://tex.stackexchange.com) or ask — most errors have a known fix.
+:::
+
+
+## Summary
+
+:::: {.columns}
+::: {.column}
+**Concepts**
+
+- LaTeX separates content from formatting
+- Preamble sets up packages; body holds the content
+- Commands and environments structure the document
+- Math, figures, tables, and cross-references all built in
+- Plain-text source is version-control friendly
+:::
+::: {.column}
+**Practical choices**
+
+| Goal | Recommendation |
+|---|---|
+| AI-assisted writing; free | Prism (OpenAI) |
+| Privacy-first / offline | TeXlyre |
+| Sciebo integration | Overleaf via Sciebo |
+| Local + VS Code | TeX Live + LaTeX Workshop |
+| R / Quarto | TinyTeX |
+| Dedicated LaTeX GUI | TeXstudio |
+
+::: {.callout-note .smaller}
+**Start here:** [dkz2r.github.io/latex-novice-academic-publishing](https://dkz2r.github.io/latex-novice-academic-publishing/)
+:::
+:::
+::::
+
+
+## Resources
+
+- [lshort — The Not So Short Introduction to LaTeX](https://www.ctan.org/pkg/lshort)
+- [DKZ.2R: LaTeX for Novices — Academic Publishing](https://dkz2r.github.io/latex-novice-academic-publishing/)
+- [Overleaf Learn — LaTeX documentation](https://www.overleaf.com/learn)
+- [Prism — OpenAI's AI-native LaTeX workspace](https://prism.openai.com)
+- [TeXlyre — Open-source, local-first LaTeX editor](https://texlyre.github.io/texlyre/)
+- [LaTeX/Introduction — Wikibooks](https://en.wikibooks.org/wiki/LaTeX/Introduction)
+- [CTAN — Comprehensive TeX Archive Network](https://ctan.org)
+- [LaTeX Workshop extension for VS Code](https://github.com/James-Yu/LaTeX-Workshop/wiki/Install)
+- [latexindent documentation](https://ctan.org/tex-archive/support/latexindent)
+- [Zotero — Reference Manager](https://www.zotero.org)
+- [BetterBibTeX for Zotero](https://retorque.re/zotero-better-bibtex/)
+- [tex.stackexchange.com](https://tex.stackexchange.com)
