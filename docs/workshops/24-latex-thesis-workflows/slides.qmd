@@ -146,23 +146,30 @@ Put this folder in a Git repository from day one. Version control for a thesis i
 
 LaTeX separates the bibliography **database** (a `.bib` file) from the **formatting style** (applied at compile time).
 
-**Compilation pipeline with `biblatex` + `biber`:**
+**Why multiple compilation passes?**
+
+Each pass does something different:
 
 ```
-pdflatex main.tex     → reads .aux file, notes citation keys
-biber main            → processes main.bib, produces sorted bibliography
-pdflatex main.tex     → inserts formatted references
-pdflatex main.tex     → resolves all cross-references
+pdflatex main.tex   → compiles document; writes citation keys to main.aux
+biber main          → reads main.aux; looks up keys in main.bib;
+                      writes formatted bibliography to main.bbl
+pdflatex main.tex   → reads main.bbl; inserts bibliography into PDF
+pdflatex main.tex   → resolves all cross-references (page numbers, labels)
 ```
 
-Most editors (VS Code, Overleaf, TeXstudio) run these steps automatically.
+Skipping passes is the most common reason references show as **[?]** or the bibliography is missing entirely.
 
 **Choose your backend:**
 
 | Backend | Style package | When to use |
 |---|---|---|
-| `biber` | `biblatex` | Recommended for new projects; Unicode-aware; flexible |
-| `BibTeX` | `natbib` | Legacy; required by some older journal templates |
+| `biber` | `biblatex` | Recommended for new projects; Unicode-aware; flexible styles |
+| `BibTeX` | `natbib` | Legacy; still required by some older journal templates |
+
+::: {.callout-note}
+`biber` and `BibTeX` are **not interchangeable** — the package loaded in the preamble must match what the editor runs. Using `backend=biber` with the BibTeX executable (or vice versa) produces errors.
+:::
 
 **Minimum `biblatex` setup:**
 
@@ -172,6 +179,36 @@ Most editors (VS Code, Overleaf, TeXstudio) run these steps automatically.
 ...
 \printbibliography
 ```
+
+
+## Configuring TeXstudio for Biber {.smaller}
+
+TeXstudio defaults to **BibTeX** as the bibliography tool. When your document uses `biblatex` with `backend=biber`, you must change this setting — otherwise you get errors like:
+
+```
+I found no \citation commands---while reading file test.aux
+I found no \bibdata command---while reading file test.aux
+I found no \bibstyle command---while reading file test.aux
+```
+
+**Fix:**
+
+**Options → Configure TeXstudio → Build → Default Bibliography Tool → `Biber`**
+
+![TeXstudio Build settings](figures/texstudio-biber.png){width=60%}
+
+**After changing the setting — compile in order:**
+
+1. **PDFLaTeX** (F6) — generates `.aux` with citation keys
+2. **Bibliography / Biber** (F8) — processes `.bib`, writes `.bbl`
+3. **PDFLaTeX** (F6) — inserts bibliography
+4. **PDFLaTeX** (F6) — resolves page numbers and cross-references
+
+Or press **F5 (Build & View)** — TeXstudio runs the full sequence automatically.
+
+::: {.callout-tip}
+`latexmk` (used by VS Code LaTeX Workshop and Overleaf) detects `biber` automatically from the preamble and runs the correct sequence without any configuration.
+:::
 
 
 ## The `.bib` File {.smaller}
