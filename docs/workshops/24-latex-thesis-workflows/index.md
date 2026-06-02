@@ -10,7 +10,7 @@
 | Speakers | TBC |
 | Prerequisites | Basic familiarity with LaTeX document structure is recommended (Session 1). |
 | Materials status | Slides are available. |
-| Slides / recording | See slides.qmd in this folder. |
+| Slides / recording | [HTML slides](slides.html) are linked below; no recording is currently listed. |
 
 </div>
 
@@ -72,7 +72,8 @@ integrate LaTeX with the broader research workflow.
 
 ## Materials
 
-Slides are in `slides.qmd`. Compile with Quarto to produce `slides.html`.
+- **[Presentation Slides](slides.html)** — Main workshop presentation
+- **[Presentation Source](slides.qmd)** — Quarto source file for the presentation
 
 ## Additional Resources
 

@@ -10,7 +10,7 @@
 | Speakers | TBC |
 | Prerequisites | No prior LaTeX experience required. Bringing a laptop is recommended. |
 | Materials status | Slides are available. |
-| Slides / recording | See slides.qmd in this folder. |
+| Slides / recording | [HTML slides](slides.html) are linked below; no recording is currently listed. |
 
 </div>
 
@@ -73,8 +73,10 @@ and BetterBibTeX, and closes with a hands-on exercise.
 
 ## Materials
 
-Slides are in `slides.qmd`. Compile with Quarto to produce `slides.html`.
-A hands-on APA 7 paper template is in `test.tex` (companion: `references.bib`).
+- **[Presentation Slides](slides.html)** — Main workshop presentation
+- **[Presentation Source](slides.qmd)** — Quarto source file for the presentation
+- **[APA 7 paper template](test.tex)** — Hands-on LaTeX template (APA 7th edition)
+- **[Bibliography file](references.bib)** — Companion `.bib` file for the template
 
 ## Additional Resources
 
