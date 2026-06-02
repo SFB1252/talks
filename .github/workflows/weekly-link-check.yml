@@ -17,11 +17,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v6
 
-    - name: Install Chrome for Puppeteer
-      run: npx puppeteer browsers install chrome
+    - name: Install Chrome
+      uses: browser-actions/setup-chrome@v2
+      id: setup-chrome
 
     - name: Run linkspector
       uses: umbrelladocs/action-linkspector@v1
+      env:
+        PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         reporter: github-check
