@@ -16,7 +16,10 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v6
-      
+
+    - name: Install Chrome for Puppeteer
+      run: npx puppeteer browsers install chrome
+
     - name: Run linkspector
       uses: umbrelladocs/action-linkspector@v1
       with:

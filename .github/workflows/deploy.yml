@@ -53,6 +53,8 @@ jobs:
       - name: Render Quarto presentations
         run: |
           quarto render docs/workshops/22-version-control-collaboration-workflows/slides.qmd
+          quarto render docs/workshops/23-latex-getting-started/slides.qmd
+          quarto render docs/workshops/24-latex-thesis-workflows/slides.qmd
 
       - name: Build site
         env:
@@ -98,6 +100,8 @@ jobs:
       - name: Render Quarto presentations
         run: |
           quarto render docs/workshops/22-version-control-collaboration-workflows/slides.qmd
+          quarto render docs/workshops/23-latex-getting-started/slides.qmd
+          quarto render docs/workshops/24-latex-thesis-workflows/slides.qmd
 
       - name: Test build
         env:
