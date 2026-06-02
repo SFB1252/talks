@@ -40,7 +40,8 @@ integrate LaTeX with the broader research workflow.
 
 ### Bibliography Management
 
-- How the LaTeX bibliography pipeline works (`.bib`, `biblatex`, `biber`)
+- How the LaTeX bibliography pipeline works: multiple compilation passes explained
+- `biber` vs `BibTeX`: differences, when to use each, how to configure TeXstudio
 - `.bib` file structure and entry types
 - Citation commands: `\parencite`, `\textcite`, `\autocite`
 
