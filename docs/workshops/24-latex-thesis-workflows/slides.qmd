@@ -142,6 +142,29 @@ Put this folder in a Git repository from day one. Version control for a thesis i
 :::
 
 
+## LaTeX Engines {.smaller}
+
+A **LaTeX engine** is the program that reads your `.tex` file and produces output. Several exist — choose based on your font and language needs:
+
+| Engine (since) | Output | Unicode | System fonts | When to use |
+|---|---|---|---|---|
+| `pdflatex` (1997) | PDF directly | Partial (Latin extended) | No — TeX fonts only | Most journal templates; fastest compile; widest compatibility |
+| `xelatex` (2004) | PDF via XDV | Full UTF-8 | Yes — any installed font | Non-Latin scripts; custom OpenType/TrueType fonts; multilingual documents |
+| `lualatex` (2007) | PDF directly | Full UTF-8 | Yes — via `fontspec` | Same as XeLaTeX + Lua scripting for advanced customisation; slower compile |
+| `latex` + `dvipdf` (1985) | DVI → PDF | No | No | Legacy workflows; rarely needed today |
+
+**Browser-based engines (no installation):**
+
+| Engine | How it works | Use case |
+|---|---|---|
+| **SwiftLaTeX** (2019) | Compiles entirely in the browser via WebAssembly; no server round-trip | Offline-capable web apps; embedding LaTeX in tools |
+| **BusyTeX** (2022) | TeX Live compiled to WASM; runs `pdflatex`/`xelatex` client-side | Self-contained browser editors; privacy-sensitive workflows |
+
+::: {.callout-tip}
+For new documents: use `pdflatex` if the journal template requires it, otherwise `lualatex` for the most modern and flexible setup. Overleaf, Prism, and TeXlyre all support switching engines in project settings.
+:::
+
+
 ## Bibliography: How It Works {.smaller}
 
 LaTeX separates the bibliography **database** (a `.bib` file) from the **formatting style** (applied at compile time).
@@ -162,10 +185,11 @@ Skipping passes is the most common reason references show as **[?]** or the bibl
 
 **Choose your backend:**
 
-| Backend | Style package | When to use |
+| Backend (since) | Style package | When to use |
 |---|---|---|
-| `biber` | `biblatex` | Recommended for new projects; Unicode-aware; flexible styles |
-| `BibTeX` | `natbib` | Legacy; still required by some older journal templates |
+| `biber` (2011) | `biblatex` | **New projects and theses** — full Unicode support; per-entry-type formatting; advanced sorting and filtering; large choice of maintained styles (APA, Chicago, linguistics-specific) |
+| `BibTeX` (1985) | `natbib` | **Publisher-mandated** — ACM, IEEE, Elsevier, Springer templates ship custom `.bst` files that require BibTeX directly; ASCII cite keys only; less flexible but universally supported |
+| `BibTeX` | `biblatex` | **Compatibility fallback** — set `backend=bibtex` in the preamble when `biber` is unavailable (e.g. restricted servers or CI); retains `biblatex` syntax but loses Unicode sorting and some advanced features |
 
 ::: {.callout-note}
 `biber` and `BibTeX` are **not interchangeable** — the package loaded in the preamble must match what the editor runs. Using `backend=biber` with the BibTeX executable (or vice versa) produces errors.
@@ -268,7 +292,7 @@ The cite key (e.g. `schepens2024prominence`) is what you use in `\cite{...}` com
 | Browser connector | [zotero.org/download/connectors](https://www.zotero.org/download/connectors) |
 
 ::: {.callout-tip}
-Prism (OpenAI) and TeXlyre both include Zotero integration panels for searching and importing references directly within the editor.
+Overleaf, Prism (OpenAI), and TeXlyre all include Zotero integration panels for searching and importing references directly within the editor.
 :::
 
 
@@ -394,6 +418,79 @@ Install Quarto from [quarto.org/docs/get-started](https://quarto.org/docs/get-st
 :::
 
 
+## Writing a Complete Thesis in Quarto {.smaller}
+
+Quarto supports **multi-file book projects** — the natural structure for a thesis.
+
+**Initialise a Quarto book:**
+
+```bash
+quarto create project book my-thesis
+```
+
+This generates a ready-to-use folder:
+
+```
+my-thesis/
+├── _quarto.yml        ← project config: title, author, chapters, output
+├── index.qmd          ← front matter / preface
+├── chapters/
+│   ├── 01-introduction.qmd
+│   ├── 02-methods.qmd
+│   ├── 03-results.qmd
+│   └── 04-discussion.qmd
+├── references.bib
+└── _extensions/       ← optional: university theme extension
+```
+
+**`_quarto.yml` for a PDF thesis:**
+
+```yaml
+project:
+  type: book
+
+book:
+  title: "My Thesis Title"
+  author: "Your Name"
+  date: "2026"
+  chapters:
+    - index.qmd
+    - chapters/01-introduction.qmd
+    - chapters/02-methods.qmd
+    - chapters/03-results.qmd
+    - chapters/04-discussion.qmd
+
+bibliography: references.bib
+
+format:
+  pdf:
+    documentclass: report
+    papersize: a4
+    fontsize: 12pt
+    geometry: margin=2.5cm
+    toc: true
+    number-sections: true
+    cite-method: biblatex
+    biblio-style: apa
+    include-in-header: preamble.tex   # custom LaTeX packages
+```
+
+**Render the whole thesis:**
+
+```bash
+quarto render          # builds PDF (and HTML if configured)
+quarto render --to pdf # PDF only
+```
+
+::: {.callout-tip}
+Each `.qmd` chapter file is an ordinary Quarto document — it can contain R/Python code chunks, figures, tables, and equations. Cross-references (`@fig-`, `@tbl-`, `@sec-`) resolve across chapter boundaries automatically.
+:::
+
+::: {.callout-note}
+Quarto book projects also render to HTML (a website) and EPUB from the same source. Useful for sharing a web version alongside the submitted PDF.
+:::
+
+
 ## TikZ: Programmatic Figures {.smaller}
 
 [**TikZ**](https://ctan.org/pkg/pgf) ("TikZ ist kein Zeichenprogramm") is a LaTeX package for creating figures programmatically — directly in your `.tex` source.
@@ -414,13 +511,20 @@ Install Quarto from [quarto.org/docs/get-started](https://quarto.org/docs/get-st
 
 **Drawing shapes and paths:**
 
+:::: {.columns}
+::: {.column width="55%"}
 ```latex
 \begin{tikzpicture}
   \draw[thick, fill=blue!20] (0,0) rectangle (3,2);
-  \draw[red, ->] (0,0) -- (3,2) node[right] {diagonal};
-  \node[circle, draw, fill=green!30] at (1.5,1) {center};
+  \draw[red, ->, line width=1.2pt] (0,0) -- (3,2) node[right] {diagonal};
+  \node[circle, draw, fill=green!30, minimum size=1cm] at (1.5,1) {center};
 \end{tikzpicture}
 ```
+:::
+::: {.column width="45%"}
+![](figures/tikz-shapes.png){width=100%}
+:::
+::::
 
 ::: {.callout-note}
 TikZ has a steep learning curve. [tikz.dev](https://tikz.dev) and the PGF/TikZ manual on CTAN are comprehensive references. Start small and build up.
@@ -429,29 +533,53 @@ TikZ has a steep learning curve. [tikz.dev](https://tikz.dev) and the PGF/TikZ m
 
 ## TikZ: Common Use Cases {.smaller}
 
+:::: {.columns}
+::: {.column width="50%"}
 **Flowcharts and process diagrams:**
 
 ```latex
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning}
-\begin{tikzpicture}[node distance=1.5cm]
-  \node[draw, rectangle] (A) {Step 1};
-  \node[draw, rectangle, below of=A] (B) {Step 2};
-  \node[draw, diamond, below of=B] (C) {Decision?};
-  \draw[->] (A) -- (B);  \draw[->] (B) -- (C);
+\begin{tikzpicture}[
+  node distance=1.5cm,
+  box/.style={draw, rectangle, minimum width=2.5cm,
+              minimum height=0.8cm, align=center},
+  decnode/.style={draw, diamond, aspect=2,
+                  minimum width=2.5cm, align=center}
+]
+  \node[box] (A) {Step 1};
+  \node[box, below of=A] (B) {Step 2};
+  \node[decnode, below of=B] (C) {Decision?};
+  \node[box, below right=0.8cm and 1.2cm of C] (D) {Yes};
+  \node[box, below left=0.8cm and 1.2cm of C] (E) {No};
+  \draw[->] (A) -- (B);
+  \draw[->] (B) -- (C);
+  \draw[->] (C) -- node[above right, font=\small] {yes} (D);
+  \draw[->] (C) -- node[above left, font=\small] {no} (E);
 \end{tikzpicture}
 ```
 
+![](figures/tikz-flowchart.png){width=60%}
+:::
+::: {.column width="50%"}
 **Plots via PGFPlots:**
 
 ```latex
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \begin{tikzpicture}
-  \begin{axis}[xlabel={$x$}, ylabel={$f(x)$}]
-    \addplot[blue, thick]{x^2};
+  \begin{axis}[
+    xlabel={$x$}, ylabel={$f(x)$},
+    grid=major, grid style={dashed, gray!30}
+  ]
+    \addplot[blue, thick, domain=-3:3, samples=60]{x^2};
+    \addlegendentry{$x^2$}
+    \addplot[red, thick, domain=-3:3, samples=60]{x^3/5};
+    \addlegendentry{$x^3/5$}
   \end{axis}
 \end{tikzpicture}
 ```
+
+![](figures/tikz-pgfplots.png){width=80%}
 
 **Syntax trees (linguistics):**
 
@@ -461,6 +589,10 @@ TikZ has a steep learning curve. [tikz.dev](https://tikz.dev) and the PGF/TikZ m
   \Tree [.S [.NP Det N ] [.VP V [.NP Det N ] ] ]
 \end{tikzpicture}
 ```
+
+![](figures/tikz-tree.png){width=70%}
+:::
+::::
 
 ::: {.callout-tip}
 For complex figures, consider generating them in Python (`matplotlib` PGF backend) or R (`tikzDevice`) and importing the resulting `.tex` fragment.
@@ -566,6 +698,7 @@ All materials: [dkz2r.de/tags/latex](https://www.dkz2r.de/tags/latex/)
 - [TikZ & PGF documentation](https://ctan.org/pkg/pgf)
 - [tikz.dev — TikZ reference](https://tikz.dev)
 - [PGFPlots — plots in LaTeX](https://ctan.org/pkg/pgfplots)
+- [Overleaf — Collaborative LaTeX Editor](https://www.overleaf.com)
 - [Overleaf thesis templates](https://www.overleaf.com/gallery/tagged/thesis)
 - [DKZ.2R: LaTeX for Novices — Academic Publishing](https://dkz2r.github.io/latex-novice-academic-publishing/)
 - [Prism — OpenAI's AI-native LaTeX workspace](https://prism.openai.com)

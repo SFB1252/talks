@@ -1,0 +1,10 @@
+\documentclass[border=8pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
+\begin{document}
+\begin{tikzpicture}
+  \draw[thick, fill=blue!20] (0,0) rectangle (3,2);
+  \draw[red, ->, line width=1.2pt] (0,0) -- (3,2) node[right] {diagonal};
+  \node[circle, draw, fill=green!30, minimum size=1cm] at (1.5,1) {center};
+\end{tikzpicture}
+\end{document}
