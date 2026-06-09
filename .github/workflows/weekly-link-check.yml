@@ -12,6 +12,8 @@ jobs:
   link-check:
     runs-on: ubuntu-latest
     name: Check All Documentation Links
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     
     steps:
     - name: Checkout code
