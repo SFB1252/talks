@@ -4,7 +4,7 @@
 
 Set-Location $PSScriptRoot
 
-$figures = @("tikz-shapes", "tikz-flowchart", "tikz-pgfplots", "tikz-tree")
+$figures = @("tikz-shapes", "tikz-flowchart", "tikz-pgfplots", "tikz-tree", "tikz-glosses")
 
 foreach ($f in $figures) {
     Write-Host "Compiling $f.tex ..."

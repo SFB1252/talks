@@ -6,7 +6,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-figures=(tikz-shapes tikz-flowchart tikz-pgfplots tikz-tree)
+figures=(tikz-shapes tikz-flowchart tikz-pgfplots tikz-tree tikz-glosses)
 
 for f in "${figures[@]}"; do
     echo "Compiling ${f}.tex ..."

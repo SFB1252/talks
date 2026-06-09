@@ -1,0 +1,23 @@
+\documentclass[border=8pt]{standalone}
+\usepackage{tikz}
+\usepackage{tikz-dependency}
+\usetikzlibrary{positioning}
+
+\begin{document}
+\begin{dependency}[theme=simple, label style={above, font=\small\itshape}]
+  \begin{deptext}[column sep=1.2em, row sep=0.6em]
+    Der \& Mann \& gibt \& der \& Frau \& das \& Buch \\
+    \textsc{det.m.nom} \& man.\textsc{nom} \& gives \&
+      \textsc{det.f.dat} \& woman.\textsc{dat} \&
+      \textsc{det.n.acc} \& book.\textsc{acc} \\
+    `The \& man \& gives \& the \& woman \& the \& book' \\
+  \end{deptext}
+  \deproot{3}{root}
+  \depedge{3}{2}{nsubj}
+  \depedge{3}{5}{iobj}
+  \depedge{3}{7}{obj}
+  \depedge{2}{1}{det}
+  \depedge{5}{4}{det}
+  \depedge{7}{6}{det}
+\end{dependency}
+\end{document}

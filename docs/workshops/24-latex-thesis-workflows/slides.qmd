@@ -531,12 +531,10 @@ TikZ has a steep learning curve. [tikz.dev](https://tikz.dev) and the PGF/TikZ m
 :::
 
 
-## TikZ: Common Use Cases {.smaller}
+## TikZ: Flowcharts {.smaller}
 
 :::: {.columns}
-::: {.column width="50%"}
-**Flowcharts and process diagrams:**
-
+::: {.column width="55%"}
 ```latex
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning}
 \begin{tikzpicture}[
@@ -557,12 +555,19 @@ TikZ has a steep learning curve. [tikz.dev](https://tikz.dev) and the PGF/TikZ m
   \draw[->] (C) -- node[above left, font=\small] {no} (E);
 \end{tikzpicture}
 ```
-
-![](figures/tikz-flowchart.png){width=60%}
 :::
-::: {.column width="50%"}
-**Plots via PGFPlots:**
+::: {.column width="45%"}
+![](figures/tikz-flowchart.png){width=100%}
+:::
+::::
 
+Named styles keep the node definitions clean and reusable. The `decnode` style uses TikZ's built-in `diamond` shape from `shapes.geometric`.
+
+
+## TikZ: Plots with PGFPlots {.smaller}
+
+:::: {.columns}
+::: {.column width="55%"}
 ```latex
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
@@ -578,19 +583,69 @@ TikZ has a steep learning curve. [tikz.dev](https://tikz.dev) and the PGF/TikZ m
   \end{axis}
 \end{tikzpicture}
 ```
+:::
+::: {.column width="45%"}
+![](figures/tikz-pgfplots.png){width=100%}
+:::
+::::
 
-![](figures/tikz-pgfplots.png){width=80%}
+PGFPlots can also read data from CSV files (`\addplot table {data.csv}`), making it suitable for publication-quality plots directly from experimental data.
 
-**Syntax trees (linguistics):**
 
+## TikZ: Syntax Trees {.smaller}
+
+:::: {.columns}
+::: {.column width="55%"}
 ```latex
 \usepackage{tikz-qtree}
 \begin{tikzpicture}
-  \Tree [.S [.NP Det N ] [.VP V [.NP Det N ] ] ]
+  \Tree [.S
+          [.NP Det N ]
+          [.VP V
+            [.NP Det N ]
+          ]
+        ]
 \end{tikzpicture}
 ```
+:::
+::: {.column width="45%"}
+![](figures/tikz-tree.png){width=100%}
+:::
+::::
 
-![](figures/tikz-tree.png){width=70%}
+`tikz-qtree` uses a compact bracket notation. For more control (node styles, movement arrows, coindexation), use the full `tikz` library directly or `forest` — a popular alternative for complex phrase structure trees.
+
+
+## TikZ: Dependency Graphs and Glosses {.smaller}
+
+The `tikz-dependency` package draws dependency arcs over interlinear glossed text — standard in typological and computational linguistics:
+
+:::: {.columns}
+::: {.column width="60%"}
+```latex
+\usepackage{tikz-dependency}
+
+\begin{dependency}[theme=simple,
+    label style={above, font=\small\itshape}]
+  \begin{deptext}[column sep=1.2em]
+    Der \& Mann \& gibt \& der \& Frau \& das \& Buch \\
+    \textsc{det.m.nom} \& man.\textsc{nom} \& gives \&
+      \textsc{det.f.dat} \& woman.\textsc{dat} \&
+      \textsc{det.n.acc} \& book.\textsc{acc} \\
+    `The \& man \& gives \& the \& woman \& the \& book' \\
+  \end{deptext}
+  \deproot{3}{root}
+  \depedge{3}{2}{nsubj}
+  \depedge{3}{5}{iobj}
+  \depedge{3}{7}{obj}
+  \depedge{2}{1}{det}
+  \depedge{5}{4}{det}
+  \depedge{7}{6}{det}
+\end{dependency}
+```
+:::
+::: {.column width="40%"}
+![](figures/tikz-glosses.png){width=100%}
 :::
 ::::
 
