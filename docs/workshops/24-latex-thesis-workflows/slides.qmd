@@ -599,6 +599,90 @@ For complex figures, consider generating them in Python (`matplotlib` PGF backen
 :::
 
 
+## LaTeX for Linguistics {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+**Interlinear glosses — `gb4e`:**
+
+```latex
+\usepackage{gb4e}
+
+\begin{exe}
+  \ex
+  \gll Der Mann sieht die Frau. \\
+       the.M man sees the.F woman \\
+  \trans `The man sees the woman.'
+\end{exe}
+```
+
+Uses Leipzig Glossing Rules abbreviations (`\textsc{nom}`, `\textsc{acc}` etc.).
+Alternative packages: `linguex`, `expex`.
+
+**IPA symbols — Unicode + `fontspec` (XeLaTeX/LuaLaTeX):**
+
+```latex
+% Preamble:
+\usepackage{fontspec}
+\setmainfont{Charis SIL}  % or Doulos SIL, Gentium
+
+% In text — type Unicode directly:
+The vowel /ɪ/ contrasts with /iː/ in English.
+The fricatives [ɸ β] are bilabial.
+```
+
+Alternative for `pdflatex`: `\usepackage{tipa}` with custom commands (`\textipa{...}`), but Unicode input is simpler with a modern engine.
+
+:::
+::: {.column width="50%"}
+**Optimality Theory tableaux — `ot-tableau`:**
+
+```latex
+\usepackage{ot-tableau}
+
+\begin{tableau}{c:c|c}
+\inp{\ipa{/inp/}}  \const{C1} \const{C2} \const{C3}
+\cand{[cand1]}               \vio{*}
+\cand[\HandRight]{[cand2]}             \vio{*}
+\cand{[cand3]}     \vio{*!}
+\end{tableau}
+```
+
+**Feature structures / AVMs — `avm`:**
+
+```latex
+\usepackage{avm}
+
+\[
+\avmbox{NP}
+\begin{avm}
+  \[ cat & np \\
+     agr & \[ num & sg \\
+              per & 3rd \] \]
+\end{avm}
+\]
+```
+
+**Semantics — lambda expressions in math mode:**
+
+```latex
+% No special package needed:
+$\lambda x . \lambda e . \text{run}'(e, x)$
+
+$\llbracket \text{runs} \rrbracket =
+  \lambda x \in D_e . \lambda e \in D_v .
+  \text{run}(e, x) = 1$
+% \llbracket needs: \usepackage{stmaryrd}
+```
+
+:::
+::::
+
+::: {.callout-tip}
+For the `\llbracket`/`\rrbracket` double-bracket notation common in formal semantics, load `\usepackage{stmaryrd}`. For full Unicode IPA input, compile with `lualatex` or `xelatex` and a suitable font such as Charis SIL or Gentium Plus.
+:::
+
+
 ## Templates: Journals and Theses {.smaller}
 
 **Journal templates** provide `.cls` and `.sty` files that enforce house style:
