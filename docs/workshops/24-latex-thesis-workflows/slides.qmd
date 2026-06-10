@@ -965,37 +965,47 @@ If `figures/avm-render.svg` does not appear locally, your TeX installation is li
 
 Lambda calculus and model-theoretic notation use standard LaTeX math mode — no special package needed for the core notation:
 
+:::: {.columns}
+::: {.column width="55%"}
 ```latex
-% Basic lambda expressions:
-$\lambda x \in D_e .\ \text{cat}'(x)$
+\usepackage{stmaryrd}
+\usepackage{amsmath,amssymb,mathtools}
 
-% Event semantics (Neo-Davidsonian):
-$\llbracket \text{runs} \rrbracket =
-  \lambda x \in D_e .\ \lambda e \in D_v .\ \text{run}(e) \wedge \text{Agent}(e, x) = 1$
+\newcommand{\sv}[1]{\llbracket #1 \rrbracket}
 
-% Quantifiers:
-$\llbracket \text{every cat} \rrbracket =
-  \lambda P_{et} .\ \forall x [\ \text{cat}'(x) \rightarrow P(x)\ ]$
+% Lexical denotations:
+\[
+\sv{\textit{cat}} = \lambda x_e .\ \text{cat}(x)
+\]
+\[
+\sv{\textit{runs}} = \lambda x_e .\ \lambda e_v .\
+  	ext{run}(e) \wedge \text{Agent}(e,x)
+\]
 
-% Intensional types (possible worlds):
-$\llbracket \text{believes} \rrbracket^{w} =
-  \lambda p_{\langle s,t \rangle} .\ \lambda x_e .\
-  \forall w' \in \text{Dox}(x, w) :\ p(w') = 1$
+% Quantification:
+\[
+\sv{\textit{every cat}} =
+  \lambda P_{\langle e,t \rangle} .\
+  \forall x[\text{cat}(x) \rightarrow P(x)]
+\]
 
-% Useful packages:
-\usepackage{stmaryrd}   % \llbracket \rrbracket  ⟦ ⟧
-\usepackage{amssymb}    % \forall \exists \wedge \vee \rightarrow
-\usepackage{mathtools}  % \coloneqq  :=  and other extensions
+% Type reminder:
+\sv{\textit{runs}} : \langle e,\langle v,t\rangle\rangle
 ```
+:::
+::: {.column width="45%"}
+**Structure:**
 
-**Type theory notation:**
+- `\sv{...}` shorthand for semantic brackets
+- `\lambda x_e` typed lambda variables
+- `\forall` and `\rightarrow` for generalized quantifier notation
+- Angle-bracket types like `\langle e,t \rangle`
 
-```latex
-% Semantic types inline:
-An expression of type $\langle e, t \rangle$ maps
-individuals ($e$) to truth values ($t$).
-Verbs are typically of type $\langle e, \langle e, t \rangle \rangle$.
-```
+**Rendered output:**
+
+![](figures/semantics-render.svg){width=100%}
+:::
+::::
 
 ::: {.callout-tip}
 Key packages: [`stmaryrd`](https://ctan.org/pkg/stmaryrd) for `\llbracket`/`\rrbracket` brackets; [`amssymb`](https://ctan.org/pkg/amssymb) for logical operators (`\forall`, `\exists`, `\wedge` …); [`mathtools`](https://ctan.org/pkg/mathtools) for extended math syntax. For frequently used brackets, define shorthands: `\newcommand{\sv}[1]{\llbracket #1 \rrbracket}` so you can write `\sv{\text{runs}}` instead of the full bracket pair each time.
