@@ -847,13 +847,15 @@ Tone is marked with diacritics: /má/ (high) vs /mǎ/ (rising).
 \usepackage{tipx}
 ```
 
+:::
+::: {.column width="42%"}
+
 | Approach | Pro | Con |
 |---|---|---|
 | Unicode + [`fontspec`](https://ctan.org/pkg/fontspec) | Type IPA directly; readable source | Requires XeLaTeX/LuaLaTeX |
 | [`tipa`](https://ctan.org/pkg/tipa) | Works with pdfLaTeX | Command-heavy; hard to read source |
 
-:::
-::: {.column width="42%"}
+
 **Rendered output:**
 
 ![](figures/ipa-symbols-render.svg){width=100%}
@@ -889,6 +891,11 @@ The [`ot-tableau`](https://ctan.org/pkg/ot-tableau) package produces formatted O
                \vio{*}        \vio{*!}
 \end{tableau}
 ```
+
+**Rendered output:**
+
+![](figures/ot-tableau-render.svg){width=100%}
+
 :::
 ::: {.column width="40%"}
 **Key commands:**
@@ -905,9 +912,7 @@ The [`ot-tableau`](https://ctan.org/pkg/ot-tableau) package produces formatted O
 
 Column spec characters: `c` (solid), `:` (dashed), `|` (solid within candidates)
 
-**Rendered output:**
 
-![](figures/ot-tableau-render.svg){width=100%}
 :::
 ::::
 
@@ -936,8 +941,7 @@ The [`langsci-avm`](https://ctan.org/pkg/langsci-avm) package typesets attribute
                             arg0 & i ] > ] ] ]
 }
 ```
-:::
-::: {.column width="45%"}
+
 **Structure:**
 
 - `\avm{ ... }` — root AVM command
@@ -946,19 +950,14 @@ The [`langsci-avm`](https://ctan.org/pkg/langsci-avm) package typesets attribute
 - Nested brackets for embedded feature structures
 - Matrices nest freely for complex feature geometries
 
-**Alternative: [`avm`](https://ctan.org/pkg/avm) (legacy style)**
-
-Older papers and templates still use [`avm`](https://ctan.org/pkg/avm), but `langsci-avm` is often easier to read and maintain in modern workflows.
+:::
+::: {.column width="45%"}
 
 **Rendered output:**
 
 ![](figures/avm-render.svg){width=100%}
 :::
 ::::
-
-::: {.callout-note}
-If `figures/avm-render.svg` does not appear locally, your TeX installation is likely missing [`langsci-avm`](https://ctan.org/pkg/langsci-avm). Install it (TeX Live Manager: `tlmgr install langsci-avm`) and rerun the build script.
-:::
 
 
 ## Linguistics: Formal Semantics {.smaller}
