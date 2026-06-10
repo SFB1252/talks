@@ -918,46 +918,37 @@ Load `\usepackage{tipa}` alongside [`ot-tableau`](https://ctan.org/pkg/ot-tablea
 
 ## Linguistics: Feature Structures (AVMs) {.smaller}
 
-The [`avm`](https://ctan.org/pkg/avm) package typesets attribute-value matrices used in HPSG, LFG, and related frameworks:
+The [`langsci-avm`](https://ctan.org/pkg/langsci-avm) package typesets attribute-value matrices used in HPSG, LFG, and related frameworks:
 
 :::: {.columns}
 ::: {.column width="55%"}
 ```latex
-\usepackage{avm}
-\avmfont{\sc}          % attributes in small caps
-\avmvalfont{\it}       % values in italics
+\usepackage{langsci-avm}
 
-% A simple NP sign:
-\[
-\avmbox{NP}
-\begin{avm}
-  \[ phon   & \<\textnormal{the cat}\> \\
-     synsem & \[ local & \[
-       cat & \[ head & \avmbox{noun}~\[ case & nom \] \\
-                val  & \[ spr  & \<\> \\
-                          comps & \<\> \] \] \\
-       cont & \[ index & i \\
-                restr & \<\[ reln  & cat \\
-                              inst  & i \]\> \] \] \] \]
-\end{avm}
-\]
-
-% Coreference boxes (structure sharing):
-\avmbox{1}  % prints a numbered box: [1]
+\avm{
+  [ phon & < the, cat > \\
+    synsem & [ local & [
+      cat & [ head & noun \\
+              valence & [ spr & < > \\
+                          comps & < > ] ] \\
+      cont & [ index & i \\
+               restr & < [ reln & cat \\
+                            arg0 & i ] > ] ] ]
+}
 ```
 :::
 ::: {.column width="45%"}
 **Structure:**
 
-- `\begin{avm} ... \end{avm}` — the matrix environment
-- `\[ attr & val \\ attr2 & val2 \]` — attribute-value pairs
-- `\< ... \>` — lists (sequences)
-- `\avmbox{n}` — coindexation box for structure sharing
+- `\avm{ ... }` — root AVM command
+- `[ attr & val \\ attr2 & val2 ]` — attribute-value pairs
+- `< ... >` — lists (sequences)
+- Nested brackets for embedded feature structures
 - Matrices nest freely for complex feature geometries
 
-**Alternative: [`forest`](https://ctan.org/pkg/forest) with AVMs**
+**Alternative: [`avm`](https://ctan.org/pkg/avm) (legacy style)**
 
-Some authors use [`forest`](https://ctan.org/pkg/forest) or raw `tikz` for AVMs when layout control is critical. For standard HPSG work, [`avm`](https://ctan.org/pkg/avm) is the established choice.
+Older papers and templates still use [`avm`](https://ctan.org/pkg/avm), but `langsci-avm` is often easier to read and maintain in modern workflows.
 
 **Rendered output:**
 
