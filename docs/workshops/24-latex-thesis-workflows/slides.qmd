@@ -443,12 +443,10 @@ Using `burknerBrmsPackageBayesian2017` from our `.bib` file:
 
 ```latex
 % Narrative citation — author as subject:
-\textcite{burknerBrmsPackageBayesian2017} introduced the brms package
-for Bayesian multilevel modelling in R.
+\textcite{burknerBrmsPackageBayesian2017} introduced the brms package for Bayesian multilevel modelling in R.
 
 % Parenthetical citation — supporting claim:
-Bayesian multilevel models can be fitted using Stan via R
-\parencite{burknerBrmsPackageBayesian2017}.
+Bayesian multilevel models can be fitted using Stan via R \parencite{burknerBrmsPackageBayesian2017}.
 
 % Multiple citations:
 \parencite{burknerBrmsPackageBayesian2017, gelmanRegressionOtherStories2020}
@@ -636,7 +634,7 @@ Quarto book projects also render to HTML (a website) and EPUB from the same sour
 ```
 :::
 ::: {.column width="45%"}
-![](figures/tikz-shapes.png){width=100%}
+![](figures/tikz-shapes.svg){width=100%}
 :::
 ::::
 
@@ -671,7 +669,7 @@ TikZ has a steep learning curve. [tikz.dev](https://tikz.dev) and the PGF/TikZ m
 ```
 :::
 ::: {.column width="45%"}
-![](figures/tikz-flowchart.png){width=100%}
+![](figures/tikz-flowchart.svg){width=100%}
 :::
 ::::
 
@@ -699,7 +697,7 @@ Named styles keep the node definitions clean and reusable. The `decnode` style u
 ```
 :::
 ::: {.column width="45%"}
-![](figures/tikz-pgfplots.png){width=100%}
+![](figures/tikz-pgfplots.svg){width=100%}
 :::
 ::::
 
@@ -723,7 +721,7 @@ PGFPlots can also read data from CSV files (`\addplot table {data.csv}`), making
 ```
 :::
 ::: {.column width="45%"}
-![](figures/tikz-tree.png){width=100%}
+![](figures/tikz-tree.svg){width=100%}
 :::
 ::::
 
@@ -759,7 +757,7 @@ The [`tikz-dependency`](https://ctan.org/pkg/tikz-dependency) package draws depe
 ```
 :::
 ::: {.column width="40%"}
-![](figures/tikz-glosses.png){width=100%}
+![](figures/tikz-glosses.svg){width=100%}
 :::
 ::::
 
