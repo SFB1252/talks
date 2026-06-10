@@ -183,26 +183,51 @@ pdflatex main.tex   → resolves all cross-references (page numbers, labels)
 
 Skipping passes is the most common reason references show as **[?]** or the bibliography is missing entirely.
 
-**Choose your backend:**
+The bibliography system has two independent layers:
 
-| Backend (since) | Style package | When to use |
+- **Backend** — an *external program* invoked between LaTeX passes (e.g. `biber` or `bibtex` on the command line); reads the `.bib` database, resolves citation keys, and writes the formatted `.bbl` file that LaTeX then reads back in
+- **Style package** — a *LaTeX package* declared in the **preamble** (the part of your `.tex` file before `\begin{document}`); defines the `\cite` commands available in your document and controls how the bibliography list is formatted when printed
+
+The backend and the style package must be chosen as a matched pair — they communicate via the `.aux` and `.bbl` files and expect a compatible format.
+
+
+## Bibliography: Choosing a Backend and Style Package {.smaller}
+
+| Backend (since) | Style package (since) | When to use |
 |---|---|---|
-| `biber` (2011) | `biblatex` | **New projects and theses** — full Unicode support; per-entry-type formatting; advanced sorting and filtering; large choice of maintained styles (APA, Chicago, linguistics-specific) |
-| `BibTeX` (1985) | `natbib` | **Publisher-mandated** — ACM, IEEE, Elsevier, Springer templates ship custom `.bst` files that require BibTeX directly; ASCII cite keys only; less flexible but universally supported |
-| `BibTeX` | `biblatex` | **Compatibility fallback** — set `backend=bibtex` in the preamble when `biber` is unavailable (e.g. restricted servers or CI); retains `biblatex` syntax but loses Unicode sorting and some advanced features |
+| `biber` (2011) | `biblatex` (2006) | **New projects and theses** — full Unicode; per-entry-type formatting; advanced sorting and filtering; large choice of maintained styles (APA, Chicago, linguistics-specific) |
+| `BibTeX` (1985) | `natbib` (1993) | **Publisher-mandated** — ACL, IEEE, Elsevier, Springer templates ship `.bst` files that require BibTeX; ASCII cite keys only; less flexible but universally supported |
+| `BibTeX` (1985) | `biblatex` (2006) | **Compatibility fallback** — set `backend=bibtex` in the preamble when `biber` is unavailable (e.g. restricted servers or CI); keeps `biblatex` syntax but loses Unicode sorting and some advanced features |
+| `BibTeX` (1985) | `apacite` (1994) | **Avoid for new work** — implements APA 6th edition only (2009); unmaintained since ~2013; still found in older humanities templates but superseded by `biblatex-apa` |
 
-::: {.callout-note}
-`biber` and `BibTeX` are **not interchangeable** — the package loaded in the preamble must match what the editor runs. Using `backend=biber` with the BibTeX executable (or vice versa) produces errors.
-:::
-
-**Minimum `biblatex` setup:**
+**Preamble examples — the style package is where you declare the pairing:**
 
 ```latex
+% Option 1: biblatex + biber (recommended for new work)
 \usepackage[backend=biber, style=apa]{biblatex}
+\addbibresource{references.bib}   % path to your .bib file
+
+% Option 2: natbib + BibTeX (journal template compatibility)
+\usepackage[round, authoryear]{natbib}
+% no \addbibresource — BibTeX is told the file via \bibliography{references}
+% at the end of the document instead
+
+% Option 3: biblatex + BibTeX fallback
+\usepackage[backend=bibtex, style=apa]{biblatex}
 \addbibresource{references.bib}
-...
-\printbibliography
+
+% Option 4: apacite — AVOID for new work (APA 6th only, unmaintained)
+\usepackage{apacite}
+% bibliography printed with: \bibliography{references}
 ```
+
+::: {.callout-note}
+The `backend=` option inside `\usepackage[...]{biblatex}` tells `biblatex` which external program to expect. If this does not match the program your editor actually runs, you get missing-reference errors. Check your editor's build settings if references show as **[?]**.
+:::
+
+::: {.callout-tip}
+**APA style:** `style=apa` loads `biblatex-apa`, which implements **APA 7th edition** (2019) and requires `backend=biber`. For full APA *manuscript layout* (double-spacing, running head, author note) required by APA journals, also load the `apa7` document class alongside `biblatex-apa`.
+:::
 
 
 ## Configuring TeXstudio for Biber {.smaller}
