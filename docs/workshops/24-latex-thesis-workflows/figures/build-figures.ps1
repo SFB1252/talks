@@ -6,7 +6,7 @@
 
 Set-Location $PSScriptRoot
 
-$figures = @("tikz-shapes", "tikz-flowchart", "tikz-pgfplots", "tikz-tree", "tikz-glosses", "gb4e-glosses")
+$figures = @("tikz-shapes", "tikz-flowchart", "tikz-pgfplots", "tikz-tree", "tikz-glosses", "gb4e-glosses", "ipa-symbols-render")
 
 $hasPdfLatex = $null -ne (Get-Command pdflatex -ErrorAction SilentlyContinue)
 $hasPdfToPpm = $null -ne (Get-Command pdftoppm -ErrorAction SilentlyContinue)

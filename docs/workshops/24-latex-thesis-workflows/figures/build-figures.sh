@@ -8,7 +8,7 @@
 set -uo pipefail
 cd "$(dirname "$0")"
 
-figures=(tikz-shapes tikz-flowchart tikz-pgfplots tikz-tree tikz-glosses gb4e-glosses)
+figures=(tikz-shapes tikz-flowchart tikz-pgfplots tikz-tree tikz-glosses gb4e-glosses ipa-symbols-render)
 
 if ! command -v pdflatex >/dev/null 2>&1 || ! command -v pdftoppm >/dev/null 2>&1; then
     echo "Missing required tools for PNG output (pdflatex and/or pdftoppm)." >&2

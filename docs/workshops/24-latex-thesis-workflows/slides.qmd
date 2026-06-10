@@ -815,6 +815,9 @@ Use `\textsc{nom}`, `\textsc{acc}`, `\textsc{dat}` etc. for Leipzig small-cap ab
 
 ## Linguistics: IPA Symbols {.smaller}
 
+:::: {.columns}
+::: {.column width="58%"}
+
 **With XeLaTeX or LuaLaTeX — type Unicode directly:**
 
 ```latex
@@ -848,6 +851,14 @@ Tone is marked with diacritics: /má/ (high) vs /mǎ/ (rising).
 |---|---|---|
 | Unicode + [`fontspec`](https://ctan.org/pkg/fontspec) | Type IPA directly; readable source | Requires XeLaTeX/LuaLaTeX |
 | [`tipa`](https://ctan.org/pkg/tipa) | Works with pdfLaTeX | Command-heavy; hard to read source |
+
+:::
+::: {.column width="42%"}
+**Rendered output:**
+
+![](figures/ipa-symbols-render.svg){width=100%}
+:::
+::::
 
 ::: {.callout-note}
 Most journal templates still require `pdflatex`. If you need IPA in a submission, use [`tipa`](https://ctan.org/pkg/tipa) for compatibility, or check if the journal accepts XeLaTeX/LuaLaTeX.
