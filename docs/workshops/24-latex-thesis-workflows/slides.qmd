@@ -67,7 +67,7 @@ For documents longer than a typical journal article, choose the right `\document
 | `article` | Papers, short reports | `\section`, `\subsection` |
 | `report` | Bachelor/master theses, technical reports | `\chapter`, `\section` |
 | `book` | PhD theses, monographs | `\part`, `\chapter`, `\section` |
-| `beamer` | Presentations | `\frame`, `\begin{block}` |
+| [`beamer`](https://ctan.org/pkg/beamer) | Presentations | `\frame`, `\begin{block}` |
 
 Most universities provide a custom class (e.g. `unikoeln-thesis`) that presets all formatting.
 
@@ -80,6 +80,8 @@ Most universities provide a custom class (e.g. `unikoeln-thesis`) that presets a
 \usepackage{microtype}    % improved line breaking and spacing
 \usepackage{setspace}     % line spacing (\onehalfspacing, \doublespacing)
 ```
+
+[`hyperref`](https://ctan.org/pkg/hyperref) · [`cleveref`](https://ctan.org/pkg/cleveref) · [`microtype`](https://ctan.org/pkg/microtype) · [`setspace`](https://ctan.org/pkg/setspace)
 
 
 ## Multi-file Projects: `\input` and `\include` {.smaller}
@@ -195,10 +197,10 @@ The backend and the style package must be chosen as a matched pair — they comm
 
 | Backend (since) | Style package (since) | When to use |
 |---|---|---|
-| `biber` (2011) | `biblatex` (2006) | **New projects and theses** — full Unicode; per-entry-type formatting; advanced sorting and filtering; large choice of maintained styles (APA, Chicago, linguistics-specific) |
-| `BibTeX` (1985) | `natbib` (1993) | **Publisher-mandated** — ACL, IEEE, Elsevier, Springer templates ship `.bst` files that require BibTeX; ASCII cite keys only; less flexible but universally supported |
-| `BibTeX` (1985) | `biblatex` (2006) | **Compatibility fallback** — set `backend=bibtex` in the preamble when `biber` is unavailable (e.g. restricted servers or CI); keeps `biblatex` syntax but loses Unicode sorting and some advanced features |
-| `BibTeX` (1985) | `apacite` (1994) | **Avoid for new work** — implements APA 6th edition only (2009); unmaintained since ~2013; still found in older humanities templates but superseded by `biblatex-apa` |
+| [`biber`](https://ctan.org/pkg/biber) (2011) | [`biblatex`](https://ctan.org/pkg/biblatex) (2006) | **New projects and theses** — full Unicode; per-entry-type formatting; advanced sorting and filtering; large choice of maintained styles (APA, Chicago, linguistics-specific) |
+| [`BibTeX`](https://ctan.org/pkg/bibtex) (1985) | [`natbib`](https://ctan.org/pkg/natbib) (1993) | **Publisher-mandated** — ACL, IEEE, Elsevier, Springer templates ship `.bst` files that require BibTeX; ASCII cite keys only; less flexible but universally supported |
+| `BibTeX` (1985) | [`biblatex`](https://ctan.org/pkg/biblatex) (2006) | **Compatibility fallback** — set `backend=bibtex` in the preamble when `biber` is unavailable (e.g. restricted servers or CI); keeps `biblatex` syntax but loses Unicode sorting and some advanced features |
+| `BibTeX` (1985) | [`apacite`](https://ctan.org/pkg/apacite) (1994) | **Avoid for new work** — implements APA 6th edition only (2009); unmaintained since ~2013; still found in older humanities templates but superseded by [`biblatex-apa`](https://ctan.org/pkg/biblatex-apa) |
 
 **Preamble examples — the style package is where you declare the pairing:**
 
@@ -226,7 +228,7 @@ The `backend=` option inside `\usepackage[...]{biblatex}` tells `biblatex` which
 :::
 
 ::: {.callout-tip}
-**APA style:** `style=apa` loads `biblatex-apa`, which implements **APA 7th edition** (2019) and requires `backend=biber`. For full APA *manuscript layout* (double-spacing, running head, author note) required by APA journals, also load the `apa7` document class alongside `biblatex-apa`.
+**APA style:** `style=apa` loads [`biblatex-apa`](https://ctan.org/pkg/biblatex-apa), which implements **APA 7th edition** (2019) and requires `backend=biber`. For full APA *manuscript layout* (double-spacing, running head, author note) required by APA journals, also load the [`apa7`](https://ctan.org/pkg/apa7) document class alongside [`biblatex-apa`](https://ctan.org/pkg/biblatex-apa).
 :::
 
 
@@ -256,7 +258,7 @@ I found no \bibstyle command---while reading file test.aux
 Or press **F5 (Build & View)** — TeXstudio runs the full sequence automatically.
 
 ::: {.callout-tip}
-`latexmk` (used by VS Code LaTeX Workshop and Overleaf) detects `biber` automatically from the preamble and runs the correct sequence without any configuration.
+[`latexmk`](https://ctan.org/pkg/latexmk) (used by VS Code LaTeX Workshop and Overleaf) detects `biber` automatically from the preamble and runs the correct sequence without any configuration.
 :::
 
 
@@ -638,12 +640,12 @@ PGFPlots can also read data from CSV files (`\addplot table {data.csv}`), making
 :::
 ::::
 
-`tikz-qtree` uses a compact bracket notation. For more control (node styles, movement arrows, coindexation), use the full `tikz` library directly or `forest` — a popular alternative for complex phrase structure trees.
+[`tikz-qtree`](https://ctan.org/pkg/tikz-qtree) uses a compact bracket notation. For more control (node styles, movement arrows, coindexation), use the full `tikz` library directly or [`forest`](https://ctan.org/pkg/forest) — a popular alternative for complex phrase structure trees.
 
 
 ## TikZ: Dependency Graphs and Glosses {.smaller}
 
-The `tikz-dependency` package draws dependency arcs over interlinear glossed text — standard in typological and computational linguistics:
+The [`tikz-dependency`](https://ctan.org/pkg/tikz-dependency) package draws dependency arcs over interlinear glossed text — standard in typological and computational linguistics:
 
 :::: {.columns}
 ::: {.column width="60%"}
@@ -679,9 +681,9 @@ For complex figures, consider generating them in Python (`matplotlib` PGF backen
 :::
 
 
-## Linguistics: Interlinear Glosses — `gb4e` {.smaller}
+## Linguistics: Interlinear Glosses — [`gb4e`](https://ctan.org/pkg/gb4e) {.smaller}
 
-The `gb4e` package is the standard for numbered linguistic examples with interlinear glosses following the **Leipzig Glossing Rules**:
+The [`gb4e`](https://ctan.org/pkg/gb4e) package is the standard for numbered linguistic examples with interlinear glosses following the **Leipzig Glossing Rules**:
 
 ```latex
 \usepackage{gb4e}
@@ -710,10 +712,10 @@ As shown in example (\ref{ex:german-dative}), ...
 
 - `\gll` starts the word-by-word alignment; `\\` separates tiers; `\trans` adds the free translation
 - `\ex[*]` marks ungrammatical examples; `\exi` allows custom labels
-- Alternative packages: `linguex` (more compact syntax), `expex` (most flexible, recommended for complex data)
+- Alternative packages: [`linguex`](https://ctan.org/pkg/linguex) (more compact syntax), [`expex`](https://ctan.org/pkg/expex) (most flexible, recommended for complex data)
 
 ::: {.callout-tip}
-Use `\textsc{nom}`, `\textsc{acc}`, `\textsc{dat}` etc. for Leipzig small-cap abbreviations. The `leipzig` package provides pre-defined commands for all standard glossing abbreviations (`\Nom`, `\Acc`, `\Dat`, `\Sg`, `\Pl` …).
+Use `\textsc{nom}`, `\textsc{acc}`, `\textsc{dat}` etc. for Leipzig small-cap abbreviations. The [`leipzig`](https://ctan.org/pkg/leipzig) package provides pre-defined commands for all standard glossing abbreviations (`\Nom`, `\Acc`, `\Dat`, `\Sg`, `\Pl` …).
 :::
 
 
@@ -735,7 +737,7 @@ Tone is marked with diacritics: /má/ (high) vs /mǎ/ (rising).
 /p, t, k/ → [pʰ, tʰ, kʰ] / _V  (aspirated before vowels)
 ```
 
-**With pdfLaTeX — use `tipa`:**
+**With pdfLaTeX — use [`tipa`](https://ctan.org/pkg/tipa):**
 
 ```latex
 \usepackage{tipa}
@@ -750,17 +752,17 @@ Tone is marked with diacritics: /má/ (high) vs /mǎ/ (rising).
 
 | Approach | Pro | Con |
 |---|---|---|
-| Unicode + `fontspec` | Type IPA directly; readable source | Requires XeLaTeX/LuaLaTeX |
-| `tipa` | Works with pdfLaTeX | Command-heavy; hard to read source |
+| Unicode + [`fontspec`](https://ctan.org/pkg/fontspec) | Type IPA directly; readable source | Requires XeLaTeX/LuaLaTeX |
+| [`tipa`](https://ctan.org/pkg/tipa) | Works with pdfLaTeX | Command-heavy; hard to read source |
 
 ::: {.callout-note}
-Most journal templates still require `pdflatex`. If you need IPA in a submission, use `tipa` for compatibility, or check if the journal accepts XeLaTeX/LuaLaTeX.
+Most journal templates still require `pdflatex`. If you need IPA in a submission, use [`tipa`](https://ctan.org/pkg/tipa) for compatibility, or check if the journal accepts XeLaTeX/LuaLaTeX.
 :::
 
 
 ## Linguistics: Optimality Theory Tableaux {.smaller}
 
-The `ot-tableau` package produces formatted OT constraint tableaux:
+The [`ot-tableau`](https://ctan.org/pkg/ot-tableau) package produces formatted OT constraint tableaux:
 
 :::: {.columns}
 ::: {.column width="60%"}
@@ -801,13 +803,13 @@ Column spec characters: `c` (solid), `:` (dashed), `|` (solid within candidates)
 ::::
 
 ::: {.callout-tip}
-Load `\usepackage{tipa}` alongside `ot-tableau` if your input/candidate cells contain IPA. The `\ipa{...}` shorthand in `ot-tableau` calls `tipa` internally.
+Load `\usepackage{tipa}` alongside [`ot-tableau`](https://ctan.org/pkg/ot-tableau) if your input/candidate cells contain IPA. The `\ipa{...}` shorthand in `ot-tableau` calls [`tipa`](https://ctan.org/pkg/tipa) internally.
 :::
 
 
 ## Linguistics: Feature Structures (AVMs) {.smaller}
 
-The `avm` package typesets attribute-value matrices used in HPSG, LFG, and related frameworks:
+The [`avm`](https://ctan.org/pkg/avm) package typesets attribute-value matrices used in HPSG, LFG, and related frameworks:
 
 :::: {.columns}
 ::: {.column width="55%"}
@@ -844,9 +846,9 @@ The `avm` package typesets attribute-value matrices used in HPSG, LFG, and relat
 - `\avmbox{n}` — coindexation box for structure sharing
 - Matrices nest freely for complex feature geometries
 
-**Alternative: `forest` with AVMs**
+**Alternative: [`forest`](https://ctan.org/pkg/forest) with AVMs**
 
-Some authors use `forest` or raw `tikz` for AVMs when layout control is critical. For standard HPSG work, `avm` is the established choice.
+Some authors use [`forest`](https://ctan.org/pkg/forest) or raw `tikz` for AVMs when layout control is critical. For standard HPSG work, [`avm`](https://ctan.org/pkg/avm) is the established choice.
 :::
 ::::
 
@@ -888,7 +890,7 @@ Verbs are typically of type $\langle e, \langle e, t \rangle \rangle$.
 ```
 
 ::: {.callout-tip}
-For frequently used brackets, define shorthands: `\newcommand{\sv}[1]{\llbracket #1 \rrbracket}` so you can write `\sv{\text{runs}}` instead of the full bracket pair each time.
+Key packages: [`stmaryrd`](https://ctan.org/pkg/stmaryrd) for `\llbracket`/`\rrbracket` brackets; [`amssymb`](https://ctan.org/pkg/amssymb) for logical operators (`\forall`, `\exists`, `\wedge` …); [`mathtools`](https://ctan.org/pkg/mathtools) for extended math syntax. For frequently used brackets, define shorthands: `\newcommand{\sv}[1]{\llbracket #1 \rrbracket}` so you can write `\sv{\text{runs}}` instead of the full bracket pair each time.
 :::
 
 
@@ -901,7 +903,7 @@ For frequently used brackets, define shorthands: `\newcommand{\sv}[1]{\llbracket
 |---|---|
 | [Overleaf Gallery — Journals](https://www.overleaf.com/gallery/tagged/academic-journal) | Templates for hundreds of journals |
 | Publisher websites | ACL, IEEE, Springer, Elsevier all provide LaTeX kits |
-| CTAN journal classes | `elsarticle`, `acmart`, `IEEEtran` and many more |
+| CTAN journal classes | [`elsarticle`](https://ctan.org/pkg/elsarticle), [`acmart`](https://ctan.org/pkg/acmart), [`IEEEtran`](https://ctan.org/pkg/ieeetran) and many more |
 
 **Thesis templates:**
 
@@ -988,6 +990,7 @@ All materials: [dkz2r.de/tags/latex](https://www.dkz2r.de/tags/latex/)
 - [Zotero — Reference Manager](https://www.zotero.org)
 - [BetterBibTeX for Zotero](https://retorque.re/zotero-better-bibtex/)
 - [biblatex documentation (CTAN)](https://ctan.org/pkg/biblatex)
+- [biblatex-apa — APA 7th edition style](https://ctan.org/pkg/biblatex-apa)
 - [Quarto — Scientific Publishing](https://quarto.org)
 - [TikZ & PGF documentation](https://ctan.org/pkg/pgf)
 - [tikz.dev — TikZ reference](https://tikz.dev)
