@@ -654,91 +654,221 @@ For complex figures, consider generating them in Python (`matplotlib` PGF backen
 :::
 
 
-## LaTeX for Linguistics {.smaller}
+## Linguistics: Interlinear Glosses — `gb4e` {.smaller}
 
-:::: {.columns}
-::: {.column width="50%"}
-**Interlinear glosses — `gb4e`:**
+The `gb4e` package is the standard for numbered linguistic examples with interlinear glosses following the **Leipzig Glossing Rules**:
 
 ```latex
 \usepackage{gb4e}
 
 \begin{exe}
-  \ex
-  \gll Der Mann sieht die Frau. \\
-       the.M man sees the.F woman \\
-  \trans `The man sees the woman.'
+  \ex \label{ex:german-dative}
+  \gll Der Mann gibt    der   Frau   das   Buch. \\
+       the.M man  gives the.F woman  the.N book \\
+  \trans `The man gives the woman the book.'
+
+  \ex[*]{
+  \gll *Das Buch gibt der Frau der Mann. \\
+        the.N book gives the.F woman the.M man \\
+  \trans (ungrammatical word order)
+  }
+
+  \exi{(1a)}
+  \gll \textsc{nom} \textsc{dat} \textsc{acc} \\
+       subject indirect.object direct.object \\
+  \trans Case roles in the German ditransitive construction.
 \end{exe}
+
+% Cross-reference later:
+As shown in example (\ref{ex:german-dative}), ...
 ```
 
-Uses Leipzig Glossing Rules abbreviations (`\textsc{nom}`, `\textsc{acc}` etc.).
-Alternative packages: `linguex`, `expex`.
+- `\gll` starts the word-by-word alignment; `\\` separates tiers; `\trans` adds the free translation
+- `\ex[*]` marks ungrammatical examples; `\exi` allows custom labels
+- Alternative packages: `linguex` (more compact syntax), `expex` (most flexible, recommended for complex data)
 
-**IPA symbols — Unicode + `fontspec` (XeLaTeX/LuaLaTeX):**
+::: {.callout-tip}
+Use `\textsc{nom}`, `\textsc{acc}`, `\textsc{dat}` etc. for Leipzig small-cap abbreviations. The `leipzig` package provides pre-defined commands for all standard glossing abbreviations (`\Nom`, `\Acc`, `\Dat`, `\Sg`, `\Pl` …).
+:::
+
+
+## Linguistics: IPA Symbols {.smaller}
+
+**With XeLaTeX or LuaLaTeX — type Unicode directly:**
 
 ```latex
-% Preamble:
 \usepackage{fontspec}
-\setmainfont{Charis SIL}  % or Doulos SIL, Gentium
+\setmainfont{Charis SIL}   % free SIL font with full IPA coverage
+% alternatives: Doulos SIL, Gentium Plus, Linux Libertine
 
-% In text — type Unicode directly:
-The vowel /ɪ/ contrasts with /iː/ in English.
-The fricatives [ɸ β] are bilabial.
+% In running text — paste Unicode IPA characters:
+The high front vowel /iː/ contrasts with the lax /ɪ/ in English.
+The retroflex stops [ʈ ɖ] are contrastive in Hindi.
+Tone is marked with diacritics: /má/ (high) vs /mǎ/ (rising).
+
+% Phonological rules:
+/p, t, k/ → [pʰ, tʰ, kʰ] / _V  (aspirated before vowels)
 ```
 
-Alternative for `pdflatex`: `\usepackage{tipa}` with custom commands (`\textipa{...}`), but Unicode input is simpler with a modern engine.
+**With pdfLaTeX — use `tipa`:**
 
+```latex
+\usepackage{tipa}
+
+\textipa{/\textphi \textbeta/}   % bilabial fricatives [ɸ β]
+\textipa{[\textrtailt \textrtaild]}  % retroflex stops
+\textipa{/m\'{a}/}               % high tone on /a/
+
+% tipx extends tipa with additional symbols:
+\usepackage{tipx}
+```
+
+| Approach | Pro | Con |
+|---|---|---|
+| Unicode + `fontspec` | Type IPA directly; readable source | Requires XeLaTeX/LuaLaTeX |
+| `tipa` | Works with pdfLaTeX | Command-heavy; hard to read source |
+
+::: {.callout-note}
+Most journal templates still require `pdflatex`. If you need IPA in a submission, use `tipa` for compatibility, or check if the journal accepts XeLaTeX/LuaLaTeX.
 :::
-::: {.column width="50%"}
-**Optimality Theory tableaux — `ot-tableau`:**
 
+
+## Linguistics: Optimality Theory Tableaux {.smaller}
+
+The `ot-tableau` package produces formatted OT constraint tableaux:
+
+:::: {.columns}
+::: {.column width="60%"}
 ```latex
 \usepackage{ot-tableau}
+\usepackage{pifont}  % for \HandRight winner symbol
 
-\begin{tableau}{c:c|c}
-\inp{\ipa{/inp/}}  \const{C1} \const{C2} \const{C3}
-\cand{[cand1]}               \vio{*}
-\cand[\HandRight]{[cand2]}             \vio{*}
-\cand{[cand3]}     \vio{*!}
+% Column spec: c = solid border, : = dashed, | = solid between
+\begin{tableau}{c:c:c|c}
+\inp{/ɾ\textipa{E}to/}
+  \const{*Complex} \const{Onset} \const{NoCoda} \const{Max}
+\cand[\HandRight]{[ɾe.to]}
+                              \vio{*}
+\cand{[ɾet]}
+               \vio{*}                           \vio{*}
+\cand{[e.to]}
+  \vio{*!}
+\cand{[ɾ\textipa{E}.to]}
+               \vio{*}        \vio{*!}
 \end{tableau}
 ```
+:::
+::: {.column width="40%"}
+**Key commands:**
 
-**Feature structures / AVMs — `avm`:**
+| Command | Meaning |
+|---|---|
+| `\inp{...}` | Input form cell |
+| `\const{...}` | Constraint header |
+| `\cand{...}` | Candidate row |
+| `\cand[\HandRight]{...}` | Optimal candidate |
+| `\vio{*}` | One violation mark |
+| `\vio{*!}` | Fatal violation |
+| `\vio{**}` | Two violations |
 
-```latex
-\usepackage{avm}
-
-\[
-\avmbox{NP}
-\begin{avm}
-  \[ cat & np \\
-     agr & \[ num & sg \\
-              per & 3rd \] \]
-\end{avm}
-\]
-```
-
-**Semantics — lambda expressions in math mode:**
-
-```latex
-% No special package needed:
-$\lambda x . \lambda e . \text{run}'(e, x)$
-
-$\llbracket \text{runs} \rrbracket =
-  \lambda x \in D_e . \lambda e \in D_v .
-  \text{run}(e, x) = 1$
-% \llbracket needs: \usepackage{stmaryrd}
-```
-
+Column spec characters: `c` (solid), `:` (dashed), `|` (solid within candidates)
 :::
 ::::
 
 ::: {.callout-tip}
-For the `\llbracket`/`\rrbracket` double-bracket notation common in formal semantics, load `\usepackage{stmaryrd}`. For full Unicode IPA input, compile with `lualatex` or `xelatex` and a suitable font such as Charis SIL or Gentium Plus.
+Load `\usepackage{tipa}` alongside `ot-tableau` if your input/candidate cells contain IPA. The `\ipa{...}` shorthand in `ot-tableau` calls `tipa` internally.
+:::
+
+
+## Linguistics: Feature Structures (AVMs) {.smaller}
+
+The `avm` package typesets attribute-value matrices used in HPSG, LFG, and related frameworks:
+
+:::: {.columns}
+::: {.column width="55%"}
+```latex
+\usepackage{avm}
+\avmfont{\sc}          % attributes in small caps
+\avmvalfont{\it}       % values in italics
+
+% A simple NP sign:
+\[
+\avmbox{NP}
+\begin{avm}
+  \[ phon   & \<\textnormal{the cat}\> \\
+     synsem & \[ local & \[
+       cat & \[ head & \avmbox{noun}~\[ case & nom \] \\
+                val  & \[ spr  & \<\> \\
+                          comps & \<\> \] \] \\
+       cont & \[ index & i \\
+                restr & \<\[ reln  & cat \\
+                              inst  & i \]\> \] \] \] \]
+\end{avm}
+\]
+
+% Coreference boxes (structure sharing):
+\avmbox{1}  % prints a numbered box: [1]
+```
+:::
+::: {.column width="45%"}
+**Structure:**
+
+- `\begin{avm} ... \end{avm}` — the matrix environment
+- `\[ attr & val \\ attr2 & val2 \]` — attribute-value pairs
+- `\< ... \>` — lists (sequences)
+- `\avmbox{n}` — coindexation box for structure sharing
+- Matrices nest freely for complex feature geometries
+
+**Alternative: `forest` with AVMs**
+
+Some authors use `forest` or raw `tikz` for AVMs when layout control is critical. For standard HPSG work, `avm` is the established choice.
+:::
+::::
+
+
+## Linguistics: Formal Semantics {.smaller}
+
+Lambda calculus and model-theoretic notation use standard LaTeX math mode — no special package needed for the core notation:
+
+```latex
+% Basic lambda expressions:
+$\lambda x \in D_e .\ \text{cat}'(x)$
+
+% Event semantics (Neo-Davidsonian):
+$\llbracket \text{runs} \rrbracket =
+  \lambda x \in D_e .\ \lambda e \in D_v .\ \text{run}(e) \wedge \text{Agent}(e, x) = 1$
+
+% Quantifiers:
+$\llbracket \text{every cat} \rrbracket =
+  \lambda P_{et} .\ \forall x [\ \text{cat}'(x) \rightarrow P(x)\ ]$
+
+% Intensional types (possible worlds):
+$\llbracket \text{believes} \rrbracket^{w} =
+  \lambda p_{\langle s,t \rangle} .\ \lambda x_e .\
+  \forall w' \in \text{Dox}(x, w) :\ p(w') = 1$
+
+% Useful packages:
+\usepackage{stmaryrd}   % \llbracket \rrbracket  ⟦ ⟧
+\usepackage{amssymb}    % \forall \exists \wedge \vee \rightarrow
+\usepackage{mathtools}  % \coloneqq  :=  and other extensions
+```
+
+**Type theory notation:**
+
+```latex
+% Semantic types inline:
+An expression of type $\langle e, t \rangle$ maps
+individuals ($e$) to truth values ($t$).
+Verbs are typically of type $\langle e, \langle e, t \rangle \rangle$.
+```
+
+::: {.callout-tip}
+For frequently used brackets, define shorthands: `\newcommand{\sv}[1]{\llbracket #1 \rrbracket}` so you can write `\sv{\text{runs}}` instead of the full bracket pair each time.
 :::
 
 
 ## Templates: Journals and Theses {.smaller}
+
 
 **Journal templates** provide `.cls` and `.sty` files that enforce house style:
 
