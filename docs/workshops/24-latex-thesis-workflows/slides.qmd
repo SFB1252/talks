@@ -193,7 +193,7 @@ The bibliography system has two independent layers:
 The backend and the style package must be chosen as a matched pair — they communicate via the `.aux` and `.bbl` files and expect a compatible format.
 
 
-## Bibliography: Choosing a Backend and Style Package {.smaller}
+## Bibliography: Choosing Packages {.smaller}
 
 | Backend (since) | Style package (since) | When to use |
 |---|---|---|
@@ -211,8 +211,7 @@ The backend and the style package must be chosen as a matched pair — they comm
 
 % Option 2: natbib + BibTeX (journal template compatibility)
 \usepackage[round, authoryear]{natbib}
-% no \addbibresource — BibTeX is told the file via \bibliography{references}
-% at the end of the document instead
+% no \addbibresource — use \bibliography{references} at the end of the document
 
 % Option 3: biblatex + BibTeX fallback
 \usepackage[backend=bibtex, style=apa]{biblatex}
@@ -220,15 +219,16 @@ The backend and the style package must be chosen as a matched pair — they comm
 
 % Option 4: apacite — AVOID for new work (APA 6th only, unmaintained)
 \usepackage{apacite}
-% bibliography printed with: \bibliography{references}
+% no \addbibresource — use \bibliography{references} at the end of the document
 ```
+
+::: {.callout-tip}
+**APA style:** `style=apa` automatically loads [`biblatex-apa`](https://ctan.org/pkg/biblatex-apa), which implements **APA 7th edition** (2019) and requires `backend=biber`.
+:::
+
 
 ::: {.callout-note}
 The `backend=` option inside `\usepackage[...]{biblatex}` tells `biblatex` which external program to expect. If this does not match the program your editor actually runs, you get missing-reference errors. Check your editor's build settings if references show as **[?]**.
-:::
-
-::: {.callout-tip}
-**APA style:** `style=apa` loads [`biblatex-apa`](https://ctan.org/pkg/biblatex-apa), which implements **APA 7th edition** (2019) and requires `backend=biber`. For full APA *manuscript layout* (double-spacing, running head, author note) required by APA journals, also load the [`apa7`](https://ctan.org/pkg/apa7) document class alongside [`biblatex-apa`](https://ctan.org/pkg/biblatex-apa).
 :::
 
 
