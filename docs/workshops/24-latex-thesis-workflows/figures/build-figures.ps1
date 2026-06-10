@@ -6,7 +6,7 @@
 
 Set-Location $PSScriptRoot
 
-$figures = @("tikz-shapes", "tikz-flowchart", "tikz-pgfplots", "tikz-tree", "tikz-glosses")
+$figures = @("tikz-shapes", "tikz-flowchart", "tikz-pgfplots", "tikz-tree", "tikz-glosses", "gb4e-glosses")
 
 $hasPdfLatex = $null -ne (Get-Command pdflatex -ErrorAction SilentlyContinue)
 $hasPdfToPpm = $null -ne (Get-Command pdftoppm -ErrorAction SilentlyContinue)
@@ -34,7 +34,11 @@ foreach ($f in $figures) {
     pdftoppm -r 150 -png "$f.pdf" $f
     $single = "${f}-1.png"
     if (Test-Path $single) {
-        Rename-Item $single "${f}.png" -Force
+        $target = "${f}.png"
+        if (Test-Path $target) {
+            Remove-Item $target -Force
+        }
+        Move-Item $single $target -Force
     }
 
     Write-Host "Done: ${f}.png"

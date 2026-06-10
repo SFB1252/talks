@@ -8,7 +8,7 @@
 set -uo pipefail
 cd "$(dirname "$0")"
 
-figures=(tikz-shapes tikz-flowchart tikz-pgfplots tikz-tree tikz-glosses)
+figures=(tikz-shapes tikz-flowchart tikz-pgfplots tikz-tree tikz-glosses gb4e-glosses)
 
 if ! command -v pdflatex >/dev/null 2>&1 || ! command -v pdftoppm >/dev/null 2>&1; then
     echo "Missing required tools for PNG output (pdflatex and/or pdftoppm)." >&2
@@ -34,7 +34,10 @@ for f in "${figures[@]}"; do
         continue
     fi
     # pdftoppm appends -1.png for single-page files
-    [[ -f "${f}-1.png" ]] && mv "${f}-1.png" "${f}.png"
+    if [[ -f "${f}-1.png" ]]; then
+        rm -f "${f}.png"
+        mv -f "${f}-1.png" "${f}.png"
+    fi
 
     echo "Done: ${f}.png"
 

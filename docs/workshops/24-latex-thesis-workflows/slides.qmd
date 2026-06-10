@@ -770,6 +770,8 @@ For complex figures, consider generating them in Python (`matplotlib` PGF backen
 
 The [`gb4e`](https://ctan.org/pkg/gb4e) package is the standard for numbered linguistic examples with interlinear glosses following the **Leipzig Glossing Rules**:
 
+:::: {.columns}
+::: {.column width="58%"}
 ```latex
 \usepackage{gb4e}
 
@@ -794,6 +796,13 @@ The [`gb4e`](https://ctan.org/pkg/gb4e) package is the standard for numbered lin
 % Cross-reference later:
 As shown in example (\ref{ex:german-dative}), ...
 ```
+:::
+::: {.column width="42%"}
+**Rendered output:**
+
+![](figures/gb4e-glosses.svg){width=100%}
+:::
+::::
 
 - `\gll` starts the word-by-word alignment; `\\` separates tiers; `\trans` adds the free translation
 - `\ex[*]` marks ungrammatical examples; `\exi` allows custom labels
