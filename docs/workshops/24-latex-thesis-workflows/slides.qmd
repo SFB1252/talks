@@ -25,6 +25,8 @@ format:
     embed-resources: true
     transition: none
     background-transition: none
+bibliography: "0. toread.bib"
+csl: apa.csl
 ---
 
 ## Overview
@@ -417,6 +419,50 @@ Several studies support this claim \parencite{chomsky1965aspects, schepens2024pr
 \printbibliography[heading=bibintoc]      % include in table of contents
 \printbibliography[type=article]          % filter by entry type
 ```
+
+
+## Citation in Practice: A Real Example {.smaller}
+
+Using `burknerBrmsPackageBayesian2017` from our `.bib` file:
+
+**The `.bib` entry (BibLaTeX format, auto-exported from Zotero):**
+
+```bibtex
+@article{burknerBrmsPackageBayesian2017,
+  author  = {Bürkner, Paul-Christian},
+  title   = {brms: {An} {R} Package for Bayesian Multilevel Models Using Stan},
+  journal = {Journal of Statistical Software},
+  year    = {2017},
+  volume  = {80},
+  pages   = {1--28},
+  doi     = {10.18637/jss.v080.i01},
+}
+```
+
+**In your `.tex` document:**
+
+```latex
+% Narrative citation — author as subject:
+\textcite{burknerBrmsPackageBayesian2017} introduced the brms package
+for Bayesian multilevel modelling in R.
+
+% Parenthetical citation — supporting claim:
+Bayesian multilevel models can be fitted using Stan via R
+\parencite{burknerBrmsPackageBayesian2017}.
+
+% Multiple citations:
+\parencite{burknerBrmsPackageBayesian2017, gelmanRegressionOtherStories2020}
+```
+
+**Rendered output (APA 7th style):**
+
+> @burknerBrmsPackageBayesian2017 introduced the `brms` package for Bayesian multilevel modelling in R.
+
+> Bayesian multilevel models can be fitted using Stan via R [@burknerBrmsPackageBayesian2017].
+
+::: {.callout-note}
+The cite key `burknerBrmsPackageBayesian2017` is generated automatically by BetterBibTeX from the pattern `[auth:lower][Title:skipwords:lower:select=1,1][year]`. You never need to type or remember it — just search in your editor's Zotero panel or use autocomplete.
+:::
 
 
 ## Quarto: Literate Programming Meets LaTeX {.smaller}
@@ -1043,3 +1089,6 @@ All materials: [dkz2r.de/tags/latex](https://www.dkz2r.de/tags/latex/)
 - [Prism — OpenAI's AI-native LaTeX workspace](https://prism.openai.com)
 - [TeXlyre — Open-source, local-first LaTeX editor](https://texlyre.github.io/texlyre/)
 - [tex.stackexchange.com](https://tex.stackexchange.com)
+
+
+## References
