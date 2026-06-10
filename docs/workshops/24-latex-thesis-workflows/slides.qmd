@@ -904,6 +904,10 @@ The [`ot-tableau`](https://ctan.org/pkg/ot-tableau) package produces formatted O
 | `\vio{**}` | Two violations |
 
 Column spec characters: `c` (solid), `:` (dashed), `|` (solid within candidates)
+
+**Rendered output:**
+
+![](figures/ot-tableau-render.svg){width=100%}
 :::
 ::::
 
@@ -954,8 +958,16 @@ The [`avm`](https://ctan.org/pkg/avm) package typesets attribute-value matrices 
 **Alternative: [`forest`](https://ctan.org/pkg/forest) with AVMs**
 
 Some authors use [`forest`](https://ctan.org/pkg/forest) or raw `tikz` for AVMs when layout control is critical. For standard HPSG work, [`avm`](https://ctan.org/pkg/avm) is the established choice.
+
+**Rendered output:**
+
+![](figures/avm-render.svg){width=100%}
 :::
 ::::
+
+::: {.callout-note}
+If `figures/avm-render.svg` does not appear locally, your TeX installation is likely missing [`langsci-avm`](https://ctan.org/pkg/langsci-avm). Install it (TeX Live Manager: `tlmgr install langsci-avm`) and rerun the build script.
+:::
 
 
 ## Linguistics: Formal Semantics {.smaller}

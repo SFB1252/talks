@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[american]{babel}
+\usepackage{tipa}
+\usepackage{ot-tableau}
+\usepackage{pifont}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tableau}
+\setlength\PreviewBorder{8pt}
+\pagestyle{empty}
+
+\begin{document}
+\begin{tableau}{c:c:c|c}
+\inp{/\textrtailr\textschwa to/}
+  \const{*Complex} \const{Onset} \const{NoCoda} \const{Max}
+\cand[\HandRight]{[\textrtailr e.to]}
+                              \vio{*}
+\cand{[\textrtailr et]}
+               \vio{*}                           \vio{*}
+\cand{[e.to]}
+  \vio{*!}
+\cand{[\textrtailr \textschwa .to]}
+               \vio{*}        \vio{*!}
+\end{tableau}
+\end{document}
