@@ -205,30 +205,71 @@ The backend and the style package must be chosen as a matched pair — they comm
 **Preamble examples — the style package is where you declare the pairing:**
 
 ```latex
-% Option 1: biblatex + biber (recommended for new work)
+% Option 1: biblatex + biber + APA 7th (recommended for linguistics / social science)
+% biblatex-apa requires babel (or polyglossia) and csquotes for correct
+% localisation of quotes and date formats — load them BEFORE biblatex
+\usepackage[american]{babel}
+\usepackage{csquotes}                          % language-aware quotation marks
+\usepackage[backend=biber, style=apa]{biblatex} % style=apa loads biblatex-apa
+\addbibresource{references.bib}
+
+% Option 1b: same but with polyglossia (XeLaTeX/LuaLaTeX)
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=american]{english}
+\usepackage{csquotes}
 \usepackage[backend=biber, style=apa]{biblatex}
-\addbibresource{references.bib}   % path to your .bib file
+\addbibresource{references.bib}
 
 % Option 2: natbib + BibTeX (journal template compatibility)
 \usepackage[round, authoryear]{natbib}
-% no \addbibresource — use \bibliography{references} at the end of the document
+% no \addbibresource — use \bibliography{references} at end of document
 
-% Option 3: biblatex + BibTeX fallback
+% Option 3: biblatex + BibTeX fallback (biber unavailable)
+\usepackage[american]{babel}
+\usepackage{csquotes}
 \usepackage[backend=bibtex, style=apa]{biblatex}
 \addbibresource{references.bib}
 
-% Option 4: apacite — AVOID for new work (APA 6th only, unmaintained)
+% Option 4: apacite — AVOID (APA 6th only, unmaintained since ~2013)
 \usepackage{apacite}
-% no \addbibresource — use \bibliography{references} at the end of the document
+% no \addbibresource — use \bibliography{references} at end of document
 ```
 
 ::: {.callout-tip}
-**APA style:** `style=apa` automatically loads [`biblatex-apa`](https://ctan.org/pkg/biblatex-apa), which implements **APA 7th edition** (2019) and requires `backend=biber`.
+[`csquotes`](https://ctan.org/pkg/csquotes) is required by `biblatex-apa` for correct localisation of block quotes, in-text quotation marks, and date formatting. Without it you may get warnings or incorrect output. [`babel`](https://ctan.org/pkg/babel) / [`polyglossia`](https://ctan.org/pkg/polyglossia) sets the language so that `biblatex` applies the right hyphenation, month names, and punctuation rules.
 :::
 
 
 ::: {.callout-note}
 The `backend=` option inside `\usepackage[...]{biblatex}` tells `biblatex` which external program to expect. If this does not match the program your editor actually runs, you get missing-reference errors. Check your editor's build settings if references show as **[?]**.
+:::
+
+
+## APA Manuscript Layout {.smaller}
+
+Citation style (`biblatex-apa`) and *document layout* are separate concerns. APA journals require specific formatting — double-spacing, running head, author note, abstract — that goes beyond citation style.
+
+**Options for full APA 7th manuscript layout:**
+
+| Option | Status | Notes |
+|---|---|---|
+| [`apa7`](https://ctan.org/pkg/apa7) document class | Last release July 2022; no updates since | Implements full APA 7th manuscript format; use with `biblatex-apa`; broadly functional but bug reports unaddressed |
+| [`papaja`](https://github.com/crsh/papaja) R package | Actively maintained | Quarto/R Markdown wrapper around an APA 6th LaTeX template; integrates R output directly; ideal for empirical papers with analysis code |
+| Overleaf APA template | Varies by template | Several community-maintained APA 7th templates on the [Overleaf Gallery](https://www.overleaf.com/gallery/tagged/apa); quality varies |
+| Custom preamble | Maintained by you | Use `setspace`, `fancyhdr`, `geometry` etc. to replicate APA layout manually; full control |
+
+**Minimal `apa7` setup (for manuscript submission):**
+
+```latex
+\documentclass[man, 12pt]{apa7}   % man = manuscript mode; also: jou, doc, stu
+\usepackage[american]{babel}
+\usepackage{csquotes}
+\usepackage[style=apa, backend=biber]{biblatex}
+\addbibresource{references.bib}
+```
+
+::: {.callout-tip}
+For **empirical linguistics or psychology papers** where you also need R/Python output in your manuscript, [`papaja`](https://github.com/crsh/papaja) with Quarto is the most practical fully-maintained solution. It generates APA 7th–formatted PDFs directly from `.qmd` or `.Rmd` files.
 :::
 
 
@@ -991,6 +1032,7 @@ All materials: [dkz2r.de/tags/latex](https://www.dkz2r.de/tags/latex/)
 - [BetterBibTeX for Zotero](https://retorque.re/zotero-better-bibtex/)
 - [biblatex documentation (CTAN)](https://ctan.org/pkg/biblatex)
 - [biblatex-apa — APA 7th edition style](https://ctan.org/pkg/biblatex-apa)
+- [papaja — APA manuscripts with R/Quarto](https://github.com/crsh/papaja)
 - [Quarto — Scientific Publishing](https://quarto.org)
 - [TikZ & PGF documentation](https://ctan.org/pkg/pgf)
 - [tikz.dev — TikZ reference](https://tikz.dev)
