@@ -478,25 +478,69 @@ Speaker Notes:
 
 ---
 
-## Licensing AI & ML Models {.smaller}
+## 6. AI Licensing & Institutional Policies {.smaller}
 
-Linguistics researchers increasingly train or fine-tune Large Language Models (LLMs) or ASR systems. These models are composite works that require careful licensing.
+Linguistics researchers increasingly train, fine-tune, or query Large Language Models (LLMs) and ASR systems. These models are composite works that require careful licensing.
 
 ### The Components of an ML Release
-*   **Source Code:** Training architecture, fine-tuning scripts $\rightarrow$ **MIT or Apache 2.0**.
-*   **Training Data:** Annotated datasets $\rightarrow$ **CC BY 4.0 or CC0**.
+*   **Source Code:** Training architecture, scripts $\rightarrow$ **MIT or Apache 2.0**.
+*   **Training Data:** Annotated datasets/corpora $\rightarrow$ **CC BY 4.0 or CC0**.
 *   **Model Weights/Parameters:** The actual numbers (tensors). Legally ambiguous, as they represent mathematical outputs rather than creative expressions.
-
-### OpenRAIL (Responsible AI Licenses)
-*   Integrate open access permissions with **behavior-based restrictions** (e.g., prohibiting use for biometric surveillance, malicious synthesis).
-*   *Examples:* RAIL-M (for models), RAIL-D (for data).
-*   *Caveat:* Because they restrict use cases, RAIL licenses are **not** OSI-approved Open Source, which may conflict with some funder mandates.
+*   **Responsible AI Licenses (OpenRAIL):** Integrate open access permissions with **behavior-based restrictions** (e.g., RAIL-M for models, RAIL-D for data).
+*   *Note:* RAIL licenses are **not** OSI-approved Open Source because they restrict field-of-use.
 
 ::: {.notes}
 Speaker Notes:
 - Explain that weights don't cleanly fit under traditional copyright because they are calculated programmatically.
 - Discuss how RAIL licenses work: they are a hybrid of a license and a terms-of-use agreement.
 - Emphasize the conflict: OSI defines "Open Source" as unrestricted. RAIL licenses have field-of-use restrictions, so they are "source-available" or "responsible-use", not strictly open-source.
+:::
+
+---
+
+## Open-Washing & The European OSAI Index {.smaller}
+
+Because there is no single agreed-upon standard for "Open Source AI", "open-washing" is widespread.
+
+### The European Open Source AI Index (OSAI)
+*   Developed by Radboud University to track the actual openness of generative AI systems.
+*   Evaluates models across **14 dimensions** (including data transparency, code availability, and licensing terms).
+*   **Open-washing:** Many models (e.g., Mistral Large 3, Proton's Lumo) are marketed as open but hide training datasets, pre-processing pipelines, or enforce restrictive terms.
+
+### The EU AI Act Connection (2025/2026)
+*   The EU AI Act regulates generative AI based on systemic risk.
+*   **Exemptions:** Generative AI models released under a free and open-source license enjoy significant regulatory exemptions (unless they pose a systemic risk).
+*   **The Risk:** Claiming "openness" without full compliance with open-source criteria is a major regulatory loophole that the EU AI Office is actively addressing.
+
+::: {.notes}
+Speaker Notes:
+- Introduce the European Open Source AI Index (osai-index.eu) as a benchmark tool.
+- Explain the term "open-washing": marketing a model as open-source when only the weights are downloadable under restrictive terms, while the data is secret.
+- Highlight the EU AI Act: it provides exemptions for true open-source models (to foster research), making the exact legal definition of "openness" a high-stakes compliance issue.
+:::
+
+---
+
+## Institutional AI Policies: UoC Guidelines {.smaller}
+
+If you are at the University of Cologne, AI use is governed by central policies and infrastructures.
+
+### The UoC AI Directive (*KI-Richtlinie*)
+*   **Legal Framework:** Ratified by the UoC Rectorate and staff councils to govern compliance, data privacy, and intellectual property.
+*   **Confidentiality Classes (*Vertraulichkeitsklassen*):** Guidelines dictating which types of research or administrative data can be input into public vs. private AI services.
+
+### UoC Central AI Services
+*   **OSKI.nrw (chat.kiconnect.nrw):** A collaborative NRW university project providing open-source models on local HPC hardware (RAMSES).
+    *   **DFG-Compliant:** Can be legally used for reviewing and writing DFG proposals.
+*   **Local AI (Pillar 5):** Using tools like LM Studio, Jan, or GPT4All to run lightweight models locally.
+    *   **Maximum Privacy:** Ensure zero data leaves your local device.
+
+::: {.notes}
+Speaker Notes:
+- Explain that UoC has a formal "KI-Richtlinie" and a whitelist of approved tools.
+- Highlight the 5-pillar model of the IT Center (ITCC).
+- Point out that OSKI.nrw runs on local university hardware, meaning the data doesn't go to third-party commercial APIs, making it safe for DFG reviews.
+- Encourage local execution (Pillar 5) for highly sensitive language data or clinical recordings.
 :::
 
 ---
