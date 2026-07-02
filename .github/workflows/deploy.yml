@@ -55,6 +55,7 @@ jobs:
           quarto render docs/workshops/22-version-control-collaboration-workflows/slides.qmd
           quarto render docs/workshops/23-latex-getting-started/slides.qmd
           quarto render docs/workshops/24-latex-thesis-workflows/slides.qmd
+          quarto render docs/workshops/25-licensing/slides.qmd
 
       - name: Build site
         env:
@@ -102,6 +103,7 @@ jobs:
           quarto render docs/workshops/22-version-control-collaboration-workflows/slides.qmd
           quarto render docs/workshops/23-latex-getting-started/slides.qmd
           quarto render docs/workshops/24-latex-thesis-workflows/slides.qmd
+          quarto render docs/workshops/25-licensing/slides.qmd
 
       - name: Test build
         env:
