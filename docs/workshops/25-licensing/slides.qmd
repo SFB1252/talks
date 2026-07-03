@@ -363,21 +363,42 @@ Speaker Notes:
 
 ## Issue 1: Upstream Dependency Conflict {.smaller}
 
-`ConversationAlign` is licensed under LGPLv3 (weak copyleft). However, it lists `textstem` under its `Imports` in the `DESCRIPTION` file.
+`ConversationAlign` is licensed under LGPLv3 (weak copyleft). However, it lists `textstem` (strictly **GPL-2**) under its `Imports` in the `DESCRIPTION` file.
 
-*   `textstem` is strictly licensed under **GPL-2**.
-*   **The Conflict:** Under FSF guidelines, GPLv2 and LGPLv3 are incompatible [@german2009license]. You cannot link LGPLv3 code with strict GPL-2 code at runtime in a way that creates a single derivative work without violating GPL-2 terms.
-
-### Resolution Options
-*   **Option A (Relicense):** Dual-license `ConversationAlign` under `GPL-2 | GPL-3`. This matches the dependencies but enforces strong copyleft on your package.
-*   **Option B (Isolate):** Move `textstem` from `Imports` to `Suggests` in the `DESCRIPTION` file. Load it dynamically only when users run lemmatization functions. The core package is no longer bound to GPL-2.
+### Two Licensing Interpretations
+*   **The Lenient View:** Wickham & Bryan (@wickham2023r) note that merely calling functions from an imported/suggested package at runtime does not require license compatibility, as no source code is bundled or compiled.
+*   **The Strict View (FSF / Corporate Compliance):** Loading and executing GPL-2 functions inside an LGPLv3 package in the same process memory space creates a combined work at runtime [@german2009license]. Under this view, GPLv2 and LGPLv3 are incompatible, making the package legally non-distributable.
+*   **Downstream Barriers:** Even under the lenient view, users are forced to install the GPL-2 library `textstem`, which blocks downstream users with strict anti-GPL policies.
 
 ::: {.notes}
 Speaker Notes:
-- Explain that in R, `Imports` loads the package namespace during initialization, which legally merges the works at runtime.
-- Suggests is the standard R way to resolve this (e.g. `requireNamespace("textstem", quietly = TRUE)`).
-- Cite German & Hassan (2009) on component-based license integration patterns.
+- Address the tension between Hadley Wickham's "personal opinion" (that Imports does not trigger copyleft compatibility requirements) and standard FSF/corporate compliance (which views process-level runtime linkage of GPL code as a license-tainting event).
+- Point out that even if we follow the lenient view, the transitive dependency forces GPL-2 onto commercial users' machines.
 :::
+
+---
+
+## Dependency Analysis: Are They Indispensable? {.smaller}
+
+To bypass license conflicts, we must audit whether our R package dependencies are truly indispensable.
+
+| Package | License | Usage in `ConversationAlign` | Base R Alternative (Zero-Dependency) |
+|---|---|---|---|
+| **`DescTools`** | GPL ($\ge$ 2) | `DescTools::AUC()` for trapezoidal integration | Custom 5-line R function using mathematical trapezoid rule: `sum((y[-1] + y[-n]) / 2 * diff(x))` |
+| **`zoo`** | GPL-2 \| GPL-3 | `zoo::na.approx()` for linear interpolation | Custom wrapper around base `stats::approx(..., rule = 1)$y` |
+| **`textstem`** | GPL-2 strict | `textstem::lemmatize_strings()` for lemmatization | Optional. Move to `Suggests` and check availability dynamically: `requireNamespace("textstem", quietly = TRUE)` |
+
+### Action Plan
+1. **Remove `DescTools` and `zoo`** from `Imports` and implement custom base R equivalents (eliminating their licensing footprint entirely).
+2. **Move `textstem` to `Suggests`**, shielding the core LGPLv3 package from GPL-2 strict copyleft obligations.
+
+::: {.notes}
+Speaker Notes:
+- Walk through the table to show that two out of three copyleft dependencies can be completely removed from DESCRIPTION without losing functionality.
+- Emphasize that implementing simple mathematical formulas (like trapezoidal integration) in base R is highly preferable to importing bulky, copyleft-licensed helper packages.
+- Explain how moving textstem to Suggests preserves functionality for users who want lemmatization while protecting others.
+:::
+
 
 ---
 

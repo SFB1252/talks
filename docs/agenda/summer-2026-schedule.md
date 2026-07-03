@@ -112,7 +112,7 @@ The Summer 2026 series is designed to keep sessions practical and accessible:
 
 ---
 
-### 25. Licensing of Published Datasets and Scripts
+### 25. [Licensing of Published Datasets and Scripts](../workshops/25-licensing/index.md)
 
 **Date:** 15. July 2026  
 **Time:** 14:00 - 15:30  
