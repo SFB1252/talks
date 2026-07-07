@@ -56,6 +56,15 @@ jobs:
           quarto render docs/workshops/23-latex-getting-started/slides.qmd
           quarto render docs/workshops/24-latex-thesis-workflows/slides.qmd
           quarto render docs/workshops/25-licensing/slides.qmd
+          quarto render docs/resources/crc-day-2026/slides.qmd
+
+      - name: Install decktape
+        run: npm install -g decktape
+
+      - name: Generate PDF for CRC Day slides
+        run: |
+          decktape reveal docs/resources/crc-day-2026/slides.html \
+            docs/resources/crc-day-2026/slides.pdf --chrome-arg=--no-sandbox
 
       - name: Build site
         env:
@@ -104,6 +113,7 @@ jobs:
           quarto render docs/workshops/23-latex-getting-started/slides.qmd
           quarto render docs/workshops/24-latex-thesis-workflows/slides.qmd
           quarto render docs/workshops/25-licensing/slides.qmd
+          quarto render docs/resources/crc-day-2026/slides.qmd
 
       - name: Test build
         env:

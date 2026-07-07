@@ -1,0 +1,433 @@
+---
+title: "Data Publications, Mediapipe, AI Good practice"
+subtitle: "Service and Support from Project S"
+author:
+  - name: "Job Schepens"
+    affiliation:
+      - name: Universität zu Köln
+        department: CRC 1252 Prominence in Language
+        city: Cologne, Germany
+date: "8 July 2026"
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, mytheme.scss]
+    logo: logo.png
+    slide-number: true
+    scrollable: true
+    mouse-wheel: true
+    footer: "SFB 1252 Prominence in Language · Universität zu Köln"
+    output-file: slides.html
+    embed-resources: true
+    transition: none
+    background-transition: none
+bibliography: "references.bib"
+---
+
+<style>
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("fonts/AlbertSans-300.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/AlbertSans-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/AlbertSans-500.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/AlbertSans-600.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/AlbertSans-700.ttf") format("truetype");
+}
+</style>
+
+## Overview
+
+Three parts:
+
+-   **Part 1 — Publishing Research Data:** a quick refresher about licensing your data, FAIR principles, data journals, and choosing a repository (Zenodo, OSF, LAC, and more)
+-   **Part 2 — MediaPipe SIG:** a quick recap of what the group is, and a call for contributions
+-   **Part 3 — Announcement:** an AI Ethics workshop at the upcoming CRC 1252 retreat (5–7 October 2026)
+
+::: callout-note
+**Goal:** Remind CRC 1252 members of some Project S support options
+:::
+
+------------------------------------------------------------------------
+
+# Part 1 · Publishing Research Data {.section-divider}
+
+### Licensing, FAIR Data, Data Journals & Repositories
+
+------------------------------------------------------------------------
+
+## Project S {.smaller}
+
+**Project S** helps with: 
+
+-   **Licensing & rights:** choosing a licence, identifying responsible parties (you, PI, UzK)?
+-   **Choosing a repository:** Zenodo, OSF, LAC, etc. 
+-   **Sensitive data:** determining access, secure storage, encryption, GDPR
+-   **Data Management Plan:** drafting, reviewing
+-   **Data papers:** finding a suitable journal (e.g., JOHD), documentation
+
+::: callout-note
+Reach out to **Project S**, we will help.  
+:::
+
+::: notes
+Speaker Notes:
+- audio/video recordings, corpora, and experimental/behavioural data; sensitive-data advice includes steering people away from sciebo for identifiable recordings; DMP support is in line with DFG expectations for CRC 1252.
+:::
+
+------------------------------------------------------------------------
+
+## 1. Why Publish (and License) Your Data? {.smaller}
+
+### The Default Status is "All Rights Reserved"
+
+-   Without a license, nobody may legally copy, reuse, or redistribute your data, even if it's sitting in a public GitHub repo.
+
+### Who Owns Your Data? 
+
+-   The person accountable / grant holder / the PI / the PI's 
+
+### Open Science
+
+-   Make data usable for reuse or replication
+
+::: notes
+Speaker Notes:
+
+- *visible* is not automatically *reusable*.
+- Data is subject to both copyright (if there is creative selection/arrangement) and the EU database right (protecting the investment in compiling it).
+- PIs/institutions may hold rights to data collected under employment or grant contracts.
+:::
+
+------------------------------------------------------------------------
+
+## Data vs. Code {.smaller}
+
+MIT/GPL licences don't address database rights, personal-data protection, or citation norms that apply to research data.
+
+| Type | Examples | Best Licensing Framework |
+|------------------------|------------------------|------------------------|
+| **Data** | Corpora, annotations, recordings | **Creative Commons 4.0** (e.g., CC0, CC BY)  |
+| **Software** | Scripts | Open Source licenses (MIT, GPL) — *We will discuss this in the next RDM session* |
+
+::: notes
+Speaker Notes:
+
+- Highlight that in the EU, database rights protect investment in collecting data, even if the data lacks creative expression. CC 4.0 explicitly addresses and waives these rights, unlike CC 3.0.
+:::
+
+------------------------------------------------------------------------
+
+## FAIR Principles {.smaller}
+
+**FAIR** principles:
+
+-   **F — Findable:** metadata, DOI, indexing
+-   **A — Accessible:** clear access conditions 
+-   **I — Interoperable:** standard format 
+-   **R — Re-useable:** non restrictive license and enough documentation 
+
+> **"As open as possible, as closed as necessary."**
+
+-   Also sensitive data can be FAIR
+
+::: notes
+Speaker Notes:
+
+remove *unnecessary* barriers
+:::
+
+------------------------------------------------------------------------
+
+## Data Journals {.smaller}
+
+A **data paper** in a peer-reviewed data journal documents your dataset properly. Examples: 
+
+-   **Journal of Open Humanities Data (JOHD)** Ubiquity Press / Brill
+-   **Journal of Open Psychology Data** Ubiquity Press / Brill
+-   **Research Data Journal for the Humanities and Social Sciences** Brill
+-   **Scientific Data** Springer Nature
+-   **Data in Brief** Elsevier
+
+::: notes
+Speaker Notes:
+
+- A "data paper" describes how a dataset was created and how it can be reused — it does not report new analyses or findings.
+- These are peer-reviewed, indexed, and citable, which is a strong incentive for early-career researchers to invest time in preparing data properly.
+- JOHD explicitly welcomes linguistics submissions and has run special collections on language dataset reuse — natural venue for CRC 1252 datasets.
+:::
+
+------------------------------------------------------------------------
+
+## 2. Data Licensing {.smaller}
+
+**Creative Commons** is the most common licensing framework for research data. It has a modular structure, e.g.: 
+
+-   **CC0 (Public Domain):** "Waiver", waives all copyright and database rights.
+-   **BY** (Attribution): Users must give you credit.
+-   **SA** (ShareAlike): Adaptations must be licensed under the same terms.
+-   **NC** (Non-Commercial): Only non-commercial use is permitted (not recommended).
+
+```         
+       CC BY (Attribution)
+       CC BY-SA (Attribution-ShareAlike)
+       CC BY-NC (Attribution-NonCommercial)
+       CC BY-NC-SA (Attribution-NonCommercial-ShareAlike)
+```
+
+::: notes
+Speaker Notes:
+
+- license controls *what others may do* with your data
+- others include Open Data Commons (ODC), seperates database structure rights from content rights.
+- NC creates compatibility problems (Non-commercial is not clearly defined, cannot combine a CC BY-NC with CC BY into one, no Search Indexing, nc is not fully open, not allowed in schoolbooks, not with commercial publishers).
+- NC is not unrestricted.
+:::
+
+------------------------------------------------------------------------
+
+## Sensitive & Third-Party Data {.smaller}
+
+Considerations:
+
+-   **Personal Data:** GDPR: anonymization/pseudonymization and informed consent
+-   **Aggregated Third-Party Resources:** Data from other publications are often restricted. Check the *original* licenses. 
+-   **Best Practice:** Add a `DATA_LICENSE.md` that lists the license of every third-party resource.
+-   **Project S can help reviewing, e.g.: consent forms, license lists, etc.**.
+
+::: notes
+Speaker Notes:
+
+- repositories like LAC supports restr access with access tiers.
+:::
+
+------------------------------------------------------------------------
+
+## Storing Sensitive Data {.smaller}
+
+Considerations: 
+
+-   Extra care in consent, storage, sharing, and archiving.
+-   **Sciebo** (or similar) is not considered suitable for sensitive and personal data
+-   Access-controlled repositories (e.g., CLARIN/Language Archive Cologne, Dataverse/TROLLing, etc.).
+-   Institutional network drives with an access log
+-   **Encryption** 
+
+::: callout-note
+Speaker Notes:
+
+- Always reach out to **Project S** / C3RDM / DCH / Data protection officer before collecting data.
+- repository controls *where it lives, how long it survives, and how discoverable it is*.
+:::
+
+::: notes
+Speaker Notes:
+
+- *storage/handling* vs publishing/licensing
+:::
+
+------------------------------------------------------------------------
+
+### Choosing a Repository {.smaller}
+
+-   **Visibility (in your research community)** 
+-   **Openness** e.g. OSF does not require an explicit license.
+
+Repositories:
+-   **Open Science Framework (OSF)** helpful concepts for **experimental data** (e.g., structured project components, preregistration). Supports **granular licensing** (e.g., project page CC BY, data component CC0). Full project lifecycle. 
+-   **Zenodo** — general purpose; funded by the EU, operated by **CERN**.
+-   **[lac.uni-koeln.de](https://lac.uni-koeln.de/about/)** — good for **audio-visual data**, including annotations alongside recordings; operated by the **Data Center for the Humanities (DCH)**
+-   **[site.uit.no/trolling](https://site.uit.no/trolling/)** — built on the **Dataverse** platform, recommended by journals (e.g., *Glossa*) 
+
+
+------------------------------------------------------------------------
+
+## Optional: Workflow {.smaller}
+
+```{mermaid}
+graph TD
+    S["Consult Project S"] --> A["Collect / process data"]
+    A --> B{"Contains personal or<br/>sensitive information?"}
+    B -->|Yes| C["Anonymize / apply<br/>access restrictions"]
+    B -->|No| D["Choose a license<br/>(CC0 / CC BY / ODC)"]
+    C --> D
+    D --> E{"Domain-specific<br/>repository available?"}
+    E -->|Yes, language data| F["LAC / TROLLing / CLARIN centre"]
+    E -->|No / general| G["Zenodo / OSF / Institutional repo"]
+    F --> H["Deposit with metadata<br/>+ obtain persistent DOI"]
+    G --> H
+    H --> I["Cite the dataset in your paper"]
+    H --> J["Optional: write a data paper<br/>(JOHD, Scientific Data, etc.)"]
+```
+
+
+------------------------------------------------------------------------
+
+## Checklist
+
+-   Never leave a dataset unlicensed
+-   As open as possible, as closed as necessary
+-   Check GDPR/consent 
+-   Use secure storage when necessary
+-   Choose a suitable repository
+-   Consider a data paper
+-   Ask Project S
+
+------------------------------------------------------------------------
+
+# Part 2 · MediaPipe SIG {.section-divider}
+
+### Recap & Call for Contributions
+
+------------------------------------------------------------------------
+
+## What is the MediaPipe SIG? {.smaller}
+
+The **MediaPipe Special Interest Group** is an ongoing exchange format for CRC 1252 members interested in video-based motion tracking, gesture analysis, sign language research, social gaze, and related methodological questions.
+
+-   Connects to Phase III's **multimodal prosody** work in Area A: prominence signalled through hand, head, torso, eyebrow, and eye movements, plus social gaze and turn-taking.
+-   Focuses on **quantitative, computational, and computer-assisted** workflows — pipelines using tools such as **MediaPipe**, **OpenPose**, **OpenFace**, and motion energy analysis.
+-   Annotation-based/qualitative analyses are welcome too, when connected to computational workflows.
+
+::: notes
+Speaker Notes:
+
+- This is a reminder slide for existing members and an introduction for anyone new in the room.
+- Emphasize the connection to CRC 1252's core interest in signal vs. code prominence and interactional prominence — this isn't just a "tools" group, it connects to the theoretical questions of the CRC.
+- The emphasis throughout is on reproducible, tool-supported, formal analysis pipelines.
+:::
+
+------------------------------------------------------------------------
+
+## How the Group Works {.smaller}
+
+-   **No fixed recurring slot:** meetings are proposed between invited talks whenever there is interest.
+-   **Mailing list:** currently **23 members** — [sign up here](https://lists.uni-koeln.de/mailman/listinfo/sfb1252-mediapipe) if you haven't already.
+-   **Most recent invited talk:** Vadim Kimmelman (University of Bergen), 18 March 2026 — pose-estimation workflows, focus on OpenPose.
+-   **Group history:** Anna Kuder et al. (Nov 2025), Fabian Eckert & Aviad Albert et al. (Sept 2025), Klym Myslyvyi & Janne Lorenzen et al. (July 2025), and an open discussion after PaPe/EnvisionBox (July 2025).
+
+::: notes
+Speaker Notes:
+
+- Point new members to the mailing list link.
+- Briefly mention Kimmelman's talk as an example of the kind of methodological exchange the SIG supports — he is PI of an ERC project on universal properties of nonmanual gestures in sign languages.
+- This lightweight, demand-driven format keeps the SIG low-effort to organize.
+:::
+
+------------------------------------------------------------------------
+
+## Call for Contributions {.smaller}
+
+The SIG runs on contributions from the group — there is no fixed programme, so **we need you** to keep it going.
+
+-   **Propose a talk:** share a pipeline, tool comparison, work-in-progress analysis, or a problem you're stuck on — informal formats are very welcome.
+-   **Suggest a topic or speaker:** know someone (internal or external) working on multimodal prosody, gesture, or gaze methods? Suggest them for an invited talk.
+-   **Bring a methodological question:** the group is a good place to troubleshoot MediaPipe/OpenPose/OpenFace pipelines together.
+-   **Join the mailing list** if you haven't: [SFB 1252 MediaPipe mailing list](https://lists.uni-koeln.de/mailman/listinfo/sfb1252-mediapipe).
+
+::: callout-note
+Get in touch after this session, or via the mailing list, if you'd like to present or propose a topic.
+:::
+
+::: notes
+Speaker Notes:
+
+- This is the explicit "ask" slide — be concrete: contributions can be short and informal, not just polished invited talks.
+- Reiterate the mailing list link for anyone not yet subscribed.
+:::
+
+------------------------------------------------------------------------
+
+# Part 3 · AI Concerns {.section-divider}
+
+### AI Ethics Workshop at the CRC Retreat
+
+------------------------------------------------------------------------
+
+## AI Ethics Workshop — CRC 1252 Retreat {.smaller}
+
+-   **When:** the CRC 1252 retreat, **5–7 October 2026**.
+-   **What:** a workshop on **AI ethics** in linguistic research — responsible use of LLMs, authorship/disclosure norms, data privacy, and AI licensing/openness questions.
+-   **Starting point:** the University of Cologne's new **KI-Richtlinie** (27 January 2026), as a shared basis rather than ad hoc per-project rules.
+-   **Who:** open to all CRC 1252 members — no technical background required.
+
+::: callout-note
+**Save the date:** further details on the exact schedule and how to register will follow closer to the retreat.
+:::
+
+::: notes
+Speaker Notes:
+
+- Keep this brief — it's an announcement, not the main content of today's session.
+- Encourage people to flag topics/questions they'd like the workshop to cover, in advance if possible.
+- Why it matters: as AI tools become part of everyday research workflows (transcription, coding, writing, analysis), the CRC wants shared, informed norms across projects rather than ad hoc individual practices.
+- Connect it back to earlier content if useful: e.g., openness/licensing questions around AI-generated content and training data echo the CC/FAIR discussion from Part 1.
+- The KI-Richtlinie explicitly carves out an exception for AI used solely for scientific research (Art. 2(6) AI Act), but still requires researchers to follow data protection, confidentiality, and applicable ethics standards — and points to the DFG's guidelines on good research practice as the relevant standard for research integrity questions. That's the bridge to the next slide.
+:::
+
+------------------------------------------------------------------------
+
+## Good Research Practice & AI: Open Questions {.smaller}
+
+The retreat workshop won't just cover institutional rules — it's meant to prompt a group discussion on **good research practice** in a world with AI assistance.
+
+-   **A concrete starting question:** if I cite a paper, should I have read it myself, or is it acceptable to rely on an AI-generated summary of it?
+-   More broadly: where is the line between AI as a *support tool* and AI *substituting* for a researcher's own critical engagement with the material?
+
+### Principles to anchor the discussion
+
+-   **Transparenz und Nachvollziehbarkeit** (Transparency & Traceability): it should be clear where and how AI was used in a piece of research — not hidden or glossed over.
+-   **Grundprinzipien wissenschaftlicher Integrität** (Core principles of scientific integrity): DFG guidelines on good scientific practice apply regardless of whether AI was involved.
+-   **Documentation:** record substantial AI use (tool, purpose) like any other methodological choice.
+
+::: notes
+Speaker Notes:
+
+- Use the citation/summary question as the icebreaker — it's concrete and everyone will have an opinion.
+- These questions don't have a single official answer yet; the workshop is a chance to develop shared norms for CRC 1252 together.
+- Transparency/traceability and documentation echo the CIA-triad-style "Nachvollziehbarkeit" language in the KI-Richtlinie's general principles (§2), applied here to research practice rather than IT security.
+- "Grundprinzipien wissenschaftlicher Integrität" ties back to the DFG's guidelines on safeguarding good research practice, which the KI-Richtlinie itself points to for the research context — honesty, accountability for what you claim to know, and not outsourcing your own understanding.
+- Emphasize this is meant to be a discussion, not a lecture — invite people to bring their own edge cases to the retreat.
+:::
+
+------------------------------------------------------------------------
+
+## Q&A
+
+### Questions?
+
+-   Open discussion
+-   Happy to talk through MediaPipe contributions, your data deposits, or the AI ethics workshop afterwards
+
+------------------------------------------------------------------------
+
+## References {.smaller}
+
+::: {#refs}
+:::

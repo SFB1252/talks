@@ -77,6 +77,9 @@ secrets.txt
 .quarto/
 _freeze/
 docs/workshops/**/slides.html
+docs/resources/**/slides.html
+docs/resources/**/slides.pdf
+docs/resources/**/*_files/
 
 # Build Outputs
 _site/
