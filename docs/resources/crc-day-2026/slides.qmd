@@ -66,7 +66,7 @@ bibliography: "references.bib"
 
 Three parts:
 
--   **Part 1 — Publishing Data** licensing data, FAIR principles, data journals, and choosing a repository (Zenodo, OSF, LAC, etc.)
+-   **Part 1 — Publishing Data** licensing, FAIR principles, data journals, and choosing a repository (Zenodo, OSF, LAC, etc.)
 -   **Part 2 — MediaPipe Group** quick recap of what the group is, and a call for contributions
 -   **Part 3 — AI Good Practice in Daily Workflows** workshop at the upcoming CRC 1252 retreat (5–7 October 2026)
 
@@ -75,7 +75,7 @@ Three parts:
 
 # Part 1 · Publishing Research Data {.section-divider}
 
-### Part 1: Data
+### Part 1: Publishing Data
 
 ------------------------------------------------------------------------
 
@@ -97,17 +97,18 @@ Speaker Notes:
 
 ------------------------------------------------------------------------
 
-## Why? {.smaller}
+## Good Scientific Practice {.smaller}
 
-### Open Science
+As open as possibe:
 
--   Make data usable for reuse and replication
+-   **Open Science** Make data usable for reuse and replication
+-   **All Rights Reserved** : Without a license, nobody may legally copy, reuse, or redistribute your data, even if it is in a public GitHub repo
 
-### "All Rights Reserved" by default
+As closed as necessary:
 
--   Without a license, nobody may legally copy, reuse, or redistribute your data, even if it is in a public GitHub repo
+-   **Ethics** GDPR, informed consent, and sensitive data
 
-### Who Decides? 
+Who Decides? 
 
 -   The person accountable / grant holder / the PI / the PI's 
 
@@ -129,8 +130,6 @@ Speaker Notes:
 -   **A — Accessible:** clear access conditions 
 -   **I — Interoperable:** standard format 
 -   **R — Re-useable:** what may others do? + provide documentation 
-
-> *EU*: **"As open as possible, as closed as necessary."**
 
 -   Also sensitive data can be FAIR
 
@@ -243,13 +242,13 @@ Important criteria include **Visibility (in community)** and **Openness of the L
 
 ------------------------------------------------------------------------
 
-## MediaPipe Special Interest Group? {.smaller}
+## MediaPipe Special Interest Group {.smaller}
 
 What?
 
 -   Ongoing, informal, discussion and exchange group 
--   Focus on video-based motion tracking of gesture, sign, gaze, etc. using tools such as **MediaPipe**, **OpenPose**, **OpenFace**, motion energy.
--   Idea is to support projects studying e.g. multimodal prosody and signal, code, and interactional prominence
+-   Focus on video-based motion tracking of gesture, sign, gaze, etc. using tools such as **MediaPipe**, **OpenPose**, **OpenFace**
+-   Original idea is to support projects studying e.g. multimodal prosody and signal, code, and interactional prominence
 
 
 How?
@@ -271,14 +270,14 @@ Speaker Notes:
 ::: {.columns}
 
 ::: {.column width="65%"}
--   **Propose a talk:** work-in-progress, or a problem you're stuck on — informal formats are very welcome!
+-   **Propose a talk:** work-in-progress, a problem you're stuck on, etc.
 -   **Suggest a speaker:** know someone (internal or external) working on multimodal prosody, gesture, or gaze methods?
 -   **Suggest a topic / question:** work on problems together
 -   [**Join the mailing list**](https://lists.uni-koeln.de/mailman/listinfo/sfb1252-mediapipe).
 :::
 
 ::: {.column width="35%"}
-![Mailing list](https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://lists.uni-koeln.de/mailman/listinfo/sfb1252-mediapipe)
+![](https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://lists.uni-koeln.de/mailman/listinfo/sfb1252-mediapipe)
 :::
 
 :::
@@ -293,13 +292,12 @@ Speaker Notes:
 
 ------------------------------------------------------------------------
 
-## Proposal: AI Good Practice Discussion — CRC 1252 Retreat {.smaller}
+## AI Good Practice Norms {.smaller}
 
--   **When:** the CRC 1252 retreat, **5–7 October 2026**.
--   **What:** responsible use of LLMs, disclosure norms, data privacy, AI openness questions.
+-   Currently: ad hoc individual practices, for example, is it OK to use AI to summarize papers you haven't read? 
+-   **What:** responsible use of LLMs, disclosure and documentation norms, data privacy, AI openness questions.
 -   **Starting point:** UzK **KI-Richtlinie** (27 January 2026)
--   For example: if I cite a paper, should I have read it myself, or is it acceptable to rely on an AI-generated summary of it? AI as support vs AI as a substitute for critical engagement
--   Transparency, scientific integrity, and documentation
+-   **When:** the CRC 1252 retreat, **5–7 October 2026**.
 
 ::: notes
 Speaker Notes:
