@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[american]{babel}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{stmaryrd}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{center}
+\setlength\PreviewBorder{8pt}
+\pagestyle{empty}
+
+\newcommand{\sv}[1]{\llbracket #1 \rrbracket}
+
+\begin{document}
+\begin{center}
+\begin{minipage}{0.96\linewidth}
+\[
+\sv{\textit{cat}} = \lambda x_e .\ \text{cat}(x)
+\]
+\[
+\sv{\textit{runs}} = \lambda x_e .\ \lambda e_v .\
+\text{run}(e) \wedge \text{Agent}(e,x)
+\]
+\[
+\sv{\textit{every cat}} = \lambda P_{\langle e,t \rangle} .\
+\forall x[\text{cat}(x) \rightarrow P(x)]
+\]
+\[
+\sv{\textit{runs}} : \langle e,\langle v,t\rangle\rangle
+\]
+\end{minipage}
+\end{center}
+\end{document}

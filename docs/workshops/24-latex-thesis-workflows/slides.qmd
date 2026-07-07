@@ -25,6 +25,8 @@ format:
     embed-resources: true
     transition: none
     background-transition: none
+bibliography: "0. toread.bib"
+csl: apa.csl
 ---
 
 ## Overview
@@ -67,7 +69,7 @@ For documents longer than a typical journal article, choose the right `\document
 | `article` | Papers, short reports | `\section`, `\subsection` |
 | `report` | Bachelor/master theses, technical reports | `\chapter`, `\section` |
 | `book` | PhD theses, monographs | `\part`, `\chapter`, `\section` |
-| `beamer` | Presentations | `\frame`, `\begin{block}` |
+| [`beamer`](https://ctan.org/pkg/beamer) | Presentations | `\frame`, `\begin{block}` |
 
 Most universities provide a custom class (e.g. `unikoeln-thesis`) that presets all formatting.
 
@@ -80,6 +82,8 @@ Most universities provide a custom class (e.g. `unikoeln-thesis`) that presets a
 \usepackage{microtype}    % improved line breaking and spacing
 \usepackage{setspace}     % line spacing (\onehalfspacing, \doublespacing)
 ```
+
+[`hyperref`](https://ctan.org/pkg/hyperref) · [`cleveref`](https://ctan.org/pkg/cleveref) · [`microtype`](https://ctan.org/pkg/microtype) · [`setspace`](https://ctan.org/pkg/setspace)
 
 
 ## Multi-file Projects: `\input` and `\include` {.smaller}
@@ -142,6 +146,29 @@ Put this folder in a Git repository from day one. Version control for a thesis i
 :::
 
 
+## LaTeX Engines {.smaller}
+
+A **LaTeX engine** is the program that reads your `.tex` file and produces output. Several exist — choose based on your font and language needs:
+
+| Engine (since) | Output | Unicode | System fonts | When to use |
+|---|---|---|---|---|
+| `pdflatex` (1997) | PDF directly | Partial (Latin extended) | No — TeX fonts only | Most journal templates; fastest compile; widest compatibility |
+| `xelatex` (2004) | PDF via XDV | Full UTF-8 | Yes — any installed font | Non-Latin scripts; custom OpenType/TrueType fonts; multilingual documents |
+| `lualatex` (2007) | PDF directly | Full UTF-8 | Yes — via `fontspec` | Same as XeLaTeX + Lua scripting for advanced customisation; slower compile |
+| `latex` + `dvipdf` (1985) | DVI → PDF | No | No | Legacy workflows; rarely needed today |
+
+**Browser-based engines (no installation):**
+
+| Engine | How it works | Use case |
+|---|---|---|
+| **SwiftLaTeX** (2019) | Compiles entirely in the browser via WebAssembly; no server round-trip | Offline-capable web apps; embedding LaTeX in tools |
+| **BusyTeX** (2022) | TeX Live compiled to WASM; runs `pdflatex`/`xelatex` client-side | Self-contained browser editors; privacy-sensitive workflows |
+
+::: {.callout-tip}
+For new documents: use `pdflatex` if the journal template requires it, otherwise `lualatex` for the most modern and flexible setup. Overleaf, Prism, and TeXlyre all support switching engines in project settings.
+:::
+
+
 ## Bibliography: How It Works {.smaller}
 
 LaTeX separates the bibliography **database** (a `.bib` file) from the **formatting style** (applied at compile time).
@@ -160,25 +187,92 @@ pdflatex main.tex   → resolves all cross-references (page numbers, labels)
 
 Skipping passes is the most common reason references show as **[?]** or the bibliography is missing entirely.
 
-**Choose your backend:**
+The bibliography system has two independent layers:
 
-| Backend | Style package | When to use |
+- **Backend** — an *external program* invoked between LaTeX passes (e.g. `biber` or `bibtex` on the command line); reads the `.bib` database, resolves citation keys, and writes the formatted `.bbl` file that LaTeX then reads back in
+- **Style package** — a *LaTeX package* declared in the **preamble** (the part of your `.tex` file before `\begin{document}`); defines the `\cite` commands available in your document and controls how the bibliography list is formatted when printed
+
+The backend and the style package must be chosen as a matched pair — they communicate via the `.aux` and `.bbl` files and expect a compatible format.
+
+
+## Bibliography: Choosing Packages {.smaller}
+
+| Backend (since) | Style package (since) | When to use |
 |---|---|---|
-| `biber` | `biblatex` | Recommended for new projects; Unicode-aware; flexible styles |
-| `BibTeX` | `natbib` | Legacy; still required by some older journal templates |
+| [`biber`](https://ctan.org/pkg/biber) (2011) | [`biblatex`](https://ctan.org/pkg/biblatex) (2006) | **New projects and theses** — full Unicode; per-entry-type formatting; advanced sorting and filtering; large choice of maintained styles (APA, Chicago, linguistics-specific) |
+| [`BibTeX`](https://ctan.org/pkg/bibtex) (1985) | [`natbib`](https://ctan.org/pkg/natbib) (1993) | **Publisher-mandated** — ACL, IEEE, Elsevier, Springer templates ship `.bst` files that require BibTeX; ASCII cite keys only; less flexible but universally supported |
+| `BibTeX` (1985) | [`biblatex`](https://ctan.org/pkg/biblatex) (2006) | **Compatibility fallback** — set `backend=bibtex` in the preamble when `biber` is unavailable (e.g. restricted servers or CI); keeps `biblatex` syntax but loses Unicode sorting and some advanced features |
+| `BibTeX` (1985) | [`apacite`](https://ctan.org/pkg/apacite) (1994) | **Avoid for new work** — implements APA 6th edition only (2009); unmaintained since ~2013; still found in older humanities templates but superseded by [`biblatex-apa`](https://ctan.org/pkg/biblatex-apa) |
 
-::: {.callout-note}
-`biber` and `BibTeX` are **not interchangeable** — the package loaded in the preamble must match what the editor runs. Using `backend=biber` with the BibTeX executable (or vice versa) produces errors.
-:::
-
-**Minimum `biblatex` setup:**
+**Preamble examples — the style package is where you declare the pairing:**
 
 ```latex
+% Option 1: biblatex + biber + APA 7th (recommended for linguistics / social science)
+% biblatex-apa requires babel (or polyglossia) and csquotes for correct
+% localisation of quotes and date formats — load them BEFORE biblatex
+\usepackage[american]{babel}
+\usepackage{csquotes}                          % language-aware quotation marks
+\usepackage[backend=biber, style=apa]{biblatex} % style=apa loads biblatex-apa
+\addbibresource{references.bib}
+
+% Option 1b: same but with polyglossia (XeLaTeX/LuaLaTeX)
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=american]{english}
+\usepackage{csquotes}
 \usepackage[backend=biber, style=apa]{biblatex}
 \addbibresource{references.bib}
-...
-\printbibliography
+
+% Option 2: natbib + BibTeX (journal template compatibility)
+\usepackage[round, authoryear]{natbib}
+% no \addbibresource — use \bibliography{references} at end of document
+
+% Option 3: biblatex + BibTeX fallback (biber unavailable)
+\usepackage[american]{babel}
+\usepackage{csquotes}
+\usepackage[backend=bibtex, style=apa]{biblatex}
+\addbibresource{references.bib}
+
+% Option 4: apacite — AVOID (APA 6th only, unmaintained since ~2013)
+\usepackage{apacite}
+% no \addbibresource — use \bibliography{references} at end of document
 ```
+
+::: {.callout-tip}
+[`csquotes`](https://ctan.org/pkg/csquotes) is required by `biblatex-apa` for correct localisation of block quotes, in-text quotation marks, and date formatting. Without it you may get warnings or incorrect output. [`babel`](https://ctan.org/pkg/babel) / [`polyglossia`](https://ctan.org/pkg/polyglossia) sets the language so that `biblatex` applies the right hyphenation, month names, and punctuation rules.
+:::
+
+
+::: {.callout-note}
+The `backend=` option inside `\usepackage[...]{biblatex}` tells `biblatex` which external program to expect. If this does not match the program your editor actually runs, you get missing-reference errors. Check your editor's build settings if references show as **[?]**.
+:::
+
+
+## APA Manuscript Layout {.smaller}
+
+Citation style (`biblatex-apa`) and *document layout* are separate concerns. APA journals require specific formatting — double-spacing, running head, author note, abstract — that goes beyond citation style.
+
+**Options for full APA 7th manuscript layout:**
+
+| Option | Status | Notes |
+|---|---|---|
+| [`apa7`](https://ctan.org/pkg/apa7) document class | Last release July 2022; no updates since | Implements full APA 7th manuscript format; use with `biblatex-apa`; broadly functional but bug reports unaddressed |
+| [`papaja`](https://github.com/crsh/papaja) R package | Actively maintained | Quarto/R Markdown wrapper around an APA 6th LaTeX template; integrates R output directly; ideal for empirical papers with analysis code |
+| Overleaf APA template | Varies by template | Several community-maintained APA 7th templates on the [Overleaf Gallery](https://www.overleaf.com/gallery/tagged/apa); quality varies |
+| Custom preamble | Maintained by you | Use `setspace`, `fancyhdr`, `geometry` etc. to replicate APA layout manually; full control |
+
+**Minimal `apa7` setup (for manuscript submission):**
+
+```latex
+\documentclass[man, 12pt]{apa7}   % man = manuscript mode; also: jou, doc, stu
+\usepackage[american]{babel}
+\usepackage{csquotes}
+\usepackage[style=apa, backend=biber]{biblatex}
+\addbibresource{references.bib}
+```
+
+::: {.callout-tip}
+For **empirical linguistics or psychology papers** where you also need R/Python output in your manuscript, [`papaja`](https://github.com/crsh/papaja) with Quarto is the most practical fully-maintained solution. It generates APA 7th–formatted PDFs directly from `.qmd` or `.Rmd` files.
+:::
 
 
 ## Configuring TeXstudio for Biber {.smaller}
@@ -207,7 +301,7 @@ I found no \bibstyle command---while reading file test.aux
 Or press **F5 (Build & View)** — TeXstudio runs the full sequence automatically.
 
 ::: {.callout-tip}
-`latexmk` (used by VS Code LaTeX Workshop and Overleaf) detects `biber` automatically from the preamble and runs the correct sequence without any configuration.
+[`latexmk`](https://ctan.org/pkg/latexmk) (used by VS Code LaTeX Workshop and Overleaf) detects `biber` automatically from the preamble and runs the correct sequence without any configuration.
 :::
 
 
@@ -268,7 +362,7 @@ The cite key (e.g. `schepens2024prominence`) is what you use in `\cite{...}` com
 | Browser connector | [zotero.org/download/connectors](https://www.zotero.org/download/connectors) |
 
 ::: {.callout-tip}
-Prism (OpenAI) and TeXlyre both include Zotero integration panels for searching and importing references directly within the editor.
+Overleaf, Prism (OpenAI), and TeXlyre all include Zotero integration panels for searching and importing references directly within the editor.
 :::
 
 
@@ -325,6 +419,48 @@ Several studies support this claim \parencite{chomsky1965aspects, schepens2024pr
 \printbibliography[heading=bibintoc]      % include in table of contents
 \printbibliography[type=article]          % filter by entry type
 ```
+
+
+## Citation in Practice: A Real Example {.smaller}
+
+Using `burknerBrmsPackageBayesian2017` from our `.bib` file:
+
+**The `.bib` entry (BibLaTeX format, auto-exported from Zotero):**
+
+```bibtex
+@article{burknerBrmsPackageBayesian2017,
+  author  = {Bürkner, Paul-Christian},
+  title   = {brms: {An} {R} Package for Bayesian Multilevel Models Using Stan},
+  journal = {Journal of Statistical Software},
+  year    = {2017},
+  volume  = {80},
+  pages   = {1--28},
+  doi     = {10.18637/jss.v080.i01},
+}
+```
+
+**In your `.tex` document:**
+
+```latex
+% Narrative citation — author as subject:
+\textcite{burknerBrmsPackageBayesian2017} introduced the brms package for Bayesian multilevel modelling in R.
+
+% Parenthetical citation — supporting claim:
+Bayesian multilevel models can be fitted using Stan via R \parencite{burknerBrmsPackageBayesian2017}.
+
+% Multiple citations:
+\parencite{burknerBrmsPackageBayesian2017, gelmanRegressionOtherStories2020}
+```
+
+**Rendered output (APA 7th style):**
+
+> @burknerBrmsPackageBayesian2017 introduced the `brms` package for Bayesian multilevel modelling in R.
+
+> Bayesian multilevel models can be fitted using Stan via R [@burknerBrmsPackageBayesian2017].
+
+::: {.callout-note}
+The cite key `burknerBrmsPackageBayesian2017` is generated automatically by BetterBibTeX from the pattern `[auth:lower][Title:skipwords:lower:select=1,1][year]`. You never need to type or remember it — just search in your editor's Zotero panel or use autocomplete.
+:::
 
 
 ## Quarto: Literate Programming Meets LaTeX {.smaller}
@@ -394,6 +530,79 @@ Install Quarto from [quarto.org/docs/get-started](https://quarto.org/docs/get-st
 :::
 
 
+## Writing a Complete Thesis in Quarto {.smaller}
+
+Quarto supports **multi-file book projects** — the natural structure for a thesis.
+
+**Initialise a Quarto book:**
+
+```bash
+quarto create project book my-thesis
+```
+
+This generates a ready-to-use folder:
+
+```
+my-thesis/
+├── _quarto.yml        ← project config: title, author, chapters, output
+├── index.qmd          ← front matter / preface
+├── chapters/
+│   ├── 01-introduction.qmd
+│   ├── 02-methods.qmd
+│   ├── 03-results.qmd
+│   └── 04-discussion.qmd
+├── references.bib
+└── _extensions/       ← optional: university theme extension
+```
+
+**`_quarto.yml` for a PDF thesis:**
+
+```yaml
+project:
+  type: book
+
+book:
+  title: "My Thesis Title"
+  author: "Your Name"
+  date: "2026"
+  chapters:
+    - index.qmd
+    - chapters/01-introduction.qmd
+    - chapters/02-methods.qmd
+    - chapters/03-results.qmd
+    - chapters/04-discussion.qmd
+
+bibliography: references.bib
+
+format:
+  pdf:
+    documentclass: report
+    papersize: a4
+    fontsize: 12pt
+    geometry: margin=2.5cm
+    toc: true
+    number-sections: true
+    cite-method: biblatex
+    biblio-style: apa
+    include-in-header: preamble.tex   # custom LaTeX packages
+```
+
+**Render the whole thesis:**
+
+```bash
+quarto render          # builds PDF (and HTML if configured)
+quarto render --to pdf # PDF only
+```
+
+::: {.callout-tip}
+Each `.qmd` chapter file is an ordinary Quarto document — it can contain R/Python code chunks, figures, tables, and equations. Cross-references (`@fig-`, `@tbl-`, `@sec-`) resolve across chapter boundaries automatically.
+:::
+
+::: {.callout-note}
+Quarto book projects also render to HTML (a website) and EPUB from the same source. Useful for sharing a web version alongside the submitted PDF.
+:::
+
+
 ## TikZ: Programmatic Figures {.smaller}
 
 [**TikZ**](https://ctan.org/pkg/pgf) ("TikZ ist kein Zeichenprogramm") is a LaTeX package for creating figures programmatically — directly in your `.tex` source.
@@ -414,60 +623,396 @@ Install Quarto from [quarto.org/docs/get-started](https://quarto.org/docs/get-st
 
 **Drawing shapes and paths:**
 
+:::: {.columns}
+::: {.column width="55%"}
 ```latex
 \begin{tikzpicture}
   \draw[thick, fill=blue!20] (0,0) rectangle (3,2);
-  \draw[red, ->] (0,0) -- (3,2) node[right] {diagonal};
-  \node[circle, draw, fill=green!30] at (1.5,1) {center};
+  \draw[red, ->, line width=1.2pt] (0,0) -- (3,2) node[right] {diagonal};
+  \node[circle, draw, fill=green!30, minimum size=1cm] at (1.5,1) {center};
 \end{tikzpicture}
 ```
+:::
+::: {.column width="45%"}
+![](figures/tikz-shapes.svg){width=100%}
+:::
+::::
 
 ::: {.callout-note}
 TikZ has a steep learning curve. [tikz.dev](https://tikz.dev) and the PGF/TikZ manual on CTAN are comprehensive references. Start small and build up.
 :::
 
 
-## TikZ: Common Use Cases {.smaller}
+## TikZ: Flowcharts {.smaller}
 
-**Flowcharts and process diagrams:**
-
+:::: {.columns}
+::: {.column width="55%"}
 ```latex
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning}
-\begin{tikzpicture}[node distance=1.5cm]
-  \node[draw, rectangle] (A) {Step 1};
-  \node[draw, rectangle, below of=A] (B) {Step 2};
-  \node[draw, diamond, below of=B] (C) {Decision?};
-  \draw[->] (A) -- (B);  \draw[->] (B) -- (C);
+\begin{tikzpicture}[
+  node distance=1.5cm,
+  box/.style={draw, rectangle, minimum width=2.5cm,
+              minimum height=0.8cm, align=center},
+  decnode/.style={draw, diamond, aspect=2,
+                  minimum width=2.5cm, align=center}
+]
+  \node[box] (A) {Step 1};
+  \node[box, below of=A] (B) {Step 2};
+  \node[decnode, below of=B] (C) {Decision?};
+  \node[box, below right=0.8cm and 1.2cm of C] (D) {Yes};
+  \node[box, below left=0.8cm and 1.2cm of C] (E) {No};
+  \draw[->] (A) -- (B);
+  \draw[->] (B) -- (C);
+  \draw[->] (C) -- node[above right, font=\small] {yes} (D);
+  \draw[->] (C) -- node[above left, font=\small] {no} (E);
 \end{tikzpicture}
 ```
+:::
+::: {.column width="45%"}
+![](figures/tikz-flowchart.svg){width=100%}
+:::
+::::
 
-**Plots via PGFPlots:**
+Named styles keep the node definitions clean and reusable. The `decnode` style uses TikZ's built-in `diamond` shape from `shapes.geometric`.
 
+
+## TikZ: Plots with PGFPlots {.smaller}
+
+:::: {.columns}
+::: {.column width="55%"}
 ```latex
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \begin{tikzpicture}
-  \begin{axis}[xlabel={$x$}, ylabel={$f(x)$}]
-    \addplot[blue, thick]{x^2};
+  \begin{axis}[
+    xlabel={$x$}, ylabel={$f(x)$},
+    grid=major, grid style={dashed, gray!30}
+  ]
+    \addplot[blue, thick, domain=-3:3, samples=60]{x^2};
+    \addlegendentry{$x^2$}
+    \addplot[red, thick, domain=-3:3, samples=60]{x^3/5};
+    \addlegendentry{$x^3/5$}
   \end{axis}
 \end{tikzpicture}
 ```
+:::
+::: {.column width="45%"}
+![](figures/tikz-pgfplots.svg){width=100%}
+:::
+::::
 
-**Syntax trees (linguistics):**
+PGFPlots can also read data from CSV files (`\addplot table {data.csv}`), making it suitable for publication-quality plots directly from experimental data.
 
+
+## TikZ: Syntax Trees {.smaller}
+
+:::: {.columns}
+::: {.column width="55%"}
 ```latex
 \usepackage{tikz-qtree}
 \begin{tikzpicture}
-  \Tree [.S [.NP Det N ] [.VP V [.NP Det N ] ] ]
+  \Tree [.S
+          [.NP Det N ]
+          [.VP V
+            [.NP Det N ]
+          ]
+        ]
 \end{tikzpicture}
 ```
+:::
+::: {.column width="45%"}
+![](figures/tikz-tree.svg){width=100%}
+:::
+::::
+
+[`tikz-qtree`](https://ctan.org/pkg/tikz-qtree) uses a compact bracket notation. For more control (node styles, movement arrows, coindexation), use the full `tikz` library directly or [`forest`](https://ctan.org/pkg/forest) — a popular alternative for complex phrase structure trees.
+
+
+## TikZ: Dependency Graphs and Glosses {.smaller}
+
+The [`tikz-dependency`](https://ctan.org/pkg/tikz-dependency) package draws dependency arcs over interlinear glossed text — standard in typological and computational linguistics:
+
+:::: {.columns}
+::: {.column width="60%"}
+```latex
+\usepackage{tikz-dependency}
+
+\begin{dependency}[theme=simple,
+    label style={above, font=\small\itshape}]
+  \begin{deptext}[column sep=1.2em]
+    Der \& Mann \& gibt \& der \& Frau \& das \& Buch \\
+    \textsc{det.m.nom} \& man.\textsc{nom} \& gives \&
+      \textsc{det.f.dat} \& woman.\textsc{dat} \&
+      \textsc{det.n.acc} \& book.\textsc{acc} \\
+    `The \& man \& gives \& the \& woman \& the \& book' \\
+  \end{deptext}
+  \deproot{3}{root}
+  \depedge{3}{2}{nsubj}
+  \depedge{3}{5}{iobj}
+  \depedge{3}{7}{obj}
+  \depedge{2}{1}{det}
+  \depedge{5}{4}{det}
+  \depedge{7}{6}{det}
+\end{dependency}
+```
+:::
+::: {.column width="40%"}
+![](figures/tikz-glosses.svg){width=100%}
+:::
+::::
 
 ::: {.callout-tip}
 For complex figures, consider generating them in Python (`matplotlib` PGF backend) or R (`tikzDevice`) and importing the resulting `.tex` fragment.
 :::
 
 
+## Linguistics: Interlinear Glosses — [`gb4e`](https://ctan.org/pkg/gb4e) {.smaller}
+
+The [`gb4e`](https://ctan.org/pkg/gb4e) package is the standard for numbered linguistic examples with interlinear glosses following the **Leipzig Glossing Rules**:
+
+:::: {.columns}
+::: {.column width="58%"}
+```latex
+\usepackage{gb4e}
+
+\begin{exe}
+  \ex \label{ex:german-dative}
+  \gll Der Mann gibt    der   Frau   das   Buch. \\
+       the.M man  gives the.F woman  the.N book \\
+  \trans `The man gives the woman the book.'
+
+  \ex[*]{
+  \gll *Das Buch gibt der Frau der Mann. \\
+        the.N book gives the.F woman the.M man \\
+  \trans (ungrammatical word order)
+  }
+
+  \exi{(1a)}
+  \gll \textsc{nom} \textsc{dat} \textsc{acc} \\
+       subject indirect.object direct.object \\
+  \trans Case roles in the German ditransitive construction.
+\end{exe}
+
+% Cross-reference later:
+As shown in example (\ref{ex:german-dative}), ...
+```
+:::
+::: {.column width="42%"}
+**Rendered output:**
+
+![](figures/gb4e-glosses.svg){width=100%}
+:::
+::::
+
+- `\gll` starts the word-by-word alignment; `\\` separates tiers; `\trans` adds the free translation
+- `\ex[*]` marks ungrammatical examples; `\exi` allows custom labels
+- Alternative packages: [`linguex`](https://ctan.org/pkg/linguex) (more compact syntax), [`expex`](https://ctan.org/pkg/expex) (most flexible, recommended for complex data)
+
+::: {.callout-tip}
+Use `\textsc{nom}`, `\textsc{acc}`, `\textsc{dat}` etc. for Leipzig small-cap abbreviations. The [`leipzig`](https://ctan.org/pkg/leipzig) package provides pre-defined commands for all standard glossing abbreviations (`\Nom`, `\Acc`, `\Dat`, `\Sg`, `\Pl` …).
+:::
+
+
+## Linguistics: IPA Symbols {.smaller}
+
+:::: {.columns}
+::: {.column width="58%"}
+
+**With XeLaTeX or LuaLaTeX — type Unicode directly:**
+
+```latex
+\usepackage{fontspec}
+\setmainfont{Charis SIL}   % free SIL font with full IPA coverage
+% alternatives: Doulos SIL, Gentium Plus, Linux Libertine
+
+% In running text — paste Unicode IPA characters:
+The high front vowel /iː/ contrasts with the lax /ɪ/ in English.
+The retroflex stops [ʈ ɖ] are contrastive in Hindi.
+Tone is marked with diacritics: /má/ (high) vs /mǎ/ (rising).
+
+% Phonological rules:
+/p, t, k/ → [pʰ, tʰ, kʰ] / _V  (aspirated before vowels)
+```
+
+**With pdfLaTeX — use [`tipa`](https://ctan.org/pkg/tipa):**
+
+```latex
+\usepackage{tipa}
+
+\textipa{/\textphi \textbeta/}   % bilabial fricatives [ɸ β]
+\textipa{[\textrtailt \textrtaild]}  % retroflex stops
+\textipa{/m\'{a}/}               % high tone on /a/
+
+% tipx extends tipa with additional symbols:
+\usepackage{tipx}
+```
+
+:::
+::: {.column width="42%"}
+
+| Approach | Pro | Con |
+|---|---|---|
+| Unicode + [`fontspec`](https://ctan.org/pkg/fontspec) | Type IPA directly; readable source | Requires XeLaTeX/LuaLaTeX |
+| [`tipa`](https://ctan.org/pkg/tipa) | Works with pdfLaTeX | Command-heavy; hard to read source |
+
+
+**Rendered output:**
+
+![](figures/ipa-symbols-render.svg){width=100%}
+:::
+::::
+
+::: {.callout-note}
+Most journal templates still require `pdflatex`. If you need IPA in a submission, use [`tipa`](https://ctan.org/pkg/tipa) for compatibility, or check if the journal accepts XeLaTeX/LuaLaTeX.
+:::
+
+
+## Linguistics: Optimality Theory Tableaux {.smaller}
+
+The [`ot-tableau`](https://ctan.org/pkg/ot-tableau) package produces formatted OT constraint tableaux:
+
+:::: {.columns}
+::: {.column width="60%"}
+```latex
+\usepackage{ot-tableau}
+\usepackage{pifont}  % for \HandRight winner symbol
+
+% Column spec: c = solid border, : = dashed, | = solid between
+\begin{tableau}{c:c:c|c}
+\inp{/ɾ\textipa{E}to/}
+  \const{*Complex} \const{Onset} \const{NoCoda} \const{Max}
+\cand[\HandRight]{[ɾe.to]}
+                              \vio{*}
+\cand{[ɾet]}
+               \vio{*}                           \vio{*}
+\cand{[e.to]}
+  \vio{*!}
+\cand{[ɾ\textipa{E}.to]}
+               \vio{*}        \vio{*!}
+\end{tableau}
+```
+
+**Rendered output:**
+
+![](figures/ot-tableau-render.svg){width=100%}
+
+:::
+::: {.column width="40%"}
+**Key commands:**
+
+| Command | Meaning |
+|---|---|
+| `\inp{...}` | Input form cell |
+| `\const{...}` | Constraint header |
+| `\cand{...}` | Candidate row |
+| `\cand[\HandRight]{...}` | Optimal candidate |
+| `\vio{*}` | One violation mark |
+| `\vio{*!}` | Fatal violation |
+| `\vio{**}` | Two violations |
+
+Column spec characters: `c` (solid), `:` (dashed), `|` (solid within candidates)
+
+
+:::
+::::
+
+::: {.callout-tip}
+Load `\usepackage{tipa}` alongside [`ot-tableau`](https://ctan.org/pkg/ot-tableau) if your input/candidate cells contain IPA. The `\ipa{...}` shorthand in `ot-tableau` calls [`tipa`](https://ctan.org/pkg/tipa) internally.
+:::
+
+
+## Linguistics: Feature Structures (AVMs) {.smaller}
+
+The [`langsci-avm`](https://ctan.org/pkg/langsci-avm) package typesets attribute-value matrices used in HPSG, LFG, and related frameworks:
+
+:::: {.columns}
+::: {.column width="55%"}
+```latex
+\usepackage{langsci-avm}
+
+\avm{
+  [ phon & < the, cat > \\
+    synsem & [ local & [
+      cat & [ head & noun \\
+              valence & [ spr & < > \\
+                          comps & < > ] ] \\
+      cont & [ index & i \\
+               restr & < [ reln & cat \\
+                            arg0 & i ] > ] ] ]
+}
+```
+
+**Structure:**
+
+- `\avm{ ... }` — root AVM command
+- `[ attr & val \\ attr2 & val2 ]` — attribute-value pairs
+- `< ... >` — lists (sequences)
+- Nested brackets for embedded feature structures
+- Matrices nest freely for complex feature geometries
+
+:::
+::: {.column width="45%"}
+
+**Rendered output:**
+
+![](figures/avm-render.svg){width=100%}
+:::
+::::
+
+
+## Linguistics: Formal Semantics {.smaller}
+
+Lambda calculus and model-theoretic notation use standard LaTeX math mode — no special package needed for the core notation:
+
+:::: {.columns}
+::: {.column width="55%"}
+```latex
+\usepackage{stmaryrd}
+\usepackage{amsmath,amssymb,mathtools}
+
+\newcommand{\sv}[1]{\llbracket #1 \rrbracket}
+
+% Lexical denotations:
+\[
+\sv{\textit{cat}} = \lambda x_e .\ \text{cat}(x)
+\]
+\[
+\sv{\textit{runs}} = \lambda x_e .\ \lambda e_v .\
+  	ext{run}(e) \wedge \text{Agent}(e,x)
+\]
+
+% Quantification:
+\[
+\sv{\textit{every cat}} =
+  \lambda P_{\langle e,t \rangle} .\
+  \forall x[\text{cat}(x) \rightarrow P(x)]
+\]
+
+% Type reminder:
+\sv{\textit{runs}} : \langle e,\langle v,t\rangle\rangle
+```
+:::
+::: {.column width="45%"}
+**Structure:**
+
+- `\sv{...}` shorthand for semantic brackets
+- `\lambda x_e` typed lambda variables
+- `\forall` and `\rightarrow` for generalized quantifier notation
+- Angle-bracket types like `\langle e,t \rangle`
+
+**Rendered output:**
+
+![](figures/semantics-render.svg){width=100%}
+:::
+::::
+
+::: {.callout-tip}
+Key packages: [`stmaryrd`](https://ctan.org/pkg/stmaryrd) for `\llbracket`/`\rrbracket` brackets; [`amssymb`](https://ctan.org/pkg/amssymb) for logical operators (`\forall`, `\exists`, `\wedge` …); [`mathtools`](https://ctan.org/pkg/mathtools) for extended math syntax. For frequently used brackets, define shorthands: `\newcommand{\sv}[1]{\llbracket #1 \rrbracket}` so you can write `\sv{\text{runs}}` instead of the full bracket pair each time.
+:::
+
+
 ## Templates: Journals and Theses {.smaller}
+
 
 **Journal templates** provide `.cls` and `.sty` files that enforce house style:
 
@@ -475,7 +1020,7 @@ For complex figures, consider generating them in Python (`matplotlib` PGF backen
 |---|---|
 | [Overleaf Gallery — Journals](https://www.overleaf.com/gallery/tagged/academic-journal) | Templates for hundreds of journals |
 | Publisher websites | ACL, IEEE, Springer, Elsevier all provide LaTeX kits |
-| CTAN journal classes | `elsarticle`, `acmart`, `IEEEtran` and many more |
+| CTAN journal classes | [`elsarticle`](https://ctan.org/pkg/elsarticle), [`acmart`](https://ctan.org/pkg/acmart), [`IEEEtran`](https://ctan.org/pkg/ieeetran) and many more |
 
 **Thesis templates:**
 
@@ -562,12 +1107,18 @@ All materials: [dkz2r.de/tags/latex](https://www.dkz2r.de/tags/latex/)
 - [Zotero — Reference Manager](https://www.zotero.org)
 - [BetterBibTeX for Zotero](https://retorque.re/zotero-better-bibtex/)
 - [biblatex documentation (CTAN)](https://ctan.org/pkg/biblatex)
+- [biblatex-apa — APA 7th edition style](https://ctan.org/pkg/biblatex-apa)
+- [papaja — APA manuscripts with R/Quarto](https://github.com/crsh/papaja)
 - [Quarto — Scientific Publishing](https://quarto.org)
 - [TikZ & PGF documentation](https://ctan.org/pkg/pgf)
 - [tikz.dev — TikZ reference](https://tikz.dev)
 - [PGFPlots — plots in LaTeX](https://ctan.org/pkg/pgfplots)
+- [Overleaf — Collaborative LaTeX Editor](https://www.overleaf.com)
 - [Overleaf thesis templates](https://www.overleaf.com/gallery/tagged/thesis)
 - [DKZ.2R: LaTeX for Novices — Academic Publishing](https://dkz2r.github.io/latex-novice-academic-publishing/)
 - [Prism — OpenAI's AI-native LaTeX workspace](https://prism.openai.com)
 - [TeXlyre — Open-source, local-first LaTeX editor](https://texlyre.github.io/texlyre/)
 - [tex.stackexchange.com](https://tex.stackexchange.com)
+
+
+## References

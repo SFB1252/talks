@@ -12,6 +12,8 @@ jobs:
   link-check:
     runs-on: ubuntu-latest
     name: Check All Documentation Links
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     
     steps:
     - name: Checkout code
@@ -20,6 +22,11 @@ jobs:
     - name: Install Chrome
       uses: browser-actions/setup-chrome@v2
       id: setup-chrome
+
+    - name: Configure AppArmor for Chrome sandbox
+      # Ubuntu 24.04 runners restrict unprivileged user namespaces via AppArmor,
+      # which prevents Chrome from launching. This disables that restriction.
+      run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
 
     - name: Run linkspector
       uses: umbrelladocs/action-linkspector@v1

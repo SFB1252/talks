@@ -1,0 +1,611 @@
+---
+title: "Licensing of Published Datasets and Scripts"
+subtitle: "Open Source, Creative Commons, and Research Data Licensing"
+author:
+  - name: "TBC"
+    affiliation:
+      - name: Universität zu Köln
+        department: CRC 1252 Prominence in Language
+        city: Cologne, Germany
+date: "15 July 2026"
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../../stylesheets/mytheme.scss]
+    logo: ../../logo.png
+    slide-number: true
+    scrollable: true
+    mouse-wheel: true
+    footer: "RDM Workshop Series · SFB 1252 Prominence in Language · Universität zu Köln"
+    output-file: slides.html
+    embed-resources: true
+    transition: none
+    background-transition: none
+bibliography: "references.bib"
+csl: "../24-latex-thesis-workflows/apa.csl"
+---
+
+<style>
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-300.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-500.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-600.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-700.ttf") format("truetype");
+}
+</style>
+
+## Overview
+
+In this session, we will cover:
+
+- **The "Why" of licensing** — why academic outputs need explicit terms
+- **Open Source Software licenses** — MIT, Apache, GPL, and LGPL
+- **Open Data & Content licenses** — Creative Commons structure and the CC0 standard
+- **The "Non-Commercial" (NC) trap** — how NC clauses can restrict open science
+- **Case Study (`ConversationAlign`)** — resolving upstream dependency conflicts and software-data bifurcation
+- **Repository setups** — managing licensing on GitHub vs. OSF/Zenodo
+
+::: {.callout-note}
+**Goal:** Learn how to publish research outputs (code and data) legally, ensuring maximum reproducibility and compliance with publisher guidelines.
+:::
+
+---
+
+## 1. Why License? {.smaller}
+
+### The Default Status of Creative Works
+*   **Copyright is Automatic:** The moment you write a script or compile a database, copyright applies automatically. You are the copyright holder.
+*   **"All Rights Reserved" by Default:** Under standard copyright law, no one may copy, modify, distribute, or run your work without explicit permission.
+
+### Who Owns Academic Outputs? (The Institutional Trap)
+*   **German Employment Law (UrhG §69b):** If you are employed by a university (e.g., as a research assistant, doctoral candidate, or postdoc), the exclusive economic rights to the software you write in the scope of your employment automatically belong to the **employer** (the University of Cologne).
+*   **The Rule:** You cannot legally choose to license your university-work under GPL/MIT on your own; institutional clearance is required.
+
+### The Impact on Open Science
+*   Without a license, your "open" code on GitHub is legally **unusable** for reproducibility.
+*   **Key Principle:** A license does not restrict you; it grants explicit, legally binding permissions to others [@morin2012quick].
+
+::: {.notes}
+Speaker Notes:
+- Emphasize that putting code on GitHub or OSF makes it *publicly visible*, but not *public domain* or *open source*.
+- Many researchers believe "open" means "free to use in any way." In copyright law, the exact opposite is true.
+- Cite Morin et al. (2012) on the legal necessity of licensing for academic programmers.
+- Mention UrhG §69b (German Copyright Act) and the German Employee Inventions Act (*Arbeitnehmererfindungsgesetz*): university employees must be careful, as the University owns the commercial exploitation rights for software they write on the job.
+:::
+
+---
+
+## Code vs. Data vs. Content {.smaller}
+
+Research projects consist of distinct assets. One license does not fit all.
+
+| Asset Type | Examples | Best Licensing Framework |
+|---|---|---|
+| **Software / Code** | R scripts, Python pipelines, packages | **Open Source Licenses** (e.g., MIT, GPL, LGPL) |
+| **Data / Databases** | Corpora, annotations, lexical databases | **Open Data / Creative Commons 4.0** (e.g., CC0, CC BY) |
+| **Content / Text** | Teaching slides, documentation, articles | **Creative Commons** (e.g., CC BY, CC BY-SA) |
+
+### Key Distinction: Database Rights vs. Copyright
+*   **CC 4.0 is Critical:** Always use Creative Commons **Version 4.0** or later for data. Older versions (CC 3.0 or earlier) do not cover or waive European *sui generis* database rights (EU Directive 96/9/EC), leaving users in legal ambiguity.
+*   **Why not use CC for code?** CC licenses do not address software-specific issues such as source code distribution, compiled binaries, patent rights, or execution environments. Using CC for software is strongly discouraged.
+
+::: {.notes}
+Speaker Notes:
+- Highlight the distinction between code (executables/instructions) and data/content (static structures/expressions).
+- Explicitly explain why CC licenses like CC BY are bad for software: they lack clauses for source code access and patents.
+- Emphasize that in the EU, database rights protect investment in collecting data, even if the data lacks creative expression. CC 4.0 was designed to explicitly handle and waive these database rights, unlike CC 3.0.
+:::
+
+---
+
+## 2. Software Licensing (choosealicense.com) {.smaller}
+
+Software licenses are split into two major classes depending on how they handle derivatives:
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Permissive Licenses
+*   Allow anyone to do almost anything with your code (run, modify, distribute, sell).
+*   **Condition:** Must retain copyright attribution.
+*   *Examples:* **MIT**, **Apache 2.0**, **BSD-3**.
+*   *Best for:* Maximizing adoption.
+:::
+
+::: {.column width="50%"}
+### Copyleft Licenses
+*   Allow reuse, modification, and distribution.
+*   **Condition:** Derivative works must be open source under the *same* license.
+*   *Examples:* **GNU GPL**, **GNU LGPL** (weak copyleft).
+*   *Best for:* Ensuring downstream code remains open.
+:::
+
+:::
+
+::: {.notes}
+Speaker Notes:
+- Mention `choosealicense.com` as the standard tool sponsored by GitHub to quickly filter licenses.
+- Contrast MIT (permissive, commercial-friendly) with GPL (copyleft, viral, requires derivative code to be open).
+:::
+
+---
+
+## Permissive: The MIT License {.smaller}
+
+The MIT License is the most common permissive license in research software.
+
+```
+Copyright (c) [Year] [Copyright Holders]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software...
+```
+
+### Key Advantages
+*   Short, simple, and easy to read.
+*   Compatible with almost all other licenses (you can import MIT code into GPL code).
+*   Highly recommended for academic packages where maximum usage and industry integration are desired.
+
+::: {.notes}
+Speaker Notes:
+- Explain that MIT is highly favored in the R (CRAN) and Python (PyPI) communities.
+- It protects you from liability (contains a standard "as-is" warranty disclaimer).
+:::
+
+---
+
+## Copyleft: GNU General Public License (GPL) {.smaller}
+
+The GPL is the standard strong copyleft license.
+
+*   **The "Viral" Property:** If you modify GPL-licensed code or link your code to GPL-licensed components, your entire project must be distributed under the GPL.
+*   **GNU LGPL (Lesser GPL):** A "weak" copyleft license. It allows other programs to link to your library (e.g., import your R package) without forcing their own software to become GPL, but modifications to the library itself must remain open.
+
+### The R / CRAN Landscape
+*   Many base R packages and dependencies use `GPL-2` or `GPL-3`.
+*   If your package relies heavily on a strict `GPL-2` library, your package may be forced to adopt `GPL-2` or later.
+
+::: {.notes}
+Speaker Notes:
+- Explain the distinction between GPL (strong copyleft) and LGPL (weak copyleft).
+- LGPL was designed for shared libraries (like DLLs or R package imports) to encourage their adoption in commercial tools, while still keeping modifications to the library itself open source.
+:::
+
+---
+
+## Interactive Exercise 1: Code Licensing
+
+### Scenario
+You have written a Python script that processes phonetic transcripts and formats them for Praat. You want other researchers to use it, but you want to ensure any enhancements they publish also remain open source.
+
+1.  Open your browser and navigate to [choosealicense.com](https://choosealicense.com/).
+2.  Review the features of **MIT**, **Apache 2.0**, and **GNU GPLv3**.
+3.  **Discussion (10 mins):**
+    *   Which license matches the requirement?
+    *   What happens if a commercial speech-recognition company wants to integrate your script into their proprietary software?
+
+::: {.notes}
+Speaker Notes:
+- Break the audience into pairs.
+- After 5-7 minutes, ask a few groups to share their thoughts.
+- Guide them to realize that GPLv3 ensures modifications remain open, but prevents the commercial company from using it in closed proprietary systems without releasing their source code.
+:::
+
+---
+
+## 3. Data Licensing (creativecommons.org) {.smaller}
+
+Unlike software, databases and content are usually licensed under the **Creative Commons** framework.
+
+### The CC Modular Structure
+
+*   **BY** (Attribution): Users must give you credit.
+*   **SA** (ShareAlike): Adaptations must be licensed under the same terms.
+*   **NC** (Non-Commercial): Only non-commercial use is permitted.
+*   **ND** (NoDerivatives): No modified versions can be shared.
+
+```
+       CC BY (Attribution)
+       CC BY-SA (Attribution-ShareAlike)
+       CC BY-NC (Attribution-NonCommercial)
+       CC BY-NC-SA (Attribution-NonCommercial-ShareAlike)
+```
+
+::: {.notes}
+Speaker Notes:
+- Explain that CC licenses are modular. You "stack" the requirements.
+- Note that ND (NoDerivatives) is extremely restrictive for data, because cleaning data or subsetting it counts as a derivative, rendering the data almost useless for further research.
+:::
+
+---
+
+## Recommended Data Licenses {.smaller}
+
+For research data, the goal is to minimize legal friction for data mining, metadata harvesting, and cross-disciplinary aggregation.
+
+::: {.columns}
+
+::: {.column width="48%"}
+### Creative Commons (v4.0)
+*   **CC0 (Public Domain):** Waives all copyright and database rights. Minimizes legal friction.
+*   **CC BY (Attribution):** Requires giving you credit. Excellent for curated databases.
+*   *Note:* Plagiarism is an ethical issue (governed by academic norms), not a legal copyright issue. CC0 still requires citation under academic standards.
+:::
+
+::: {.column width="48%"}
+### Open Data Commons (ODC)
+*   Specifically designed for databases (rather than general content).
+*   **PDDL:** Public Domain Dedication and License (similar to CC0).
+*   **ODC-By:** Attribution License (similar to CC BY).
+*   **ODbL:** Open Database License (ShareAlike, used by OpenStreetMap).
+:::
+
+:::
+
+::: {.notes}
+Speaker Notes:
+- Emphasize the difference between *legal* licensing (copyright) and *academic* citation (ethics). CC0 does not mean researchers can plagiarize.
+- Introduce Open Data Commons (ODC) licenses. Highlight that ODC licenses are database-specific and separate database structure rights from content rights.
+:::
+
+---
+
+## The "Non-Commercial" (NC) Trap {.smaller}
+
+Many researchers choose **CC BY-NC** believing it protects their work from commercial exploitation. However, in Open Science, it creates massive compatibility issues:
+
+*   **Vague Legal Definition:** "Non-commercial" is not clearly defined in copyright law. Does use by a private university, a state-funded research institute, or a researcher on a commercially funded grant count as commercial?
+*   **Prevents Integration:** You cannot combine a CC BY-NC dataset with a CC BY dataset into a unified database without violating the NC clause of the former or the BY clause of the latter.
+*   **Blocks Commercial APIs:** CC BY-NC data cannot be fed into commercial language modeling APIs (like OpenAI or Anthropic) or indexed by commercial academic search engines.
+*   **Funder Non-Compliance:** Many major funding bodies (e.g., DFG, Horizon Europe) mandate open access datasets that conform to the **Open Source Definition (OSD)**. OSD Clause 6 prohibits "Discrimination Against Fields of Endeavor" (including commercial use). An NC clause violates this and can result in funding non-compliance.
+
+::: {.notes}
+Speaker Notes:
+- This is a crucial slide. Many PIs instinctively use -NC.
+- Walk them through the scenario: if they use CC BY-NC, a linguist working at a commercial search engine or a tech company cannot use their corpus to improve speech recognition, which limits the real-world impact of their research.
+- Highlight the Open Source Definition (OSD) and funder mandates (DFG, Horizon Europe) which often require that research datasets are fully open for all uses, making -NC non-compliant.
+:::
+
+---
+
+## Interactive Exercise 2: Data Licensing
+
+### Scenario
+You want to publish a lexical database of dialect words. You are considering licensing it under **CC BY-NC-SA 4.0**.
+
+1.  Open your browser and navigate to the [Creative Commons License Chooser](https://creativecommons.org/choose/).
+2.  **Discussion (10 mins):**
+    *   Can a researcher at a public university use your database for a project funded by a commercial publisher?
+    *   Can a schoolteacher print parts of your database in a textbook they sell to students?
+    *   What happens if someone wants to integrate your data into a free, open-source smartphone app that displays ads to pay for server costs?
+
+::: {.notes}
+Speaker Notes:
+- Allow discussion.
+- Key takeaways:
+  - Project funded by a commercial publisher: High risk of violation.
+  - Selling textbooks: Clear violation of -NC.
+  - Free app with ads: Ads are considered commercial activity, so it is a violation.
+:::
+
+---
+
+## 4. Case Study: `ConversationAlign` {.smaller}
+
+We will analyze the R package `ConversationAlign` (v0.4.1) to see how licensing mismatches happen in practice.
+
+### The Identified Mismatches
+1.  **Documentation Discrepancy:** The package `DESCRIPTION` file declares `License: LGPL (>= 3)`, but the `README.md` badge points to a `GPLv3+` license.
+2.  **Upstream Dependency Conflict:** A weak copyleft package (`LGPL-3.0`) imports a strict copyleft dependency (`GPL-2.0`).
+3.  **Data-Software Licensing Bifurcation:** The software is open source, but the database it aggregates and distributes contains proprietary/restricted data.
+
+::: {.notes}
+Speaker Notes:
+- Introduce the real-world case study.
+- Explain the three distinct license errors. We will look at the technical architecture on the next slide.
+:::
+
+---
+
+## `ConversationAlign` Technical Architecture {.smaller}
+
+The package structure involves runtime links to external repositories and aggregated third-party datasets:
+
+```{mermaid}
+graph TD
+    CA["R Package:<br/>ConversationAlign"]
+    CA -->|Imports| TS["textstem package<br/>(GPL-2)"]
+    CA -->|Fetches at Runtime| CAD["GitHub:<br/>ConversationAlign_Data"]
+    CAD -->|Contains| DB["lookup_Jul25.rda"]
+    DB -->|Aggregates| NRC["NRC Emotion Lexicon<br/>(Proprietary/NC)"]
+    DB -->|Aggregates| BN["Brysbaert Concreteness<br/>Norms (Academic OA)"]
+```
+
+::: {.notes}
+Speaker Notes:
+- Walk through the Mermaid diagram to show how dependencies and data inputs are structured.
+- Highlight the fact that `textstem` is imported (triggering GPL viral terms) and `lookup_Jul25` is fetched at runtime from another GitHub repo.
+:::
+
+---
+
+## Issue 1: Upstream Dependency Conflict {.smaller}
+
+`ConversationAlign` is licensed under LGPLv3 (weak copyleft). However, it lists `textstem` (strictly **GPL-2**) under its `Imports` in the `DESCRIPTION` file.
+
+### Two Licensing Interpretations
+*   **The Lenient View:** Wickham & Bryan (@wickham2023r) note that merely calling functions from an imported/suggested package at runtime does not require license compatibility, as no source code is bundled or compiled.
+*   **The Strict View (FSF / Corporate Compliance):** Loading and executing GPL-2 functions inside an LGPLv3 package in the same process memory space creates a combined work at runtime [@german2009license]. Under this view, GPLv2 and LGPLv3 are incompatible, making the package legally non-distributable.
+*   **Downstream Barriers:** Even under the lenient view, users are forced to install the GPL-2 library `textstem`, which blocks downstream users with strict anti-GPL policies.
+
+::: {.notes}
+Speaker Notes:
+- Address the tension between Hadley Wickham's "personal opinion" (that Imports does not trigger copyleft compatibility requirements) and standard FSF/corporate compliance (which views process-level runtime linkage of GPL code as a license-tainting event).
+- Point out that even if we follow the lenient view, the transitive dependency forces GPL-2 onto commercial users' machines.
+:::
+
+---
+
+## Dependency Analysis: Are They Indispensable? {.smaller}
+
+To bypass license conflicts, we must audit whether our R package dependencies are truly indispensable.
+
+| Package | License | Usage in `ConversationAlign` | Base R Alternative (Zero-Dependency) |
+|---|---|---|---|
+| **`DescTools`** | GPL ($\ge$ 2) | `DescTools::AUC()` for trapezoidal integration | Custom 5-line R function using mathematical trapezoid rule: `sum((y[-1] + y[-n]) / 2 * diff(x))` |
+| **`zoo`** | GPL-2 \| GPL-3 | `zoo::na.approx()` for linear interpolation | Custom wrapper around base `stats::approx(..., rule = 1)$y` |
+| **`textstem`** | GPL-2 strict | `textstem::lemmatize_strings()` for lemmatization | Optional. Move to `Suggests` and check availability dynamically: `requireNamespace("textstem", quietly = TRUE)` |
+
+### Action Plan
+1. **Remove `DescTools` and `zoo`** from `Imports` and implement custom base R equivalents (eliminating their licensing footprint entirely).
+2. **Move `textstem` to `Suggests`**, shielding the core LGPLv3 package from GPL-2 strict copyleft obligations.
+
+::: {.notes}
+Speaker Notes:
+- Walk through the table to show that two out of three copyleft dependencies can be completely removed from DESCRIPTION without losing functionality.
+- Emphasize that implementing simple mathematical formulas (like trapezoidal integration) in base R is highly preferable to importing bulky, copyleft-licensed helper packages.
+- Explain how moving textstem to Suggests preserves functionality for users who want lemmatization while protecting others.
+:::
+
+
+---
+
+## Issue 2: Data-Software Bifurcation {.smaller}
+
+`ConversationAlign` downloads the database `lookup_Jul25.rda` from GitHub during package startup. The database aggregates several third-party resources:
+
+::: {.columns}
+
+::: {.column width="50%"}
+### NRC Emotion Lexicon
+*   Licensed by the National Research Council Canada.
+*   **Terms:** Free strictly for non-commercial research. Commercial use requires a fee. **Redistribution is prohibited** [@mohammad2013crowdsourcing].
+*   *Conflict:* Publicly hosting this data on GitHub violates the NRC license, and downsteam commercial users of the package risk infringement.
+:::
+
+::: {.column width="50%"}
+### Concreteness & VAD Norms
+*   Published as academic open-access supplementary materials [@brysbaert2014concreteness; @warriner2013norms].
+*   **Terms:** No OSI-approved open license. Subject to journal copyright restrictions (Springer).
+*   *Conflict:* Commercial redistribution in a software package requires explicit permission.
+:::
+
+:::
+
+::: {.notes}
+Speaker Notes:
+- This is a very common issue in digital humanities and linguistics. We build lexical databases from other researchers' norms without checking the publisher's terms.
+- NRC Emotion Lexicon has a strict "no redistribution" clause. Hosting it on GitHub is a direct copyright violation.
+:::
+
+---
+
+## Resolving Software-Data Bifurcation {.smaller}
+
+How do we fix the legal liability while keeping the package functional?
+
+### Best Practice: Separate the Licenses
+
+1.  **Add a `DATA_LICENSE.md`:** Clarify that the software license applies *only* to the source code, not to the fetched datasets.
+2.  **Explicit Attribution:** List the individual licenses and terms of all third-party resources in your documentation.
+3.  **Download on Demand:** Shift restricted data hosting off GitHub. Force the package to retrieve data directly from original sources or load local user downloads.
+
+::: {.notes}
+Speaker Notes:
+- Explain that we decouple the code's license from the data's license.
+- Discuss the legal shielding this provides to the package maintainer. The next slide illustrates the new user-led download workflow.
+:::
+
+---
+
+## Resolution Workflow: Download on Demand {.smaller}
+
+Shifting data-fetching to a user-initiated sequence ensures the package author doesn't redistribute restricted materials:
+
+```{mermaid}
+sequenceDiagram
+    participant User
+    participant CA as "ConversationAlign (R Package)"
+    participant NRC as "NRC Lexicon Server"
+    
+    User->>CA: run_analysis()
+    Note over CA: Check local directory for database
+    CA-->>User: Error: Database missing!
+    User->>NRC: Accept Terms & Download Lexicon
+    User->>CA: load_custom_database(path)
+    User->>CA: run_analysis()
+    Note over CA: Analysis succeeds legally
+```
+
+::: {.notes}
+Speaker Notes:
+- Walk through the sequence diagram.
+- Explain that requiring users to download the data themselves shifts the licensing compliance to the end-user and protects the package developer from copyright infringement.
+:::
+
+---
+
+## 5. Navigating Repositories (GitHub vs. OSF) {.smaller}
+
+Where you host your project determines how you manage your licenses.
+
+### GitHub & GitLab
+*   Optimized for code. 
+*   **Rule:** Place a single `LICENSE` file in the root. GitHub will automatically detect it and display a badge.
+*   Avoid committing raw, third-party databases. Use a `.gitignore` to keep data out of your code repository.
+
+### Open Science Framework (OSF) & Zenodo
+*   Optimized for mixed media (preprints, code, raw data).
+*   **Rule:** Apply granular licensing. Set the overall project page to CC BY, but include a sub-folder for scripts containing an MIT `LICENSE` file.
+*   Provides a persistent DOI, making your dataset and scripts citable separately.
+
+::: {.notes}
+Speaker Notes:
+- Emphasize that Zenodo and OSF allow researchers to license and cite different parts of a project.
+- A paper can be CC BY-NC (content), the dataset CC0 (data), and the analysis script MIT (code).
+:::
+
+---
+
+## 6. AI Licensing & Institutional Policies {.smaller}
+
+Linguistics researchers increasingly train, fine-tune, or query Large Language Models (LLMs) and ASR systems. These models are composite works that require careful licensing.
+
+### The Components of an ML Release
+*   **Source Code:** Training architecture, scripts $\rightarrow$ **MIT or Apache 2.0**.
+*   **Training Data:** Annotated datasets/corpora $\rightarrow$ **CC BY 4.0 or CC0**.
+*   **Model Weights/Parameters:** The actual numbers (tensors). Legally ambiguous, as they represent mathematical outputs rather than creative expressions.
+*   **Responsible AI Licenses (OpenRAIL):** Integrate open access permissions with **behavior-based restrictions** (e.g., RAIL-M for models, RAIL-D for data).
+*   *Note:* RAIL licenses are **not** OSI-approved Open Source because they restrict field-of-use.
+
+::: {.notes}
+Speaker Notes:
+- Explain that weights don't cleanly fit under traditional copyright because they are calculated programmatically.
+- Discuss how RAIL licenses work: they are a hybrid of a license and a terms-of-use agreement.
+- Emphasize the conflict: OSI defines "Open Source" as unrestricted. RAIL licenses have field-of-use restrictions, so they are "source-available" or "responsible-use", not strictly open-source.
+:::
+
+---
+
+## Open-Washing & The European OSAI Index {.smaller}
+
+Because there is no single agreed-upon standard for "Open Source AI", "open-washing" is widespread.
+
+### The European Open Source AI Index (OSAI)
+*   Developed by Radboud University to track the actual openness of generative AI systems.
+*   Evaluates models across **14 dimensions** (including data transparency, code availability, and licensing terms).
+*   **Open-washing:** Many models (e.g., Mistral Large 3, Proton's Lumo) are marketed as open but hide training datasets, pre-processing pipelines, or enforce restrictive terms.
+
+### The EU AI Act Connection (2025/2026)
+*   The EU AI Act regulates generative AI based on systemic risk.
+*   **Exemptions:** Generative AI models released under a free and open-source license enjoy significant regulatory exemptions (unless they pose a systemic risk).
+*   **The Risk:** Claiming "openness" without full compliance with open-source criteria is a major regulatory loophole that the EU AI Office is actively addressing.
+
+::: {.notes}
+Speaker Notes:
+- Introduce the European Open Source AI Index (osai-index.eu) as a benchmark tool.
+- Explain the term "open-washing": marketing a model as open-source when only the weights are downloadable under restrictive terms, while the data is secret.
+- Highlight the EU AI Act: it provides exemptions for true open-source models (to foster research), making the exact legal definition of "openness" a high-stakes compliance issue.
+:::
+
+---
+
+## Institutional AI Policies: UoC Guidelines {.smaller}
+
+If you are at the University of Cologne, AI use is governed by central policies and infrastructures.
+
+### The UoC AI Directive (*KI-Richtlinie*)
+*   **Legal Framework:** Ratified by the UoC Rectorate and staff councils to govern compliance, data privacy, and intellectual property.
+*   **Confidentiality Classes (*Vertraulichkeitsklassen*):** Guidelines dictating which types of research or administrative data can be input into public vs. private AI services.
+
+### UoC Central AI Services
+*   **OSKI.nrw (chat.kiconnect.nrw):** A collaborative NRW university project providing open-source models on local HPC hardware (RAMSES).
+    *   **DFG-Compliant:** Can be legally used for reviewing and writing DFG proposals.
+*   **Local AI (Pillar 5):** Using tools like LM Studio, Jan, or GPT4All to run lightweight models locally.
+    *   **Maximum Privacy:** Ensure zero data leaves your local device.
+
+::: {.notes}
+Speaker Notes:
+- Explain that UoC has a formal "KI-Richtlinie" and a whitelist of approved tools.
+- Highlight the 5-pillar model of the IT Center (ITCC).
+- Point out that OSKI.nrw runs on local university hardware, meaning the data doesn't go to third-party commercial APIs, making it safe for DFG reviews.
+- Encourage local execution (Pillar 5) for highly sensitive language data or clinical recordings.
+:::
+
+---
+
+## Contributor Governance & Relicensing {.smaller}
+
+What happens when your project grows and multiple researchers contribute code or data?
+
+### The Relicensing Dilemma
+*   **Joint Copyright:** Unless rights are transferred, every person who writes a line of code holds copyright over their contribution.
+*   **Relicensing Blocks:** If you want to change your license later (e.g., from LGPL to MIT to resolve a conflict), you must get unanimous approval from **every single contributor**. If one contributor has left academia and cannot be reached, the project is locked.
+
+### Solutions: DCOs & CLAs
+*   **Developer Certificate of Origin (DCO):** A lightweight way for contributors to certify they have the right to submit code under the project's open license (used by Linux).
+*   **Contributor License Agreement (CLA):** A legal contract granting the project leader/institution the right to re-license the contributions in the future.
+
+::: {.notes}
+Speaker Notes:
+- Explain that code ownership is joint. It's like co-authoring a paper: you can't submit a new version without everyone's sign-off.
+- Mention that DCO is very easy (signing commits with `git commit -s`). CLAs are more formal and are common in larger academic/non-profit software consortia.
+:::
+
+---
+
+## Summary: The RDM Licensing Checklist
+
+- [ ] **Never leave a repository unlicensed:** Unlicensed = "All Rights Reserved" = Unusable for Open Science.
+- [ ] **Choose standard licenses:** Avoid writing custom terms. Use `choosealicense.com` or `creativecommons.org`.
+- [ ] **Separate code and data:** Use open-source licenses for code (MIT/GPL) and Creative Commons (CC0/CC BY) for datasets.
+- [ ] **Avoid "Non-Commercial" (NC) clauses:** Unless legally forced, as they break data aggregation and limit research impact.
+- [ ] **Audit upstream dependencies:** Ensure your library imports do not violate copyleft terms (e.g., GPL vs. LGPL).
+- [ ] **Audit third-party data aggregation:** Verify redistribution clauses of lexical norms and resources before hosting them.
+
+---
+
+## Q&A
+
+### Questions?
+*   Open discussion & feedback
+*   Reviewing your own repository licensing setups
+
+---
+
+## References {.smaller}
+
+::: {#refs}
+:::
