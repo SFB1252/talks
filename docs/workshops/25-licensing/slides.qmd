@@ -1,8 +1,8 @@
 ---
 title: "Licensing of Published Datasets and Scripts"
-subtitle: "Open Source, Creative Commons, and Research Data Licensing"
+subtitle: ""
 author:
-  - name: "TBC"
+  - name: "Job Schepens"
     affiliation:
       - name: Universität zu Köln
         department: CRC 1252 Prominence in Language
@@ -70,9 +70,9 @@ In this session, we will cover:
 - **The "Why" of licensing** — why academic outputs need explicit terms
 - **Open Source Software licenses** — MIT, Apache, GPL, and LGPL
 - **Open Data & Content licenses** — Creative Commons structure and the CC0 standard
-- **The "Non-Commercial" (NC) trap** — how NC clauses can restrict open science
-- **Case Study (`ConversationAlign`)** — resolving upstream dependency conflicts and software-data bifurcation
-- **Repository setups** — managing licensing on GitHub vs. OSF/Zenodo
+- **The "Non-Commercial" (NC) caveat** — how NC clauses can restrict open science
+- **Case Study (`ConversationAlign`)** — dependency conflicts and software-data separation
+- **Repository setups** — managing licensing on GitHub, OSF, and Zenodo
 
 ::: {.callout-note}
 **Goal:** Learn how to publish research outputs (code and data) legally, ensuring maximum reproducibility and compliance with publisher guidelines.
@@ -86,7 +86,7 @@ In this session, we will cover:
 *   **Copyright is Automatic:** The moment you write a script or compile a database, copyright applies automatically. You are the copyright holder.
 *   **"All Rights Reserved" by Default:** Under standard copyright law, no one may copy, modify, distribute, or run your work without explicit permission.
 
-### Who Owns Academic Outputs? (The Institutional Trap)
+### Who Owns Academic Outputs? (The Institutional caveat)
 *   **German Employment Law (UrhG §69b):** If you are employed by a university (e.g., as a research assistant, doctoral candidate, or postdoc), the exclusive economic rights to the software you write in the scope of your employment automatically belong to the **employer** (the University of Cologne).
 *   **The Rule:** You cannot legally choose to license your university-work under GPL/MIT on your own; institutional clearance is required.
 
@@ -282,7 +282,7 @@ Speaker Notes:
 
 ---
 
-## The "Non-Commercial" (NC) Trap {.smaller}
+## The "Non-Commercial" (NC) caveat {.smaller}
 
 Many researchers choose **CC BY-NC** believing it protects their work from commercial exploitation. However, in Open Science, it creates massive compatibility issues:
 
@@ -344,6 +344,7 @@ Speaker Notes:
 The package structure involves runtime links to external repositories and aggregated third-party datasets:
 
 ```{mermaid}
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '10px'}}}%%
 graph TD
     CA["R Package:<br/>ConversationAlign"]
     CA -->|Imports| TS["textstem package<br/>(GPL-2)"]
@@ -368,7 +369,7 @@ Speaker Notes:
 ### Two Licensing Interpretations
 *   **The Lenient View:** Wickham & Bryan (@wickham2023r) note that merely calling functions from an imported/suggested package at runtime does not require license compatibility, as no source code is bundled or compiled.
 *   **The Strict View (FSF / Corporate Compliance):** Loading and executing GPL-2 functions inside an LGPLv3 package in the same process memory space creates a combined work at runtime [@german2009license]. Under this view, GPLv2 and LGPLv3 are incompatible, making the package legally non-distributable.
-*   **Downstream Barriers:** Even under the lenient view, users are forced to install the GPL-2 library `textstem`, which blocks downstream users with strict anti-GPL policies.
+*   **Downstream Barriers:** Even under the lenient view, users are forced to install the GPL-2 library `textstem`, which blocks / locks out users from companies with strict anti-GPL policies.
 
 ::: {.notes}
 Speaker Notes:
@@ -402,7 +403,7 @@ Speaker Notes:
 
 ---
 
-## Issue 2: Data-Software Bifurcation {.smaller}
+## Issue 2: Data-Software Seperation {.smaller}
 
 `ConversationAlign` downloads the database `lookup_Jul25.rda` from GitHub during package startup. The database aggregates several third-party resources:
 
