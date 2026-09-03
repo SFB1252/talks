@@ -49,8 +49,8 @@ plugins:
   - git-committers:
       repository: sfb1252/talks
       branch: main
-      token: !ENV [MKDOCS_GIT_COMMITTERS_APIKEY, ""] # (1)! 
- 
+      token: !ENV [MKDOCS_GIT_COMMITTERS_APIKEY, ""] # (1)!
+
 # Customization
 extra:
   generator: false
@@ -64,7 +64,7 @@ extra:
   # University of Cologne footer links
   copyright: |
     &copy; 2024 SFB 1252 - Universität zu Köln<br>
-    <a href="https://sfb1252.uni-koeln.de" target="_blank">SFB 1252 Homepage</a> | 
+    <a href="https://sfb1252.uni-koeln.de" target="_blank">SFB 1252 Homepage</a> |
     <a href="https://www.uni-koeln.de" target="_blank">Universität zu Köln</a>
 
 # Extensions
