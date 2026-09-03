@@ -165,8 +165,11 @@ If you use AI tools in your contributions:
 ## License and Copyright
 
 By contributing to this repository, you agree that your contributions will be
-licensed under the same terms as the project (Creative Commons Attribution 4.0
-International License), unless otherwise specified.
+licensed according to the type of material contributed, unless otherwise
+specified:
+
+- Documentation, workshop materials, and other non-code content: Creative Commons Attribution 4.0 International
+- Code, scripts, configuration, stylesheets, JavaScript, and workflows: MIT License
 
 ---
 

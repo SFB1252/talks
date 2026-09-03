@@ -98,8 +98,13 @@ We welcome contributions to improve our workshop materials. See our
 
 ## License
 
-This project is licensed under the terms specified in the [LICENSE](LICENSE)
-file.
+Workshop materials, documentation pages, and other non-code content are
+licensed under the Creative Commons Attribution 4.0 International License in
+[LICENSE](LICENSE).
+
+Code in this repository, including scripts, configuration, stylesheets,
+JavaScript, and workflow files, is licensed under the MIT License in
+[LICENSE-CODE](LICENSE-CODE).
 
 ## Contact
 
