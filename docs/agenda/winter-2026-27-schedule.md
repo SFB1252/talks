@@ -38,5 +38,55 @@ Add the current draft schedule to your calendar:
 
 ## Additional Sessions (TBA)
 
-Further Winter 2026-27 sessions are currently under discussion and will be
-added here once confirmed.
+Further Winter 2026-27 sessions are currently under discussion.
+
+### Proposed Draft Schedule (Next 8 Sessions)
+
+All sessions below are proposed and subject to change.
+
+### 27. Data Visualization with ggplot2
+**Date:** 30 September 2026
+**Time:** 14:00 - 15:30
+**Focus:** Core ggplot2 grammar, clean figure design, plotting mistakes, uncertainty, model-based plots, publication-ready figures
+
+### 28. Data Visualization with Other Tools (Proposed)
+
+**Date:** 14 October 2026
+**Time:** 14:00 - 15:30
+**Focus:** Introduction to alternative data visualization tools and their applications in research
+
+### 29. lme4 Model Criticism Clinic (Proposed)
+
+**Date:** 28 October 2026
+**Time:** 14:00 - 15:30
+**Focus:** Diagnostics, assumptions, model comparison, and robust interpretation for lme4 models
+
+### 30. Backups (Proposed)
+
+**Date:** 11 November 2026
+**Time:** 14:00 - 15:30
+**Focus:** Practical backup plans, versioned snapshots, restore testing, and routine automation
+
+### 31. Data Protection: GDPR, Sciebo, and Encryption (Proposed)
+
+**Date:** 25 November 2026
+**Time:** 14:00 - 15:30
+**Focus:** Handling sensitive data with GDPR-aligned workflows, secure sharing via Sciebo, and encryption basics
+
+### 32. Other Tools (Proposed)
+
+**Date:** 9 December 2026
+**Time:** 14:00 - 15:30
+**Focus:** ELAN, Praat, Inception, workflow utilities, etc.
+
+### 33. Open Debugging: Bring Your Own Problem (Proposed)
+
+**Date:** 6 January 2027
+**Time:** 14:00 - 15:30
+**Focus:** Collaborative troubleshooting across R, Python, Git, and document workflows
+
+### 34. Archiving (Proposed)
+
+**Date:** 20 January 2027
+**Time:** 14:00 - 15:30
+**Focus:** Metadata quality, repository readiness, FAIR checks, and concrete archiving next steps for active projects
