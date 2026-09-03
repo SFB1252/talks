@@ -7,7 +7,7 @@
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen?logo=github-actions)](https://github.com/SFB1252/talks)
 [![Python](https://img.shields.io/badge/python-3.11+-blue?logo=python&logoColor=white)](https://www.python.org)
 [![MkDocs](https://img.shields.io/badge/MkDocs-1.5+-lightblue?logo=markdown&logoColor=white)](https://www.mkdocs.org)
-[![Workshops](https://img.shields.io/badge/workshops-24-orange)](https://sfb1252.github.io/talks/workshops/)
+[![Workshops](https://img.shields.io/badge/workshops-25-orange)](https://sfb1252.github.io/talks/workshops/)
 [![Made with](https://img.shields.io/badge/made%20with-❤️%20in%20Cologne-red)](https://www.uni-koeln.de)
 [![Open Science](https://img.shields.io/badge/Open%20Science-✓-success)](https://sfb1252.github.io/talks)
 [![Research Data](https://img.shields.io/badge/Research%20Data-Management-informational)](https://sfb1252.github.io/talks/workshops/02-research-data-management/)
@@ -63,7 +63,7 @@ This outputs the site into the `site/` folder.
 ## Deployment
 
 The site is published via GitHub Pages at https://sfb1252.github.io/talks.
-Pushing to `main` triggers publication (serving the contents of `site/`).
+Pushing to `main` triggers the GitHub Actions build-and-deploy workflow.
 
 If links are not working immediately after deployment, allow 5–10 minutes for
 GitHub Pages to update.
@@ -74,14 +74,16 @@ GitHub Pages to update.
 ├── docs/                       # All site content (MkDocs source)
 │   ├── index.md                # Front page
 │   ├── agenda/                 # Workshop schedules
-│   ├── workshops/              # Workshop materials (01-24)
+│   ├── workshops/              # Workshop materials (01-25 + legacy redirects)
 │   ├── calendar/               # Calendar integration files
 │   ├── flyers/                 # Promotional materials
 │   ├── resources/              # Additional resources
-│   ├── onboarding/             # Onboarding materials
-│   ├── retreat/                # Retreat materials
-│   ├── presenter-resources/    # Presenter guidelines
-│   ├── evaluation/             # Workshop evaluation system
+│   │   ├── onboarding/         # Onboarding materials
+│   │   ├── retreat/            # Retreat materials
+│   │   └── presenter-resources/# Presenter guidelines
+│   ├── matrix/                 # Matrix community docs
+│   ├── mediapipe/              # MediaPipe materials
+│   ├── javascript/             # Custom site scripts
 │   └── stylesheets/            # Custom CSS
 ├── site/                       # Built static site (mkdocs build output)
 ├── mkdocs.yml                  # MkDocs configuration

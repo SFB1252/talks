@@ -46,7 +46,11 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago
- 
+  - git-committers:
+      repository: sfb1252/talks
+      branch: main
+      token: !ENV [MKDOCS_GIT_COMMITTERS_APIKEY, ""] # (1)!
+
 # Customization
 extra:
   generator: false
@@ -60,7 +64,7 @@ extra:
   # University of Cologne footer links
   copyright: |
     &copy; 2024 SFB 1252 - Universität zu Köln<br>
-    <a href="https://sfb1252.uni-koeln.de" target="_blank">SFB 1252 Homepage</a> | 
+    <a href="https://sfb1252.uni-koeln.de" target="_blank">SFB 1252 Homepage</a> |
     <a href="https://www.uni-koeln.de" target="_blank">Universität zu Köln</a>
 
 # Extensions
@@ -103,18 +107,26 @@ nav:
       - "18 - Sample Size and Power Analysis": "workshops/18-power-analysis/index.md"
       - "19 - Let's Rant: Open Debugging": "workshops/19-open-debugging/index.md"
       - "20 - Advanced R: Working with Data Frames": "workshops/20-advanced-r-dataframes/index.md"
+      - "21 - Version Control I: Getting Started with Git, GitHub, and gitlab.nrw": "workshops/21-version-control-getting-started/index.md"
+      - "22 - Version Control II: Collaboration Workflows with GitHub and gitlab.nrw": "workshops/22-version-control-collaboration-workflows/index.md"
+      - "23 - LaTeX I: Getting Started with Academic Writing in LaTeX": "workshops/23-latex-getting-started/index.md"
+      - "24 - LaTeX II: Longer Documents, Collaboration, and Thesis Workflows": "workshops/24-latex-thesis-workflows/index.md"
+      - "25 - Licensing of Published Datasets and Scripts": "workshops/25-licensing/index.md"
+      - "26 - SMLP 2026 Recap Discussion": "workshops/26-smlp2026-recap/index.md"
   - MediaPipe: "mediapipe/index.md"
   - Resources:
       - Overview: "resources/index.md"
       - Onboarding: "resources/onboarding/README.md"
       - Archiving: "resources/archiving/archiving-faq.md"
       - LLM Workshop (December 2025): "resources/llm-workshop/llm-workshop.md"
+      - CRC 1252 Day 2026: "resources/crc-day-2026/index.md"
       - SFB 1252 Retreat Materials (July 2025): "resources/retreat/README.md"
       - Additional Links: "resources/additional-links/additional-links.md"
   - Schedule:
+      - Winter 2026-27 (Draft): "agenda/winter-2026-27-schedule.md"
       - Winter 2025-26 (Archived): "agenda/winter-2025-26-schedule.md"
       - Summer 2025 (Archived): "agenda/summer-2025-schedule.md"
-      - Summer 2026 (Draft): "agenda/summer-2026-draft-schedule.md"
+      - Summer 2026: "agenda/summer-2026-schedule.md"
 
   # - Development:
   #     - Setup: "development/setup.md"

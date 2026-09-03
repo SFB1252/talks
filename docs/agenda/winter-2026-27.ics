@@ -1,0 +1,27 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//SFB 1252//Research Data & Methods Workshop Series//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:SFB 1252 Winter 2026-27 Workshops (Draft)
+X-WR-TIMEZONE:Europe/Berlin
+X-WR-CALDESC:Research Data and Methods Workshop Series - Winter Semester 2026-27 (Draft)
+
+BEGIN:VEVENT
+UID:workshop-26-smlp2026-recap@sfb1252.uni-koeln.de
+DTSTAMP:20260903T120000Z
+DTSTART:20260916T120000Z
+DTEND:20260916T133000Z
+SUMMARY:Workshop 26: SMLP 2026 Recap Discussion
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
+ Cologne
+DESCRIPTION:Recap and discussion session for SFB members who attended SMLP 20
+ 26.\n\nPrimary resource: https://vasishth.github.io/smlp2026/\n\nMore info
+ : https://sfb1252.github.io/talks/workshops/26-smlp2026-recap/
+URL:https://sfb1252.github.io/talks/workshops/26-smlp2026-recap/
+ORGANIZER;CN=Job Schepens & Luke Günther:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+END:VCALENDAR
