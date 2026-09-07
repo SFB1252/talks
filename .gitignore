@@ -79,6 +79,7 @@ _freeze/
 docs/workshops/**/slides.html
 docs/resources/**/slides.html
 docs/resources/**/slides.pdf
+!docs/resources/crc-day-2026/slides.pdf
 docs/resources/**/*_files/
 
 # Build Outputs

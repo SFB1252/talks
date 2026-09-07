@@ -25,7 +25,7 @@ academic best practices.
 
 ### National and International
 
-- [FAIR Data Principles](https://www.go-fair.org/fair-principles/) - Findable,
+- [FAIR Data Principles](https://www.gofair.foundation/fair-principles) - Findable,
   Accessible, Interoperable, Reusable
 - [DFG Guidelines on Handling Research Data](https://www.dfg.de/en/research_funding/principles_dfg_funding/research_data/) -
   German Research Foundation guidelines
