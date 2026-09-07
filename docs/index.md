@@ -117,14 +117,21 @@ sessions:
 
 ## Workshop Flyers
 
-Download promotional materials:
+### Current Flyer
+
+<div class="current-flyer" markdown="1">
+
+![Winter 2026-27 Flyer](flyers/2026_rdm-flyer_winter-semester/2026-09-07_rdm-winter-2026-27-flyer.png){ width="520" data-gallery="flyers" }
+
+**Winter 2026-27 Flyer** - [Download PDF](flyers/2026_rdm-flyer_winter-semester/2026-09-07_rdm-winter-2026-27-flyer.pdf)
+
+</div>
+
+### Archived Flyers
+
+Previous promotional materials:
 
 <div class="grid cards" markdown>
-
--   <figure markdown="span">
-  ![Winter 2026-27 Flyer](flyers/2026_rdm-flyer_winter-semester/2026-09-07_rdm-winter-2026-27-flyer.png){ width="400" data-gallery="flyers" }
-  <figcaption>Winter 2026-27 Flyer - <a href="flyers/2026_rdm-flyer_winter-semester/2026-09-07_rdm-winter-2026-27-flyer.pdf">Download PDF</a></figcaption>
-    </figure>
 
 -   <figure markdown="span">
       ![Summer 2025 Flyer](flyers/2025_rdm-flyer_summer-semester/2025-05-08_rdm-summer-flyer.png){ width="400" data-gallery="flyers" }
