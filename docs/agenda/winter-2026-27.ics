@@ -3,9 +3,9 @@ VERSION:2.0
 PRODID:-//SFB 1252//Research Data & Methods Workshop Series//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:SFB 1252 Winter 2026-27 Workshops (Draft)
+X-WR-CALNAME:SFB 1252 Winter 2026-27 Workshops
 X-WR-TIMEZONE:Europe/Berlin
-X-WR-CALDESC:Research Data and Methods Workshop Series - Winter Semester 2026-27 (Draft)
+X-WR-CALDESC:Research Data and Methods Workshop Series - Winter Semester 2026-27
 
 BEGIN:VEVENT
 UID:workshop-26-smlp2026-recap@sfb1252.uni-koeln.de
@@ -20,6 +20,135 @@ DESCRIPTION:Recap and discussion session for SFB members who attended SMLP 20
  : https://sfb1252.github.io/talks/workshops/26-smlp2026-recap/
 URL:https://sfb1252.github.io/talks/workshops/26-smlp2026-recap/
 ORGANIZER;CN=Job Schepens & Luke Günther:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-27-data-visualization-ggplot2@sfb1252.uni-koeln.de
+DTSTAMP:20260907T120000Z
+DTSTART:20260930T120000Z
+DTEND:20260930T133000Z
+SUMMARY:Workshop 27: Data Visualization with ggplot2
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
+ Cologne
+DESCRIPTION:Core ggplot2 grammar\, clean figure design\, plotting mistakes\,
+ uncertainty\, model-based plots\, and publication-ready figures.
+URL:https://sfb1252.github.io/talks/agenda/winter-2026-27-schedule/
+ORGANIZER;CN=Project S\, CRC 1252:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-28-data-management-plan@sfb1252.uni-koeln.de
+DTSTAMP:20260907T120000Z
+DTSTART:20261014T120000Z
+DTEND:20261014T133000Z
+SUMMARY:Workshop 28: Data Management Plan
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
+ Cologne
+DESCRIPTION:Creating practical\, funder-aligned data management plans for re
+ search projects\, including documentation\, storage\, sharing\, and archivin
+ g.
+URL:https://sfb1252.github.io/talks/agenda/winter-2026-27-schedule/
+ORGANIZER;CN=Project S\, CRC 1252:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-29-lme4-model-criticism@sfb1252.uni-koeln.de
+DTSTAMP:20260907T120000Z
+DTSTART:20261028T120000Z
+DTEND:20261028T133000Z
+SUMMARY:Workshop 29: lme4 Model Criticism Clinic
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
+ Cologne
+DESCRIPTION:Diagnostics\, assumptions\, model comparison\, and robust inter
+ pretation for lme4 models.
+URL:https://sfb1252.github.io/talks/agenda/winter-2026-27-schedule/
+ORGANIZER;CN=Project S\, CRC 1252:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-30-backups@sfb1252.uni-koeln.de
+DTSTAMP:20260907T120000Z
+DTSTART:20261111T130000Z
+DTEND:20261111T143000Z
+SUMMARY:Workshop 30: Backups
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
+ Cologne
+DESCRIPTION:Practical backup plans\, versioned snapshots\, restore testing\,
+ and routine automation.
+URL:https://sfb1252.github.io/talks/agenda/winter-2026-27-schedule/
+ORGANIZER;CN=Project S\, CRC 1252:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-31-data-protection@sfb1252.uni-koeln.de
+DTSTAMP:20260907T120000Z
+DTSTART:20261125T130000Z
+DTEND:20261125T143000Z
+SUMMARY:Workshop 31: Data Protection: GDPR, Sciebo, and Encryption
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
+ Cologne
+DESCRIPTION:Handling sensitive data with GDPR-aligned workflows\, secure sha
+ ring via Sciebo\, and encryption basics.
+URL:https://sfb1252.github.io/talks/agenda/winter-2026-27-schedule/
+ORGANIZER;CN=Project S\, CRC 1252:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-32-data-visualization-other-tools@sfb1252.uni-koeln.de
+DTSTAMP:20260907T120000Z
+DTSTART:20261209T130000Z
+DTEND:20261209T143000Z
+SUMMARY:Workshop 32: Data Visualization with Other Tools
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
+ Cologne
+DESCRIPTION:Introduction to alternative data visualization tools and their ap
+ plications in research.
+URL:https://sfb1252.github.io/talks/agenda/winter-2026-27-schedule/
+ORGANIZER;CN=Project S\, CRC 1252:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-33-open-debugging@sfb1252.uni-koeln.de
+DTSTAMP:20260907T120000Z
+DTSTART:20270106T130000Z
+DTEND:20270106T143000Z
+SUMMARY:Workshop 33: Open Debugging: Bring Your Own Problem
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
+ Cologne
+DESCRIPTION:Collaborative troubleshooting across R\, Python\, Git\, and doc
+ ument workflows.
+URL:https://sfb1252.github.io/talks/agenda/winter-2026-27-schedule/
+ORGANIZER;CN=Project S\, CRC 1252:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-34-archiving@sfb1252.uni-koeln.de
+DTSTAMP:20260907T120000Z
+DTSTART:20270120T130000Z
+DTEND:20270120T143000Z
+SUMMARY:Workshop 34: Archiving
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
+ Cologne
+DESCRIPTION:Metadata quality\, repository readiness\, FAIR checks\, and con
+ crete archiving next steps for active projects.
+URL:https://sfb1252.github.io/talks/agenda/winter-2026-27-schedule/
+ORGANIZER;CN=Project S\, CRC 1252:mailto:info@sfb1252.uni-koeln.de
 STATUS:CONFIRMED
 SEQUENCE:0
 END:VEVENT

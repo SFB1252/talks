@@ -1,7 +1,4 @@
-# Research Data & Methods - Winter Semester 2026-27 Schedule (Draft)
-
-**Draft notice:** This schedule is currently being planned. The first confirmed
-session is listed below; additional sessions will be announced soon.
+# Research Data & Methods - Winter Semester 2026-27 Schedule
 
 **Series Information:**
 
@@ -12,11 +9,11 @@ session is listed below; additional sessions will be announced soon.
 
 ## Subscribe to Calendar
 
-Add the current draft schedule to your calendar:
+Add the current schedule to your calendar:
 
 - **[Download iCal file](winter-2026-27.ics)** - Import into Outlook, Apple Calendar, Thunderbird, and other calendar apps
 
-## Confirmed Session
+## Workshop Schedule
 
 ### 26. [SMLP 2026 Recap Discussion](../workshops/26-smlp2026-recap/index.md)
 
@@ -36,56 +33,48 @@ Add the current draft schedule to your calendar:
 
 ---
 
-## Additional Sessions (TBA)
-
-Further Winter 2026-27 sessions are currently under discussion.
-
-### Proposed Draft Schedule (Next 8 Sessions)
-
-All sessions below are proposed and subject to change.
-
 ### 27. Data Visualization with ggplot2
 **Date:** 30 September 2026
 **Time:** 14:00 - 15:30
 **Focus:** Core ggplot2 grammar, clean figure design, plotting mistakes, uncertainty, model-based plots, publication-ready figures
 
-### 28. Data Visualization with Other Tools (Proposed)
+### 28. Data Management Plan
 
 **Date:** 14 October 2026
 **Time:** 14:00 - 15:30
-**Focus:** Introduction to alternative data visualization tools and their applications in research
+**Focus:** Creating practical, funder-aligned data management plans for research projects, including documentation, storage, sharing, and archiving
 
-### 29. lme4 Model Criticism Clinic (Proposed)
+### 29. lme4 Model Criticism Clinic
 
 **Date:** 28 October 2026
 **Time:** 14:00 - 15:30
 **Focus:** Diagnostics, assumptions, model comparison, and robust interpretation for lme4 models
 
-### 30. Backups (Proposed)
+### 30. Backups
 
 **Date:** 11 November 2026
 **Time:** 14:00 - 15:30
 **Focus:** Practical backup plans, versioned snapshots, restore testing, and routine automation
 
-### 31. Data Protection: GDPR, Sciebo, and Encryption (Proposed)
+### 31. Data Protection: GDPR, Sciebo, and Encryption
 
 **Date:** 25 November 2026
 **Time:** 14:00 - 15:30
 **Focus:** Handling sensitive data with GDPR-aligned workflows, secure sharing via Sciebo, and encryption basics
 
-### 32. Other Tools (Proposed)
+### 32. Data Visualization with Other Tools
 
 **Date:** 9 December 2026
 **Time:** 14:00 - 15:30
-**Focus:** ELAN, Praat, Inception, workflow utilities, etc.
+**Focus:** Introduction to alternative data visualization tools and their applications in research
 
-### 33. Open Debugging: Bring Your Own Problem (Proposed)
+### 33. Open Debugging: Bring Your Own Problem
 
 **Date:** 6 January 2027
 **Time:** 14:00 - 15:30
 **Focus:** Collaborative troubleshooting across R, Python, Git, and document workflows
 
-### 34. Archiving (Proposed)
+### 34. Archiving
 
 **Date:** 20 January 2027
 **Time:** 14:00 - 15:30
