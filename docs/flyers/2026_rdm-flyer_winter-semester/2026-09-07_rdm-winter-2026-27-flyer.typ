@@ -39,6 +39,32 @@
   #circle(radius: 48mm, stroke: 1pt + uzk-turquoise)
 ]
 
+#place(bottom + left, dx: 4mm, dy: 24mm)[
+  #rotate(-22deg)[
+    #stack(spacing: 3pt)[
+      #line(length: 68mm, stroke: 0.45pt + uzk-turquoise)
+      #line(length: 74mm, stroke: 0.45pt + uzk-turquoise)
+      #line(length: 80mm, stroke: 0.45pt + uzk-turquoise)
+      #line(length: 86mm, stroke: 0.45pt + uzk-turquoise)
+      #line(length: 92mm, stroke: 0.45pt + uzk-turquoise)
+    ]
+  ]
+]
+
+#place(top + right, dx: -5mm, dy: 8mm)[
+  #rotate(35deg)[
+    #stack(spacing: 3pt)[
+      #line(length: 34mm, stroke: 0.45pt + uzk-turquoise)
+      #line(length: 40mm, stroke: 0.45pt + uzk-turquoise)
+      #line(length: 46mm, stroke: 0.45pt + uzk-turquoise)
+      #line(length: 52mm, stroke: 0.45pt + uzk-turquoise)
+      #line(length: 58mm, stroke: 0.45pt + uzk-turquoise)
+      #line(length: 64mm, stroke: 0.45pt + uzk-turquoise)
+      #line(length: 70mm, stroke: 0.45pt + uzk-turquoise)
+    ]
+  ]
+]
+
 #block[
   #text(size: 17pt, weight: "bold")[SFB 1252 Prominence in Language]
   #linebreak()
