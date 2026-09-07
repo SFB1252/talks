@@ -1,4 +1,8 @@
-# Research Data & Methods - Summer Semester 2026 Schedule
+# Research Data & Methods - Summer Semester 2026 Schedule (ARCHIVED)
+
+<div class="archive-notice">
+	<p><strong>This workshop series has been completed.</strong> For upcoming workshops, see <a href="winter-2026-27-schedule/">Winter 2026-27 Schedule</a>.</p>
+</div>
 
 **Series Information:**
 

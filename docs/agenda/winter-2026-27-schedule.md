@@ -13,6 +13,12 @@ Add the current schedule to your calendar:
 
 - **[Download iCal file](winter-2026-27.ics)** - Import into Outlook, Apple Calendar, Thunderbird, and other calendar apps
 
+## Flyer
+
+![Winter 2026-27 Research Data & Methods flyer](../flyers/2026_rdm-flyer_winter-semester/2026-09-07_rdm-winter-2026-27-flyer.png){ width="400" data-gallery="flyers" }
+
+- **[Download flyer PDF](../flyers/2026_rdm-flyer_winter-semester/2026-09-07_rdm-winter-2026-27-flyer.pdf)**
+
 ## Workshop Schedule
 
 ### 26. [SMLP 2026 Recap Discussion](../workshops/26-smlp2026-recap/index.md)
@@ -36,46 +42,47 @@ Add the current schedule to your calendar:
 ### 27. Data Visualization with ggplot2
 **Date:** 30 September 2026
 **Time:** 14:00 - 15:30
+**Speaker:** Job Schepens
 **Focus:** Core ggplot2 grammar, clean figure design, plotting mistakes, uncertainty, model-based plots, publication-ready figures
 
 ### 28. Data Management Plan
 
 **Date:** 14 October 2026
 **Time:** 14:00 - 15:30
+**Speaker:** Lukas Lammers
 **Focus:** Creating practical, funder-aligned data management plans for research projects, including documentation, storage, sharing, and archiving
 
-### 29. lme4 Model Criticism Clinic
+### 29. lme4 Model Criticism
 
-**Date:** 28 October 2026
+**Date:** 4 November 2026
 **Time:** 14:00 - 15:30
+**Speaker:** Job Schepens
 **Focus:** Diagnostics, assumptions, model comparison, and robust interpretation for lme4 models
 
 ### 30. Backups
 
-**Date:** 11 November 2026
+**Date:** 18 November 2026
 **Time:** 14:00 - 15:30
+**Speaker:** TBC
 **Focus:** Practical backup plans, versioned snapshots, restore testing, and routine automation
 
 ### 31. Data Protection: GDPR, Sciebo, and Encryption
 
-**Date:** 25 November 2026
+**Date:** 2 December 2026
 **Time:** 14:00 - 15:30
+**Speaker:** Job Schepens
 **Focus:** Handling sensitive data with GDPR-aligned workflows, secure sharing via Sciebo, and encryption basics
 
 ### 32. Data Visualization with Other Tools
 
-**Date:** 9 December 2026
+**Date:** 16 December 2026
 **Time:** 14:00 - 15:30
+**Speaker:** Job Schepens
 **Focus:** Introduction to alternative data visualization tools and their applications in research
 
 ### 33. Open Debugging: Bring Your Own Problem
 
 **Date:** 6 January 2027
 **Time:** 14:00 - 15:30
+**Speaker:** TBC
 **Focus:** Collaborative troubleshooting across R, Python, Git, and document workflows
-
-### 34. Archiving
-
-**Date:** 20 January 2027
-**Time:** 14:00 - 15:30
-**Focus:** Metadata quality, repository readiness, FAIR checks, and concrete archiving next steps for active projects
