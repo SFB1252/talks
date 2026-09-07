@@ -85,11 +85,11 @@
 
 #grid(
   columns: (1fr, 1fr), column-gutter: 6pt, row-gutter: 6pt,
-  session-card([SMLP 2026 Recap Discussion], [Sep], [16], [SFB 1252 participants]),
-  session-card([Data Visualization with ggplot2], [Sep], [30], [Job Schepens]),
-  session-card([Data Management Plan], [Oct], [14], [Lukas Lammers]),
-  session-card([lme4 Model Criticism], [Nov], [04], [Job Schepens]),
-  session-card([Backups], [Nov], [18], [Speaker: TBC]),
+  session-card([SMLP 2026 Recap Discussion], [Sep], [16], [Job Schepens]),
+  session-card([lme4 Model Criticism], [Sep], [30], [Job Schepens]),
+  session-card([Data Management Plans in Practice], [Oct], [14], [Lukas Lammers]),
+  session-card([Backups], [Nov], [04], [Speaker: TBC]),
+  session-card([Data Visualization with ggplot2], [Nov], [18], [Job Schepens]),
   session-card([Data Protection: GDPR, Sciebo, and Encryption], [Dec], [02], [Job Schepens]),
   session-card([Data Visualization with Other Tools], [Dec], [16], [Job Schepens]),
   session-card([Open Debugging: Bring Your Own Problem], [Jan], [06], [Speaker: TBC]),

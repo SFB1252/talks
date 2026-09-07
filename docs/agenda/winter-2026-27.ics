@@ -16,7 +16,7 @@ SUMMARY:Workshop 26: SMLP 2026 Recap Discussion
 LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
  Cologne
 DESCRIPTION:Recap and discussion session for SFB members who attended SMLP 20
- 26.\n\nPrimary resource: https://vasishth.github.io/smlp2026/\n\nMore info
+ 26.\n\nPresenter: Job Schepens\n\nPrimary resource: https://vasishth.github.io/smlp2026/\n\nMore info
  : https://sfb1252.github.io/talks/workshops/26-smlp2026-recap/
 URL:https://sfb1252.github.io/talks/workshops/26-smlp2026-recap/
 ORGANIZER;CN=Job Schepens & Luke Günther:mailto:info@sfb1252.uni-koeln.de
@@ -25,11 +25,11 @@ SEQUENCE:0
 END:VEVENT
 
 BEGIN:VEVENT
-UID:workshop-27-data-visualization-ggplot2@sfb1252.uni-koeln.de
+UID:workshop-30-data-visualization-ggplot2@sfb1252.uni-koeln.de
 DTSTAMP:20260907T120000Z
-DTSTART:20260930T120000Z
-DTEND:20260930T133000Z
-SUMMARY:Workshop 27: Data Visualization with ggplot2
+DTSTART:20261118T130000Z
+DTEND:20261118T143000Z
+SUMMARY:Workshop 30: Data Visualization with ggplot2
 LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
  Cologne
 DESCRIPTION:Core ggplot2 grammar\, clean figure design\, plotting mistakes\,
@@ -46,7 +46,7 @@ UID:workshop-28-data-management-plan@sfb1252.uni-koeln.de
 DTSTAMP:20260907T120000Z
 DTSTART:20261014T120000Z
 DTEND:20261014T133000Z
-SUMMARY:Workshop 28: Data Management Plan
+SUMMARY:Workshop 28: Data Management Plans in Practice
 LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
  Cologne
 DESCRIPTION:Creating practical\, funder-aligned data management plans for re
@@ -59,11 +59,11 @@ SEQUENCE:0
 END:VEVENT
 
 BEGIN:VEVENT
-UID:workshop-29-lme4-model-criticism@sfb1252.uni-koeln.de
+UID:workshop-27-lme4-model-criticism@sfb1252.uni-koeln.de
 DTSTAMP:20260907T120000Z
-DTSTART:20261104T130000Z
-DTEND:20261104T143000Z
-SUMMARY:Workshop 29: lme4 Model Criticism
+DTSTART:20260930T120000Z
+DTEND:20260930T133000Z
+SUMMARY:Workshop 27: lme4 Model Criticism
 LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
  Cologne
 DESCRIPTION:Diagnostics\, assumptions\, model comparison\, and robust inter
@@ -75,11 +75,11 @@ SEQUENCE:0
 END:VEVENT
 
 BEGIN:VEVENT
-UID:workshop-30-backups@sfb1252.uni-koeln.de
+UID:workshop-29-backups@sfb1252.uni-koeln.de
 DTSTAMP:20260907T120000Z
-DTSTART:20261118T130000Z
-DTEND:20261118T143000Z
-SUMMARY:Workshop 30: Backups
+DTSTART:20261104T130000Z
+DTEND:20261104T143000Z
+SUMMARY:Workshop 29: Backups
 LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
  Cologne
 DESCRIPTION:Practical backup plans\, versioned snapshots\, restore testing\,

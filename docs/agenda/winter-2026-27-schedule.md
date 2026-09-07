@@ -25,7 +25,7 @@ Add the current schedule to your calendar:
 
 **Date:** 16 September 2026
 **Time:** 14:00 - 15:30
-**Speakers:** SFB 1252 participants
+**Speaker:** Job Schepens
 
 **Focus:**
 
@@ -39,32 +39,33 @@ Add the current schedule to your calendar:
 
 ---
 
-### 27. Data Visualization with ggplot2
+### 29. lme4 Model Criticism
+
 **Date:** 30 September 2026
 **Time:** 14:00 - 15:30
 **Speaker:** Job Schepens
-**Focus:** Core ggplot2 grammar, clean figure design, plotting mistakes, uncertainty, model-based plots, publication-ready figures
+**Focus:** Diagnostics, assumptions, model comparison, and robust interpretation for lme4 models
 
-### 28. Data Management Plan
+### 28. Data Management Plans in Practice
 
 **Date:** 14 October 2026
 **Time:** 14:00 - 15:30
 **Speaker:** Lukas Lammers
 **Focus:** Creating practical, funder-aligned data management plans for research projects, including documentation, storage, sharing, and archiving
 
-### 29. lme4 Model Criticism
+### 30. Backups
 
 **Date:** 4 November 2026
 **Time:** 14:00 - 15:30
-**Speaker:** Job Schepens
-**Focus:** Diagnostics, assumptions, model comparison, and robust interpretation for lme4 models
+**Speaker:** TBC
+**Focus:** Practical backup plans, versioned snapshots, restore testing, and routine automation
 
-### 30. Backups
+### 27. Data Visualization with ggplot2
 
 **Date:** 18 November 2026
 **Time:** 14:00 - 15:30
-**Speaker:** TBC
-**Focus:** Practical backup plans, versioned snapshots, restore testing, and routine automation
+**Speaker:** Job Schepens
+**Focus:** Core ggplot2 grammar, clean figure design, plotting mistakes, uncertainty, model-based plots, publication-ready figures
 
 ### 31. Data Protection: GDPR, Sciebo, and Encryption
 
