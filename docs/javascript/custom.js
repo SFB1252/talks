@@ -126,27 +126,65 @@ function renderSessionActions(primaryUrl, series) {
     `;
 }
 
-function parseHomepageSessions() {
-    const dataRoot = document.getElementById('session-data');
+async function parseWinterSchedule() {
+    const response = await fetch(toSiteUrl('agenda/winter-2026-27-schedule.md'));
 
-    if (!dataRoot) {
-        return [];
+    if (!response.ok) {
+        throw new Error(`Schedule request failed: ${response.status}`);
     }
 
-    return Array.from(dataRoot.querySelectorAll('[data-session-date]'))
-        .map(node => {
-            const [year, month, day] = node.dataset.sessionDate.split('-').map(Number);
+    const scheduleDocument = new DOMParser().parseFromString(await response.text(), 'text/html');
+    const scheduleUrl = toSiteUrl('agenda/winter-2026-27-schedule.md');
+    const monthNumbers = {
+        January: 1,
+        February: 2,
+        March: 3,
+        April: 4,
+        May: 5,
+        June: 6,
+        July: 7,
+        August: 8,
+        September: 9,
+        October: 10,
+        November: 11,
+        December: 12
+    };
+
+    return Array.from(scheduleDocument.querySelectorAll('h3'))
+        .map(heading => {
+            const headingMatch = heading.textContent.trim().match(/^(\d+)\.\s*(.+)$/);
+            const details = [];
+            let sibling = heading.nextElementSibling;
+
+            while (sibling && sibling.tagName !== 'H3') {
+                details.push(sibling.textContent.trim());
+                sibling = sibling.nextElementSibling;
+            }
+
+            if (!headingMatch) {
+                return null;
+            }
+
+            const dateMatch = details.join(' ').match(/Date:\s*(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})/);
+            const speakerMatch = details.join(' ').match(/Speaker(?:s)?:\s*([^\n]+?)(?=\s+Focus:|$)/);
+
+            if (!dateMatch || !monthNumbers[dateMatch[2]]) {
+                return null;
+            }
+
+            const sessionLink = heading.querySelector('a');
             return {
-                number: Number(node.dataset.sessionNumber),
-                series: node.dataset.sessionSeries,
-                seriesOrder: Number(node.dataset.sessionSeriesOrder || 0),
-                title: node.dataset.sessionTitle,
-                summary: node.dataset.sessionSummary || '',
-                url: toSiteUrl(node.dataset.sessionUrl),
-                cancelled: node.dataset.sessionCancelled === 'true',
-                utcDate: Date.UTC(year, month - 1, day)
+                number: Number(headingMatch[1]),
+                series: 'Winter 2026-27 Workshops',
+                title: headingMatch[2],
+                summary: details.join(' ').match(/Focus:\s*(.+)$/)?.[1] || '',
+                speaker: speakerMatch?.[1]?.trim() || 'TBC',
+                url: sessionLink?.href || scheduleUrl,
+                cancelled: false,
+                utcDate: Date.UTC(Number(dateMatch[3]), monthNumbers[dateMatch[2]] - 1, Number(dateMatch[1]))
             };
-        });
+        })
+        .filter(Boolean);
 }
 
 function renderNextSessionCard(sessions) {
@@ -184,14 +222,13 @@ function renderNextSessionCard(sessions) {
     `;
 }
 
-function renderHomepageSessions() {
-    const sessions = parseHomepageSessions();
-
-    if (!sessions.length) {
-        return;
+async function renderHomepageSessions() {
+    try {
+        const sessions = await parseWinterSchedule();
+        renderNextSessionCard(sessions);
+    } catch (error) {
+        console.error('Could not load the Winter 2026-27 schedule:', error);
     }
-
-    renderNextSessionCard(sessions);
 }
 
 // Analytics or tracking code can be added here if needed
