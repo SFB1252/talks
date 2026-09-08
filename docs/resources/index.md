@@ -7,5 +7,6 @@ This section provides a collection of resources to support researchers at CRC 12
 - **[Onboarding](onboarding/README.md):** Essential information for new members, including setup guides for key services and contact points.
 - **[Archiving](archiving/archiving-faq.md):** A frequently asked questions guide to data archiving, standards, and best practices.
 - **[LLM Workshop](llm-workshop/llm-workshop.md):** Summary and materials from the "Large Language Models for Linguistic Analyses" workshop.
+- **[CRC 1252 Day 2026](crc-day-2026/index.md):** Presentation materials on data publication, MediaPipe, and AI good practice.
 - **[Retreat Materials](retreat/README.md):** Presentations and materials from past CRC retreats, focusing on topics like Large Language Models and AI-assisted research.
 - **[Additional Links](additional-links/additional-links.md):** A curated list of external links, tools, and reading materials relevant to our research.

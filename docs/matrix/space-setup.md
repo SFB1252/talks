@@ -2,6 +2,9 @@
 
 Quick Start Guide for Research Data and Methods Workshops
 
+> **Under development:** This Matrix section is currently being revised. The
+> setup instructions and space configuration may change.
+
 ## Quick Start Guide
 
 1. **Have a Matrix account**: Use your existing University of Cologne account or

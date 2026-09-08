@@ -113,6 +113,11 @@ nav:
       - "24 - LaTeX II: Longer Documents, Collaboration, and Thesis Workflows": "workshops/24-latex-thesis-workflows/index.md"
       - "25 - Licensing of Published Datasets and Scripts": "workshops/25-licensing/index.md"
       - "26 - SMLP 2026 Recap Discussion": "workshops/26-smlp2026-recap/index.md"
+  - Current Schedule:
+      - Winter 2026-27: "agenda/winter-2026-27-schedule.md"
+      - Summer 2026 (Archived): "agenda/summer-2026-schedule.md"
+      - Winter 2025-26 (Archived): "agenda/winter-2025-26-schedule.md"
+      - Summer 2025 (Archived): "agenda/summer-2025-schedule.md"
   - MediaPipe: "mediapipe/index.md"
   - Resources:
       - Overview: "resources/index.md"
@@ -122,12 +127,6 @@ nav:
       - CRC 1252 Day 2026: "resources/crc-day-2026/index.md"
       - SFB 1252 Retreat Materials (July 2025): "resources/retreat/README.md"
       - Additional Links: "resources/additional-links/additional-links.md"
-  - Schedule:
-      - Winter 2026-27: "agenda/winter-2026-27-schedule.md"
-      - Summer 2026 (Archived): "agenda/summer-2026-schedule.md"
-      - Winter 2025-26 (Archived): "agenda/winter-2025-26-schedule.md"
-      - Summer 2025 (Archived): "agenda/summer-2025-schedule.md"
-
   # - Development:
   #     - Setup: "development/setup.md"
   #     - Tools: "development/tools.md"
@@ -136,6 +135,7 @@ nav:
       - Space Setup: "matrix/space-setup.md"
       - Admin Checklist: "matrix/admin-checklist.md"
   - About:
+      - Overview: "about/index.md"
       - Contributing: "about/contributing.md"
       - Presenter Resources: "resources/presenter-resources/README.md"
       - GitHub Setup: "about/github-setup.md"

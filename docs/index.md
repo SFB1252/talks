@@ -113,25 +113,6 @@ Previous promotional materials:
 
 ---
 
-## Matrix Community
-
-Use our Matrix space for workshop coordination, follow-up questions, and sharing resources between sessions.
-
-**Join:** [SFB 1252 - Talks & Workshops](https://matrix.to/#/#sfb1252-talks:uni.koeln.de)
-
-**Recommended clients:** [FluffyChat](https://fluffychat.im) or [Element](https://chat.extern.uni-koeln.de/)
-
-**What you will find there:**
-
-- Announcements and workshop coordination
-- Questions about tools, methods, and setup
-- Shared links and follow-up resources
-- General exchange with other CRC members
-
-See the [Matrix setup guide](matrix/space-setup.md) if you need help creating an account or joining from a specific client.
-
----
-
 ## Additional Information
 
 - **Getting Started:** [Onboarding materials](resources/onboarding/README.md) for new CRC 1252 members
