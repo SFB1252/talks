@@ -87,6 +87,7 @@ nav:
   - Home: "index.md"
   - Workshops:
       - Overview: "workshops/index.md"
+      - Possible Future Topics: "workshops/future-topics.md"
       - "01 - Good Academic Practice": "workshops/01-good-academic-practice/index.md"
       - "02 - Research Data Management": "workshops/02-research-data-management/index.md"
       - "03 - Ethics Approval": "workshops/03-ethics-approval/index.md"

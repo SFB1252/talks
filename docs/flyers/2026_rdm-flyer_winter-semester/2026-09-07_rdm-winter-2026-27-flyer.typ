@@ -68,13 +68,12 @@
 #block[
   #text(size: 17pt, weight: "bold")[SFB 1252 Prominence in Language]
   #linebreak()
-  #text(size: 32pt, weight: "bold", fill: uzk-blue)[Research Data & Methods]
+  #text(size: 32pt, weight: "bold", fill: uzk-blue)[RDM: Research Data & Methods]
   #linebreak()
-  #text(size: 19pt, weight: "bold")[Bi-weekly Talks & Tutorials]
   #v(2pt)
   #text(size: 15pt)[Winter 2026-27 | September - January]
   #linebreak()
-  #text(size: 12.8pt)[Introductory sessions and guided discussions with practical follow-up]
+  #text(size: 12.8pt)[Introductory sessions and discussions]
   #linebreak()
   #text(size: 12.8pt)[Organized by Project S, CRC 1252]
   #linebreak()
@@ -101,7 +100,7 @@
   #grid(
     columns: (1fr, 1fr, 1fr), gutter: 8pt,
     info-cell([Where?], [Attic (top floor), House of Prominence]),
-    info-cell([When?], [Every other Wednesday, 14:00 - 15:30]),
+    info-cell([When?], [Wednesdays, 14:00 - 15:30]),
     info-cell([Who?], [All CRC members and their guests]),
   )
 ]
@@ -112,7 +111,7 @@
   #grid(
     columns: (auto, auto, auto), gutter: 9pt, align: (right, bottom),
     [#image("../../logo.png", width: 38mm)],
-    [#image("../2026_rdm-flyer_summer-semester/img/dch-logo.png", width: 22mm)],
+    [#image("img/uzk-logo.png", width: 22mm)],
     [#image("../2026_rdm-flyer_summer-semester/img/qrcode.png", width: 24mm)],
   )
 ]
