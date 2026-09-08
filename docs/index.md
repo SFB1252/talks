@@ -19,10 +19,10 @@ Workshops on research methodology, data management, and academic practices for g
 ---
 
 <div class="schedule-links">
-  <p class="schedule-link-card"><strong>Next schedule:</strong> See the <a href="agenda/winter-2026-27-schedule.md">Winter 2026-27 schedule</a>.</p>
-  <p class="schedule-link-card"><strong>Summer 2026 archive:</strong> See the <a href="agenda/summer-2026-schedule.md">Summer 2026 schedule</a> for completed workshop dates and materials.</p>
-  <p class="schedule-link-card"><strong>Winter 2025-26 archive:</strong> See the <a href="agenda/winter-2025-26-schedule.md">Winter 2025-26 archive</a> for completed workshop dates and materials.</p>
-  <p class="schedule-link-card"><strong>Summer 2025 archive:</strong> See the <a href="agenda/summer-2025-schedule.md">Summer 2025 archive</a> for completed workshop dates and materials.</p>
+  <p class="schedule-link-card"><strong>Next schedule:</strong> See the <a href="agenda/winter-2026-27-schedule/">Winter 2026-27 schedule</a>.</p>
+  <p class="schedule-link-card"><strong>Summer 2026 archive:</strong> See the <a href="agenda/summer-2026-schedule/">Summer 2026 schedule</a> for completed workshop dates and materials.</p>
+  <p class="schedule-link-card"><strong>Winter 2025-26 archive:</strong> See the <a href="agenda/winter-2025-26-schedule/">Winter 2025-26 archive</a> for completed workshop dates and materials.</p>
+  <p class="schedule-link-card"><strong>Summer 2025 archive:</strong> See the <a href="agenda/summer-2025-schedule/">Summer 2025 archive</a> for completed workshop dates and materials.</p>
 </div>
 
 ---
