@@ -165,7 +165,7 @@ function renderNextSessionCard(sessions) {
         card.innerHTML = `
             <p class="next-session-label">Next upcoming session</p>
             <p class="next-session-title">No upcoming session is currently listed.</p>
-            <p class="next-session-meta">See the draft schedule for future updates.</p>
+            <p class="next-session-meta">See the schedule for future updates.</p>
             ${renderSessionActions(toSiteUrl('workshops/index.md'), '')}
         `;
         return;
@@ -184,59 +184,6 @@ function renderNextSessionCard(sessions) {
     `;
 }
 
-function renderAvailableWorkshops(sessions) {
-    const container = document.getElementById('available-workshops-list');
-
-    if (!container) {
-        return;
-    }
-
-    const groupedSessions = sessions.reduce((accumulator, session) => {
-        if (!accumulator.has(session.series)) {
-            accumulator.set(session.series, []);
-        }
-
-        accumulator.get(session.series).push(session);
-        return accumulator;
-    }, new Map());
-
-    const seriesOrder = [...groupedSessions.keys()].sort((left, right) => {
-        const leftOrder = groupedSessions.get(left)[0]?.seriesOrder ?? 0;
-        const rightOrder = groupedSessions.get(right)[0]?.seriesOrder ?? 0;
-        return rightOrder - leftOrder;
-    });
-
-    const sectionsHtml = seriesOrder.map(series => {
-        const sessionItems = groupedSessions
-            .get(series)
-            .slice()
-            .sort((left, right) => right.utcDate - left.utcDate)
-            .map(session => {
-                const cancelledSuffix = session.cancelled ? ', cancelled' : '';
-                const cancelledSummary = session.cancelled ? ' This session was cancelled.' : '';
-                const summary = `${session.summary || ''}${cancelledSummary}`.trim();
-
-                return `
-                    <li value="${session.number}">
-                        <strong><a href="${session.url}">${session.title}</a></strong> (${formatSessionDate(session.utcDate)}${cancelledSuffix})${summary ? ` - ${summary}` : ''}
-                    </li>
-                `;
-            })
-            .join('');
-
-        return `
-            <section class="homepage-workshop-group">
-                <h3>${series}</h3>
-                <ol class="homepage-workshop-list" reversed>
-                    ${sessionItems}
-                </ol>
-            </section>
-        `;
-    }).join('');
-
-    container.innerHTML = sectionsHtml;
-}
-
 function renderHomepageSessions() {
     const sessions = parseHomepageSessions();
 
@@ -245,7 +192,6 @@ function renderHomepageSessions() {
     }
 
     renderNextSessionCard(sessions);
-    renderAvailableWorkshops(sessions);
 }
 
 // Analytics or tracking code can be added here if needed
