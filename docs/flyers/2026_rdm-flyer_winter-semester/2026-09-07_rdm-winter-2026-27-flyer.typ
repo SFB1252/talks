@@ -90,9 +90,9 @@
   session-card([Data Management Plans in Practice], [Oct], [14], [Lukas Lammers]),
   session-card([Backups], [Nov], [04], [Speaker: TBC]),
   session-card([Data Visualization with ggplot2], [Nov], [18], [Job Schepens]),
-  session-card([Data Protection: GDPR, Sciebo, and Encryption], [Dec], [02], [Job Schepens]),
-  session-card([Data Visualization with Other Tools], [Dec], [16], [Job Schepens]),
-  session-card([Open Debugging: Bring Your Own Problem], [Jan], [06], [Speaker: TBC]),
+  session-card([Data Visualization with Other Tools], [Dec], [02], [Job Schepens]),
+  session-card([Data Protection: GDPR, Sciebo, and Encryption], [Jan], [06], [Job Schepens]),
+  session-card([Open Debugging: Bring Your Own Problem], [Jan], [20], [Speaker: TBC]),
 )
 
 #v(7pt)

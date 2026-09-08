@@ -67,23 +67,23 @@ Add the current schedule to your calendar:
 **Speaker:** Job Schepens
 **Focus:** Core ggplot2 grammar, clean figure design, plotting mistakes, uncertainty, model-based plots, publication-ready figures
 
-### 31. Data Protection: GDPR, Sciebo, and Encryption
+### 32. Data Visualization with Other Tools
 
 **Date:** 2 December 2026
 **Time:** 14:00 - 15:30
 **Speaker:** Job Schepens
-**Focus:** Handling sensitive data with GDPR-aligned workflows, secure sharing via Sciebo, and encryption basics
+**Focus:** Introduction to alternative data visualization tools and their applications in research
 
-### 32. Data Visualization with Other Tools
+### 31. Data Protection: GDPR, Sciebo, and Encryption
 
-**Date:** 16 December 2026
+**Date:** 6 January 2027
 **Time:** 14:00 - 15:30
 **Speaker:** Job Schepens
-**Focus:** Introduction to alternative data visualization tools and their applications in research
+**Focus:** Handling sensitive data with GDPR-aligned workflows, secure sharing via Sciebo, and encryption basics
 
 ### 33. Open Debugging: Bring Your Own Problem
 
-**Date:** 6 January 2027
+**Date:** 20 January 2027
 **Time:** 14:00 - 15:30
 **Speaker:** TBC
 **Focus:** Collaborative troubleshooting across R, Python, Git, and document workflows

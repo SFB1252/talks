@@ -25,16 +25,15 @@ SEQUENCE:0
 END:VEVENT
 
 BEGIN:VEVENT
-UID:workshop-30-data-visualization-ggplot2@sfb1252.uni-koeln.de
+UID:workshop-29-lme4-model-criticism@sfb1252.uni-koeln.de
 DTSTAMP:20260907T120000Z
-DTSTART:20261118T130000Z
-DTEND:20261118T143000Z
-SUMMARY:Workshop 30: Data Visualization with ggplot2
+DTSTART:20260930T120000Z
+DTEND:20260930T133000Z
+SUMMARY:Workshop 29: lme4 Model Criticism
 LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
  Cologne
-DESCRIPTION:Core ggplot2 grammar\, clean figure design\, plotting mistakes\,
- uncertainty\, model-based plots\, and publication-ready figures.\n\nPresente
- r: Job Schepens
+DESCRIPTION:Diagnostics\, assumptions\, model comparison\, and robust inter
+ pretation for lme4 models.\n\nPresenter: Job Schepens
 URL:https://sfb1252.github.io/talks/agenda/winter-2026-27-schedule/
 ORGANIZER;CN=Project S\, CRC 1252:mailto:info@sfb1252.uni-koeln.de
 STATUS:CONFIRMED
@@ -59,27 +58,11 @@ SEQUENCE:0
 END:VEVENT
 
 BEGIN:VEVENT
-UID:workshop-27-lme4-model-criticism@sfb1252.uni-koeln.de
-DTSTAMP:20260907T120000Z
-DTSTART:20260930T120000Z
-DTEND:20260930T133000Z
-SUMMARY:Workshop 27: lme4 Model Criticism
-LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
- Cologne
-DESCRIPTION:Diagnostics\, assumptions\, model comparison\, and robust inter
- pretation for lme4 models.\n\nPresenter: Job Schepens
-URL:https://sfb1252.github.io/talks/agenda/winter-2026-27-schedule/
-ORGANIZER;CN=Project S\, CRC 1252:mailto:info@sfb1252.uni-koeln.de
-STATUS:CONFIRMED
-SEQUENCE:0
-END:VEVENT
-
-BEGIN:VEVENT
-UID:workshop-29-backups@sfb1252.uni-koeln.de
+UID:workshop-30-backups@sfb1252.uni-koeln.de
 DTSTAMP:20260907T120000Z
 DTSTART:20261104T130000Z
 DTEND:20261104T143000Z
-SUMMARY:Workshop 29: Backups
+SUMMARY:Workshop 30: Backups
 LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
  Cologne
 DESCRIPTION:Practical backup plans\, versioned snapshots\, restore testing\,
@@ -91,15 +74,16 @@ SEQUENCE:0
 END:VEVENT
 
 BEGIN:VEVENT
-UID:workshop-31-data-protection@sfb1252.uni-koeln.de
+UID:workshop-27-data-visualization-ggplot2@sfb1252.uni-koeln.de
 DTSTAMP:20260907T120000Z
-DTSTART:20261202T130000Z
-DTEND:20261202T143000Z
-SUMMARY:Workshop 31: Data Protection: GDPR, Sciebo, and Encryption
+DTSTART:20261118T130000Z
+DTEND:20261118T143000Z
+SUMMARY:Workshop 27: Data Visualization with ggplot2
 LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
  Cologne
-DESCRIPTION:Handling sensitive data with GDPR-aligned workflows\, secure sha
- ring via Sciebo\, and encryption basics.\n\nPresenter: Job Schepens
+DESCRIPTION:Core ggplot2 grammar\, clean figure design\, plotting mistakes\,
+ uncertainty\, model-based plots\, and publication-ready figures.\n\nPresente
+ r: Job Schepens
 URL:https://sfb1252.github.io/talks/agenda/winter-2026-27-schedule/
 ORGANIZER;CN=Project S\, CRC 1252:mailto:info@sfb1252.uni-koeln.de
 STATUS:CONFIRMED
@@ -109,8 +93,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:workshop-32-data-visualization-other-tools@sfb1252.uni-koeln.de
 DTSTAMP:20260907T120000Z
-DTSTART:20261216T130000Z
-DTEND:20261216T143000Z
+DTSTART:20261202T130000Z
+DTEND:20261202T143000Z
 SUMMARY:Workshop 32: Data Visualization with Other Tools
 LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
  Cologne
@@ -123,10 +107,26 @@ SEQUENCE:0
 END:VEVENT
 
 BEGIN:VEVENT
-UID:workshop-33-open-debugging@sfb1252.uni-koeln.de
+UID:workshop-31-data-protection@sfb1252.uni-koeln.de
 DTSTAMP:20260907T120000Z
 DTSTART:20270106T130000Z
 DTEND:20270106T143000Z
+SUMMARY:Workshop 31: Data Protection: GDPR, Sciebo, and Encryption
+LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
+ Cologne
+DESCRIPTION:Handling sensitive data with GDPR-aligned workflows\, secure sha
+ ring via Sciebo\, and encryption basics.\n\nPresenter: Job Schepens
+URL:https://sfb1252.github.io/talks/agenda/winter-2026-27-schedule/
+ORGANIZER;CN=Project S\, CRC 1252:mailto:info@sfb1252.uni-koeln.de
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+
+BEGIN:VEVENT
+UID:workshop-33-open-debugging@sfb1252.uni-koeln.de
+DTSTAMP:20260907T120000Z
+DTSTART:20270120T130000Z
+DTEND:20270120T143000Z
 SUMMARY:Workshop 33: Open Debugging: Bring Your Own Problem
 LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
  Cologne
