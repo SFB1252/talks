@@ -134,7 +134,7 @@ async function parseWinterSchedule() {
     }
 
     const scheduleDocument = new DOMParser().parseFromString(await response.text(), 'text/html');
-    const scheduleUrl = toSiteUrl('agenda/winter-2026-27-schedule.md');
+    const scheduleUrl = new URL(toSiteUrl('agenda/winter-2026-27-schedule.md'), window.location.href).href;
     const monthNumbers = {
         January: 1,
         February: 2,
@@ -179,7 +179,9 @@ async function parseWinterSchedule() {
                 title: headingMatch[2],
                 summary: details.join(' ').match(/Focus:\s*(.+)$/)?.[1] || '',
                 speaker: speakerMatch?.[1]?.trim() || 'TBC',
-                url: sessionLink?.href || scheduleUrl,
+                url: sessionLink
+                    ? new URL(sessionLink.getAttribute('href'), response.url).href
+                    : scheduleUrl,
                 cancelled: false,
                 utcDate: Date.UTC(Number(dateMatch[3]), monthNumbers[dateMatch[2]] - 1, Number(dateMatch[1]))
             };
@@ -228,6 +230,14 @@ async function renderHomepageSessions() {
         renderNextSessionCard(sessions);
     } catch (error) {
         console.error('Could not load the Winter 2026-27 schedule:', error);
+        const card = document.getElementById('next-session-card');
+        if (card) {
+            card.innerHTML = `
+                <p class="next-session-label">Next upcoming session</p>
+                <p class="next-session-meta">The schedule is temporarily unavailable.</p>
+                <a class="btn-secondary" href="${toSiteUrl('agenda/winter-2026-27-schedule.md')}">Open Schedule</a>
+            `;
+        }
     }
 }
 
