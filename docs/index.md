@@ -38,8 +38,8 @@ Workshops are held in hybrid format. You can participate either in person or via
 - Please obey the [UoC Netiquette](https://portal.uni-koeln.de/en/site-notice/netiquette)
 - **Zoom Client:** If you are using the Zoom desktop client and/or the mobile app, please make sure to use the most recent version. Previous versions are not able to use all features and cannot take part in certain meetings using high encryption.
 - **More information about Zoom at the University of Cologne:**
-  - [Account/Login & FAQ](https://uni.cologne/ZEKTY)
-  - [Terms of Use & Data Privacy](https://uni.koeln/EPPHR)
+  - [Account/Login & FAQ](https://rrzk.uni-koeln.de/informationen-zu-tools-fuer-kollaboratives-arbeiten/zoom/zoom-faq)
+  - [Terms of Use & Data Privacy](https://rrzk.uni-koeln.de/informationen-zu-tools-fuer-kollaboratives-arbeiten/zoom/datenschutz-und-nutzungsvorgaben)
 
 ---
 
