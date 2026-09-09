@@ -10,9 +10,9 @@ Workshops on research methodology, data management, and academic practices for g
 
 ---
 
-## Mailing List for Participants not in the SFB 
+## Mailing List for Participants not on the SFB Mailing List
 
-Participants not in the SFB can subscribe to a mailing list to receive reminders and updates about workshop schedules and changes. New members are approved by the S project before receiving emails.
+Since the SFB Mailing List is only for official SFB members, participants who are not on that list can subscribe to another mailing list to receive reminders and updates about workshop schedules and changes. New members are approved by the S project before receiving emails. 
 
 **Subscribe here:** [https://lists.uni-koeln.de/mailman/listinfo/sfb1252-rdm](https://lists.uni-koeln.de/mailman/listinfo/sfb1252-rdm)
 
