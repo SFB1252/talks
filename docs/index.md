@@ -10,6 +10,39 @@ Workshops on research methodology, data management, and academic practices for g
 
 ---
 
+## Mailing List for Participants not in the SFB 
+
+Participants not in the SFB can subscribe to a mailing list to receive reminders and updates about workshop schedules and changes. New members are approved by the S project before receiving emails.
+
+**Subscribe here:** [https://lists.uni-koeln.de/mailman/listinfo/sfb1252-rdm](https://lists.uni-koeln.de/mailman/listinfo/sfb1252-rdm)
+
+---
+
+## Hybrid Participation - Join via Zoom
+
+Workshops are held in hybrid format. You can participate either in person or via Zoom.
+
+### Zoom Meeting Details
+
+**Join Zoom Meeting:** [https://uni-koeln.zoom.us/j/95613176772?pwd=ooJ8XOwJNqAsIFIIkFL6c7nPO1CYj8.1](https://uni-koeln.zoom.us/j/95613176772?pwd=ooJ8XOwJNqAsIFIIkFL6c7nPO1CYj8.1)
+
+- **Meeting ID:** 956 1317 6772
+- **Password:** 613352
+
+**Join by SIP:** 95613176772@zoomcrc.com
+
+**Participation via phone:** Use the number corresponding to your country: [https://zoom.us/zoomconference](https://zoom.us/zoomconference)
+
+### Important Information
+
+- Please obey the [UoC Netiquette](https://portal.uni-koeln.de/en/site-notice/netiquette)
+- **Zoom Client:** If you are using the Zoom desktop client and/or the mobile app, please make sure to use the most recent version. Previous versions are not able to use all features and cannot take part in certain meetings using high encryption.
+- **More information about Zoom at the University of Cologne:**
+  - [Account/Login & FAQ](https://uni.cologne/ZEKTY)
+  - [Terms of Use & Data Privacy](https://uni.koeln/EPPHR)
+
+---
+
 ## Next Upcoming Session
 
 <div id="next-session-card" class="next-session-card">
