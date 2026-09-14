@@ -2,8 +2,6 @@
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Research Data and Methods Workshop Series - MkDocs site loaded');
-
     // Add any custom JavaScript functionality here
 
     // Example: Add smooth scrolling to anchor links
@@ -243,11 +241,3 @@ async function renderHomepageSessions() {
 
 // Analytics or tracking code can be added here if needed
 // Example: Google Analytics, Matomo, etc.
-
-// Performance monitoring
-if ('performance' in window && 'timing' in performance) {
-    window.addEventListener('load', function() {
-        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
-        console.log('Page load time:', loadTime + 'ms');
-    });
-}

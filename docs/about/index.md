@@ -8,3 +8,4 @@ and responsible development practices.
 - **[Contributing](contributing.md):** Guidelines for contributing workshop materials, documentation, and improvements.
 - **[GitHub Setup](github-setup.md):** Setup guidance for working with the repository and GitHub.
 - **[AI-Assisted Development](ai-assisted-development.md):** Guidance for transparent and responsible use of AI tools in development and research workflows.
+- **[AI Usage Log](ai-usage-log.md):** A record of where and how AI tools were used in developing this website.

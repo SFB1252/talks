@@ -136,16 +136,41 @@ to AI-assisted development:
   for responsible AI use
 - **Quality Assurance**: All AI-generated content undergoes human review and
   validation
+- **Usage Log**: Where and how AI tools were used is recorded in the
+  [AI Usage Log](ai-usage-log.md)
 
 ### Contributing with AI Tools
 
 If you use AI tools in your contributions:
 
-- **Transparency**: Clearly document any AI assistance used
+- **Transparency**: Add an entry to the [AI Usage Log](ai-usage-log.md)
+  describing what the tool did and how you verified the result
 - **Quality Review**: Ensure all AI-generated content is reviewed by qualified
   humans
 - **Attribution**: Follow our guidelines for proper attribution of AI assistance
 - **Standards**: Maintain the same quality standards as non-AI-assisted work
+
+### Verifying AI Output Before Submitting
+
+AI output can be fluent and confident while being wrong. Before submitting
+AI-assisted changes, check:
+
+- **Facts**: Verify factual claims against authoritative sources — not against
+  other AI outputs. This includes dates, names, version numbers, and URLs.
+- **Citations and references**: Look up every reference the tool produced.
+  Fabricated or incorrectly cited references are a common failure mode.
+- **Code**: Read generated code before using it — check that functions and
+  libraries actually exist and that the code does what you intended.
+- **Hallucinations**: Actively look for plausible-sounding but invented
+  content (non-existent files, APIs, or statistics).
+- **Bias**: Consider whether the output could reflect systematic bias,
+  especially for content that concerns people.
+- **Fit**: Check that the output actually addresses what you asked for.
+
+How much scrutiny is appropriate scales with risk: a formatting suggestion
+needs less verification than content that makes factual claims, which needs
+less than code that will be run. If you could not explain a change to a
+colleague, it needs more review before it goes in.
 
 ## Getting Help
 

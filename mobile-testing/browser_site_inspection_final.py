@@ -68,7 +68,9 @@ Perform a comprehensive Matrix Integration verification:
 5. Matrix Rooms Verification - Find all three rooms (General, Technical, Resources)
 6. Matrix Setup Guide - Look for setup guide link
 7. Quality Checks - Look for TODO markers or broken elements
-8. Workshop Content Verification - Verify 12 workshops are listed
+8. Workshop Content Verification - Verify the workshop pages are listed (the
+   site currently has 26 workshops; check that the workshops overview page
+   lists them and report the count you find)
 
 Provide a detailed report with what's working, any issues, and statistics.
 Use Actor Use to query elements by natural language."""

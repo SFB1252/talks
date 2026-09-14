@@ -16,11 +16,9 @@ Example queries:
 
 ### Gemini Flash Latest
 - **Model:** `gemini-flash-latest` (auto-updates to newest version)
-- **Currently:** Gemini 2.5 Flash Preview (September 2025)
-- **30% faster** than previous versions
-- **More accurate** element detection with thinking capabilities
+- The model alias resolves to the current Gemini Flash version at run time;
+  check [Google's release notes](https://ai.google.dev/gemini-api/docs/models) for what is currently behind it
 - **Cost-effective** for automation tasks
-- **Auto-updates** with 2-week notice before version changes
 
 ## 🚀 Quick Start
 
@@ -52,7 +50,7 @@ The script will:
 - ✅ Use **Actor Use** to intelligently detect elements
 - ✅ Verify Matrix integration (links, rooms, FluffyChat recommendation)
 - ✅ Check for [TODO] markers
-- ✅ Verify all 12 workshops are listed
+- ✅ Verify the workshops overview lists the current workshops (26 as of September 2026)
 - ✅ Generate a detailed inspection report
 
 ## 🔌 MCP Server Integration (Optional)
@@ -152,7 +150,7 @@ Actor Use intelligently handles the ambiguous parts!
 **Overall Score:** **8/10 - Production Ready** ✅
 
 **Quick Summary:**
-- ✅ All 12 workshop pages verified
+- ✅ All workshop pages verified (12 at the time of the test; the site has since grown to 26)
 - ✅ Matrix integration 100% functional  
 - ✅ All navigation works perfectly
 - ✅ No TODO markers found

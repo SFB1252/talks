@@ -13,7 +13,7 @@ docs_dir: "docs"
 # Theme configuration
 theme:
   name: "material"
-  version: "9.6.18"
+  version: "9.7.6"
   language: "en"
   logo: "logo.png"
   favicon: "logo.png"
@@ -141,6 +141,7 @@ nav:
       - Presenter Resources: "resources/presenter-resources/README.md"
       - GitHub Setup: "about/github-setup.md"
       - AI-Assisted Development: "about/ai-assisted-development.md"
+      - AI Usage Log: "about/ai-usage-log.md"
 
 # Additional CSS and JS
 extra_css:

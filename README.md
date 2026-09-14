@@ -7,7 +7,7 @@
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen?logo=github-actions)](https://github.com/SFB1252/talks)
 [![Python](https://img.shields.io/badge/python-3.11+-blue?logo=python&logoColor=white)](https://www.python.org)
 [![MkDocs](https://img.shields.io/badge/MkDocs-1.5+-lightblue?logo=markdown&logoColor=white)](https://www.mkdocs.org)
-[![Workshops](https://img.shields.io/badge/workshops-25-orange)](https://sfb1252.github.io/talks/workshops/)
+[![Workshops](https://img.shields.io/badge/workshops-26-orange)](https://sfb1252.github.io/talks/workshops/)
 [![Made with](https://img.shields.io/badge/made%20with-❤️%20in%20Cologne-red)](https://www.uni-koeln.de)
 [![Open Science](https://img.shields.io/badge/Open%20Science-✓-success)](https://sfb1252.github.io/talks)
 [![Research Data](https://img.shields.io/badge/Research%20Data-Management-informational)](https://sfb1252.github.io/talks/workshops/02-research-data-management/)
