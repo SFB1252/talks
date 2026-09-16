@@ -1,0 +1,721 @@
+---
+title: "SMLP 2026: Summer School Recap & Discussion"
+subtitle: "10th Summer School on Statistical Methods for Linguistics and Psychology"
+author:
+  - name: "Job Schepens"
+    affiliation:
+      - name: Universität zu Köln
+        department: CRC 1252 Prominence in Language
+        city: Cologne, Germany
+date: "16 September 2026"
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../../stylesheets/mytheme.scss]
+    logo: ../../logo.png
+    slide-number: true
+    scrollable: true
+    mouse-wheel: true
+    footer: "RDM Workshop Series · SFB 1252 Prominence in Language · Universität zu Köln"
+    output-file: slides.html
+    embed-resources: true
+    transition: none
+    background-transition: none
+bibliography: "references.bib"
+csl: "../24-latex-thesis-workflows/apa.csl"
+---
+
+<style>
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-300.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-500.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-600.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-700.ttf") format("truetype");
+}
+
+/* Slide compacting tweaks to prevent vertical overflow */
+.reveal table {
+  font-size: 0.76em;
+}
+.reveal pre code {
+  font-size: 0.72em;
+  line-height: 1.25;
+}
+.reveal .callout {
+  margin-top: 0.35em;
+  margin-bottom: 0.35em;
+  padding: 0.35em 0.7em;
+  font-size: 0.85em;
+}
+.reveal h3 {
+  margin-top: 0.15em;
+  margin-bottom: 0.25em;
+}
+.reveal ul, .reveal ol {
+  margin-top: 0.15em;
+  margin-bottom: 0.15em;
+}
+.reveal li {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+</style>
+
+## Overview {.smaller}
+
+::: {.columns}
+
+::: {.column width="58%"}
+### Session Agenda
+- **SMLP** 
+- **Participants** 
+- **Keynotes** 
+- **5 Classes** 
+- **"Maximal Models"** 
+- **Contrast Coding** 
+- **CRC 1252** 
+:::
+
+::: {.column width="42%"}
+::: {.callout-note}
+:::
+
+::: {.callout-tip}
+:::
+:::
+
+:::
+
+---
+
+## 1. SMLP {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### 10-Years 
+*   **Founded by** Shravan Vasishth (Uni Potsdam, 2017).
+*   **Origin:** Funded as part of SFB 1287 (*Limits of Variability in Language*).
+*   **Target audience:** cognitive scientists and linguists.
+*   **Impact:** Over 1,000 participants over the years.
+:::
+
+::: {.column width="50%"}
+### 2026 Edition
+*   **5 parallel streams**.
+*   **Keynotes:** Lisa DeBruine & Dale Barr.
+*   **Many CRC 1252 Participants:** 
+:::
+
+:::
+
+::: {.notes}
+Speaker Notes:
+
+:::
+
+---
+
+## The SMLP 2026 Curriculum at a Glance {.smaller}
+
+| Stream | Level | Instructors | Core Technologies & Focus |
+|---|---|---|---|
+| **1. Intro to Bayesian Analysis** | Beginner–Int. | Julia Haaf & Nicole Cruz | `brms`, prior specification, hierarchical models, posterior checks |
+| **2. Advanced Bayesian Analysis** | Advanced | Bruno Nicenboim & Johan Hennert | Stan, cognitive process models (DDM, race models), Bayes factors, LOO-CV |
+| **3. Intro to R & Frequentist Stats** | Beginner | Paula Lissón & Mar Suárez Ortega | Base R, tidyverse, data wrangling, linear regression fundamentals |
+| **4. Foundational Frequentist & LMMs** | Intermediate | João Veríssimo & Michael Vrazitulis | `lme4`, crossed random effects, contrast coding, power simulations |
+| **5. Advanced Frequentist with Julia** | Advanced | Reinhold Kliegl & Phillip Alday | `MixedModels.jl`, Julia speedup, bootstrapping, complex covariance |
+
+::: {.notes}
+Speaker Notes:
+
+:::
+
+---
+
+## Who Was Where? {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Which stream did you attend?
+- [ ] Track 1: Intro to Bayesian (`brms`)
+- [ ] Track 2: Advanced Bayesian (Stan)
+- [ ] Track 3: Intro to R & Frequentist Stats
+- [ ] Track 4: Foundational LMMs (`lme4`)
+- [ ] Track 5: Advanced LMMs with Julia
+
+### Keynotes attended?
+- [ ] Lisa DeBruine (Power & Simulation)
+- [ ] Dale Barr (PsyTeachR & Open Science)
+:::
+
+::: {.column width="50%"}
+### Primary data in your CRC project:
+*   *RTs* (eye-tracking, Self paced reading, etc.)
+*   *Acoustic measurements* (f0, duration, intensity)
+*   *Acceptability judgments* (binary, Likert, ordinal)
+*   *Corpus frequencies & counts* (prominence markers)
+*   *Electrophysiology* (EEG, ERPs, time-series)
+:::
+
+:::
+
+::: {.notes}
+Speaker Notes:
+:::
+
+---
+
+## 2. Keynote 1: Lisa DeBruine {.smaller}
+
+::: {.columns}
+
+::: {.column width="52%"}
+### "Power and Simulation" (Glasgow)
+*   **Analytic Power Fails:** Classical formulas (e.g. $G*\text{Power}$) assume independent data. They break down for **crossed random effects** (subjects $\times$ items) [@debruine2021understanding].
+*   **Post-Hoc Power Fallacy:** Calculating power after the fact from observed effect size is just a noisy transformation of the $p$-value [@vasishth2018statistical].
+*   **The Modern Solution:** Simulation-based power analysis.
+:::
+
+::: {.column width="48%"}
+::: {.callout-tip}
+### Core Principle
+"If you can simulate a dataset that captures your design and hypothesized effect, you can calculate power for *any* model, no matter how complex."
+:::
+
+*   **Open Resources:**
+    *   `faux` R package (factorial data simulation)
+    *   [data-sim-workshops](https://debruine.github.io/data-sim-workshops/)
+:::
+
+:::
+
+::: {.notes}
+Speaker Notes:
+- Emphasize Lisa DeBruine's point: stop using G*Power for psycholinguistic designs with both subject and item variance.
+- Connect to CRC Workshop 18 on power analysis.
+:::
+
+---
+
+## Simulation-Based Power Pipeline {.smaller}
+
+::: {.columns}
+
+::: {.column width="55%"}
+```{mermaid}
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '10px'}}}%%
+flowchart TD
+    A["Step 1: Specify Generative Model<br/>(Effects, SDs, Correlations)"] --> B["Step 2: Generate N Datasets<br/>(Synthetic Trials, Subjects, Items)"]
+    B --> C["Step 3: Fit Model to Each Dataset<br/>(lme4 / brms / MixedModels)"]
+    C --> D["Step 4: Evaluate Evidence Rate<br/>(Rate reaching p &lt; .05 or ROPE)"]
+    D -->|Refine N / Design| A
+```
+:::
+
+::: {.column width="45%"}
+### Relevance for CRC 1252:
+*   **Preregistration:** Justifying sample sizes rather than arbitrary $N=30$.
+*   **Random effects:** Simulations reveal how item variance and random slopes diminish power for subtle prominence interactions.
+
+::: {.callout-note}
+### Previous CRC Workshop
+Detailed in **[Workshop 18: Power Analysis](../18-power-analysis/)** & the interactive **[Sequential Simulation Report](https://jobschepens.github.io/samplesize/)**.
+:::
+:::
+
+:::
+
+::: {.notes}
+Speaker Notes:
+:::
+
+---
+
+## 3. Keynote 2: Dale Barr {.smaller}
+
+::: {.columns}
+
+
+:::
+
+::: {.notes}
+Speaker Notes:
+- Mention PsyTeachR's free online textbooks.
+:::
+
+---
+
+## 4. Track 1: Intro to Bayesian Analysis {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Instructors: Julia Haaf & Nicole Cruz
+*   **Book:** *Bayesian Data Analysis for Cognitive Science* [@nicenboim2024introduction].
+*   **Workflow:** Prior $\to$ Likelihood $\to$ Posterior.
+*   **Syntax:** Familiar `lme4`-style syntax via `brms`:
+    ```r
+    brm(rt ~ prominence * focus + 
+          (1 + prominence | subj) + 
+          (1 + focus | item),
+        data = dat, family = lognormal(),
+        prior = priors)
+    ```
+:::
+
+::: {.column width="50%"}
+### Model Validation Workflow
+1.  **Prior Checks:** Plausible RTs before fitting ([02_prior_checks](https://jobschepens.github.io/brms-ws/02_prior_predictive_checks_rt.html)).
+2.  **Diagnostics:** $\hat{R} \le 1.01$, $\text{ESS} > 400$ ([08_convergence](https://jobschepens.github.io/brms-ws/08_convergence.html)).
+3.  **Posterior Checks:** Test fit with `pp_check` ([03_posterior_checks](https://jobschepens.github.io/brms-ws/03_posterior_predictive_checks_rt.html)).
+4.  **Inference:** Credible intervals and ROPE ([06_rope](https://jobschepens.github.io/brms-ws/06_rope.html) · [Workshop 14](../14-bayesian-rope-testing/)).
+
+:::
+
+:::
+
+::: {.notes}
+Speaker Notes:
+- Explain Track 1: Ideal entry point for researchers moving from lme4 to brms.
+- Point out that lognormal distribution natively accounts for RT right-skew.
+:::
+
+---
+
+## Track 1: Regularizing Priors {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Prior Specification in `brms`
+```r
+priors <- c(
+  # Baseline intercept ~ 400 ms
+  prior(normal(6, 0.5), class = "Intercept"),
+  
+  # Plausible effect size bounds
+  prior(normal(0, 0.1), class = "b"),
+  
+  # Regularize random slope variances
+  prior(exponential(2), class = "sd"),
+  
+  # Discourage extreme +/- 1 correlations
+  prior(lkj(2), class = "cor")
+)
+```
+:::
+
+::: {.column width="50%"}
+### Why Priors help
+*   **Singularity in lme4:** estimated correlations between intercepts and slopes often get to $\pm 1.00$.
+*   **The LKJ Prior:** Setting $\text{LKJ}(\eta = 2)$ concentrates probability mass around 0, shrinking extreme correlations and stabilizing estimation [@nicenboim2024introduction].
+
+::: {.callout-note}
+### Prior Sensitivity Tutorial
+Compare flat vs. regularizing priors in **[brms-ws 04_comparing_priors](https://jobschepens.github.io/brms-ws/04_comparing_priors_rt.html)**.
+:::
+:::
+
+:::
+
+::: {.notes}
+Speaker Notes:
+- The LKJ prior is one of the most practical Bayesian solutions to frequentist convergence errors.
+:::
+
+---
+
+## 5. Track 2: Advanced Bayesian Modeling {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Instructors: Bruno Nicenboim & Johan Hennert
+*   **Beyond `brms`:** Writing custom probabilistic programs in native Stan.
+*   **Cognitive Process Models:**
+    *   *Drift-Diffusion Models (DDM):* Jointly model decision bounds, drift rate, and non-decision time.
+    *   *Log-Normal Race Models:* Competing accumulators for lexical or syntactic selection.
+:::
+
+::: {.column width="50%"}
+### Principled Model Comparison
+*   **Bayes Factors (Bridge Sampling):**
+    *   Tests point nulls ($H_0: \theta = 0$). Prior sensitive!
+    *   See **[Workshop 15: Bayes Factors](../15-bayes-factor/)** & **[07_bayes_factors](https://jobschepens.github.io/brms-ws/07_bayes_factors.html)**.
+*   **PSIS-LOO-CV (`loo` package):**
+    *   Out-of-sample predictive accuracy.
+    *   See **[Workshop 13: Cross-Validation](../13-bayesian-model-comparison-cv/)** & **[05_loo](https://jobschepens.github.io/brms-ws/05_loo.html)**.
+
+::: {.callout-note}
+### Decision Frameworks Comparison
+Explore **[ROPE vs. Bayes Factor vs. LOO](https://jobschepens.github.io/brms-ws/06_sequential_testing.html)**.
+:::
+:::
+
+:::
+
+::: {.notes}
+Speaker Notes:
+- Distinguish Bayes Factors (testing hypotheses) from LOO-CV (predictive generalization).
+:::
+
+---
+
+## 6. Track 4: Frequentist Foundations & LMMs {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### "Keep It Maximal" [@barr2013random]
+*   Include all random intercepts and slopes for within-unit experimental factors.
+*   **Goal:** Rigorously protect against inflated Type I error ($\alpha > .05$).
+*   **Trade-off:** Frequently results in overparameterization, singular fits, and optimizer convergence errors.
+:::
+
+::: {.column width="50%"}
+### "Parsimonious Models" [@matuschek2017balancing]
+*   Select random effects via backward elimination with Likelihood Ratio Tests (LRT).
+*   **Finding:** Over-parameterized maximal models cause **substantial loss of power**.
+*   **Recommendation:** Keep only random slopes supported by the empirical data.
+:::
+
+:::
+
+::: {.notes}
+Speaker Notes:
+-  Barr et al. maximal vs. Matuschek et al. parsimonious.
+- Takeaway: Forcing unsupported slopes destroys power for the fixed effect you actually care about.
+:::
+
+---
+
+## Contrast Coding {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### R Default (Treatment Coding)
+```r
+# Default R: contr.treatment
+fit <- lmer(RT ~ Prominence * Focus + 
+              (1 | Subj), data = dat)
+```
+*   `Prominence` coefficient is **NOT** the main effect of prominence; it is the difference between the reference level and the other level.
+*   Interactions make the interpretation of lower-order terms more complex [@schad2020capitalize].
+:::
+
+::: {.column width="50%"}
+### Sum Coding
+```r
+# Sum contrasts
+contrasts(dat$Prominence) <- contr.sum(2)
+contrasts(dat$Focus) <- contr.sum(2)
+```
+*   Intercept ($\beta_0$) = Grand mean.
+*   Slopes ($\beta_1, \beta_2$) = True main effects averaged across all levels of the other factors.
+
+:::
+
+:::
+
+::: {.notes}
+Speaker Notes:
+- Schad et al. (2020) 
+- Never report "main effects" from models with interactions without verifying contrast coding!
+:::
+
+---
+
+## Contrast Coding Overview {.smaller}
+
+| Contrast Scheme | R Command | Intercept ($\beta_0$) | Slope ($\beta_1, \beta_2, \dots$) |
+|---|---|---|---|
+| **Treatment (Default)** | `contr.treatment(k)` | Reference group mean | Difference: Group $i$ minus Reference |
+| **Sum** | `contr.sum(k)` | Grand mean across groups | Deviation: Group $i$ minus Grand mean |
+| **Successive Difference** | `MASS::contr.sdif(k)` | Grand mean across groups | Difference between adjacent successive levels ($\mu_i - \mu_{i-1}$) |
+| **Helmert** | `contr.helmert(k)` | Grand mean across groups | Level $i$ compared to mean of prior levels |
+
+::: {.callout-important}
+### Best Practice
+Always run `contrasts(dat$my_factor)` before fitting models to check coding.
+:::
+
+::: {.notes}
+Speaker Notes:
+- Reiterate that changing contrast coding changes parameter estimates, SEs, and p-values of lower-order terms.
+- Successive difference coding (`MASS::contr.sdif`) is ideal for ordered psycholinguistic data (e.g., word-by-word reading times, spillover regions, developmental stages) to test step-wise transitions between adjacent conditions.
+:::
+
+---
+
+## 7. Track 5: Advanced LMMs with Julia {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Instructors: Reinhold Kliegl & Phillip Alday
+*   **The Engine:** `MixedModels.jl` [@kliegl2024embrace].
+*   **Why Julia?**
+    *   No two-language overhead (pure Julia).
+    *   High-performance sparse matrix algebra.
+    *   **10x to 100x faster** than `lme4`.
+*   **Ideal For:** Massive linguistic corpora and multi-million token datasets.
+:::
+
+::: {.column width="50%"}
+### Standout Capabilities
+*   **Random Effects PCA (`rePCA`):** Diagnoses the exact mathematical dimensionality of variance components, exposing zero-variance slopes.
+*   **Fast Parametric Bootstrap:** Generates 10,000 bootstrap replicates in minutes for accurate non-asymptotic CIs and $p$-values.
+:::
+
+:::
+
+::: {.notes}
+Speaker Notes:
+- Explain that MixedModels.jl is the state of the art for frequentist mixed models at scale.
+:::
+
+---
+
+## Interoperability: Calling Julia from R {.smaller}
+
+::: {.columns}
+
+::: {.column width="55%"}
+```r
+library(JuliaCall)
+julia_setup()
+julia_library("MixedModels")
+julia_library("DataFrames")
+
+# Transfer R data frame to Julia in-memory
+julia_assign("df", crc_data)
+
+# Fit model at compiled C-speed
+julia_command("m1 = fit(MixedModel, 
+  @formula(RT ~ Prom * Ctx + (1 + Prom | Subj)), 
+  df)")
+
+# 1,000 bootstraps in seconds
+boot <- julia_eval("parametricbootstrap(1000, m1)")
+```
+:::
+
+::: {.column width="45%"}
+::: {.callout-tip}
+### Seamless R/Julia Workflow
+1.  Wrangle & clean in R (`tidyverse`)
+2.  Fit & bootstrap in Julia (`MixedModels.jl`)
+3.  Plot & report in R (`ggplot2`)
+:::
+*   No need to rewrite your entire project workflow in Julia!
+:::
+
+:::
+
+::: {.notes}
+Speaker Notes:
+- JuliaCall allows researchers to keep their R tidyverse workflow while using Julia purely as a compute engine.
+:::
+
+---
+
+## 8. Tool Comparison? {.smaller}
+
+| Feature | R: `lme4` | R: `brms` (Stan) | Julia: `MixedModels.jl` |
+|---|---|---|---|
+| **Paradigm** | Frequentist (REML/ML) | Bayesian (MCMC/NUTS) | Frequentist (REML/ML) |
+| **Speed** | Moderate | Slow (minutes to hours) | Fast (seconds) |
+| **Singular Fits** | Frequent warning | Regularized by priors | Diagnosed via `rePCA` |
+| **Distributions** | Gaussian, Binomial, Poisson | Any | Continuous, Binomial, Poisson |
+| **Inference** | Wald, LRT, Kenward-Roger | Credible intervals, ROPE, BF | Parametric Bootstrap |
+| **Setup Cost** | Standard R | Requires C++ toolchain | Requires Julia install |
+
+::: {.notes}
+Speaker Notes:
+:::
+
+---
+
+## Resolving Singular Fits in Practice {.smaller}
+
+::: {.columns}
+
+::: {.column width="52%"}
+```{mermaid}
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '10px'}}}%%
+flowchart TD
+    A["Singular Fit Warning in lme4"] --> B{"Overparameterized<br/>correlation?"}
+    B -->|Yes| C["Zero-Correlation Model:<br/>(1 + X || Group) in lme4"]
+    B -->|Yes| D["Bayesian Prior:<br/>prior(lkj(2), class='cor') in brms"]
+    A --> E{"Unsupported<br/>random slopes?"}
+    E -->|Yes| F["Parsimonious Model:<br/>Backward LRT selection"]
+    E -->|Inspect| G["Julia rePCA():<br/>Diagnose zero-variance axes"]
+```
+:::
+
+::: {.column width="48%"}
+### Practical Decision Guide
+1.  **Don't ignore it:** A singular fit means estimates are on the boundary of parameter space.
+2.  **Correlation near $\pm 1$:** Use `||` syntax in `lme4` or `lkj(2)` in `brms`.
+3.  **Variance near 0:** Drop unsupported slopes to recover power.
+
+::: {.callout-note}
+### Testing Null Effects
+For determining if an effect is practically absent, see **[Workshop 14: ROPE Testing](../14-bayesian-rope-testing/)** & **[06_rope](https://jobschepens.github.io/brms-ws/06_rope.html)**.
+:::
+:::
+
+:::
+
+::: {.notes}
+Speaker Notes:
+- Remind attendees that singular fits are not fatal, but signal that data cannot support all parameters.
+:::
+
+---
+
+## Shared Bayesian Core: SMLP Book vs. RDM Workshops {.smaller}
+
+The foundational `brms` methods taught at SMLP directly mirror our SFB 1252 RDM series:
+
+| Core Bayesian Topic | SMLP Book Chapters (Nicenboim et al.) | Relevant SFB 1252 RDM Workshops & Notebooks |
+|---|---|---|
+| **Bayesian Workflow & Priors** | [Ch. 4: Regression Models](https://bruno.nicenboim.me/bayescogsci/ch-reg.html#sec-brms) · [Ch. 5: Hierarchical](https://bruno.nicenboim.me/bayescogsci/ch-hierarchical.html#sec-brms-hierarchical) | **[Workshop 11: Regression with brms](../11-bayesian-regression-models/)** · [01_setting_priors](https://jobschepens.github.io/brms-ws/01_setting_priors.html) |
+| **Prior & Posterior Checks** | [Ch. 4: Prior Checks (§4.2)](https://bruno.nicenboim.me/bayescogsci/ch-reg.html#sec-priorpred) · [Ch. 4: Posterior Checks (§4.4)](https://bruno.nicenboim.me/bayescogsci/ch-reg.html#sec-ppchecks) | **[Workshop 11](../11-bayesian-regression-models/)** · [02_prior_checks](https://jobschepens.github.io/brms-ws/02_prior_predictive_checks_rt.html) · [03_posterior_checks](https://jobschepens.github.io/brms-ws/03_posterior_predictive_checks_rt.html) |
+| **MCMC Convergence & Diagnostics** | [Ch. 3: Computational BDA (§3.3)](https://bruno.nicenboim.me/bayescogsci/ch-compbda.html#sec-diagnostics) ($\hat{R}$, ESS, divergences) | **[Workshop 11](../11-bayesian-regression-models/)** · [08_convergence](https://jobschepens.github.io/brms-ws/08_convergence.html) |
+| **Model Comparison (LOO-CV)** | [Ch. 12: Comparison](https://bruno.nicenboim.me/bayescogsci/ch-comparison.html) · [Ch. 14: Cross-Validation](https://bruno.nicenboim.me/bayescogsci/ch-cv.html#sec-cvbrms) | **[Workshop 13: Cross-Validation](../13-bayesian-model-comparison-cv/)** · [05_loo](https://jobschepens.github.io/brms-ws/05_loo.html) |
+| **Bayes Factors & Point Hypotheses** | [Ch. 13: Bayes Factors (§13.1)](https://bruno.nicenboim.me/bayescogsci/ch-bf.html#sec-bfsavage) (Bridge sampling / Savage-Dickey) | **[Workshop 15: Bayes Factors](../15-bayes-factor/)** · [07_bayes_factors](https://jobschepens.github.io/brms-ws/07_bayes_factors.html) |
+| **Simulation-Based Power** | [Ch. 3: Power & Sample Size (§3.5)](https://bruno.nicenboim.me/bayescogsci/ch-compbda.html) (Generative models) | **[Workshop 18: Power Analysis](../18-power-analysis/)** · [Sequential Simulation Report](https://jobschepens.github.io/samplesize/) |
+
+::: {.callout-tip}
+### Cross-Resource Alignment
+Every major `brms` modeling step taught in Potsdam maps 1:1 to a reproducible local RDM notebook in **[github.com/jobschepens/brms-ws](https://github.com/jobschepens/brms-ws)**.
+:::
+
+::: {.notes}
+Speaker Notes:
+
+:::
+
+---
+
+## SMLP Bayesian Topics Not in RDM Yet {.smaller}
+
+SMLP covers advanced response families, custom syntax, and cognitive process models:
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Advanced `brms` Distributions & Syntax
+*   **Shifted Lognormal & Ex-Gaussian RTs:**
+    *   Estimate non-decision time ($ndt$) alongside mean/variance: `family = shifted_lognormal()` ([Book Ch. 7](https://bruno.nicenboim.me/bayescogsci/ch-reg.html)).
+*   **Ordinal & Cumulative Models:**
+    *   Directly model Likert / acceptability scales: `family = cumulative("logit")`.
+*   **Non-Linear Syntax (`bf()`):**
+    *   Fit non-linear curves & saturation functions.
+*   **Missing Data Imputation:**
+    *   Model missing predictors via `brm(y ~ mi(x) + ...)`.
+:::
+
+::: {.column width="50%"}
+### From `brms` to Stan & Cognitive Models
+*   **Inspecting Generated Stan Code:**
+    *   `make_stancode()` and `make_standata()` to inspect what `brms` compiles ([Book Ch. 8](https://bruno.nicenboim.me/bayescogsci/ch-introstan.html)).
+*   **Custom Families (`custom_family()`):**
+    *   Define user-specified likelihoods in `brms`.
+*   **Computational Cognitive Models (Track 2):**
+    *   *Drift-Diffusion Models (DDM):* Joint choice & RT.
+    *   *Race Models:* Competing accumulators ([Book Ch. 18](https://bruno.nicenboim.me/bayescogsci/ch-lognormalrace.html)).
+    *   *Mixture Models:* Latent subpopulations ([Book Ch. 17](https://bruno.nicenboim.me/bayescogsci/ch-mixture.html)).
+:::
+
+:::
+
+::: {.callout-note}
+### Future Bayesian Topics for Project S
+:::
+
+::: {.notes}
+Speaker Notes:
+- Focus strictly on the Bayesian modeling gaps.
+- Shifted lognormal is especially useful in linguistics because RTs have an absolute biological lower bound (~150-200ms non-decision time).
+- Mention that inspecting Stan code via make_stancode() is a great bridge from brms to native Stan.
+:::
+
+---
+
+## RDM Bayesian Topics Not Covered in SMLP {.smaller}
+
+Our local RDM series emphasizes practical equivalence testing, sequential designs, and post-processing tools:
+
+::: {.columns}
+
+::: {.column width="50%"}
+### The ROPE Decision Framework
+*   **Practical Equivalence Testing:**
+    *   Evaluate whether effects are practically zero, negligible, or present (**[Workshop 14: ROPE Testing](../14-bayesian-rope-testing/)**).
+*   **HDI + ROPE Decision Rules:**
+    *   Three-way verdicts (PRESENT, ABSENT, UNDECIDED) with `bayestestR` ([06_rope](https://jobschepens.github.io/brms-ws/06_rope.html)).
+*   **Defensible Boundaries:**
+    *   Setting domain-justified equivalence limits in linguistics rather than relying only on point nulls.
+:::
+
+::: {.column width="50%"}
+### Sequential Designs & Post-Processing
+*   **Benchmarking Decision Frameworks:**
+    *   Direct side-by-side comparison of **ROPE vs. Bayes Factor vs. LOO-CV** in sequential testing (**[Workshop 15](../15-bayes-factor/)**, [06_sequential_testing](https://jobschepens.github.io/brms-ws/06_sequential_testing.html)).
+*   **Post-Hoc Contrasts with `emmeans`:**
+    *   Pairwise comparisons and marginal predictions on `brms` fits with `emmeans` and `marginaleffects`.
+*   **Containerized `brms` Workflows:**
+    *   Ready-to-run Docker & Ramses HPC setups in **[brms-ws](https://github.com/jobschepens/brms-ws)** to bypass local C++ compiler setup.
+:::
+
+:::
+
+::: {.callout-tip}
+### Complementary Bayesian Perspectives
+SMLP focuses on Bayes Factors; RDM focuses on practical equivalence (ROPE)
+:::
+
+::: {.notes}
+Speaker Notes:
+:::
+
+---
+
+## References {.smaller}
+
+::: {#refs}
+:::
