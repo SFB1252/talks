@@ -106,11 +106,6 @@ csl: "../24-latex-thesis-workflows/apa.csl"
 :::
 
 ::: {.column width="42%"}
-::: {.callout-note}
-:::
-
-::: {.callout-tip}
-:::
 :::
 
 :::
@@ -145,22 +140,6 @@ Speaker Notes:
 
 ---
 
-## The SMLP 2026 Curriculum at a Glance {.smaller}
-
-| Stream | Level | Instructors | Core Technologies & Focus |
-|---|---|---|---|
-| **1. Intro to Bayesian Analysis** | Beginner–Int. | Julia Haaf & Nicole Cruz | `brms`, prior specification, hierarchical models, posterior checks |
-| **2. Advanced Bayesian Analysis** | Advanced | Bruno Nicenboim & Johan Hennert | Stan, cognitive process models (DDM, race models), Bayes factors, LOO-CV |
-| **3. Intro to R & Frequentist Stats** | Beginner | Paula Lissón & Mar Suárez Ortega | Base R, tidyverse, data wrangling, linear regression fundamentals |
-| **4. Foundational Frequentist & LMMs** | Intermediate | João Veríssimo & Michael Vrazitulis | `lme4`, crossed random effects, contrast coding, power simulations |
-| **5. Advanced Frequentist with Julia** | Advanced | Reinhold Kliegl & Phillip Alday | `MixedModels.jl`, Julia speedup, bootstrapping, complex covariance |
-
-::: {.notes}
-Speaker Notes:
-
-:::
-
----
 
 ## Who Was Where? {.smaller}
 
@@ -201,7 +180,7 @@ Speaker Notes:
 ::: {.columns}
 
 ::: {.column width="52%"}
-### "Power and Simulation" (Glasgow)
+### Power and Simulation
 *   **Analytic Power Fails:** Classical formulas (e.g. $G*\text{Power}$) assume independent data. They break down for **crossed random effects** (subjects $\times$ items) [@debruine2021understanding].
 *   **Post-Hoc Power Fallacy:** Calculating power after the fact from observed effect size is just a noisy transformation of the $p$-value [@vasishth2018statistical].
 *   **The Modern Solution:** Simulation-based power analysis.
@@ -467,8 +446,8 @@ Speaker Notes:
 | **Helmert** | `contr.helmert(k)` | Grand mean across groups | Level $i$ compared to mean of prior levels |
 
 ::: {.callout-important}
-### Best Practice
-Always run `contrasts(dat$my_factor)` before fitting models to check coding.
+### Good Practice
+Check `contrasts(dat$my_factor)` before fitting models to check coding.
 :::
 
 ::: {.notes}
@@ -573,10 +552,14 @@ Speaker Notes:
 ::: {.columns}
 
 ::: {.column width="52%"}
+::: {.column width="58%"}
 ```{mermaid}
 %%{init: {'theme': 'base', 'themeVariables': {'fontSize': '10px'}}}%%
 flowchart TD
     A["Singular Fit Warning in lme4"] --> B{"Overparameterized<br/>correlation?"}
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '13px', 'fontFamily': 'Albert Sans, sans-serif'}}}%%
+flowchart LR
+    A["Singular Fit Warning<br/>in lme4"] --> B{"Overparameterized<br/>correlation?"}
     B -->|Yes| C["Zero-Correlation Model:<br/>(1 + X || Group) in lme4"]
     B -->|Yes| D["Bayesian Prior:<br/>prior(lkj(2), class='cor') in brms"]
     A --> E{"Unsupported<br/>random slopes?"}
@@ -586,6 +569,7 @@ flowchart TD
 :::
 
 ::: {.column width="48%"}
+::: {.column width="42%"}
 ### Practical Decision Guide
 1.  **Don't ignore it:** A singular fit means estimates are on the boundary of parameter space.
 2.  **Correlation near $\pm 1$:** Use `||` syntax in `lme4` or `lkj(2)` in `brms`.
@@ -619,10 +603,6 @@ The foundational `brms` methods taught at SMLP directly mirror our SFB 1252 RDM 
 | **Bayes Factors & Point Hypotheses** | [Ch. 13: Bayes Factors (§13.1)](https://bruno.nicenboim.me/bayescogsci/ch-bf.html#sec-bfsavage) (Bridge sampling / Savage-Dickey) | **[Workshop 15: Bayes Factors](../15-bayes-factor/)** · [07_bayes_factors](https://jobschepens.github.io/brms-ws/07_bayes_factors.html) |
 | **Simulation-Based Power** | [Ch. 3: Power & Sample Size (§3.5)](https://bruno.nicenboim.me/bayescogsci/ch-compbda.html) (Generative models) | **[Workshop 18: Power Analysis](../18-power-analysis/)** · [Sequential Simulation Report](https://jobschepens.github.io/samplesize/) |
 
-::: {.callout-tip}
-### Cross-Resource Alignment
-Every major `brms` modeling step taught in Potsdam maps 1:1 to a reproducible local RDM notebook in **[github.com/jobschepens/brms-ws](https://github.com/jobschepens/brms-ws)**.
-:::
 
 ::: {.notes}
 Speaker Notes:

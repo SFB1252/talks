@@ -12,7 +12,7 @@ Workshops on research methodology, data management, and academic practices for g
 
 ## Mailing List for Participants not on the SFB Mailing List
 
-Since the SFB Mailing List is only for official SFB members, participants who are not on that list can subscribe to another mailing list to receive reminders and updates about workshop schedules and changes. New members are approved by the S project before receiving emails. 
+Since the SFB Mailing List is only for official SFB members, participants who are not on that list can subscribe to another mailing list to receive reminders and updates about workshop schedules and changes. New members are approved by the S project before receiving emails.
 
 **Subscribe here:** [https://lists.uni-koeln.de/mailman/listinfo/sfb1252-rdm](https://lists.uni-koeln.de/mailman/listinfo/sfb1252-rdm)
 
@@ -38,8 +38,9 @@ Workshops are held in hybrid format. You can participate either in person or via
 - Please obey the [UoC Netiquette](https://portal.uni-koeln.de/en/site-notice/netiquette)
 - **Zoom Client:** If you are using the Zoom desktop client and/or the mobile app, please make sure to use the most recent version. Previous versions are not able to use all features and cannot take part in certain meetings using high encryption.
 - **More information about Zoom at the University of Cologne:**
-  - [Account/Login & FAQ](https://rrzk.uni-koeln.de/informationen-zu-tools-fuer-kollaboratives-arbeiten/zoom/zoom-faq)
-  - [Terms of Use & Data Privacy](https://rrzk.uni-koeln.de/informationen-zu-tools-fuer-kollaboratives-arbeiten/zoom/datenschutz-und-nutzungsvorgaben)
+  - [ITCC Zoom Overview & Portal](https://itcc.uni-koeln.de/services/accounts-kommunikation/online-kollaboration/zoom)
+  - [Account/Login & FAQ](https://itcc.uni-koeln.de/services/accounts-kommunikation/online-kollaboration/zoom/zoom-faq)
+  - [Terms of Use & Data Privacy](https://itcc.uni-koeln.de/services/accounts-kommunikation/online-kollaboration/zoom/zoom-datenschutz-und-nutzungsvorgaben)
 
 ---
 
@@ -57,7 +58,6 @@ Workshops are held in hybrid format. You can participate either in person or via
   <p class="schedule-link-card"><strong>Winter 2025-26 archive:</strong> See the <a href="agenda/winter-2025-26-schedule/">Winter 2025-26 archive</a> for completed workshop dates and materials.</p>
   <p class="schedule-link-card"><strong>Summer 2025 archive:</strong> See the <a href="agenda/summer-2025-schedule/">Summer 2025 archive</a> for completed workshop dates and materials.</p>
 </div>
-
 
 ---
 
@@ -86,25 +86,25 @@ Previous promotional materials:
 
 <div class="grid cards" markdown>
 
--   <figure markdown="span">
-      ![Summer 2025 Flyer](flyers/2025_rdm-flyer_summer-semester/2025-05-08_rdm-summer-flyer.png){ width="400" data-gallery="flyers" }
-      <figcaption>Summer 2025 Flyer - <a href="flyers/2025_rdm-flyer_summer-semester/2025-05-08_rdm-summer-flyer.pdf">Download PDF</a></figcaption>
-    </figure>
+- <figure markdown="span">
+    ![Summer 2025 Flyer](flyers/2025_rdm-flyer_summer-semester/2025-05-08_rdm-summer-flyer.png){ width="400" data-gallery="flyers" }
+    <figcaption>Summer 2025 Flyer - <a href="flyers/2025_rdm-flyer_summer-semester/2025-05-08_rdm-summer-flyer.pdf">Download PDF</a></figcaption>
+  </figure>
 
--   <figure markdown="span">
-      ![Winter 2025-26 Flyer](flyers/2025_rdm-flyer_winter-semester/2025-08-25_rdm-winter-flyer.png){ width="400" data-gallery="flyers" }
-      <figcaption>Winter 2025-26 Flyer - <a href="flyers/2025_rdm-flyer_winter-semester/2025-08-25_rdm-winter-flyer.pdf">Download PDF</a></figcaption>
-    </figure>
+- <figure markdown="span">
+    ![Winter 2025-26 Flyer](flyers/2025_rdm-flyer_winter-semester/2025-08-25_rdm-winter-flyer.png){ width="400" data-gallery="flyers" }
+    <figcaption>Winter 2025-26 Flyer - <a href="flyers/2025_rdm-flyer_winter-semester/2025-08-25_rdm-winter-flyer.pdf">Download PDF</a></figcaption>
+  </figure>
 
--   <figure markdown="span">
-      ![Winter 2025-26 Flyer Part 2](flyers/2025_rdm-flyer_winter-semester/2025-12-03_rdm-winter-flyer.png){ width="400" data-gallery="flyers" }
-      <figcaption>Winter 2025-26 Flyer Part 2 - <a href="flyers/2025_rdm-flyer_winter-semester/2025-12-03_rdm-winter-flyer.pdf">Download PDF</a></figcaption>
-    </figure>
+- <figure markdown="span">
+    ![Winter 2025-26 Flyer Part 2](flyers/2025_rdm-flyer_winter-semester/2025-12-03_rdm-winter-flyer.png){ width="400" data-gallery="flyers" }
+    <figcaption>Winter 2025-26 Flyer Part 2 - <a href="flyers/2025_rdm-flyer_winter-semester/2025-12-03_rdm-winter-flyer.pdf">Download PDF</a></figcaption>
+  </figure>
 
--   <figure markdown="span">
-      ![Summer 2026 Flyer](flyers/2026_rdm-flyer_summer-semester/2026-04-16_rdm-summer-2026-flyer-1.png){ width="400" data-gallery="flyers" }
-      <figcaption>Summer 2026 Flyer - <a href="flyers/2026_rdm-flyer_summer-semester/2026-04-16_rdm-summer-2026-flyer.pdf">Download PDF</a></figcaption>
-    </figure>
+- <figure markdown="span">
+    ![Summer 2026 Flyer](flyers/2026_rdm-flyer_summer-semester/2026-04-16_rdm-summer-2026-flyer-1.png){ width="400" data-gallery="flyers" }
+    <figcaption>Summer 2026 Flyer - <a href="flyers/2026_rdm-flyer_summer-semester/2026-04-16_rdm-summer-2026-flyer.pdf">Download PDF</a></figcaption>
+  </figure>
 
 </div>
 
