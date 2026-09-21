@@ -47,3 +47,4 @@ Data Management Plans (DMPs) are increasingly required by major funding agencies
 ---
 
 [← Back to Workshop Overview](../index.md)
+
