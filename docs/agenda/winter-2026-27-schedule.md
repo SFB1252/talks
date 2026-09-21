@@ -39,13 +39,11 @@ Add the current schedule to your calendar:
 
 ---
 
-### 29. lme4 Model Criticism
 ### 27. [lme4 Model Criticism](../workshops/27-lme4-model-criticism/index.md)
 
 **Date:** 30 September 2026
 **Time:** 14:00 - 15:30
 **Speaker:** Job Schepens
-**Focus:** Diagnostics, assumptions, model comparison, and robust interpretation for lme4 models
 
 **Focus:**
 
@@ -53,44 +51,72 @@ Add the current schedule to your calendar:
 
 ---
 
-### 28. Data Management Plans in Practice
+### 28. [Data Management Plans in Practice](../workshops/28-data-management-plans-in-practice/index.md)
 
 **Date:** 14 October 2026
 **Time:** 14:00 - 15:30
 **Speaker:** Lukas Lammers
-**Focus:** Creating practical, funder-aligned data management plans for research projects, including documentation, storage, sharing, and archiving
 
-### 30. Backups
+**Focus:**
+
+- Creating practical, funder-aligned data management plans for research projects, including documentation, storage, sharing, and archiving
+
+---
+
+### 29. [Backups](../workshops/29-backups/index.md)
 
 **Date:** 4 November 2026
 **Time:** 14:00 - 15:30
 **Speaker:** TBC
-**Focus:** Practical backup plans, versioned snapshots, restore testing, and routine automation
 
-### 27. Data Visualization with ggplot2
+**Focus:**
+
+- Practical backup plans, versioned snapshots, restore testing, and routine automation
+
+---
+
+### 30. [Data Visualization with ggplot2](../workshops/30-data-visualization-ggplot2/index.md)
 
 **Date:** 18 November 2026
 **Time:** 14:00 - 15:30
 **Speaker:** Job Schepens
-**Focus:** Core ggplot2 grammar, clean figure design, plotting mistakes, uncertainty, model-based plots, publication-ready figures
 
-### 32. Data Visualization with Other Tools
+**Focus:**
+
+- Core ggplot2 grammar, clean figure design, plotting mistakes, uncertainty, model-based plots, publication-ready figures
+
+---
+
+### 31. [Data Visualization with Other Tools](../workshops/31-data-visualization-other-tools/index.md)
 
 **Date:** 2 December 2026
 **Time:** 14:00 - 15:30
 **Speaker:** Job Schepens
-**Focus:** Introduction to alternative data visualization tools and their applications in research
 
-### 31. Data Protection: GDPR, Sciebo, and Encryption
+**Focus:**
+
+- Introduction to alternative data visualization tools and their applications in research
+
+---
+
+### 32. [Data Protection: GDPR, Sciebo, and Encryption](../workshops/32-data-protection/index.md)
 
 **Date:** 6 January 2027
 **Time:** 14:00 - 15:30
 **Speaker:** Job Schepens
-**Focus:** Handling sensitive data with GDPR-aligned workflows, secure sharing via Sciebo, and encryption basics
 
-### 33. Open Debugging: Bring Your Own Problem
+**Focus:**
+
+- Handling sensitive data with GDPR-aligned workflows, secure sharing via Sciebo, and encryption basics
+
+---
+
+### 33. [Open Debugging: Bring Your Own Problem](../workshops/33-open-debugging/index.md)
 
 **Date:** 20 January 2027
 **Time:** 14:00 - 15:30
 **Speaker:** TBC
-**Focus:** Collaborative troubleshooting across R, Python, Git, and document workflows
+
+**Focus:**
+
+- Collaborative troubleshooting across R, Python, Git, and document workflows
