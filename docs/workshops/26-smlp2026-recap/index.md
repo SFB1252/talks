@@ -59,6 +59,16 @@ The methods discussed from SMLP 2026 build directly upon topics covered in our C
 **Time:** 14:00 - 15:30
 **Location:** House of Prominence, Attic, Luxemburger Str. 299, Cologne
 
+## Feedback from the Session
+
+We shared the following suggestions for future sessions and follow-up materials:
+
+- **More guidance on reporting** would have been helpful — e.g. how to report Bayesian analyses (priors, Bayes factors, model comparisons) in papers and pre-registrations.
+- **More motivation for _why_ e.g. priors matter**, including:
+  - the fact that the **Bayes factor depends on the prior**, so results are not prior-independent;
+  - the distinction between **informative vs. default (weakly informative) priors** and when each is appropriate.
+- **Moving from literature to your own data** — translating priors and effect sizes reported in the literature into priors for one's own analyses.
+
 ---
 
 [← Back to Workshop Overview](../index.md)
