@@ -33,8 +33,6 @@ Linear mixed-effects models fitted with `lme4::lmer()` or `lme4::glmer()` are st
 - **Convergence Issues & Optimizers:** Troubleshooting convergence warnings with optimizer benchmarking (`allFit()`)
 - **Reporting Mixed-Effects Models:** Best practices and open science reporting checklists (Meteyard & Davies, 2020)
 
-
-
 ## Session Details
 
 - **Date:** 30 September 2026
@@ -53,4 +51,3 @@ Linear mixed-effects models fitted with `lme4::lmer()` or `lme4::glmer()` are st
 ---
 
 [← Back to Workshop Overview](../index.md)
-
