@@ -40,11 +40,18 @@ Add the current schedule to your calendar:
 ---
 
 ### 29. lme4 Model Criticism
+### 27. [lme4 Model Criticism](../workshops/27-lme4-model-criticism/index.md)
 
 **Date:** 30 September 2026
 **Time:** 14:00 - 15:30
 **Speaker:** Job Schepens
 **Focus:** Diagnostics, assumptions, model comparison, and robust interpretation for lme4 models
+
+**Focus:**
+
+- Diagnostics, assumptions, model comparison, and robust interpretation for lme4 models
+
+---
 
 ### 28. Data Management Plans in Practice
 

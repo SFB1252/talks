@@ -52,6 +52,7 @@ The methods discussed from SMLP 2026 build directly upon topics covered in our C
 - [Embrace Uncertainty: Mixed-effects models with Julia](https://www.embraceuncertaintybook.com/) (Kliegl, Alday, & Bates)
 - [Data Simulation Workshops & faux](https://debruine.github.io/data-sim-workshops/) (Lisa DeBruine)
 - [PsyTeachR Open Materials](https://psyteachr.github.io/) (University of Glasgow)
+- [Bodo Winter's recent workshops](https://osf.io/7jvdq/wiki)
 
 ## Session Details
 

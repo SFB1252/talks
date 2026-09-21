@@ -26,15 +26,19 @@ END:VEVENT
 
 BEGIN:VEVENT
 UID:workshop-29-lme4-model-criticism@sfb1252.uni-koeln.de
+UID:workshop-27-lme4-model-criticism@sfb1252.uni-koeln.de
 DTSTAMP:20260907T120000Z
 DTSTART:20260930T120000Z
 DTEND:20260930T133000Z
 SUMMARY:Workshop 29: lme4 Model Criticism
+SUMMARY:Workshop 27: lme4 Model Criticism
 LOCATION:House of Prominence\, Attic (Top floor)\, Luxemburger Str. 299\,
  Cologne
 DESCRIPTION:Diagnostics\, assumptions\, model comparison\, and robust inter
  pretation for lme4 models.\n\nPresenter: Job Schepens
 URL:https://sfb1252.github.io/talks/agenda/winter-2026-27-schedule/
+ pretation for lme4 models.\n\nPresenter: Job Schepens\n\nMore info: https://sfb1252.github.io/talks/workshops/27-lme4-model-criticism/
+URL:https://sfb1252.github.io/talks/workshops/27-lme4-model-criticism/
 ORGANIZER;CN=Project S\, CRC 1252:mailto:info@sfb1252.uni-koeln.de
 STATUS:CONFIRMED
 SEQUENCE:0
