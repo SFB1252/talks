@@ -25,11 +25,14 @@ Linear mixed-effects models fitted with `lme4::lmer()` or `lme4::glmer()` are st
 ## Topics Covered
 
 - **Residual Diagnostics & Model Assumptions:** Checking linearity, normality of residuals, and homoscedasticity (`performance`, `DHARMa`, residual plots)
-- **Random Effects Structure & Singular Fit Warnings:** Diagnosing boundary (singular) fits, correlation parameters near $\pm 1.0$, and strategies for simplifying or regularizing random effect specifications
-- **Influential Observations & Outliers:** Identifying leverage points, Cook's distance, and sensitivity analyses
-- **Model Comparison & Selection:** Likelihood ratio tests (`anova()`), AIC / BIC, and considerations for hypothesis testing
-- **Convergence Issues & Optimizers:** Troubleshooting convergence warnings with optimizer choice (`allFit()`, `bobyqa`)
-- **Reporting Mixed-Effects Models:** Best practices for presenting model results, tables, and diagnostics in publications
+- **Random Effects Structure & Singular Fit Warnings:** Diagnosing boundary (singular) fits, correlation parameters near $\pm 1.0$, and strategies for simplifying or regularizing random effect specifications (`trouBBlme4SolveR::dwmw()`)
+- **Contrast Coding vs. Post-Hoc Estimation:** Why contrast coding (sum coding) is essential before fitting to stabilize random slopes and avoid singular fits, and why `emmeans` is essential post-fitting for balanced marginal means, interaction slicing, and scale back-transformation
+- **Ordinal & Likert Data:** Diagnosing the failure of naive Gaussian models and fitting Cumulative Link Mixed Models (`ordinal::clmm`)
+- **Influential Observations & Outliers:** Identifying cluster-level leverage points with `influence.ME` (Subject and Word Cook's distance)
+- **Model Comparison & Selection:** Likelihood ratio tests (`anova()`), REML vs. ML rules, AIC/BIC, and Nakagawa's $R^2$
+- **Convergence Issues & Optimizers:** Troubleshooting convergence warnings with optimizer benchmarking (`allFit()`)
+- **Reporting Mixed-Effects Models:** Best practices and open science reporting checklists (Meteyard & Davies, 2020)
+
 
 ## Session Details
 
