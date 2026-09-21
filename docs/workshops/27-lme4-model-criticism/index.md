@@ -34,6 +34,7 @@ Linear mixed-effects models fitted with `lme4::lmer()` or `lme4::glmer()` are st
 - **Reporting Mixed-Effects Models:** Best practices and open science reporting checklists (Meteyard & Davies, 2020)
 
 
+
 ## Session Details
 
 - **Date:** 30 September 2026
