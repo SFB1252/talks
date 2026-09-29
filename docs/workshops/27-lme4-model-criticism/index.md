@@ -4,15 +4,15 @@
 
 <div class="session-meta" markdown="1">
 
-| Field              | Details                                                                                                                                                                             |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Date               | 30 September 2026                                                                                                                                                                   |
-| Time               | 14:00 - 15:30                                                                                                                                                                       |
-| Location           | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne                                                                                                               |
-| Speaker            | Job Schepens                                                                                                                                                                        |
-| Prerequisites      | Basic knowledge of R and linear mixed-effects models (`lme4`)                                                                                                                       |
-| Materials status   | Workshop materials available                                                                                                                                                        |
-| Slides / recording | [Session 29: lme4 Model Criticism & Advanced Mixed-Effects Diagnostics (HTML)](https://github.com/jobschepens/brms-ws/blob/main/materials/lme4/session29-lme4-model-criticism.html) |
+| Field              | Details                                                                                                                                                        |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Date               | 30 September 2026                                                                                                                                              |
+| Time               | 14:00 - 15:30                                                                                                                                                  |
+| Location           | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne                                                                                          |
+| Speaker            | Job Schepens                                                                                                                                                   |
+| Prerequisites      | Basic knowledge of R and linear mixed-effects models (`lme4`)                                                                                                  |
+| Materials status   | Workshop materials available                                                                                                                                   |
+| Slides / recording | [Session 29: lme4 Model Criticism & Advanced Mixed-Effects Diagnostics (HTML)](https://jobschepens.github.io/brms-ws/lme4/session29-lme4-model-criticism.html) |
 
 </div>
 
