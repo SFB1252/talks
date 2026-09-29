@@ -2,15 +2,15 @@
 
 <div class="session-meta" markdown="1">
 
-| Field | Details |
-| --- | --- |
-| Date | 17 September 2025 |
-| Time | 14:00 - 15:30 |
-| Location | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
-| Speaker | Luke Günther, Project S, CRC 1252 |
-| Prerequisites | No prior programming experience required; R and RStudio should be installed in advance. |
-| Materials status | Preparation notes and participant materials are described below. |
-| Slides / recording | No slides or recording are currently listed. |
+| Field              | Details                                                                                 |
+| ------------------ | --------------------------------------------------------------------------------------- |
+| Date               | 17 September 2025                                                                       |
+| Time               | 14:00 - 15:30                                                                           |
+| Location           | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne                   |
+| Speaker            | Luke Günther, Project S, CRC 1252                                                       |
+| Prerequisites      | No prior programming experience required; R and RStudio should be installed in advance. |
+| Materials status   | Preparation notes and participant materials are described below.                        |
+| Slides / recording | No slides or recording are currently listed.                                            |
 
 </div>
 
@@ -70,7 +70,7 @@ Before the workshop, please:
 - [RStudio Cheat Sheets](https://posit.co/resources/cheatsheets/) - Quick
   reference guides
 - [Swirl](https://swirlstats.com/) - Interactive R programming lessons
-- [R Documentation](https://www.rdocumentation.org/) - Function reference
+- [R Documentation search](https://search.r-project.org/) - Function reference
 
 ## Follow-up
 
