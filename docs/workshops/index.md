@@ -37,10 +37,13 @@ Each workshop includes:
 
 ### Upcoming Schedule
 
-**[Summer 2026 Schedule](../agenda/summer-2026-schedule.md)** -
-Upcoming introductory and hands-on sessions
+**[Winter 2026-27 Schedule](../agenda/winter-2026-27-schedule.md)** -
+Upcoming research data and methods sessions
 
 ### Past Workshops
+
+**[Summer 2026 Archive](../agenda/summer-2026-schedule.md)** -
+Completed workshop dates and materials
 
 **[Winter 2025-26 Archive](../agenda/winter-2025-26-schedule.md)** -
 Completed workshop dates and materials
