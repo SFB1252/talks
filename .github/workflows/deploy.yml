@@ -62,7 +62,7 @@ jobs:
 
       - name: Build site
         env:
-          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.MKDOCS_GIT_COMMITTERS_APIKEY }}
+          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.MKDOCS_GIT_COMMITTERS_APIKEY || secrets.GITHUB_TOKEN }}
         run: python -m mkdocs build
 
       - name: Setup Pages
@@ -89,6 +89,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v6
@@ -113,5 +115,5 @@ jobs:
 
       - name: Test build
         env:
-          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.MKDOCS_GIT_COMMITTERS_APIKEY }}
-        run: python -m mkdocs build
+          MKDOCS_COMMITTERS_ENABLED: "false"
+        run: python -m mkdocs build --strict
