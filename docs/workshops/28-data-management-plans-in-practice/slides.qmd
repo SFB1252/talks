@@ -89,11 +89,17 @@ About your experience with Data Management Plans (DMPs):
 
 ## 2. Definition {.smaller}
 
+### Definition 1:
+
 "A Data Management Plan (DMP) provides a structured framework for handling research data in a scientific project. It describes how the data used will be managed both during the project and after its completion. Many third-party funding agencies (DFG, FWF, SNF, Horizon Europe, Volkswagen Foundation) require information on research data management as part of a grant application [...]. In particular, a DMP allows you to document the current status and specific details throughout the entire research data lifecycle. This makes it helpful for administrative purposes and for maintaining an overview."
 *[forschungsdaten.info](https://forschungsdaten.info/fdm-allgemein/informieren-und-planen/datenmanagementplan), translated by L. Lammers with DeepL*
 
+### Definition 2:
+
 "As a planning tool, the data management plan forms the foundation of professional research data management. It provides a systematic overview of the research project in question and outlines how the generated research data will be handled during each phase of its lifecycle, from collection to dissemination. [...]"
 *[fdm.uni-koeln.de](https://fdm.uni-koeln.de/wissensbasis/datenmanagementplaene-1), translated by L. Lammers with DeepL*
+
+### Definition 3:
 
 "A data management plan or DMP is a formal document that outlines how data are to be handled both during a research project, and after the project is completed. The goal of a data management plan is to consider the many aspects of data management, metadata generation, data preservation, and analysis before the project begins; this may lead to data being well-managed in the present, and prepared for preservation in the future."
 *[Wikipedia](https://en.wikipedia.org/wiki/Data_management_plan)*
