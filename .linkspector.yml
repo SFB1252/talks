@@ -35,6 +35,7 @@ ignorePatterns:
   - pattern: 'https://www\.unesco\.org/en/artificial-intelligence' # Connection reset (transient network issues)
   - pattern: 'https://web\.dev/mobile' # Dynamic routing issue
   - pattern: 'https://standards\.ieee\.org/initiatives/artificial-intelligence-systems' # Slow response causing timeout
+  - pattern: 'https://archive\.mpi\.nl/tla/elan' # Navigation timeout (slow response)
 
 aliveStatusCodes:
   - 200
