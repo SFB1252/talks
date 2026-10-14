@@ -417,6 +417,14 @@ The choice for a repository can shape your DMP very much, e.g.:
 
 ---
 
+## 12. Useful Links
+
+- Project S in CRC 1252 can be consulted in any questions about data management
+- The [Data Center for the Humanities](https://dch.phil-fak.uni-koeln.de/) at the University of Cologne reviews DMPs in funding proposals
+- [Text+'s Helpdesk](https://text-plus.org/helpdesk/) would assist you to find suitable repositories
+
+---
+
 ## References {.smaller}
 
 ::: {#refs}
