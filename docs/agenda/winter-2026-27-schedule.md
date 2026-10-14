@@ -51,42 +51,42 @@ Add the current schedule to your calendar:
 
 ---
 
-### 28. Data Management Plans in Practice
+### 28. [Data Management Plans in Practice](../workshops/28-data-management-plans-in-practice/index.md)
 
 **Date:** 14 October 2026
 **Time:** 14:00 - 15:30
 **Speaker:** Lukas Lammers
 **Focus:** Creating practical, funder-aligned data management plans for research projects, including documentation, storage, sharing, and archiving
 
-### 30. Backups
+### 30. [Backups](../workshops/29-backups/index.md)
 
 **Date:** 4 November 2026
 **Time:** 14:00 - 15:30
 **Speaker:** TBC
 **Focus:** Practical backup plans, versioned snapshots, restore testing, and routine automation
 
-### 27. Data Visualization with ggplot2
+### 27. [Data Visualization with ggplot2](../workshops/30-data-visualization-ggplot2/index.md)
 
 **Date:** 18 November 2026
 **Time:** 14:00 - 15:30
 **Speaker:** Job Schepens
 **Focus:** Core ggplot2 grammar, clean figure design, plotting mistakes, uncertainty, model-based plots, publication-ready figures
 
-### 32. Data Visualization with Other Tools
+### 32. [Data Visualization with Other Tools](../workshops/31-data-visualization-other-tools/index.md)
 
 **Date:** 2 December 2026
 **Time:** 14:00 - 15:30
 **Speaker:** Job Schepens
 **Focus:** Introduction to alternative data visualization tools and their applications in research
 
-### 31. Data Protection: GDPR, Sciebo, and Encryption
+### 31. [Data Protection: GDPR, Sciebo, and Encryption](../workshops/32-data-protection/index.md)
 
 **Date:** 6 January 2027
 **Time:** 14:00 - 15:30
 **Speaker:** Job Schepens
 **Focus:** Handling sensitive data with GDPR-aligned workflows, secure sharing via Sciebo, and encryption basics
 
-### 33. Open Debugging: Bring Your Own Problem
+### 33. [Open Debugging: Bring Your Own Problem](../workshops/33-open-debugging/index.md)
 
 **Date:** 20 January 2027
 **Time:** 14:00 - 15:30
