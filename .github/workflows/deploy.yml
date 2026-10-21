@@ -58,6 +58,7 @@ jobs:
           quarto render docs/workshops/25-licensing/slides.qmd
           quarto render docs/workshops/26-smlp2026-recap/slides.qmd
           quarto render docs/workshops/28-data-management-plans-in-practice/slides.qmd
+          quarto render docs/workshops/29-backups/slides.qmd
           quarto render docs/resources/crc-day-2026/slides.qmd
 
       - name: Build site
@@ -111,6 +112,7 @@ jobs:
           quarto render docs/workshops/25-licensing/slides.qmd
           quarto render docs/workshops/26-smlp2026-recap/slides.qmd
           quarto render docs/workshops/28-data-management-plans-in-practice/slides.qmd
+          quarto render docs/workshops/29-backups/slides.qmd
           quarto render docs/resources/crc-day-2026/slides.qmd
 
       - name: Test build
