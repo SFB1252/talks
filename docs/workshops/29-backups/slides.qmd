@@ -91,12 +91,6 @@ Today you'll learn how to create a practical backup plan for your research data,
 
 :::
 
-::: {.notes}
-Speaker Notes:
-- bla
-- bla
-:::
-
 ---
 
 ## 1. Initial Questions {.smaller}
@@ -132,12 +126,7 @@ Speaker Notes:
 
 **How can you apply this rule in your research environment?**
 
-Do you know some soulutions?
-
-::: {.notes}
-Speaker Notes:
-- 
-:::
+Would you like to suggest some solutions?
 
 ---
 
@@ -156,12 +145,14 @@ For more information you're invited to the RD&M Workshop on data protection on 0
 ## 4.1 Storage Media {.smaller}
 
 **Local storage:**
+
 - multiple PCs
 - external hard drives 
 - USB sticks
 - CD / DVD
 
 **Cloud storage:**
+
 - Proprietary solutions (e.g., [OneDrive](https://onedrive.live.com), [Dropbox](https://www.dropbox.com), [Google Drive](https://drive.google.com))
 - University of Cologne solutions (e.g., [Sciebo](https://uni-koeln.sciebo.de), [SOFS](https://itcc.uni-koeln.de/services/daten-speichern-teilen/online-speicher-sofs), [DataStorage.nrw bzw. Coscine](https://coscine.rwth-aachen.de))
 - Long Term Archiving (done by Project S via Sciebo at the ITCC of the University of Cologne)
@@ -209,3 +200,129 @@ and the account not deleted or hacked
 </details>
 
 ---
+
+## 4.3 Sciebo
+
+*https://uni-koeln.sciebo.de*
+
+- best institutional cloud solution for the University of Cologne substituting proprietary solutions like OneDrive, Dropbox, or Google Drive
+- Not primary a backup solution: If synchronization is enabled, all changes to the original files are also applied to the Sciebo copy. If a file is deleted, it is also deleted in Sciebo.
+- a backup should have a relative time delay to the original files, so that you can restore a previous version of a file or a deleted file.
+- Sciebo offers versioning and a trash bin, but the retention period is limited to 30 days.
+- Workaround: Manual copies to not synchronized folders (like your project box)
+
+---
+
+## 4.4 SOFS
+
+*https://itcc.uni-koeln.de/services/daten-speichern-teilen/online-speicher-sofs*
+
+- free 1 TB storage for all members of the University of Cologne (login with your Uni KIM)
+- SOFS is a network drive, so you can access it from your computer without having to install any software.
+- Synchronization can be set up with addtional software (see 6. Automating Backups)
+- File Versioning is integrated
+
+---
+
+## 4.5 Coscine (DataStorage.nrw)
+
+*https://coscine.rwth-aachen.de*
+
+- new solution for data storage in NRW, especially for research data
+- technically very modern and secure
+- free 100 GB storage for all members of the University of Cologne (login with your Uni KIM)
+- metadata scheme is complex, each file needs to have a detaile metadata description. Workaround: Uplaod compressed files (e.g., ZIP) or containers; they can contain multiple files while counted as one file in the repository.
+- no API while using it for free
+- more storage and all features require an extra application on project level
+
+---
+
+## 5.1 Preparing a Backup: Documentation and Metadata {.smaller}
+
+**First question: Which files should be backed up?**
+
+*followed by*
+
+**documentation and metadata**
+
+- Busfactor: How many people can be overtaken by a bus before nobody is left who can understand the data?
+- where is what?
+- what software is needed to open the files?
+- when were the files created and last modified?
+- who owns the files and who is allowed to access them?
+- what is the purpose of the files?
+- etc.
+
+---
+
+## 5.2 Preparing a Backup: Filenaming {.smaller}
+
+**filenaming**
+
+- Give unambiguous, meaningful, readable, but succinct names
+- Choose names that are safe across file and operating systems
+- Structure the filename and use filename extensions
+- Facilitate alphabetical and numerical sorting
+- Source: [DCH File Naming Recommendations](https://doi.org/10.5281/zenodo.7447562) (Felix Rau 2022)
+
+---
+
+## 5.3 Preparing a Backup: Versioning {.smaller}
+
+**versioning**
+
+- Keep track of changes to your files and data
+- Use version numbers or **dates** in filenames
+- automated snapshots or manual copies of files and folders
+
+---
+
+## 6. Automating Backups {.smaller}
+
+Setting up automated sync and backup routines on Windows, macOS, and Linux.
+
+Addtional supporting software is rare. A few examples would be:
+
+- [restic](https://restic.net/) (cross-platform, command line)
+- [Time Machine](https://support.apple.com/en-us/104984) (macOS only)
+
+---
+
+## 7. Testing a Restore {.smaller}
+
+A backup is not a backup until you have successfully restored from it!
+
+---
+
+## 8. Why it's worth the effort {.smaller}
+
+You have probably heard of some "horror stories" of data loss. They are all very similar:
+
+- Notebook or other storage media stolen / lost / broken
+- Cloud hacked / account deleted
+- AI Agent changed files without your knowledge (happend to Lukas)
+
+---
+
+## 9. Backup Plan {.smaller}
+
+**In the end, try to create or improve your backup strategy!**
+
+**Think about one last issue:**
+
+- What will happen to your backups once you leave the University of Cologne? Will they be deleted? Will they be transferred to your successor? Will they be archived?
+- On which proprietery or institutional infrastructure are you depending?
+- How long will your backups be available? Will you be able to access them in 5 or 10 years?
+
+The RD&M Workshop today has an open end. You can stay and discuss your individual backup strategy with us or colleagues. Nevermind if you want to leave, you can contact us with your questions or feedback anytime!
+
+---
+
+## 9. Backup Plan {.smaller}
+
+![The 3-2-1 Backup Rule](images/img_01.png)
+
+- Local Storage (PC, external hard drive, USB stick)
+- Cloud Storage (Institutional: Sciebo, SOFS, Coscine / Proprietary: OneDrive, Dropbox, Google Drive)
+- Frequency / Offsite Storage / Versioning / Documentation / Restore Testing
+- Additional Tools (e.g., restic, Time Machine)
