@@ -142,6 +142,18 @@ For more information you're invited to the RD&M Workshop on data protection on 0
 
 ---
 
+## 4.1 Storage Media Survey {.smaller}
+
+Go to this [digital Whiteboard](https://canva.link/njxvquovkqrzypm).
+
+- What storage media do you currently use for your backups?
+- What other storage media do you know of?
+- Place a sticky note for each one!
+
+![Whiteboard](images/img_02.png)
+
+---
+
 ## 4.1 Storage Media {.smaller}
 
 **Local storage:**
@@ -220,7 +232,7 @@ and the account not deleted or hacked
 - free 1 TB storage for all members of the University of Cologne (login with your Uni KIM)
 - SOFS is a network drive, so you can access it from your computer without having to install any software.
 - Synchronization can be set up with addtional software (see 6. Automating Backups)
-- File Versioning is integrated
+- File Versioning is integrated (see below [here](https://itcc.uni-koeln.de/services/daten-speichern-teilen/online-speicher-sofs/funktionsumfang))
 
 ---
 
@@ -244,6 +256,10 @@ and the account not deleted or hacked
 
 ## 5.1 Preparing a Backup: Documentation and Metadata {.smaller}
 
+:::: {.columns}
+
+::: {.column width="55%"}
+
 **First question: Which files should be backed up?**
 
 *followed by*
@@ -258,9 +274,21 @@ and the account not deleted or hacked
 - what is the purpose of the files?
 - etc.
 
+:::
+
+::: {.column width="45%"}
+![You never knew...](images/img_04.png)
+:::
+
+::::
+
 ---
 
 ## 5.2 Preparing a Backup: Filenaming {.smaller}
+
+:::: {.columns}
+
+::: {.column width="55%"}
 
 **filenaming**
 
@@ -270,15 +298,35 @@ and the account not deleted or hacked
 - Facilitate alphabetical and numerical sorting
 - Source: [DCH File Naming Recommendations](https://doi.org/10.5281/zenodo.7447562) (Felix Rau 2022)
 
+:::
+
+::: {.column width="45%"}
+![You never knew...](images/img_03.png)
+:::
+
+::::
+
 ---
 
 ## 5.3 Preparing a Backup: Versioning {.smaller}
+
+:::: {.columns}
+
+::: {.column width="55%"}
 
 **versioning**
 
 - Keep track of changes to your files and data
 - Use version numbers or **dates** in filenames
 - automated snapshots or manual copies of files and folders
+
+:::
+
+::: {.column width="45%"}
+![automated versions in Sciebo](images/img_06.png)
+:::
+
+::::
 
 ---
 
@@ -288,7 +336,7 @@ Setting up automated sync and backup routines on Windows, macOS, and Linux.
 
 Addtional supporting software is rare. A few examples would be:
 
-- [restic](https://restic.net/) (cross-platform, command line)
+- [restic](https://restic.net/) (cross-platform, command line; recommended by the DCH)
 - [Time Machine](https://support.apple.com/en-us/104984) (macOS only)
 
 ---
@@ -301,11 +349,23 @@ A backup is not a backup until you have successfully restored from it!
 
 ## 8. Why it's worth the effort {.smaller}
 
+:::: {.columns}
+
+::: {.column width="55%"}
+
 You have probably heard of some "horror stories" of data loss. They are all very similar:
 
 - Notebook or other storage media stolen / lost / broken
 - Cloud hacked / account deleted
 - AI Agent changed files without your knowledge (happend to Lukas)
+
+:::
+
+::: {.column width="45%"}
+![Digital data is very fragile](images/img_05.png)
+:::
+
+::::
 
 ---
 
@@ -331,3 +391,9 @@ The RD&M Workshop today has an open end. You can stay and discuss your individua
 - Cloud Storage (Institutional: Sciebo, SOFS, Coscine / Proprietary: OneDrive, Dropbox, Google Drive)
 - Frequency / Offsite Storage / Versioning / Documentation / Restore Testing
 - Additional Tools (e.g., restic, Time Machine)
+
+---
+
+## Acknowledgements {.smaller}
+
+We thank the [Data Center for the Humanities (DCH)](https://dch.phil-fak.uni-koeln.de/) and the [Cologne Competence Center for Research Data Management (C3RDM)](https://fdm.uni-koeln.de/home) for their input and advice on the content of this workshop.
