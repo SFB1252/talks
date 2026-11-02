@@ -93,15 +93,15 @@ Today you'll learn how to create a practical backup plan for your research data,
 
 ---
 
-## 1. Initial Questions {.smaller}
+## 1. Different approaches {.smaller}
 
-About your experience with Backups:
-
-* Are you doing backups?
-* Where do you store your backups?
-* How regularly do you do backups?
-* Did you ever had to restore data from a backup?
-* Have you encountered any problems?
+- Imagine these researchers:
+    - **The careless researcher:** laptop, no additional local or network storage
+    - **The lazy researcher:** laptop, Sciebo turned on, copies of important files in the same Sciebo account
+    - **The best in class:** a work computer, a home computer, Sciebo / git versioning, recurring copies on a network drive and USB stick
+    - **The paranoid researcher:** perfectionist + everything encrypted
+- Are you doing backups? Where? How often? Any problems?
+- Did you ever had to restore data from a backup?
 
 ::: {.notes}
 Speaker Notes:
