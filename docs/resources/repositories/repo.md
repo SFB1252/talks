@@ -30,4 +30,4 @@ There is already very sophisticated infrastructure available for language resear
 - [ResearchBox](https://researchbox.org/) 
 - [Dryad](https://datadryad.org/)
 - [Figshare](https://figshare.com/) 
-- [Dataverse](https://dataverse.org/) installations such as https://dataverse.no/
+- [Dataverse](https://dataverse.org/) installations such as [dataverse.no](https://dataverse.no/), [dataverse.nl/](https://dataverse.nl/)   
