@@ -251,7 +251,7 @@ and the account not deleted or hacked
 
 ## 4.6 Other tools
 
-- see **[Choosing a Repository, November 2026](repositories/repo.md)** for a short guide to where to store, share, and archive research data, including language-specific repositories and CLARIN centres.
+- see **[Choosing a Repository, November 2026](https://sfb1252.github.io/talks/resources/repositories/repo/)** for a short guide to where to store, share, and archive research data, including language-specific repositories and CLARIN centres.
 
 
 ## 5.1 Preparing a Backup: Documentation and Metadata {.smaller}
