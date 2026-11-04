@@ -229,7 +229,7 @@ and the account not deleted or hacked
 
 *https://itcc.uni-koeln.de/services/daten-speichern-teilen/online-speicher-sofs*
 
-- free 1 TB storage for all members of the University of Cologne (login with your Uni KIM)
+- free 10 GB storage for all members of the University of Cologne (login with your Uni KIM)
 - SOFS is a network drive, so you can access it from your computer without having to install any software.
 - Synchronization can be set up with addtional software (see 6. Automating Backups)
 - File Versioning is integrated (see below [here](https://itcc.uni-koeln.de/services/daten-speichern-teilen/online-speicher-sofs/funktionsumfang))
@@ -243,7 +243,7 @@ and the account not deleted or hacked
 - new solution for data storage in NRW, especially for research data
 - technically very modern and secure
 - free 100 GB storage for all members of the University of Cologne (login with your Uni KIM)
-- metadata scheme is complex, each file needs to have a detaile metadata description. Workaround: Uplaod compressed files (e.g., ZIP) or containers; they can contain multiple files while counted as one file in the repository.
+- metadata scheme is complex, each file needs to have a detailed metadata description. Workaround: Uplaod compressed files (e.g., ZIP) or containers; they can contain multiple files while counted as one file in the repository.
 - no API while using it for free
 - more storage and all features require an extra application on project level
 
@@ -266,7 +266,7 @@ and the account not deleted or hacked
 
 **documentation and metadata**
 
-- Busfactor: How many people can be overtaken by a bus before nobody is left who can understand the data?
+- Busfactor: How many people can be overrun by a bus before nobody is left who can understand the data?
 - where is what?
 - what software is needed to open the files?
 - when were the files created and last modified?
