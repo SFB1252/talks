@@ -9,7 +9,7 @@
 | Date               | 4 November 2026                                                       |
 | Time               | 14:00 - 15:30                                                         |
 | Location           | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
-| Speaker            | TBC                                                                   |
+| Speaker            | Lukas Lammers, Job Schepens                                           |
 | Prerequisites      | Bring your laptop and note where your research data is currently kept |
 | Materials status   | Upcoming workshop — materials will be added before the session.       |
 | Slides / recording | [HTML slides](slides.html)                                            |
