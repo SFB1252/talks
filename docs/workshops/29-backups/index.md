@@ -12,7 +12,7 @@
 | Speaker            | TBC                                                                   |
 | Prerequisites      | Bring your laptop and note where your research data is currently kept |
 | Materials status   | Upcoming workshop — materials will be added before the session.       |
-| Slides / recording | Slides and checklist will be linked here once available.              |
+| Slides / recording | [HTML slides](slides.html)                                            |
 
 </div>
 
