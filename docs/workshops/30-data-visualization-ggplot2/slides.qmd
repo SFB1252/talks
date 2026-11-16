@@ -1,6 +1,6 @@
 ---
 title: "Data Visualization with ggplot2"
-subtitle: "The Grammar of Graphics, uncertainty, and publication-ready figures"
+subtitle: "The Grammar of Graphics and honest figures"
 author:
   - name: "Job Schepens"
     affiliation:
@@ -31,8 +31,6 @@ execute:
   fig-dpi: 220
 ---
 
-
-
 ```{r}
 #| label: setup
 #| include: false
@@ -43,8 +41,6 @@ library(tidyr)
 library(patchwork)
 library(scales)
 library(viridis)
-library(ggeffects)
-library(marginaleffects)
 
 systemfonts::register_font(
   "Albert Sans",
@@ -76,6 +72,8 @@ theme_set(
     )
 )
 ```
+
+---
 
 ## Overview {.smaller}
 
@@ -172,47 +170,54 @@ theme_set(
 }
 </style>
 
-
 ::: {.columns}
 
-::: {.column width="58%"}
+::: {.column width="56%"}
+### Learning objectives
+
+By the end of this session, you can:
+
+1. **Name** the components of a plot and explain the claim each one makes.
+2. **Translate** a question into a data mapping, a geom, and a scale.
+3. **Critique** misleading figures: dynamite plots, truncated axes, overplotting, colour.
+4. **Rebuild** a publication-ready figure in `ggplot2`.
+
 ### Session plan
 
-- **Why plots work — and fail:** perception, integrity, and the limits of summary statistics
-- **The grammar of graphics:** data, mappings, layers, statistics, scales, coordinates, facets
-- **A systematic tour of `ggplot2`:** from `aes()` to `theme()`
-- **Common pitfalls:** dynamite plots, truncated axes, overplotting, colour
-- **Uncertainty and model-based plots:** confidence bands, marginal effects, interactions
-- **Publication:** composition, themes, accessible colour, high-resolution export
-- **Hands-on:** rebuild, critique, and polish a figure
+- **Seeing data:** perception, integrity, and the limits of summary statistics
+- **The grammar:** data, mappings, layers, statistics, scales, coordinates, facets
+- **Layers in practice:** mapping, grouping, geoms, positions, facets
+- **Integrity and design:** pitfalls and colour
+- **Hands-on:** rebuild and critique a figure
+
 :::
 
-::: {.column width="42%"}
+::: {.column width="44%"}
 
 ::: {.callout-note}
 ### Goal
 
 Learn to **specify, critique, and rebuild** a plot from its grammar — not merely to memorise a list of functions.
-
-The examples are in R, but the grammar transfers to other tools.
 :::
 
 **Prerequisites:** basic familiarity with R and RStudio.
 
 **Materials:** `slides.qmd`, `scripts/ggplot2-intro.R`, and the `data/` folder.
+
+**Next:** `slides-advanced.qmd` covers scales, models, uncertainty, composition, and export.
 :::
 
 :::
 
 ::: {.notes}
-Welcome. This is a theory-first introduction: we spend the first half on the grammar and the logic of encodings, then apply it. The code is deliberately simple; the hard part is deciding what to encode and what to leave out.
+Welcome. This is a theory-first introduction: we spend the first half on the grammar and the logic of encodings, then apply it. The code is deliberately simple; the hard part is deciding what to encode and what to leave out. The advanced deck is a sequel, not required for today.
 :::
 
 ---
 
 ## Part I: Seeing data {.center}
 
-### A plot is an argument, not a decoration
+### After this part: explain why a summary is not evidence
 
 ---
 
@@ -375,7 +380,7 @@ Cleveland & McGill's ranking is about relative accuracy for elementary judgments
 
 ## Part II: The grammar {.center}
 
-### A small set of components, composed systematically
+### After this part: name the components of any plot
 
 ---
 
@@ -453,63 +458,6 @@ Walk through the table with a concrete example: `geom_point()` has `stat_identit
 
 ---
 
-## A plot is a specification {.smaller}
-
-::: {.columns}
-
-::: {.column width="52%"}
-### Nothing is drawn until it is rendered
-
-```r
-p <- ggplot(penguins,
-            aes(flipper_length_mm, body_mass_g)) +
-  geom_point()
-
-class(p)                 # "ggplot"
-length(p$layers)         # 1
-p                        # renders now
-ggplot_build(p)$data[[1]] # computed values
-```
-
-A `ggplot` object is a **list of specifications**. Building it does not draw pixels.
-
-Consequences:
-
-- layers can be added, removed, reused, and composed
-- `ggsave()` renders without displaying
-- `ggplot_build()` exposes the output of stats and scales
-- functions can return plots; loops and `purrr::map()` work
-- Quarto renders the object at the point where it is printed
-
-:::
-
-::: {.column width="48%"}
-### Why this matters for theory
-
-The separation of **specification** from **rendering** mirrors the grammar:
-
-1. declare the data and the mapping
-2. declare the transformation
-3. declare the scales and coordinates
-4. render
-
-This is also why debugging is possible: a wrong plot is usually a wrong *specification*, not a drawing bug.
-
-::: {.callout-tip}
-### Inspect the pipeline
-
-`ggplot_build(p)$data` shows what the stats computed; `ggplot_gtable()` shows the rendered grobs. Use them when a plot looks wrong and you cannot tell which layer is responsible.
-:::
-:::
-
-:::
-
-::: {.notes}
-This slide is the bridge from theory to practice. Emphasise that `p` is an object, not a side effect. If someone is used to base R, this is the conceptual shift: you describe the plot, then print it.
-:::
-
----
-
 ## A first plot {.smaller}
 
 ::: {.columns}
@@ -548,7 +496,7 @@ ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 ```
 
 ::: {.callout-note}
-The default theme is a **starting point**, not a publication style. We will change it later without touching the data or the mapping.
+The house theme is already applied. A theme changes **non-data ink** without touching the data or the mapping; we return to themes in the advanced deck.
 :::
 :::
 
@@ -562,7 +510,7 @@ Ask: what is the unit of observation? What does a point represent? What does col
 
 ## Part III: Layers in practice {.center}
 
-### Mapping, grouping, statistics, scales, coordinates, facets
+### After this part: translate a question into layers
 
 ---
 
@@ -762,26 +710,24 @@ This is the chart-selection slide. Ask participants to name a recent figure from
 
 ---
 
-## Statistical transformations {.smaller}
+## Every geom has a stat {.smaller}
 
 ::: {.columns}
 
 ::: {.column width="52%"}
 ### A stat computes a new data frame
 
-Every geom has a default stat; every stat has a default geom.
+- `geom_bar()` counts rows: `stat_count()`
+- `geom_col()` uses supplied heights: `stat_identity()`
+- `geom_histogram()` bins: `stat_bin()`
+- `geom_smooth()` fits: `stat_smooth()`
+- `after_stat()` maps a computed variable; `..count..` is the older syntax
 
-| Geom | Default stat | Computed variables |
-|---|---|---|
-| `geom_bar` | `stat_count` | `count`, `prop` |
-| `geom_histogram` | `stat_bin` | `count`, `density` |
-| `geom_boxplot` | `stat_boxplot` | `ymin`, `lower`, `middle`, `upper`, `ymax`, `outliers` |
-| `geom_smooth` | `stat_smooth` | `y`, `ymin`, `ymax`, `se` |
-| `geom_density` | `stat_density` | `density`, `count`, `scaled` |
-| `geom_ecdf` | `stat_ecdf` | `y` |
+::: {.callout-important}
+If you already computed the summary, use `geom_col()`, not `geom_bar()`. The geom does not know that your `y` is a mean; it only knows whether a stat is needed.
+:::
 
-`after_stat()` maps a **computed** variable; `..count..` is the older syntax.
-
+**Theory:** statistics are **first-class** plot components. A bar chart of counts is a statistical claim, not a raw data display.
 :::
 
 ::: {.column width="48%"}
@@ -792,12 +738,7 @@ ggplot(diamonds, aes(cut)) +
 
 # proportions, computed by the stat
 ggplot(diamonds, aes(cut)) +
-  geom_bar(aes(y = after_stat(prop),
-               group = 1))
-
-# identity: the data already contain y
-ggplot(penguins, aes(species, n)) +
-  geom_col()
+  geom_bar(aes(y = after_stat(prop), group = 1))
 ```
 
 ```{r}
@@ -811,14 +752,12 @@ ggplot(diamonds, aes(cut)) +
        title = "geom_bar() computes counts",
        subtitle = "stat_count(); no y supplied")
 ```
-
-**Theory:** statistics are **first-class** plot components. A bar chart of counts is a statistical claim, not a raw data display.
 :::
 
 :::
 
 ::: {.notes}
-This is where the grammar pays off: `geom_bar()` vs `geom_col()` is not a quirky naming detail, it is `stat_count()` vs `stat_identity()`. If you supply y, you probably want `geom_col()`. If you want proportions, let the stat compute them rather than pre-summarising by hand.
+The full table of stats and computed variables, and after_stat() for proportions, is in the advanced deck. Here the point is simpler: a geom either computes a summary or uses the values you supply. That choice changes what the bar means.
 :::
 
 ---
@@ -885,17 +824,21 @@ The four panels use the same data and the same stat. Only the position changes. 
 #| fig-width: 9.6
 #| fig-height: 3.5
 g2007 <- gapminder |> filter(year == 2007)
+dollar_k <- function(x) paste0("$", format(x / 1000, trim = TRUE, scientific = FALSE), "k")
 
 p_linear <- ggplot(g2007, aes(gdpPercap, lifeExp,
                               colour = continent, size = pop)) +
   geom_point(alpha = 0.7) +
   scale_size_area(max_size = 7, guide = "none") +
+  scale_x_continuous(labels = dollar_k,
+                     breaks = c(0, 20000, 40000, 60000, 80000)) +
   labs(title = "Linear x scale", x = "GDP per capita",
        y = "Life expectancy", colour = NULL) +
   theme(legend.position = "right")
 
 p_log <- p_linear +
-  scale_x_log10(labels = label_dollar()) +
+  scale_x_log10(labels = dollar_k,
+                breaks = c(1000, 3000, 10000, 30000, 100000)) +
   labs(title = "Log10 x scale")
 
 p_linear | p_log
@@ -935,111 +878,6 @@ scale_alpha_manual(values = c(.3, .7))
 
 ::: {.notes}
 The gapminder example makes the log scale intuitive: GDP per capita spans several orders of magnitude, so the linear scale compresses most countries into the left edge. On the log scale, the relation with life expectancy becomes visible. Note that the size scale is also a scale, and size is a less accurate encoding than position.
-:::
-
----
-
-## Limits are not zoom {.smaller}
-
-```{r}
-#| label: plot-limits
-#| fig-width: 9.6
-#| fig-height: 3.3
-p_base <- ggplot(penguins, aes(bill_length_mm, body_mass_g)) +
-  geom_point(alpha = 0.35, colour = uzk_blue) +
-  geom_smooth(method = "lm", formula = y ~ x, se = FALSE,
-              colour = uzk_coral, linewidth = 0.9)
-
-p_crop <- p_base +
-  scale_x_continuous(limits = c(40, 50)) +
-  labs(title = "scale_x_continuous(limits = ...)",
-       subtitle = "rows outside the limits are dropped")
-
-p_zoom <- p_base +
-  coord_cartesian(xlim = c(40, 50)) +
-  labs(title = "coord_cartesian(xlim = ...)",
-       subtitle = "all data are kept; the view is zoomed")
-
-p_crop | p_zoom
-```
-
-::: {.columns}
-
-::: {.column width="55%"}
-- `scale_*_*(limits = ...)` **removes** data outside the limits, then computes the stat. Means, smooths, and summaries change.
-- `coord_cartesian(xlim = ...)` **zooms** the viewport. All data contribute to the stat; only the visible window changes.
-:::
-
-::: {.column width="45%"}
-::: {.callout-warning}
-### Never truncate a bar chart's baseline
-
-Bars encode magnitude by **length from zero**. A truncated baseline violates proportional ink and exaggerates differences. Zooming is defensible for scatter plots and lines when the question is local — and when the caption says so.
-:::
-
-**Theory:** a coordinate system changes the **view**; a scale changes the **data-to-visual mapping**.
-:::
-
-:::
-
-::: {.notes}
-This is a subtle but important distinction. In the left panel the regression line is fitted only to the 40–50 mm subset, so the slope changes; in the right panel the line is fitted to all data and merely clipped. Ask which one answers "what is the relation in this range?" and which one answers "what is the overall relation?"
-:::
-
----
-
-## Coordinates {.smaller}
-
-```{r}
-#| label: plot-coord
-#| fig-width: 9.6
-#| fig-height: 3.4
-p_bar_pie <- penguins |> count(species) |>
-  ggplot(aes(x = "", y = n, fill = species)) +
-  geom_col(width = 1, colour = "white") +
-  coord_polar(theta = "y") +
-  labs(title = "Pie chart", x = NULL, y = NULL) +
-  theme_void(base_family = "Albert Sans") +
-  theme(legend.position = "bottom",
-        plot.title = element_text(face = "bold", colour = uzk_blue))
-
-p_bar_flat <- penguins |> count(species) |>
-  ggplot(aes(n, species, fill = species)) +
-  geom_col(show.legend = FALSE, width = 0.65) +
-  labs(title = "Bar chart", x = NULL, y = NULL) +
-  theme(legend.position = "none")
-
-p_bar_pie | p_bar_flat
-```
-
-::: {.columns}
-
-::: {.column width="50%"}
-### The coordinate system is part of the grammar
-
-- `coord_cartesian()`: default Cartesian plane; zoom and set limits
-- `coord_fixed(ratio = ...)`: lock the aspect ratio; essential for maps and shapes
-- `coord_flip()`: swap axes (now usually replaced by mapping the discrete variable to *y*)
-- `coord_polar()`: wrap a linear axis around a circle
-- `coord_radial()`: modern radial coordinates with partial circles
-:::
-
-::: {.column width="50%"}
-::: {.callout-warning}
-### A pie chart is a stacked bar in polar coordinates
-
-Angle and area are less accurate than position and length [@cleveland1984graphical]. A pie works for a rough part-to-whole impression with two or three slices; it fails for precise comparison.
-
-**Better:** a bar or dot plot, sorted by value, with direct labels.
-:::
-
-**Theory:** coordinates transform the **plane**, not the data. The same marks can be arranged in a space that helps or hinders decoding.
-:::
-
-:::
-
-::: {.notes}
-The pie and bar show exactly the same counts. The bar is easier to compare because the bars share a common baseline and a common scale. If a pie is required by a journal or stakeholder, keep it to a few slices, order them, and label directly.
 :::
 
 ---
@@ -1089,241 +927,9 @@ Point out that the y-axis is shared across all six panels, so the reader can com
 
 ---
 
-## Part IV: Uncertainty and models {.center}
+## Part IV: Integrity and design {.center}
 
-### From raw points to conditional claims
-
----
-
-## What error bars actually mean {.smaller}
-
-::: {.columns}
-
-::: {.column width="50%"}
-### Four different intervals
-
-| Quantity | What it describes | Typical use |
-|---|---|---|
-| **SD** | spread of observations | reference range, prediction |
-| **SE** | precision of an estimated mean | error bar around a mean |
-| **95% CI** | repeated-sampling coverage of a parameter | inference about a mean or effect |
-| **95% CrI** | posterior probability of a parameter | Bayesian inference |
-| **PI** | spread of future observations | prediction, not estimation |
-
-::: {.callout-warning}
-An error bar without a label is not information. "Mean ± SE" and "mean ± SD" can differ by a factor of $\sqrt{n}$.
-:::
-
-**Theory:** an interval is a claim about a **target**. The target can be an observation, a mean, an effect, or a future observation. The plot must name it.
-:::
-
-::: {.column width="50%"}
-### Within-subject data need within-subject intervals
-
-Between-subject CIs are too wide when the same participants contribute to every condition; they include stable individual differences.
-
-- normalise per participant, then compute the CI [@morey2008confidence]
-- bootstrap participants, not observations
-- plot **by-participant** effects or paired differences
-- use a multilevel model and plot its predictions
-
-**Default trap:** `stat_summary(fun.data = mean_se)` is between-subject.
-
-**Preferred:** `plot_predictions(fit, condition = "condition")`.
-
-::: {.callout-tip}
-When *N* is small, show every observation. A mean and an error bar can hide a bimodal or skewed distribution.
-:::
-:::
-
-:::
-
-::: {.notes}
-The key distinction is target: SD describes data, SE describes an estimate, CI describes a procedure, CrI describes a posterior. Many published error bars are unlabelled, which makes them uninterpretable. For within-subject designs, the default `mean_se` is between-subject and therefore conservative; use a model or within-subject normalisation.
-:::
-
----
-
-## Model-based visualization {.smaller}
-
-::: {.columns}
-
-::: {.column width="45%"}
-### Plot the model, not only the means
-
-A model-based plot shows **conditional expectations** and their uncertainty.
-
-```r
-fit <- lm(body_mass_g ~ flipper_length_mm * species,
-          data = penguins)
-
-# conditional predictions (ggeffects)
-ggpredict(fit, terms = c("flipper_length_mm", "species"))
-
-# counterfactual predictions (marginaleffects)
-plot_predictions(fit,
-  condition = c("flipper_length_mm", "species"))
-
-plot_slopes(fit, variables = "flipper_length_mm",
-            condition = "species")
-```
-
-- `ggpredict()`: holds other predictors at typical values
-- `marginaleffects`: averages over the observed sample by default
-- `plot_slopes()`: the quantity of interest is a **slope**, not a level
-:::
-
-::: {.column width="55%"}
-```{r}
-#| label: plot-model
-#| fig-width: 6.6
-#| fig-height: 4.2
-fit <- lm(body_mass_g ~ flipper_length_mm * species, data = penguins)
-
-plot_predictions(
-  fit,
-  condition = c("flipper_length_mm", "species"),
-  points = 0.35
-) +
-  labs(title = "Conditional predictions with 95% confidence bands",
-       x = "Flipper length (mm)", y = "Body mass (g)",
-       colour = NULL, fill = NULL) +
-  theme(legend.position = "bottom")
-```
-
-::: {.callout-important}
-**Interaction is scale-dependent.** Non-parallel lines on the **link** scale indicate an interaction; on the response scale, a logit model can show divergent curves even with no link-scale interaction. Plot on the scale you want to interpret — and say which one.
-:::
-:::
-
-:::
-
-::: {.notes}
-This slide connects visualisation to modelling. The plot shows three lines with different slopes: the relation between flipper length and body mass differs by species. `ggpredict` and `marginaleffects` answer slightly different questions; both are legitimate, but the caption must say which. The confidence bands are for the mean, not for new observations — a common confusion.
-:::
-
----
-
-## Part V: From plot to publication {.center}
-
-### Themes, colour, composition, export
-
----
-
-## Themes change the non-data ink {.smaller}
-
-```{r}
-#| label: plot-themes
-#| fig-width: 9.6
-#| fig-height: 3.3
-p_theme <- ggplot(penguins, aes(bill_length_mm, body_mass_g,
-                                colour = species)) +
-  geom_point(alpha = 0.7, size = 1.8) +
-  labs(title = "Same data, four themes", x = NULL, y = NULL) +
-  theme(legend.position = "none")
-
-th_min <- p_theme + theme_minimal(base_family = "Albert Sans", base_size = 12)
-th_bw <- p_theme + theme_bw(base_family = "Albert Sans", base_size = 12)
-th_classic <- p_theme + theme_classic(base_family = "Albert Sans", base_size = 12)
-th_dark <- p_theme + theme_dark(base_family = "Albert Sans", base_size = 12)
-
-(th_min | th_bw) / (th_classic | th_dark)
-```
-
-::: {.columns}
-
-::: {.column width="52%"}
-### The theme is a separate layer
-
-- `theme_minimal()`, `theme_bw()`, `theme_classic()`, `theme_void()`
-- `theme_set()` changes the default for the session
-- `theme()` overrides one element on one plot
-- elements form a hierarchy: `plot.title`, `axis.text`, `panel.grid`, `legend.position`
-
-The theme changes **non-data ink**, not the data or the statistical claim.
-:::
-
-::: {.column width="48%"}
-```r
-theme_uzk <- function(base_size = 15) {
-  theme_minimal(base_family = "Albert Sans",
-                base_size = base_size) +
-    theme(panel.grid.minor = element_blank(),
-          legend.position = "bottom")
-}
-theme_set(theme_uzk())
-```
-
-::: {.callout-tip}
-Write a **house theme** once. Reuse it in every figure. Consistency is a form of reproducibility.
-:::
-:::
-
-:::
-
-::: {.notes}
-Themes do not change the data or the statistical claim; they change readability. The dark theme is included only to show that a theme can invert the figure-ground relationship. For publication, prefer a light background with restrained gridlines and direct labels.
-:::
-
----
-
-## Colour is an encoding, not decoration {.smaller}
-
-```{r}
-#| label: plot-colour
-#| fig-width: 9.6
-#| fig-height: 3.2
-p_col <- ggplot(penguins, aes(bill_length_mm, body_mass_g,
-                              colour = species)) +
-  geom_point(alpha = 0.8, size = 1.8) +
-  labs(x = NULL, y = NULL) +
-  theme(legend.position = "none")
-
-p_default <- p_col + labs(title = "Default hue")
-p_viridis <- p_col + scale_colour_viridis_d(end = 0.85) +
-  labs(title = "Viridis")
-p_okabe <- p_col +
-  scale_colour_manual(values = c("#E69F00", "#56B4E9", "#009E73")) +
-  labs(title = "Okabe–Ito")
-
-p_default | p_viridis | p_okabe
-```
-
-::: {.columns}
-
-::: {.column width="50%"}
-### Three palette types
-
-- **Sequential:** ordered magnitude (light → dark, viridis)
-- **Diverging:** deviation around a meaningful midpoint (ColorBrewer `RdBu`)
-- **Qualitative:** unordered categories (Okabe–Ito, `Set2`)
-
-### Three rules
-
-1. Perceptual uniformity: equal steps in data should look like equal steps in colour [@crameri2020misuse]
-2. Colour-vision safety: avoid red–green contrasts; test with a simulator
-3. Redundancy: do not encode the same variable twice (colour **and** shape **and** size)
-:::
-
-::: {.column width="50%"}
-```r
-scale_colour_viridis_d(option = "D")
-scale_fill_brewer(palette = "Set2")
-scale_colour_manual(
-  values = c("#E69F00", "#56B4E9", "#009E73")
-)
-```
-
-::: {.callout-warning}
-Rainbow and jet palettes create false boundaries, are not perceptually uniform, and fail for colour-vision deficiency. Use viridis or a documented scientific palette [@zeileis2009escaping].
-:::
-:::
-
-:::
-
-::: {.notes}
-The default hue palette is not terrible for three categories, but it is not designed for colour-vision deficiency or print. Viridis is a safe default for ordered and unordered data; Okabe–Ito is a strong qualitative alternative. Point out that the three panels use the same data and the same mapping — only the scale changes.
-:::
+### After this part: spot and repair a misleading figure
 
 ---
 
@@ -1529,285 +1135,69 @@ The diamonds data have 53,940 rows; we sample 12,000 for speed. The plain scatte
 
 ---
 
-## Uncertainty from a model {.smaller}
+## Colour is an encoding, not decoration {.smaller}
+
+```{r}
+#| label: plot-colour
+#| fig-width: 9.6
+#| fig-height: 3.2
+p_col <- ggplot(penguins, aes(bill_length_mm, body_mass_g,
+                              colour = species)) +
+  geom_point(alpha = 0.8, size = 1.8) +
+  labs(x = NULL, y = NULL) +
+  theme(legend.position = "none")
+
+p_default <- p_col + labs(title = "Default hue")
+p_viridis <- p_col + scale_colour_viridis_d(end = 0.85) +
+  labs(title = "Viridis")
+p_okabe <- p_col +
+  scale_colour_manual(values = c("#E69F00", "#56B4E9", "#009E73")) +
+  labs(title = "Okabe–Ito")
+
+p_default | p_viridis | p_okabe
+```
 
 ::: {.columns}
 
-::: {.column width="55%"}
-```{r}
-#| label: plot-uncertainty-model
-#| fig-width: 6.4
-#| fig-height: 4.6
-ggplot(ggeffects::ggpredict(
-  fit, terms = c("flipper_length_mm", "species")
-), aes(x, predicted, colour = group, fill = group)) +
-  geom_ribbon(aes(ymin = conf.low, ymax = conf.high),
-              alpha = 0.18, colour = NA) +
-  geom_line(linewidth = 0.9) +
-  labs(title = "Average predictions with 95% CIs",
-       x = "Flipper length (mm)", y = "Body mass (g)",
-       colour = NULL, fill = NULL) +
-  theme(legend.position = "bottom")
-```
+::: {.column width="50%"}
+### Three palette types
 
+- **Sequential:** ordered magnitude (light → dark, viridis)
+- **Diverging:** deviation around a meaningful midpoint (ColorBrewer `RdBu`)
+- **Qualitative:** unordered categories (Okabe–Ito, `Set2`)
+
+### Three rules
+
+1. Perceptual uniformity: equal steps in data should look like equal steps in colour [@crameri2020misuse]
+2. Colour-vision safety: avoid red–green contrasts; test with a simulator
+3. Redundancy: do not encode the same variable twice (colour **and** shape **and** size)
 :::
 
-::: {.column width="45%"}
-### Three layers of evidence
-
-A good model plot can show all three:
-
-1. **raw observations** — the data and their spread
-2. **conditional mean** — the fitted relation
-3. **uncertainty** — a confidence band for the mean
-
+::: {.column width="50%"}
 ```r
-plot_predictions(
-  fit,
-  condition = c("flipper_length_mm", "species"),
-  points = 0.35
+scale_colour_viridis_d(option = "D")
+scale_fill_brewer(palette = "Set2")
+scale_colour_manual(
+  values = c("#E69F00", "#56B4E9", "#009E73")
 )
 ```
 
-::: {.callout-important}
-### Name the interval
-
-- CI for the **mean**: narrower; answers "where is the average?"
-- PI for an **observation**: wider; answers "where will a new case fall?"
-- CrI: a posterior probability statement, not a repeated-sampling one
-
-`geom_smooth(se = TRUE)` gives a CI for the mean, not a prediction interval.
+::: {.callout-warning}
+Rainbow and jet palettes create false boundaries, are not perceptually uniform, and fail for colour-vision deficiency. Use viridis or a documented scientific palette [@zeileis2009escaping].
 :::
-
 :::
 
 :::
 
 ::: {.notes}
-This is the same model as the previous slide, plotted with `ggpredict` rather than `marginaleffects`. The practical difference is usually small for a simple linear model, but the interpretation differs: `ggpredict` holds other predictors at typical values; `marginaleffects` averages over the sample. The band is for the mean. If you want to show where new observations fall, add a prediction interval or plot the raw points.
+The default hue palette is not terrible for three categories, but it is not designed for colour-vision deficiency or print. Viridis is a safe default for ordered and unordered data; Okabe–Ito is a strong qualitative alternative. Point out that the three panels use the same data and the same mapping — only the scale changes.
 :::
 
 ---
 
-## Composition: multiple panels, one figure {.smaller}
+## Part V: From analysis to communication {.center}
 
-::: {.columns}
-
-::: {.column width="58%"}
-```{r}
-#| label: plot-composition
-#| fig-width: 8.8
-#| fig-height: 4.6
-p_a <- ggplot(penguins, aes(body_mass_g, fill = species)) +
-  geom_density(alpha = 0.4, colour = NA, show.legend = FALSE) +
-  labs(title = "Distribution", x = NULL, y = NULL)
-
-p_b <- ggplot(penguins, aes(species, body_mass_g, fill = species)) +
-  geom_boxplot(show.legend = FALSE, alpha = 0.8) +
-  labs(title = "Quantiles", x = NULL, y = NULL)
-
-p_c <- ggplot(penguins, aes(flipper_length_mm, body_mass_g,
-                            colour = species)) +
-  geom_point(alpha = 0.7, size = 1.5) +
-  labs(title = "Relationship", x = NULL, y = NULL)
-
-p_d <- penguins |> count(island, species) |>
-  ggplot(aes(island, n, fill = species)) +
-  geom_col(position = "fill") +
-  labs(title = "Composition", x = NULL, y = NULL)
-
-(p_a | p_b) / (p_c | p_d) +
-  plot_annotation(tag_levels = "A") &
-  theme(legend.position = "bottom")
-```
-
-:::
-
-::: {.column width="42%"}
-### The figure is a layout, too
-
-`patchwork` composes ggplot objects with operators: `p1 + p2`, `p1 | p2`, `p1 / p2`, `(p1 | p2) / p3`.
-
-```r
-(p1 | p2) / (p3 | p4) +
-  plot_annotation(
-    tag_levels = "A",
-    title = "A composite figure"
-  ) +
-  plot_layout(
-    guides = "collect",
-    widths = c(1, 1),
-    heights = c(1, 1)
-  )
-```
-
-- `plot_layout(guides = "collect")`: one shared legend
-- `& theme(...)`: apply a theme to every panel
-- `cowplot::plot_grid()` and `ggdraw()` are alternatives, especially for insets
-- compose panels only when they answer **one** question
-:::
-
-:::
-
-::: {.notes}
-The four panels show four different views of the same data. Tags A–D let the caption refer to panels. `guides = "collect"` avoids four copies of the same legend. If the panels need different themes or scales, check whether they belong in the same figure at all.
-:::
-
----
-
-## Export without losing the plot {.smaller}
-
-::: {.columns}
-
-::: {.column width="52%"}
-### Save at the final size
-
-```r
-ggsave(
-  filename = "figures/penguins-mass.png",
-  plot = p_first,
-  width = 16, height = 10, units = "cm",
-  dpi = 300,
-  bg = "white",
-  device = ragg::agg_png
-)
-```
-
-- `width`, `height`, `units`: the **printed** dimensions
-- `dpi = 300` (or 600) for raster; vector formats ignore dpi
-- `bg = "white"` avoids transparent backgrounds in Word
-- pass `plot =` explicitly in scripts; the default is the last plot
-- `ragg::agg_png` gives better text and anti-aliasing than the default PNG device
-- `svglite::svglite` for SVG; `cairo_pdf` for PDF with embedded fonts
-- **design at final size:** do not export large and shrink in Word
-:::
-
-::: {.column width="48%"}
-### Format choice
-
-| Format | Use for | Notes |
-|---|---|---|
-| PDF | journal submission, vector | fonts must be embedded |
-| SVG | web, editable vector | good browser support |
-| PNG | slides, web, raster images | 300–600 dpi |
-| TIFF | journal requirements | often LZW compression |
-| EPS | legacy workflows | avoid for new work |
-
-### A pre-export checklist
-
-- [ ] final dimensions and resolution
-- [ ] fonts embedded or outlined
-- [ ] colour profile (RGB or CMYK)
-- [ ] text readable at 100%; grayscale check
-- [ ] caption names *N*, interval, and source
-- [ ] meaningful, versioned file name
-:::
-
-:::
-
-::: {.notes}
-The most common export problem is not resolution but sizing: a figure designed at 20 cm wide and shrunk to 8 cm has unreadable labels. Design at the final size. For journals, check whether they require vector or raster, RGB or CMYK, and embedded fonts. Keep the code that produced the figure, not just the figure.
-:::
-
----
-
-## Accessibility and integrity checklist {.smaller}
-
-::: {.columns}
-
-::: {.column width="50%"}
-### Before you plot
-
-- [ ] What is the **question**?
-- [ ] What is the **unit** of observation?
-- [ ] Which variables are **encoded**, and how?
-- [ ] Is the **scale** common and honest?
-- [ ] Are **raw data** and **uncertainty** shown?
-
-### Colour and perception
-
-- [ ] Colour-vision-deficiency safe; sufficient contrast
-- [ ] Colour is not the **only** encoding
-- [ ] Sequential, diverging, and qualitative palettes used correctly
-- [ ] Print in grayscale still works
-
-:::
-
-::: {.column width="50%"}
-### Text and context
-
-- [ ] Direct labels and units where possible
-- [ ] Readable font size at final size
-- [ ] Caption states *N*, interval, and source
-- [ ] Alt text for the web
-
-### Integrity
-
-- [ ] Bars start at zero
-- [ ] No dual axes without a strong justification
-- [ ] No 3-D distortion or chartjunk
-- [ ] No causal overclaim; code and data available
-
-::: {.callout-important}
-**The test:** can a reader who missed the talk understand the figure — including what is uncertain — without asking you?
-:::
-:::
-
-:::
-
-::: {.notes}
-This checklist is deliberately long; nobody applies all of it to every exploratory plot. Use the first column for analysis and the full list for publication. The final test is comprehension without the talk.
-:::
-
----
-
-## The ecosystem {.smaller}
-
-::: {.columns}
-
-::: {.column width="50%"}
-### Core and scales
-
-- **ggplot2** — grammar, geoms, scales, themes
-- **scales** — breaks, labels, transformations
-- **viridis** — perceptually uniform palettes
-- **colorspace** — HCL colour spaces, CVD checks
-
-### Distributions and uncertainty
-
-- **ggdist** — half-eye, dot, gradient, and interval geoms [@kay2024ggdist]
-- **ggridges** — ridgeline plots
-- **bayesplot** — posterior diagnostics
-- **ggeffects** — tidy marginal predictions [@ludecke2018ggeffects]
-- **marginaleffects** — predictions, slopes, comparisons [@arel2024marginaleffects]
-
-:::
-
-::: {.column width="50%"}
-### Composition and annotation
-
-- **patchwork** — compose and align panels
-- **cowplot** — grids, insets, annotations
-- **ggrepel** — non-overlapping labels
-- **ggtext** — rich text and markdown in labels
-
-### Data, maps, and interaction
-
-- **sf** — simple features and maps
-- **ggraph** — networks and trees
-- **plotly** — interactive HTML plots
-- **gt** — publication tables
-
-::: {.callout-tip}
-Browse the [ggplot2 extension gallery](https://exts.ggplot2.tidyverse.org/gallery/) before writing a new geom. Someone has probably solved your problem.
-:::
-:::
-
-:::
-
-::: {.notes}
-Do not install everything. Start with ggplot2 + scales + patchwork + one uncertainty package. Add an extension when the grammar cannot express the mark you need. Check maintenance status and whether the extension is on CRAN.
-:::
+### After this part: rebuild, critique, and explain a figure
 
 ---
 
@@ -1874,16 +1264,13 @@ Use `data/penguins.csv` (or `gapminder.csv`).
 1. **Rebuild** the first scatter plot with proper labels, a colour scale, and a theme.
 2. **Facet** by island. Are the species differences consistent across islands?
 3. **Replace** a bar chart of mean body mass with a raincloud-style plot. What does the bar hide?
-4. **Fit** `lm(body_mass_g ~ flipper_length_mm * sex)` and plot predictions with `plot_predictions()`. Is the interaction visible?
-5. **Export** your favourite figure at 16 × 10 cm and 300 dpi.
 
 ::: {.callout-tip}
 ### Hints
 
 - `facet_wrap(~island)`
 - `geom_violin()` + `geom_boxplot(width = .1)` + `geom_jitter()`
-- `marginaleffects::plot_predictions(fit, condition = c("flipper_length_mm", "sex"))`
-- `ggsave(..., width = 16, height = 10, units = "cm", dpi = 300)`
+- `scale_colour_viridis_d()`
 :::
 :::
 
@@ -1901,21 +1288,19 @@ ggplot(penguins,
 
 ggplot(penguins, aes(species, body_mass_g)) +
   geom_violin() + geom_boxplot(width = .1)
-
-fit <- lm(body_mass_g ~ flipper_length_mm * sex,
-          data = penguins)
-plot_predictions(fit, condition = c("flipper_length_mm", "sex"))
 ```
 
 ::: {.callout-note}
 Which figure would you put in a paper — and what would you write in the caption?
 :::
+
+**Advanced follow-up:** model plots, composition, and export are in `slides-advanced.qmd`.
 :::
 
 :::
 
 ::: {.notes}
-Circulate and look for the three common errors: colour constants inside `aes()`, a bar chart used for distributions, and a truncated axis. Bring the group back for a two-minute discussion of one figure. If time is short, do tasks 1 and 3 only.
+Circulate and look for the three common errors: colour constants inside aes(), a bar chart used for distributions, and a truncated axis. Bring the group back for a two-minute discussion of one figure. If time is short, do tasks 1 and 3 only. The model task now lives in the advanced hands-on.
 :::
 
 ---
@@ -1929,8 +1314,8 @@ Circulate and look for the three common errors: colour constants inside `aes()`,
 
 1. **Plot the data, not only the summary.** Means and error bars can hide bimodality, skew, and outliers.
 2. **Think in layers, not functions.** Data → mapping → geom → stat → position → scale → coord → facet → theme.
-3. **Scales are the bridge.** Limits remove data; coordinates zoom. Transformations change the statistical claim.
-4. **Show uncertainty and name it.** A confidence band is not a prediction interval; an unlabelled error bar is not information.
+3. **Choose the geom from the question.** Distributions, relationships, compositions, and comparisons need different marks.
+4. **Keep scales honest.** Bars start at zero; limits remove data; coordinates zoom.
 5. **Design for the reader.** Use accurate encodings, colour-vision-safe palettes, common scales, and direct labels.
 
 :::
@@ -1945,7 +1330,7 @@ Functions change; the grammar does not. Once you can name the components of a pl
 **Next steps**
 
 - Rebuild one figure from your own work with the grammar checklist.
-- Try `ggdist`, `patchwork`, and `marginaleffects`.
+- Continue with [the advanced deck](slides-advanced.html): scales, models, uncertainty, composition, and export.
 - Read the [ggplot2 book](https://ggplot2-book.org/) chapters on layers, scales, and facets.
 - Bring a figure to the next RDM session for a friendly critique.
 
@@ -1954,7 +1339,7 @@ Functions change; the grammar does not. Once you can name the components of a pl
 :::
 
 ::: {.notes}
-End with the grammar, not with a package. The five points map onto the five parts of the workshop. Invite participants to send figures for feedback; the workshop series has an open-door policy.
+End with the grammar, not with a package. The five points map onto the five parts of the workshop. Point to the advanced deck for participants who want models, uncertainty, and publication workflows.
 :::
 
 ---

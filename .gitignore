@@ -35,6 +35,7 @@ Thumbs.db
 .RData
 .Ruserdata
 *.Rproj
+Rplots.pdf
 
 # Python Files
 __pycache__/
@@ -77,6 +78,7 @@ secrets.txt
 .quarto/
 _freeze/
 docs/workshops/**/slides.html
+docs/workshops/**/slides-advanced.html
 docs/resources/**/slides.html
 docs/resources/**/slides.pdf
 !docs/resources/crc-day-2026/slides.pdf

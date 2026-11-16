@@ -11,24 +11,41 @@
 | Location           | House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne |
 | Speaker            | Job Schepens                                                          |
 | Prerequisites      | Basic familiarity with R and RStudio                                  |
-| Materials status   | Upcoming workshop — materials will be added before the session.       |
-| Slides / recording | Slides and code examples will be linked here once available.          |
+| Materials status   | Available — core and advanced slide decks, R scripts, and data.       |
+| Slides / recording | [Core deck](slides.html) · [Advanced deck](slides-advanced.html)       |
 
 </div>
 
 ## Overview
 
-Core `ggplot2` grammar, clean figure design, plotting mistakes, uncertainty, model-based plots, and publication-ready figures.
+A two-part workshop on `ggplot2`. The **core deck** builds the grammar and the
+habits of honest figures; the **advanced deck** continues with scales, models,
+uncertainty, composition, and publication.
 
-Effective data visualization is central to communicating research findings accurately and persuasively. This session takes participants from basic exploratory plots to publication-quality figures using R's `ggplot2` ecosystem.
+Effective data visualization is central to communicating research findings accurately and persuasively. This session takes participants from basic exploratory plots to publication-quality figures using R's `ggplot2` ecosystem. It is taught as a theory-first introduction followed by an optional advanced sequel.
+
+## Materials
+
+- **[Core slides](slides.html)** — perception, the grammar, layers in practice, integrity, and hands-on
+- **[Advanced slides](slides-advanced.html)** — scales, guides, coordinates, stats, models, uncertainty, and publication
+- **Companion scripts:** [`scripts/ggplot2-intro.R`](scripts/ggplot2-intro.R) (core) and [`scripts/ggplot2-advanced.R`](scripts/ggplot2-advanced.R) (advanced)
+- **Data:** `data/penguins.csv`, `data/gapminder.csv`, `data/SAFI_clean.csv`, `data/datasaurus.tsv`
 
 ## Topics Covered
 
-- **The Grammar of Graphics:** Layers, aesthetics (`aes`), geoms, scales, coordinates, and facets
-- **Common Plotting Pitfalls:** Dynamite plots (bar charts with error bars), truncated axes, misleading dual axes, and color choice
-- **Visualizing Distributions & Uncertainty:** Raincloud plots, violin plots, boxplots, and credible/confidence intervals
-- **Model-Based Visualizations:** Plotting predictions, marginal effects, and interactions from linear and mixed-effects models (`marginaleffects`, `ggeffects`)
-- **Polishing for Publication:** Theme customisation, font styling, accessible colour scales (viridis, ColorBrewer), multi-panel figures with `patchwork` or `cowplot`, and high-resolution exports
+**Core deck**
+
+- **The Grammar of Graphics:** layers, aesthetics (`aes`), geoms, statistics, scales, coordinates, and facets
+- **Common Plotting Pitfalls:** dynamite plots, truncated axes, overplotting, and misleading colour
+- **Mapping and grouping:** when a variable is mapped, when it is set, and how groups are implied
+- **Honest figures:** the limits of summary statistics and the design of readable plots
+
+**Advanced deck**
+
+- **Scales and guides:** transformations, limits versus zoom, coordinates, and direct labels
+- **Under the hood:** the plot object as a specification, statistics, and position adjustments
+- **Visualizing Uncertainty:** confidence versus prediction intervals, model predictions, marginal effects, and interactions (`marginaleffects`, `ggeffects`)
+- **Polishing for Publication:** theme customisation, accessible colour scales, multi-panel figures with `patchwork`, and high-resolution exports
 
 ## Session Details
 

@@ -8,8 +8,6 @@ library(tidyr)
 library(patchwork)
 library(scales)
 library(viridis)
-library(ggeffects)
-library(marginaleffects)
 
 penguins <- read.csv("data/penguins.csv")
 gapminder <- read.csv("data/gapminder.csv")
@@ -180,16 +178,20 @@ p_fill <- ggplot(pos_data, aes(species, fill = sex)) +
 
 # 9. Scales ------------------------------------------------------------------
 g2007 <- gapminder |> filter(year == 2007)
+dollar_k <- function(x) paste0("$", format(x / 1000, trim = TRUE, scientific = FALSE), "k")
 
 p_linear <- ggplot(g2007, aes(gdpPercap, lifeExp, colour = continent, size = pop)) +
   geom_point(alpha = 0.7) +
   scale_size_area(max_size = 7, guide = "none") +
+  scale_x_continuous(labels = dollar_k,
+                     breaks = c(0, 20000, 40000, 60000, 80000)) +
   labs(title = "Linear x scale", x = "GDP per capita", y = "Life expectancy",
        colour = NULL) +
   theme(legend.position = "right")
 
 p_log <- p_linear +
-  scale_x_log10(labels = label_dollar()) +
+  scale_x_log10(labels = dollar_k,
+                breaks = c(1000, 3000, 10000, 30000, 100000)) +
   labs(title = "Log10 x scale")
 
 # 10. Limits versus zoom -----------------------------------------------------
@@ -234,18 +236,7 @@ p_facet <- gapminder |>
   labs(x = NULL, y = "Life expectancy", title = "Small multiples by continent") +
   theme(panel.grid.minor = element_blank())
 
-# 13. Themes -----------------------------------------------------------------
-p_theme <- ggplot(penguins, aes(bill_length_mm, body_mass_g, colour = species)) +
-  geom_point(alpha = 0.7, size = 1.8) +
-  labs(title = "Same data, four themes", x = NULL, y = NULL) +
-  theme(legend.position = "none")
-
-p_th_min <- p_theme + theme_minimal(base_family = "Albert Sans", base_size = 13)
-p_th_bw <- p_theme + theme_bw(base_family = "Albert Sans", base_size = 13)
-p_th_classic <- p_theme + theme_classic(base_family = "Albert Sans", base_size = 13)
-p_th_dark <- p_theme + theme_dark(base_family = "Albert Sans", base_size = 13)
-
-# 14. Colour -----------------------------------------------------------------
+# 13. Colour -----------------------------------------------------------------
 p_col_default <- ggplot(penguins, aes(bill_length_mm, body_mass_g, colour = species)) +
   geom_point(alpha = 0.8, size = 1.8) +
   labs(title = "Default hue", x = NULL, y = NULL) +
@@ -259,7 +250,7 @@ p_col_okabe <- p_col_default +
   scale_colour_manual(values = c("#E69F00", "#56B4E9", "#009E73")) +
   labs(title = "Okabe–Ito")
 
-# 15. Dynamite versus raincloud ---------------------------------------------
+# 14. Dynamite versus raincloud ---------------------------------------------
 mass_summary <- penguins |>
   filter(!is.na(body_mass_g)) |>
   group_by(species) |>
@@ -299,43 +290,7 @@ p_raincloud <- penguins |>
        x = NULL, y = NULL, fill = NULL) +
   theme(legend.position = "bottom")
 
-# 16. Uncertainty from a model ----------------------------------------------
-fit <- lm(body_mass_g ~ flipper_length_mm * species, data = penguins)
-
-p_model <- plot_predictions(
-  fit,
-  condition = c("flipper_length_mm", "species"),
-  points = 0.35
-) +
-  labs(title = "Conditional predictions with 95% confidence bands",
-       x = "Flipper length (mm)", y = "Body mass (g)", colour = NULL, fill = NULL) +
-  theme(legend.position = "bottom")
-
-# 17. Composition ------------------------------------------------------------
-p_comp_a <- ggplot(penguins, aes(body_mass_g, fill = species)) +
-  geom_density(alpha = 0.4, colour = NA, show.legend = FALSE) +
-  labs(title = "Distribution", x = NULL, y = NULL) +
-  theme(legend.position = "none")
-
-p_comp_b <- ggplot(penguins, aes(species, body_mass_g, fill = species)) +
-  geom_boxplot(show.legend = FALSE, alpha = 0.8) +
-  labs(title = "Quantiles", x = NULL, y = NULL)
-
-p_comp_c <- ggplot(penguins, aes(flipper_length_mm, body_mass_g, colour = species)) +
-  geom_point(alpha = 0.7, size = 1.5) +
-  labs(title = "Relationship", x = NULL, y = NULL)
-
-p_comp_d <- penguins |>
-  count(island, species) |>
-  ggplot(aes(island, n, fill = species)) +
-  geom_col(position = "fill") +
-  labs(title = "Composition", x = NULL, y = NULL)
-
-p_composition <- (p_comp_a | p_comp_b) / (p_comp_c | p_comp_d) +
-  plot_annotation(tag_levels = "A") &
-  theme(legend.position = "bottom")
-
-# 18. Overplotting -----------------------------------------------------------
+# 15. Overplotting -----------------------------------------------------------
 set.seed(42)
 diamonds_small <- diamonds[sample(nrow(diamonds), 12000), ]
 
@@ -352,7 +307,7 @@ p_over_hex <- ggplot(diamonds_small, aes(carat, price)) +
   scale_fill_viridis_c(guide = "none") +
   labs(title = "geom_hex()", x = NULL, y = NULL)
 
-# 19. Distribution gallery ---------------------------------------------------
+# 16. Distribution gallery ---------------------------------------------------
 dist_a <- ggplot(penguins, aes(body_mass_g)) +
   geom_histogram(fill = uzk_blue, colour = "white", bins = 22) +
   labs(title = "Histogram", x = NULL, y = NULL)

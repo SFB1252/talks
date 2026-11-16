@@ -72,6 +72,7 @@ jobs:
           quarto render docs/workshops/28-data-management-plans-in-practice/slides.qmd
           quarto render docs/workshops/29-backups/slides.qmd
           quarto render docs/workshops/30-data-visualization-ggplot2/slides.qmd
+          quarto render docs/workshops/30-data-visualization-ggplot2/slides-advanced.qmd
           quarto render docs/resources/crc-day-2026/slides.qmd
 
       - name: Build site
@@ -139,6 +140,7 @@ jobs:
           quarto render docs/workshops/28-data-management-plans-in-practice/slides.qmd
           quarto render docs/workshops/29-backups/slides.qmd
           quarto render docs/workshops/30-data-visualization-ggplot2/slides.qmd
+          quarto render docs/workshops/30-data-visualization-ggplot2/slides-advanced.qmd
           quarto render docs/resources/crc-day-2026/slides.qmd
 
       - name: Test build

@@ -1,0 +1,1333 @@
+---
+title: "Data Visualization with ggplot2"
+subtitle: "Advanced topics: scales, models, uncertainty, and publication"
+author:
+  - name: "Job Schepens"
+    affiliation:
+      - name: Universität zu Köln
+        department: CRC 1252 Prominence in Language
+        city: Cologne, Germany
+date: "18 November 2026"
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: [default, ../../stylesheets/mytheme.scss]
+    logo: ../../logo.png
+    slide-number: true
+    scrollable: true
+    mouse-wheel: true
+    footer: "RDM Workshop Series · SFB 1252 Prominence in Language · Universität zu Köln"
+    output-file: slides-advanced.html
+    embed-resources: true
+    transition: none
+    background-transition: none
+    code-overflow: wrap
+bibliography: "references.bib"
+csl: "../24-latex-thesis-workflows/apa.csl"
+execute:
+  echo: false
+  warning: false
+  message: false
+  fig-dpi: 220
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(patchwork)
+library(scales)
+library(viridis)
+library(ggeffects)
+library(marginaleffects)
+
+systemfonts::register_font(
+  "Albert Sans",
+  plain  = "../../stylesheets/fonts/AlbertSans-400.ttf",
+  bold   = "../../stylesheets/fonts/AlbertSans-700.ttf",
+  italic = "../../stylesheets/fonts/AlbertSans-400.ttf"
+)
+knitr::opts_chunk$set(dev = "ragg_png", dev.args = list(bg = "white"))
+
+penguins  <- read.csv("data/penguins.csv")
+gapminder <- read.csv("data/gapminder.csv")
+safi      <- read.csv("data/SAFI_clean.csv")
+datasaurus <- read.delim("data/datasaurus.tsv")
+
+uzk_blue      <- "#005176"
+uzk_turquoise <- "#009dcc"
+uzk_coral     <- "#ea564f"
+uzk_muted     <- "#547685"
+
+theme_set(
+  theme_minimal(base_family = "Albert Sans", base_size = 15) +
+    theme(
+      panel.grid.minor = element_blank(),
+      plot.title.position = "plot",
+      plot.title = element_text(face = "bold", size = rel(1.05)),
+      plot.subtitle = element_text(colour = uzk_muted),
+      plot.caption = element_text(colour = uzk_muted, size = rel(0.75)),
+      legend.position = "bottom"
+    )
+)
+```
+
+---
+
+## Overview {.smaller}
+
+<style>
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-300.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-500.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-600.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-700.ttf") format("truetype");
+}
+
+/* Compact, readable slides */
+.reveal .slides section.smaller {
+  font-size: 0.66em;
+}
+.reveal table {
+  font-size: 0.70em;
+}
+.reveal pre code {
+  font-size: 0.60em;
+  line-height: 1.25;
+}
+.reveal .callout {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  padding: 0.3em 0.6em;
+  font-size: 0.80em;
+}
+.reveal h2 {
+  margin-top: 0;
+  margin-bottom: 0.35em;
+}
+.reveal h3 {
+  margin-top: 0.1em;
+  margin-bottom: 0.25em;
+}
+.reveal p {
+  margin-bottom: 0.45em;
+}
+.reveal ul, .reveal ol {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+.reveal li {
+  margin-top: 0.08em;
+  margin-bottom: 0.08em;
+}
+.reveal .columns {
+  gap: 1.1em;
+}
+.reveal .cell-output img {
+  border-radius: 4px;
+}
+
+/* Two-column reference list so the bibliography fits one slide */
+#refs {
+  column-count: 2;
+  column-gap: 1.6em;
+  font-size: 0.60em;
+  line-height: 1.25;
+}
+#refs .csl-entry {
+  break-inside: avoid;
+  margin-bottom: 0.35em;
+}
+</style>
+
+::: {.columns}
+
+::: {.column width="56%"}
+### Learning objectives
+
+By the end of this session, you can:
+
+1. **Control** scales, guides, limits, and coordinates deliberately.
+2. **Explain** how stats and positions change what a mark represents.
+3. **Plot** model predictions, slopes, and uncertainty with `marginaleffects` and `ggeffects`.
+4. **Compose**, export, and audit a publication-ready figure.
+
+### Session plan
+
+- **Scales and coordinates:** transformations, limits versus zoom, guides
+- **Under the hood:** the plot object, statistics, positions
+- **Models and uncertainty:** intervals, predictions, slopes, interactions
+- **Publication:** themes, composition, export, accessibility, ecosystem
+- **Hands-on:** a model plot and a composite figure
+
+:::
+
+::: {.column width="44%"}
+
+::: {.callout-note}
+### This is the sequel
+
+We assume you can build a plot with `aes()`, `geom_*()`, and `labs()`. The core workshop is `slides.qmd`.
+:::
+
+**Prerequisites:** the core workshop or equivalent experience with `ggplot2`.
+
+**Materials:** `slides-advanced.qmd`, `scripts/ggplot2-advanced.R`, and the `data/` folder.
+
+**Core deck:** `slides.qmd` covers perception, the grammar, mappings, geoms, facets, colour, and integrity traps.
+:::
+
+:::
+
+::: {.notes}
+This deck assumes the core vocabulary. Do not re-teach aes() and geom_*(); spend the time on the choices that change the statistical claim: scales, limits, statistics, positions, models, and composition.
+:::
+
+---
+
+## Part I: Scales, guides, coordinates {.center}
+
+### After this part: control the data-to-pixel mapping
+
+---
+
+## Scales: the bridge from data to pixels {.smaller}
+
+```{r}
+#| label: plot-scales
+#| fig-width: 9.6
+#| fig-height: 3.5
+g2007 <- gapminder |> filter(year == 2007)
+dollar_k <- function(x) paste0("$", format(x / 1000, trim = TRUE, scientific = FALSE), "k")
+
+p_linear <- ggplot(g2007, aes(gdpPercap, lifeExp,
+                              colour = continent, size = pop)) +
+  geom_point(alpha = 0.7) +
+  scale_size_area(max_size = 7, guide = "none") +
+  scale_x_continuous(labels = dollar_k,
+                     breaks = c(0, 20000, 40000, 60000, 80000)) +
+  labs(title = "Linear x scale", x = "GDP per capita",
+       y = "Life expectancy", colour = NULL) +
+  theme(legend.position = "right")
+
+p_log <- p_linear +
+  scale_x_log10(labels = dollar_k,
+                breaks = c(1000, 3000, 10000, 30000, 100000)) +
+  labs(title = "Log10 x scale")
+
+p_linear | p_log
+```
+
+::: {.columns}
+
+::: {.column width="55%"}
+### A scale is a function — with an inverse
+
+- **domain:** the data range
+- **range:** the visual range (pixels, colours, sizes)
+- **transformation:** linear, log, reverse, sqrt
+- **breaks and labels:** the reader-facing grid
+- **guide:** axis or legend
+
+`scale_*_*()` names follow `scale_<aesthetic>_<type>()`; scales also create the **guides** that let readers invert the mapping.
+:::
+
+::: {.column width="45%"}
+```r
+scale_x_log10()
+scale_colour_viridis_d()
+scale_fill_brewer(palette = "Set2")
+scale_size_area()
+scale_alpha_manual(values = c(.3, .7))
+```
+
+::: {.callout-important}
+### Transformations happen before stats
+
+`scale_x_log10()` changes the **data** seen by the stat, not just the axis. A smooth on a log scale is a different model from a smooth on the raw scale.
+:::
+:::
+
+:::
+
+::: {.notes}
+The gapminder example makes the log scale intuitive: GDP per capita spans several orders of magnitude, so the linear scale compresses most countries into the left edge. On the log scale, the relation with life expectancy becomes visible. Note that the size scale is also a scale, and size is a less accurate encoding than position.
+:::
+
+---
+
+## Limits are not zoom {.smaller}
+
+```{r}
+#| label: plot-limits
+#| fig-width: 9.6
+#| fig-height: 3.3
+p_base <- ggplot(penguins, aes(bill_length_mm, body_mass_g)) +
+  geom_point(alpha = 0.35, colour = uzk_blue) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE,
+              colour = uzk_coral, linewidth = 0.9)
+
+p_crop <- p_base +
+  scale_x_continuous(limits = c(40, 50)) +
+  labs(title = "scale_x_continuous(limits = ...)",
+       subtitle = "rows outside the limits are dropped")
+
+p_zoom <- p_base +
+  coord_cartesian(xlim = c(40, 50)) +
+  labs(title = "coord_cartesian(xlim = ...)",
+       subtitle = "all data are kept; the view is zoomed")
+
+p_crop | p_zoom
+```
+
+::: {.columns}
+
+::: {.column width="55%"}
+- `scale_*_*(limits = ...)` **removes** data outside the limits, then computes the stat. Means, smooths, and summaries change.
+- `coord_cartesian(xlim = ...)` **zooms** the viewport. All data contribute to the stat; only the visible window changes.
+:::
+
+::: {.column width="45%"}
+::: {.callout-warning}
+### Never truncate a bar chart's baseline
+
+Bars encode magnitude by **length from zero**. A truncated baseline violates proportional ink and exaggerates differences. Zooming is defensible for scatter plots and lines when the question is local — and when the caption says so.
+:::
+
+**Theory:** a coordinate system changes the **view**; a scale changes the **data-to-visual mapping**.
+:::
+
+:::
+
+::: {.notes}
+This is a subtle but important distinction. In the left panel the regression line is fitted only to the 40–50 mm subset, so the slope changes; in the right panel the line is fitted to all data and merely clipped. Ask which one answers "what is the relation in this range?" and which one answers "what is the overall relation?"
+:::
+
+---
+
+## Coordinates {.smaller}
+
+```{r}
+#| label: plot-coord
+#| fig-width: 9.6
+#| fig-height: 3.4
+p_bar_pie <- penguins |> count(species) |>
+  ggplot(aes(x = "", y = n, fill = species)) +
+  geom_col(width = 1, colour = "white") +
+  coord_polar(theta = "y") +
+  labs(title = "Pie chart", x = NULL, y = NULL) +
+  theme_void(base_family = "Albert Sans") +
+  theme(legend.position = "bottom",
+        plot.title = element_text(face = "bold", colour = uzk_blue))
+
+p_bar_flat <- penguins |> count(species) |>
+  ggplot(aes(n, species, fill = species)) +
+  geom_col(show.legend = FALSE, width = 0.65) +
+  labs(title = "Bar chart", x = NULL, y = NULL) +
+  theme(legend.position = "none")
+
+p_bar_pie | p_bar_flat
+```
+
+::: {.columns}
+
+::: {.column width="50%"}
+### The coordinate system is part of the grammar
+
+- `coord_cartesian()`: default Cartesian plane; zoom and set limits
+- `coord_fixed(ratio = ...)`: lock the aspect ratio; essential for maps and shapes
+- `coord_flip()`: swap axes (now usually replaced by mapping the discrete variable to *y*)
+- `coord_polar()`: wrap a linear axis around a circle
+- `coord_radial()`: modern radial coordinates with partial circles
+:::
+
+::: {.column width="50%"}
+::: {.callout-warning}
+### A pie chart is a stacked bar in polar coordinates
+
+Angle and area are less accurate than position and length [@cleveland1984graphical]. A pie works for a rough part-to-whole impression with two or three slices; it fails for precise comparison.
+
+**Better:** a bar or dot plot, sorted by value, with direct labels.
+:::
+
+**Theory:** coordinates transform the **plane**, not the data. The same marks can be arranged in a space that helps or hinders decoding.
+:::
+
+:::
+
+::: {.notes}
+The pie and bar show exactly the same counts. The bar is easier to compare because the bars share a common baseline and a common scale. If a pie is required by a journal or stakeholder, keep it to a few slices, order them, and label directly.
+:::
+
+---
+
+## Guides and legends {.smaller}
+
+::: {.columns}
+
+::: {.column width="48%"}
+### A guide is the inverse of a scale
+
+Axes, legends, and colourbars let the reader recover the data values from the marks.
+
+- `guides(colour = "none")` removes a guide but keeps the scale
+- `guide_legend(nrow = 1, override.aes = list(size = 3))` controls the keys
+- `guide_axis(angle = 45)` handles crowded labels
+- `theme(legend.position = "top")` moves the legend; `guides()` controls its content
+- direct labels often beat a legend, especially for few groups
+
+**Rule:** if the legend repeats information the reader can see on the marks, replace it with a direct label.
+:::
+
+::: {.column width="52%"}
+```{r}
+#| label: plot-guides
+#| fig-width: 5.4
+#| fig-height: 6.4
+counts <- penguins |> count(species)
+
+p_leg <- ggplot(counts, aes(species, n, fill = species)) +
+  geom_col(width = 0.65) +
+  scale_fill_viridis_d(end = 0.85, name = NULL) +
+  labs(title = "Legend", x = NULL, y = NULL) +
+  theme(legend.position = "bottom")
+
+p_dir <- ggplot(counts, aes(species, n, fill = species)) +
+  geom_col(width = 0.65, show.legend = FALSE) +
+  geom_text(aes(label = n), vjust = -0.4, size = 3.4) +
+  scale_fill_viridis_d(end = 0.85, guide = "none") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.14))) +
+  labs(title = "Direct labels", x = NULL, y = NULL) +
+  theme(legend.position = "none")
+
+p_leg / p_dir
+```
+:::
+
+:::
+
+::: {.notes}
+The two panels show the same counts. The top uses a legend; the bottom removes it and labels the values directly. Removing a guide is not the same as removing a scale: the fill scale still exists, it simply has no reader-facing key. Use guides() when you want to keep the scale but change or suppress its guide.
+:::
+
+---
+
+## Part II: The object, stats, positions {.center}
+
+### After this part: explain what a mark represents
+
+---
+
+## A plot is a specification {.smaller}
+
+::: {.columns}
+
+::: {.column width="52%"}
+### Nothing is drawn until it is rendered
+
+```r
+p <- ggplot(penguins,
+            aes(flipper_length_mm, body_mass_g)) +
+  geom_point()
+
+class(p)                 # "ggplot"
+length(p$layers)         # 1
+p                        # renders now
+ggplot_build(p)$data[[1]] # computed values
+```
+
+A `ggplot` object is a **list of specifications**. Building it does not draw pixels.
+
+Consequences:
+
+- layers can be added, removed, reused, and composed
+- `ggsave()` renders without displaying
+- `ggplot_build()` exposes the output of stats and scales
+- functions can return plots; loops and `purrr::map()` work
+- Quarto renders the object at the point where it is printed
+
+:::
+
+::: {.column width="48%"}
+### Why this matters for theory
+
+The separation of **specification** from **rendering** mirrors the grammar:
+
+1. declare the data and the mapping
+2. declare the transformation
+3. declare the scales and coordinates
+4. render
+
+This is also why debugging is possible: a wrong plot is usually a wrong *specification*, not a drawing bug.
+
+::: {.callout-tip}
+### Inspect the pipeline
+
+`ggplot_build(p)$data` shows what the stats computed; `ggplot_gtable()` shows the rendered grobs. Use them when a plot looks wrong and you cannot tell which layer is responsible.
+:::
+:::
+
+:::
+
+::: {.notes}
+This slide is the bridge from theory to practice. Emphasise that `p` is an object, not a side effect. If someone is used to base R, this is the conceptual shift: you describe the plot, then print it.
+:::
+
+---
+
+## Statistical transformations {.smaller}
+
+::: {.columns}
+
+::: {.column width="52%"}
+### A stat computes a new data frame
+
+Every geom has a default stat; every stat has a default geom.
+
+| Geom | Default stat | Computed variables |
+|---|---|---|
+| `geom_bar` | `stat_count` | `count`, `prop` |
+| `geom_histogram` | `stat_bin` | `count`, `density` |
+| `geom_boxplot` | `stat_boxplot` | `ymin`, `lower`, `middle`, `upper`, `ymax`, `outliers` |
+| `geom_smooth` | `stat_smooth` | `y`, `ymin`, `ymax`, `se` |
+| `geom_density` | `stat_density` | `density`, `count`, `scaled` |
+
+`stat_ecdf()` is the exception: its default geom is `geom_step()`.
+
+`after_stat()` maps a **computed** variable; `..count..` is the older syntax.
+
+:::
+
+::: {.column width="48%"}
+```r
+# counts (default)
+ggplot(diamonds, aes(cut)) +
+  geom_bar()
+
+# proportions, computed by the stat
+ggplot(diamonds, aes(cut)) +
+  geom_bar(aes(y = after_stat(prop),
+               group = 1))
+
+# identity: the data already contain y
+ggplot(penguins, aes(species, n)) +
+  geom_col()
+```
+
+```{r}
+#| label: plot-stat
+#| fig-width: 4.4
+#| fig-height: 3.2
+ggplot(diamonds, aes(cut)) +
+  geom_bar(fill = uzk_blue) +
+  scale_x_discrete(labels = function(x) gsub(" ", "\n", x)) +
+  labs(x = "Cut", y = "Count",
+       title = "geom_bar() computes counts",
+       subtitle = "stat_count(); no y supplied")
+```
+
+**Theory:** statistics are **first-class** plot components. A bar chart of counts is a statistical claim, not a raw data display.
+:::
+
+:::
+
+::: {.notes}
+This is where the grammar pays off: `geom_bar()` vs `geom_col()` is not a quirky naming detail, it is `stat_count()` vs `stat_identity()`. If you supply y, you probably want `geom_col()`. If you want proportions, let the stat compute them rather than pre-summarising by hand.
+:::
+
+---
+
+## Position adjustments {.smaller}
+
+```{r}
+#| label: plot-positions
+#| fig-width: 9.6
+#| fig-height: 3.6
+pos_data <- penguins |> filter(!is.na(sex))
+
+p_identity <- ggplot(pos_data, aes(species, fill = sex)) +
+  geom_bar(position = "identity", alpha = 0.55) +
+  labs(title = "identity (overlap)", x = NULL, y = NULL)
+
+p_dodge <- ggplot(pos_data, aes(species, fill = sex)) +
+  geom_bar(position = "dodge") +
+  labs(title = "dodge (side by side)", x = NULL, y = NULL)
+
+p_stack <- ggplot(pos_data, aes(species, fill = sex)) +
+  geom_bar(position = "stack") +
+  labs(title = "stack (parts of total)", x = NULL, y = NULL)
+
+p_fill <- ggplot(pos_data, aes(species, fill = sex)) +
+  geom_bar(position = "fill") +
+  labs(title = "fill (proportions)", x = NULL, y = NULL)
+
+(p_identity | p_dodge) / (p_stack | p_fill)
+```
+
+::: {.columns}
+
+::: {.column width="50%"}
+- `identity`: marks overlap; use transparency to reveal density
+- `dodge`: compare adjacent categories; `preserve = "single"` when a group is absent
+- `stack`: totals; only the bottom segment shares a baseline
+:::
+
+::: {.column width="50%"}
+- `fill`: conditional proportions; the total disappears
+- `jitter` / `jitterdodge`: separate coincident points
+- `position_*()` operates **after** the stat
+
+::: {.callout-warning}
+### Stacking changes the question
+
+A stacked bar encodes **counts**; a filled bar encodes **proportions**. They are not interchangeable.
+:::
+:::
+
+:::
+
+::: {.notes}
+The four panels use the same data and the same stat. Only the position changes. Ask which panel answers "which species has more females?" and which answers "what proportion of each species is female?" The answer differs, and the visualisation should differ too.
+:::
+
+---
+
+## Part III: Models and uncertainty {.center}
+
+### After this part: plot a model and name its interval
+
+---
+
+## What error bars actually mean {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Four different intervals
+
+| Quantity | What it describes | Typical use |
+|---|---|---|
+| **SD** | spread of observations | reference range, prediction |
+| **SE** | precision of an estimated mean | error bar around a mean |
+| **95% CI** | repeated-sampling coverage of a parameter | inference about a mean or effect |
+| **95% CrI** | posterior probability of a parameter | Bayesian inference |
+| **PI** | spread of future observations | prediction, not estimation |
+
+::: {.callout-warning}
+An error bar without a label is not information. "Mean ± SE" and "mean ± SD" can differ by a factor of $\sqrt{n}$.
+:::
+
+**Theory:** an interval is a claim about a **target**. The target can be an observation, a mean, an effect, or a future observation. The plot must name it.
+:::
+
+::: {.column width="50%"}
+### Within-subject data need within-subject intervals
+
+Between-subject CIs are too wide when the same participants contribute to every condition; they include stable individual differences.
+
+- normalise per participant, then compute the CI [@morey2008confidence]
+- bootstrap participants, not observations
+- plot **by-participant** effects or paired differences
+- use a multilevel model and plot its predictions
+
+**Default trap:** `stat_summary(fun.data = mean_se)` is between-subject.
+
+**Preferred:** `plot_predictions(fit, condition = "condition")`.
+
+::: {.callout-tip}
+When *N* is small, show every observation. A mean and an error bar can hide a bimodal or skewed distribution.
+:::
+:::
+
+:::
+
+::: {.notes}
+The key distinction is target: SD describes data, SE describes an estimate, CI describes a procedure, CrI describes a posterior. Many published error bars are unlabelled, which makes them uninterpretable. For within-subject designs, the default `mean_se` is between-subject and therefore conservative; use a model or within-subject normalisation.
+:::
+
+---
+
+## Model-based visualization {.smaller}
+
+::: {.columns}
+
+::: {.column width="45%"}
+### Plot the model, not only the means
+
+A model-based plot shows **conditional expectations** and their uncertainty.
+
+```r
+fit <- lm(body_mass_g ~ flipper_length_mm * species,
+          data = penguins)
+
+# conditional predictions (ggeffects)
+ggpredict(fit, terms = c("flipper_length_mm", "species"))
+
+# counterfactual predictions (marginaleffects)
+plot_predictions(fit,
+  condition = c("flipper_length_mm", "species"))
+
+plot_slopes(fit, variables = "flipper_length_mm",
+            condition = "species")
+```
+
+- `ggpredict()`: holds other predictors at typical values
+- `marginaleffects`: averages over the observed sample by default
+- `plot_slopes()`: the quantity of interest is a **slope**, not a level
+:::
+
+::: {.column width="55%"}
+```{r}
+#| label: plot-model
+#| fig-width: 6.6
+#| fig-height: 4.2
+fit <- lm(body_mass_g ~ flipper_length_mm * species, data = penguins)
+
+plot_predictions(
+  fit,
+  condition = c("flipper_length_mm", "species"),
+  points = 0.35
+) +
+  labs(title = "Conditional predictions with 95% confidence bands",
+       x = "Flipper length (mm)", y = "Body mass (g)",
+       colour = NULL, fill = NULL) +
+  theme(legend.position = "bottom")
+```
+
+::: {.callout-important}
+**Interaction is scale-dependent.** Non-parallel lines on the **link** scale indicate an interaction; on the response scale, a logit model can show divergent curves even with no link-scale interaction. Plot on the scale you want to interpret — and say which one.
+:::
+:::
+
+:::
+
+::: {.notes}
+This slide connects visualisation to modelling. The plot shows three lines with different slopes: the relation between flipper length and body mass differs by species. `ggpredict` and `marginaleffects` answer slightly different questions; both are legitimate, but the caption must say which. The confidence bands are for the mean, not for new observations — a common confusion.
+:::
+
+---
+
+## Uncertainty from a model {.smaller}
+
+::: {.columns}
+
+::: {.column width="55%"}
+```{r}
+#| label: plot-uncertainty-model
+#| fig-width: 6.4
+#| fig-height: 4.6
+ggplot(ggeffects::ggpredict(
+  fit, terms = c("flipper_length_mm", "species")
+), aes(x, predicted, colour = group, fill = group)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high),
+              alpha = 0.18, colour = NA) +
+  geom_line(linewidth = 0.9) +
+  labs(title = "Average predictions with 95% CIs",
+       x = "Flipper length (mm)", y = "Body mass (g)",
+       colour = NULL, fill = NULL) +
+  theme(legend.position = "bottom")
+```
+
+:::
+
+::: {.column width="45%"}
+### Three layers of evidence
+
+A good model plot can show all three:
+
+1. **raw observations** — the data and their spread
+2. **conditional mean** — the fitted relation
+3. **uncertainty** — a confidence band for the mean
+
+```r
+plot_predictions(
+  fit,
+  condition = c("flipper_length_mm", "species"),
+  points = 0.35
+)
+```
+
+::: {.callout-important}
+### Name the interval
+
+- CI for the **mean**: narrower; answers "where is the average?"
+- PI for an **observation**: wider; answers "where will a new case fall?"
+- CrI: a posterior probability statement, not a repeated-sampling one
+
+`geom_smooth(se = TRUE)` gives a CI for the mean, not a prediction interval.
+:::
+
+:::
+
+:::
+
+::: {.notes}
+This is the same model as the previous slide, plotted with `ggpredict` rather than `marginaleffects`. The practical difference is usually small for a simple linear model, but the interpretation differs: `ggpredict` holds other predictors at typical values; `marginaleffects` averages over the sample. The band is for the mean. If you want to show where new observations fall, add a prediction interval or plot the raw points.
+:::
+
+---
+
+## Marginal effects and interactions {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Predictions, slopes, comparisons
+
+A model is a function. Different plots ask different questions of it:
+
+- **prediction:** what outcome do we expect at these values?
+- **slope:** how much does the outcome change per unit of *x*?
+- **comparison:** what is the difference between two conditions?
+
+`marginaleffects` computes all three on the scale you choose.
+
+```r
+plot_slopes(fit, variables = "flipper_length_mm",
+            condition = "species")
+
+plot_comparisons(fit,
+  variables = list(flipper_length_mm = c(190, 210)),
+  by = "species")
+```
+
+An interaction means the **slope** depends on the group. A plot of predictions can show it; a plot of slopes names it.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: plot-slopes
+#| fig-width: 6.4
+#| fig-height: 4.2
+plot_slopes(fit, variables = "flipper_length_mm",
+            condition = "species") +
+  labs(title = "Slope of body mass on flipper length",
+       x = "Species", y = "Slope (g per mm)",
+       colour = NULL, fill = NULL) +
+  theme(legend.position = "none")
+```
+
+::: {.callout-important}
+### The scale is part of the claim
+
+A slope on the link scale is not a slope on the response scale. For a logistic model, a constant log-odds slope becomes a varying probability slope. State the scale in the caption.
+:::
+:::
+
+:::
+
+::: {.notes}
+The model is the same as the previous two slides. Predictions show levels; slopes show rates of change. The Gentoo slope is much steeper, which is the interaction. plot_comparisons() is often easier to communicate: it reports the difference between two flipper lengths within each species. Always say whether the interval is for a prediction, a slope, or a comparison.
+:::
+
+---
+
+## Part IV: Composition and publication {.center}
+
+### After this part: assemble, export, and audit a figure
+
+---
+
+## Themes change the non-data ink {.smaller}
+
+```{r}
+#| label: plot-themes
+#| fig-width: 9.6
+#| fig-height: 3.3
+p_theme <- ggplot(penguins, aes(bill_length_mm, body_mass_g,
+                                colour = species)) +
+  geom_point(alpha = 0.7, size = 1.8) +
+  labs(title = "Same data, four themes", x = NULL, y = NULL) +
+  theme(legend.position = "none")
+
+th_min <- p_theme + theme_minimal(base_family = "Albert Sans", base_size = 12)
+th_bw <- p_theme + theme_bw(base_family = "Albert Sans", base_size = 12)
+th_classic <- p_theme + theme_classic(base_family = "Albert Sans", base_size = 12)
+th_dark <- p_theme + theme_dark(base_family = "Albert Sans", base_size = 12)
+
+(th_min | th_bw) / (th_classic | th_dark)
+```
+
+::: {.columns}
+
+::: {.column width="52%"}
+### The theme is a separate layer
+
+- `theme_minimal()`, `theme_bw()`, `theme_classic()`, `theme_void()`
+- `theme_set()` changes the default for the session
+- `theme()` overrides one element on one plot
+- elements form a hierarchy: `plot.title`, `axis.text`, `panel.grid`, `legend.position`
+
+The theme changes **non-data ink**, not the data or the statistical claim.
+:::
+
+::: {.column width="48%"}
+```r
+theme_uzk <- function(base_size = 15) {
+  theme_minimal(base_family = "Albert Sans",
+                base_size = base_size) +
+    theme(panel.grid.minor = element_blank(),
+          legend.position = "bottom")
+}
+theme_set(theme_uzk())
+```
+
+::: {.callout-tip}
+Write a **house theme** once. Reuse it in every figure. Consistency is a form of reproducibility.
+:::
+:::
+
+:::
+
+::: {.notes}
+Themes do not change the data or the statistical claim; they change readability. The dark theme is included only to show that a theme can invert the figure-ground relationship. For publication, prefer a light background with restrained gridlines and direct labels.
+:::
+
+---
+
+## Composition: multiple panels, one figure {.smaller}
+
+::: {.columns}
+
+::: {.column width="58%"}
+```{r}
+#| label: plot-composition
+#| fig-width: 8.8
+#| fig-height: 4.6
+p_a <- ggplot(penguins, aes(body_mass_g, fill = species)) +
+  geom_density(alpha = 0.4, colour = NA, show.legend = FALSE) +
+  labs(title = "Distribution", x = NULL, y = NULL)
+
+p_b <- ggplot(penguins, aes(species, body_mass_g, fill = species)) +
+  geom_boxplot(show.legend = FALSE, alpha = 0.8) +
+  labs(title = "Quantiles", x = NULL, y = NULL)
+
+p_c <- ggplot(penguins, aes(flipper_length_mm, body_mass_g,
+                            colour = species)) +
+  geom_point(alpha = 0.7, size = 1.5) +
+  labs(title = "Relationship", x = NULL, y = NULL)
+
+p_d <- penguins |> count(island, species) |>
+  ggplot(aes(island, n, fill = species)) +
+  geom_col(position = "fill") +
+  labs(title = "Composition", x = NULL, y = NULL)
+
+(p_a | p_b) / (p_c | p_d) +
+  plot_annotation(tag_levels = "A") &
+  theme(legend.position = "bottom")
+```
+
+:::
+
+::: {.column width="42%"}
+### The figure is a layout, too
+
+`patchwork` composes ggplot objects with operators: `p1 + p2`, `p1 | p2`, `p1 / p2`, `(p1 | p2) / p3`.
+
+```r
+(p1 | p2) / (p3 | p4) +
+  plot_annotation(
+    tag_levels = "A",
+    title = "A composite figure"
+  ) +
+  plot_layout(
+    guides = "collect",
+    widths = c(1, 1),
+    heights = c(1, 1)
+  )
+```
+
+- `plot_layout(guides = "collect")`: one shared legend
+- `& theme(...)`: apply a theme to every panel
+- `cowplot::plot_grid()` and `ggdraw()` are alternatives, especially for insets
+- compose panels only when they answer **one** question
+:::
+
+:::
+
+::: {.notes}
+The four panels show four different views of the same data. Tags A–D let the caption refer to panels. `guides = "collect"` avoids four copies of the same legend. If the panels need different themes or scales, check whether they belong in the same figure at all.
+:::
+
+---
+
+## Export without losing the plot {.smaller}
+
+::: {.columns}
+
+::: {.column width="52%"}
+### Save at the final size
+
+```r
+ggsave(
+  filename = "figures/penguins-mass.png",
+  plot = p_first,
+  width = 16, height = 10, units = "cm",
+  dpi = 300,
+  bg = "white",
+  device = ragg::agg_png
+)
+```
+
+- `width`, `height`, `units`: the **printed** dimensions
+- `dpi = 300` (or 600) for raster; vector formats ignore dpi
+- `bg = "white"` avoids transparent backgrounds in Word
+- pass `plot =` explicitly in scripts; the default is the last plot
+- `ragg::agg_png` gives better text and anti-aliasing than the default PNG device
+- `svglite::svglite` for SVG; `cairo_pdf` for PDF with embedded fonts
+- **design at final size:** do not export large and shrink in Word
+:::
+
+::: {.column width="48%"}
+### Format choice
+
+| Format | Use for | Notes |
+|---|---|---|
+| PDF | journal submission, vector | fonts must be embedded |
+| SVG | web, editable vector | good browser support |
+| PNG | slides, web, raster images | 300–600 dpi |
+| TIFF | journal requirements | often LZW compression |
+| EPS | legacy workflows | avoid for new work |
+
+### A pre-export checklist
+
+- [ ] final dimensions and resolution
+- [ ] fonts embedded or outlined
+- [ ] colour profile (RGB or CMYK)
+- [ ] text readable at 100%; grayscale check
+- [ ] caption names *N*, interval, and source
+- [ ] meaningful, versioned file name
+:::
+
+:::
+
+::: {.notes}
+The most common export problem is not resolution but sizing: a figure designed at 20 cm wide and shrunk to 8 cm has unreadable labels. Design at the final size. For journals, check whether they require vector or raster, RGB or CMYK, and embedded fonts. Keep the code that produced the figure, not just the figure.
+:::
+
+---
+
+## Accessibility and integrity checklist {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Before you plot
+
+- [ ] What is the **question**?
+- [ ] What is the **unit** of observation?
+- [ ] Which variables are **encoded**, and how?
+- [ ] Is the **scale** common and honest?
+- [ ] Are **raw data** and **uncertainty** shown?
+
+### Colour and perception
+
+- [ ] Colour-vision-deficiency safe; sufficient contrast
+- [ ] Colour is not the **only** encoding
+- [ ] Sequential, diverging, and qualitative palettes used correctly
+- [ ] Print in grayscale still works
+
+:::
+
+::: {.column width="50%"}
+### Text and context
+
+- [ ] Direct labels and units where possible
+- [ ] Readable font size at final size
+- [ ] Caption states *N*, interval, and source
+- [ ] Alt text for the web
+
+### Integrity
+
+- [ ] Bars start at zero
+- [ ] No dual axes without a strong justification
+- [ ] No 3-D distortion or chartjunk
+- [ ] No causal overclaim; code and data available
+
+::: {.callout-important}
+**The test:** can a reader who missed the talk understand the figure — including what is uncertain — without asking you?
+:::
+:::
+
+:::
+
+::: {.notes}
+This checklist is deliberately long; nobody applies all of it to every exploratory plot. Use the first column for analysis and the full list for publication. The final test is comprehension without the talk.
+:::
+
+---
+
+## The ecosystem {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Core and scales
+
+- **ggplot2** — grammar, geoms, scales, themes
+- **scales** — breaks, labels, transformations
+- **viridis** — perceptually uniform palettes
+- **colorspace** — HCL colour spaces, CVD checks
+
+### Distributions and uncertainty
+
+- **ggdist** — half-eye, dot, gradient, and interval geoms [@kay2024ggdist]
+- **ggridges** — ridgeline plots
+- **bayesplot** — posterior diagnostics
+- **ggeffects** — tidy marginal predictions [@ludecke2018ggeffects]
+- **marginaleffects** — predictions, slopes, comparisons [@arel2024marginaleffects]
+
+:::
+
+::: {.column width="50%"}
+### Composition and annotation
+
+- **patchwork** — compose and align panels
+- **cowplot** — grids, insets, annotations
+- **ggrepel** — non-overlapping labels
+- **ggtext** — rich text and markdown in labels
+
+### Data, maps, and interaction
+
+- **sf** — simple features and maps
+- **ggraph** — networks and trees
+- **plotly** — interactive HTML plots
+- **gt** — publication tables
+
+::: {.callout-tip}
+Browse the [ggplot2 extension gallery](https://exts.ggplot2.tidyverse.org/gallery/) before writing a new geom. Someone has probably solved your problem.
+:::
+:::
+
+:::
+
+::: {.notes}
+Do not install everything. Start with ggplot2 + scales + patchwork + one uncertainty package. Add an extension when the grammar cannot express the mark you need. Check maintenance status and whether the extension is on CRAN.
+:::
+
+---
+
+## Hands-on: model, compose, export {.smaller}
+
+::: {.columns}
+
+::: {.column width="55%"}
+### 20 minutes, in pairs
+
+Use `data/penguins.csv`.
+
+1. **Fit** `lm(body_mass_g ~ flipper_length_mm * sex)` and plot predictions. Does the interaction change the interpretation?
+2. **Plot slopes** with `plot_slopes()`. Which group has the steepest relation?
+3. **Compose** two panels with `patchwork` and collect the legend.
+4. **Export** at 16 × 10 cm, 300 dpi. Is the text readable at final size?
+5. **Audit** the figure: is the interval a CI or a PI? Is colour the only encoding?
+
+::: {.callout-tip}
+### Hints
+
+- `plot_predictions(fit, condition = c("flipper_length_mm", "sex"))`
+- `plot_slopes(fit, variables = "flipper_length_mm", condition = "sex")`
+- `(p1 | p2) + plot_layout(guides = "collect")`
+- `ggsave(..., width = 16, height = 10, units = "cm", dpi = 300)`
+:::
+:::
+
+::: {.column width="45%"}
+### Starter code
+
+```r
+library(ggplot2)
+library(patchwork)
+library(marginaleffects)
+penguins <- read.csv("data/penguins.csv")
+
+fit <- lm(body_mass_g ~ flipper_length_mm * sex,
+          data = penguins)
+
+p1 <- plot_predictions(fit,
+  condition = c("flipper_length_mm", "sex"))
+p2 <- plot_slopes(fit,
+  variables = "flipper_length_mm", condition = "sex")
+
+(p1 | p2) + plot_layout(guides = "collect")
+
+ggsave("figure.png", width = 16, height = 10,
+       units = "cm", dpi = 300)
+```
+
+::: {.callout-note}
+Write the caption: what is the interval, what is the scale, and what would change if the model were wrong?
+:::
+:::
+
+:::
+
+::: {.notes}
+If time is short, do tasks 1 and 3. The common errors here are a confidence band described as a prediction interval, a slope on the link scale interpreted on the response scale, and a composite figure whose panels answer different questions.
+:::
+
+---
+
+## Five takeaways {.smaller}
+
+::: {.columns}
+
+::: {.column width="55%"}
+### What to remember
+
+1. **Scales are functions.** Transformations change the data seen by the stat; limits remove data; coordinates only zoom.
+2. **The object is a specification.** Separating building from rendering makes plots composable and debuggable.
+3. **Stats and positions define the mark.** `geom_bar()` counts; `geom_col()` uses your values; position changes the question.
+4. **Model plots are conditional claims.** Predictions, slopes, and comparisons answer different questions; name the interval and the scale.
+5. **Composition and export are part of the argument.** A figure that cannot be read at final size, or by a colour-blind reader, is not finished.
+
+:::
+
+::: {.column width="45%"}
+::: {.callout-important}
+### The model is not the plot
+
+A plot of predictions is a view of a model, not the model itself. Show the data, the fitted relation, and the uncertainty — and say which interval the band represents.
+:::
+
+**Next steps**
+
+- Read the [ggplot2 book](https://ggplot2-book.org/) chapters on scales, guides, and extensions.
+- Try `ggdist`, `patchwork`, `ggeffects`, and `marginaleffects` on your own data.
+- Audit one figure from your last paper with the accessibility checklist.
+- Bring a model or a composite figure to the next RDM session.
+
+:::
+
+:::
+
+::: {.notes}
+The advanced deck ends where publication begins. The grammar is still the transferable skill; the new material is about controlling the mapping, representing a model, and assembling a figure that survives review.
+:::
+
+---
+
+## Further reading {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Models and uncertainty
+
+- [ggeffects: tidy marginal predictions](https://strengejacke.github.io/ggeffects/) [@ludecke2018ggeffects]
+- [marginaleffects: predictions, slopes, comparisons](https://marginaleffects.com/) [@arel2024marginaleffects]
+- [ggdist: visual distributions and uncertainty](https://mjskay.github.io/ggdist/) [@kay2024ggdist]
+- [Tufte (1983), *The Visual Display of Quantitative Information*](https://www.edwardtufte.com/tufte/books_vdqi) [@tufte1983visual]
+
+### Scales and grammar
+
+- [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/) [@wickham2024ggplot2]
+- Wilkinson (2005), *The Grammar of Graphics* [@wilkinson2005grammar]
+- Wickham (2010), *A Layered Grammar of Graphics* [@wickham2010layered]
+- Cleveland & McGill (1984), *Graphical Perception* [@cleveland1984graphical]
+
+:::
+
+::: {.column width="50%"}
+### Composition and publication
+
+- [patchwork: compose and align panels](https://patchwork.data-imaginist.com/)
+- [cowplot: grids, insets, annotations](https://wilkelab.org/cowplot/)
+- [The R Graph Gallery](https://r-graph-gallery.com/)
+- [From Data to Viz](https://www.data-to-viz.com/)
+- [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/) [@wilke2019fundamentals]
+
+### Practice
+
+- [ggplot2 extension gallery](https://exts.ggplot2.tidyverse.org/gallery/)
+- [R for Data Science (2e): Data Visualization](https://r4ds.hadley.nz/data-visualize) [@wickham2023r4ds]
+- [Healy (2018), *Data Visualization: A Practical Introduction*](https://socviz.co/) [@healy2018dataviz]
+
+::: {.callout-note}
+### Local files
+
+`materials/` contains offline HTML snapshots of the core tutorials; see `materials/README.md` for provenance.
+:::
+:::
+
+:::
+
+::: {.notes}
+The methods references are the ones to read next if you plot models. The composition references are practical; the theory references explain why the grammar is worth learning.
+:::
+
+---
+
+## Acknowledgements {.smaller}
+
+::: {.columns}
+
+::: {.column width="58%"}
+We thank the [Data Center for the Humanities (DCH)](https://dch.phil-fak.uni-koeln.de/) and the [Cologne Competence Center for Research Data Management (C3RDM)](https://fdm.uni-koeln.de/home) for their input and advice on the content of this workshop.
+
+Thanks also to the open-source community behind `ggplot2`, the tidyverse, `patchwork`, `ggeffects`, `marginaleffects`, and the data providers: [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/), [Gapminder](https://www.gapminder.org/), [Software Carpentry](https://swcarpentry.github.io/), [Data Carpentry](https://datacarpentry.github.io/), and [datasauRus](https://github.com/lockedata/datasauRus).
+
+**Contact:** [job.schepens@uni-koeln.de](mailto:job.schepens@uni-koeln.de)
+
+**Materials:** [SFB 1252 talks repository](https://github.com/SFB1252/talks)
+:::
+
+::: {.column width="42%"}
+::: {.callout-note}
+### Reuse
+
+- Slides: CC BY 4.0
+- Code: MIT
+- Data: see `data/README.md`
+- Downloaded reference materials: see `materials/README.md`
+
+If you reuse the slides, please keep the attribution and the data-source notes.
+:::
+
+**Next workshop:** [Data Visualization with Other Tools](../31-data-visualization-other-tools/index.md)
+:::
+
+:::
+
+::: {.notes}
+Thank the partners and the data providers. Remind participants that the repository contains the source, not just the rendered slides. Feedback is welcome via email or the repository issue tracker.
+:::
+
+---
+
+## References {.smaller}
+
+::: {#refs}
+:::

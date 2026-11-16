@@ -1,0 +1,56 @@
+# Link-check configuration for lychee.
+# Replaces the former linkspector config; full option list: lychee.example.toml upstream.
+
+timeout = 20            # seconds per request
+max_retries = 3
+retry_wait_time = 2
+max_concurrency = 8
+max_redirects = 10
+
+# Healthy status codes (was aliveStatusCodes). 403 is accepted because some
+# sites block automated clients; without it those links would fail every run.
+accept = ["200", "201", "204", "206", "301", "302", "304", "403"]
+
+# Also validate heading anchors, matching what linkspector checked.
+include_fragments = "full"
+
+extensions = ["md"]
+exclude_path = ["(^|/)site/", "(^|/)node_modules/", "(^|/)\\.git/"]
+
+# MkDocs source uses directory-style URLs (e.g. agenda/winter-2025-26-schedule/)
+# in raw HTML. Resolve those against the corresponding .md source file.
+fallback_extensions = ["md", "html"]
+index_files = ["index.md", "index.html"]
+
+exclude = [
+  # Local / non-HTTP targets
+  '^https?://localhost',
+  '^https?://127\.0\.0\.1',
+  '^https://example\.com',
+  '^mailto:',
+  '^tel:',
+  '^javascript:',
+  '^webcal://',
+
+  # Social media (frequently bot-blocked)
+  'discord\.gg',
+  'twitter\.com',
+  'linkedin\.com',
+  'facebook\.com',
+
+  # Generated or non-HTML file references
+  '\.pptx$',
+  '\.pdf$',
+  'Automatic%20',
+  'georgis-LLM',
+  'slides\.html$',
+
+  # Known-broken or inaccessible from CI (carried over from the linkspector config)
+  'https://farm\.pcibex\.ne/p/XmseQO/',
+  'https://uni-koeln\.sciebo\.de/f/990545907',
+  'https://www\.clarin-d\.net',
+  'https://www\.unesco\.org/en/artificial-intelligence',
+  'https://web\.dev/mobile',
+  'https://standards\.ieee\.org/initiatives/artificial-intelligence-systems',
+  'https://archive\.mpi\.nl/tla/elan',
+]

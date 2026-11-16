@@ -1,65 +1,60 @@
-name: Weekly Link Check for Educational Resources
+name: Link Check for Educational Resources
 
 on:
   schedule:
     - cron: '0 2 * * 1'  # Weekly on Monday at 2 AM UTC
-  push:                   # Run on every push to main
+  push:
     branches:
       - main
+    paths:
+      - 'docs/**'
+      - '**/*.md'
+      - '.lychee.toml'
+      - '.github/workflows/weekly-link-check.yml'
   workflow_dispatch:     # Allow manual trigger
+
+permissions:
+  contents: read
+
+concurrency:
+  group: link-check
+  cancel-in-progress: true
 
 jobs:
   link-check:
     runs-on: ubuntu-latest
     name: Check All Documentation Links
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-    
+    timeout-minutes: 15
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v6
+      - name: Checkout code
+        uses: actions/checkout@v6
 
-    - name: Install Chrome
-      uses: browser-actions/setup-chrome@v2
-      id: setup-chrome
-
-    - name: Configure AppArmor for Chrome sandbox
-      # Ubuntu 24.04 runners restrict unprivileged user namespaces via AppArmor,
-      # which prevents Chrome from launching. This disables that restriction.
-      run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
-
-    - name: Run linkspector
-      uses: umbrelladocs/action-linkspector@v1
-      env:
-        PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        reporter: github-check
-        fail_level: warning
-        config_file: '.linkspector.yml'
-        show_stats: true
+      - name: Check links with lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --verbose './**/*.md'
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   link-summary:
     runs-on: ubuntu-latest
     name: Link Check Summary
     needs: [link-check]
     if: always()
-    
+
     steps:
-    - name: Generate summary
-      run: |
-        echo "## 📊 Weekly Link Check Summary" >> $GITHUB_STEP_SUMMARY
-        echo "Link check completed for SFB 1252 Workshop Series" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "### Areas Checked:" >> $GITHUB_STEP_SUMMARY
-        echo "- ✅ Workshop content and documentation" >> $GITHUB_STEP_SUMMARY
-        echo "- ✅ Main site pages and agenda" >> $GITHUB_STEP_SUMMARY
-        echo "- ✅ Educational resources and onboarding" >> $GITHUB_STEP_SUMMARY
-        echo "- ✅ Presenter resources and templates" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "### Next Steps:" >> $GITHUB_STEP_SUMMARY
-        echo "- Review any failed checks above" >> $GITHUB_STEP_SUMMARY
-        echo "- Update broken links in workshop materials" >> $GITHUB_STEP_SUMMARY
-        echo "- Consider archiving outdated external resources" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "*This check runs weekly to ensure educational content remains accessible.*" >> $GITHUB_STEP_SUMMARY
+      - name: Generate summary
+        run: |
+          {
+            echo "## 📊 Link Check Summary"
+            echo ""
+            echo "| Field | Value |"
+            echo "| --- | --- |"
+            echo "| Result | ${{ needs['link-check'].result }} |"
+            echo "| Trigger | ${{ github.event_name }} |"
+            echo "| Commit | ${GITHUB_SHA::7} |"
+            echo ""
+            echo "Detailed results are in the **Check links with lychee** step summary of the link-check job."
+            echo ""
+            echo "*Runs weekly to ensure educational content remains accessible, and on pushes that touch docs or the link-check config.*"
+          } >> "$GITHUB_STEP_SUMMARY"

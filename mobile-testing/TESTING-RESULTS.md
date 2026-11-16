@@ -113,7 +113,7 @@ The SFB 1252 Workshop Series website is **highly functional and well-documented*
 | Missing iCal/Google Calendar links | UX Enhancement | Open | Add calendar subscription option |
 | TESTING-RESULTS.md missing | Documentation | Fixed | Created this file |
 | docs/contributing.md missing | Documentation | Open | Create contribution guidelines |
-| Some external links unreachable | External | Expected | Document in linkspector config |
+| Some external links unreachable | External | Expected | Document in `.lychee.toml` |
 
 ---
 
