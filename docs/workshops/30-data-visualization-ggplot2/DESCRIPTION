@@ -1,0 +1,22 @@
+Package: workshop30dataviz
+Title: Data Visualization with ggplot2
+Version: 0.0.1
+Authors@R: person("Job", "Schepens", role = c("aut", "cre"), email = "jobschepens@uni-koeln.de")
+Description: R dependencies used to render the Workshop 30 slides and companion script.
+License: MIT
+Encoding: UTF-8
+Imports:
+    dplyr,
+    ggeffects,
+    ggplot2,
+    hexbin,
+    knitr,
+    marginaleffects,
+    patchwork,
+    ragg,
+    rmarkdown,
+    scales,
+    svglite,
+    systemfonts,
+    tidyr,
+    viridis

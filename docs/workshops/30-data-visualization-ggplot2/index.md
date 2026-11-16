@@ -37,6 +37,36 @@ Effective data visualization is central to communicating research findings accur
 - **Location:** House of Prominence, Attic (Top floor), Luxemburger Str. 299, Cologne
 - **Speaker:** Job Schepens
 
+## Primary Sources & Further Reading
+
+**Core references**
+
+- [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2.tidyverse.org/#) — The official ggplot2 documentation and book
+- [R for Data Science (2e): Data Visualization](https://r4ds.hadley.nz/data-visualize) — Wickham's introduction to visualisation with ggplot2
+
+**Recommended starting point**
+
+- [Data Visualization chapter, Rstats Textbook](https://elenlefoll.github.io/RstatsTextbook/10_Dataviz.html) — Elen Le Foll's accessible introduction
+
+**Tutorials**
+
+- [DataCamp: Data Visualization with R skill track](https://app.datacamp.com/learn/skill-tracks/data-visualization-with-r)
+- [Data visualization course materials, University of Cologne (ILIAS)](https://www.edulabs.uni-koeln.de/ilias.php?baseClass=ilrepositorygui&ref_id=21663)
+- [Software Carpentry: Plotting with ggplot2](https://swcarpentry.github.io/r-novice-gapminder/08-plot-ggplot2.html)
+- [Data Carpentry: Data Visualization with ggplot2](https://datacarpentry.github.io/r-socialsci/05-ggplot2.html)
+- [QCBS R Workshop 3: ggplot2](https://r.qcbs.ca/workshop03/book-en/references.html)
+
+**Examples & inspiration**
+
+- [From Data to Viz](https://www.data-to-viz.com/)
+- [The R Graph Gallery](https://r-graph-gallery.com/)
+- [ggplot2 extension gallery](https://exts.ggplot2.tidyverse.org/gallery/)
+
+**Theory & foundations**
+
+- [R Graphics Cookbook](https://r-graphics.org/) — Practical recipes and reference for base R and ggplot2 graphics
+- Wilkinson, Leland. 2005. *The Grammar of Graphics* (Statistics and Computing). Secaucus, NJ, USA: Springer-Verlag New York, Inc.
+
 ## Related CRC 1252 Workshops
 
 - **[Workshop 07: Coding in R Basics](../07-coding-r-basics/index.md)** — Getting started with R
@@ -47,4 +77,3 @@ Effective data visualization is central to communicating research findings accur
 ---
 
 [← Back to Workshop Overview](../index.md)
-

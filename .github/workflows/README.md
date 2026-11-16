@@ -8,6 +8,7 @@ This directory contains automated workflows for the SFB 1252 Research Data & Met
 **Triggers:** Push to `main` (full deploy), pull requests to `main` (test build only)
 
 - Renders Quarto presentations (`slides.qmd` → `slides.html`) before the MkDocs build
+- Sets up R and installs the packages listed in `docs/workshops/30-data-visualization-ggplot2/DESCRIPTION` (Workshop 30 uses live R chunks)
 - Builds the MkDocs site and deploys to GitHub Pages (main branch only)
 - PR builds run the same steps without deploying, to catch regressions early
 
@@ -42,6 +43,8 @@ This directory contains automated workflows for the SFB 1252 Research Data & Met
 | `actions/setup-node` | `@v6` | Latest as of May 2026 (v6.4.0) |
 | `actions/cache` | `@v5` | v5 runs on Node.js 24 runtime |
 | `quarto-dev/quarto-actions/setup` | `@v2` | Internally pins `actions/cache` at a SHA that uses Node.js 20 |
+| `r-lib/actions/setup-r` | `@v2` | R toolchain for the Workshop 30 slides |
+| `r-lib/actions/setup-r-dependencies` | `@v2` | Installs the DESCRIPTION dependencies with caching |
 
 ### Node.js deprecation warning
 `quarto-dev/quarto-actions/setup@v2` internally uses a SHA-pinned `actions/cache` that still runs on Node.js 20. This is not directly upgradeable. Both jobs in `deploy.yml` set:

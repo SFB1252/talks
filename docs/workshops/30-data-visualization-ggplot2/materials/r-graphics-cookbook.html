@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>R Graphics Cookbook, 2nd edition</title>
+  <meta name="description" content="This cookbook contains more than 150 recipes to help scientists, engineers, programmers, and data analysts generate high-quality graphs quickly—without having to comb through all the details of R’s graphing systems. Each recipe tackles a specific problem with a solution you can apply to your own project and includes a discussion of how and why the recipe works." />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="R Graphics Cookbook, 2nd edition" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://r-graphics.org/cover.jpg" />
+  <meta property="og:description" content="This cookbook contains more than 150 recipes to help scientists, engineers, programmers, and data analysts generate high-quality graphs quickly—without having to comb through all the details of R’s graphing systems. Each recipe tackles a specific problem with a solution you can apply to your own project and includes a discussion of how and why the recipe works." />
+  <meta name="github-repo" content="wch/rgcookbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Graphics Cookbook, 2nd edition" />
+  <meta name="twitter:site" content="@winston_chang" />
+  <meta name="twitter:description" content="This cookbook contains more than 150 recipes to help scientists, engineers, programmers, and data analysts generate high-quality graphs quickly—without having to comb through all the details of R’s graphing systems. Each recipe tackles a specific problem with a solution you can apply to your own project and includes a discussion of how and why the recipe works." />
+  <meta name="twitter:image" content="https://r-graphics.org/cover.jpg" />
+
+<meta name="author" content="Winston Chang" />
+
+
+<meta name="date" content="2026-11-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="preface.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><strong><a href="./">R Graphics Cookbook</a></strong></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="recipes.html"><a href="recipes.html"><i class="fa fa-check"></i><b>0.1</b> Recipes</a></li>
+<li class="chapter" data-level="0.2" data-path="software-and-platform-notes.html"><a href="software-and-platform-notes.html"><i class="fa fa-check"></i><b>0.2</b> Software and Platform Notes</a></li>
+<li class="chapter" data-level="0.3" data-path="conventions-used-in-this-book.html"><a href="conventions-used-in-this-book.html"><i class="fa fa-check"></i><b>0.3</b> Conventions Used in This Book</a></li>
+<li class="chapter" data-level="0.4" data-path="using-code-examples.html"><a href="using-code-examples.html"><i class="fa fa-check"></i><b>0.4</b> Using Code Examples</a></li>
+<li class="chapter" data-level="0.5" data-path="how-to-contact-us.html"><a href="how-to-contact-us.html"><i class="fa fa-check"></i><b>0.5</b> How to Contact Us</a></li>
+<li class="chapter" data-level="0.6" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i><b>0.6</b> Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="CHAPTER-R-BASICS.html"><a href="CHAPTER-R-BASICS.html"><i class="fa fa-check"></i><b>1</b> R Basics</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="installing-a-package.html"><a href="installing-a-package.html"><i class="fa fa-check"></i><b>1.1</b> Installing a Package</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="installing-a-package.html"><a href="installing-a-package.html#problem"><i class="fa fa-check"></i><b>1.1.1</b> Problem</a></li>
+<li class="chapter" data-level="1.1.2" data-path="installing-a-package.html"><a href="installing-a-package.html#solution"><i class="fa fa-check"></i><b>1.1.2</b> Solution</a></li>
+<li class="chapter" data-level="1.1.3" data-path="installing-a-package.html"><a href="installing-a-package.html#discussion"><i class="fa fa-check"></i><b>1.1.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="loading-a-package.html"><a href="loading-a-package.html"><i class="fa fa-check"></i><b>1.2</b> Loading a Package</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="loading-a-package.html"><a href="loading-a-package.html#problem-1"><i class="fa fa-check"></i><b>1.2.1</b> Problem</a></li>
+<li class="chapter" data-level="1.2.2" data-path="loading-a-package.html"><a href="loading-a-package.html#solution-1"><i class="fa fa-check"></i><b>1.2.2</b> Solution</a></li>
+<li class="chapter" data-level="1.2.3" data-path="loading-a-package.html"><a href="loading-a-package.html#discussion-1"><i class="fa fa-check"></i><b>1.2.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="upgrading-packages.html"><a href="upgrading-packages.html"><i class="fa fa-check"></i><b>1.3</b> Upgrading Packages</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="upgrading-packages.html"><a href="upgrading-packages.html#problem-2"><i class="fa fa-check"></i><b>1.3.1</b> Problem</a></li>
+<li class="chapter" data-level="1.3.2" data-path="upgrading-packages.html"><a href="upgrading-packages.html#solution-2"><i class="fa fa-check"></i><b>1.3.2</b> Solution</a></li>
+<li class="chapter" data-level="1.3.3" data-path="upgrading-packages.html"><a href="upgrading-packages.html#discussion-2"><i class="fa fa-check"></i><b>1.3.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="loading-a-delimited-text-data-file.html"><a href="loading-a-delimited-text-data-file.html"><i class="fa fa-check"></i><b>1.4</b> Loading a Delimited Text Data File</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="loading-a-delimited-text-data-file.html"><a href="loading-a-delimited-text-data-file.html#problem-3"><i class="fa fa-check"></i><b>1.4.1</b> Problem</a></li>
+<li class="chapter" data-level="1.4.2" data-path="loading-a-delimited-text-data-file.html"><a href="loading-a-delimited-text-data-file.html#solution-3"><i class="fa fa-check"></i><b>1.4.2</b> Solution</a></li>
+<li class="chapter" data-level="1.4.3" data-path="loading-a-delimited-text-data-file.html"><a href="loading-a-delimited-text-data-file.html#discussion-3"><i class="fa fa-check"></i><b>1.4.3</b> Discussion</a></li>
+<li class="chapter" data-level="1.4.4" data-path="loading-a-delimited-text-data-file.html"><a href="loading-a-delimited-text-data-file.html#see-also"><i class="fa fa-check"></i><b>1.4.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="loading-data-from-an-excel-file.html"><a href="loading-data-from-an-excel-file.html"><i class="fa fa-check"></i><b>1.5</b> Loading Data from an Excel File</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="loading-data-from-an-excel-file.html"><a href="loading-data-from-an-excel-file.html#problem-4"><i class="fa fa-check"></i><b>1.5.1</b> Problem</a></li>
+<li class="chapter" data-level="1.5.2" data-path="loading-data-from-an-excel-file.html"><a href="loading-data-from-an-excel-file.html#solution-4"><i class="fa fa-check"></i><b>1.5.2</b> Solution</a></li>
+<li class="chapter" data-level="1.5.3" data-path="loading-data-from-an-excel-file.html"><a href="loading-data-from-an-excel-file.html#discussion-4"><i class="fa fa-check"></i><b>1.5.3</b> Discussion</a></li>
+<li class="chapter" data-level="1.5.4" data-path="loading-data-from-an-excel-file.html"><a href="loading-data-from-an-excel-file.html#see-also-1"><i class="fa fa-check"></i><b>1.5.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="loading-data-from-spsssasstata-files.html"><a href="loading-data-from-spsssasstata-files.html"><i class="fa fa-check"></i><b>1.6</b> Loading Data from SPSS/SAS/Stata Files</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="loading-data-from-spsssasstata-files.html"><a href="loading-data-from-spsssasstata-files.html#problem-5"><i class="fa fa-check"></i><b>1.6.1</b> Problem</a></li>
+<li class="chapter" data-level="1.6.2" data-path="loading-data-from-spsssasstata-files.html"><a href="loading-data-from-spsssasstata-files.html#solution-5"><i class="fa fa-check"></i><b>1.6.2</b> Solution</a></li>
+<li class="chapter" data-level="1.6.3" data-path="loading-data-from-spsssasstata-files.html"><a href="loading-data-from-spsssasstata-files.html#discussion-5"><i class="fa fa-check"></i><b>1.6.3</b> Discussion</a></li>
+<li class="chapter" data-level="1.6.4" data-path="loading-data-from-spsssasstata-files.html"><a href="loading-data-from-spsssasstata-files.html#see-also-2"><i class="fa fa-check"></i><b>1.6.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="RECIPE-R-BASICS-PIPE.html"><a href="RECIPE-R-BASICS-PIPE.html"><i class="fa fa-check"></i><b>1.7</b> Chaining Functions Together With <code>%&gt;%</code>, the Pipe Operator</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="RECIPE-R-BASICS-PIPE.html"><a href="RECIPE-R-BASICS-PIPE.html#problem-6"><i class="fa fa-check"></i><b>1.7.1</b> Problem</a></li>
+<li class="chapter" data-level="1.7.2" data-path="RECIPE-R-BASICS-PIPE.html"><a href="RECIPE-R-BASICS-PIPE.html#solution-6"><i class="fa fa-check"></i><b>1.7.2</b> Solution</a></li>
+<li class="chapter" data-level="1.7.3" data-path="RECIPE-R-BASICS-PIPE.html"><a href="RECIPE-R-BASICS-PIPE.html#discussion-6"><i class="fa fa-check"></i><b>1.7.3</b> Discussion</a></li>
+<li class="chapter" data-level="1.7.4" data-path="RECIPE-R-BASICS-PIPE.html"><a href="RECIPE-R-BASICS-PIPE.html#see-also-3"><i class="fa fa-check"></i><b>1.7.4</b> See Also</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="CHAPTER-QUICK.html"><a href="CHAPTER-QUICK.html"><i class="fa fa-check"></i><b>2</b> Quickly Exploring Data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="RECIPE-QUICK-SCATTER.html"><a href="RECIPE-QUICK-SCATTER.html"><i class="fa fa-check"></i><b>2.1</b> Creating a Scatter Plot</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="RECIPE-QUICK-SCATTER.html"><a href="RECIPE-QUICK-SCATTER.html#problem-7"><i class="fa fa-check"></i><b>2.1.1</b> Problem</a></li>
+<li class="chapter" data-level="2.1.2" data-path="RECIPE-QUICK-SCATTER.html"><a href="RECIPE-QUICK-SCATTER.html#solution-7"><i class="fa fa-check"></i><b>2.1.2</b> Solution</a></li>
+<li class="chapter" data-level="2.1.3" data-path="RECIPE-QUICK-SCATTER.html"><a href="RECIPE-QUICK-SCATTER.html#see-also-4"><i class="fa fa-check"></i><b>2.1.3</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="RECIPE-QUICK-LINE.html"><a href="RECIPE-QUICK-LINE.html"><i class="fa fa-check"></i><b>2.2</b> Creating a Line Graph</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="RECIPE-QUICK-LINE.html"><a href="RECIPE-QUICK-LINE.html#problem-8"><i class="fa fa-check"></i><b>2.2.1</b> Problem</a></li>
+<li class="chapter" data-level="2.2.2" data-path="RECIPE-QUICK-LINE.html"><a href="RECIPE-QUICK-LINE.html#solution-8"><i class="fa fa-check"></i><b>2.2.2</b> Solution</a></li>
+<li class="chapter" data-level="2.2.3" data-path="RECIPE-QUICK-LINE.html"><a href="RECIPE-QUICK-LINE.html#see-also-5"><i class="fa fa-check"></i><b>2.2.3</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="RECIPE-QUICK-BAR.html"><a href="RECIPE-QUICK-BAR.html"><i class="fa fa-check"></i><b>2.3</b> Creating a Bar Graph</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="RECIPE-QUICK-BAR.html"><a href="RECIPE-QUICK-BAR.html#problem-9"><i class="fa fa-check"></i><b>2.3.1</b> Problem</a></li>
+<li class="chapter" data-level="2.3.2" data-path="RECIPE-QUICK-BAR.html"><a href="RECIPE-QUICK-BAR.html#solution-9"><i class="fa fa-check"></i><b>2.3.2</b> Solution</a></li>
+<li class="chapter" data-level="2.3.3" data-path="RECIPE-QUICK-BAR.html"><a href="RECIPE-QUICK-BAR.html#see-also-6"><i class="fa fa-check"></i><b>2.3.3</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="RECIPE-QUICK-HISTOGRAM.html"><a href="RECIPE-QUICK-HISTOGRAM.html"><i class="fa fa-check"></i><b>2.4</b> Creating a Histogram</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="RECIPE-QUICK-HISTOGRAM.html"><a href="RECIPE-QUICK-HISTOGRAM.html#problem-10"><i class="fa fa-check"></i><b>2.4.1</b> Problem</a></li>
+<li class="chapter" data-level="2.4.2" data-path="RECIPE-QUICK-HISTOGRAM.html"><a href="RECIPE-QUICK-HISTOGRAM.html#solution-10"><i class="fa fa-check"></i><b>2.4.2</b> Solution</a></li>
+<li class="chapter" data-level="2.4.3" data-path="RECIPE-QUICK-HISTOGRAM.html"><a href="RECIPE-QUICK-HISTOGRAM.html#see-also-7"><i class="fa fa-check"></i><b>2.4.3</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="RECIPE-QUICK-BOXPLOT.html"><a href="RECIPE-QUICK-BOXPLOT.html"><i class="fa fa-check"></i><b>2.5</b> Creating a Box Plot</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="RECIPE-QUICK-BOXPLOT.html"><a href="RECIPE-QUICK-BOXPLOT.html#problem-11"><i class="fa fa-check"></i><b>2.5.1</b> Problem</a></li>
+<li class="chapter" data-level="2.5.2" data-path="RECIPE-QUICK-BOXPLOT.html"><a href="RECIPE-QUICK-BOXPLOT.html#solution-11"><i class="fa fa-check"></i><b>2.5.2</b> Solution</a></li>
+<li class="chapter" data-level="2.5.3" data-path="RECIPE-QUICK-BOXPLOT.html"><a href="RECIPE-QUICK-BOXPLOT.html#see-also-8"><i class="fa fa-check"></i><b>2.5.3</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="RECIPE-QUICK-FUNCTION.html"><a href="RECIPE-QUICK-FUNCTION.html"><i class="fa fa-check"></i><b>2.6</b> Plotting a Function Curve</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="RECIPE-QUICK-FUNCTION.html"><a href="RECIPE-QUICK-FUNCTION.html#problem-12"><i class="fa fa-check"></i><b>2.6.1</b> Problem</a></li>
+<li class="chapter" data-level="2.6.2" data-path="RECIPE-QUICK-FUNCTION.html"><a href="RECIPE-QUICK-FUNCTION.html#solution-12"><i class="fa fa-check"></i><b>2.6.2</b> Solution</a></li>
+<li class="chapter" data-level="2.6.3" data-path="RECIPE-QUICK-FUNCTION.html"><a href="RECIPE-QUICK-FUNCTION.html#see-also-9"><i class="fa fa-check"></i><b>2.6.3</b> See Also</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="CHAPTER-BAR-GRAPH.html"><a href="CHAPTER-BAR-GRAPH.html"><i class="fa fa-check"></i><b>3</b> Bar Graphs</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="RECIPE-BAR-GRAPH-BASIC-BAR.html"><a href="RECIPE-BAR-GRAPH-BASIC-BAR.html"><i class="fa fa-check"></i><b>3.1</b> Making a Basic Bar Graph</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="RECIPE-BAR-GRAPH-BASIC-BAR.html"><a href="RECIPE-BAR-GRAPH-BASIC-BAR.html#problem-13"><i class="fa fa-check"></i><b>3.1.1</b> Problem</a></li>
+<li class="chapter" data-level="3.1.2" data-path="RECIPE-BAR-GRAPH-BASIC-BAR.html"><a href="RECIPE-BAR-GRAPH-BASIC-BAR.html#solution-13"><i class="fa fa-check"></i><b>3.1.2</b> Solution</a></li>
+<li class="chapter" data-level="3.1.3" data-path="RECIPE-BAR-GRAPH-BASIC-BAR.html"><a href="RECIPE-BAR-GRAPH-BASIC-BAR.html#discussion-7"><i class="fa fa-check"></i><b>3.1.3</b> Discussion</a></li>
+<li class="chapter" data-level="3.1.4" data-path="RECIPE-BAR-GRAPH-BASIC-BAR.html"><a href="RECIPE-BAR-GRAPH-BASIC-BAR.html#see-also-10"><i class="fa fa-check"></i><b>3.1.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="RECIPE-BAR-GRAPH-GROUPED-BAR.html"><a href="RECIPE-BAR-GRAPH-GROUPED-BAR.html"><i class="fa fa-check"></i><b>3.2</b> Grouping Bars Together</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="RECIPE-BAR-GRAPH-GROUPED-BAR.html"><a href="RECIPE-BAR-GRAPH-GROUPED-BAR.html#problem-14"><i class="fa fa-check"></i><b>3.2.1</b> Problem</a></li>
+<li class="chapter" data-level="3.2.2" data-path="RECIPE-BAR-GRAPH-GROUPED-BAR.html"><a href="RECIPE-BAR-GRAPH-GROUPED-BAR.html#solution-14"><i class="fa fa-check"></i><b>3.2.2</b> Solution</a></li>
+<li class="chapter" data-level="3.2.3" data-path="RECIPE-BAR-GRAPH-GROUPED-BAR.html"><a href="RECIPE-BAR-GRAPH-GROUPED-BAR.html#discussion-8"><i class="fa fa-check"></i><b>3.2.3</b> Discussion</a></li>
+<li class="chapter" data-level="3.2.4" data-path="RECIPE-BAR-GRAPH-GROUPED-BAR.html"><a href="RECIPE-BAR-GRAPH-GROUPED-BAR.html#see-also-11"><i class="fa fa-check"></i><b>3.2.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="RECIPE-BAR-GRAPH-COUNTS.html"><a href="RECIPE-BAR-GRAPH-COUNTS.html"><i class="fa fa-check"></i><b>3.3</b> Making a Bar Graph of Counts</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="RECIPE-BAR-GRAPH-COUNTS.html"><a href="RECIPE-BAR-GRAPH-COUNTS.html#problem-15"><i class="fa fa-check"></i><b>3.3.1</b> Problem</a></li>
+<li class="chapter" data-level="3.3.2" data-path="RECIPE-BAR-GRAPH-COUNTS.html"><a href="RECIPE-BAR-GRAPH-COUNTS.html#solution-15"><i class="fa fa-check"></i><b>3.3.2</b> Solution</a></li>
+<li class="chapter" data-level="3.3.3" data-path="RECIPE-BAR-GRAPH-COUNTS.html"><a href="RECIPE-BAR-GRAPH-COUNTS.html#discussion-9"><i class="fa fa-check"></i><b>3.3.3</b> Discussion</a></li>
+<li class="chapter" data-level="3.3.4" data-path="RECIPE-BAR-GRAPH-COUNTS.html"><a href="RECIPE-BAR-GRAPH-COUNTS.html#see-also-12"><i class="fa fa-check"></i><b>3.3.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="RECIPE-BAR-GRAPH-COLORS.html"><a href="RECIPE-BAR-GRAPH-COLORS.html"><i class="fa fa-check"></i><b>3.4</b> Using Colors in a Bar Graph</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="RECIPE-BAR-GRAPH-COLORS.html"><a href="RECIPE-BAR-GRAPH-COLORS.html#problem-16"><i class="fa fa-check"></i><b>3.4.1</b> Problem</a></li>
+<li class="chapter" data-level="3.4.2" data-path="RECIPE-BAR-GRAPH-COLORS.html"><a href="RECIPE-BAR-GRAPH-COLORS.html#solution-16"><i class="fa fa-check"></i><b>3.4.2</b> Solution</a></li>
+<li class="chapter" data-level="3.4.3" data-path="RECIPE-BAR-GRAPH-COLORS.html"><a href="RECIPE-BAR-GRAPH-COLORS.html#discussion-10"><i class="fa fa-check"></i><b>3.4.3</b> Discussion</a></li>
+<li class="chapter" data-level="3.4.4" data-path="RECIPE-BAR-GRAPH-COLORS.html"><a href="RECIPE-BAR-GRAPH-COLORS.html#see-also-13"><i class="fa fa-check"></i><b>3.4.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="RECIPE-BAR-GRAPH-COLOR-NEG.html"><a href="RECIPE-BAR-GRAPH-COLOR-NEG.html"><i class="fa fa-check"></i><b>3.5</b> Coloring Negative and Positive Bars Differently</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="RECIPE-BAR-GRAPH-COLOR-NEG.html"><a href="RECIPE-BAR-GRAPH-COLOR-NEG.html#problem-17"><i class="fa fa-check"></i><b>3.5.1</b> Problem</a></li>
+<li class="chapter" data-level="3.5.2" data-path="RECIPE-BAR-GRAPH-COLOR-NEG.html"><a href="RECIPE-BAR-GRAPH-COLOR-NEG.html#solution-17"><i class="fa fa-check"></i><b>3.5.2</b> Solution</a></li>
+<li class="chapter" data-level="3.5.3" data-path="RECIPE-BAR-GRAPH-COLOR-NEG.html"><a href="RECIPE-BAR-GRAPH-COLOR-NEG.html#discussion-11"><i class="fa fa-check"></i><b>3.5.3</b> Discussion</a></li>
+<li class="chapter" data-level="3.5.4" data-path="RECIPE-BAR-GRAPH-COLOR-NEG.html"><a href="RECIPE-BAR-GRAPH-COLOR-NEG.html#see-also-14"><i class="fa fa-check"></i><b>3.5.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="RECIPE-BAR-GRAPH-ADJUST-WIDTH.html"><a href="RECIPE-BAR-GRAPH-ADJUST-WIDTH.html"><i class="fa fa-check"></i><b>3.6</b> Adjusting Bar Width and Spacing</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="RECIPE-BAR-GRAPH-ADJUST-WIDTH.html"><a href="RECIPE-BAR-GRAPH-ADJUST-WIDTH.html#problem-18"><i class="fa fa-check"></i><b>3.6.1</b> Problem</a></li>
+<li class="chapter" data-level="3.6.2" data-path="RECIPE-BAR-GRAPH-ADJUST-WIDTH.html"><a href="RECIPE-BAR-GRAPH-ADJUST-WIDTH.html#solution-18"><i class="fa fa-check"></i><b>3.6.2</b> Solution</a></li>
+<li class="chapter" data-level="3.6.3" data-path="RECIPE-BAR-GRAPH-ADJUST-WIDTH.html"><a href="RECIPE-BAR-GRAPH-ADJUST-WIDTH.html#discussion-12"><i class="fa fa-check"></i><b>3.6.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="RECIPE-BAR-GRAPH-STACKED-BAR.html"><a href="RECIPE-BAR-GRAPH-STACKED-BAR.html"><i class="fa fa-check"></i><b>3.7</b> Making a Stacked Bar Graph</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="RECIPE-BAR-GRAPH-STACKED-BAR.html"><a href="RECIPE-BAR-GRAPH-STACKED-BAR.html#problem-19"><i class="fa fa-check"></i><b>3.7.1</b> Problem</a></li>
+<li class="chapter" data-level="3.7.2" data-path="RECIPE-BAR-GRAPH-STACKED-BAR.html"><a href="RECIPE-BAR-GRAPH-STACKED-BAR.html#solution-19"><i class="fa fa-check"></i><b>3.7.2</b> Solution</a></li>
+<li class="chapter" data-level="3.7.3" data-path="RECIPE-BAR-GRAPH-STACKED-BAR.html"><a href="RECIPE-BAR-GRAPH-STACKED-BAR.html#discussion-13"><i class="fa fa-check"></i><b>3.7.3</b> Discussion</a></li>
+<li class="chapter" data-level="3.7.4" data-path="RECIPE-BAR-GRAPH-STACKED-BAR.html"><a href="RECIPE-BAR-GRAPH-STACKED-BAR.html#see-also-15"><i class="fa fa-check"></i><b>3.7.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="RECIPE-BAR-GRAPH-PROPORTIONAL-STACKED-BAR.html"><a href="RECIPE-BAR-GRAPH-PROPORTIONAL-STACKED-BAR.html"><i class="fa fa-check"></i><b>3.8</b> Making a Proportional Stacked Bar Graph</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="RECIPE-BAR-GRAPH-PROPORTIONAL-STACKED-BAR.html"><a href="RECIPE-BAR-GRAPH-PROPORTIONAL-STACKED-BAR.html#problem-20"><i class="fa fa-check"></i><b>3.8.1</b> Problem</a></li>
+<li class="chapter" data-level="3.8.2" data-path="RECIPE-BAR-GRAPH-PROPORTIONAL-STACKED-BAR.html"><a href="RECIPE-BAR-GRAPH-PROPORTIONAL-STACKED-BAR.html#solution-20"><i class="fa fa-check"></i><b>3.8.2</b> Solution</a></li>
+<li class="chapter" data-level="3.8.3" data-path="RECIPE-BAR-GRAPH-PROPORTIONAL-STACKED-BAR.html"><a href="RECIPE-BAR-GRAPH-PROPORTIONAL-STACKED-BAR.html#discussion-14"><i class="fa fa-check"></i><b>3.8.3</b> Discussion</a></li>
+<li class="chapter" data-level="3.8.4" data-path="RECIPE-BAR-GRAPH-PROPORTIONAL-STACKED-BAR.html"><a href="RECIPE-BAR-GRAPH-PROPORTIONAL-STACKED-BAR.html#see-also-16"><i class="fa fa-check"></i><b>3.8.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="RECIPE-BAR-GRAPH-LABELS.html"><a href="RECIPE-BAR-GRAPH-LABELS.html"><i class="fa fa-check"></i><b>3.9</b> Adding Labels to a Bar Graph</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="RECIPE-BAR-GRAPH-LABELS.html"><a href="RECIPE-BAR-GRAPH-LABELS.html#problem-21"><i class="fa fa-check"></i><b>3.9.1</b> Problem</a></li>
+<li class="chapter" data-level="3.9.2" data-path="RECIPE-BAR-GRAPH-LABELS.html"><a href="RECIPE-BAR-GRAPH-LABELS.html#solution-21"><i class="fa fa-check"></i><b>3.9.2</b> Solution</a></li>
+<li class="chapter" data-level="3.9.3" data-path="RECIPE-BAR-GRAPH-LABELS.html"><a href="RECIPE-BAR-GRAPH-LABELS.html#discussion-15"><i class="fa fa-check"></i><b>3.9.3</b> Discussion</a></li>
+<li class="chapter" data-level="3.9.4" data-path="RECIPE-BAR-GRAPH-LABELS.html"><a href="RECIPE-BAR-GRAPH-LABELS.html#see-also-17"><i class="fa fa-check"></i><b>3.9.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="RECIPE-BAR-GRAPH-DOT-PLOT.html"><a href="RECIPE-BAR-GRAPH-DOT-PLOT.html"><i class="fa fa-check"></i><b>3.10</b> Making a Cleveland Dot Plot</a>
+<ul>
+<li class="chapter" data-level="3.10.1" data-path="RECIPE-BAR-GRAPH-DOT-PLOT.html"><a href="RECIPE-BAR-GRAPH-DOT-PLOT.html#problem-22"><i class="fa fa-check"></i><b>3.10.1</b> Problem</a></li>
+<li class="chapter" data-level="3.10.2" data-path="RECIPE-BAR-GRAPH-DOT-PLOT.html"><a href="RECIPE-BAR-GRAPH-DOT-PLOT.html#solution-22"><i class="fa fa-check"></i><b>3.10.2</b> Solution</a></li>
+<li class="chapter" data-level="3.10.3" data-path="RECIPE-BAR-GRAPH-DOT-PLOT.html"><a href="RECIPE-BAR-GRAPH-DOT-PLOT.html#discussion-16"><i class="fa fa-check"></i><b>3.10.3</b> Discussion</a></li>
+<li class="chapter" data-level="3.10.4" data-path="RECIPE-BAR-GRAPH-DOT-PLOT.html"><a href="RECIPE-BAR-GRAPH-DOT-PLOT.html#see-also-18"><i class="fa fa-check"></i><b>3.10.4</b> See Also</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="CHAPTER-LINE-GRAPH.html"><a href="CHAPTER-LINE-GRAPH.html"><i class="fa fa-check"></i><b>4</b> Line Graphs</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="RECIPE-LINE-GRAPH-BASIC-LINE.html"><a href="RECIPE-LINE-GRAPH-BASIC-LINE.html"><i class="fa fa-check"></i><b>4.1</b> Making a Basic Line Graph</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="RECIPE-LINE-GRAPH-BASIC-LINE.html"><a href="RECIPE-LINE-GRAPH-BASIC-LINE.html#problem-23"><i class="fa fa-check"></i><b>4.1.1</b> Problem</a></li>
+<li class="chapter" data-level="4.1.2" data-path="RECIPE-LINE-GRAPH-BASIC-LINE.html"><a href="RECIPE-LINE-GRAPH-BASIC-LINE.html#solution-23"><i class="fa fa-check"></i><b>4.1.2</b> Solution</a></li>
+<li class="chapter" data-level="4.1.3" data-path="RECIPE-LINE-GRAPH-BASIC-LINE.html"><a href="RECIPE-LINE-GRAPH-BASIC-LINE.html#discussion-17"><i class="fa fa-check"></i><b>4.1.3</b> Discussion</a></li>
+<li class="chapter" data-level="4.1.4" data-path="RECIPE-LINE-GRAPH-BASIC-LINE.html"><a href="RECIPE-LINE-GRAPH-BASIC-LINE.html#see-also-19"><i class="fa fa-check"></i><b>4.1.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="RECIPE-LINE-GRAPH-POINTS.html"><a href="RECIPE-LINE-GRAPH-POINTS.html"><i class="fa fa-check"></i><b>4.2</b> Adding Points to a Line Graph</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="RECIPE-LINE-GRAPH-POINTS.html"><a href="RECIPE-LINE-GRAPH-POINTS.html#problem-24"><i class="fa fa-check"></i><b>4.2.1</b> Problem</a></li>
+<li class="chapter" data-level="4.2.2" data-path="RECIPE-LINE-GRAPH-POINTS.html"><a href="RECIPE-LINE-GRAPH-POINTS.html#solution-24"><i class="fa fa-check"></i><b>4.2.2</b> Solution</a></li>
+<li class="chapter" data-level="4.2.3" data-path="RECIPE-LINE-GRAPH-POINTS.html"><a href="RECIPE-LINE-GRAPH-POINTS.html#discussion-18"><i class="fa fa-check"></i><b>4.2.3</b> Discussion</a></li>
+<li class="chapter" data-level="4.2.4" data-path="RECIPE-LINE-GRAPH-POINTS.html"><a href="RECIPE-LINE-GRAPH-POINTS.html#see-also-20"><i class="fa fa-check"></i><b>4.2.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="RECIPE-LINE-GRAPH-MULTIPLE-LINE.html"><a href="RECIPE-LINE-GRAPH-MULTIPLE-LINE.html"><i class="fa fa-check"></i><b>4.3</b> Making a Line Graph with Multiple Lines</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="RECIPE-LINE-GRAPH-MULTIPLE-LINE.html"><a href="RECIPE-LINE-GRAPH-MULTIPLE-LINE.html#problem-25"><i class="fa fa-check"></i><b>4.3.1</b> Problem</a></li>
+<li class="chapter" data-level="4.3.2" data-path="RECIPE-LINE-GRAPH-MULTIPLE-LINE.html"><a href="RECIPE-LINE-GRAPH-MULTIPLE-LINE.html#solution-25"><i class="fa fa-check"></i><b>4.3.2</b> Solution</a></li>
+<li class="chapter" data-level="4.3.3" data-path="RECIPE-LINE-GRAPH-MULTIPLE-LINE.html"><a href="RECIPE-LINE-GRAPH-MULTIPLE-LINE.html#discussion-19"><i class="fa fa-check"></i><b>4.3.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="RECIPE-LINE-GRAPH-LINE-APPEARANCE.html"><a href="RECIPE-LINE-GRAPH-LINE-APPEARANCE.html"><i class="fa fa-check"></i><b>4.4</b> Changing the Appearance of Lines</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="RECIPE-LINE-GRAPH-LINE-APPEARANCE.html"><a href="RECIPE-LINE-GRAPH-LINE-APPEARANCE.html#problem-26"><i class="fa fa-check"></i><b>4.4.1</b> Problem</a></li>
+<li class="chapter" data-level="4.4.2" data-path="RECIPE-LINE-GRAPH-LINE-APPEARANCE.html"><a href="RECIPE-LINE-GRAPH-LINE-APPEARANCE.html#solution-26"><i class="fa fa-check"></i><b>4.4.2</b> Solution</a></li>
+<li class="chapter" data-level="4.4.3" data-path="RECIPE-LINE-GRAPH-LINE-APPEARANCE.html"><a href="RECIPE-LINE-GRAPH-LINE-APPEARANCE.html#discussion-20"><i class="fa fa-check"></i><b>4.4.3</b> Discussion</a></li>
+<li class="chapter" data-level="4.4.4" data-path="RECIPE-LINE-GRAPH-LINE-APPEARANCE.html"><a href="RECIPE-LINE-GRAPH-LINE-APPEARANCE.html#see-also-21"><i class="fa fa-check"></i><b>4.4.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="RECIPE-LINE-GRAPH-POINT-APPEARANCE.html"><a href="RECIPE-LINE-GRAPH-POINT-APPEARANCE.html"><i class="fa fa-check"></i><b>4.5</b> Changing the Appearance of Points</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="RECIPE-LINE-GRAPH-POINT-APPEARANCE.html"><a href="RECIPE-LINE-GRAPH-POINT-APPEARANCE.html#problem-27"><i class="fa fa-check"></i><b>4.5.1</b> Problem</a></li>
+<li class="chapter" data-level="4.5.2" data-path="RECIPE-LINE-GRAPH-POINT-APPEARANCE.html"><a href="RECIPE-LINE-GRAPH-POINT-APPEARANCE.html#solution-27"><i class="fa fa-check"></i><b>4.5.2</b> Solution</a></li>
+<li class="chapter" data-level="4.5.3" data-path="RECIPE-LINE-GRAPH-POINT-APPEARANCE.html"><a href="RECIPE-LINE-GRAPH-POINT-APPEARANCE.html#discussion-21"><i class="fa fa-check"></i><b>4.5.3</b> Discussion</a></li>
+<li class="chapter" data-level="4.5.4" data-path="RECIPE-LINE-GRAPH-POINT-APPEARANCE.html"><a href="RECIPE-LINE-GRAPH-POINT-APPEARANCE.html#see-also-22"><i class="fa fa-check"></i><b>4.5.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="RECIPE-LINE-GRAPH-AREA.html"><a href="RECIPE-LINE-GRAPH-AREA.html"><i class="fa fa-check"></i><b>4.6</b> Making a Graph with a Shaded Area</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="RECIPE-LINE-GRAPH-AREA.html"><a href="RECIPE-LINE-GRAPH-AREA.html#problem-28"><i class="fa fa-check"></i><b>4.6.1</b> Problem</a></li>
+<li class="chapter" data-level="4.6.2" data-path="RECIPE-LINE-GRAPH-AREA.html"><a href="RECIPE-LINE-GRAPH-AREA.html#solution-28"><i class="fa fa-check"></i><b>4.6.2</b> Solution</a></li>
+<li class="chapter" data-level="4.6.3" data-path="RECIPE-LINE-GRAPH-AREA.html"><a href="RECIPE-LINE-GRAPH-AREA.html#discussion-22"><i class="fa fa-check"></i><b>4.6.3</b> Discussion</a></li>
+<li class="chapter" data-level="4.6.4" data-path="RECIPE-LINE-GRAPH-AREA.html"><a href="RECIPE-LINE-GRAPH-AREA.html#see-also-23"><i class="fa fa-check"></i><b>4.6.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="RECIPE-LINE-GRAPH-STACKED-AREA.html"><a href="RECIPE-LINE-GRAPH-STACKED-AREA.html"><i class="fa fa-check"></i><b>4.7</b> Making a Stacked Area Graph</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="RECIPE-LINE-GRAPH-STACKED-AREA.html"><a href="RECIPE-LINE-GRAPH-STACKED-AREA.html#problem-29"><i class="fa fa-check"></i><b>4.7.1</b> Problem</a></li>
+<li class="chapter" data-level="4.7.2" data-path="RECIPE-LINE-GRAPH-STACKED-AREA.html"><a href="RECIPE-LINE-GRAPH-STACKED-AREA.html#solution-29"><i class="fa fa-check"></i><b>4.7.2</b> Solution</a></li>
+<li class="chapter" data-level="4.7.3" data-path="RECIPE-LINE-GRAPH-STACKED-AREA.html"><a href="RECIPE-LINE-GRAPH-STACKED-AREA.html#discussion-23"><i class="fa fa-check"></i><b>4.7.3</b> Discussion</a></li>
+<li class="chapter" data-level="4.7.4" data-path="RECIPE-LINE-GRAPH-STACKED-AREA.html"><a href="RECIPE-LINE-GRAPH-STACKED-AREA.html#see-also-24"><i class="fa fa-check"></i><b>4.7.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="RECIPE-LINE-GRAPH-PROPORTIONAL-STACKED-AREA.html"><a href="RECIPE-LINE-GRAPH-PROPORTIONAL-STACKED-AREA.html"><i class="fa fa-check"></i><b>4.8</b> Making a Proportional Stacked Area Graph</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="RECIPE-LINE-GRAPH-PROPORTIONAL-STACKED-AREA.html"><a href="RECIPE-LINE-GRAPH-PROPORTIONAL-STACKED-AREA.html#problem-30"><i class="fa fa-check"></i><b>4.8.1</b> Problem</a></li>
+<li class="chapter" data-level="4.8.2" data-path="RECIPE-LINE-GRAPH-PROPORTIONAL-STACKED-AREA.html"><a href="RECIPE-LINE-GRAPH-PROPORTIONAL-STACKED-AREA.html#solution-30"><i class="fa fa-check"></i><b>4.8.2</b> Solution</a></li>
+<li class="chapter" data-level="4.8.3" data-path="RECIPE-LINE-GRAPH-PROPORTIONAL-STACKED-AREA.html"><a href="RECIPE-LINE-GRAPH-PROPORTIONAL-STACKED-AREA.html#discussion-24"><i class="fa fa-check"></i><b>4.8.3</b> Discussion</a></li>
+<li class="chapter" data-level="4.8.4" data-path="RECIPE-LINE-GRAPH-PROPORTIONAL-STACKED-AREA.html"><a href="RECIPE-LINE-GRAPH-PROPORTIONAL-STACKED-AREA.html#see-also-25"><i class="fa fa-check"></i><b>4.8.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="RECIPE-LINE-GRAPH-REGION.html"><a href="RECIPE-LINE-GRAPH-REGION.html"><i class="fa fa-check"></i><b>4.9</b> Adding a Confidence Region</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="RECIPE-LINE-GRAPH-REGION.html"><a href="RECIPE-LINE-GRAPH-REGION.html#problem-31"><i class="fa fa-check"></i><b>4.9.1</b> Problem</a></li>
+<li class="chapter" data-level="4.9.2" data-path="RECIPE-LINE-GRAPH-REGION.html"><a href="RECIPE-LINE-GRAPH-REGION.html#solution-31"><i class="fa fa-check"></i><b>4.9.2</b> Solution</a></li>
+<li class="chapter" data-level="4.9.3" data-path="RECIPE-LINE-GRAPH-REGION.html"><a href="RECIPE-LINE-GRAPH-REGION.html#discussion-25"><i class="fa fa-check"></i><b>4.9.3</b> Discussion</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="CHAPTER-SCATTER.html"><a href="CHAPTER-SCATTER.html"><i class="fa fa-check"></i><b>5</b> Scatter Plots</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="RECIPE-SCATTER-BASIC-SCATTER.html"><a href="RECIPE-SCATTER-BASIC-SCATTER.html"><i class="fa fa-check"></i><b>5.1</b> Making a Basic Scatter Plot</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="RECIPE-SCATTER-BASIC-SCATTER.html"><a href="RECIPE-SCATTER-BASIC-SCATTER.html#problem-32"><i class="fa fa-check"></i><b>5.1.1</b> Problem</a></li>
+<li class="chapter" data-level="5.1.2" data-path="RECIPE-SCATTER-BASIC-SCATTER.html"><a href="RECIPE-SCATTER-BASIC-SCATTER.html#solution-32"><i class="fa fa-check"></i><b>5.1.2</b> Solution</a></li>
+<li class="chapter" data-level="5.1.3" data-path="RECIPE-SCATTER-BASIC-SCATTER.html"><a href="RECIPE-SCATTER-BASIC-SCATTER.html#discussion-26"><i class="fa fa-check"></i><b>5.1.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="RECIPE-SCATTER-GROUPED-SCATTER.html"><a href="RECIPE-SCATTER-GROUPED-SCATTER.html"><i class="fa fa-check"></i><b>5.2</b> Grouping Points Together using Shapes or Colors</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="RECIPE-SCATTER-GROUPED-SCATTER.html"><a href="RECIPE-SCATTER-GROUPED-SCATTER.html#problem-33"><i class="fa fa-check"></i><b>5.2.1</b> Problem</a></li>
+<li class="chapter" data-level="5.2.2" data-path="RECIPE-SCATTER-GROUPED-SCATTER.html"><a href="RECIPE-SCATTER-GROUPED-SCATTER.html#solution-33"><i class="fa fa-check"></i><b>5.2.2</b> Solution</a></li>
+<li class="chapter" data-level="5.2.3" data-path="RECIPE-SCATTER-GROUPED-SCATTER.html"><a href="RECIPE-SCATTER-GROUPED-SCATTER.html#discussion-27"><i class="fa fa-check"></i><b>5.2.3</b> Discussion</a></li>
+<li class="chapter" data-level="5.2.4" data-path="RECIPE-SCATTER-GROUPED-SCATTER.html"><a href="RECIPE-SCATTER-GROUPED-SCATTER.html#see-also-26"><i class="fa fa-check"></i><b>5.2.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="RECIPE-SCATTER-SHAPES.html"><a href="RECIPE-SCATTER-SHAPES.html"><i class="fa fa-check"></i><b>5.3</b> Using Different Point Shapes</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="RECIPE-SCATTER-SHAPES.html"><a href="RECIPE-SCATTER-SHAPES.html#problem-34"><i class="fa fa-check"></i><b>5.3.1</b> Problem</a></li>
+<li class="chapter" data-level="5.3.2" data-path="RECIPE-SCATTER-SHAPES.html"><a href="RECIPE-SCATTER-SHAPES.html#solution-34"><i class="fa fa-check"></i><b>5.3.2</b> Solution</a></li>
+<li class="chapter" data-level="5.3.3" data-path="RECIPE-SCATTER-SHAPES.html"><a href="RECIPE-SCATTER-SHAPES.html#discussion-28"><i class="fa fa-check"></i><b>5.3.3</b> Discussion</a></li>
+<li class="chapter" data-level="5.3.4" data-path="RECIPE-SCATTER-SHAPES.html"><a href="RECIPE-SCATTER-SHAPES.html#see-also-27"><i class="fa fa-check"></i><b>5.3.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="RECIPE-SCATTER-CONTINUOUS-SCATTER.html"><a href="RECIPE-SCATTER-CONTINUOUS-SCATTER.html"><i class="fa fa-check"></i><b>5.4</b> Mapping a Continuous Variable to Color or Size</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="RECIPE-SCATTER-CONTINUOUS-SCATTER.html"><a href="RECIPE-SCATTER-CONTINUOUS-SCATTER.html#problem-35"><i class="fa fa-check"></i><b>5.4.1</b> Problem</a></li>
+<li class="chapter" data-level="5.4.2" data-path="RECIPE-SCATTER-CONTINUOUS-SCATTER.html"><a href="RECIPE-SCATTER-CONTINUOUS-SCATTER.html#solution-35"><i class="fa fa-check"></i><b>5.4.2</b> Solution</a></li>
+<li class="chapter" data-level="5.4.3" data-path="RECIPE-SCATTER-CONTINUOUS-SCATTER.html"><a href="RECIPE-SCATTER-CONTINUOUS-SCATTER.html#discussion-29"><i class="fa fa-check"></i><b>5.4.3</b> Discussion</a></li>
+<li class="chapter" data-level="5.4.4" data-path="RECIPE-SCATTER-CONTINUOUS-SCATTER.html"><a href="RECIPE-SCATTER-CONTINUOUS-SCATTER.html#see-also-28"><i class="fa fa-check"></i><b>5.4.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="RECIPE-SCATTER-OVERPLOT.html"><a href="RECIPE-SCATTER-OVERPLOT.html"><i class="fa fa-check"></i><b>5.5</b> Dealing with Overplotting</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="RECIPE-SCATTER-OVERPLOT.html"><a href="RECIPE-SCATTER-OVERPLOT.html#problem-36"><i class="fa fa-check"></i><b>5.5.1</b> Problem</a></li>
+<li class="chapter" data-level="5.5.2" data-path="RECIPE-SCATTER-OVERPLOT.html"><a href="RECIPE-SCATTER-OVERPLOT.html#solution-36"><i class="fa fa-check"></i><b>5.5.2</b> Solution</a></li>
+<li class="chapter" data-level="5.5.3" data-path="RECIPE-SCATTER-OVERPLOT.html"><a href="RECIPE-SCATTER-OVERPLOT.html#discussion-30"><i class="fa fa-check"></i><b>5.5.3</b> Discussion</a></li>
+<li class="chapter" data-level="5.5.4" data-path="RECIPE-SCATTER-OVERPLOT.html"><a href="RECIPE-SCATTER-OVERPLOT.html#see-also-29"><i class="fa fa-check"></i><b>5.5.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="RECIPE-SCATTER-FITLINES.html"><a href="RECIPE-SCATTER-FITLINES.html"><i class="fa fa-check"></i><b>5.6</b> Adding Fitted Regression Model Lines</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="RECIPE-SCATTER-FITLINES.html"><a href="RECIPE-SCATTER-FITLINES.html#problem-37"><i class="fa fa-check"></i><b>5.6.1</b> Problem</a></li>
+<li class="chapter" data-level="5.6.2" data-path="RECIPE-SCATTER-FITLINES.html"><a href="RECIPE-SCATTER-FITLINES.html#solution-37"><i class="fa fa-check"></i><b>5.6.2</b> Solution</a></li>
+<li class="chapter" data-level="5.6.3" data-path="RECIPE-SCATTER-FITLINES.html"><a href="RECIPE-SCATTER-FITLINES.html#discussion-31"><i class="fa fa-check"></i><b>5.6.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="RECIPE-SCATTER-FITLINES-MODEL.html"><a href="RECIPE-SCATTER-FITLINES-MODEL.html"><i class="fa fa-check"></i><b>5.7</b> Adding Fitted Lines from an Existing Model</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="RECIPE-SCATTER-FITLINES-MODEL.html"><a href="RECIPE-SCATTER-FITLINES-MODEL.html#problem-38"><i class="fa fa-check"></i><b>5.7.1</b> Problem</a></li>
+<li class="chapter" data-level="5.7.2" data-path="RECIPE-SCATTER-FITLINES-MODEL.html"><a href="RECIPE-SCATTER-FITLINES-MODEL.html#solution-38"><i class="fa fa-check"></i><b>5.7.2</b> Solution</a></li>
+<li class="chapter" data-level="5.7.3" data-path="RECIPE-SCATTER-FITLINES-MODEL.html"><a href="RECIPE-SCATTER-FITLINES-MODEL.html#discussion-32"><i class="fa fa-check"></i><b>5.7.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="RECIPE-SCATTER-FITLINES-MODEL-MULTI.html"><a href="RECIPE-SCATTER-FITLINES-MODEL-MULTI.html"><i class="fa fa-check"></i><b>5.8</b> Adding Fitted Lines from Multiple Existing Models</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="RECIPE-SCATTER-FITLINES-MODEL-MULTI.html"><a href="RECIPE-SCATTER-FITLINES-MODEL-MULTI.html#problem-39"><i class="fa fa-check"></i><b>5.8.1</b> Problem</a></li>
+<li class="chapter" data-level="5.8.2" data-path="RECIPE-SCATTER-FITLINES-MODEL-MULTI.html"><a href="RECIPE-SCATTER-FITLINES-MODEL-MULTI.html#solution-39"><i class="fa fa-check"></i><b>5.8.2</b> Solution</a></li>
+<li class="chapter" data-level="5.8.3" data-path="RECIPE-SCATTER-FITLINES-MODEL-MULTI.html"><a href="RECIPE-SCATTER-FITLINES-MODEL-MULTI.html#discussion-33"><i class="fa fa-check"></i><b>5.8.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="RECIPE-SCATTER-FITLINES-TEXT.html"><a href="RECIPE-SCATTER-FITLINES-TEXT.html"><i class="fa fa-check"></i><b>5.9</b> Adding Annotations with Model Coefficients</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="RECIPE-SCATTER-FITLINES-TEXT.html"><a href="RECIPE-SCATTER-FITLINES-TEXT.html#problem-40"><i class="fa fa-check"></i><b>5.9.1</b> Problem</a></li>
+<li class="chapter" data-level="5.9.2" data-path="RECIPE-SCATTER-FITLINES-TEXT.html"><a href="RECIPE-SCATTER-FITLINES-TEXT.html#solution-40"><i class="fa fa-check"></i><b>5.9.2</b> Solution</a></li>
+<li class="chapter" data-level="5.9.3" data-path="RECIPE-SCATTER-FITLINES-TEXT.html"><a href="RECIPE-SCATTER-FITLINES-TEXT.html#discussion-34"><i class="fa fa-check"></i><b>5.9.3</b> Discussion</a></li>
+<li class="chapter" data-level="5.9.4" data-path="RECIPE-SCATTER-FITLINES-TEXT.html"><a href="RECIPE-SCATTER-FITLINES-TEXT.html#see-also-30"><i class="fa fa-check"></i><b>5.9.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="RECIPE-SCATTER-RUG.html"><a href="RECIPE-SCATTER-RUG.html"><i class="fa fa-check"></i><b>5.10</b> Adding Marginal Rugs to a Scatter Plot</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="RECIPE-SCATTER-RUG.html"><a href="RECIPE-SCATTER-RUG.html#problem-41"><i class="fa fa-check"></i><b>5.10.1</b> Problem</a></li>
+<li class="chapter" data-level="5.10.2" data-path="RECIPE-SCATTER-RUG.html"><a href="RECIPE-SCATTER-RUG.html#solution-41"><i class="fa fa-check"></i><b>5.10.2</b> Solution</a></li>
+<li class="chapter" data-level="5.10.3" data-path="RECIPE-SCATTER-RUG.html"><a href="RECIPE-SCATTER-RUG.html#discussion-35"><i class="fa fa-check"></i><b>5.10.3</b> Discussion</a></li>
+<li class="chapter" data-level="5.10.4" data-path="RECIPE-SCATTER-RUG.html"><a href="RECIPE-SCATTER-RUG.html#see-also-31"><i class="fa fa-check"></i><b>5.10.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="RECIPE-SCATTER-LABELS.html"><a href="RECIPE-SCATTER-LABELS.html"><i class="fa fa-check"></i><b>5.11</b> Labeling Points in a Scatter Plot</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="RECIPE-SCATTER-LABELS.html"><a href="RECIPE-SCATTER-LABELS.html#problem-42"><i class="fa fa-check"></i><b>5.11.1</b> Problem</a></li>
+<li class="chapter" data-level="5.11.2" data-path="RECIPE-SCATTER-LABELS.html"><a href="RECIPE-SCATTER-LABELS.html#solution-42"><i class="fa fa-check"></i><b>5.11.2</b> Solution</a></li>
+<li class="chapter" data-level="5.11.3" data-path="RECIPE-SCATTER-LABELS.html"><a href="RECIPE-SCATTER-LABELS.html#discussion-36"><i class="fa fa-check"></i><b>5.11.3</b> Discussion</a></li>
+<li class="chapter" data-level="5.11.4" data-path="RECIPE-SCATTER-LABELS.html"><a href="RECIPE-SCATTER-LABELS.html#see-also-32"><i class="fa fa-check"></i><b>5.11.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="5.12" data-path="RECIPE-SCATTER-BALLOON.html"><a href="RECIPE-SCATTER-BALLOON.html"><i class="fa fa-check"></i><b>5.12</b> Creating a Balloon Plot</a>
+<ul>
+<li class="chapter" data-level="5.12.1" data-path="RECIPE-SCATTER-BALLOON.html"><a href="RECIPE-SCATTER-BALLOON.html#problem-43"><i class="fa fa-check"></i><b>5.12.1</b> Problem</a></li>
+<li class="chapter" data-level="5.12.2" data-path="RECIPE-SCATTER-BALLOON.html"><a href="RECIPE-SCATTER-BALLOON.html#solution-43"><i class="fa fa-check"></i><b>5.12.2</b> Solution</a></li>
+<li class="chapter" data-level="5.12.3" data-path="RECIPE-SCATTER-BALLOON.html"><a href="RECIPE-SCATTER-BALLOON.html#discussion-37"><i class="fa fa-check"></i><b>5.12.3</b> Discussion</a></li>
+<li class="chapter" data-level="5.12.4" data-path="RECIPE-SCATTER-BALLOON.html"><a href="RECIPE-SCATTER-BALLOON.html#see-also-33"><i class="fa fa-check"></i><b>5.12.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="5.13" data-path="RECIPE-SCATTER-SPLOM.html"><a href="RECIPE-SCATTER-SPLOM.html"><i class="fa fa-check"></i><b>5.13</b> Making a Scatter Plot Matrix</a>
+<ul>
+<li class="chapter" data-level="5.13.1" data-path="RECIPE-SCATTER-SPLOM.html"><a href="RECIPE-SCATTER-SPLOM.html#problem-44"><i class="fa fa-check"></i><b>5.13.1</b> Problem</a></li>
+<li class="chapter" data-level="5.13.2" data-path="RECIPE-SCATTER-SPLOM.html"><a href="RECIPE-SCATTER-SPLOM.html#solution-44"><i class="fa fa-check"></i><b>5.13.2</b> Solution</a></li>
+<li class="chapter" data-level="5.13.3" data-path="RECIPE-SCATTER-SPLOM.html"><a href="RECIPE-SCATTER-SPLOM.html#discussion-38"><i class="fa fa-check"></i><b>5.13.3</b> Discussion</a></li>
+<li class="chapter" data-level="5.13.4" data-path="RECIPE-SCATTER-SPLOM.html"><a href="RECIPE-SCATTER-SPLOM.html#see-also-34"><i class="fa fa-check"></i><b>5.13.4</b> See Also</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="CHAPTER-DISTRIBUTION.html"><a href="CHAPTER-DISTRIBUTION.html"><i class="fa fa-check"></i><b>6</b> Summarized Data Distributions</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="RECIPE-DISTRIBUTION-BASIC-HIST.html"><a href="RECIPE-DISTRIBUTION-BASIC-HIST.html"><i class="fa fa-check"></i><b>6.1</b> Making a Basic Histogram</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="RECIPE-DISTRIBUTION-BASIC-HIST.html"><a href="RECIPE-DISTRIBUTION-BASIC-HIST.html#problem-45"><i class="fa fa-check"></i><b>6.1.1</b> Problem</a></li>
+<li class="chapter" data-level="6.1.2" data-path="RECIPE-DISTRIBUTION-BASIC-HIST.html"><a href="RECIPE-DISTRIBUTION-BASIC-HIST.html#solution-45"><i class="fa fa-check"></i><b>6.1.2</b> Solution</a></li>
+<li class="chapter" data-level="6.1.3" data-path="RECIPE-DISTRIBUTION-BASIC-HIST.html"><a href="RECIPE-DISTRIBUTION-BASIC-HIST.html#discussion-39"><i class="fa fa-check"></i><b>6.1.3</b> Discussion</a></li>
+<li class="chapter" data-level="6.1.4" data-path="RECIPE-DISTRIBUTION-BASIC-HIST.html"><a href="RECIPE-DISTRIBUTION-BASIC-HIST.html#see-also-35"><i class="fa fa-check"></i><b>6.1.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="RECIPE-DISTRIBUTION-MULTI-HIST.html"><a href="RECIPE-DISTRIBUTION-MULTI-HIST.html"><i class="fa fa-check"></i><b>6.2</b> Making Multiple Histograms from Grouped Data</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="RECIPE-DISTRIBUTION-MULTI-HIST.html"><a href="RECIPE-DISTRIBUTION-MULTI-HIST.html#problem-46"><i class="fa fa-check"></i><b>6.2.1</b> Problem</a></li>
+<li class="chapter" data-level="6.2.2" data-path="RECIPE-DISTRIBUTION-MULTI-HIST.html"><a href="RECIPE-DISTRIBUTION-MULTI-HIST.html#solution-46"><i class="fa fa-check"></i><b>6.2.2</b> Solution</a></li>
+<li class="chapter" data-level="6.2.3" data-path="RECIPE-DISTRIBUTION-MULTI-HIST.html"><a href="RECIPE-DISTRIBUTION-MULTI-HIST.html#discussion-40"><i class="fa fa-check"></i><b>6.2.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="RECIPE-DISTRIBUTION-BASIC-DENSITY.html"><a href="RECIPE-DISTRIBUTION-BASIC-DENSITY.html"><i class="fa fa-check"></i><b>6.3</b> Making a Density Curve</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="RECIPE-DISTRIBUTION-BASIC-DENSITY.html"><a href="RECIPE-DISTRIBUTION-BASIC-DENSITY.html#problem-47"><i class="fa fa-check"></i><b>6.3.1</b> Problem</a></li>
+<li class="chapter" data-level="6.3.2" data-path="RECIPE-DISTRIBUTION-BASIC-DENSITY.html"><a href="RECIPE-DISTRIBUTION-BASIC-DENSITY.html#solution-47"><i class="fa fa-check"></i><b>6.3.2</b> Solution</a></li>
+<li class="chapter" data-level="6.3.3" data-path="RECIPE-DISTRIBUTION-BASIC-DENSITY.html"><a href="RECIPE-DISTRIBUTION-BASIC-DENSITY.html#discussion-41"><i class="fa fa-check"></i><b>6.3.3</b> Discussion</a></li>
+<li class="chapter" data-level="6.3.4" data-path="RECIPE-DISTRIBUTION-BASIC-DENSITY.html"><a href="RECIPE-DISTRIBUTION-BASIC-DENSITY.html#see-also-36"><i class="fa fa-check"></i><b>6.3.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="RECIPE-DISTRIBUTION-MULTI-DENSITY.html"><a href="RECIPE-DISTRIBUTION-MULTI-DENSITY.html"><i class="fa fa-check"></i><b>6.4</b> Making Multiple Density Curves from Grouped Data</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="RECIPE-DISTRIBUTION-MULTI-DENSITY.html"><a href="RECIPE-DISTRIBUTION-MULTI-DENSITY.html#problem-48"><i class="fa fa-check"></i><b>6.4.1</b> Problem</a></li>
+<li class="chapter" data-level="6.4.2" data-path="RECIPE-DISTRIBUTION-MULTI-DENSITY.html"><a href="RECIPE-DISTRIBUTION-MULTI-DENSITY.html#solution-48"><i class="fa fa-check"></i><b>6.4.2</b> Solution</a></li>
+<li class="chapter" data-level="6.4.3" data-path="RECIPE-DISTRIBUTION-MULTI-DENSITY.html"><a href="RECIPE-DISTRIBUTION-MULTI-DENSITY.html#discussion-42"><i class="fa fa-check"></i><b>6.4.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="RECIPE-DISTRIBUTION-FREQPOLY.html"><a href="RECIPE-DISTRIBUTION-FREQPOLY.html"><i class="fa fa-check"></i><b>6.5</b> Making a Frequency Polygon</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="RECIPE-DISTRIBUTION-FREQPOLY.html"><a href="RECIPE-DISTRIBUTION-FREQPOLY.html#problem-49"><i class="fa fa-check"></i><b>6.5.1</b> Problem</a></li>
+<li class="chapter" data-level="6.5.2" data-path="RECIPE-DISTRIBUTION-FREQPOLY.html"><a href="RECIPE-DISTRIBUTION-FREQPOLY.html#solution-49"><i class="fa fa-check"></i><b>6.5.2</b> Solution</a></li>
+<li class="chapter" data-level="6.5.3" data-path="RECIPE-DISTRIBUTION-FREQPOLY.html"><a href="RECIPE-DISTRIBUTION-FREQPOLY.html#discussion-43"><i class="fa fa-check"></i><b>6.5.3</b> Discussion</a></li>
+<li class="chapter" data-level="6.5.4" data-path="RECIPE-DISTRIBUTION-FREQPOLY.html"><a href="RECIPE-DISTRIBUTION-FREQPOLY.html#see-also-37"><i class="fa fa-check"></i><b>6.5.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="RECIPE-DISTRIBUTION-BASIC-BOXPLOT.html"><a href="RECIPE-DISTRIBUTION-BASIC-BOXPLOT.html"><i class="fa fa-check"></i><b>6.6</b> Making a Basic Box Plot</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="RECIPE-DISTRIBUTION-BASIC-BOXPLOT.html"><a href="RECIPE-DISTRIBUTION-BASIC-BOXPLOT.html#problem-50"><i class="fa fa-check"></i><b>6.6.1</b> Problem</a></li>
+<li class="chapter" data-level="6.6.2" data-path="RECIPE-DISTRIBUTION-BASIC-BOXPLOT.html"><a href="RECIPE-DISTRIBUTION-BASIC-BOXPLOT.html#solution-50"><i class="fa fa-check"></i><b>6.6.2</b> Solution</a></li>
+<li class="chapter" data-level="6.6.3" data-path="RECIPE-DISTRIBUTION-BASIC-BOXPLOT.html"><a href="RECIPE-DISTRIBUTION-BASIC-BOXPLOT.html#discussion-44"><i class="fa fa-check"></i><b>6.6.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="RECIPE-DISTRIBUTION-BOXPLOT-NOTCH.html"><a href="RECIPE-DISTRIBUTION-BOXPLOT-NOTCH.html"><i class="fa fa-check"></i><b>6.7</b> Adding Notches to a Box Plot</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="RECIPE-DISTRIBUTION-BOXPLOT-NOTCH.html"><a href="RECIPE-DISTRIBUTION-BOXPLOT-NOTCH.html#problem-51"><i class="fa fa-check"></i><b>6.7.1</b> Problem</a></li>
+<li class="chapter" data-level="6.7.2" data-path="RECIPE-DISTRIBUTION-BOXPLOT-NOTCH.html"><a href="RECIPE-DISTRIBUTION-BOXPLOT-NOTCH.html#solution-51"><i class="fa fa-check"></i><b>6.7.2</b> Solution</a></li>
+<li class="chapter" data-level="6.7.3" data-path="RECIPE-DISTRIBUTION-BOXPLOT-NOTCH.html"><a href="RECIPE-DISTRIBUTION-BOXPLOT-NOTCH.html#discussion-45"><i class="fa fa-check"></i><b>6.7.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="RECIPE-DISTRIBUTION-BOXPLOT-MEAN.html"><a href="RECIPE-DISTRIBUTION-BOXPLOT-MEAN.html"><i class="fa fa-check"></i><b>6.8</b> Adding Means to a Box Plot</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="RECIPE-DISTRIBUTION-BOXPLOT-MEAN.html"><a href="RECIPE-DISTRIBUTION-BOXPLOT-MEAN.html#problem-52"><i class="fa fa-check"></i><b>6.8.1</b> Problem</a></li>
+<li class="chapter" data-level="6.8.2" data-path="RECIPE-DISTRIBUTION-BOXPLOT-MEAN.html"><a href="RECIPE-DISTRIBUTION-BOXPLOT-MEAN.html#solution-52"><i class="fa fa-check"></i><b>6.8.2</b> Solution</a></li>
+<li class="chapter" data-level="6.8.3" data-path="RECIPE-DISTRIBUTION-BOXPLOT-MEAN.html"><a href="RECIPE-DISTRIBUTION-BOXPLOT-MEAN.html#discussion-46"><i class="fa fa-check"></i><b>6.8.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="RECIPE-DISTRIBUTION-VIOLIN.html"><a href="RECIPE-DISTRIBUTION-VIOLIN.html"><i class="fa fa-check"></i><b>6.9</b> Making a Violin Plot</a>
+<ul>
+<li class="chapter" data-level="6.9.1" data-path="RECIPE-DISTRIBUTION-VIOLIN.html"><a href="RECIPE-DISTRIBUTION-VIOLIN.html#problem-53"><i class="fa fa-check"></i><b>6.9.1</b> Problem</a></li>
+<li class="chapter" data-level="6.9.2" data-path="RECIPE-DISTRIBUTION-VIOLIN.html"><a href="RECIPE-DISTRIBUTION-VIOLIN.html#solution-53"><i class="fa fa-check"></i><b>6.9.2</b> Solution</a></li>
+<li class="chapter" data-level="6.9.3" data-path="RECIPE-DISTRIBUTION-VIOLIN.html"><a href="RECIPE-DISTRIBUTION-VIOLIN.html#discussion-47"><i class="fa fa-check"></i><b>6.9.3</b> Discussion</a></li>
+<li class="chapter" data-level="6.9.4" data-path="RECIPE-DISTRIBUTION-VIOLIN.html"><a href="RECIPE-DISTRIBUTION-VIOLIN.html#see-also-38"><i class="fa fa-check"></i><b>6.9.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="RECIPE-DISTRIBUTION-DOT-PLOT.html"><a href="RECIPE-DISTRIBUTION-DOT-PLOT.html"><i class="fa fa-check"></i><b>6.10</b> Making a Dot Plot</a>
+<ul>
+<li class="chapter" data-level="6.10.1" data-path="RECIPE-DISTRIBUTION-DOT-PLOT.html"><a href="RECIPE-DISTRIBUTION-DOT-PLOT.html#problem-54"><i class="fa fa-check"></i><b>6.10.1</b> Problem</a></li>
+<li class="chapter" data-level="6.10.2" data-path="RECIPE-DISTRIBUTION-DOT-PLOT.html"><a href="RECIPE-DISTRIBUTION-DOT-PLOT.html#solution-54"><i class="fa fa-check"></i><b>6.10.2</b> Solution</a></li>
+<li class="chapter" data-level="6.10.3" data-path="RECIPE-DISTRIBUTION-DOT-PLOT.html"><a href="RECIPE-DISTRIBUTION-DOT-PLOT.html#discussion-48"><i class="fa fa-check"></i><b>6.10.3</b> Discussion</a></li>
+<li class="chapter" data-level="6.10.4" data-path="RECIPE-DISTRIBUTION-DOT-PLOT.html"><a href="RECIPE-DISTRIBUTION-DOT-PLOT.html#see-also-39"><i class="fa fa-check"></i><b>6.10.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="6.11" data-path="RECIPE-DISTRIBUTION-DOT-PLOT-MULTI.html"><a href="RECIPE-DISTRIBUTION-DOT-PLOT-MULTI.html"><i class="fa fa-check"></i><b>6.11</b> Making Multiple Dot Plots for Grouped Data</a>
+<ul>
+<li class="chapter" data-level="6.11.1" data-path="RECIPE-DISTRIBUTION-DOT-PLOT-MULTI.html"><a href="RECIPE-DISTRIBUTION-DOT-PLOT-MULTI.html#problem-55"><i class="fa fa-check"></i><b>6.11.1</b> Problem</a></li>
+<li class="chapter" data-level="6.11.2" data-path="RECIPE-DISTRIBUTION-DOT-PLOT-MULTI.html"><a href="RECIPE-DISTRIBUTION-DOT-PLOT-MULTI.html#solution-55"><i class="fa fa-check"></i><b>6.11.2</b> Solution</a></li>
+<li class="chapter" data-level="6.11.3" data-path="RECIPE-DISTRIBUTION-DOT-PLOT-MULTI.html"><a href="RECIPE-DISTRIBUTION-DOT-PLOT-MULTI.html#discussion-49"><i class="fa fa-check"></i><b>6.11.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.12" data-path="RECIPE-DISTRIBUTION-DENSITY2D.html"><a href="RECIPE-DISTRIBUTION-DENSITY2D.html"><i class="fa fa-check"></i><b>6.12</b> Making a Density Plot of Two-Dimensional Data</a>
+<ul>
+<li class="chapter" data-level="6.12.1" data-path="RECIPE-DISTRIBUTION-DENSITY2D.html"><a href="RECIPE-DISTRIBUTION-DENSITY2D.html#problem-56"><i class="fa fa-check"></i><b>6.12.1</b> Problem</a></li>
+<li class="chapter" data-level="6.12.2" data-path="RECIPE-DISTRIBUTION-DENSITY2D.html"><a href="RECIPE-DISTRIBUTION-DENSITY2D.html#solution-56"><i class="fa fa-check"></i><b>6.12.2</b> Solution</a></li>
+<li class="chapter" data-level="6.12.3" data-path="RECIPE-DISTRIBUTION-DENSITY2D.html"><a href="RECIPE-DISTRIBUTION-DENSITY2D.html#discussion-50"><i class="fa fa-check"></i><b>6.12.3</b> Discussion</a></li>
+<li class="chapter" data-level="6.12.4" data-path="RECIPE-DISTRIBUTION-DENSITY2D.html"><a href="RECIPE-DISTRIBUTION-DENSITY2D.html#see-also-40"><i class="fa fa-check"></i><b>6.12.4</b> See Also</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="CHAPTER-ANNOTATE.html"><a href="CHAPTER-ANNOTATE.html"><i class="fa fa-check"></i><b>7</b> Annotations</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="RECIPE-ANNOTATE-TEXT.html"><a href="RECIPE-ANNOTATE-TEXT.html"><i class="fa fa-check"></i><b>7.1</b> Adding Text Annotations</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="RECIPE-ANNOTATE-TEXT.html"><a href="RECIPE-ANNOTATE-TEXT.html#problem-57"><i class="fa fa-check"></i><b>7.1.1</b> Problem</a></li>
+<li class="chapter" data-level="7.1.2" data-path="RECIPE-ANNOTATE-TEXT.html"><a href="RECIPE-ANNOTATE-TEXT.html#solution-57"><i class="fa fa-check"></i><b>7.1.2</b> Solution</a></li>
+<li class="chapter" data-level="7.1.3" data-path="RECIPE-ANNOTATE-TEXT.html"><a href="RECIPE-ANNOTATE-TEXT.html#discussion-51"><i class="fa fa-check"></i><b>7.1.3</b> Discussion</a></li>
+<li class="chapter" data-level="7.1.4" data-path="RECIPE-ANNOTATE-TEXT.html"><a href="RECIPE-ANNOTATE-TEXT.html#see-also-41"><i class="fa fa-check"></i><b>7.1.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="RECIPE-ANNOTATE-TEXT-MATH.html"><a href="RECIPE-ANNOTATE-TEXT-MATH.html"><i class="fa fa-check"></i><b>7.2</b> Using Mathematical Expressions in Annotations</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="RECIPE-ANNOTATE-TEXT-MATH.html"><a href="RECIPE-ANNOTATE-TEXT-MATH.html#problem-58"><i class="fa fa-check"></i><b>7.2.1</b> Problem</a></li>
+<li class="chapter" data-level="7.2.2" data-path="RECIPE-ANNOTATE-TEXT-MATH.html"><a href="RECIPE-ANNOTATE-TEXT-MATH.html#solution-58"><i class="fa fa-check"></i><b>7.2.2</b> Solution</a></li>
+<li class="chapter" data-level="7.2.3" data-path="RECIPE-ANNOTATE-TEXT-MATH.html"><a href="RECIPE-ANNOTATE-TEXT-MATH.html#discussion-52"><i class="fa fa-check"></i><b>7.2.3</b> Discussion</a></li>
+<li class="chapter" data-level="7.2.4" data-path="RECIPE-ANNOTATE-TEXT-MATH.html"><a href="RECIPE-ANNOTATE-TEXT-MATH.html#see-also-42"><i class="fa fa-check"></i><b>7.2.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="RECIPE-ANNOTATE-LINES.html"><a href="RECIPE-ANNOTATE-LINES.html"><i class="fa fa-check"></i><b>7.3</b> Adding Lines</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="RECIPE-ANNOTATE-LINES.html"><a href="RECIPE-ANNOTATE-LINES.html#problem-59"><i class="fa fa-check"></i><b>7.3.1</b> Problem</a></li>
+<li class="chapter" data-level="7.3.2" data-path="RECIPE-ANNOTATE-LINES.html"><a href="RECIPE-ANNOTATE-LINES.html#solution-59"><i class="fa fa-check"></i><b>7.3.2</b> Solution</a></li>
+<li class="chapter" data-level="7.3.3" data-path="RECIPE-ANNOTATE-LINES.html"><a href="RECIPE-ANNOTATE-LINES.html#discussion-53"><i class="fa fa-check"></i><b>7.3.3</b> Discussion</a></li>
+<li class="chapter" data-level="7.3.4" data-path="RECIPE-ANNOTATE-LINES.html"><a href="RECIPE-ANNOTATE-LINES.html#see-also-43"><i class="fa fa-check"></i><b>7.3.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="RECIPE-ANNOTATE-SEGMENT.html"><a href="RECIPE-ANNOTATE-SEGMENT.html"><i class="fa fa-check"></i><b>7.4</b> Adding Line Segments and Arrows</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="RECIPE-ANNOTATE-SEGMENT.html"><a href="RECIPE-ANNOTATE-SEGMENT.html#problem-60"><i class="fa fa-check"></i><b>7.4.1</b> Problem</a></li>
+<li class="chapter" data-level="7.4.2" data-path="RECIPE-ANNOTATE-SEGMENT.html"><a href="RECIPE-ANNOTATE-SEGMENT.html#solution-60"><i class="fa fa-check"></i><b>7.4.2</b> Solution</a></li>
+<li class="chapter" data-level="7.4.3" data-path="RECIPE-ANNOTATE-SEGMENT.html"><a href="RECIPE-ANNOTATE-SEGMENT.html#discussion-54"><i class="fa fa-check"></i><b>7.4.3</b> Discussion</a></li>
+<li class="chapter" data-level="7.4.4" data-path="RECIPE-ANNOTATE-SEGMENT.html"><a href="RECIPE-ANNOTATE-SEGMENT.html#see-also-44"><i class="fa fa-check"></i><b>7.4.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="RECIPE-ANNOTATE-RECT.html"><a href="RECIPE-ANNOTATE-RECT.html"><i class="fa fa-check"></i><b>7.5</b> Adding a Shaded Rectangle</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="RECIPE-ANNOTATE-RECT.html"><a href="RECIPE-ANNOTATE-RECT.html#problem-61"><i class="fa fa-check"></i><b>7.5.1</b> Problem</a></li>
+<li class="chapter" data-level="7.5.2" data-path="RECIPE-ANNOTATE-RECT.html"><a href="RECIPE-ANNOTATE-RECT.html#solution-61"><i class="fa fa-check"></i><b>7.5.2</b> Solution</a></li>
+<li class="chapter" data-level="7.5.3" data-path="RECIPE-ANNOTATE-RECT.html"><a href="RECIPE-ANNOTATE-RECT.html#discussion-55"><i class="fa fa-check"></i><b>7.5.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="RECIPE-ANNOTATE-HIGHLIGHT.html"><a href="RECIPE-ANNOTATE-HIGHLIGHT.html"><i class="fa fa-check"></i><b>7.6</b> Highlighting an Item</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="RECIPE-ANNOTATE-HIGHLIGHT.html"><a href="RECIPE-ANNOTATE-HIGHLIGHT.html#problem-62"><i class="fa fa-check"></i><b>7.6.1</b> Problem</a></li>
+<li class="chapter" data-level="7.6.2" data-path="RECIPE-ANNOTATE-HIGHLIGHT.html"><a href="RECIPE-ANNOTATE-HIGHLIGHT.html#solution-62"><i class="fa fa-check"></i><b>7.6.2</b> Solution</a></li>
+<li class="chapter" data-level="7.6.3" data-path="RECIPE-ANNOTATE-HIGHLIGHT.html"><a href="RECIPE-ANNOTATE-HIGHLIGHT.html#discussion-56"><i class="fa fa-check"></i><b>7.6.3</b> Discussion</a></li>
+<li class="chapter" data-level="7.6.4" data-path="RECIPE-ANNOTATE-HIGHLIGHT.html"><a href="RECIPE-ANNOTATE-HIGHLIGHT.html#see-also-45"><i class="fa fa-check"></i><b>7.6.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="RECIPE-ANNOTATE-ERROR-BAR.html"><a href="RECIPE-ANNOTATE-ERROR-BAR.html"><i class="fa fa-check"></i><b>7.7</b> Adding Error Bars</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="RECIPE-ANNOTATE-ERROR-BAR.html"><a href="RECIPE-ANNOTATE-ERROR-BAR.html#problem-63"><i class="fa fa-check"></i><b>7.7.1</b> Problem</a></li>
+<li class="chapter" data-level="7.7.2" data-path="RECIPE-ANNOTATE-ERROR-BAR.html"><a href="RECIPE-ANNOTATE-ERROR-BAR.html#solution-63"><i class="fa fa-check"></i><b>7.7.2</b> Solution</a></li>
+<li class="chapter" data-level="7.7.3" data-path="RECIPE-ANNOTATE-ERROR-BAR.html"><a href="RECIPE-ANNOTATE-ERROR-BAR.html#discussion-57"><i class="fa fa-check"></i><b>7.7.3</b> Discussion</a></li>
+<li class="chapter" data-level="7.7.4" data-path="RECIPE-ANNOTATE-ERROR-BAR.html"><a href="RECIPE-ANNOTATE-ERROR-BAR.html#see-also-46"><i class="fa fa-check"></i><b>7.7.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="RECIPE-ANNOTATE-FACET.html"><a href="RECIPE-ANNOTATE-FACET.html"><i class="fa fa-check"></i><b>7.8</b> Adding Annotations to Individual Facets</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="RECIPE-ANNOTATE-FACET.html"><a href="RECIPE-ANNOTATE-FACET.html#problem-64"><i class="fa fa-check"></i><b>7.8.1</b> Problem</a></li>
+<li class="chapter" data-level="7.8.2" data-path="RECIPE-ANNOTATE-FACET.html"><a href="RECIPE-ANNOTATE-FACET.html#solution-64"><i class="fa fa-check"></i><b>7.8.2</b> Solution</a></li>
+<li class="chapter" data-level="7.8.3" data-path="RECIPE-ANNOTATE-FACET.html"><a href="RECIPE-ANNOTATE-FACET.html#discussion-58"><i class="fa fa-check"></i><b>7.8.3</b> Discussion</a></li>
+<li class="chapter" data-level="7.8.4" data-path="RECIPE-ANNOTATE-FACET.html"><a href="RECIPE-ANNOTATE-FACET.html#see-also-47"><i class="fa fa-check"></i><b>7.8.4</b> See Also</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="CHAPTER-AXES.html"><a href="CHAPTER-AXES.html"><i class="fa fa-check"></i><b>8</b> Axes</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="RECIPE-AXES-SWAP-AXES.html"><a href="RECIPE-AXES-SWAP-AXES.html"><i class="fa fa-check"></i><b>8.1</b> Swapping X- and Y-Axes</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="RECIPE-AXES-SWAP-AXES.html"><a href="RECIPE-AXES-SWAP-AXES.html#problem-65"><i class="fa fa-check"></i><b>8.1.1</b> Problem</a></li>
+<li class="chapter" data-level="8.1.2" data-path="RECIPE-AXES-SWAP-AXES.html"><a href="RECIPE-AXES-SWAP-AXES.html#solution-65"><i class="fa fa-check"></i><b>8.1.2</b> Solution</a></li>
+<li class="chapter" data-level="8.1.3" data-path="RECIPE-AXES-SWAP-AXES.html"><a href="RECIPE-AXES-SWAP-AXES.html#discussion-59"><i class="fa fa-check"></i><b>8.1.3</b> Discussion</a></li>
+<li class="chapter" data-level="8.1.4" data-path="RECIPE-AXES-SWAP-AXES.html"><a href="RECIPE-AXES-SWAP-AXES.html#see-also-48"><i class="fa fa-check"></i><b>8.1.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="RECIPE-AXES-RANGE.html"><a href="RECIPE-AXES-RANGE.html"><i class="fa fa-check"></i><b>8.2</b> Setting the Range of a Continuous Axis</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="RECIPE-AXES-RANGE.html"><a href="RECIPE-AXES-RANGE.html#problem-66"><i class="fa fa-check"></i><b>8.2.1</b> Problem</a></li>
+<li class="chapter" data-level="8.2.2" data-path="RECIPE-AXES-RANGE.html"><a href="RECIPE-AXES-RANGE.html#solution-66"><i class="fa fa-check"></i><b>8.2.2</b> Solution</a></li>
+<li class="chapter" data-level="8.2.3" data-path="RECIPE-AXES-RANGE.html"><a href="RECIPE-AXES-RANGE.html#discussion-60"><i class="fa fa-check"></i><b>8.2.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="RECIPE-AXES-REVERSE.html"><a href="RECIPE-AXES-REVERSE.html"><i class="fa fa-check"></i><b>8.3</b> Reversing a Continuous Axis</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="RECIPE-AXES-REVERSE.html"><a href="RECIPE-AXES-REVERSE.html#problem-67"><i class="fa fa-check"></i><b>8.3.1</b> Problem</a></li>
+<li class="chapter" data-level="8.3.2" data-path="RECIPE-AXES-REVERSE.html"><a href="RECIPE-AXES-REVERSE.html#solution-67"><i class="fa fa-check"></i><b>8.3.2</b> Solution</a></li>
+<li class="chapter" data-level="8.3.3" data-path="RECIPE-AXES-REVERSE.html"><a href="RECIPE-AXES-REVERSE.html#discussion-61"><i class="fa fa-check"></i><b>8.3.3</b> Discussion</a></li>
+<li class="chapter" data-level="8.3.4" data-path="RECIPE-AXES-REVERSE.html"><a href="RECIPE-AXES-REVERSE.html#see-also-49"><i class="fa fa-check"></i><b>8.3.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="RECIPE-AXIS-ORDER.html"><a href="RECIPE-AXIS-ORDER.html"><i class="fa fa-check"></i><b>8.4</b> Changing the Order of Items on a Categorical Axis</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="RECIPE-AXIS-ORDER.html"><a href="RECIPE-AXIS-ORDER.html#problem-68"><i class="fa fa-check"></i><b>8.4.1</b> Problem</a></li>
+<li class="chapter" data-level="8.4.2" data-path="RECIPE-AXIS-ORDER.html"><a href="RECIPE-AXIS-ORDER.html#solution-68"><i class="fa fa-check"></i><b>8.4.2</b> Solution</a></li>
+<li class="chapter" data-level="8.4.3" data-path="RECIPE-AXIS-ORDER.html"><a href="RECIPE-AXIS-ORDER.html#discussion-62"><i class="fa fa-check"></i><b>8.4.3</b> Discussion</a></li>
+<li class="chapter" data-level="8.4.4" data-path="RECIPE-AXIS-ORDER.html"><a href="RECIPE-AXIS-ORDER.html#see-also-50"><i class="fa fa-check"></i><b>8.4.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="RECIPE-AXES-SCALE.html"><a href="RECIPE-AXES-SCALE.html"><i class="fa fa-check"></i><b>8.5</b> Setting the Scaling Ratio of the X- and Y-Axes</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="RECIPE-AXES-SCALE.html"><a href="RECIPE-AXES-SCALE.html#problem-69"><i class="fa fa-check"></i><b>8.5.1</b> Problem</a></li>
+<li class="chapter" data-level="8.5.2" data-path="RECIPE-AXES-SCALE.html"><a href="RECIPE-AXES-SCALE.html#solution-69"><i class="fa fa-check"></i><b>8.5.2</b> Solution</a></li>
+<li class="chapter" data-level="8.5.3" data-path="RECIPE-AXES-SCALE.html"><a href="RECIPE-AXES-SCALE.html#discussion-63"><i class="fa fa-check"></i><b>8.5.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="RECIPE-AXES-SET-TICKS.html"><a href="RECIPE-AXES-SET-TICKS.html"><i class="fa fa-check"></i><b>8.6</b> Setting the Positions of Tick Marks</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="RECIPE-AXES-SET-TICKS.html"><a href="RECIPE-AXES-SET-TICKS.html#problem-70"><i class="fa fa-check"></i><b>8.6.1</b> Problem</a></li>
+<li class="chapter" data-level="8.6.2" data-path="RECIPE-AXES-SET-TICKS.html"><a href="RECIPE-AXES-SET-TICKS.html#solution-70"><i class="fa fa-check"></i><b>8.6.2</b> Solution</a></li>
+<li class="chapter" data-level="8.6.3" data-path="RECIPE-AXES-SET-TICKS.html"><a href="RECIPE-AXES-SET-TICKS.html#discussion-64"><i class="fa fa-check"></i><b>8.6.3</b> Discussion</a></li>
+<li class="chapter" data-level="8.6.4" data-path="RECIPE-AXES-SET-TICKS.html"><a href="RECIPE-AXES-SET-TICKS.html#see-also-51"><i class="fa fa-check"></i><b>8.6.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="RECIPE-AXIS-REMOVE-TICKS.html"><a href="RECIPE-AXIS-REMOVE-TICKS.html"><i class="fa fa-check"></i><b>8.7</b> Removing Tick Marks and Labels</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="RECIPE-AXIS-REMOVE-TICKS.html"><a href="RECIPE-AXIS-REMOVE-TICKS.html#problem-71"><i class="fa fa-check"></i><b>8.7.1</b> Problem</a></li>
+<li class="chapter" data-level="8.7.2" data-path="RECIPE-AXIS-REMOVE-TICKS.html"><a href="RECIPE-AXIS-REMOVE-TICKS.html#solution-71"><i class="fa fa-check"></i><b>8.7.2</b> Solution</a></li>
+<li class="chapter" data-level="8.7.3" data-path="RECIPE-AXIS-REMOVE-TICKS.html"><a href="RECIPE-AXIS-REMOVE-TICKS.html#discussion-65"><i class="fa fa-check"></i><b>8.7.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="RECIPE-AXES-TICK-LABEL.html"><a href="RECIPE-AXES-TICK-LABEL.html"><i class="fa fa-check"></i><b>8.8</b> Changing the Text of Tick Labels</a>
+<ul>
+<li class="chapter" data-level="8.8.1" data-path="RECIPE-AXES-TICK-LABEL.html"><a href="RECIPE-AXES-TICK-LABEL.html#problem-72"><i class="fa fa-check"></i><b>8.8.1</b> Problem</a></li>
+<li class="chapter" data-level="8.8.2" data-path="RECIPE-AXES-TICK-LABEL.html"><a href="RECIPE-AXES-TICK-LABEL.html#solution-72"><i class="fa fa-check"></i><b>8.8.2</b> Solution</a></li>
+<li class="chapter" data-level="8.8.3" data-path="RECIPE-AXES-TICK-LABEL.html"><a href="RECIPE-AXES-TICK-LABEL.html#discussion-66"><i class="fa fa-check"></i><b>8.8.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.9" data-path="RECIPE-AXES-TICK-LABEL-APPEARANCE.html"><a href="RECIPE-AXES-TICK-LABEL-APPEARANCE.html"><i class="fa fa-check"></i><b>8.9</b> Changing the Appearance of Tick Labels</a>
+<ul>
+<li class="chapter" data-level="8.9.1" data-path="RECIPE-AXES-TICK-LABEL-APPEARANCE.html"><a href="RECIPE-AXES-TICK-LABEL-APPEARANCE.html#problem-73"><i class="fa fa-check"></i><b>8.9.1</b> Problem</a></li>
+<li class="chapter" data-level="8.9.2" data-path="RECIPE-AXES-TICK-LABEL-APPEARANCE.html"><a href="RECIPE-AXES-TICK-LABEL-APPEARANCE.html#solution-73"><i class="fa fa-check"></i><b>8.9.2</b> Solution</a></li>
+<li class="chapter" data-level="8.9.3" data-path="RECIPE-AXES-TICK-LABEL-APPEARANCE.html"><a href="RECIPE-AXES-TICK-LABEL-APPEARANCE.html#discussion-67"><i class="fa fa-check"></i><b>8.9.3</b> Discussion</a></li>
+<li class="chapter" data-level="8.9.4" data-path="RECIPE-AXES-TICK-LABEL-APPEARANCE.html"><a href="RECIPE-AXES-TICK-LABEL-APPEARANCE.html#see-also-52"><i class="fa fa-check"></i><b>8.9.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="8.10" data-path="RECIPE-AXES-AXIS-LABEL.html"><a href="RECIPE-AXES-AXIS-LABEL.html"><i class="fa fa-check"></i><b>8.10</b> Changing the Text of Axis Labels</a>
+<ul>
+<li class="chapter" data-level="8.10.1" data-path="RECIPE-AXES-AXIS-LABEL.html"><a href="RECIPE-AXES-AXIS-LABEL.html#problem-74"><i class="fa fa-check"></i><b>8.10.1</b> Problem</a></li>
+<li class="chapter" data-level="8.10.2" data-path="RECIPE-AXES-AXIS-LABEL.html"><a href="RECIPE-AXES-AXIS-LABEL.html#solution-74"><i class="fa fa-check"></i><b>8.10.2</b> Solution</a></li>
+<li class="chapter" data-level="8.10.3" data-path="RECIPE-AXES-AXIS-LABEL.html"><a href="RECIPE-AXES-AXIS-LABEL.html#discussion-68"><i class="fa fa-check"></i><b>8.10.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.11" data-path="RECIPE-AXES-AXIS-LABEL-REMOVE.html"><a href="RECIPE-AXES-AXIS-LABEL-REMOVE.html"><i class="fa fa-check"></i><b>8.11</b> Removing Axis Labels</a>
+<ul>
+<li class="chapter" data-level="8.11.1" data-path="RECIPE-AXES-AXIS-LABEL-REMOVE.html"><a href="RECIPE-AXES-AXIS-LABEL-REMOVE.html#problem-75"><i class="fa fa-check"></i><b>8.11.1</b> Problem</a></li>
+<li class="chapter" data-level="8.11.2" data-path="RECIPE-AXES-AXIS-LABEL-REMOVE.html"><a href="RECIPE-AXES-AXIS-LABEL-REMOVE.html#solution-75"><i class="fa fa-check"></i><b>8.11.2</b> Solution</a></li>
+<li class="chapter" data-level="8.11.3" data-path="RECIPE-AXES-AXIS-LABEL-REMOVE.html"><a href="RECIPE-AXES-AXIS-LABEL-REMOVE.html#discussion-69"><i class="fa fa-check"></i><b>8.11.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.12" data-path="RECIPE-AXES-AXIS-LABEL-APPEARANCE.html"><a href="RECIPE-AXES-AXIS-LABEL-APPEARANCE.html"><i class="fa fa-check"></i><b>8.12</b> Changing the Appearance of Axis Labels</a>
+<ul>
+<li class="chapter" data-level="8.12.1" data-path="RECIPE-AXES-AXIS-LABEL-APPEARANCE.html"><a href="RECIPE-AXES-AXIS-LABEL-APPEARANCE.html#problem-76"><i class="fa fa-check"></i><b>8.12.1</b> Problem</a></li>
+<li class="chapter" data-level="8.12.2" data-path="RECIPE-AXES-AXIS-LABEL-APPEARANCE.html"><a href="RECIPE-AXES-AXIS-LABEL-APPEARANCE.html#solution-76"><i class="fa fa-check"></i><b>8.12.2</b> Solution</a></li>
+<li class="chapter" data-level="8.12.3" data-path="RECIPE-AXES-AXIS-LABEL-APPEARANCE.html"><a href="RECIPE-AXES-AXIS-LABEL-APPEARANCE.html#discussion-70"><i class="fa fa-check"></i><b>8.12.3</b> Discussion</a></li>
+<li class="chapter" data-level="8.12.4" data-path="RECIPE-AXES-AXIS-LABEL-APPEARANCE.html"><a href="RECIPE-AXES-AXIS-LABEL-APPEARANCE.html#see-also-53"><i class="fa fa-check"></i><b>8.12.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="8.13" data-path="RECIPE-AXES-AXIS-LINES.html"><a href="RECIPE-AXES-AXIS-LINES.html"><i class="fa fa-check"></i><b>8.13</b> Showing Lines Along the Axes</a>
+<ul>
+<li class="chapter" data-level="8.13.1" data-path="RECIPE-AXES-AXIS-LINES.html"><a href="RECIPE-AXES-AXIS-LINES.html#problem-77"><i class="fa fa-check"></i><b>8.13.1</b> Problem</a></li>
+<li class="chapter" data-level="8.13.2" data-path="RECIPE-AXES-AXIS-LINES.html"><a href="RECIPE-AXES-AXIS-LINES.html#solution-77"><i class="fa fa-check"></i><b>8.13.2</b> Solution</a></li>
+<li class="chapter" data-level="8.13.3" data-path="RECIPE-AXES-AXIS-LINES.html"><a href="RECIPE-AXES-AXIS-LINES.html#discussion-71"><i class="fa fa-check"></i><b>8.13.3</b> Discussion</a></li>
+<li class="chapter" data-level="8.13.4" data-path="RECIPE-AXES-AXIS-LINES.html"><a href="RECIPE-AXES-AXIS-LINES.html#see-also-54"><i class="fa fa-check"></i><b>8.13.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="8.14" data-path="RECIPE-AXES-AXIS-LOG.html"><a href="RECIPE-AXES-AXIS-LOG.html"><i class="fa fa-check"></i><b>8.14</b> Using a Logarithmic Axis</a>
+<ul>
+<li class="chapter" data-level="8.14.1" data-path="RECIPE-AXES-AXIS-LOG.html"><a href="RECIPE-AXES-AXIS-LOG.html#problem-78"><i class="fa fa-check"></i><b>8.14.1</b> Problem</a></li>
+<li class="chapter" data-level="8.14.2" data-path="RECIPE-AXES-AXIS-LOG.html"><a href="RECIPE-AXES-AXIS-LOG.html#solution-78"><i class="fa fa-check"></i><b>8.14.2</b> Solution</a></li>
+<li class="chapter" data-level="8.14.3" data-path="RECIPE-AXES-AXIS-LOG.html"><a href="RECIPE-AXES-AXIS-LOG.html#discussion-72"><i class="fa fa-check"></i><b>8.14.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.15" data-path="RECIPE-AXES-AXIS-LOG-TICKS.html"><a href="RECIPE-AXES-AXIS-LOG-TICKS.html"><i class="fa fa-check"></i><b>8.15</b> Adding Ticks for a Logarithmic Axis</a>
+<ul>
+<li class="chapter" data-level="8.15.1" data-path="RECIPE-AXES-AXIS-LOG-TICKS.html"><a href="RECIPE-AXES-AXIS-LOG-TICKS.html#problem-79"><i class="fa fa-check"></i><b>8.15.1</b> Problem</a></li>
+<li class="chapter" data-level="8.15.2" data-path="RECIPE-AXES-AXIS-LOG-TICKS.html"><a href="RECIPE-AXES-AXIS-LOG-TICKS.html#solution-79"><i class="fa fa-check"></i><b>8.15.2</b> Solution</a></li>
+<li class="chapter" data-level="8.15.3" data-path="RECIPE-AXES-AXIS-LOG-TICKS.html"><a href="RECIPE-AXES-AXIS-LOG-TICKS.html#discussion-73"><i class="fa fa-check"></i><b>8.15.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.16" data-path="RECIPE-AXES-POLAR.html"><a href="RECIPE-AXES-POLAR.html"><i class="fa fa-check"></i><b>8.16</b> Making a Circular Plot</a>
+<ul>
+<li class="chapter" data-level="8.16.1" data-path="RECIPE-AXES-POLAR.html"><a href="RECIPE-AXES-POLAR.html#problem-80"><i class="fa fa-check"></i><b>8.16.1</b> Problem</a></li>
+<li class="chapter" data-level="8.16.2" data-path="RECIPE-AXES-POLAR.html"><a href="RECIPE-AXES-POLAR.html#solution-80"><i class="fa fa-check"></i><b>8.16.2</b> Solution</a></li>
+<li class="chapter" data-level="8.16.3" data-path="RECIPE-AXES-POLAR.html"><a href="RECIPE-AXES-POLAR.html#discussion-74"><i class="fa fa-check"></i><b>8.16.3</b> Discussion</a></li>
+<li class="chapter" data-level="8.16.4" data-path="RECIPE-AXES-POLAR.html"><a href="RECIPE-AXES-POLAR.html#see-also-55"><i class="fa fa-check"></i><b>8.16.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="8.17" data-path="RECIPE-AXES-AXIS-DATE.html"><a href="RECIPE-AXES-AXIS-DATE.html"><i class="fa fa-check"></i><b>8.17</b> Using Dates on an Axis</a>
+<ul>
+<li class="chapter" data-level="8.17.1" data-path="RECIPE-AXES-AXIS-DATE.html"><a href="RECIPE-AXES-AXIS-DATE.html#problem-81"><i class="fa fa-check"></i><b>8.17.1</b> Problem</a></li>
+<li class="chapter" data-level="8.17.2" data-path="RECIPE-AXES-AXIS-DATE.html"><a href="RECIPE-AXES-AXIS-DATE.html#solution-81"><i class="fa fa-check"></i><b>8.17.2</b> Solution</a></li>
+<li class="chapter" data-level="8.17.3" data-path="RECIPE-AXES-AXIS-DATE.html"><a href="RECIPE-AXES-AXIS-DATE.html#discussion-75"><i class="fa fa-check"></i><b>8.17.3</b> Discussion</a></li>
+<li class="chapter" data-level="8.17.4" data-path="RECIPE-AXES-AXIS-DATE.html"><a href="RECIPE-AXES-AXIS-DATE.html#see-also-56"><i class="fa fa-check"></i><b>8.17.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="8.18" data-path="RECIPE-AXES-TIME-REL.html"><a href="RECIPE-AXES-TIME-REL.html"><i class="fa fa-check"></i><b>8.18</b> Using Relative Times on an Axis</a>
+<ul>
+<li class="chapter" data-level="8.18.1" data-path="RECIPE-AXES-TIME-REL.html"><a href="RECIPE-AXES-TIME-REL.html#problem-82"><i class="fa fa-check"></i><b>8.18.1</b> Problem</a></li>
+<li class="chapter" data-level="8.18.2" data-path="RECIPE-AXES-TIME-REL.html"><a href="RECIPE-AXES-TIME-REL.html#solution-82"><i class="fa fa-check"></i><b>8.18.2</b> Solution</a></li>
+<li class="chapter" data-level="8.18.3" data-path="RECIPE-AXES-TIME-REL.html"><a href="RECIPE-AXES-TIME-REL.html#discussion-76"><i class="fa fa-check"></i><b>8.18.3</b> Discussion</a></li>
+<li class="chapter" data-level="8.18.4" data-path="RECIPE-AXES-TIME-REL.html"><a href="RECIPE-AXES-TIME-REL.html#see-also-57"><i class="fa fa-check"></i><b>8.18.4</b> See Also</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="CHAPTER-APPEARANCE.html"><a href="CHAPTER-APPEARANCE.html"><i class="fa fa-check"></i><b>9</b> Controlling the Overall Appearance of Graphs</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="RECIPE-APPEARANCE-TITLE.html"><a href="RECIPE-APPEARANCE-TITLE.html"><i class="fa fa-check"></i><b>9.1</b> Setting the Title of a Graph</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="RECIPE-APPEARANCE-TITLE.html"><a href="RECIPE-APPEARANCE-TITLE.html#problem-83"><i class="fa fa-check"></i><b>9.1.1</b> Problem</a></li>
+<li class="chapter" data-level="9.1.2" data-path="RECIPE-APPEARANCE-TITLE.html"><a href="RECIPE-APPEARANCE-TITLE.html#solution-83"><i class="fa fa-check"></i><b>9.1.2</b> Solution</a></li>
+<li class="chapter" data-level="9.1.3" data-path="RECIPE-APPEARANCE-TITLE.html"><a href="RECIPE-APPEARANCE-TITLE.html#discussion-77"><i class="fa fa-check"></i><b>9.1.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="RECIPE-APPEARANCE-TEXT-APPEARANCE.html"><a href="RECIPE-APPEARANCE-TEXT-APPEARANCE.html"><i class="fa fa-check"></i><b>9.2</b> Changing the Appearance of Text</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="RECIPE-APPEARANCE-TEXT-APPEARANCE.html"><a href="RECIPE-APPEARANCE-TEXT-APPEARANCE.html#problem-84"><i class="fa fa-check"></i><b>9.2.1</b> Problem</a></li>
+<li class="chapter" data-level="9.2.2" data-path="RECIPE-APPEARANCE-TEXT-APPEARANCE.html"><a href="RECIPE-APPEARANCE-TEXT-APPEARANCE.html#solution-84"><i class="fa fa-check"></i><b>9.2.2</b> Solution</a></li>
+<li class="chapter" data-level="9.2.3" data-path="RECIPE-APPEARANCE-TEXT-APPEARANCE.html"><a href="RECIPE-APPEARANCE-TEXT-APPEARANCE.html#discussion-78"><i class="fa fa-check"></i><b>9.2.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="RECIPE-APPEARANCE-THEME.html"><a href="RECIPE-APPEARANCE-THEME.html"><i class="fa fa-check"></i><b>9.3</b> Using Themes</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="RECIPE-APPEARANCE-THEME.html"><a href="RECIPE-APPEARANCE-THEME.html#problem-85"><i class="fa fa-check"></i><b>9.3.1</b> Problem</a></li>
+<li class="chapter" data-level="9.3.2" data-path="RECIPE-APPEARANCE-THEME.html"><a href="RECIPE-APPEARANCE-THEME.html#solution-85"><i class="fa fa-check"></i><b>9.3.2</b> Solution</a></li>
+<li class="chapter" data-level="9.3.3" data-path="RECIPE-APPEARANCE-THEME.html"><a href="RECIPE-APPEARANCE-THEME.html#discussion-79"><i class="fa fa-check"></i><b>9.3.3</b> Discussion</a></li>
+<li class="chapter" data-level="9.3.4" data-path="RECIPE-APPEARANCE-THEME.html"><a href="RECIPE-APPEARANCE-THEME.html#see-also-58"><i class="fa fa-check"></i><b>9.3.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="RECIPE-APPEARANCE-THEME-MODIFY.html"><a href="RECIPE-APPEARANCE-THEME-MODIFY.html"><i class="fa fa-check"></i><b>9.4</b> Changing the Appearance of Theme Elements</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="RECIPE-APPEARANCE-THEME-MODIFY.html"><a href="RECIPE-APPEARANCE-THEME-MODIFY.html#problem-86"><i class="fa fa-check"></i><b>9.4.1</b> Problem</a></li>
+<li class="chapter" data-level="9.4.2" data-path="RECIPE-APPEARANCE-THEME-MODIFY.html"><a href="RECIPE-APPEARANCE-THEME-MODIFY.html#solution-86"><i class="fa fa-check"></i><b>9.4.2</b> Solution</a></li>
+<li class="chapter" data-level="9.4.3" data-path="RECIPE-APPEARANCE-THEME-MODIFY.html"><a href="RECIPE-APPEARANCE-THEME-MODIFY.html#discussion-80"><i class="fa fa-check"></i><b>9.4.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="RECIPE-APPEARANCE-THEME-CREATE.html"><a href="RECIPE-APPEARANCE-THEME-CREATE.html"><i class="fa fa-check"></i><b>9.5</b> Creating Your Own Themes</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="RECIPE-APPEARANCE-THEME-CREATE.html"><a href="RECIPE-APPEARANCE-THEME-CREATE.html#problem-87"><i class="fa fa-check"></i><b>9.5.1</b> Problem</a></li>
+<li class="chapter" data-level="9.5.2" data-path="RECIPE-APPEARANCE-THEME-CREATE.html"><a href="RECIPE-APPEARANCE-THEME-CREATE.html#solution-87"><i class="fa fa-check"></i><b>9.5.2</b> Solution</a></li>
+<li class="chapter" data-level="9.5.3" data-path="RECIPE-APPEARANCE-THEME-CREATE.html"><a href="RECIPE-APPEARANCE-THEME-CREATE.html#discussion-81"><i class="fa fa-check"></i><b>9.5.3</b> Discussion</a></li>
+<li class="chapter" data-level="9.5.4" data-path="RECIPE-APPEARANCE-THEME-CREATE.html"><a href="RECIPE-APPEARANCE-THEME-CREATE.html#see-also-59"><i class="fa fa-check"></i><b>9.5.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="RECIPE-APPEARANCE-HIDE-GRIDLINES.html"><a href="RECIPE-APPEARANCE-HIDE-GRIDLINES.html"><i class="fa fa-check"></i><b>9.6</b> Hiding Grid Lines</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="RECIPE-APPEARANCE-HIDE-GRIDLINES.html"><a href="RECIPE-APPEARANCE-HIDE-GRIDLINES.html#problem-88"><i class="fa fa-check"></i><b>9.6.1</b> Problem</a></li>
+<li class="chapter" data-level="9.6.2" data-path="RECIPE-APPEARANCE-HIDE-GRIDLINES.html"><a href="RECIPE-APPEARANCE-HIDE-GRIDLINES.html#solution-88"><i class="fa fa-check"></i><b>9.6.2</b> Solution</a></li>
+<li class="chapter" data-level="9.6.3" data-path="RECIPE-APPEARANCE-HIDE-GRIDLINES.html"><a href="RECIPE-APPEARANCE-HIDE-GRIDLINES.html#discussion-82"><i class="fa fa-check"></i><b>9.6.3</b> Discussion</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="CHAPTER-LEGEND.html"><a href="CHAPTER-LEGEND.html"><i class="fa fa-check"></i><b>10</b> Legends</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="RECIPE-LEGEND-REMOVE.html"><a href="RECIPE-LEGEND-REMOVE.html"><i class="fa fa-check"></i><b>10.1</b> Removing the Legend</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="RECIPE-LEGEND-REMOVE.html"><a href="RECIPE-LEGEND-REMOVE.html#problem-89"><i class="fa fa-check"></i><b>10.1.1</b> Problem</a></li>
+<li class="chapter" data-level="10.1.2" data-path="RECIPE-LEGEND-REMOVE.html"><a href="RECIPE-LEGEND-REMOVE.html#solution-89"><i class="fa fa-check"></i><b>10.1.2</b> Solution</a></li>
+<li class="chapter" data-level="10.1.3" data-path="RECIPE-LEGEND-REMOVE.html"><a href="RECIPE-LEGEND-REMOVE.html#discussion-83"><i class="fa fa-check"></i><b>10.1.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="RECIPE-LEGEND-POSITION.html"><a href="RECIPE-LEGEND-POSITION.html"><i class="fa fa-check"></i><b>10.2</b> Changing the Position of a Legend</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="RECIPE-LEGEND-POSITION.html"><a href="RECIPE-LEGEND-POSITION.html#problem-90"><i class="fa fa-check"></i><b>10.2.1</b> Problem</a></li>
+<li class="chapter" data-level="10.2.2" data-path="RECIPE-LEGEND-POSITION.html"><a href="RECIPE-LEGEND-POSITION.html#solution-90"><i class="fa fa-check"></i><b>10.2.2</b> Solution</a></li>
+<li class="chapter" data-level="10.2.3" data-path="RECIPE-LEGEND-POSITION.html"><a href="RECIPE-LEGEND-POSITION.html#discussion-84"><i class="fa fa-check"></i><b>10.2.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="RECIPE-LEGEND-ORDER.html"><a href="RECIPE-LEGEND-ORDER.html"><i class="fa fa-check"></i><b>10.3</b> Changing the Order of Items in a Legend</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="RECIPE-LEGEND-ORDER.html"><a href="RECIPE-LEGEND-ORDER.html#problem-91"><i class="fa fa-check"></i><b>10.3.1</b> Problem</a></li>
+<li class="chapter" data-level="10.3.2" data-path="RECIPE-LEGEND-ORDER.html"><a href="RECIPE-LEGEND-ORDER.html#solution-91"><i class="fa fa-check"></i><b>10.3.2</b> Solution</a></li>
+<li class="chapter" data-level="10.3.3" data-path="RECIPE-LEGEND-ORDER.html"><a href="RECIPE-LEGEND-ORDER.html#discussion-85"><i class="fa fa-check"></i><b>10.3.3</b> Discussion</a></li>
+<li class="chapter" data-level="10.3.4" data-path="RECIPE-LEGEND-ORDER.html"><a href="RECIPE-LEGEND-ORDER.html#see-also-60"><i class="fa fa-check"></i><b>10.3.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="RECIPE-LEGEND-REVERSE.html"><a href="RECIPE-LEGEND-REVERSE.html"><i class="fa fa-check"></i><b>10.4</b> Reversing the Order of Items in a Legend</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="RECIPE-LEGEND-REVERSE.html"><a href="RECIPE-LEGEND-REVERSE.html#problem-92"><i class="fa fa-check"></i><b>10.4.1</b> Problem</a></li>
+<li class="chapter" data-level="10.4.2" data-path="RECIPE-LEGEND-REVERSE.html"><a href="RECIPE-LEGEND-REVERSE.html#solution-92"><i class="fa fa-check"></i><b>10.4.2</b> Solution</a></li>
+<li class="chapter" data-level="10.4.3" data-path="RECIPE-LEGEND-REVERSE.html"><a href="RECIPE-LEGEND-REVERSE.html#discussion-86"><i class="fa fa-check"></i><b>10.4.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="RECIPE-LEGEND-TITLE-TEXT.html"><a href="RECIPE-LEGEND-TITLE-TEXT.html"><i class="fa fa-check"></i><b>10.5</b> Changing a Legend Title</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="RECIPE-LEGEND-TITLE-TEXT.html"><a href="RECIPE-LEGEND-TITLE-TEXT.html#problem-93"><i class="fa fa-check"></i><b>10.5.1</b> Problem</a></li>
+<li class="chapter" data-level="10.5.2" data-path="RECIPE-LEGEND-TITLE-TEXT.html"><a href="RECIPE-LEGEND-TITLE-TEXT.html#solution-93"><i class="fa fa-check"></i><b>10.5.2</b> Solution</a></li>
+<li class="chapter" data-level="10.5.3" data-path="RECIPE-LEGEND-TITLE-TEXT.html"><a href="RECIPE-LEGEND-TITLE-TEXT.html#discussion-87"><i class="fa fa-check"></i><b>10.5.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="RECIPE-LEGEND-TITLE-APPEARANCE.html"><a href="RECIPE-LEGEND-TITLE-APPEARANCE.html"><i class="fa fa-check"></i><b>10.6</b> Changing the Appearance of a Legend Title</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="RECIPE-LEGEND-TITLE-APPEARANCE.html"><a href="RECIPE-LEGEND-TITLE-APPEARANCE.html#problem-94"><i class="fa fa-check"></i><b>10.6.1</b> Problem</a></li>
+<li class="chapter" data-level="10.6.2" data-path="RECIPE-LEGEND-TITLE-APPEARANCE.html"><a href="RECIPE-LEGEND-TITLE-APPEARANCE.html#solution-94"><i class="fa fa-check"></i><b>10.6.2</b> Solution</a></li>
+<li class="chapter" data-level="10.6.3" data-path="RECIPE-LEGEND-TITLE-APPEARANCE.html"><a href="RECIPE-LEGEND-TITLE-APPEARANCE.html#discussion-88"><i class="fa fa-check"></i><b>10.6.3</b> Discussion</a></li>
+<li class="chapter" data-level="10.6.4" data-path="RECIPE-LEGEND-TITLE-APPEARANCE.html"><a href="RECIPE-LEGEND-TITLE-APPEARANCE.html#see-also-61"><i class="fa fa-check"></i><b>10.6.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="RECIPE-LEGEND-TITLE-REMOVE.html"><a href="RECIPE-LEGEND-TITLE-REMOVE.html"><i class="fa fa-check"></i><b>10.7</b> Removing a Legend Title</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="RECIPE-LEGEND-TITLE-REMOVE.html"><a href="RECIPE-LEGEND-TITLE-REMOVE.html#problem-95"><i class="fa fa-check"></i><b>10.7.1</b> Problem</a></li>
+<li class="chapter" data-level="10.7.2" data-path="RECIPE-LEGEND-TITLE-REMOVE.html"><a href="RECIPE-LEGEND-TITLE-REMOVE.html#solution-95"><i class="fa fa-check"></i><b>10.7.2</b> Solution</a></li>
+<li class="chapter" data-level="10.7.3" data-path="RECIPE-LEGEND-TITLE-REMOVE.html"><a href="RECIPE-LEGEND-TITLE-REMOVE.html#discussion-89"><i class="fa fa-check"></i><b>10.7.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="RECIPE-LEGEND-LABEL-TEXT.html"><a href="RECIPE-LEGEND-LABEL-TEXT.html"><i class="fa fa-check"></i><b>10.8</b> Changing the Labels in a Legend</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="RECIPE-LEGEND-LABEL-TEXT.html"><a href="RECIPE-LEGEND-LABEL-TEXT.html#problem-96"><i class="fa fa-check"></i><b>10.8.1</b> Problem</a></li>
+<li class="chapter" data-level="10.8.2" data-path="RECIPE-LEGEND-LABEL-TEXT.html"><a href="RECIPE-LEGEND-LABEL-TEXT.html#solution-96"><i class="fa fa-check"></i><b>10.8.2</b> Solution</a></li>
+<li class="chapter" data-level="10.8.3" data-path="RECIPE-LEGEND-LABEL-TEXT.html"><a href="RECIPE-LEGEND-LABEL-TEXT.html#discussion-90"><i class="fa fa-check"></i><b>10.8.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="RECIPE-LEGEND-LABEL-APPEARANCE.html"><a href="RECIPE-LEGEND-LABEL-APPEARANCE.html"><i class="fa fa-check"></i><b>10.9</b> Changing the Appearance of Legend Labels</a>
+<ul>
+<li class="chapter" data-level="10.9.1" data-path="RECIPE-LEGEND-LABEL-APPEARANCE.html"><a href="RECIPE-LEGEND-LABEL-APPEARANCE.html#problem-97"><i class="fa fa-check"></i><b>10.9.1</b> Problem</a></li>
+<li class="chapter" data-level="10.9.2" data-path="RECIPE-LEGEND-LABEL-APPEARANCE.html"><a href="RECIPE-LEGEND-LABEL-APPEARANCE.html#solution-97"><i class="fa fa-check"></i><b>10.9.2</b> Solution</a></li>
+<li class="chapter" data-level="10.9.3" data-path="RECIPE-LEGEND-LABEL-APPEARANCE.html"><a href="RECIPE-LEGEND-LABEL-APPEARANCE.html#discussion-91"><i class="fa fa-check"></i><b>10.9.3</b> Discussion</a></li>
+<li class="chapter" data-level="10.9.4" data-path="RECIPE-LEGEND-LABEL-APPEARANCE.html"><a href="RECIPE-LEGEND-LABEL-APPEARANCE.html#see-also-62"><i class="fa fa-check"></i><b>10.9.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="10.10" data-path="RECIPE-LEGEND-LABEL-MULTILINE.html"><a href="RECIPE-LEGEND-LABEL-MULTILINE.html"><i class="fa fa-check"></i><b>10.10</b> Using Labels with Multiple Lines of Text</a>
+<ul>
+<li class="chapter" data-level="10.10.1" data-path="RECIPE-LEGEND-LABEL-MULTILINE.html"><a href="RECIPE-LEGEND-LABEL-MULTILINE.html#problem-98"><i class="fa fa-check"></i><b>10.10.1</b> Problem</a></li>
+<li class="chapter" data-level="10.10.2" data-path="RECIPE-LEGEND-LABEL-MULTILINE.html"><a href="RECIPE-LEGEND-LABEL-MULTILINE.html#solution-98"><i class="fa fa-check"></i><b>10.10.2</b> Solution</a></li>
+<li class="chapter" data-level="10.10.3" data-path="RECIPE-LEGEND-LABEL-MULTILINE.html"><a href="RECIPE-LEGEND-LABEL-MULTILINE.html#discussion-92"><i class="fa fa-check"></i><b>10.10.3</b> Discussion</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="CHAPTER-FACET.html"><a href="CHAPTER-FACET.html"><i class="fa fa-check"></i><b>11</b> Facets</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="RECIPE-FACET-BASIC.html"><a href="RECIPE-FACET-BASIC.html"><i class="fa fa-check"></i><b>11.1</b> Splitting Data into Subplots with Facets</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="RECIPE-FACET-BASIC.html"><a href="RECIPE-FACET-BASIC.html#problem-99"><i class="fa fa-check"></i><b>11.1.1</b> Problem</a></li>
+<li class="chapter" data-level="11.1.2" data-path="RECIPE-FACET-BASIC.html"><a href="RECIPE-FACET-BASIC.html#solution-99"><i class="fa fa-check"></i><b>11.1.2</b> Solution</a></li>
+<li class="chapter" data-level="11.1.3" data-path="RECIPE-FACET-BASIC.html"><a href="RECIPE-FACET-BASIC.html#discussion-93"><i class="fa fa-check"></i><b>11.1.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="RECIPE-FACET-FREE.html"><a href="RECIPE-FACET-FREE.html"><i class="fa fa-check"></i><b>11.2</b> Using Facets with Different Axes</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="RECIPE-FACET-FREE.html"><a href="RECIPE-FACET-FREE.html#problem-100"><i class="fa fa-check"></i><b>11.2.1</b> Problem</a></li>
+<li class="chapter" data-level="11.2.2" data-path="RECIPE-FACET-FREE.html"><a href="RECIPE-FACET-FREE.html#solution-100"><i class="fa fa-check"></i><b>11.2.2</b> Solution</a></li>
+<li class="chapter" data-level="11.2.3" data-path="RECIPE-FACET-FREE.html"><a href="RECIPE-FACET-FREE.html#discussion-94"><i class="fa fa-check"></i><b>11.2.3</b> Discussion</a></li>
+<li class="chapter" data-level="11.2.4" data-path="RECIPE-FACET-FREE.html"><a href="RECIPE-FACET-FREE.html#see-also-63"><i class="fa fa-check"></i><b>11.2.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="RECIPE-FACET-LABEL-TEXT.html"><a href="RECIPE-FACET-LABEL-TEXT.html"><i class="fa fa-check"></i><b>11.3</b> Changing the Text of Facet Labels</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="RECIPE-FACET-LABEL-TEXT.html"><a href="RECIPE-FACET-LABEL-TEXT.html#problem-101"><i class="fa fa-check"></i><b>11.3.1</b> Problem</a></li>
+<li class="chapter" data-level="11.3.2" data-path="RECIPE-FACET-LABEL-TEXT.html"><a href="RECIPE-FACET-LABEL-TEXT.html#solution-101"><i class="fa fa-check"></i><b>11.3.2</b> Solution</a></li>
+<li class="chapter" data-level="11.3.3" data-path="RECIPE-FACET-LABEL-TEXT.html"><a href="RECIPE-FACET-LABEL-TEXT.html#discussion-95"><i class="fa fa-check"></i><b>11.3.3</b> Discussion</a></li>
+<li class="chapter" data-level="11.3.4" data-path="RECIPE-FACET-LABEL-TEXT.html"><a href="RECIPE-FACET-LABEL-TEXT.html#see-also-64"><i class="fa fa-check"></i><b>11.3.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="RECIPE-FACET-LABEL-APPEARANCE.html"><a href="RECIPE-FACET-LABEL-APPEARANCE.html"><i class="fa fa-check"></i><b>11.4</b> Changing the Appearance of Facet Labels and Headers</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="RECIPE-FACET-LABEL-APPEARANCE.html"><a href="RECIPE-FACET-LABEL-APPEARANCE.html#problem-102"><i class="fa fa-check"></i><b>11.4.1</b> Problem</a></li>
+<li class="chapter" data-level="11.4.2" data-path="RECIPE-FACET-LABEL-APPEARANCE.html"><a href="RECIPE-FACET-LABEL-APPEARANCE.html#solution-102"><i class="fa fa-check"></i><b>11.4.2</b> Solution</a></li>
+<li class="chapter" data-level="11.4.3" data-path="RECIPE-FACET-LABEL-APPEARANCE.html"><a href="RECIPE-FACET-LABEL-APPEARANCE.html#discussion-96"><i class="fa fa-check"></i><b>11.4.3</b> Discussion</a></li>
+<li class="chapter" data-level="11.4.4" data-path="RECIPE-FACET-LABEL-APPEARANCE.html"><a href="RECIPE-FACET-LABEL-APPEARANCE.html#see-also-65"><i class="fa fa-check"></i><b>11.4.4</b> See Also</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="CHAPTER-COLORS.html"><a href="CHAPTER-COLORS.html"><i class="fa fa-check"></i><b>12</b> Using Colors in Plots</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="RECIPE-COLORS-SETTING.html"><a href="RECIPE-COLORS-SETTING.html"><i class="fa fa-check"></i><b>12.1</b> Setting the Colors of Objects</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="RECIPE-COLORS-SETTING.html"><a href="RECIPE-COLORS-SETTING.html#problem-103"><i class="fa fa-check"></i><b>12.1.1</b> Problem</a></li>
+<li class="chapter" data-level="12.1.2" data-path="RECIPE-COLORS-SETTING.html"><a href="RECIPE-COLORS-SETTING.html#solution-103"><i class="fa fa-check"></i><b>12.1.2</b> Solution</a></li>
+<li class="chapter" data-level="12.1.3" data-path="RECIPE-COLORS-SETTING.html"><a href="RECIPE-COLORS-SETTING.html#discussion-97"><i class="fa fa-check"></i><b>12.1.3</b> Discussion</a></li>
+<li class="chapter" data-level="12.1.4" data-path="RECIPE-COLORS-SETTING.html"><a href="RECIPE-COLORS-SETTING.html#see-also-66"><i class="fa fa-check"></i><b>12.1.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="RECIPE-COLORS-MAPPING.html"><a href="RECIPE-COLORS-MAPPING.html"><i class="fa fa-check"></i><b>12.2</b> Representing Variables with Colors</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="RECIPE-COLORS-MAPPING.html"><a href="RECIPE-COLORS-MAPPING.html#problem-104"><i class="fa fa-check"></i><b>12.2.1</b> Problem</a></li>
+<li class="chapter" data-level="12.2.2" data-path="RECIPE-COLORS-MAPPING.html"><a href="RECIPE-COLORS-MAPPING.html#solution-104"><i class="fa fa-check"></i><b>12.2.2</b> Solution</a></li>
+<li class="chapter" data-level="12.2.3" data-path="RECIPE-COLORS-MAPPING.html"><a href="RECIPE-COLORS-MAPPING.html#discussion-98"><i class="fa fa-check"></i><b>12.2.3</b> Discussion</a></li>
+<li class="chapter" data-level="12.2.4" data-path="RECIPE-COLORS-MAPPING.html"><a href="RECIPE-COLORS-MAPPING.html#see-also-67"><i class="fa fa-check"></i><b>12.2.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="RECIPE-COLORS-PALETTE-DISCRETE-COLORBLIND.html"><a href="RECIPE-COLORS-PALETTE-DISCRETE-COLORBLIND.html"><i class="fa fa-check"></i><b>12.3</b> Using a Colorblind-Friendly Palette</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="RECIPE-COLORS-PALETTE-DISCRETE-COLORBLIND.html"><a href="RECIPE-COLORS-PALETTE-DISCRETE-COLORBLIND.html#problem-105"><i class="fa fa-check"></i><b>12.3.1</b> Problem</a></li>
+<li class="chapter" data-level="12.3.2" data-path="RECIPE-COLORS-PALETTE-DISCRETE-COLORBLIND.html"><a href="RECIPE-COLORS-PALETTE-DISCRETE-COLORBLIND.html#solution-105"><i class="fa fa-check"></i><b>12.3.2</b> Solution</a></li>
+<li class="chapter" data-level="12.3.3" data-path="RECIPE-COLORS-PALETTE-DISCRETE-COLORBLIND.html"><a href="RECIPE-COLORS-PALETTE-DISCRETE-COLORBLIND.html#discussion-99"><i class="fa fa-check"></i><b>12.3.3</b> Discussion</a></li>
+<li class="chapter" data-level="12.3.4" data-path="RECIPE-COLORS-PALETTE-DISCRETE-COLORBLIND.html"><a href="RECIPE-COLORS-PALETTE-DISCRETE-COLORBLIND.html#see-also-68"><i class="fa fa-check"></i><b>12.3.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="RECIPE-COLORS-PALETTE-DISCRETE.html"><a href="RECIPE-COLORS-PALETTE-DISCRETE.html"><i class="fa fa-check"></i><b>12.4</b> Using a Different Palette for a Discrete Variable</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="RECIPE-COLORS-PALETTE-DISCRETE.html"><a href="RECIPE-COLORS-PALETTE-DISCRETE.html#problem-106"><i class="fa fa-check"></i><b>12.4.1</b> Problem</a></li>
+<li class="chapter" data-level="12.4.2" data-path="RECIPE-COLORS-PALETTE-DISCRETE.html"><a href="RECIPE-COLORS-PALETTE-DISCRETE.html#solution-106"><i class="fa fa-check"></i><b>12.4.2</b> Solution</a></li>
+<li class="chapter" data-level="12.4.3" data-path="RECIPE-COLORS-PALETTE-DISCRETE.html"><a href="RECIPE-COLORS-PALETTE-DISCRETE.html#discussion-100"><i class="fa fa-check"></i><b>12.4.3</b> Discussion</a></li>
+<li class="chapter" data-level="12.4.4" data-path="RECIPE-COLORS-PALETTE-DISCRETE.html"><a href="RECIPE-COLORS-PALETTE-DISCRETE.html#see-also-69"><i class="fa fa-check"></i><b>12.4.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="RECIPE-COLORS-PALETTE-DISCRETE-MANUAL.html"><a href="RECIPE-COLORS-PALETTE-DISCRETE-MANUAL.html"><i class="fa fa-check"></i><b>12.5</b> Using a Manually Defined Palette for a Discrete Variable</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="RECIPE-COLORS-PALETTE-DISCRETE-MANUAL.html"><a href="RECIPE-COLORS-PALETTE-DISCRETE-MANUAL.html#problem-107"><i class="fa fa-check"></i><b>12.5.1</b> Problem</a></li>
+<li class="chapter" data-level="12.5.2" data-path="RECIPE-COLORS-PALETTE-DISCRETE-MANUAL.html"><a href="RECIPE-COLORS-PALETTE-DISCRETE-MANUAL.html#solution-107"><i class="fa fa-check"></i><b>12.5.2</b> Solution</a></li>
+<li class="chapter" data-level="12.5.3" data-path="RECIPE-COLORS-PALETTE-DISCRETE-MANUAL.html"><a href="RECIPE-COLORS-PALETTE-DISCRETE-MANUAL.html#discussion-101"><i class="fa fa-check"></i><b>12.5.3</b> Discussion</a></li>
+<li class="chapter" data-level="12.5.4" data-path="RECIPE-COLORS-PALETTE-DISCRETE-MANUAL.html"><a href="RECIPE-COLORS-PALETTE-DISCRETE-MANUAL.html#see-also-70"><i class="fa fa-check"></i><b>12.5.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="RECIPE-COLORS-PALETTE-CONTINUOUS.html"><a href="RECIPE-COLORS-PALETTE-CONTINUOUS.html"><i class="fa fa-check"></i><b>12.6</b> Using a Manually Defined Palette for a Continuous Variable</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="RECIPE-COLORS-PALETTE-CONTINUOUS.html"><a href="RECIPE-COLORS-PALETTE-CONTINUOUS.html#problem-108"><i class="fa fa-check"></i><b>12.6.1</b> Problem</a></li>
+<li class="chapter" data-level="12.6.2" data-path="RECIPE-COLORS-PALETTE-CONTINUOUS.html"><a href="RECIPE-COLORS-PALETTE-CONTINUOUS.html#solution-108"><i class="fa fa-check"></i><b>12.6.2</b> Solution</a></li>
+<li class="chapter" data-level="12.6.3" data-path="RECIPE-COLORS-PALETTE-CONTINUOUS.html"><a href="RECIPE-COLORS-PALETTE-CONTINUOUS.html#discussion-102"><i class="fa fa-check"></i><b>12.6.3</b> Discussion</a></li>
+<li class="chapter" data-level="12.6.4" data-path="RECIPE-COLORS-PALETTE-CONTINUOUS.html"><a href="RECIPE-COLORS-PALETTE-CONTINUOUS.html#see-also-71"><i class="fa fa-check"></i><b>12.6.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="RECIPE-COLORS-AREA-VALUE.html"><a href="RECIPE-COLORS-AREA-VALUE.html"><i class="fa fa-check"></i><b>12.7</b> Coloring a Shaded Region Based on Value</a>
+<ul>
+<li class="chapter" data-level="12.7.1" data-path="RECIPE-COLORS-AREA-VALUE.html"><a href="RECIPE-COLORS-AREA-VALUE.html#problem-109"><i class="fa fa-check"></i><b>12.7.1</b> Problem</a></li>
+<li class="chapter" data-level="12.7.2" data-path="RECIPE-COLORS-AREA-VALUE.html"><a href="RECIPE-COLORS-AREA-VALUE.html#solution-109"><i class="fa fa-check"></i><b>12.7.2</b> Solution</a></li>
+<li class="chapter" data-level="12.7.3" data-path="RECIPE-COLORS-AREA-VALUE.html"><a href="RECIPE-COLORS-AREA-VALUE.html#discussion-103"><i class="fa fa-check"></i><b>12.7.3</b> Discussion</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="CHAPTER-MISCGRAPH.html"><a href="CHAPTER-MISCGRAPH.html"><i class="fa fa-check"></i><b>13</b> Miscellaneous Graphs</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="RECIPE-MISCGRAPH-CORRMATRIX.html"><a href="RECIPE-MISCGRAPH-CORRMATRIX.html"><i class="fa fa-check"></i><b>13.1</b> Making a Correlation Matrix</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="RECIPE-MISCGRAPH-CORRMATRIX.html"><a href="RECIPE-MISCGRAPH-CORRMATRIX.html#problem-110"><i class="fa fa-check"></i><b>13.1.1</b> Problem</a></li>
+<li class="chapter" data-level="13.1.2" data-path="RECIPE-MISCGRAPH-CORRMATRIX.html"><a href="RECIPE-MISCGRAPH-CORRMATRIX.html#solution-110"><i class="fa fa-check"></i><b>13.1.2</b> Solution</a></li>
+<li class="chapter" data-level="13.1.3" data-path="RECIPE-MISCGRAPH-CORRMATRIX.html"><a href="RECIPE-MISCGRAPH-CORRMATRIX.html#discussion-104"><i class="fa fa-check"></i><b>13.1.3</b> Discussion</a></li>
+<li class="chapter" data-level="13.1.4" data-path="RECIPE-MISCGRAPH-CORRMATRIX.html"><a href="RECIPE-MISCGRAPH-CORRMATRIX.html#see-also-72"><i class="fa fa-check"></i><b>13.1.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="RECIPE-MISCGRAPH-FUNCTION.html"><a href="RECIPE-MISCGRAPH-FUNCTION.html"><i class="fa fa-check"></i><b>13.2</b> Plotting a Function</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="RECIPE-MISCGRAPH-FUNCTION.html"><a href="RECIPE-MISCGRAPH-FUNCTION.html#problem-111"><i class="fa fa-check"></i><b>13.2.1</b> Problem</a></li>
+<li class="chapter" data-level="13.2.2" data-path="RECIPE-MISCGRAPH-FUNCTION.html"><a href="RECIPE-MISCGRAPH-FUNCTION.html#solution-111"><i class="fa fa-check"></i><b>13.2.2</b> Solution</a></li>
+<li class="chapter" data-level="13.2.3" data-path="RECIPE-MISCGRAPH-FUNCTION.html"><a href="RECIPE-MISCGRAPH-FUNCTION.html#discussion-105"><i class="fa fa-check"></i><b>13.2.3</b> Discussion</a></li>
+<li class="chapter" data-level="13.2.4" data-path="RECIPE-MISCGRAPH-FUNCTION.html"><a href="RECIPE-MISCGRAPH-FUNCTION.html#see-also-73"><i class="fa fa-check"></i><b>13.2.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="RECIPE-MISCGRAPH-FUNCTION-SHADE.html"><a href="RECIPE-MISCGRAPH-FUNCTION-SHADE.html"><i class="fa fa-check"></i><b>13.3</b> Shading a Subregion Under a Function Curve</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="RECIPE-MISCGRAPH-FUNCTION-SHADE.html"><a href="RECIPE-MISCGRAPH-FUNCTION-SHADE.html#problem-112"><i class="fa fa-check"></i><b>13.3.1</b> Problem</a></li>
+<li class="chapter" data-level="13.3.2" data-path="RECIPE-MISCGRAPH-FUNCTION-SHADE.html"><a href="RECIPE-MISCGRAPH-FUNCTION-SHADE.html#solution-112"><i class="fa fa-check"></i><b>13.3.2</b> Solution</a></li>
+<li class="chapter" data-level="13.3.3" data-path="RECIPE-MISCGRAPH-FUNCTION-SHADE.html"><a href="RECIPE-MISCGRAPH-FUNCTION-SHADE.html#discussion-106"><i class="fa fa-check"></i><b>13.3.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="RECIPE-MISCGRAPH-GRAPH.html"><a href="RECIPE-MISCGRAPH-GRAPH.html"><i class="fa fa-check"></i><b>13.4</b> Creating a Network Graph</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="RECIPE-MISCGRAPH-GRAPH.html"><a href="RECIPE-MISCGRAPH-GRAPH.html#problem-113"><i class="fa fa-check"></i><b>13.4.1</b> Problem</a></li>
+<li class="chapter" data-level="13.4.2" data-path="RECIPE-MISCGRAPH-GRAPH.html"><a href="RECIPE-MISCGRAPH-GRAPH.html#solution-113"><i class="fa fa-check"></i><b>13.4.2</b> Solution</a></li>
+<li class="chapter" data-level="13.4.3" data-path="RECIPE-MISCGRAPH-GRAPH.html"><a href="RECIPE-MISCGRAPH-GRAPH.html#discussion-107"><i class="fa fa-check"></i><b>13.4.3</b> Discussion</a></li>
+<li class="chapter" data-level="13.4.4" data-path="RECIPE-MISCGRAPH-GRAPH.html"><a href="RECIPE-MISCGRAPH-GRAPH.html#see-also-74"><i class="fa fa-check"></i><b>13.4.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="RECIPE-MISCGRAPH-GRAPH-LABEL.html"><a href="RECIPE-MISCGRAPH-GRAPH-LABEL.html"><i class="fa fa-check"></i><b>13.5</b> Using Text Labels in a Network Graph</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="RECIPE-MISCGRAPH-GRAPH-LABEL.html"><a href="RECIPE-MISCGRAPH-GRAPH-LABEL.html#problem-114"><i class="fa fa-check"></i><b>13.5.1</b> Problem</a></li>
+<li class="chapter" data-level="13.5.2" data-path="RECIPE-MISCGRAPH-GRAPH-LABEL.html"><a href="RECIPE-MISCGRAPH-GRAPH-LABEL.html#solution-114"><i class="fa fa-check"></i><b>13.5.2</b> Solution</a></li>
+<li class="chapter" data-level="13.5.3" data-path="RECIPE-MISCGRAPH-GRAPH-LABEL.html"><a href="RECIPE-MISCGRAPH-GRAPH-LABEL.html#discussion-108"><i class="fa fa-check"></i><b>13.5.3</b> Discussion</a></li>
+<li class="chapter" data-level="13.5.4" data-path="RECIPE-MISCGRAPH-GRAPH-LABEL.html"><a href="RECIPE-MISCGRAPH-GRAPH-LABEL.html#see-also-75"><i class="fa fa-check"></i><b>13.5.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="RECIPE-MISCGRAPH-HEATMAP.html"><a href="RECIPE-MISCGRAPH-HEATMAP.html"><i class="fa fa-check"></i><b>13.6</b> Creating a Heat Map</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="RECIPE-MISCGRAPH-HEATMAP.html"><a href="RECIPE-MISCGRAPH-HEATMAP.html#problem-115"><i class="fa fa-check"></i><b>13.6.1</b> Problem</a></li>
+<li class="chapter" data-level="13.6.2" data-path="RECIPE-MISCGRAPH-HEATMAP.html"><a href="RECIPE-MISCGRAPH-HEATMAP.html#solution-115"><i class="fa fa-check"></i><b>13.6.2</b> Solution</a></li>
+<li class="chapter" data-level="13.6.3" data-path="RECIPE-MISCGRAPH-HEATMAP.html"><a href="RECIPE-MISCGRAPH-HEATMAP.html#discussion-109"><i class="fa fa-check"></i><b>13.6.3</b> Discussion</a></li>
+<li class="chapter" data-level="13.6.4" data-path="RECIPE-MISCGRAPH-HEATMAP.html"><a href="RECIPE-MISCGRAPH-HEATMAP.html#see-also-76"><i class="fa fa-check"></i><b>13.6.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="13.7" data-path="RECIPE-MISCGRAPH-3D-SCATTER.html"><a href="RECIPE-MISCGRAPH-3D-SCATTER.html"><i class="fa fa-check"></i><b>13.7</b> Creating a Three-Dimensional Scatter Plot</a>
+<ul>
+<li class="chapter" data-level="13.7.1" data-path="RECIPE-MISCGRAPH-3D-SCATTER.html"><a href="RECIPE-MISCGRAPH-3D-SCATTER.html#problem-116"><i class="fa fa-check"></i><b>13.7.1</b> Problem</a></li>
+<li class="chapter" data-level="13.7.2" data-path="RECIPE-MISCGRAPH-3D-SCATTER.html"><a href="RECIPE-MISCGRAPH-3D-SCATTER.html#solution-116"><i class="fa fa-check"></i><b>13.7.2</b> Solution</a></li>
+<li class="chapter" data-level="13.7.3" data-path="RECIPE-MISCGRAPH-3D-SCATTER.html"><a href="RECIPE-MISCGRAPH-3D-SCATTER.html#discussion-110"><i class="fa fa-check"></i><b>13.7.3</b> Discussion</a></li>
+<li class="chapter" data-level="13.7.4" data-path="RECIPE-MISCGRAPH-3D-SCATTER.html"><a href="RECIPE-MISCGRAPH-3D-SCATTER.html#see-also-77"><i class="fa fa-check"></i><b>13.7.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="13.8" data-path="RECIPE-MISCGRAPH-3D-SCATTER-MODEL.html"><a href="RECIPE-MISCGRAPH-3D-SCATTER-MODEL.html"><i class="fa fa-check"></i><b>13.8</b> Adding a Prediction Surface to a Three-Dimensional Plot</a>
+<ul>
+<li class="chapter" data-level="13.8.1" data-path="RECIPE-MISCGRAPH-3D-SCATTER-MODEL.html"><a href="RECIPE-MISCGRAPH-3D-SCATTER-MODEL.html#problem-117"><i class="fa fa-check"></i><b>13.8.1</b> Problem</a></li>
+<li class="chapter" data-level="13.8.2" data-path="RECIPE-MISCGRAPH-3D-SCATTER-MODEL.html"><a href="RECIPE-MISCGRAPH-3D-SCATTER-MODEL.html#solution-117"><i class="fa fa-check"></i><b>13.8.2</b> Solution</a></li>
+<li class="chapter" data-level="13.8.3" data-path="RECIPE-MISCGRAPH-3D-SCATTER-MODEL.html"><a href="RECIPE-MISCGRAPH-3D-SCATTER-MODEL.html#discussion-111"><i class="fa fa-check"></i><b>13.8.3</b> Discussion</a></li>
+<li class="chapter" data-level="13.8.4" data-path="RECIPE-MISCGRAPH-3D-SCATTER-MODEL.html"><a href="RECIPE-MISCGRAPH-3D-SCATTER-MODEL.html#see-also-78"><i class="fa fa-check"></i><b>13.8.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="13.9" data-path="RECIPE-MISCGRAPH-3D-SAVE.html"><a href="RECIPE-MISCGRAPH-3D-SAVE.html"><i class="fa fa-check"></i><b>13.9</b> Saving a Three-Dimensional Plot</a>
+<ul>
+<li class="chapter" data-level="13.9.1" data-path="RECIPE-MISCGRAPH-3D-SAVE.html"><a href="RECIPE-MISCGRAPH-3D-SAVE.html#problem-118"><i class="fa fa-check"></i><b>13.9.1</b> Problem</a></li>
+<li class="chapter" data-level="13.9.2" data-path="RECIPE-MISCGRAPH-3D-SAVE.html"><a href="RECIPE-MISCGRAPH-3D-SAVE.html#solution-118"><i class="fa fa-check"></i><b>13.9.2</b> Solution</a></li>
+<li class="chapter" data-level="13.9.3" data-path="RECIPE-MISCGRAPH-3D-SAVE.html"><a href="RECIPE-MISCGRAPH-3D-SAVE.html#discussion-112"><i class="fa fa-check"></i><b>13.9.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="13.10" data-path="RECIPE-MISCGRAPH-3D-ANIMATE.html"><a href="RECIPE-MISCGRAPH-3D-ANIMATE.html"><i class="fa fa-check"></i><b>13.10</b> Animating a Three-Dimensional Plot</a>
+<ul>
+<li class="chapter" data-level="13.10.1" data-path="RECIPE-MISCGRAPH-3D-ANIMATE.html"><a href="RECIPE-MISCGRAPH-3D-ANIMATE.html#problem-119"><i class="fa fa-check"></i><b>13.10.1</b> Problem</a></li>
+<li class="chapter" data-level="13.10.2" data-path="RECIPE-MISCGRAPH-3D-ANIMATE.html"><a href="RECIPE-MISCGRAPH-3D-ANIMATE.html#solution-119"><i class="fa fa-check"></i><b>13.10.2</b> Solution</a></li>
+<li class="chapter" data-level="13.10.3" data-path="RECIPE-MISCGRAPH-3D-ANIMATE.html"><a href="RECIPE-MISCGRAPH-3D-ANIMATE.html#discussion-113"><i class="fa fa-check"></i><b>13.10.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="13.11" data-path="RECIPE-MISCGRAPH-DENDROGRAM.html"><a href="RECIPE-MISCGRAPH-DENDROGRAM.html"><i class="fa fa-check"></i><b>13.11</b> Creating a Dendrogram</a>
+<ul>
+<li class="chapter" data-level="13.11.1" data-path="RECIPE-MISCGRAPH-DENDROGRAM.html"><a href="RECIPE-MISCGRAPH-DENDROGRAM.html#problem-120"><i class="fa fa-check"></i><b>13.11.1</b> Problem</a></li>
+<li class="chapter" data-level="13.11.2" data-path="RECIPE-MISCGRAPH-DENDROGRAM.html"><a href="RECIPE-MISCGRAPH-DENDROGRAM.html#solution-120"><i class="fa fa-check"></i><b>13.11.2</b> Solution</a></li>
+<li class="chapter" data-level="13.11.3" data-path="RECIPE-MISCGRAPH-DENDROGRAM.html"><a href="RECIPE-MISCGRAPH-DENDROGRAM.html#discussion-114"><i class="fa fa-check"></i><b>13.11.3</b> Discussion</a></li>
+<li class="chapter" data-level="13.11.4" data-path="RECIPE-MISCGRAPH-DENDROGRAM.html"><a href="RECIPE-MISCGRAPH-DENDROGRAM.html#see-also-79"><i class="fa fa-check"></i><b>13.11.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="13.12" data-path="RECIPE-MISCGRAPH-VECTORFIELD.html"><a href="RECIPE-MISCGRAPH-VECTORFIELD.html"><i class="fa fa-check"></i><b>13.12</b> Creating a Vector Field</a>
+<ul>
+<li class="chapter" data-level="13.12.1" data-path="RECIPE-MISCGRAPH-VECTORFIELD.html"><a href="RECIPE-MISCGRAPH-VECTORFIELD.html#problem-121"><i class="fa fa-check"></i><b>13.12.1</b> Problem</a></li>
+<li class="chapter" data-level="13.12.2" data-path="RECIPE-MISCGRAPH-VECTORFIELD.html"><a href="RECIPE-MISCGRAPH-VECTORFIELD.html#solution-121"><i class="fa fa-check"></i><b>13.12.2</b> Solution</a></li>
+<li class="chapter" data-level="13.12.3" data-path="RECIPE-MISCGRAPH-VECTORFIELD.html"><a href="RECIPE-MISCGRAPH-VECTORFIELD.html#discussion-115"><i class="fa fa-check"></i><b>13.12.3</b> Discussion</a></li>
+<li class="chapter" data-level="13.12.4" data-path="RECIPE-MISCGRAPH-VECTORFIELD.html"><a href="RECIPE-MISCGRAPH-VECTORFIELD.html#see-also-80"><i class="fa fa-check"></i><b>13.12.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="13.13" data-path="RECIPE-MISCGRAPH-QQ.html"><a href="RECIPE-MISCGRAPH-QQ.html"><i class="fa fa-check"></i><b>13.13</b> Creating a QQ Plot</a>
+<ul>
+<li class="chapter" data-level="13.13.1" data-path="RECIPE-MISCGRAPH-QQ.html"><a href="RECIPE-MISCGRAPH-QQ.html#problem-122"><i class="fa fa-check"></i><b>13.13.1</b> Problem</a></li>
+<li class="chapter" data-level="13.13.2" data-path="RECIPE-MISCGRAPH-QQ.html"><a href="RECIPE-MISCGRAPH-QQ.html#solution-122"><i class="fa fa-check"></i><b>13.13.2</b> Solution</a></li>
+<li class="chapter" data-level="13.13.3" data-path="RECIPE-MISCGRAPH-QQ.html"><a href="RECIPE-MISCGRAPH-QQ.html#discussion-116"><i class="fa fa-check"></i><b>13.13.3</b> Discussion</a></li>
+<li class="chapter" data-level="13.13.4" data-path="RECIPE-MISCGRAPH-QQ.html"><a href="RECIPE-MISCGRAPH-QQ.html#see-also-81"><i class="fa fa-check"></i><b>13.13.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="13.14" data-path="RECIPE-MISCGRAPH-ECDF.html"><a href="RECIPE-MISCGRAPH-ECDF.html"><i class="fa fa-check"></i><b>13.14</b> Creating a Graph of an Empirical Cumulative Distribution Function</a>
+<ul>
+<li class="chapter" data-level="13.14.1" data-path="RECIPE-MISCGRAPH-ECDF.html"><a href="RECIPE-MISCGRAPH-ECDF.html#problem-123"><i class="fa fa-check"></i><b>13.14.1</b> Problem</a></li>
+<li class="chapter" data-level="13.14.2" data-path="RECIPE-MISCGRAPH-ECDF.html"><a href="RECIPE-MISCGRAPH-ECDF.html#solution-123"><i class="fa fa-check"></i><b>13.14.2</b> Solution</a></li>
+<li class="chapter" data-level="13.14.3" data-path="RECIPE-MISCGRAPH-ECDF.html"><a href="RECIPE-MISCGRAPH-ECDF.html#discussion-117"><i class="fa fa-check"></i><b>13.14.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="13.15" data-path="RECIPE-MISCGRAPH-MOSAIC.html"><a href="RECIPE-MISCGRAPH-MOSAIC.html"><i class="fa fa-check"></i><b>13.15</b> Creating a Mosaic Plot</a>
+<ul>
+<li class="chapter" data-level="13.15.1" data-path="RECIPE-MISCGRAPH-MOSAIC.html"><a href="RECIPE-MISCGRAPH-MOSAIC.html#problem-124"><i class="fa fa-check"></i><b>13.15.1</b> Problem</a></li>
+<li class="chapter" data-level="13.15.2" data-path="RECIPE-MISCGRAPH-MOSAIC.html"><a href="RECIPE-MISCGRAPH-MOSAIC.html#solution-124"><i class="fa fa-check"></i><b>13.15.2</b> Solution</a></li>
+<li class="chapter" data-level="13.15.3" data-path="RECIPE-MISCGRAPH-MOSAIC.html"><a href="RECIPE-MISCGRAPH-MOSAIC.html#discussion-118"><i class="fa fa-check"></i><b>13.15.3</b> Discussion</a></li>
+<li class="chapter" data-level="13.15.4" data-path="RECIPE-MISCGRAPH-MOSAIC.html"><a href="RECIPE-MISCGRAPH-MOSAIC.html#see-also-82"><i class="fa fa-check"></i><b>13.15.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="13.16" data-path="RECIPE-MISCGRAPH-PIE.html"><a href="RECIPE-MISCGRAPH-PIE.html"><i class="fa fa-check"></i><b>13.16</b> Creating a Pie Chart</a>
+<ul>
+<li class="chapter" data-level="13.16.1" data-path="RECIPE-MISCGRAPH-PIE.html"><a href="RECIPE-MISCGRAPH-PIE.html#problem-125"><i class="fa fa-check"></i><b>13.16.1</b> Problem</a></li>
+<li class="chapter" data-level="13.16.2" data-path="RECIPE-MISCGRAPH-PIE.html"><a href="RECIPE-MISCGRAPH-PIE.html#solution-125"><i class="fa fa-check"></i><b>13.16.2</b> Solution</a></li>
+<li class="chapter" data-level="13.16.3" data-path="RECIPE-MISCGRAPH-PIE.html"><a href="RECIPE-MISCGRAPH-PIE.html#discussion-119"><i class="fa fa-check"></i><b>13.16.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="13.17" data-path="RECIPE-MISCGRAPH-MAP.html"><a href="RECIPE-MISCGRAPH-MAP.html"><i class="fa fa-check"></i><b>13.17</b> Creating a Map</a>
+<ul>
+<li class="chapter" data-level="13.17.1" data-path="RECIPE-MISCGRAPH-MAP.html"><a href="RECIPE-MISCGRAPH-MAP.html#problem-126"><i class="fa fa-check"></i><b>13.17.1</b> Problem</a></li>
+<li class="chapter" data-level="13.17.2" data-path="RECIPE-MISCGRAPH-MAP.html"><a href="RECIPE-MISCGRAPH-MAP.html#solution-126"><i class="fa fa-check"></i><b>13.17.2</b> Solution</a></li>
+<li class="chapter" data-level="13.17.3" data-path="RECIPE-MISCGRAPH-MAP.html"><a href="RECIPE-MISCGRAPH-MAP.html#discussion-120"><i class="fa fa-check"></i><b>13.17.3</b> Discussion</a></li>
+<li class="chapter" data-level="13.17.4" data-path="RECIPE-MISCGRAPH-MAP.html"><a href="RECIPE-MISCGRAPH-MAP.html#see-also-83"><i class="fa fa-check"></i><b>13.17.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="13.18" data-path="RECIPE-MISCGRAPH-CHOROPLETH.html"><a href="RECIPE-MISCGRAPH-CHOROPLETH.html"><i class="fa fa-check"></i><b>13.18</b> Creating a Choropleth Map</a>
+<ul>
+<li class="chapter" data-level="13.18.1" data-path="RECIPE-MISCGRAPH-CHOROPLETH.html"><a href="RECIPE-MISCGRAPH-CHOROPLETH.html#problem-127"><i class="fa fa-check"></i><b>13.18.1</b> Problem</a></li>
+<li class="chapter" data-level="13.18.2" data-path="RECIPE-MISCGRAPH-CHOROPLETH.html"><a href="RECIPE-MISCGRAPH-CHOROPLETH.html#solution-127"><i class="fa fa-check"></i><b>13.18.2</b> Solution</a></li>
+<li class="chapter" data-level="13.18.3" data-path="RECIPE-MISCGRAPH-CHOROPLETH.html"><a href="RECIPE-MISCGRAPH-CHOROPLETH.html#discussion-121"><i class="fa fa-check"></i><b>13.18.3</b> Discussion</a></li>
+<li class="chapter" data-level="13.18.4" data-path="RECIPE-MISCGRAPH-CHOROPLETH.html"><a href="RECIPE-MISCGRAPH-CHOROPLETH.html#see-also-84"><i class="fa fa-check"></i><b>13.18.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="13.19" data-path="RECIPE-MISCGRAPH-MAP-BACKGROUND.html"><a href="RECIPE-MISCGRAPH-MAP-BACKGROUND.html"><i class="fa fa-check"></i><b>13.19</b> Making a Map with a Clean Background</a>
+<ul>
+<li class="chapter" data-level="13.19.1" data-path="RECIPE-MISCGRAPH-MAP-BACKGROUND.html"><a href="RECIPE-MISCGRAPH-MAP-BACKGROUND.html#problem-128"><i class="fa fa-check"></i><b>13.19.1</b> Problem</a></li>
+<li class="chapter" data-level="13.19.2" data-path="RECIPE-MISCGRAPH-MAP-BACKGROUND.html"><a href="RECIPE-MISCGRAPH-MAP-BACKGROUND.html#solution-128"><i class="fa fa-check"></i><b>13.19.2</b> Solution</a></li>
+<li class="chapter" data-level="13.19.3" data-path="RECIPE-MISCGRAPH-MAP-BACKGROUND.html"><a href="RECIPE-MISCGRAPH-MAP-BACKGROUND.html#discussion-122"><i class="fa fa-check"></i><b>13.19.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="13.20" data-path="RECIPE-MISCGRAPH-MAP-SHAPEFILE.html"><a href="RECIPE-MISCGRAPH-MAP-SHAPEFILE.html"><i class="fa fa-check"></i><b>13.20</b> Creating a Map from a Shapefile</a>
+<ul>
+<li class="chapter" data-level="13.20.1" data-path="RECIPE-MISCGRAPH-MAP-SHAPEFILE.html"><a href="RECIPE-MISCGRAPH-MAP-SHAPEFILE.html#problem-129"><i class="fa fa-check"></i><b>13.20.1</b> Problem</a></li>
+<li class="chapter" data-level="13.20.2" data-path="RECIPE-MISCGRAPH-MAP-SHAPEFILE.html"><a href="RECIPE-MISCGRAPH-MAP-SHAPEFILE.html#solution-129"><i class="fa fa-check"></i><b>13.20.2</b> Solution</a></li>
+<li class="chapter" data-level="13.20.3" data-path="RECIPE-MISCGRAPH-MAP-SHAPEFILE.html"><a href="RECIPE-MISCGRAPH-MAP-SHAPEFILE.html#discussion-123"><i class="fa fa-check"></i><b>13.20.3</b> Discussion</a></li>
+<li class="chapter" data-level="13.20.4" data-path="RECIPE-MISCGRAPH-MAP-SHAPEFILE.html"><a href="RECIPE-MISCGRAPH-MAP-SHAPEFILE.html#see-also-85"><i class="fa fa-check"></i><b>13.20.4</b> See Also</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="CHAPTER-OUTPUT.html"><a href="CHAPTER-OUTPUT.html"><i class="fa fa-check"></i><b>14</b> Output for Presentation</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="RECIPE-OUTPUT-VECTOR.html"><a href="RECIPE-OUTPUT-VECTOR.html"><i class="fa fa-check"></i><b>14.1</b> Outputting to PDF Vector Files</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="RECIPE-OUTPUT-VECTOR.html"><a href="RECIPE-OUTPUT-VECTOR.html#problem-130"><i class="fa fa-check"></i><b>14.1.1</b> Problem</a></li>
+<li class="chapter" data-level="14.1.2" data-path="RECIPE-OUTPUT-VECTOR.html"><a href="RECIPE-OUTPUT-VECTOR.html#solution-130"><i class="fa fa-check"></i><b>14.1.2</b> Solution</a></li>
+<li class="chapter" data-level="14.1.3" data-path="RECIPE-OUTPUT-VECTOR.html"><a href="RECIPE-OUTPUT-VECTOR.html#discussion-124"><i class="fa fa-check"></i><b>14.1.3</b> Discussion</a></li>
+<li class="chapter" data-level="14.1.4" data-path="RECIPE-OUTPUT-VECTOR.html"><a href="RECIPE-OUTPUT-VECTOR.html#see-also-86"><i class="fa fa-check"></i><b>14.1.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="RECIPE-OUTPUT-VECTOR-SVG.html"><a href="RECIPE-OUTPUT-VECTOR-SVG.html"><i class="fa fa-check"></i><b>14.2</b> Outputting to SVG Vector Files</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="RECIPE-OUTPUT-VECTOR-SVG.html"><a href="RECIPE-OUTPUT-VECTOR-SVG.html#problem-131"><i class="fa fa-check"></i><b>14.2.1</b> Problem</a></li>
+<li class="chapter" data-level="14.2.2" data-path="RECIPE-OUTPUT-VECTOR-SVG.html"><a href="RECIPE-OUTPUT-VECTOR-SVG.html#solution-131"><i class="fa fa-check"></i><b>14.2.2</b> Solution</a></li>
+<li class="chapter" data-level="14.2.3" data-path="RECIPE-OUTPUT-VECTOR-SVG.html"><a href="RECIPE-OUTPUT-VECTOR-SVG.html#discussion-125"><i class="fa fa-check"></i><b>14.2.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="RECIPE-OUTPUT-VECTOR-WMF.html"><a href="RECIPE-OUTPUT-VECTOR-WMF.html"><i class="fa fa-check"></i><b>14.3</b> Outputting to WMF Vector Files</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="RECIPE-OUTPUT-VECTOR-WMF.html"><a href="RECIPE-OUTPUT-VECTOR-WMF.html#problem-132"><i class="fa fa-check"></i><b>14.3.1</b> Problem</a></li>
+<li class="chapter" data-level="14.3.2" data-path="RECIPE-OUTPUT-VECTOR-WMF.html"><a href="RECIPE-OUTPUT-VECTOR-WMF.html#solution-132"><i class="fa fa-check"></i><b>14.3.2</b> Solution</a></li>
+<li class="chapter" data-level="14.3.3" data-path="RECIPE-OUTPUT-VECTOR-WMF.html"><a href="RECIPE-OUTPUT-VECTOR-WMF.html#discussion-126"><i class="fa fa-check"></i><b>14.3.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="RECIPE-OUTPUT-EDIT-VECTOR.html"><a href="RECIPE-OUTPUT-EDIT-VECTOR.html"><i class="fa fa-check"></i><b>14.4</b> Editing a Vector Output File</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="RECIPE-OUTPUT-EDIT-VECTOR.html"><a href="RECIPE-OUTPUT-EDIT-VECTOR.html#problem-133"><i class="fa fa-check"></i><b>14.4.1</b> Problem</a></li>
+<li class="chapter" data-level="14.4.2" data-path="RECIPE-OUTPUT-EDIT-VECTOR.html"><a href="RECIPE-OUTPUT-EDIT-VECTOR.html#solution-133"><i class="fa fa-check"></i><b>14.4.2</b> Solution</a></li>
+<li class="chapter" data-level="14.4.3" data-path="RECIPE-OUTPUT-EDIT-VECTOR.html"><a href="RECIPE-OUTPUT-EDIT-VECTOR.html#discussion-127"><i class="fa fa-check"></i><b>14.4.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="RECIPE-OUTPUT-BITMAP.html"><a href="RECIPE-OUTPUT-BITMAP.html"><i class="fa fa-check"></i><b>14.5</b> Outputting to Bitmap (PNG/TIFF) Files</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="RECIPE-OUTPUT-BITMAP.html"><a href="RECIPE-OUTPUT-BITMAP.html#problem-134"><i class="fa fa-check"></i><b>14.5.1</b> Problem</a></li>
+<li class="chapter" data-level="14.5.2" data-path="RECIPE-OUTPUT-BITMAP.html"><a href="RECIPE-OUTPUT-BITMAP.html#solution-134"><i class="fa fa-check"></i><b>14.5.2</b> Solution</a></li>
+<li class="chapter" data-level="14.5.3" data-path="RECIPE-OUTPUT-BITMAP.html"><a href="RECIPE-OUTPUT-BITMAP.html#discussion-128"><i class="fa fa-check"></i><b>14.5.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="RECIPE-OUTPUT-FONTS-PDF.html"><a href="RECIPE-OUTPUT-FONTS-PDF.html"><i class="fa fa-check"></i><b>14.6</b> Using Fonts in PDF Files</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="RECIPE-OUTPUT-FONTS-PDF.html"><a href="RECIPE-OUTPUT-FONTS-PDF.html#problem-135"><i class="fa fa-check"></i><b>14.6.1</b> Problem</a></li>
+<li class="chapter" data-level="14.6.2" data-path="RECIPE-OUTPUT-FONTS-PDF.html"><a href="RECIPE-OUTPUT-FONTS-PDF.html#solution-135"><i class="fa fa-check"></i><b>14.6.2</b> Solution</a></li>
+<li class="chapter" data-level="14.6.3" data-path="RECIPE-OUTPUT-FONTS-PDF.html"><a href="RECIPE-OUTPUT-FONTS-PDF.html#discussion-129"><i class="fa fa-check"></i><b>14.6.3</b> Discussion</a></li>
+<li class="chapter" data-level="14.6.4" data-path="RECIPE-OUTPUT-FONTS-PDF.html"><a href="RECIPE-OUTPUT-FONTS-PDF.html#see-also-87"><i class="fa fa-check"></i><b>14.6.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="RECIPE-OUTPUT-FONTS-WIN.html"><a href="RECIPE-OUTPUT-FONTS-WIN.html"><i class="fa fa-check"></i><b>14.7</b> Using Fonts in Windows Bitmap or Screen Output</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="RECIPE-OUTPUT-FONTS-WIN.html"><a href="RECIPE-OUTPUT-FONTS-WIN.html#problem-136"><i class="fa fa-check"></i><b>14.7.1</b> Problem</a></li>
+<li class="chapter" data-level="14.7.2" data-path="RECIPE-OUTPUT-FONTS-WIN.html"><a href="RECIPE-OUTPUT-FONTS-WIN.html#solution-136"><i class="fa fa-check"></i><b>14.7.2</b> Solution</a></li>
+<li class="chapter" data-level="14.7.3" data-path="RECIPE-OUTPUT-FONTS-WIN.html"><a href="RECIPE-OUTPUT-FONTS-WIN.html#discussion-130"><i class="fa fa-check"></i><b>14.7.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="14.8" data-path="RECIPE-COMBINE-GGPLOT.html"><a href="RECIPE-COMBINE-GGPLOT.html"><i class="fa fa-check"></i><b>14.8</b> Combining Several Plots into the Same Graphic</a>
+<ul>
+<li class="chapter" data-level="14.8.1" data-path="RECIPE-COMBINE-GGPLOT.html"><a href="RECIPE-COMBINE-GGPLOT.html#problem-137"><i class="fa fa-check"></i><b>14.8.1</b> Problem</a></li>
+<li class="chapter" data-level="14.8.2" data-path="RECIPE-COMBINE-GGPLOT.html"><a href="RECIPE-COMBINE-GGPLOT.html#solution-137"><i class="fa fa-check"></i><b>14.8.2</b> Solution</a></li>
+<li class="chapter" data-level="14.8.3" data-path="RECIPE-COMBINE-GGPLOT.html"><a href="RECIPE-COMBINE-GGPLOT.html#discussion-131"><i class="fa fa-check"></i><b>14.8.3</b> Discussion</a></li>
+<li class="chapter" data-level="14.8.4" data-path="RECIPE-COMBINE-GGPLOT.html"><a href="RECIPE-COMBINE-GGPLOT.html#see-also-88"><i class="fa fa-check"></i><b>14.8.4</b> See Also</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="CHAPTER-DATAPREP.html"><a href="CHAPTER-DATAPREP.html"><i class="fa fa-check"></i><b>15</b> Getting Your Data into Shape</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="RECIPE-DATAPREP-CREATE-DATAFRAME.html"><a href="RECIPE-DATAPREP-CREATE-DATAFRAME.html"><i class="fa fa-check"></i><b>15.1</b> Creating a Data Frame</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="RECIPE-DATAPREP-CREATE-DATAFRAME.html"><a href="RECIPE-DATAPREP-CREATE-DATAFRAME.html#problem-138"><i class="fa fa-check"></i><b>15.1.1</b> Problem</a></li>
+<li class="chapter" data-level="15.1.2" data-path="RECIPE-DATAPREP-CREATE-DATAFRAME.html"><a href="RECIPE-DATAPREP-CREATE-DATAFRAME.html#solution-138"><i class="fa fa-check"></i><b>15.1.2</b> Solution</a></li>
+<li class="chapter" data-level="15.1.3" data-path="RECIPE-DATAPREP-CREATE-DATAFRAME.html"><a href="RECIPE-DATAPREP-CREATE-DATAFRAME.html#discussion-132"><i class="fa fa-check"></i><b>15.1.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="RECIPE-DATAPREP-INFO-DATA.html"><a href="RECIPE-DATAPREP-INFO-DATA.html"><i class="fa fa-check"></i><b>15.2</b> Getting Information About a Data Structure</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="RECIPE-DATAPREP-INFO-DATA.html"><a href="RECIPE-DATAPREP-INFO-DATA.html#problem-139"><i class="fa fa-check"></i><b>15.2.1</b> Problem</a></li>
+<li class="chapter" data-level="15.2.2" data-path="RECIPE-DATAPREP-INFO-DATA.html"><a href="RECIPE-DATAPREP-INFO-DATA.html#solution-139"><i class="fa fa-check"></i><b>15.2.2</b> Solution</a></li>
+<li class="chapter" data-level="15.2.3" data-path="RECIPE-DATAPREP-INFO-DATA.html"><a href="RECIPE-DATAPREP-INFO-DATA.html#discussion-133"><i class="fa fa-check"></i><b>15.2.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="RECIPE-DATAPREP-ADD-COL.html"><a href="RECIPE-DATAPREP-ADD-COL.html"><i class="fa fa-check"></i><b>15.3</b> Adding a Column to a Data Frame</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="RECIPE-DATAPREP-ADD-COL.html"><a href="RECIPE-DATAPREP-ADD-COL.html#problem-140"><i class="fa fa-check"></i><b>15.3.1</b> Problem</a></li>
+<li class="chapter" data-level="15.3.2" data-path="RECIPE-DATAPREP-ADD-COL.html"><a href="RECIPE-DATAPREP-ADD-COL.html#solution-140"><i class="fa fa-check"></i><b>15.3.2</b> Solution</a></li>
+<li class="chapter" data-level="15.3.3" data-path="RECIPE-DATAPREP-ADD-COL.html"><a href="RECIPE-DATAPREP-ADD-COL.html#discussion-134"><i class="fa fa-check"></i><b>15.3.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="RECIPE-DATAPREP-DELETE-COL.html"><a href="RECIPE-DATAPREP-DELETE-COL.html"><i class="fa fa-check"></i><b>15.4</b> Deleting a Column from a Data Frame</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="RECIPE-DATAPREP-DELETE-COL.html"><a href="RECIPE-DATAPREP-DELETE-COL.html#problem-141"><i class="fa fa-check"></i><b>15.4.1</b> Problem</a></li>
+<li class="chapter" data-level="15.4.2" data-path="RECIPE-DATAPREP-DELETE-COL.html"><a href="RECIPE-DATAPREP-DELETE-COL.html#solution-141"><i class="fa fa-check"></i><b>15.4.2</b> Solution</a></li>
+<li class="chapter" data-level="15.4.3" data-path="RECIPE-DATAPREP-DELETE-COL.html"><a href="RECIPE-DATAPREP-DELETE-COL.html#discussion-135"><i class="fa fa-check"></i><b>15.4.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.4.4" data-path="RECIPE-DATAPREP-DELETE-COL.html"><a href="RECIPE-DATAPREP-DELETE-COL.html#see-also-89"><i class="fa fa-check"></i><b>15.4.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="RECIPE-DATAPREP-RENAME-COL.html"><a href="RECIPE-DATAPREP-RENAME-COL.html"><i class="fa fa-check"></i><b>15.5</b> Renaming Columns in a Data Frame</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="RECIPE-DATAPREP-RENAME-COL.html"><a href="RECIPE-DATAPREP-RENAME-COL.html#problem-142"><i class="fa fa-check"></i><b>15.5.1</b> Problem</a></li>
+<li class="chapter" data-level="15.5.2" data-path="RECIPE-DATAPREP-RENAME-COL.html"><a href="RECIPE-DATAPREP-RENAME-COL.html#solution-142"><i class="fa fa-check"></i><b>15.5.2</b> Solution</a></li>
+<li class="chapter" data-level="15.5.3" data-path="RECIPE-DATAPREP-RENAME-COL.html"><a href="RECIPE-DATAPREP-RENAME-COL.html#discussion-136"><i class="fa fa-check"></i><b>15.5.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.5.4" data-path="RECIPE-DATAPREP-RENAME-COL.html"><a href="RECIPE-DATAPREP-RENAME-COL.html#see-also-90"><i class="fa fa-check"></i><b>15.5.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="RECIPE-DATAPREP-REORDER-COL.html"><a href="RECIPE-DATAPREP-REORDER-COL.html"><i class="fa fa-check"></i><b>15.6</b> Reordering Columns in a Data Frame</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="RECIPE-DATAPREP-REORDER-COL.html"><a href="RECIPE-DATAPREP-REORDER-COL.html#problem-143"><i class="fa fa-check"></i><b>15.6.1</b> Problem</a></li>
+<li class="chapter" data-level="15.6.2" data-path="RECIPE-DATAPREP-REORDER-COL.html"><a href="RECIPE-DATAPREP-REORDER-COL.html#solution-143"><i class="fa fa-check"></i><b>15.6.2</b> Solution</a></li>
+<li class="chapter" data-level="15.6.3" data-path="RECIPE-DATAPREP-REORDER-COL.html"><a href="RECIPE-DATAPREP-REORDER-COL.html#discussion-137"><i class="fa fa-check"></i><b>15.6.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="RECIPE-DATAPREP-SUBSET.html"><a href="RECIPE-DATAPREP-SUBSET.html"><i class="fa fa-check"></i><b>15.7</b> Getting a Subset of a Data Frame</a>
+<ul>
+<li class="chapter" data-level="15.7.1" data-path="RECIPE-DATAPREP-SUBSET.html"><a href="RECIPE-DATAPREP-SUBSET.html#problem-144"><i class="fa fa-check"></i><b>15.7.1</b> Problem</a></li>
+<li class="chapter" data-level="15.7.2" data-path="RECIPE-DATAPREP-SUBSET.html"><a href="RECIPE-DATAPREP-SUBSET.html#solution-144"><i class="fa fa-check"></i><b>15.7.2</b> Solution</a></li>
+<li class="chapter" data-level="15.7.3" data-path="RECIPE-DATAPREP-SUBSET.html"><a href="RECIPE-DATAPREP-SUBSET.html#discussion-138"><i class="fa fa-check"></i><b>15.7.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="15.8" data-path="RECIPE-DATAPREP-FACTOR-REORDER.html"><a href="RECIPE-DATAPREP-FACTOR-REORDER.html"><i class="fa fa-check"></i><b>15.8</b> Changing the Order of Factor Levels</a>
+<ul>
+<li class="chapter" data-level="15.8.1" data-path="RECIPE-DATAPREP-FACTOR-REORDER.html"><a href="RECIPE-DATAPREP-FACTOR-REORDER.html#problem-145"><i class="fa fa-check"></i><b>15.8.1</b> Problem</a></li>
+<li class="chapter" data-level="15.8.2" data-path="RECIPE-DATAPREP-FACTOR-REORDER.html"><a href="RECIPE-DATAPREP-FACTOR-REORDER.html#solution-145"><i class="fa fa-check"></i><b>15.8.2</b> Solution</a></li>
+<li class="chapter" data-level="15.8.3" data-path="RECIPE-DATAPREP-FACTOR-REORDER.html"><a href="RECIPE-DATAPREP-FACTOR-REORDER.html#discussion-139"><i class="fa fa-check"></i><b>15.8.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.8.4" data-path="RECIPE-DATAPREP-FACTOR-REORDER.html"><a href="RECIPE-DATAPREP-FACTOR-REORDER.html#see-also-91"><i class="fa fa-check"></i><b>15.8.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="15.9" data-path="RECIPE-DATAPREP-FACTOR-REORDER-VALUE.html"><a href="RECIPE-DATAPREP-FACTOR-REORDER-VALUE.html"><i class="fa fa-check"></i><b>15.9</b> Changing the Order of Factor Levels Based on Data Values</a>
+<ul>
+<li class="chapter" data-level="15.9.1" data-path="RECIPE-DATAPREP-FACTOR-REORDER-VALUE.html"><a href="RECIPE-DATAPREP-FACTOR-REORDER-VALUE.html#problem-146"><i class="fa fa-check"></i><b>15.9.1</b> Problem</a></li>
+<li class="chapter" data-level="15.9.2" data-path="RECIPE-DATAPREP-FACTOR-REORDER-VALUE.html"><a href="RECIPE-DATAPREP-FACTOR-REORDER-VALUE.html#solution-146"><i class="fa fa-check"></i><b>15.9.2</b> Solution</a></li>
+<li class="chapter" data-level="15.9.3" data-path="RECIPE-DATAPREP-FACTOR-REORDER-VALUE.html"><a href="RECIPE-DATAPREP-FACTOR-REORDER-VALUE.html#discussion-140"><i class="fa fa-check"></i><b>15.9.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.9.4" data-path="RECIPE-DATAPREP-FACTOR-REORDER-VALUE.html"><a href="RECIPE-DATAPREP-FACTOR-REORDER-VALUE.html#see-also-92"><i class="fa fa-check"></i><b>15.9.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="15.10" data-path="RECIPE-DATAPREP-FACTOR-RENAME.html"><a href="RECIPE-DATAPREP-FACTOR-RENAME.html"><i class="fa fa-check"></i><b>15.10</b> Changing the Names of Factor Levels</a>
+<ul>
+<li class="chapter" data-level="15.10.1" data-path="RECIPE-DATAPREP-FACTOR-RENAME.html"><a href="RECIPE-DATAPREP-FACTOR-RENAME.html#problem-147"><i class="fa fa-check"></i><b>15.10.1</b> Problem</a></li>
+<li class="chapter" data-level="15.10.2" data-path="RECIPE-DATAPREP-FACTOR-RENAME.html"><a href="RECIPE-DATAPREP-FACTOR-RENAME.html#solution-147"><i class="fa fa-check"></i><b>15.10.2</b> Solution</a></li>
+<li class="chapter" data-level="15.10.3" data-path="RECIPE-DATAPREP-FACTOR-RENAME.html"><a href="RECIPE-DATAPREP-FACTOR-RENAME.html#discussion-141"><i class="fa fa-check"></i><b>15.10.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.10.4" data-path="RECIPE-DATAPREP-FACTOR-RENAME.html"><a href="RECIPE-DATAPREP-FACTOR-RENAME.html#see-also-93"><i class="fa fa-check"></i><b>15.10.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="15.11" data-path="RECIPE-DATAPREP-FACTOR-DROPLEVELS.html"><a href="RECIPE-DATAPREP-FACTOR-DROPLEVELS.html"><i class="fa fa-check"></i><b>15.11</b> Removing Unused Levels from a Factor</a>
+<ul>
+<li class="chapter" data-level="15.11.1" data-path="RECIPE-DATAPREP-FACTOR-DROPLEVELS.html"><a href="RECIPE-DATAPREP-FACTOR-DROPLEVELS.html#problem-148"><i class="fa fa-check"></i><b>15.11.1</b> Problem</a></li>
+<li class="chapter" data-level="15.11.2" data-path="RECIPE-DATAPREP-FACTOR-DROPLEVELS.html"><a href="RECIPE-DATAPREP-FACTOR-DROPLEVELS.html#solution-148"><i class="fa fa-check"></i><b>15.11.2</b> Solution</a></li>
+<li class="chapter" data-level="15.11.3" data-path="RECIPE-DATAPREP-FACTOR-DROPLEVELS.html"><a href="RECIPE-DATAPREP-FACTOR-DROPLEVELS.html#discussion-142"><i class="fa fa-check"></i><b>15.11.3</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="15.12" data-path="RECIPE-DATAPREP-CHARACTER-RENAME.html"><a href="RECIPE-DATAPREP-CHARACTER-RENAME.html"><i class="fa fa-check"></i><b>15.12</b> Changing the Names of Items in a Character Vector</a>
+<ul>
+<li class="chapter" data-level="15.12.1" data-path="RECIPE-DATAPREP-CHARACTER-RENAME.html"><a href="RECIPE-DATAPREP-CHARACTER-RENAME.html#problem-149"><i class="fa fa-check"></i><b>15.12.1</b> Problem</a></li>
+<li class="chapter" data-level="15.12.2" data-path="RECIPE-DATAPREP-CHARACTER-RENAME.html"><a href="RECIPE-DATAPREP-CHARACTER-RENAME.html#solution-149"><i class="fa fa-check"></i><b>15.12.2</b> Solution</a></li>
+<li class="chapter" data-level="15.12.3" data-path="RECIPE-DATAPREP-CHARACTER-RENAME.html"><a href="RECIPE-DATAPREP-CHARACTER-RENAME.html#discussion-143"><i class="fa fa-check"></i><b>15.12.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.12.4" data-path="RECIPE-DATAPREP-CHARACTER-RENAME.html"><a href="RECIPE-DATAPREP-CHARACTER-RENAME.html#see-also-94"><i class="fa fa-check"></i><b>15.12.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="15.13" data-path="RECIPE-DATAPREP-RECODE-CATEGORICAL.html"><a href="RECIPE-DATAPREP-RECODE-CATEGORICAL.html"><i class="fa fa-check"></i><b>15.13</b> Recoding a Categorical Variable to Another Categorical Variable</a>
+<ul>
+<li class="chapter" data-level="15.13.1" data-path="RECIPE-DATAPREP-RECODE-CATEGORICAL.html"><a href="RECIPE-DATAPREP-RECODE-CATEGORICAL.html#problem-150"><i class="fa fa-check"></i><b>15.13.1</b> Problem</a></li>
+<li class="chapter" data-level="15.13.2" data-path="RECIPE-DATAPREP-RECODE-CATEGORICAL.html"><a href="RECIPE-DATAPREP-RECODE-CATEGORICAL.html#solution-150"><i class="fa fa-check"></i><b>15.13.2</b> Solution</a></li>
+<li class="chapter" data-level="15.13.3" data-path="RECIPE-DATAPREP-RECODE-CATEGORICAL.html"><a href="RECIPE-DATAPREP-RECODE-CATEGORICAL.html#discussion-144"><i class="fa fa-check"></i><b>15.13.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.13.4" data-path="RECIPE-DATAPREP-RECODE-CATEGORICAL.html"><a href="RECIPE-DATAPREP-RECODE-CATEGORICAL.html#see-also-95"><i class="fa fa-check"></i><b>15.13.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="15.14" data-path="RECIPE-DATAPREP-RECODE-CONTINUOUS.html"><a href="RECIPE-DATAPREP-RECODE-CONTINUOUS.html"><i class="fa fa-check"></i><b>15.14</b> Recoding a Continuous Variable to a Categorical Variable</a>
+<ul>
+<li class="chapter" data-level="15.14.1" data-path="RECIPE-DATAPREP-RECODE-CONTINUOUS.html"><a href="RECIPE-DATAPREP-RECODE-CONTINUOUS.html#problem-151"><i class="fa fa-check"></i><b>15.14.1</b> Problem</a></li>
+<li class="chapter" data-level="15.14.2" data-path="RECIPE-DATAPREP-RECODE-CONTINUOUS.html"><a href="RECIPE-DATAPREP-RECODE-CONTINUOUS.html#solution-151"><i class="fa fa-check"></i><b>15.14.2</b> Solution</a></li>
+<li class="chapter" data-level="15.14.3" data-path="RECIPE-DATAPREP-RECODE-CONTINUOUS.html"><a href="RECIPE-DATAPREP-RECODE-CONTINUOUS.html#discussion-145"><i class="fa fa-check"></i><b>15.14.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.14.4" data-path="RECIPE-DATAPREP-RECODE-CONTINUOUS.html"><a href="RECIPE-DATAPREP-RECODE-CONTINUOUS.html#see-also-96"><i class="fa fa-check"></i><b>15.14.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="15.15" data-path="RECIPE-DATAPREP-CALCULATE.html"><a href="RECIPE-DATAPREP-CALCULATE.html"><i class="fa fa-check"></i><b>15.15</b> Calculating New Columns From Existing Columns</a>
+<ul>
+<li class="chapter" data-level="15.15.1" data-path="RECIPE-DATAPREP-CALCULATE.html"><a href="RECIPE-DATAPREP-CALCULATE.html#problem-152"><i class="fa fa-check"></i><b>15.15.1</b> Problem</a></li>
+<li class="chapter" data-level="15.15.2" data-path="RECIPE-DATAPREP-CALCULATE.html"><a href="RECIPE-DATAPREP-CALCULATE.html#solution-152"><i class="fa fa-check"></i><b>15.15.2</b> Solution</a></li>
+<li class="chapter" data-level="15.15.3" data-path="RECIPE-DATAPREP-CALCULATE.html"><a href="RECIPE-DATAPREP-CALCULATE.html#discussion-146"><i class="fa fa-check"></i><b>15.15.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.15.4" data-path="RECIPE-DATAPREP-CALCULATE.html"><a href="RECIPE-DATAPREP-CALCULATE.html#see-also-97"><i class="fa fa-check"></i><b>15.15.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="15.16" data-path="RECIPE-DATAPREP-CALCULATE-GROUP.html"><a href="RECIPE-DATAPREP-CALCULATE-GROUP.html"><i class="fa fa-check"></i><b>15.16</b> Calculating New Columns by Groups</a>
+<ul>
+<li class="chapter" data-level="15.16.1" data-path="RECIPE-DATAPREP-CALCULATE-GROUP.html"><a href="RECIPE-DATAPREP-CALCULATE-GROUP.html#problem-153"><i class="fa fa-check"></i><b>15.16.1</b> Problem</a></li>
+<li class="chapter" data-level="15.16.2" data-path="RECIPE-DATAPREP-CALCULATE-GROUP.html"><a href="RECIPE-DATAPREP-CALCULATE-GROUP.html#solution-153"><i class="fa fa-check"></i><b>15.16.2</b> Solution</a></li>
+<li class="chapter" data-level="15.16.3" data-path="RECIPE-DATAPREP-CALCULATE-GROUP.html"><a href="RECIPE-DATAPREP-CALCULATE-GROUP.html#discussion-147"><i class="fa fa-check"></i><b>15.16.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.16.4" data-path="RECIPE-DATAPREP-CALCULATE-GROUP.html"><a href="RECIPE-DATAPREP-CALCULATE-GROUP.html#see-also-98"><i class="fa fa-check"></i><b>15.16.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="15.17" data-path="RECIPE-DATAPREP-SUMMARIZE.html"><a href="RECIPE-DATAPREP-SUMMARIZE.html"><i class="fa fa-check"></i><b>15.17</b> Summarizing Data by Groups</a>
+<ul>
+<li class="chapter" data-level="15.17.1" data-path="RECIPE-DATAPREP-SUMMARIZE.html"><a href="RECIPE-DATAPREP-SUMMARIZE.html#problem-154"><i class="fa fa-check"></i><b>15.17.1</b> Problem</a></li>
+<li class="chapter" data-level="15.17.2" data-path="RECIPE-DATAPREP-SUMMARIZE.html"><a href="RECIPE-DATAPREP-SUMMARIZE.html#solution-154"><i class="fa fa-check"></i><b>15.17.2</b> Solution</a></li>
+<li class="chapter" data-level="15.17.3" data-path="RECIPE-DATAPREP-SUMMARIZE.html"><a href="RECIPE-DATAPREP-SUMMARIZE.html#discussion-148"><i class="fa fa-check"></i><b>15.17.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.17.4" data-path="RECIPE-DATAPREP-SUMMARIZE.html"><a href="RECIPE-DATAPREP-SUMMARIZE.html#see-also-99"><i class="fa fa-check"></i><b>15.17.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="15.18" data-path="RECIPE-DATAPREP-SUMMARIZE-SE.html"><a href="RECIPE-DATAPREP-SUMMARIZE-SE.html"><i class="fa fa-check"></i><b>15.18</b> Summarizing Data with Standard Errors and Confidence Intervals</a>
+<ul>
+<li class="chapter" data-level="15.18.1" data-path="RECIPE-DATAPREP-SUMMARIZE-SE.html"><a href="RECIPE-DATAPREP-SUMMARIZE-SE.html#problem-155"><i class="fa fa-check"></i><b>15.18.1</b> Problem</a></li>
+<li class="chapter" data-level="15.18.2" data-path="RECIPE-DATAPREP-SUMMARIZE-SE.html"><a href="RECIPE-DATAPREP-SUMMARIZE-SE.html#solution-155"><i class="fa fa-check"></i><b>15.18.2</b> Solution</a></li>
+<li class="chapter" data-level="15.18.3" data-path="RECIPE-DATAPREP-SUMMARIZE-SE.html"><a href="RECIPE-DATAPREP-SUMMARIZE-SE.html#discussion-149"><i class="fa fa-check"></i><b>15.18.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.18.4" data-path="RECIPE-DATAPREP-SUMMARIZE-SE.html"><a href="RECIPE-DATAPREP-SUMMARIZE-SE.html#see-also-100"><i class="fa fa-check"></i><b>15.18.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="15.19" data-path="RECIPE-DATAPREP-WIDE-TO-LONG.html"><a href="RECIPE-DATAPREP-WIDE-TO-LONG.html"><i class="fa fa-check"></i><b>15.19</b> Converting Data from Wide to Long</a>
+<ul>
+<li class="chapter" data-level="15.19.1" data-path="RECIPE-DATAPREP-WIDE-TO-LONG.html"><a href="RECIPE-DATAPREP-WIDE-TO-LONG.html#problem-156"><i class="fa fa-check"></i><b>15.19.1</b> Problem</a></li>
+<li class="chapter" data-level="15.19.2" data-path="RECIPE-DATAPREP-WIDE-TO-LONG.html"><a href="RECIPE-DATAPREP-WIDE-TO-LONG.html#solution-156"><i class="fa fa-check"></i><b>15.19.2</b> Solution</a></li>
+<li class="chapter" data-level="15.19.3" data-path="RECIPE-DATAPREP-WIDE-TO-LONG.html"><a href="RECIPE-DATAPREP-WIDE-TO-LONG.html#discussion-150"><i class="fa fa-check"></i><b>15.19.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.19.4" data-path="RECIPE-DATAPREP-WIDE-TO-LONG.html"><a href="RECIPE-DATAPREP-WIDE-TO-LONG.html#see-also-101"><i class="fa fa-check"></i><b>15.19.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="15.20" data-path="RECIPE-DATAPREP-LONG-TO-WIDE.html"><a href="RECIPE-DATAPREP-LONG-TO-WIDE.html"><i class="fa fa-check"></i><b>15.20</b> Converting Data from Long to Wide</a>
+<ul>
+<li class="chapter" data-level="15.20.1" data-path="RECIPE-DATAPREP-LONG-TO-WIDE.html"><a href="RECIPE-DATAPREP-LONG-TO-WIDE.html#problem-157"><i class="fa fa-check"></i><b>15.20.1</b> Problem</a></li>
+<li class="chapter" data-level="15.20.2" data-path="RECIPE-DATAPREP-LONG-TO-WIDE.html"><a href="RECIPE-DATAPREP-LONG-TO-WIDE.html#solution-157"><i class="fa fa-check"></i><b>15.20.2</b> Solution</a></li>
+<li class="chapter" data-level="15.20.3" data-path="RECIPE-DATAPREP-LONG-TO-WIDE.html"><a href="RECIPE-DATAPREP-LONG-TO-WIDE.html#discussion-151"><i class="fa fa-check"></i><b>15.20.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.20.4" data-path="RECIPE-DATAPREP-LONG-TO-WIDE.html"><a href="RECIPE-DATAPREP-LONG-TO-WIDE.html#see-also-102"><i class="fa fa-check"></i><b>15.20.4</b> See Also</a></li>
+</ul></li>
+<li class="chapter" data-level="15.21" data-path="RECIPE-DATAPREP-TIMESERIES.html"><a href="RECIPE-DATAPREP-TIMESERIES.html"><i class="fa fa-check"></i><b>15.21</b> Converting a Time Series Object to Times and Values</a>
+<ul>
+<li class="chapter" data-level="15.21.1" data-path="RECIPE-DATAPREP-TIMESERIES.html"><a href="RECIPE-DATAPREP-TIMESERIES.html#problem-158"><i class="fa fa-check"></i><b>15.21.1</b> Problem</a></li>
+<li class="chapter" data-level="15.21.2" data-path="RECIPE-DATAPREP-TIMESERIES.html"><a href="RECIPE-DATAPREP-TIMESERIES.html#solution-158"><i class="fa fa-check"></i><b>15.21.2</b> Solution</a></li>
+<li class="chapter" data-level="15.21.3" data-path="RECIPE-DATAPREP-TIMESERIES.html"><a href="RECIPE-DATAPREP-TIMESERIES.html#discussion-152"><i class="fa fa-check"></i><b>15.21.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.21.4" data-path="RECIPE-DATAPREP-TIMESERIES.html"><a href="RECIPE-DATAPREP-TIMESERIES.html#see-also-103"><i class="fa fa-check"></i><b>15.21.4</b> See Also</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="CHAPTER-GGPLOT2.html"><a href="CHAPTER-GGPLOT2.html"><i class="fa fa-check"></i><b>A</b> Understanding ggplot2</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>A.1</b> Background</a></li>
+<li class="chapter" data-level="A.2" data-path="some-terminology-and-theory.html"><a href="some-terminology-and-theory.html"><i class="fa fa-check"></i><b>A.2</b> Some Terminology and Theory</a></li>
+<li class="chapter" data-level="A.3" data-path="building-a-simple-plot.html"><a href="building-a-simple-plot.html"><i class="fa fa-check"></i><b>A.3</b> Building a Simple Plot</a></li>
+<li class="chapter" data-level="A.4" data-path="printing.html"><a href="printing.html"><i class="fa fa-check"></i><b>A.4</b> Printing</a></li>
+<li class="chapter" data-level="A.5" data-path="stats.html"><a href="stats.html"><i class="fa fa-check"></i><b>A.5</b> Stats</a></li>
+<li class="chapter" data-level="A.6" data-path="themes.html"><a href="themes.html"><i class="fa fa-check"></i><b>A.6</b> Themes</a></li>
+<li class="chapter" data-level="A.7" data-path="end.html"><a href="end.html"><i class="fa fa-check"></i><b>A.7</b> End</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Graphics Cookbook, 2nd edition</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">R Graphics Cookbook, 2nd edition</h1>
+<p class="author"><em>Winston Chang</em></p>
+<p class="date"><em>2026-11-15</em></p>
+</div>
+<div id="welcome" class="section level1 unnumbered hasAnchor">
+<h1>Welcome<a href="index.html#welcome" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><a href="https://www.amazon.com/dp/1491978600"><img src="cover.jpg" width="250" height="328" align="right" alt="Cover image" /></a></p>
+<p>Welcome to the <strong>R Graphics Cookbook</strong>, a practical guide that provides more than 150 recipes to help you generate high-quality graphs quickly, without having to comb through all the details of R’s graphing systems. Each recipe tackles a specific problem with a solution you can apply to your own project, and includes a discussion of how and why the recipe works.</p>
+<p>Read online here for free, or buy a physical copy on <a href="https://www.amazon.com/dp/1491978600">Amazon</a>.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="preface.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": true,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": {}
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/wch/rgcookbook/edit/master/index.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

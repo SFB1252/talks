@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta charset="UTF-8">
+<meta name="generator" content="quarto-1.11.9">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen">
+<title>10&nbsp; Position scales and axes – ggplot2: Elegant Graphics for Data Analysis (3e)</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./scales-colour.html" rel="next">
+<link href="./scales.html" rel="prev">
+<link href="./cover.jpg" rel="icon" type="image/jpeg">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-4f67ab1e4efc86feb5e21e0983fc9301.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><!-- Global site tag (gtag.js) - Google Analytics --><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-142542392-1"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142542392-1');
+</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+</head>
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" aria-label="Toolbar"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./scales.html">Scales</a></li><li class="breadcrumb-item"><a href="./scales-position.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Position scales and axes</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Site"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">ggplot2: Elegant Graphics for Data Analysis (3e)</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/hadley/ggplot2-book/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface-3e.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the third edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface-2e.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the second edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Getting Started</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section: Getting Started">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First steps</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./toolbox.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Layers</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section: Layers">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./individual-geoms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Individual geoms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./collective-geoms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Collective geoms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./statistical-summaries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistical summaries</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./maps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Maps</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./networks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Networks</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./annotations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Annotations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./arranging-plots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Arranging plots</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./scales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Scales</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section: Scales">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./scales-position.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Position scales and axes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./scales-colour.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Colour scales and legends</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./scales-other.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Other aesthetics</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./mastery.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">The Grammar</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section: The Grammar">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Build a plot layer by layer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./scales-guides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Scales and guides</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coord.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Coordinate systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./facet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Faceting</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./themes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Themes</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./extending.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-5-label">Advanced topics</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section: Advanced topics">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./programming.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Programming with ggplot2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./internals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Internals of ggplot2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./extensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Extending ggplot2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ext-springs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">A case study</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li>
+<a href="#sec-numeric-position-scales" id="toc-sec-numeric-position-scales" class="nav-link active" data-scroll-target="#sec-numeric-position-scales"><span class="header-section-number">10.1</span> Numeric position scales</a>
+  <ul class="collapse">
+<li><a href="#sec-position-continuous-limits" id="toc-sec-position-continuous-limits" class="nav-link" data-scroll-target="#sec-position-continuous-limits"><span class="header-section-number">10.1.1</span> Limits</a></li>
+  <li><a href="#sec-zooming-in" id="toc-sec-zooming-in" class="nav-link" data-scroll-target="#sec-zooming-in"><span class="header-section-number">10.1.2</span> Zooming in</a></li>
+  <li><a href="#sec-zooming-out" id="toc-sec-zooming-out" class="nav-link" data-scroll-target="#sec-zooming-out"><span class="header-section-number">10.1.3</span> Visual range expansion</a></li>
+  <li><a href="#sec-position-continuous-breaks" id="toc-sec-position-continuous-breaks" class="nav-link" data-scroll-target="#sec-position-continuous-breaks"><span class="header-section-number">10.1.4</span> Breaks</a></li>
+  <li><a href="#sec-minor-breaks" id="toc-sec-minor-breaks" class="nav-link" data-scroll-target="#sec-minor-breaks"><span class="header-section-number">10.1.5</span> Minor breaks</a></li>
+  <li><a href="#sec-position-continuous-labels" id="toc-sec-position-continuous-labels" class="nav-link" data-scroll-target="#sec-position-continuous-labels"><span class="header-section-number">10.1.6</span> Labels</a></li>
+  <li><a href="#sec-scale-transformation" id="toc-sec-scale-transformation" class="nav-link" data-scroll-target="#sec-scale-transformation"><span class="header-section-number">10.1.7</span> Transformations</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#sec-date-scales" id="toc-sec-date-scales" class="nav-link" data-scroll-target="#sec-date-scales"><span class="header-section-number">10.2</span> Date-time position scales</a>
+  <ul class="collapse">
+<li><a href="#sec-date-breaks" id="toc-sec-date-breaks" class="nav-link" data-scroll-target="#sec-date-breaks"><span class="header-section-number">10.2.1</span> Breaks</a></li>
+  <li><a href="#sec-date-minor-breaks" id="toc-sec-date-minor-breaks" class="nav-link" data-scroll-target="#sec-date-minor-breaks"><span class="header-section-number">10.2.2</span> Minor breaks</a></li>
+  <li><a href="#sec-date-labels" id="toc-sec-date-labels" class="nav-link" data-scroll-target="#sec-date-labels"><span class="header-section-number">10.2.3</span> Labels</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#sec-discrete-position" id="toc-sec-discrete-position" class="nav-link" data-scroll-target="#sec-discrete-position"><span class="header-section-number">10.3</span> Discrete position scales</a>
+  <ul class="collapse">
+<li><a href="#sec-scale-labels" id="toc-sec-scale-labels" class="nav-link" data-scroll-target="#sec-scale-labels"><span class="header-section-number">10.3.1</span> Limits, breaks, and labels</a></li>
+  <li><a href="#sec-guide-axis" id="toc-sec-guide-axis" class="nav-link" data-scroll-target="#sec-guide-axis"><span class="header-section-number">10.3.2</span> Label positions</a></li>
+  </ul>
+</li>
+  <li><a href="#sec-binned-position" id="toc-sec-binned-position" class="nav-link" data-scroll-target="#sec-binned-position"><span class="header-section-number">10.4</span> Binned position scales</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/hadley/ggplot2-book/edit/main/scales-position.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hadley/ggplot2-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./scales.html">Scales</a></li><li class="breadcrumb-item"><a href="./scales-position.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Position scales and axes</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-scale-position" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Position scales and axes</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>You are reading the work-in-progress third edition of the ggplot2 book. This chapter should be readable but is currently undergoing final polishing.</p>
+</div>
+</div>
+</div>
+<p>Position scales are used to control the locations of visual entities in a plot, and how those locations are mapped to data values. Every plot has two position scales, corresponding to the x and y aesthetics. In most cases this is clear in the plot specification, because the user explicitly specifies the variables mapped to x and y explicitly. However, this is not always the case. Consider this plot specification:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">displ</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_histogram</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In this example the y aesthetic is not specified by the user. Rather, the aesthetic is mapped to a computed variable: <code>geom_histogram()</code> computes a <code>count</code> variable that gets mapped to the y aesthetic. The default behaviour of <code>geom_histogram()</code> is equivalent to the following:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">displ</span>, y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">count</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_histogram</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Because position scales are used in every plot, it is useful to understand how they work and how they can be modified. In this chapter we’ll discuss this in detail. The chapter is organised into four main sections:</p>
+<ul>
+<li>
+<a href="#sec-numeric-position-scales" class="quarto-xref"><span>Section 10.1</span></a> discusses continuous position scales. In addition to covering core topics like controlling scale limits (<a href="#sec-position-continuous-limits" class="quarto-xref"><span>Section 10.1.1</span></a>), breaks (<a href="#sec-position-continuous-breaks" class="quarto-xref"><span>Section 10.1.4</span></a>), and labels (<a href="#sec-position-continuous-labels" class="quarto-xref"><span>Section 10.1.6</span></a>), there are sections providing a detailed coverage of scale transformations (<a href="#sec-scale-transformation" class="quarto-xref"><span>Section 10.1.7</span></a>) as well as the subtle issues that arise when you need to zoom in or zoom out on a plot (<a href="#sec-zooming-in" class="quarto-xref"><span>Section 10.1.2</span></a> and <a href="#sec-zooming-out" class="quarto-xref"><span>Section 10.1.3</span></a>).</li>
+<li>
+<a href="#sec-date-scales" class="quarto-xref"><span>Section 10.2</span></a> discusses date/time scales, a special type of continuous scale. Because dates and times are a little more complicated than a standard continuous variable, ggplot2 provides special scales to help you control the major and minor breaks (<a href="#sec-date-breaks" class="quarto-xref"><span>Section 10.2.1</span></a> and <a href="#sec-date-minor-breaks" class="quarto-xref"><span>Section 10.2.2</span></a>) and the labels (<a href="#sec-date-labels" class="quarto-xref"><span>Section 10.2.3</span></a>) for date/time data.</li>
+<li>
+<a href="#sec-discrete-position" class="quarto-xref"><span>Section 10.3</span></a> discusses discrete position scales. It covers limits, breaks, and labels in <a href="#sec-scale-labels" class="quarto-xref"><span>Section 10.3.1</span></a> and axis label customisation in <a href="#sec-guide-axis" class="quarto-xref"><span>Section 10.3.2</span></a>.</li>
+<li>
+<a href="#sec-binned-position" class="quarto-xref"><span>Section 10.4</span></a> discusses binned position scales.</li>
+</ul>
+<p> </p>
+<section id="sec-numeric-position-scales" class="level2" data-number="10.1"><h2 data-number="10.1" class="anchored" data-anchor-id="sec-numeric-position-scales">
+<span class="header-section-number">10.1</span> Numeric position scales</h2>
+<p>The most common continuous position scales are the default <code>scale_x_continuous()</code> and <code>scale_y_continuous()</code> functions. In the simplest case they map linearly from the data value to a location on the plot. There are several other position scales for continuous variables—<code>scale_x_log10()</code>, <code>scale_x_reverse()</code>, etc—most of which are convenience functions used to provide easy access to common transformations, discussed in in <a href="#sec-scale-transformation" class="quarto-xref"><span>Section 10.1.7</span></a>. </p>
+<section id="sec-position-continuous-limits" class="level3" data-number="10.1.1"><h3 data-number="10.1.1" class="anchored" data-anchor-id="sec-position-continuous-limits">
+<span class="header-section-number">10.1.1</span> Limits</h3>
+<p> </p>
+<p>All scales have limits that specify the values of the aesthetic over which the scale is defined. It’s very natural to think about these limits for numeric position scales, as they map directly to the ranges of the axes. By default, the limits are calculated from the range of the data variable, but sometimes you will need to set the limits manually using the <code>limits</code> argument to the scale function. Whenever the scale is continuous, as is the case for numeric position scales, this should be a numeric vector of length two. If you only want to set the upper or lower limit, you can set the other value to <code>NA</code>.</p>
+<p>Manually setting scale limits is a common task when you need to ensure that scales in different plots are consistent with one another. To illustrate why this is necessary consider this faceted plot:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="fu">vars</span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="scales-position_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In this plot, ggplot2 has automatically ensured that both facets have the same axis limits, making visual comparison of the two scatter plots easy. However, when creating the plots individually the scale limits in different plots will often be inconsistent:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mpg_99</span> <span class="op">&lt;-</span> <span class="va">mpg</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">1999</span><span class="op">)</span></span>
+<span><span class="va">mpg_08</span> <span class="op">&lt;-</span> <span class="va">mpg</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2008</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">base_99</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg_99</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> </span>
+<span><span class="va">base_08</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg_08</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">base_99</span></span>
+<span><span class="va">base_08</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>Each plot makes sense on its own, but visual comparison between the two is difficult due to the inconsistent axis scaling. To ensure consistent axis scaling, we can set the <code>limits</code> argument to each scale separately:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base_99</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">45</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">base_08</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">45</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>However, this code is a little unwieldy. Because modifying scale limits is such a common task, ggplot2 provides the <code>lims()</code> convenience function to simplify the code. Analogous to the <code>labs()</code> function used to specify axis labels (<a href="annotations.html#sec-titles" class="quarto-xref"><span>Section 8.1</span></a>), <code>lims()</code> takes name-value pairs as inputs: the argument name is used to specify the aesthetic, and the value is used to specify the scale limits. </p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base_99</span> <span class="op">+</span> <span class="fu">lims</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">7</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">45</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">base_08</span> <span class="op">+</span> <span class="fu">lims</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">7</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">45</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>In the special case where only one axis limit needs to be specified, ggplot2 also provides <code>xlim()</code> and <code>ylim()</code> helper functions, which can save you a few keystrokes. In practice <code>lims()</code> tends to be more useful, because it can be used to set limits for several aesthetics at once. You’ll see an example of <code>lims()</code> applied to non-position aesthetics in <a href="scales-colour.html#sec-colour-discrete-limits" class="quarto-xref"><span>Section 11.3.5</span></a>.</p>
+</section><section id="sec-zooming-in" class="level3" data-number="10.1.2"><h3 data-number="10.1.2" class="anchored" data-anchor-id="sec-zooming-in">
+<span class="header-section-number">10.1.2</span> Zooming in</h3>
+<p>The examples in the previous section expand the scale limits beyond the range spanned by the data. It is also possible to narrow the default scale limits, but care is required: when you truncate the scale limits, some data points will fall outside the boundaries you set, and ggplot2 has to make a decision about what to do with these data points. The default behaviour in ggplot2 is to convert any data values outside the scale limits to <code>NA</code>. This means that changing the limits of a scale is not always the same as visually zooming in to a region of the plot. If your goal is to zoom in on part of the plot, it is usually better to use the <code>xlim</code> and <code>ylim</code> arguments of <code>coord_cartesian()</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">drv</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">28</span>, colour <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">base</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">coord_cartesian</span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">35</span><span class="op">)</span><span class="op">)</span> <span class="co"># works as expected</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">ylim</span><span class="op">(</span><span class="fl">10</span>, <span class="fl">35</span><span class="op">)</span> <span class="co"># distorts the boxplot </span></span>
+<span><span class="co">#&gt; Warning: Removed 6 rows containing non-finite outside the scale range</span></span>
+<span><span class="co">#&gt; (`stat_boxplot()`).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="900"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="900"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="900"></p>
+</div>
+</div>
+</div>
+<p>The only difference between the left and middle plots is that the latter is zoomed in. Some of the outlier points are not shown due to the restriction of the range, but the boxplots themselves remain identical. In contrast, in the plot on the right one of the boxplots has changed. When modifying the scale limits, all observations with highway mileage greater than 35 are converted to <code>NA</code> before the stat (in this case the boxplot) is computed. Because these “out of bounds” values are no longer available, the end result is that the sample median is shifted downward, which is almost never desirable behaviour. With the benefit of hindsight it’s clear this wasn’t a good design choice, because it is a common source of confusion for users. Unfortunately, it would be very hard to change this default without breaking a lot of existing code.</p>
+<p>You can learn more about coordinate systems in <a href="coord.html#sec-cartesian" class="quarto-xref"><span>Section 15.1</span></a>. To learn more about how “out of bounds” values are handled for continuous and binned scales, see <a href="scales-guides.html#sec-oob" class="quarto-xref"><span>Section 14.4</span></a>.</p>
+</section><section id="sec-zooming-out" class="level3" data-number="10.1.3"><h3 data-number="10.1.3" class="anchored" data-anchor-id="sec-zooming-out">
+<span class="header-section-number">10.1.3</span> Visual range expansion</h3>
+<p>If you have eagle eyes, you’ll have noticed that the visual range of the axes actually extends a little bit past the numeric limits that we have specified in the various examples. This ensures that the data does not overlap the axes, which is usually (but not always) desirable. You can override the defaults setting the <code>expand</code> argument, which expects a numeric vector created by <code>expansion()</code>.</p>
+<p>For example, one case where it’s usually preferable to remove this space is when using <code>geom_raster()</code>, which we can achieve by setting <code>expand = expansion(0)</code>: </p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">faithfuld</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">waiting</span>, <span class="va">eruptions</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_raster</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">density</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">base</span> </span>
+<span><span class="va">base</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu">expansion</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu">expansion</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>Axis expansions are described in terms of an “additive” factor, which specifies a constant space added to outside of the nominal axis limits, and a “multiplicative” one that adds space defined as a proportion of the size of the axis limit. These correspond to the <code>add</code> and <code>mult</code> arguments to <code>expansion()</code>, which can be length one (if the expansion is the same on both sides) or length two (to set different expansions on each side):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Additive expansion of three units on both axes</span></span>
+<span><span class="va">base</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu">expansion</span><span class="op">(</span>add <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu">expansion</span><span class="op">(</span>add <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Multiplicative expansion of 20% on both axes</span></span>
+<span><span class="va">base</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu">expansion</span><span class="op">(</span>mult <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu">expansion</span><span class="op">(</span>mult <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="co"># Multiplicative expansion of 5% at the lower end of each axes,</span></span>
+<span><span class="co"># and 20% at the upper end; for the y-axis the expansion is </span></span>
+<span><span class="co"># set directly instead of using expansion()</span></span>
+<span><span class="va">base</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu">expansion</span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.05</span>, <span class="fl">.2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.05</span>, <span class="fl">0</span>, <span class="fl">.2</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="900"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid" width="900"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid" width="900"></p>
+</div>
+</div>
+</div>
+<p>Note the different behaviour in the left and middle plots: the <code>add</code> argument is specified on the same scale as the data variable, whereas the <code>mult</code> argument is specified relative to the axis range.</p>
+<!-- ### Exercises -->
+<!-- 1.  The following code creates two plots of the mpg dataset. Modify the code -->
+<!--     so that the legend and axes match, without using faceting! -->
+<!--     ```{r} -->
+<!--     fwd <- subset(mpg, drv == "f") -->
+<!--     rwd <- subset(mpg, drv == "r") -->
+<!--     ggplot(fwd, aes(displ, hwy, colour = class)) + geom_point() -->
+<!--     ggplot(rwd, aes(displ, hwy, colour = class)) + geom_point() -->
+<!--     ``` -->
+<!-- 1.  What happens if you add two `xlim()` calls to the same plot? Why? -->
+<!-- 1.  What does `scale_x_continuous(limits = c(NA, NA))` do? -->
+<!-- 1.  What does `expand_limits()` do and how does it work?  Read the source code. -->
+</section><section id="sec-position-continuous-breaks" class="level3" data-number="10.1.4"><h3 data-number="10.1.4" class="anchored" data-anchor-id="sec-position-continuous-breaks">
+<span class="header-section-number">10.1.4</span> Breaks</h3>
+<p>Setting the locations of the axis tick marks is a common data visualisation task. In ggplot2, axis tick marks and legend tick marks are both special cases of “scale breaks”, and can be modified using the <code>breaks</code> argument to the scale function. We’ll illustrate this using a toy data set that will reappear in several places throughout this part of the book:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">toy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  const <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>  up <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,</span>
+<span>  txt <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, </span>
+<span>  big <span class="op">=</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">*</span><span class="fl">1000</span>,</span>
+<span>  log <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">2000</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">toy</span></span>
+<span><span class="co">#&gt;   const up txt  big  log</span></span>
+<span><span class="co">#&gt; 1     1  1   a 1000    2</span></span>
+<span><span class="co">#&gt; 2     1  2   b 2000    5</span></span>
+<span><span class="co">#&gt; 3     1  3   c 3000   10</span></span>
+<span><span class="co">#&gt; 4     1  4   d 4000 2000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To set breaks manually, pass a vector of data values to <code>breaks</code>, or set <code>breaks = NULL</code> to remove the breaks and the corresponding tick marks entirely. In the plot below, removing the y-axis breaks also removes the corresponding grid lines:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">toy</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">big</span>, <span class="va">const</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">base</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="scales-position_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Alternatively, notice that when the breaks are set manually it moves the major gridlines and the minor gridlines between them:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fl">2000</span>, <span class="fl">4000</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fl">1500</span>, <span class="fl">2000</span>, <span class="fl">4000</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>It is also possible to pass a function to <code>breaks</code>. This function should have one argument that specifies the limits of the scale (a numeric vector of length two), and it should return a numeric vector of breaks. You can write your own break function, but in many cases there is no need, thanks to the scales package <span class="citation" data-cites="scales">(<a href="#ref-scales" role="doc-biblioref">Wickham and Seidel 2020</a>)</span>. It provides several tools that are useful for this purpose:</p>
+<ul>
+<li>
+<code><a href="https://scales.r-lib.org/reference/breaks_extended.html">scales::breaks_extended()</a></code> creates automatic breaks for numeric axes.</li>
+<li>
+<code><a href="https://scales.r-lib.org/reference/breaks_log.html">scales::breaks_log()</a></code> creates breaks appropriate for log axes.</li>
+<li>
+<code><a href="https://scales.r-lib.org/reference/breaks_pretty.html">scales::breaks_pretty()</a></code> creates “pretty” breaks for date/times.</li>
+<li>
+<code><a href="https://scales.r-lib.org/reference/breaks_width.html">scales::breaks_width()</a></code> creates equally spaced breaks.</li>
+</ul>
+<p>The <code>breaks_extended()</code> function is the standard method used in ggplot2, and accordingly the first two plots below are the same. We can alter the desired number of breaks by setting <code>n = 2</code>, as illustrated in the third plot. Note that <code>breaks_extended()</code> treats <code>n</code> as a suggestion rather than a strict constraint. If you need to specify exact breaks it is better to do so manually.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> </span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/breaks_extended.html">breaks_extended</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/breaks_extended.html">breaks_extended</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="900"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid" width="900"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-14-3.png" class="img-fluid" width="900"></p>
+</div>
+</div>
+</div>
+<p>Another approach that is sometimes useful is specifying a fixed <code>width</code> that defines the spacing between breaks. The <code>breaks_width()</code> function is used for this. The first example below shows how to fix the width at a specific value; the second example illustrates the use of the <code>offset</code> argument that shifts all the breaks by a specified amount:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/breaks_width.html">breaks_width</a></span><span class="op">(</span><span class="fl">800</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/breaks_width.html">breaks_width</a></span><span class="op">(</span><span class="fl">800</span>, offset <span class="op">=</span> <span class="fl">200</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/breaks_width.html">breaks_width</a></span><span class="op">(</span><span class="fl">800</span>, offset <span class="op">=</span> <span class="op">-</span><span class="fl">200</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="900"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid" width="900"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-15-3.png" class="img-fluid" width="900"></p>
+</div>
+</div>
+</div>
+<p>Notice the difference between setting an offset of 200 and -200.</p>
+</section><section id="sec-minor-breaks" class="level3" data-number="10.1.5"><h3 data-number="10.1.5" class="anchored" data-anchor-id="sec-minor-breaks">
+<span class="header-section-number">10.1.5</span> Minor breaks</h3>
+<p></p>
+<p>You can adjust the minor breaks (the unlabelled faint grid lines that appear between the major grid lines) by supplying a numeric vector of positions to the <code>minor_breaks</code> argument.</p>
+<p>Minor breaks are particularly useful for log scales because they give a clear visual indicator that the scale is non-linear. To show them off, we’ll first create a vector of minor break values (on the transformed scale), using <code>%o%</code> to quickly generate a multiplication table and <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code> to flatten the table to a vector.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span> <span class="op"><a href="https://rdrr.io/r/base/outer.html">%o%</a></span> <span class="fl">10</span> <span class="op">^</span> <span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">mb</span></span>
+<span><span class="co">#&gt;  [1]     1     2     3     4     5     6     7     8     9    10    20    30</span></span>
+<span><span class="co">#&gt; [13]    40    50    60    70    80    90   100   200   300   400   500   600</span></span>
+<span><span class="co">#&gt; [25]   700   800   900  1000  2000  3000  4000  5000  6000  7000  8000  9000</span></span>
+<span><span class="co">#&gt; [37] 10000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The following plots illustrate the effect of setting the minor breaks:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">toy</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">log</span>, <span class="va">const</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_x_log10</span><span class="op">(</span>minor_breaks <span class="op">=</span> <span class="va">mb</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>As with <code>breaks</code>, you can also supply a function to <code>minor_breaks</code>, such as <code><a href="https://scales.r-lib.org/reference/minor_breaks_width.html">scales::minor_breaks_n()</a></code> or <code><a href="https://scales.r-lib.org/reference/minor_breaks_width.html">scales::minor_breaks_width()</a></code> functions that can be helpful in controlling the minor breaks.</p>
+</section><section id="sec-position-continuous-labels" class="level3" data-number="10.1.6"><h3 data-number="10.1.6" class="anchored" data-anchor-id="sec-position-continuous-labels">
+<span class="header-section-number">10.1.6</span> Labels</h3>
+<p>Every break is associated with a label and these can be changed by setting the <code>labels</code> argument to the scale function:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">toy</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">big</span>, <span class="va">const</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">base</span></span>
+<span><span class="va">base</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span></span>
+<span>    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2000</span>, <span class="fl">4000</span><span class="op">)</span>, </span>
+<span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2k"</span>, <span class="st">"4k"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>Often you don’t need to set the <code>labels</code> manually, and can instead specify a labelling function in the same way you can for <code>breaks</code>. A function passed to <code>labels</code> should accept a numeric vector of breaks as input and return a character vector of labels (the same length as the input). Again, the scales package provides a number of tools that will automatically construct label functions for you. Some of the more useful examples for numeric data include:</p>
+<ul>
+<li>
+<code><a href="https://scales.r-lib.org/reference/label_bytes.html">scales::label_bytes()</a></code> formats numbers as kilobytes, megabytes etc.</li>
+<li>
+<code><a href="https://scales.r-lib.org/reference/label_number.html">scales::label_comma()</a></code> formats numbers as decimals with commas added.</li>
+<li>
+<code><a href="https://scales.r-lib.org/reference/dollar_format.html">scales::label_dollar()</a></code> formats numbers as currency.</li>
+<li>
+<code><a href="https://scales.r-lib.org/reference/label_ordinal.html">scales::label_ordinal()</a></code> formats numbers in rank order: 1st, 2nd, 3rd etc.</li>
+<li>
+<code><a href="https://scales.r-lib.org/reference/label_percent.html">scales::label_percent()</a></code> formats numbers as percentages.</li>
+<li>
+<code><a href="https://scales.r-lib.org/reference/label_pvalue.html">scales::label_pvalue()</a></code> formats numbers as p-values: &lt;.05, &lt;.01, .34, etc.</li>
+</ul>
+<p>A few examples are shown below to illustrate how these functions are used:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">toy</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">big</span>, <span class="va">const</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">base</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_y_continuous</span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html">label_percent</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_y_continuous</span><span class="op">(</span></span>
+<span>  labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/dollar_format.html">label_dollar</a></span><span class="op">(</span>prefix <span class="op">=</span> <span class="st">""</span>, suffix <span class="op">=</span> <span class="st">"€"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/breaks-functions-1.png" class="img-fluid" width="900"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/breaks-functions-2.png" class="img-fluid" width="900"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/breaks-functions-3.png" class="img-fluid" width="900"></p>
+</div>
+</div>
+</div>
+<p>You can suppress labels with <code>labels = NULL</code>. This will remove the labels from the axis or legend while leaving its other properties unchanged. Notice the difference between setting <code>breaks = NULL</code> and <code>labels = NULL</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_y_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_y_continuous</span><span class="op">(</span>labels <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<!-- ### Exercises -->
+<!-- 1.  Recreate the following graphic: -->
+<!--     ```{r, echo = FALSE} -->
+<!--     ggplot(mpg, aes(displ, hwy)) +  -->
+<!--       geom_point() +   -->
+<!--       scale_x_continuous("Displacement", labels = scales::unit_format(suffix = "L")) +  -->
+<!--       scale_y_continuous(quote(paste("Highway ", (frac(miles, gallon)))))  -->
+<!--     ``` -->
+<!--     Adjust the y axis label so that the parentheses are the right size. -->
+<!-- 1.  List the three different types of object you can supply to the -->
+<!--     `breaks` argument. How do `breaks` and `labels` differ? -->
+<!-- 1.  What label function allows you to create mathematical expressions? -->
+<!--     What label function converts 1 to 1st, 2 to 2nd, and so on? -->
+</section><section id="sec-scale-transformation" class="level3" data-number="10.1.7"><h3 data-number="10.1.7" class="anchored" data-anchor-id="sec-scale-transformation">
+<span class="header-section-number">10.1.7</span> Transformations</h3>
+<p>When working with continuous data, the default is to map linearly from the data space onto the aesthetic space. It is possible to override this default using scale transformations, which alter the way in which this mapping takes place. In some cases you don’t need to dive into the details, because there are convenience functions like <code>scale_x_log10()</code>, <code>scale_x_reverse()</code> that can do the work for you:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">base</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_x_reverse</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_y_reverse</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="900"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-20-2.png" class="img-fluid" width="900"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-20-3.png" class="img-fluid" width="900"></p>
+</div>
+</div>
+</div>
+<p>However, even in these cases a deeper understanding can be valuable. Every continuous scale takes a <code>trans</code> argument, allowing the use of a variety of transformations: </p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># convert from fuel economy to fuel consumption</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>trans <span class="op">=</span> <span class="st">"reciprocal"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># log transform x and y axes</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">price</span>, <span class="va">carat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_bin2d</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>trans <span class="op">=</span> <span class="st">"log10"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>trans <span class="op">=</span> <span class="st">"log10"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `stat_bin2d()` using `bins = 30`. Pick better value `binwidth`.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-21-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>The transformation is carried out by a “transformer”, which describes the transformation, its inverse, and how to draw the labels. You can construct your own transformer using <code><a href="https://scales.r-lib.org/reference/new_transform.html">scales::trans_new()</a></code>, but as the plots above illustrate, ggplot2 understands many common transformations supplied by the scales package. The following table lists some of the more common variants:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 32%">
+<col style="width: 26%">
+<col style="width: 23%">
+</colgroup>
+<thead><tr class="header">
+<th>Name</th>
+<th>Transformer</th>
+<th>Function <span class="math inline">\(f(x)\)</span>
+</th>
+<th>Inverse <span class="math inline">\(f^{-1}(x)\)</span>
+</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>"asn"</code></td>
+<td><code><a href="https://scales.r-lib.org/reference/transform_asn.html">scales::asn_trans()</a></code></td>
+<td><span class="math inline">\(\tanh^{-1}(x)\)</span></td>
+<td><span class="math inline">\(\tanh(y)\)</span></td>
+</tr>
+<tr class="even">
+<td><code>"exp"</code></td>
+<td><code><a href="https://scales.r-lib.org/reference/transform_exp.html">scales::exp_trans()</a></code></td>
+<td><span class="math inline">\(e ^ x\)</span></td>
+<td><span class="math inline">\(\log(y)\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>"identity"</code></td>
+<td><code><a href="https://scales.r-lib.org/reference/transform_identity.html">scales::identity_trans()</a></code></td>
+<td><span class="math inline">\(x\)</span></td>
+<td><span class="math inline">\(y\)</span></td>
+</tr>
+<tr class="even">
+<td><code>"log"</code></td>
+<td><code><a href="https://scales.r-lib.org/reference/transform_log.html">scales::log_trans()</a></code></td>
+<td><span class="math inline">\(\log(x)\)</span></td>
+<td><span class="math inline">\(e ^ y\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>"log10"</code></td>
+<td><code><a href="https://scales.r-lib.org/reference/transform_log.html">scales::log10_trans()</a></code></td>
+<td><span class="math inline">\(\log_{10}(x)\)</span></td>
+<td><span class="math inline">\(10 ^ y\)</span></td>
+</tr>
+<tr class="even">
+<td><code>"log2"</code></td>
+<td><code><a href="https://scales.r-lib.org/reference/transform_log.html">scales::log2_trans()</a></code></td>
+<td><span class="math inline">\(\log_2(x)\)</span></td>
+<td><span class="math inline">\(2 ^ y\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>"logit"</code></td>
+<td><code><a href="https://scales.r-lib.org/reference/transform_probability.html">scales::logit_trans()</a></code></td>
+<td><span class="math inline">\(\log(\frac{x}{1 - x})\)</span></td>
+<td><span class="math inline">\(\frac{1}{1 + e(y)}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>"probit"</code></td>
+<td><code><a href="https://scales.r-lib.org/reference/transform_probability.html">scales::probit_trans()</a></code></td>
+<td><span class="math inline">\(\Phi(x)\)</span></td>
+<td><span class="math inline">\(\Phi^{-1}(y)\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>"reciprocal"</code></td>
+<td><code><a href="https://scales.r-lib.org/reference/transform_reciprocal.html">scales::reciprocal_trans()</a></code></td>
+<td><span class="math inline">\(x^{-1}\)</span></td>
+<td><span class="math inline">\(y^{-1}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>"reverse"</code></td>
+<td><code><a href="https://scales.r-lib.org/reference/transform_reverse.html">scales::reverse_trans()</a></code></td>
+<td><span class="math inline">\(-x\)</span></td>
+<td><span class="math inline">\(-y\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>"sqrt"</code></td>
+<td><code>scales::scale_x_sqrt()</code></td>
+<td><span class="math inline">\(x^{1/2}\)</span></td>
+<td><span class="math inline">\(y ^ 2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>You can specify the <code>trans</code> argument as a string containing the name of the transformation, or by calling the transformer directly. The following are equivalent:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>trans <span class="op">=</span> <span class="st">"reciprocal"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>trans <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/transform_reciprocal.html">reciprocal_trans</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+
+</div>
+<p>In a few cases ggplot2 simplifies this even further, and provides convenience functions for the most common transformations: <code>scale_x_log10()</code>, <code>scale_x_sqrt()</code> and <code>scale_x_reverse()</code> provide the relevant transformation on the x axis, with similar functions provided for the y axis. Thus, these two plot specifications are also equivalent:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">price</span>, <span class="va">carat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_bin2d</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>trans <span class="op">=</span> <span class="st">"log10"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>trans <span class="op">=</span> <span class="st">"log10"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `stat_bin2d()` using `bins = 30`. Pick better value `binwidth`.</span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">price</span>, <span class="va">carat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_bin2d</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_y_log10</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `stat_bin2d()` using `bins = 30`. Pick better value `binwidth`.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+
+</div>
+<p>Note that there is nothing preventing you from performing these transformations manually. For example, instead of using <code>scale_x_log10()</code> to transform the scale, you could transform the data instead and plot <code>log10(x)</code>. The appearance of the geom will be the same, but the tick labels will be different. Specifically, if you use a transformed scale, the axes will be labelled in the original data space; if you transform the data, the axes will be labelled in the transformed space. As a consequence, these plot specifications are slightly different:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># manual transformation</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">displ</span><span class="op">)</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># transform using scales</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-24-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>Regardless of which method you use, the transformation occurs before any statistical summaries. To transform <em>after</em> statistical computation use <code>coord_trans()</code>. See <a href="coord.html#sec-cartesian" class="quarto-xref"><span>Section 15.1</span></a> for more details on coordinate systems, and <a href="scales-guides.html#sec-scale-transformation-extras" class="quarto-xref"><span>Section 14.6</span></a> if you need to transform something other than a numeric position scale.</p>
+</section></section><section id="sec-date-scales" class="level2" data-number="10.2"><h2 data-number="10.2" class="anchored" data-anchor-id="sec-date-scales">
+<span class="header-section-number">10.2</span> Date-time position scales</h2>
+<p> </p>
+<p>A special case of numeric position arises when an aesthetic is mapped to a date/time type. Examples of date/time types include the base <code>Date</code> (for dates) and <code>POSIXct</code> (for date-times) classes, as well as the <code>hms</code> class for “time of day” values provided by the hms package <span class="citation" data-cites="hms">(<a href="#ref-hms" role="doc-biblioref">Müller 2020</a>)</span>. If your dates are in a different format you will need to convert them using <code><a href="https://rdrr.io/r/base/as.Date.html">as.Date()</a></code>, <code><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXct()</a></code> or <code><a href="https://hms.tidyverse.org/reference/hms.html">hms::as_hms()</a></code>. You may also find the lubridate package helpful to manipulate date/time data <span class="citation" data-cites="lubridate">(<a href="#ref-lubridate" role="doc-biblioref">Grolemund and Wickham 2011</a>)</span>.</p>
+<p>Assuming you have appropriately formatted data mapped to the x aesthetic, ggplot2 will use <code>scale_x_date()</code> as the default scale for dates and <code>scale_x_datetime()</code> as the default scale for date-time data. The corresponding scales for other aesthetics follow the usual naming rules. Date scales behave similarly to other continuous scales, but contain additional arguments that allow you to work in date-friendly units. This section discusses date/time scales for position aesthetics: see <a href="scales-colour.html#sec-date-colour-scales" class="quarto-xref"><span>Section 11.5</span></a> for colour and fill aesthetics.</p>
+<section id="sec-date-breaks" class="level3" data-number="10.2.1"><h3 data-number="10.2.1" class="anchored" data-anchor-id="sec-date-breaks">
+<span class="header-section-number">10.2.1</span> Breaks</h3>
+<p>The <code>date_breaks</code> argument allows you to position breaks by date units (years, months, weeks, days, hours, minutes, and seconds). For example, <code>date_breaks = "2 weeks"</code> will place a major tick mark every two weeks and <code>date_breaks = "15 years"</code> will place them every 15 years:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">date_base</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">economics</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">date</span>, <span class="va">psavert</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span>na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">date_base</span> </span>
+<span><span class="va">date_base</span> <span class="op">+</span> <span class="fu">scale_x_date</span><span class="op">(</span>date_breaks <span class="op">=</span> <span class="st">"15 years"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/date-scale-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/date-scale-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>Compared to the plot on the left, two things have changed in the plot on the right: the tick marks are placed at 15 year intervals, and the label format has changed. We’ll discuss date labelling in <a href="#sec-date-labels" class="quarto-xref"><span>Section 10.2.3</span></a>, but for now our focus is on the breaks.</p>
+<p>To understand how ggplot2 interprets <code>date_breaks = "15 years"</code>, it is helpful to note that it is merely a convenient shorthand for setting <code>breaks = scales::breaks_width("15 years")</code>. The longer form is typically unnecessary, but it can be useful if—as discussed in <a href="#sec-position-continuous-breaks" class="quarto-xref"><span>Section 10.1.4</span></a>—you wish to specify an <code>offset</code>. For example, suppose the goal is to plot data spanning a calendar year, with monthly breaks. Specifying <code>date_breaks = "1 month"</code> is equivalent to setting <code>scales::breaks_width("1 month")</code>, which produces these breaks:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">the_year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2021-01-01"</span>, <span class="st">"2021-12-31"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">set_breaks</span> <span class="op">&lt;-</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/breaks_width.html">breaks_width</a></span><span class="op">(</span><span class="st">"1 month"</span><span class="op">)</span></span>
+<span><span class="fu">set_breaks</span><span class="op">(</span><span class="va">the_year</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "2021-01-01" "2021-02-01" "2021-03-01" "2021-04-01" "2021-05-01"</span></span>
+<span><span class="co">#&gt;  [6] "2021-06-01" "2021-07-01" "2021-08-01" "2021-09-01" "2021-10-01"</span></span>
+<span><span class="co">#&gt; [11] "2021-11-01" "2021-12-01" "2022-01-01"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In this example, the <code>set_breaks()</code> function returned by <code>scales::break_width()</code> produces breaks spaced one month apart, where the date for each break falls on the first day of the month. Placing each break at the start of the calendar year is usually sensible, but there are exceptions. Perhaps the data track income and expenses for a household in which a monthly salary is paid on the ninth day of each month. In this situation it may be sensible to have the breaks aligned with the salary deposits. To do this, we can set <code>offset = 8</code> when we define the <code>set_breaks()</code> function:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">set_breaks</span> <span class="op">&lt;-</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/breaks_width.html">breaks_width</a></span><span class="op">(</span><span class="st">"1 month"</span>, offset <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span>
+<span><span class="fu">set_breaks</span><span class="op">(</span><span class="va">the_year</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "2021-01-09" "2021-02-09" "2021-03-09" "2021-04-09" "2021-05-09"</span></span>
+<span><span class="co">#&gt;  [6] "2021-06-09" "2021-07-09" "2021-08-09" "2021-09-09" "2021-10-09"</span></span>
+<span><span class="co">#&gt; [11] "2021-11-09" "2021-12-09" "2022-01-09"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="sec-date-minor-breaks" class="level3" data-number="10.2.2"><h3 data-number="10.2.2" class="anchored" data-anchor-id="sec-date-minor-breaks">
+<span class="header-section-number">10.2.2</span> Minor breaks</h3>
+<p>Date/times scales also have a <code>date_minor_breaks</code> argument that allows you to specify the minor breaks in using date units, in exactly the same fashion that <code>date_breaks</code> does for major breaks. To illustrate this, we’ll define an empty plot with a date scale on the y-axis, and tweak the theme (<a href="themes.html" class="quarto-xref"><span>Chapter 17</span></a>) to make the grid lines more visually prominent:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2022-01-01"</span>, <span class="st">"2022-04-01"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">df</span>, <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">theme</span><span class="op">(</span></span>
+<span>    panel.grid.major <span class="op">=</span> <span class="fu">element_line</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span>,</span>
+<span>    panel.grid.minor <span class="op">=</span> <span class="fu">element_line</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"grey50"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_y_date</span><span class="op">(</span>date_breaks <span class="op">=</span> <span class="st">"1 month"</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_y_date</span><span class="op">(</span>date_breaks <span class="op">=</span> <span class="st">"1 month"</span>, date_minor_breaks <span class="op">=</span> <span class="st">"1 week"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/date-scale-2-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/date-scale-2-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>Note that in the first plot, the minor breaks are spaced evenly between the monthly major breaks. In the second plot, the major and minor breaks follow slightly different patterns: the minor breaks are always spaced 7 days apart but the major breaks are 1 month apart. Because the months vary in length, this leads to slightly uneven spacing.</p>
+</section><section id="sec-date-labels" class="level3" data-number="10.2.3"><h3 data-number="10.2.3" class="anchored" data-anchor-id="sec-date-labels">
+<span class="header-section-number">10.2.3</span> Labels</h3>
+<p>Date scales contain a <code>labels</code> argument that behaves similarly to the corresponding argument for numeric scales, but is often more convenient to use the <code>date_labels</code> argument. It controls the display of the labels using the same formatting strings as in <code><a href="https://rdrr.io/r/base/strptime.html">strptime()</a></code> and <code><a href="https://rdrr.io/r/base/format.html">format()</a></code>. To display dates like 14/10/1979, for example, you would use the string <code>"%d/%m/%Y"</code>: in this expression <code>%d</code> produces a numeric day of month, <code>%m</code> produces a numeric month, and <code>%Y</code> produces a four-digit year. The table below provides a list of formatting strings:</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th style="text-align: left;">String</th>
+<th style="text-align: left;">Meaning</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>%S</code></td>
+<td style="text-align: left;">second (00-59)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>%M</code></td>
+<td style="text-align: left;">minute (00-59)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>%l</code></td>
+<td style="text-align: left;">hour, in 12-hour clock (1-12)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>%I</code></td>
+<td style="text-align: left;">hour, in 12-hour clock (01-12)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>%p</code></td>
+<td style="text-align: left;">am/pm</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>%H</code></td>
+<td style="text-align: left;">hour, in 24-hour clock (00-23)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>%a</code></td>
+<td style="text-align: left;">day of week, abbreviated (Mon-Sun)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>%A</code></td>
+<td style="text-align: left;">day of week, full (Monday-Sunday)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>%e</code></td>
+<td style="text-align: left;">day of month (1-31)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>%d</code></td>
+<td style="text-align: left;">day of month (01-31)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>%m</code></td>
+<td style="text-align: left;">month, numeric (01-12)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>%b</code></td>
+<td style="text-align: left;">month, abbreviated (Jan-Dec)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>%B</code></td>
+<td style="text-align: left;">month, full (January-December)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>%y</code></td>
+<td style="text-align: left;">year, without century (00-99)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>%Y</code></td>
+<td style="text-align: left;">year, with century (0000-9999)</td>
+</tr>
+</tbody>
+</table>
+<p>One useful scenario for date label formatting is when there’s insufficient room to specify a four-digit year. Using <code>%y</code> ensures that only the last two digits are displayed:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">economics</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">date</span>, <span class="va">psavert</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span>na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_x_date</span><span class="op">(</span>date_breaks <span class="op">=</span> <span class="st">"5 years"</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_x_date</span><span class="op">(</span>date_breaks <span class="op">=</span> <span class="st">"5 years"</span>, date_labels <span class="op">=</span> <span class="st">"%y"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/date-scale-3-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/date-scale-3-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>It can be useful to include the line break character <code>\n</code> in a formatting string, particularly when full-length month names are included:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2004-01-01"</span>, <span class="st">"2005-01-01"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_x_date</span><span class="op">(</span>limits <span class="op">=</span> <span class="va">lim</span>, date_labels <span class="op">=</span> <span class="st">"%b %y"</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_x_date</span><span class="op">(</span>limits <span class="op">=</span> <span class="va">lim</span>, date_labels <span class="op">=</span> <span class="st">"%B\n%Y"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/date-scale-4-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/date-scale-4-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>In these examples we have specified the labels manually via the <code>date_labels</code> argument. An alternative approach is to pass a labelling function to the <code>labels</code> argument, in the same way we described in <a href="#sec-position-continuous-labels" class="quarto-xref"><span>Section 10.1.6</span></a>. You can write your own custom labelling function, but this is often unnecessary. The scales package provides convenient functions that can generate labellers for you, notably <code><a href="https://scales.r-lib.org/reference/label_date.html">scales::label_date()</a></code> and <code><a href="https://scales.r-lib.org/reference/label_date.html">scales::label_date_short()</a></code>. You rarely need to call <code><a href="https://scales.r-lib.org/reference/label_date.html">scales::label_date()</a></code> directly, because that’s the function that <code>date_labels</code> uses. However, if you want to use <code><a href="https://scales.r-lib.org/reference/label_date.html">scales::label_date_short()</a></code> you’ll need to do so explicitly. The goal of <code>label_date_short()</code> is to automatically construct short labels that are sufficient to uniquely identify the dates:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_date</span><span class="op">(</span></span>
+<span>    limits <span class="op">=</span> <span class="va">lim</span>, </span>
+<span>    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_date.html">label_date_short</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="scales-position_files/figure-html/date-scale-5-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This can often produce clearer plots: in the example above each year is labelled only once rather than appearing in every label, reducing the amount of visual clutter and making it easier for the viewer to see where each year begins and ends.</p>
+</section></section><section id="sec-discrete-position" class="level2" data-number="10.3"><h2 data-number="10.3" class="anchored" data-anchor-id="sec-discrete-position">
+<span class="header-section-number">10.3</span> Discrete position scales</h2>
+<p>It is also possible to map discrete variables to position scales, with the default scales being <code>scale_x_discrete()</code> and <code>scale_y_discrete()</code>. For example, the following two plot specifications are equivalent</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">hwy</span>, y <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">hwy</span>, y <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_y_discrete</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Internally, ggplot2 handles discrete scales by mapping each category to an integer value and then drawing the geom at the corresponding coordinate location. To illustrate this, we can add a custom annotation (see <a href="annotations.html#sec-custom-annotations" class="quarto-xref"><span>Section 8.3</span></a>) to the plot:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">hwy</span>, y <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">annotate</span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="fl">5</span>, y <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">7</span>, label <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="scales-position_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Mapping each category to an integer value is useful because it means that other width quantities can be specified as a proportion of the category range. For instance, in the preceding plot, we could specify a vertical jitter for each point spanning half the width of the implied category bin:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">hwy</span>, y <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_jitter</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0</span>, height <span class="op">=</span> <span class="fl">.25</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">annotate</span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="fl">5</span>, y <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">7</span>, label <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="scales-position_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The same mechanism underpins the widths of bars and boxplots. Because each category has width 1 in a discrete scale, setting <code>width = .4</code> when using <code>geom_boxplot()</code> ensures that the box occupies 40% of the width allocated to the category:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">drv</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">drv</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-29-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<section id="sec-scale-labels" class="level3" data-number="10.3.1"><h3 data-number="10.3.1" class="anchored" data-anchor-id="sec-scale-labels">
+<span class="header-section-number">10.3.1</span> Limits, breaks, and labels</h3>
+<p> </p>
+<p>The limits, breaks. and labels for a discrete position scale can be set using the <code>limits</code>, <code>breaks</code>, and <code>labels</code> arguments. For the most part these behave identically to the corresponding arguments for numeric scales (<a href="#sec-numeric-position-scales" class="quarto-xref"><span>Section 10.1</span></a>), though there are some differences. For example, the limits of a discrete scale are not defined in terms of endpoints, but instead correspond to the set of allowable values for that variable. Accordingly, ggplot2 expects that the <code>limits</code> of a discrete scale should be a character vector that enumerates all possible values in the order they should appear:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">toy</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">const</span>, <span class="va">txt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_label</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>label <span class="op">=</span> <span class="va">txt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">base</span> </span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_y_discrete</span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_y_discrete</span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"d"</span>, <span class="st">"c"</span>, <span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="900"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-30-2.png" class="img-fluid" width="900"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-30-3.png" class="img-fluid" width="900"></p>
+</div>
+</div>
+</div>
+<p>The <code>breaks</code> argument is largely unchanged, enumerating a set of values to be displayed on the axis labels. The <code>labels</code> argument for discrete scales has some additional functionality: you also have the option of using a named vector to set the labels associated with particular values. This allows you to change some labels and not others, without altering the ordering or the breaks:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_y_discrete</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_y_discrete</span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>c <span class="op">=</span> <span class="st">"carrot"</span>, b <span class="op">=</span> <span class="st">"banana"</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-31-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>As with other scales, discrete position scales allow you to pass a function to the <code>labels</code> argument. The <code><a href="https://scales.r-lib.org/reference/label_wrap.html">scales::label_wrap()</a></code> function can be particularly valuable for categorical data, as it allows you to wrap long strings across multiple lines.</p>
+</section><section id="sec-guide-axis" class="level3" data-number="10.3.2"><h3 data-number="10.3.2" class="anchored" data-anchor-id="sec-guide-axis">
+<span class="header-section-number">10.3.2</span> Label positions</h3>
+<p>When plotting categorical data it is often necessary to move the axis labels in some way to prevent them from overlapping:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">manufacturer</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span> </span>
+<span><span class="va">base</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="scales-position_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Even when allocated a lot of horizontal space, the axis labels overlap considerably on this plot. We can control this with the help of the <code>guides()</code> function, which works in a similar way to the <code>labs()</code> helper function described in <a href="annotations.html#sec-titles" class="quarto-xref"><span>Section 8.1</span></a>. Both take the name of different aesthetics (e.g., color, x, fill) as arguments and allow you to specify your own value. For a position aesthetic, we use the <code>guide_axis()</code> to tell ggplot2 how we want to modify the axis labels. For example, we could tell ggplot2 to “dodge” the position of the labels by setting <code>guide_axis(n.dodge = 3)</code>, or to rotate them by setting <code>guide_axis(angle = 90)</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">+</span> <span class="fu">guides</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">guide_axis</span><span class="op">(</span>n.dodge <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">guides</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">guide_axis</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-33-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>Note that, in the same way that where <code>labs()</code> is a shorthand way to specify the <code>name</code> argument to one or more scales, the <code>guides()</code> function is a shorthand way to set the <code>guide</code> arguments to one or more scales. So the code below achieves the same result:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_x_discrete</span><span class="op">(</span>guide <span class="op">=</span> <span class="fu">guide_axis</span><span class="op">(</span>n.dodge <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">base</span> <span class="op">+</span> <span class="fu">scale_x_discrete</span><span class="op">(</span>guide <span class="op">=</span> <span class="fu">guide_axis</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+
+</div>
+<p>To learn more about guide functions see <a href="scales-guides.html#sec-scale-guide" class="quarto-xref"><span>Section 14.5</span></a>.</p>
+</section></section><section id="sec-binned-position" class="level2" data-number="10.4"><h2 data-number="10.4" class="anchored" data-anchor-id="sec-binned-position">
+<span class="header-section-number">10.4</span> Binned position scales</h2>
+<p>A variation on discrete position scales are binned scales, where a continuous variable is sliced into multiple bins and the discretised variable is plotted. For position aesthetics, binned scales are mostly used to create histograms and related plots. The example below shows how to approximate the behaviour of <code>geom_histogram()</code> using <code>geom_bar()</code> in combination with a binned position scale:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_x_binned</span><span class="op">(</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="1200"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="scales-position_files/figure-html/unnamed-chunk-35-2.png" class="img-fluid" width="1200"></p>
+</div>
+</div>
+</div>
+<p>In practice this is not the most useful example, since <code>geom_histogram()</code> already exists and supplies defaults that are generally more appropriate for histograms, but the technique can be extended. Suppose we want to use <code>geom_count()</code> in place of <code>geom_point()</code> in order to show the number of observations at each location. The advantage of <code>geom_count()</code> is that the size of each dot scales with the number of observations at each location, but as the figure below illustrates, this method doesn’t work very well when data vary continuously:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_count</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">base</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="scales-position_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This plot is rather cluttered, and not particularly easy to read. To improve this, we can use <code>scale_x_binned()</code> to cut the values into bins before passing them to the geom:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base</span> <span class="op">+</span> </span>
+<span>  <span class="fu">scale_x_binned</span><span class="op">(</span>n.breaks <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_y_binned</span><span class="op">(</span>n.breaks <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="scales-position_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can read more about how binned scales are used for non-position aesthetics in <a href="scales-colour.html#sec-binned-colour" class="quarto-xref"><span>Section 11.4</span></a> and <a href="scales-other.html#sec-guide-bins" class="quarto-xref"><span>Section 12.1.2</span></a>.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-lubridate" class="csl-entry" role="listitem">
+Grolemund, Garrett, and Hadley Wickham. 2011. <span>“Dates and Times Made Easy with <span class="nocase">lubridate</span>.”</span> <em>Journal of Statistical Software</em> 40 (3): 1–25. <a href="http://www.jstatsoft.org/v40/i03/">http://www.jstatsoft.org/v40/i03/</a>.
+</div>
+<div id="ref-hms" class="csl-entry" role="listitem">
+Müller, Kirill. 2020. <em>Hms: Pretty Time of Day</em>. <a href="https://CRAN.R-project.org/package=hms">https://CRAN.R-project.org/package=hms</a>.
+</div>
+<div id="ref-scales" class="csl-entry" role="listitem">
+Wickham, Hadley, and Dana Seidel. 2020. <em>Scales: Scale Functions for Visualization</em>. <a href="https://CRAN.R-project.org/package=scales">https://CRAN.R-project.org/package=scales</a>.
+</div>
+</div>
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ggplot2-book\.org\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script><nav class="page-navigation" aria-label="Page"><div class="nav-page nav-page-previous">
+      <a href="./scales.html" class="pagination-link" aria-label="Scales">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Scales</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./scales-colour.html" class="pagination-link" aria-label="Colour scales and legends">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Colour scales and legends</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>ggplot2: Elegant Graphics for Data Analysis (3e) was written by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hadley/ggplot2-book/edit/main/scales-position.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/hadley/ggplot2-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+</body></html>
