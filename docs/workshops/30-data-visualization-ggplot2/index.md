@@ -31,6 +31,8 @@ Effective data visualization is central to communicating research findings accur
 - **Companion scripts:** [`scripts/ggplot2-intro.R`](scripts/ggplot2-intro.R) (core) and [`scripts/ggplot2-advanced.R`](scripts/ggplot2-advanced.R) (advanced)
 - **Data:** `data/penguins.csv`, `data/gapminder.csv`, `data/SAFI_clean.csv`, `data/datasaurus.tsv`
 
+The **core deck** is the 90-minute session. The **advanced deck** is a sequel for self-study or a follow-up session and assumes the core material.
+
 ## Topics Covered
 
 **Core deck**
@@ -82,7 +84,16 @@ Effective data visualization is central to communicating research findings accur
 **Theory & foundations**
 
 - [R Graphics Cookbook](https://r-graphics.org/) — Practical recipes and reference for base R and ggplot2 graphics
+- [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/) — Wilke's guide to making informative figures
 - Wilkinson, Leland. 2005. *The Grammar of Graphics* (Statistics and Computing). Secaucus, NJ, USA: Springer-Verlag New York, Inc.
+
+**Advanced topics**
+
+- [marginaleffects](https://marginaleffects.com/) — Predictions, slopes, and comparisons from statistical models
+- [ggeffects](https://strengejacke.github.io/ggeffects/) — Tidy marginal predictions and uncertainty
+- [ggdist](https://mjskay.github.io/ggdist/) — Visual distributions and uncertainty
+- [patchwork](https://patchwork.data-imaginist.com/) — Compose and align multiple panels
+- [ggplot2 extension gallery](https://exts.ggplot2.tidyverse.org/gallery/) — Specialised geoms and themes
 
 ## Related CRC 1252 Workshops
 

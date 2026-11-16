@@ -1,6 +1,7 @@
 # Data Visualization with ggplot2 — Advanced Topics
 # Workshop 30 · CRC 1252 Prominence in Language · 18 November 2026
 # Companion script: every figure in slides-advanced.qmd can be rebuilt from here.
+# Run from this directory: setwd("docs/workshops/30-data-visualization-ggplot2")
 
 library(ggplot2)
 library(dplyr)
@@ -11,6 +12,13 @@ library(viridis)
 library(ggeffects)
 library(marginaleffects)
 library(systemfonts)
+
+systemfonts::register_font(
+  "Albert Sans",
+  plain  = "../../stylesheets/fonts/AlbertSans-400.ttf",
+  bold   = "../../stylesheets/fonts/AlbertSans-700.ttf",
+  italic = "../../stylesheets/fonts/AlbertSans-400.ttf"
+)
 
 penguins  <- read.csv("data/penguins.csv")
 gapminder <- read.csv("data/gapminder.csv")

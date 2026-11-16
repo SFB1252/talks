@@ -186,11 +186,13 @@ By the end of this session, you can:
 
 ### Session plan
 
-- **Scales and coordinates:** transformations, limits versus zoom, guides
-- **Under the hood:** the plot object, statistics, positions
-- **Models and uncertainty:** intervals, predictions, slopes, interactions
-- **Publication:** themes, composition, export, accessibility, ecosystem
-- **Hands-on:** a model plot and a composite figure
+- **Scales and coordinates:** transformations, limits versus zoom, guides — 15 min
+- **Under the hood:** the plot object, statistics, positions — 15 min
+- **Models and uncertainty:** intervals, predictions, slopes, interactions — 25 min
+- **Publication:** themes, composition, export, accessibility, ecosystem — 15 min
+- **Hands-on:** a model plot and a composite figure — 20 min
+
+*Total: 90 minutes.*
 
 :::
 
@@ -212,7 +214,55 @@ We assume you can build a plot with `aes()`, `geom_*()`, and `labs()`. The core 
 :::
 
 ::: {.notes}
-This deck assumes the core vocabulary. Do not re-teach aes() and geom_*(); spend the time on the choices that change the statistical claim: scales, limits, statistics, positions, models, and composition.
+This deck assumes the core vocabulary. Do not re-teach aes() and geom_*(); spend the time on the choices that change the statistical claim: scales, limits, statistics, positions, models, and composition. If time runs short, do the model plot and composition tasks only.
+:::
+
+---
+
+## From the core deck to this one {.smaller}
+
+::: {.columns}
+
+::: {.column width="52%"}
+### You already have
+
+- `data` → `aes()` → `geom_*()`
+- `facet_*()`, `scale_*()`, `labs()`, and a house theme
+- the habit of plotting the data, not only the summary
+
+### What changes here
+
+1. **We stop accepting defaults** — scales, guides, limits, coordinates
+2. **We look inside the object** — statistics, positions, rendering
+3. **We plot models** — predictions, slopes, and named intervals
+4. **We finish the figure** — composition, export, accessibility
+:::
+
+::: {.column width="48%"}
+```r
+# The core vocabulary still applies
+ggplot(penguins,
+       aes(flipper_length_mm, body_mass_g,
+           colour = species)) +
+  geom_point() +
+  facet_wrap(~ island) +
+  scale_colour_viridis_d() +
+  labs(x = "Flipper length (mm)",
+       y = "Body mass (g)",
+       colour = NULL)
+```
+
+::: {.callout-important}
+### One sentence
+
+The core deck taught you to **build** a plot. This deck teaches you to **control** it — and to **defend** every choice in the caption.
+:::
+:::
+
+:::
+
+::: {.notes}
+Use this slide as a checkpoint, not a re-teach. Ask for one example of a plot they built since the core session. Then state the promise of the sequel: every default becomes a choice, and every choice becomes a claim you can defend.
 :::
 
 ---
@@ -229,6 +279,7 @@ This deck assumes the core vocabulary. Do not re-teach aes() and geom_*(); spend
 #| label: plot-scales
 #| fig-width: 9.6
 #| fig-height: 3.5
+#| fig-alt: "Two bubble plots of life expectancy against GDP per capita in 2007: the linear x-axis compresses most countries at the left, while the log10 axis spreads them out and reveals a positive relation."
 g2007 <- gapminder |> filter(year == 2007)
 dollar_k <- function(x) paste0("$", format(x / 1000, trim = TRUE, scientific = FALSE), "k")
 
@@ -294,6 +345,7 @@ The gapminder example makes the log scale intuitive: GDP per capita spans severa
 #| label: plot-limits
 #| fig-width: 9.6
 #| fig-height: 3.3
+#| fig-alt: "Two scatter plots of body mass against bill length restricted to 40 to 50 millimetres: scale limits drop outlying data and change the fitted line, while coord_cartesian keeps all data and only zooms the view."
 p_base <- ggplot(penguins, aes(bill_length_mm, body_mass_g)) +
   geom_point(alpha = 0.35, colour = uzk_blue) +
   geom_smooth(method = "lm", formula = y ~ x, se = FALSE,
@@ -343,6 +395,7 @@ This is a subtle but important distinction. In the left panel the regression lin
 #| label: plot-coord
 #| fig-width: 9.6
 #| fig-height: 3.4
+#| fig-alt: "Pie chart and horizontal bar chart of the same penguin species counts; the bar chart makes differences easier to compare."
 p_bar_pie <- penguins |> count(species) |>
   ggplot(aes(x = "", y = n, fill = species)) +
   geom_col(width = 1, colour = "white") +
@@ -416,6 +469,7 @@ Axes, legends, and colourbars let the reader recover the data values from the ma
 #| label: plot-guides
 #| fig-width: 5.4
 #| fig-height: 6.4
+#| fig-alt: "Two bar charts of penguin counts by species: the top uses a colour legend, the bottom removes the legend and labels each bar with its count."
 counts <- penguins |> count(species)
 
 p_leg <- ggplot(counts, aes(species, n, fill = species)) +
@@ -550,6 +604,7 @@ ggplot(penguins, aes(species, n)) +
 #| label: plot-stat
 #| fig-width: 4.4
 #| fig-height: 3.2
+#| fig-alt: "Bar chart of diamond counts by cut, from Fair to Ideal, produced by geom_bar() without a y variable."
 ggplot(diamonds, aes(cut)) +
   geom_bar(fill = uzk_blue) +
   scale_x_discrete(labels = function(x) gsub(" ", "\n", x)) +
@@ -575,6 +630,7 @@ This is where the grammar pays off: `geom_bar()` vs `geom_col()` is not a quirky
 #| label: plot-positions
 #| fig-width: 9.6
 #| fig-height: 3.6
+#| fig-alt: "Four bar charts of penguin counts by species and sex using identity, dodge, stack, and fill positions, showing overlap, side-by-side comparison, totals, and proportions."
 pos_data <- penguins |> filter(!is.na(sex))
 
 p_identity <- ggplot(pos_data, aes(species, fill = sex)) +
@@ -713,6 +769,7 @@ plot_slopes(fit, variables = "flipper_length_mm",
 #| label: plot-model
 #| fig-width: 6.6
 #| fig-height: 4.2
+#| fig-alt: "Line chart of predicted body mass against flipper length for three penguin species, with shaded 95 percent confidence bands and faint raw observations; the lines differ in level and slope."
 fit <- lm(body_mass_g ~ flipper_length_mm * species, data = penguins)
 
 plot_predictions(
@@ -748,6 +805,7 @@ This slide connects visualisation to modelling. The plot shows three lines with 
 #| label: plot-uncertainty-model
 #| fig-width: 6.4
 #| fig-height: 4.6
+#| fig-alt: "Line chart of average predicted body mass against flipper length for three species with 95 percent confidence ribbons; Gentoo predictions rise most steeply."
 ggplot(ggeffects::ggpredict(
   fit, terms = c("flipper_length_mm", "species")
 ), aes(x, predicted, colour = group, fill = group)) +
@@ -831,6 +889,7 @@ An interaction means the **slope** depends on the group. A plot of predictions c
 #| label: plot-slopes
 #| fig-width: 6.4
 #| fig-height: 4.2
+#| fig-alt: "Dot plot of the estimated slope of body mass on flipper length for Adelie, Chinstrap, and Gentoo, with confidence intervals; Gentoo has the steepest slope."
 plot_slopes(fit, variables = "flipper_length_mm",
             condition = "species") +
   labs(title = "Slope of body mass on flipper length",
@@ -866,6 +925,7 @@ The model is the same as the previous two slides. Predictions show levels; slope
 #| label: plot-themes
 #| fig-width: 9.6
 #| fig-height: 3.3
+#| fig-alt: "Four versions of the same scatter plot under theme_minimal, theme_bw, theme_classic, and theme_dark, showing how non-data ink changes while the data stay the same."
 p_theme <- ggplot(penguins, aes(bill_length_mm, body_mass_g,
                                 colour = species)) +
   geom_point(alpha = 0.7, size = 1.8) +
@@ -926,6 +986,7 @@ Themes do not change the data or the statistical claim; they change readability.
 #| label: plot-composition
 #| fig-width: 8.8
 #| fig-height: 4.6
+#| fig-alt: "Four-panel composite figure labelled A to D showing the penguin body-mass distribution, boxplots by species, the flipper-to-mass relationship, and species composition by island, with one shared legend."
 p_a <- ggplot(penguins, aes(body_mass_g, fill = species)) +
   geom_density(alpha = 0.4, colour = NA, show.legend = FALSE) +
   labs(title = "Distribution", x = NULL, y = NULL)
@@ -1148,7 +1209,7 @@ Do not install everything. Start with ggplot2 + scales + patchwork + one uncerta
 
 Use `data/penguins.csv`.
 
-1. **Fit** `lm(body_mass_g ~ flipper_length_mm * sex)` and plot predictions. Does the interaction change the interpretation?
+1. **Fit** `lm(body_mass_g ~ flipper_length_mm * species)` and plot predictions. Does the interaction change the interpretation?
 2. **Plot slopes** with `plot_slopes()`. Which group has the steepest relation?
 3. **Compose** two panels with `patchwork` and collect the legend.
 4. **Export** at 16 × 10 cm, 300 dpi. Is the text readable at final size?
@@ -1157,8 +1218,8 @@ Use `data/penguins.csv`.
 ::: {.callout-tip}
 ### Hints
 
-- `plot_predictions(fit, condition = c("flipper_length_mm", "sex"))`
-- `plot_slopes(fit, variables = "flipper_length_mm", condition = "sex")`
+- `plot_predictions(fit, condition = c("flipper_length_mm", "species"))`
+- `plot_slopes(fit, variables = "flipper_length_mm", condition = "species")`
 - `(p1 | p2) + plot_layout(guides = "collect")`
 - `ggsave(..., width = 16, height = 10, units = "cm", dpi = 300)`
 :::
@@ -1173,13 +1234,13 @@ library(patchwork)
 library(marginaleffects)
 penguins <- read.csv("data/penguins.csv")
 
-fit <- lm(body_mass_g ~ flipper_length_mm * sex,
+fit <- lm(body_mass_g ~ flipper_length_mm * species,
           data = penguins)
 
 p1 <- plot_predictions(fit,
-  condition = c("flipper_length_mm", "sex"))
+  condition = c("flipper_length_mm", "species"))
 p2 <- plot_slopes(fit,
-  variables = "flipper_length_mm", condition = "sex")
+  variables = "flipper_length_mm", condition = "species")
 
 (p1 | p2) + plot_layout(guides = "collect")
 

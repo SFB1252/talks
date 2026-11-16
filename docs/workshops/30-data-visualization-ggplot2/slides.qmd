@@ -184,11 +184,13 @@ By the end of this session, you can:
 
 ### Session plan
 
-- **Seeing data:** perception, integrity, and the limits of summary statistics
-- **The grammar:** data, mappings, layers, statistics, scales, coordinates, facets
-- **Layers in practice:** mapping, grouping, geoms, positions, facets
-- **Integrity and design:** pitfalls and colour
-- **Hands-on:** rebuild and critique a figure
+- **Seeing data:** perception, integrity, and the limits of summary statistics — 10 min
+- **The grammar:** data, mappings, layers, statistics, scales, coordinates, facets — 20 min
+- **Layers in practice:** mapping, grouping, geoms, positions, facets — 30 min
+- **Integrity and design:** pitfalls and colour — 15 min
+- **Hands-on:** rebuild and critique a figure — 15 min
+
+*Total: 90 minutes.*
 
 :::
 
@@ -210,7 +212,7 @@ Learn to **specify, critique, and rebuild** a plot from its grammar — not mere
 :::
 
 ::: {.notes}
-Welcome. This is a theory-first introduction: we spend the first half on the grammar and the logic of encodings, then apply it. The code is deliberately simple; the hard part is deciding what to encode and what to leave out. The advanced deck is a sequel, not required for today.
+Welcome. This is a theory-first introduction: we spend the first half on the grammar and the logic of encodings, then apply it. The code is deliberately simple; the hard part is deciding what to encode and what to leave out. The advanced deck is a sequel, not required for today. If time runs short, skip the Datasaurus or the geom gallery — protect the hands-on.
 :::
 
 ---
@@ -230,6 +232,7 @@ Welcome. This is a theory-first introduction: we spend the first half on the gra
 #| label: plot-anscombe
 #| fig-width: 9.0
 #| fig-height: 5.2
+#| fig-alt: "Four small scatter plots of Anscombe's quartet, each annotated r = 0.82; the point patterns differ: a linear trend, a curve, a linear trend with an outlier, and a vertical cluster with one high-leverage point."
 anscombe_long <- anscombe |>
   pivot_longer(everything(), names_to = c(".value", "quartet"),
                names_pattern = "([xy])(\\d)") |>
@@ -295,6 +298,7 @@ Ask the audience to guess which dataset is which before revealing the plot. Poin
 #| label: plot-datasaurus
 #| fig-width: 7.6
 #| fig-height: 5.8
+#| fig-alt: "Six scatter plots from the Datasaurus Dozen, shaped like a dinosaur, star, X, circle, high lines, and dots, although all share the same summary statistics."
 datasaurus |>
   filter(dataset %in% c("dino", "star", "x_shape",
                         "circle", "high_lines", "dots")) |>
@@ -405,6 +409,8 @@ A graphic is built from:
 
 The grammar is **compositional**: a small vocabulary plus rules generates an unbounded family of plots.
 
+Each arrow has a **default**, which is why a single `geom_point()` is enough to produce a complete plot.
+
 :::
 
 ::: {.column width="46%"}
@@ -423,7 +429,6 @@ flowchart TD
     C --> T["Theme"]
 ```
 
-Each arrow has a **default**, which is why a single `geom_point()` is enough to produce a complete plot.
 :::
 
 :::
@@ -483,6 +488,7 @@ ggplot(penguins,
 #| label: plot-first
 #| fig-width: 6.2
 #| fig-height: 4.6
+#| fig-alt: "Scatter plot of penguin body mass against flipper length, coloured by species; Gentoo penguins have longer flippers and greater mass, while Adelie and Chinstrap overlap at lower values."
 ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(aes(colour = species), alpha = 0.75, size = 2.2) +
   scale_colour_viridis_d(end = 0.85, name = NULL) +
@@ -523,6 +529,7 @@ Ask: what is the unit of observation? What does a point represent? What does col
 #| label: plot-map-set
 #| fig-width: 6.0
 #| fig-height: 6.8
+#| fig-alt: "Two scatter plots of bill length against bill depth: the top sets every point to one blue colour, the bottom maps species to colour and separates three clusters."
 set_colour <- ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) +
   geom_point(colour = uzk_blue, alpha = 0.7) +
   labs(title = 'Set: colour = "#005176"', x = NULL, y = NULL)
@@ -578,6 +585,7 @@ This is the single most common beginner error. Ask participants to predict the t
 #| label: plot-grouping
 #| fig-width: 8.4
 #| fig-height: 3.8
+#| fig-alt: "Two line charts of European life expectancy over time: without a group aesthetic all countries form one zigzag line; with group = country each country has its own trajectory."
 europe <- gapminder |> filter(continent == "Europe")
 
 p_ungrouped <- ggplot(europe, aes(year, lifeExp)) +
@@ -628,6 +636,7 @@ The left panel is the classic "spaghetti" error: all countries are connected in 
 #| label: plot-geoms
 #| fig-width: 9.4
 #| fig-height: 5.4
+#| fig-alt: "Six-panel gallery of the same penguin data shown as points, lines, bars, a histogram, a boxplot, and a density, each answering a different question."
 g_point <- ggplot(penguins, aes(flipper_length_mm, body_mass_g)) +
   geom_point(colour = uzk_blue, alpha = 0.5, size = 1.4) +
   labs(title = "Points: two numbers", x = NULL, y = NULL)
@@ -745,6 +754,7 @@ ggplot(diamonds, aes(cut)) +
 #| label: plot-stat
 #| fig-width: 4.4
 #| fig-height: 3.2
+#| fig-alt: "Bar chart of diamond counts by cut, from Fair to Ideal, produced by geom_bar() without a y variable."
 ggplot(diamonds, aes(cut)) +
   geom_bar(fill = uzk_blue) +
   scale_x_discrete(labels = function(x) gsub(" ", "\n", x)) +
@@ -768,6 +778,7 @@ The full table of stats and computed variables, and after_stat() for proportions
 #| label: plot-positions
 #| fig-width: 9.6
 #| fig-height: 3.6
+#| fig-alt: "Four bar charts of penguin counts by species and sex using identity, dodge, stack, and fill positions, showing overlap, side-by-side comparison, totals, and proportions."
 pos_data <- penguins |> filter(!is.na(sex))
 
 p_identity <- ggplot(pos_data, aes(species, fill = sex)) +
@@ -823,6 +834,7 @@ The four panels use the same data and the same stat. Only the position changes. 
 #| label: plot-scales
 #| fig-width: 9.6
 #| fig-height: 3.5
+#| fig-alt: "Two bubble plots of life expectancy against GDP per capita in 2007: the linear x-axis compresses most countries at the left, while the log10 axis spreads them out and reveals a positive relation."
 g2007 <- gapminder |> filter(year == 2007)
 dollar_k <- function(x) paste0("$", format(x / 1000, trim = TRUE, scientific = FALSE), "k")
 
@@ -888,6 +900,7 @@ The gapminder example makes the log scale intuitive: GDP per capita spans severa
 #| label: plot-facets
 #| fig-width: 9.6
 #| fig-height: 3.6
+#| fig-alt: "Small-multiple line chart of life expectancy over time for five continents, each continent in its own panel with common axes."
 gapminder |>
   ggplot(aes(year, lifeExp, group = country)) +
   geom_line(colour = uzk_blue, alpha = 0.35, linewidth = 0.35) +
@@ -939,6 +952,7 @@ Point out that the y-axis is shared across all six panels, so the reader can com
 #| label: plot-dynamite
 #| fig-width: 9.6
 #| fig-height: 3.6
+#| fig-alt: "Left: bar chart of mean body mass by species with standard-error bars. Right: raincloud plot showing the full body-mass distribution by species and sex."
 mass_summary <- penguins |>
   filter(!is.na(body_mass_g)) |>
   group_by(species) |>
@@ -1007,6 +1021,7 @@ The penguins data make the point vividly: each species is bimodal because males 
 #| label: plot-truncated
 #| fig-width: 9.6
 #| fig-height: 3.2
+#| fig-alt: "Two bar charts of mean body mass by species: the left starts at zero and differences look modest; the right truncates the y-axis at 3400 grams and the same differences look dramatic."
 mass_summary <- penguins |>
   filter(!is.na(body_mass_g)) |>
   group_by(species) |>
@@ -1082,6 +1097,7 @@ Dual axes are seductive because they can make two unrelated series look correlat
 #| label: plot-overplot
 #| fig-width: 9.6
 #| fig-height: 3.2
+#| fig-alt: "Three scatter plots of diamond price against carat: opaque points hide density, low alpha reveals it, and hexagonal binning shows where points concentrate."
 set.seed(42)
 diamonds_small <- diamonds[sample(nrow(diamonds), 12000), ]
 
@@ -1141,6 +1157,7 @@ The diamonds data have 53,940 rows; we sample 12,000 for speed. The plain scatte
 #| label: plot-colour
 #| fig-width: 9.6
 #| fig-height: 3.2
+#| fig-alt: "Three versions of the same species scatter plot using the default hue, viridis, and Okabe-Ito colour palettes."
 p_col <- ggplot(penguins, aes(bill_length_mm, body_mass_g,
                               colour = species)) +
   geom_point(alpha = 0.8, size = 1.8) +

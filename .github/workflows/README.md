@@ -26,6 +26,7 @@ This directory contains automated workflows for the SFB 1252 Research Data & Met
 **Triggers:** Weekly (Mondays at 2 AM UTC), push to `main` touching docs or the config, manual dispatch
 
 - Runs [lychee](https://github.com/lycheeverse/lychee) against all Markdown using `.lychee.toml`
+- Checks Quarto slide sources by copying `.qmd` files to temporary Markdown files
 - Generates a job summary with results; `link-summary` reports the actual job result
 - Fails on broken links, with retries and timeouts to absorb transient network errors
 

@@ -30,11 +30,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
+      - name: Create Markdown copies of Quarto sources
+        run: |
+          find docs -name '*.qmd' -print0 | while IFS= read -r -d '' f; do
+            cp "$f" "${f%.qmd}.md"
+          done
+
       - name: Check links with lychee
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --no-progress --verbose './**/*.md'
+          args: --config .lychee.toml --no-progress --verbose './**/*.md'
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Remove temporary Markdown copies
+        if: always()
+        run: |
+          find docs -name '*.qmd' -print0 | while IFS= read -r -d '' f; do
+            rm -f "${f%.qmd}.md"
+          done
 
   link-summary:
     runs-on: ubuntu-latest

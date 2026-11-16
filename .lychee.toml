@@ -44,6 +44,7 @@ exclude = [
   'Automatic%20',
   'georgis-LLM',
   'slides\.html$',
+  'slides-advanced\.html$',
 
   # Known-broken or inaccessible from CI (carried over from the linkspector config)
   'https://farm\.pcibex\.ne/p/XmseQO/',

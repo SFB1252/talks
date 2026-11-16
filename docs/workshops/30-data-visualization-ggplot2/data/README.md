@@ -1,7 +1,8 @@
 # Data used in the workshop
 
 All datasets are small, plain-text files used in the live coding examples. They are
-read directly by `slides.qmd` and `scripts/ggplot2-intro.R`.
+read directly by `slides.qmd`, `slides-advanced.qmd`, `scripts/ggplot2-intro.R`,
+and `scripts/ggplot2-advanced.R`.
 
 | File | Source | License / terms |
 |---|---|---|
