@@ -1,0 +1,110 @@
+/* ============================================
+   Self-declared AI assistance badge
+   Rendered by hooks/ai_assistance.py
+   ============================================ */
+
+.ai-assistance {
+  --ai-accent: var(--uzk-blue, #005176);
+  --ai-surface: var(--uzk-surface, #f4fafc);
+  --ai-border: var(--uzk-border, rgba(0, 81, 118, 0.16));
+
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0.2rem 0 1.1rem;
+  padding: 0.32rem 0.8rem 0.32rem 0.42rem;
+  border: 1px solid var(--ai-border);
+  border-radius: 999px;
+  background: var(--ai-surface);
+  color: var(--md-default-fg-color, #102631);
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+.ai-assistance__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.65rem;
+  height: 1.65rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: var(--ai-accent);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.ai-assistance__label strong {
+  color: var(--ai-accent);
+}
+
+.ai-assistance__more {
+  margin-left: 0.15rem;
+  font-size: 0.76rem;
+}
+
+.ai-assistance--none {
+  --ai-accent: #2e6b3e;
+  --ai-surface: #eef6f0;
+  --ai-border: #c9e0d0;
+}
+
+.ai-assistance--light {
+  --ai-accent: #0b6e8f;
+  --ai-surface: #edf7fb;
+  --ai-border: #c6e2ed;
+}
+
+.ai-assistance--moderate {
+  --ai-accent: #8a5a00;
+  --ai-surface: #fdf6e7;
+  --ai-border: #efdcaf;
+}
+
+.ai-assistance--heavy {
+  --ai-accent: #a02c2c;
+  --ai-surface: #fcf0f0;
+  --ai-border: #eed2d2;
+}
+
+/* Dark scheme */
+[data-md-color-scheme="slate"] .ai-assistance {
+  --ai-surface: rgba(255, 255, 255, 0.06);
+  --ai-border: rgba(255, 255, 255, 0.18);
+  color: var(--md-default-fg-color, #ffffff);
+}
+
+[data-md-color-scheme="slate"] .ai-assistance--none {
+  --ai-accent: #7fc79a;
+}
+
+[data-md-color-scheme="slate"] .ai-assistance--light {
+  --ai-accent: #6cc4e0;
+}
+
+[data-md-color-scheme="slate"] .ai-assistance--moderate {
+  --ai-accent: #e0b34d;
+}
+
+[data-md-color-scheme="slate"] .ai-assistance--heavy {
+  --ai-accent: #e88a8a;
+}
+
+[data-md-color-scheme="slate"] .ai-assistance__mark {
+  color: #102631;
+}
+
+/* Keep the badge quiet when printing */
+@media print {
+  .ai-assistance {
+    border: 1px solid #999;
+    background: transparent;
+  }
+
+  .ai-assistance__more {
+    display: none;
+  }
+}

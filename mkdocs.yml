@@ -37,6 +37,10 @@ theme:
     - content.code.annotation
     - content.code.copy
 
+# MkDocs hooks (render the self-declared AI-assistance badge)
+hooks:
+  - hooks/ai_assistance.py
+
 # Plugins
 plugins:
   - search
@@ -150,12 +154,14 @@ nav:
       - Presenter Resources: "resources/presenter-resources/README.md"
       - GitHub Setup: "about/github-setup.md"
       - AI-Assisted Development: "about/ai-assisted-development.md"
+      - AI Assistance Levels: "about/ai-assistance-levels.md"
       - AI Usage Log: "about/ai-usage-log.md"
 
 # Additional CSS and JS
 extra_css:
   - "stylesheets/uzk-corporate-design.css"
   - "stylesheets/custom.css"
+  - "stylesheets/ai-assistance.css"
 
 extra_javascript:
   - "javascript/custom.js"

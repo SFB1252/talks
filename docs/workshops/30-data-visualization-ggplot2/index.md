@@ -1,3 +1,7 @@
+---
+ai-assistance: heavy
+---
+
 # Data Visualization with ggplot2
 
 **Workshop 30 - Winter Semester 2026-27**

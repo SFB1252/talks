@@ -31,6 +31,26 @@ language model of a tool could not be confirmed, we say so instead of guessing.
   the organizers' input.
 - **Reviewed by:** JS.
 
+### 17 November 2026 — Workshop 30, Data Visualization with ggplot2
+
+- **Pages:** `docs/workshops/30-data-visualization-ggplot2/index.md`,
+  `slides.qmd`, and `slides-advanced.qmd`.
+- **Tool:** DeepSeek v4.1 Flash (model ID `deepseek-v4.1-flash-1017`), accessed
+  through [SAIA](https://saia.gwdg.de) on AcademicCloud.
+- **What the AI did:** Drafted almost all of the prose and structure of the
+  workshop index page and both slide decks, including section headings,
+  explanatory text, and the narrative that connects the code examples.
+- **What a human did:** The author is the named speaker and is responsible for
+  the published material. <!-- TODO: describe the review and the substantive
+  edits actually made (for example, corrections to the ggplot2 code, reordering
+  of slides, or rewrites of specific sections). -->
+- **Verification:** Not yet recorded. <!-- TODO: record what was checked and
+  how (for example, running the R scripts, checking the cited sources, and
+  testing the rendered decks). -->
+- **Declaration:** `ai-assistance: heavy` — see
+  [AI Assistance Levels](ai-assistance-levels.md).
+- **Reviewed by:** JS.
+
 ## Earlier site development
 
 This website was developed with the assistance of AI tools (including GitHub

@@ -9,6 +9,7 @@ author:
         city: Cologne, Germany
 date: "18 November 2026"
 date-format: "D MMMM YYYY"
+ai-assistance: heavy
 format:
   revealjs:
     theme: [default, ../../stylesheets/mytheme.scss]
@@ -16,8 +17,9 @@ format:
     slide-number: true
     scrollable: true
     mouse-wheel: true
-    footer: "RDM Workshop Series · SFB 1252 Prominence in Language · Universität zu Köln"
+    footer: "RDM Workshop Series · SFB 1252 Prominence in Language · Universität zu Köln · AI assistance: heavy"
     output-file: slides-advanced.html
+    include-in-header: ai-assistance-meta.html
     embed-resources: true
     transition: none
     background-transition: none
@@ -1376,6 +1378,11 @@ Thanks also to the open-source community behind `ggplot2`, the tidyverse, `patch
 
 If you reuse the slides, please keep the attribution and the data-source notes.
 :::
+
+**AI assistance: heavy.** Text and structure were primarily drafted with
+DeepSeek v4.1 Flash via SAIA (AcademicCloud) from human-provided material, then
+reviewed and edited by the author.
+[What this means](https://sfb1252.github.io/talks/about/ai-assistance-levels/)
 
 **Next workshop:** [Data Visualization with Other Tools](../31-data-visualization-other-tools/index.md)
 :::
