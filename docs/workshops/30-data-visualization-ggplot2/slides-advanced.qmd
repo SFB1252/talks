@@ -90,7 +90,7 @@ theme_set(
 By the end of this session, you can:
 
 1. **Control** scales, guides, limits, and coordinates deliberately.
-2. **Explain** how stats and positions change what a mark represents.
+2. **Explain** how stats and positions change what a geom represents.
 3. **Plot** model predictions, slopes, and uncertainty with `marginaleffects` and `ggeffects`.
 4. **Compose**, export, and audit a publication-ready figure.
 
@@ -347,7 +347,7 @@ Angle and area are less accurate than position and length [@cleveland1984graphic
 **Better:** a bar or dot plot, sorted by value, with direct labels.
 :::
 
-**Theory:** coordinates transform the **plane**, not the data. The same marks can be arranged in a space that helps or hinders decoding.
+**Theory:** coordinates transform the **plane**, not the data. The same geoms can be arranged in a space that helps or hinders decoding.
 :::
 
 :::
@@ -365,7 +365,7 @@ The pie and bar show exactly the same counts. The bar is easier to compare becau
 ::: {.column width="48%"}
 ### A guide is the inverse of a scale
 
-Axes, legends, and colourbars let the reader recover the data values from the marks.
+Axes, legends, and colourbars let the reader recover the data values from the plotted geoms.
 
 - `guides(colour = "none")` removes a guide but keeps the scale
 - `guide_legend(nrow = 1, override.aes = list(size = 3))` controls the keys
@@ -373,7 +373,7 @@ Axes, legends, and colourbars let the reader recover the data values from the ma
 - `theme(legend.position = "top")` moves the legend; `guides()` controls its content
 - direct labels often beat a legend, especially for few groups
 
-**Rule:** if the legend repeats information the reader can see on the marks, replace it with a direct label.
+**Rule:** if the legend repeats information the reader can see on the geoms, replace it with a direct label.
 :::
 
 ::: {.column width="52%"}
@@ -412,7 +412,7 @@ The two panels show the same counts. The top uses a legend; the bottom removes i
 
 ## Part II: The object, stats, positions {.center}
 
-### After this part: explain what a mark represents
+### After this part: explain what a geom represents
 
 ---
 
@@ -569,7 +569,7 @@ p_jitter | p_jd
 ::: {.column width="52%"}
 ### Positions also apply to points
 
-The core deck used positions for bars; points need them more often, because measurements are rounded and marks coincide.
+The core deck used positions for bars; points need them more often, because measurements are rounded and points coincide.
 
 - `position_jitter(width, height)`: spreads coincident points
 - `position_jitterdodge()`: jitter **inside** dodged groups — the standard for paired groups
@@ -580,7 +580,7 @@ The core deck used positions for bars; points need them more often, because meas
 ::: {.column width="48%"}
 - `geom_jitter()` is `geom_point(position = "jitter")`, with the same caveats
 - jitter hides exact values: do not use it when the precise coordinate is the message
-- positions run **after** the stat: counts and fits are unchanged, only the marks move
+- positions run **after** the stat: counts and fits are unchanged, only the points move
 
 ::: {.callout-note}
 ### Jitter is a drawing device, not a transformation
@@ -1111,7 +1111,7 @@ Browse the [ggplot2 extension gallery](https://exts.ggplot2.tidyverse.org/galler
 :::
 
 ::: {.notes}
-Do not install everything. Start with ggplot2 + scales + patchwork + one uncertainty package. Add an extension when the grammar cannot express the mark you need. Check maintenance status and whether the extension is on CRAN.
+Do not install everything. Start with ggplot2 + scales + patchwork + one uncertainty package. Add an extension when the grammar cannot express the geom you need. Check maintenance status and whether the extension is on CRAN.
 :::
 
 ---
@@ -1186,7 +1186,7 @@ If time is short, do tasks 1 and 3. The common errors here are a confidence band
 
 1. **Scales are functions.** Transformations change the data seen by the stat; limits remove data; coordinates only zoom.
 2. **The object is a specification.** Separating building from rendering makes plots composable and debuggable.
-3. **Stats and positions define the mark.** `geom_bar()` counts; `geom_col()` uses your values; position changes the question.
+3. **Stats and positions define the geom.** `geom_bar()` counts; `geom_col()` uses your values; position changes the question.
 4. **Model plots are conditional claims.** Predictions, slopes, and comparisons answer different questions; name the interval and the scale.
 5. **Composition and export are part of the argument.** A figure that cannot be read at final size, or by a colour-blind reader, is not finished.
 

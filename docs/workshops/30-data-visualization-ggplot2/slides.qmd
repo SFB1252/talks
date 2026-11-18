@@ -268,13 +268,13 @@ Cleveland and McGill ranked elementary perceptual tasks by how accurately people
 ::: {.column width="48%"}
 ### Gestalt and attention
 
-We do not read marks one by one; we group them pre-attentively [@ware2012information].
+We do not read geoms one by one; we group them pre-attentively [@ware2012information].
 
-- **Proximity:** nearby marks belong together
+- **Proximity:** nearby geoms belong together
 - **Similarity:** shared colour or shape implies a category
 - **Enclosure:** a box or ribbon defines a group
-- **Continuity:** aligned marks read as a trend
-- **Common fate:** marks that move together are seen as one
+- **Continuity:** aligned geoms read as a trend
+- **Common fate:** geoms that move together are seen as one
 
 Implication: **every aesthetic is a claim about grouping.** Unused or redundant aesthetics create false groups.
 
@@ -313,7 +313,7 @@ A graphic is built from:
 - **scales:** data space to visual space
 - **geometry:** points, lines, areas, text
 - **statistics:** transformations of the data
-- **coordinates:** the space in which marks are placed
+- **coordinates:** the space in which geoms are placed
 - **guides:** axes, legends, labels
 
 The grammar is **compositional**: a small vocabulary plus rules generates an unbounded family of plots.
@@ -349,11 +349,11 @@ The key theoretical move: a chart type is not primitive. It is a composition of 
 |---|---|---|
 | **Data** | What is being plotted? | a data frame, one row per observation |
 | **Mapping** | Which variable becomes which visual property? | `aes(x, y, colour, fill, size, shape, alpha)` |
-| **Layer** | Which marks represent observations? | `geom_point()`, `geom_line()`, `geom_col()`, … |
+| **Layer** | Which geoms represent observations? | `geom_point()`, `geom_line()`, `geom_col()`, … |
 | **Stat** | Which summary is computed before drawing? | `stat_count()`, `stat_bin()`, `stat_smooth()`, … |
-| **Position** | How are overlapping marks arranged? | `position_dodge()`, `position_stack()`, `position_jitter()` |
+| **Position** | How are overlapping geoms arranged? | `position_dodge()`, `position_stack()`, `position_jitter()` |
 | **Scale** | How do data values become visual values? | `scale_x_log10()`, `scale_colour_viridis_d()`, … |
-| **Coordinate** | In which space are marks placed? | `coord_cartesian()`, `coord_fixed()`, `coord_polar()` |
+| **Coordinate** | In which space are geoms placed? | `coord_cartesian()`, `coord_fixed()`, `coord_polar()` |
 | **Facet** | Which subsets get their own panel? | `facet_wrap()`, `facet_grid()` |
 | **Theme** | Which non-data ink is used? | `theme_minimal()`, `theme()`, `element_*()` |
 
@@ -457,7 +457,7 @@ set_colour / map_colour
   - colour varies with the data
 - **Outside `aes()`** a constant is **set**: `colour = "black"`
   - no scale, no legend
-  - every mark looks the same
+  - every point looks the same
 
 ::: {.callout-warning}
 ### The classic mistake
@@ -509,8 +509,8 @@ p_ungrouped | p_grouped
 ::: {.column width="48%"}
 ### Individual versus collective geoms
 
-- **Individual geoms** draw one mark per observation: `geom_point()`, `geom_text()`, `geom_segment()`
-- **Collective geoms** draw one mark per **group**: `geom_boxplot()`, `geom_smooth()`, `geom_polygon()`, `geom_ribbon()`
+- **Individual geoms** draw one graphical object per observation: `geom_point()`, `geom_text()`, `geom_segment()`
+- **Collective geoms** draw one graphical object per **group**: `geom_boxplot()`, `geom_smooth()`, `geom_polygon()`, `geom_ribbon()`
 
 `geom_line()` is collective in spirit: it connects observations **within a group, in order of *x***. With repeated units you must declare the grouping.
 
@@ -524,7 +524,7 @@ p_ungrouped | p_grouped
 `geom_path()` follows data order; `geom_line()` sorts by *x* first.
 :::
 
-**Theory:** grouping defines the **unit of a collective mark**. Wrong grouping is wrong aggregation.
+**Theory:** grouping defines the **unit of a collective geom**. Wrong grouping is wrong aggregation.
 :::
 
 :::
@@ -575,11 +575,11 @@ g_dens <- ggplot(penguins, aes(body_mass_g, fill = species)) +
 ```
 
 ::: {.callout-note}
-A geom is not a chart type. It is a **mark**. The chart type emerges from the geom plus its stat, position, scales, and coordinates.
+A geom is not a chart type. It is a **graphical object**. The chart type emerges from the geom plus its stat, position, scales, and coordinates.
 :::
 
 ::: {.notes}
-Do not read the titles as definitions; read them as questions each mark can answer. Points: joint values. Lines: trajectories. Bars: magnitude or count. Histogram: marginal distribution. Boxplot: quantiles and outliers. Density: smoothed shape. The same data can support several questions; the question should choose the geom.
+Do not read the titles as definitions; read them as questions each geom can answer. Points: joint values. Lines: trajectories. Bars: magnitude or count. Histogram: marginal distribution. Boxplot: quantiles and outliers. Density: smoothed shape. The same data can support several questions; the question should choose the geom.
 :::
 
 ---
@@ -708,7 +708,7 @@ p_fill <- ggplot(pos_data, aes(species, fill = sex)) +
 ::: {.columns}
 
 ::: {.column width="50%"}
-- `identity`: marks overlap; use transparency to reveal density
+- `identity`: bars overlap; use transparency to reveal density
 - `dodge`: compare adjacent categories; `preserve = "single"` when a group is absent
 - `stack`: totals; only the bottom segment shares a baseline
 :::
@@ -961,7 +961,7 @@ In a bar chart, the **length** of the bar encodes the value. Cutting the baselin
 ::: {.callout-warning}
 ### Bar charts start at zero
 
-No exceptions for publication. If zero is impossible or uninformative, change the mark: a dot plot with a labelled axis, or a line chart with a clearly marked non-zero baseline.
+No exceptions for publication. If zero is impossible or uninformative, change the geom: a dot plot with a labelled axis, or a line chart with a clearly marked non-zero baseline.
 :::
 
 **Exception:** scatter plots and lines may use a non-zero baseline when the question is local — but the axis must be honest, labelled, and discussed.
@@ -1025,7 +1025,7 @@ p_over_plain | p_over_alpha | p_over_hex
 ::: {.columns}
 
 ::: {.column width="55%"}
-### When marks coincide
+### When points coincide
 
 Overplotting hides density and can create **false patterns**: a solid blob looks like a uniform cloud, while the data may be concentrated in a few values.
 
@@ -1236,7 +1236,7 @@ Circulate and look for the three common errors: colour constants inside aes(), a
 
 1. **Plot the data, not only the summary.** Means and error bars can hide bimodality, skew, and outliers.
 2. **Think in layers, not functions.** Data → mapping → geom → stat → position → scale → coord → facet → theme.
-3. **Choose the geom from the question.** Distributions, relationships, compositions, and comparisons need different marks.
+3. **Choose the geom from the question.** Distributions, relationships, compositions, and comparisons need different geoms.
 4. **Keep scales honest.** Bars start at zero; limits remove data; coordinates zoom.
 5. **Design for the reader.** Use accurate encodings, colour-vision-safe palettes, common scales, and direct labels.
 
