@@ -146,7 +146,7 @@ The SFB domain deck closes with a tour of extensions. The short version:
 - [vowels](https://cran.r-project.org/package=vowels) — reference vowel data and normalisation methods
 - [wrassp](https://cran.r-project.org/package=wrassp) — F0, formants, and intensity from the ASSP library
 - [emuR](https://cran.r-project.org/package=emuR) — query and plot from speech databases
-- [praatR](https://cran.r-project.org/package=praatR) — drive Praat from R
+- [praatpicture](https://cran.r-project.org/package=praatpicture) — Praat-style annotation plots built on ggplot2
 - [quanteda](https://cran.r-project.org/package=quanteda) — corpus statistics that feed the plots
 - [tidytext](https://cran.r-project.org/package=tidytext) — token and frequency tables in tidy shape
 - [lingtypology](https://cran.r-project.org/package=lingtypology) — typological features and maps

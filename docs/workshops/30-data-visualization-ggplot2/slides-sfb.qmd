@@ -1007,7 +1007,7 @@ Most of what this deck builds by hand has a maintained extension. Install only w
 - [`vowels`](https://cran.r-project.org/package=vowels) — reference vowel data and normalisation methods
 - [`wrassp`](https://cran.r-project.org/package=wrassp) — F0, formants, and intensity from the ASSP library
 - [`emuR`](https://cran.r-project.org/package=emuR) — query and plot from speech databases
-- [`praatR`](https://cran.r-project.org/package=praatR) — drive Praat from R
+- [`praatpicture`](https://cran.r-project.org/package=praatpicture) — Praat-style annotation plots built on ggplot2
 
 ### Corpus and text
 
@@ -1200,7 +1200,7 @@ Two packages, one grammar. `quanteda` is the right tool when you want a document
 ::: {.column width="50%"}
 ### Linguistics and data care
 
-- [`phonTools`](https://cran.r-project.org/package=phonTools) and [`praatR`](https://cran.r-project.org/package=praatR) for acoustic data in R
+- [`phonTools`](https://cran.r-project.org/package=phonTools) and [`praatpicture`](https://cran.r-project.org/package=praatpicture) for acoustic data in R
 - [`naniar`](https://naniar.njtierney.com/) for missing-data visualisation
 - [`viridis`](https://sjmgarnier.github.io/viridis/) and [ColorBrewer](https://colorbrewer2.org/) for palettes
 - [`reprex`](https://reprex.tidyverse.org/) for asking questions with a reproducible example
