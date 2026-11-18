@@ -111,7 +111,7 @@ By the end of this session, you can:
 ::: {.callout-note}
 ### This is the sequel
 
-We assume you can build a plot with `aes()`, `geom_*()`, and `labs()`. The core workshop is `slides.qmd`.
+We assume you can build a plot with [`aes()`](https://ggplot2.tidyverse.org/reference/aes.html), `geom_*()`, and [`labs()`](https://ggplot2.tidyverse.org/reference/labs.html). The core workshop is `slides.qmd`.
 :::
 
 **Prerequisites:** the core workshop or equivalent experience with `ggplot2`.
@@ -136,8 +136,8 @@ This deck assumes the core vocabulary. Do not re-teach aes() and geom_*(); spend
 ::: {.column width="52%"}
 ### You already have
 
-- `data` → `aes()` → `geom_*()`
-- `facet_*()`, `scale_*()`, `labs()`, and a house theme
+- `data` → [`aes()`](https://ggplot2.tidyverse.org/reference/aes.html) → `geom_*()`
+- `facet_*()`, `scale_*()`, [`labs()`](https://ggplot2.tidyverse.org/reference/labs.html), and a house theme
 - the habit of plotting the data, not only the summary
 
 ### What changes here
@@ -220,8 +220,8 @@ p_scale | p_coord
 ::: {.column width="55%"}
 ### Where the transformation sits changes the model
 
-- `scale_x_log10()` transforms the **data before the stat**: the smooth is fitted to log GDP
-- `coord_trans()` transforms the **plane after the stat**: the smooth is fitted to raw GDP and the axis warps the result
+- [`scale_x_log10()`](https://ggplot2.tidyverse.org/reference/scale_continuous.html) transforms the **data before the stat**: the smooth is fitted to log GDP
+- [`coord_trans()`](https://ggplot2.tidyverse.org/reference/coord_transform.html) transforms the **plane after the stat**: the smooth is fitted to raw GDP and the axis warps the result
 - Both panels plot life expectancy against income; only the left one is a log-linear model
 
 Breaks and labels remain scale arguments in both cases. The scale form and the coordinate form are not interchangeable, even though the axes look similar.
@@ -331,11 +331,11 @@ p_bar_pie | p_bar_flat
 ::: {.column width="50%"}
 ### The coordinate system is part of the grammar
 
-- `coord_cartesian()`: default Cartesian plane; zoom and set limits
+- [`coord_cartesian()`](https://ggplot2.tidyverse.org/reference/coord_cartesian.html): default Cartesian plane; zoom and set limits
 - `coord_fixed(ratio = ...)`: lock the aspect ratio; essential for maps and shapes
-- `coord_flip()`: swap axes (now usually replaced by mapping the discrete variable to *y*)
-- `coord_polar()`: wrap a linear axis around a circle
-- `coord_radial()`: modern radial coordinates with partial circles (ggplot2 ≥ 3.5.0)
+- [`coord_flip()`](https://ggplot2.tidyverse.org/reference/coord_flip.html): swap axes (now usually replaced by mapping the discrete variable to *y*)
+- [`coord_polar()`](https://ggplot2.tidyverse.org/reference/coord_radial.html): wrap a linear axis around a circle
+- [`coord_radial()`](https://ggplot2.tidyverse.org/reference/coord_radial.html): modern radial coordinates with partial circles (ggplot2 ≥ 3.5.0)
 :::
 
 ::: {.column width="50%"}
@@ -370,7 +370,7 @@ Axes, legends, and colourbars let the reader recover the data values from the pl
 - `guides(colour = "none")` removes a guide but keeps the scale
 - `guide_legend(nrow = 1, override.aes = list(size = 3))` controls the keys
 - `guide_axis(angle = 45)` handles crowded labels
-- `theme(legend.position = "top")` moves the legend; `guides()` controls its content
+- `theme(legend.position = "top")` moves the legend; [`guides()`](https://ggplot2.tidyverse.org/reference/guides.html) controls its content
 - direct labels often beat a legend, especially for few groups
 
 **Rule:** if the legend repeats information the reader can see on the geoms, replace it with a direct label.
@@ -434,12 +434,12 @@ p                        # renders now
 ggplot_build(p)$data[[1]] # computed values
 ```
 
-A `ggplot` object is a **list of specifications**. Building it does not draw pixels.
+A [`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html) object is a **list of specifications**. Building it does not draw pixels.
 
 Consequences:
 
 - layers can be added, removed, reused, and composed
-- `ggsave()` renders without displaying
+- [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html) renders without displaying
 - `ggplot_build()` exposes the output of stats and scales
 - functions can return plots; loops and `purrr::map()` work
 - Quarto renders the object at the point where it is printed
@@ -484,15 +484,15 @@ Every geom has a default stat; every stat has a default geom.
 
 | Geom | Default stat | Computed variables |
 |---|---|---|
-| `geom_bar` | `stat_count` | `count`, `prop` |
-| `geom_histogram` | `stat_bin` | `count`, `density` |
-| `geom_boxplot` | `stat_boxplot` | `ymin`, `lower`, `middle`, `upper`, `ymax`, `outliers` |
-| `geom_smooth` | `stat_smooth` | `y`, `ymin`, `ymax`, `se` |
-| `geom_density` | `stat_density` | `density`, `count`, `scaled` |
+| [`geom_bar`](https://ggplot2.tidyverse.org/reference/geom_bar.html) | [`stat_count`](https://ggplot2.tidyverse.org/reference/geom_bar.html) | `count`, `prop` |
+| [`geom_histogram`](https://ggplot2.tidyverse.org/reference/geom_histogram.html) | [`stat_bin`](https://ggplot2.tidyverse.org/reference/geom_histogram.html) | `count`, `density` |
+| [`geom_boxplot`](https://ggplot2.tidyverse.org/reference/geom_boxplot.html) | [`stat_boxplot`](https://ggplot2.tidyverse.org/reference/geom_boxplot.html) | `ymin`, `lower`, `middle`, `upper`, `ymax`, `outliers` |
+| [`geom_smooth`](https://ggplot2.tidyverse.org/reference/geom_smooth.html) | [`stat_smooth`](https://ggplot2.tidyverse.org/reference/geom_smooth.html) | `y`, `ymin`, `ymax`, `se` |
+| [`geom_density`](https://ggplot2.tidyverse.org/reference/geom_density.html) | [`stat_density`](https://ggplot2.tidyverse.org/reference/geom_density.html) | `density`, `count`, `scaled` |
 
-`stat_ecdf()` has no `geom_ecdf()`: its default geom is `geom_step()`.
+[`stat_ecdf()`](https://ggplot2.tidyverse.org/reference/stat_ecdf.html) has no `geom_ecdf()`: its default geom is [`geom_step()`](https://ggplot2.tidyverse.org/reference/geom_path.html).
 
-`after_stat()` maps a **computed** variable; `..count..` is the older syntax.
+[`after_stat()`](https://ggplot2.tidyverse.org/reference/aes_eval.html) maps a **computed** variable; `..count..` is the older syntax.
 
 :::
 
@@ -573,13 +573,13 @@ p_jd <- ggplot(pos_data, aes(species, body_mass_g, colour = sex)) +
 The core deck used positions for bars; points need them more often, because measurements are rounded and points coincide.
 
 - `position_jitter(width, height)`: spreads coincident points
-- `position_jitterdodge()`: jitter **inside** dodged groups — the standard for paired groups
+- [`position_jitterdodge()`](https://ggplot2.tidyverse.org/reference/position_jitterdodge.html): jitter **inside** dodged groups — the standard for paired groups
 - `seed` fixes the layout, so the figure is reproducible
 - `position_dodge2(preserve = "single")`: dodges boxes and violins and closes gaps left by absent groups
 :::
 
 ::: {.column width="48%"}
-- `geom_jitter()` is `geom_point(position = "jitter")`, with the same caveats
+- [`geom_jitter()`](https://ggplot2.tidyverse.org/reference/geom_jitter.html) is `geom_point(position = "jitter")`, with the same caveats
 - jitter hides exact values: do not use it when the precise coordinate is the message
 - positions run **after** the stat: counts and fits are unchanged, only the points move
 
@@ -862,9 +862,9 @@ th_dark <- p_theme + theme_dark(base_family = "Albert Sans", base_size = 12)
 ::: {.column width="52%"}
 ### The theme is a separate layer
 
-- `theme_minimal()`, `theme_bw()`, `theme_classic()`, `theme_void()`
-- `theme_set()` changes the default for the session
-- `theme()` overrides one element on one plot
+- [`theme_minimal()`](https://ggplot2.tidyverse.org/reference/ggtheme.html), [`theme_bw()`](https://ggplot2.tidyverse.org/reference/ggtheme.html), [`theme_classic()`](https://ggplot2.tidyverse.org/reference/ggtheme.html), [`theme_void()`](https://ggplot2.tidyverse.org/reference/ggtheme.html)
+- [`theme_set()`](https://ggplot2.tidyverse.org/reference/get_theme.html) changes the default for the session
+- [`theme()`](https://ggplot2.tidyverse.org/reference/theme.html) overrides one element on one plot
 - elements form a hierarchy: `plot.title`, `axis.text`, `panel.grid`, `legend.position`
 
 The theme changes **non-data ink**, not the data or the statistical claim.
@@ -1187,7 +1187,7 @@ If time is short, do tasks 1 and 3. The common errors here are a confidence band
 
 1. **Scales are functions.** Transformations change the data seen by the stat; limits remove data; coordinates only zoom.
 2. **The object is a specification.** Separating building from rendering makes plots composable and debuggable.
-3. **Stats and positions define the geom.** `geom_bar()` counts; `geom_col()` uses your values; position changes the question.
+3. **Stats and positions define the geom.** [`geom_bar()`](https://ggplot2.tidyverse.org/reference/geom_bar.html) counts; [`geom_col()`](https://ggplot2.tidyverse.org/reference/geom_bar.html) uses your values; position changes the question.
 4. **Model plots are conditional claims.** Predictions, slopes, and comparisons answer different questions; name the interval and the scale.
 5. **Composition and export are part of the argument.** A figure that cannot be read at final size, or by a colour-blind reader, is not finished.
 

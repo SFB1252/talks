@@ -318,7 +318,7 @@ A graphic is built from:
 
 The grammar is **compositional**: a small vocabulary plus rules generates an unbounded family of plots.
 
-Each arrow has a **default**, which is why a single `geom_point()` is enough to produce a complete plot.
+Each arrow has a **default**, which is why a single [`geom_point()`](https://ggplot2.tidyverse.org/reference/geom_point.html) is enough to produce a complete plot.
 
 :::
 
@@ -349,13 +349,13 @@ The key theoretical move: a chart type is not primitive. It is a composition of 
 |---|---|---|
 | **Data** | What is being plotted? | a data frame, one row per observation |
 | **Mapping** | Which variable becomes which visual property? | `aes(x, y, colour, fill, size, shape, alpha)` |
-| **Layer** | Which geoms represent observations? | `geom_point()`, `geom_line()`, `geom_col()`, … |
-| **Stat** | Which summary is computed before drawing? | `stat_count()`, `stat_bin()`, `stat_smooth()`, … |
-| **Position** | How are overlapping geoms arranged? | `position_dodge()`, `position_stack()`, `position_jitter()` |
-| **Scale** | How do data values become visual values? | `scale_x_log10()`, `scale_colour_viridis_d()`, … |
-| **Coordinate** | In which space are geoms placed? | `coord_cartesian()`, `coord_fixed()`, `coord_polar()` |
-| **Facet** | Which subsets get their own panel? | `facet_wrap()`, `facet_grid()` |
-| **Theme** | Which non-data ink is used? | `theme_minimal()`, `theme()`, `element_*()` |
+| **Layer** | Which geoms represent observations? | [`geom_point()`](https://ggplot2.tidyverse.org/reference/geom_point.html), [`geom_line()`](https://ggplot2.tidyverse.org/reference/geom_path.html), [`geom_col()`](https://ggplot2.tidyverse.org/reference/geom_bar.html), … |
+| **Stat** | Which summary is computed before drawing? | [`stat_count()`](https://ggplot2.tidyverse.org/reference/geom_bar.html), [`stat_bin()`](https://ggplot2.tidyverse.org/reference/geom_histogram.html), [`stat_smooth()`](https://ggplot2.tidyverse.org/reference/geom_smooth.html), … |
+| **Position** | How are overlapping geoms arranged? | [`position_dodge()`](https://ggplot2.tidyverse.org/reference/position_dodge.html), [`position_stack()`](https://ggplot2.tidyverse.org/reference/position_stack.html), [`position_jitter()`](https://ggplot2.tidyverse.org/reference/position_jitter.html) |
+| **Scale** | How do data values become visual values? | [`scale_x_log10()`](https://ggplot2.tidyverse.org/reference/scale_continuous.html), [`scale_colour_viridis_d()`](https://ggplot2.tidyverse.org/reference/scale_viridis.html), … |
+| **Coordinate** | In which space are geoms placed? | [`coord_cartesian()`](https://ggplot2.tidyverse.org/reference/coord_cartesian.html), [`coord_fixed()`](https://ggplot2.tidyverse.org/reference/coord_fixed.html), [`coord_polar()`](https://ggplot2.tidyverse.org/reference/coord_radial.html) |
+| **Facet** | Which subsets get their own panel? | [`facet_wrap()`](https://ggplot2.tidyverse.org/reference/facet_wrap.html), [`facet_grid()`](https://ggplot2.tidyverse.org/reference/facet_grid.html) |
+| **Theme** | Which non-data ink is used? | [`theme_minimal()`](https://ggplot2.tidyverse.org/reference/ggtheme.html), [`theme()`](https://ggplot2.tidyverse.org/reference/theme.html), `element_*()` |
 
 **Wiring:** `ggplot(data, aes(...)) + geom_*() + scale_*() + coord_*() + facet_*() + theme()`
 
@@ -452,7 +452,7 @@ set_colour / map_colour
 ::: {.column width="46%"}
 ### The rule
 
-- **Inside `aes()`** a variable is **mapped**: `aes(colour = species)`
+- **Inside [`aes()`](https://ggplot2.tidyverse.org/reference/aes.html)** a variable is **mapped**: `aes(colour = species)`
   - creates a scale and a legend
   - colour varies with the data
 - **Outside `aes()`** a constant is **set**: `colour = "black"`
@@ -509,10 +509,10 @@ p_ungrouped | p_grouped
 ::: {.column width="48%"}
 ### Individual versus collective geoms
 
-- **Individual geoms** draw one graphical object per observation: `geom_point()`, `geom_text()`, `geom_segment()`
-- **Collective geoms** draw one graphical object per **group**: `geom_boxplot()`, `geom_smooth()`, `geom_polygon()`, `geom_ribbon()`
+- **Individual geoms** draw one graphical object per observation: [`geom_point()`](https://ggplot2.tidyverse.org/reference/geom_point.html), [`geom_text()`](https://ggplot2.tidyverse.org/reference/geom_text.html), [`geom_segment()`](https://ggplot2.tidyverse.org/reference/geom_segment.html)
+- **Collective geoms** draw one graphical object per **group**: [`geom_boxplot()`](https://ggplot2.tidyverse.org/reference/geom_boxplot.html), [`geom_smooth()`](https://ggplot2.tidyverse.org/reference/geom_smooth.html), [`geom_polygon()`](https://ggplot2.tidyverse.org/reference/geom_polygon.html), [`geom_ribbon()`](https://ggplot2.tidyverse.org/reference/geom_ribbon.html)
 
-`geom_line()` is collective in spirit: it connects observations **within a group, in order of *x***. With repeated units you must declare the grouping.
+[`geom_line()`](https://ggplot2.tidyverse.org/reference/geom_path.html) is collective in spirit: it connects observations **within a group, in order of *x***. With repeated units you must declare the grouping.
 
 ::: {.callout-tip}
 ### Three ways to group
@@ -521,7 +521,7 @@ p_ungrouped | p_grouped
 2. an explicit `group = country`
 3. `interaction()` for combinations: `group = interaction(site, year)`
 
-`geom_path()` follows data order; `geom_line()` sorts by *x* first.
+[`geom_path()`](https://ggplot2.tidyverse.org/reference/geom_path.html) follows data order; `geom_line()` sorts by *x* first.
 :::
 
 **Theory:** grouping defines the **unit of a collective geom**. Wrong grouping is wrong aggregation.
@@ -588,15 +588,15 @@ Do not read the titles as definitions; read them as questions each geom can answ
 
 | Variables | Question | Chart family |
 |---|---|---|
-| 1 numeric | What is the distribution? | histogram, density, ECDF, boxplot, violin |
-| 1 categorical | How large is each category? | bar, dot plot, lollipop |
-| 2 numeric | Is there a relationship? | scatter, hexbin, smooth, 2-D density |
-| 1 numeric + 1 categorical | How does the distribution differ by group? | box, violin, raincloud, ridge, dot plot |
-| 2 categorical | Is there an association? | mosaic, heatmap, grouped or stacked bar |
-| time + numeric | How does it evolve? | line, area, stream, slope chart |
-| ≥ 3 numeric | Multivariate structure? | scatter matrix, PCA, parallel coordinates |
-| spatial | Where is it? | map, tile grid, cartogram |
-| network | Who is connected to whom? | node-link, adjacency matrix, arc diagram |
+| 1 numeric | What is the distribution? | [histogram](https://ggplot2.tidyverse.org/reference/geom_histogram.html), [density](https://ggplot2.tidyverse.org/reference/geom_density.html), [ECDF](https://ggplot2.tidyverse.org/reference/stat_ecdf.html), [boxplot](https://ggplot2.tidyverse.org/reference/geom_boxplot.html), [violin](https://ggplot2.tidyverse.org/reference/geom_violin.html) |
+| 1 categorical | How large is each category? | [bar](https://ggplot2.tidyverse.org/reference/geom_bar.html), [dot plot](https://ggplot2.tidyverse.org/reference/geom_dotplot.html), lollipop |
+| 2 numeric | Is there a relationship? | [scatter](https://ggplot2.tidyverse.org/reference/geom_point.html), [hexbin](https://ggplot2.tidyverse.org/reference/geom_hex.html), [smooth](https://ggplot2.tidyverse.org/reference/geom_smooth.html), [2-D density](https://ggplot2.tidyverse.org/reference/geom_density_2d.html) |
+| 1 numeric + 1 categorical | How does the distribution differ by group? | [box](https://ggplot2.tidyverse.org/reference/geom_boxplot.html), [violin](https://ggplot2.tidyverse.org/reference/geom_violin.html), [raincloud](https://mjskay.github.io/ggdist/reference/stat_halfeye.html), [ridge](https://wilkelab.org/ggridges/reference/geom_density_ridges.html), [dot plot](https://ggplot2.tidyverse.org/reference/geom_dotplot.html) |
+| 2 categorical | Is there an association? | [mosaic](https://haleyjeppson.github.io/ggmosaic/reference/geom_mosaic.html), [heatmap](https://ggplot2.tidyverse.org/reference/geom_tile.html), [grouped or stacked bar](https://ggplot2.tidyverse.org/reference/geom_bar.html) |
+| time + numeric | How does it evolve? | [line](https://ggplot2.tidyverse.org/reference/geom_path.html), [area](https://ggplot2.tidyverse.org/reference/geom_ribbon.html), [stream](https://rdrr.io/cran/ggstream/man/geom_stream.html), slope chart |
+| ≥ 3 numeric | Multivariate structure? | [scatter matrix](https://ggobi.github.io/ggally/reference/ggpairs.html), PCA, [parallel coordinates](https://ggobi.github.io/ggally/reference/ggparcoord.html) |
+| spatial | Where is it? | [map](https://ggplot2.tidyverse.org/reference/ggsf.html), [tile grid](https://ggplot2.tidyverse.org/reference/geom_tile.html), [cartogram](https://rdrr.io/cran/cartogram/man/cartogram.html) |
+| network | Who is connected to whom? | [node-link](https://ggraph.data-imaginist.com/reference/geom_edge_link.html), [adjacency matrix](https://ggplot2.tidyverse.org/reference/geom_tile.html), [arc diagram](https://ggraph.data-imaginist.com/reference/geom_edge_arc.html) |
 
 ::: {.columns}
 
@@ -604,7 +604,7 @@ Do not read the titles as definitions; read them as questions each geom can answ
 ::: {.callout-tip}
 ### Start with the question
 
-Name the **unit**, the **variables**, and the **comparison**. Only then choose a geom. The [From Data to Viz](https://www.data-to-viz.com/) decision tree is a useful checklist, not an oracle.
+Name the **unit**, the **variables**, and the **comparison**. Only then choose a geom. Linked chart names open the function that draws them; a few live in extension packages. The [From Data to Viz](https://www.data-to-viz.com/) decision tree is a useful checklist, not an oracle.
 :::
 :::
 
@@ -612,14 +612,14 @@ Name the **unit**, the **variables**, and the **comparison**. Only then choose a
 ::: {.callout-warning}
 ### Avoid the default reflex
 
-The fact that `geom_bar()` is easy does not make a bar chart the right answer. For distributions, bars of means hide the data; for parts of a whole, stacked bars are often clearer than pies.
+The fact that [`geom_bar()`](https://ggplot2.tidyverse.org/reference/geom_bar.html) is easy does not make a bar chart the right answer. For distributions, bars of means hide the data; for parts of a whole, stacked bars are often clearer than pies.
 :::
 :::
 
 :::
 
 ::: {.notes}
-This is the chart-selection slide. Ask participants to name a recent figure from their own work and classify the variables. The table is deliberately about questions, not chart names: the same data can answer several questions, and the same chart can answer none of them.
+This is the chart-selection slide. Ask participants to name a recent figure from their own work and classify the variables. The table is deliberately about questions, not chart names: the same data can answer several questions, and the same chart can answer none of them. Three names have no single function: a lollipop is `geom_segment()` plus `geom_point()`, a slope chart is `geom_line()` plus labels, and PCA is a method (`stats::prcomp()`), not a geom. The other links open the function that draws the chart; several live in extension packages (ggdist, ggridges, ggmosaic, ggstream, GGally, ggraph, cartogram).
 :::
 
 ---
@@ -631,11 +631,11 @@ This is the chart-selection slide. Ask participants to name a recent figure from
 ::: {.column width="52%"}
 ### A stat computes a new data frame
 
-- `geom_bar()` counts rows: `stat_count()`
-- `geom_col()` uses supplied heights: `stat_identity()`
-- `geom_histogram()` bins: `stat_bin()`
-- `geom_smooth()` fits: `stat_smooth()`
-- `after_stat()` maps a computed variable; `..count..` is the older syntax
+- [`geom_bar()`](https://ggplot2.tidyverse.org/reference/geom_bar.html) counts rows: [`stat_count()`](https://ggplot2.tidyverse.org/reference/geom_bar.html)
+- [`geom_col()`](https://ggplot2.tidyverse.org/reference/geom_bar.html) uses supplied heights: [`stat_identity()`](https://ggplot2.tidyverse.org/reference/stat_identity.html)
+- [`geom_histogram()`](https://ggplot2.tidyverse.org/reference/geom_histogram.html) bins: [`stat_bin()`](https://ggplot2.tidyverse.org/reference/geom_histogram.html)
+- [`geom_smooth()`](https://ggplot2.tidyverse.org/reference/geom_smooth.html) fits: [`stat_smooth()`](https://ggplot2.tidyverse.org/reference/geom_smooth.html)
+- [`after_stat()`](https://ggplot2.tidyverse.org/reference/aes_eval.html) maps a computed variable; `..count..` is the older syntax
 
 ::: {.callout-important}
 If you already computed the summary, use `geom_col()`, not `geom_bar()`. The geom does not know that your `y` is a mean; it only knows whether a stat is needed.
@@ -792,7 +792,7 @@ scale_alpha_manual(values = c(.3, .7))
 ::: {.callout-important}
 ### Transformations happen before stats
 
-`scale_x_log10()` changes the **data** seen by the stat, not just the axis. A smooth on a log scale is a different model from a smooth on the raw scale.
+[`scale_x_log10()`](https://ggplot2.tidyverse.org/reference/scale_continuous.html) changes the **data** seen by the stat, not just the axis. A smooth on a log scale is a different model from a smooth on the raw scale.
 :::
 :::
 
@@ -829,7 +829,7 @@ gapminder |>
 - `facet_grid(rows ~ cols)`: two variables, fixed grid
 - `scales = "fixed"` (default): one common scale; **comparisons are valid**
 - `scales = "free_y"`: each panel gets its own range; trends look similar even when magnitudes differ
-- `labeller`, `strip.position`, `space = "free"`: layout control
+- [`labeller`](https://ggplot2.tidyverse.org/reference/labeller.html), `strip.position`, `space = "free"`: layout control
 :::
 
 ::: {.column width="45%"}
@@ -1118,8 +1118,8 @@ Strategies, in order of preference:
 :::
 
 ::: {.column width="45%"}
-4. **binning** — `geom_bin_2d()`, `geom_hex()` for large *N*
-5. **2-D density** — `geom_density_2d_filled()`
+4. **binning** — [`geom_bin_2d()`](https://ggplot2.tidyverse.org/reference/geom_bin_2d.html), [`geom_hex()`](https://ggplot2.tidyverse.org/reference/geom_hex.html) for large *N*
+5. **2-D density** — [`geom_density_2d_filled()`](https://ggplot2.tidyverse.org/reference/geom_density_2d.html)
 6. **sampling** — only with a clear caption and seed
 
 ::: {.callout-tip}
@@ -1342,7 +1342,7 @@ The workshop materials are themselves an example: `slides.qmd` contains the figu
 ::: {.column width="50%"}
 ### Tools
 
-- **RStudio:** Plots pane → *Zoom* and *Export*; `ggsave()` for exact sizes
+- **RStudio:** Plots pane → *Zoom* and *Export*; [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html) for exact sizes
 - **`esquisse` addin:** explore with drag-and-drop, then copy the code it wrote
 - **`colorspace::choose_palette()`:** pick a palette interactively and copy the values
 - **`colorblindr`** (GitHub): simulate colour-vision deficiency on your plot
@@ -1392,8 +1392,8 @@ Use `data/penguins.csv` (or `gapminder.csv`).
 ### Hints
 
 - `facet_wrap(~island)`
-- `geom_violin()` + `geom_boxplot(width = .1)` + `geom_jitter()`
-- `scale_colour_viridis_d()`
+- [`geom_violin()`](https://ggplot2.tidyverse.org/reference/geom_violin.html) + `geom_boxplot(width = .1)` + [`geom_jitter()`](https://ggplot2.tidyverse.org/reference/geom_jitter.html)
+- [`scale_colour_viridis_d()`](https://ggplot2.tidyverse.org/reference/scale_viridis.html)
 :::
 :::
 
