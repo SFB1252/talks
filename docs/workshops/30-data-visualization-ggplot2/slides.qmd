@@ -20,7 +20,6 @@ format:
     footer: "RDM Workshop Series · SFB 1252 Prominence in Language · Universität zu Köln · AI assistance: heavy"
     output-file: slides.html
     include-in-header: ai-assistance-meta.html
-    embed-resources: true
     transition: none
     background-transition: none
     code-overflow: wrap

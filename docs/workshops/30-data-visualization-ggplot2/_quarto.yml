@@ -1,0 +1,8 @@
+project:
+  type: default
+
+# Two build profiles:
+#   quarto render                 -> self-contained slides.html (default: embed)
+#   quarto render --profile site  -> small HTML + <deck>_files/ (for web hosting)
+profile:
+  default: embed

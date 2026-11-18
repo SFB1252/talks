@@ -20,7 +20,6 @@ format:
     footer: "RDM Workshop Series · SFB 1252 Prominence in Language · Universität zu Köln · AI assistance: heavy"
     output-file: slides-advanced.html
     include-in-header: ai-assistance-meta.html
-    embed-resources: true
     transition: none
     background-transition: none
     code-overflow: wrap
@@ -112,25 +111,25 @@ By the end of this session, you can:
 ::: {.callout-note}
 ### This is the sequel
 
-We assume you can build a plot with [`aes()`](https://ggplot2.tidyverse.org/reference/aes.html), `geom_*()`, and [`labs()`](https://ggplot2.tidyverse.org/reference/labs.html). The core workshop is [`slides.qmd`](slides.html).
+We assume you can build a plot with [`aes()`](https://ggplot2.tidyverse.org/reference/aes.html), `geom_*()`, and [`labs()`](https://ggplot2.tidyverse.org/reference/labs.html). The basic workshop is [`slides.qmd`](slides.html).
 :::
 
-**Prerequisites:** the core workshop or equivalent experience with [`ggplot2`](https://ggplot2.tidyverse.org/).
+**Prerequisites:** the basic workshop or equivalent experience with [`ggplot2`](https://ggplot2.tidyverse.org/).
 
 **Materials:** [`slides-advanced.qmd`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/slides-advanced.qmd), [`scripts/ggplot2-advanced.R`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/scripts/ggplot2-advanced.R), and the [`data/` folder](https://github.com/SFB1252/talks/tree/main/docs/workshops/30-data-visualization-ggplot2/data).
 
-**Core deck:** [`slides.qmd`](slides.html) covers perception, the grammar, mappings, geoms, facets, colour, and integrity traps.
+**Basic deck:** [`slides.qmd`](slides.html) covers perception, the grammar, mappings, geoms, facets, colour, and integrity traps.
 :::
 
 :::
 
 ::: {.notes}
-This deck assumes the core vocabulary. Do not re-teach aes() and geom_*(); spend the time on the choices that change the statistical claim: scales, limits, statistics, positions, models, and composition. If time runs short, do the model plot and composition tasks only.
+This deck assumes the basic vocabulary. Do not re-teach aes() and geom_*(); spend the time on the choices that change the statistical claim: scales, limits, statistics, positions, models, and composition. If time runs short, do the model plot and composition tasks only.
 :::
 
 ---
 
-## From the core deck to this one {.smaller}
+## From the basic deck to this one {.smaller}
 
 ::: {.columns}
 
@@ -151,7 +150,7 @@ This deck assumes the core vocabulary. Do not re-teach aes() and geom_*(); spend
 
 ::: {.column width="48%"}
 ```r
-# The core vocabulary still applies
+# The basic vocabulary still applies
 ggplot(penguins,
        aes(flipper_length_mm, body_mass_g,
            colour = species)) +
@@ -166,14 +165,14 @@ ggplot(penguins,
 ::: {.callout-important}
 ### One sentence
 
-The core deck taught you to **build** a plot. This deck teaches you to **control** it — and to **defend** every choice in the caption.
+The basic deck taught you to **build** a plot. This deck teaches you to **control** it — and to **defend** every choice in the caption.
 :::
 :::
 
 :::
 
 ::: {.notes}
-Use this slide as a checkpoint, not a re-teach. Ask for one example of a plot they built since the core session. Then state the promise of the sequel: every default becomes a choice, and every choice becomes a claim you can defend.
+Use this slide as a checkpoint, not a re-teach. Ask for one example of a plot they built since the basic session. Then state the promise of the sequel: every default becomes a choice, and every choice becomes a claim you can defend.
 :::
 
 ---
@@ -553,14 +552,14 @@ This is where the grammar pays off: `geom_bar()` vs `geom_col()` is not a quirky
 
 ```{r}
 #| label: plot-jitter
-#| fig-width: 9.2
-#| fig-height: 3.6
+#| fig-width: 9.6
+#| fig-height: 4.4
 #| fig-alt: "Two scatter plots of body mass by species and sex. Left, position_jitter() spreads the points but female and male observations still overlap; right, position_jitterdodge() spreads and separates the sexes within each species."
 pos_data <- penguins |> filter(!is.na(sex), !is.na(body_mass_g))
 
 p_jitter <- ggplot(pos_data, aes(species, body_mass_g, colour = sex)) +
   geom_point(position = position_jitter(width = 0.15, height = 0, seed = 1),
-             alpha = 0.5, size = 1.6) +
+             alpha = 0.5, size = 1.8) +
   labs(title = "position_jitter()",
        subtitle = "spread, but the sexes still mix", x = NULL, y = "Body mass (g)")
 
@@ -568,7 +567,7 @@ p_jd <- ggplot(pos_data, aes(species, body_mass_g, colour = sex)) +
   geom_point(position = position_jitterdodge(jitter.width = 0.12,
                                              dodge.width = 0.75,
                                              seed = 1),
-             alpha = 0.5, size = 1.6) +
+             alpha = 0.5, size = 1.8) +
   labs(title = "position_jitterdodge()",
        subtitle = "jitter inside each dodge slot", x = NULL, y = NULL)
 
@@ -581,30 +580,22 @@ p_jd <- ggplot(pos_data, aes(species, body_mass_g, colour = sex)) +
 ::: {.column width="52%"}
 ### Positions also apply to points
 
-The core deck used positions for bars; points need them more often, because measurements are rounded and points coincide.
-
 - [`position_jitter(width, height)`](https://ggplot2.tidyverse.org/reference/position_jitter.html): spreads coincident points
 - [`position_jitterdodge()`](https://ggplot2.tidyverse.org/reference/position_jitterdodge.html): jitter **inside** dodged groups — the standard for paired groups
 - `seed` fixes the layout, so the figure is reproducible
-- [`position_dodge2(preserve = "single")`](https://ggplot2.tidyverse.org/reference/position_dodge.html): dodges boxes and violins and closes gaps left by absent groups
 :::
 
 ::: {.column width="48%"}
+- [`position_dodge2(preserve = "single")`](https://ggplot2.tidyverse.org/reference/position_dodge.html): dodges boxes and violins and closes gaps left by absent groups
 - [`geom_jitter()`](https://ggplot2.tidyverse.org/reference/geom_jitter.html) is [`geom_point(position = "jitter")`](https://ggplot2.tidyverse.org/reference/geom_point.html), with the same caveats
-- jitter hides exact values: do not use it when the precise coordinate is the message
 - positions run **after** the stat: counts and fits are unchanged, only the points move
 
-::: {.callout-note}
-### Jitter is a drawing device, not a transformation
-
-The data do not change; only the drawn position does. If a reader might take the offsets for measurements, say so in the caption.
-:::
 :::
 
 :::
 
 ::: {.notes}
-The left panel spreads the points, but the colour groups still overlap, so the eye cannot compare the sexes within a species. The right panel separates the sexes and keeps the spread. The seed argument matters: without it, every render scrambles the points, which breaks reproducibility of the figure. The core deck showed identity, dodge, stack, and fill for bars; here the same machinery is applied to points, where it is needed more often.
+The left panel spreads the points, but the colour groups still overlap, so the eye cannot compare the sexes within a species. The right panel separates the sexes and keeps the spread. The seed argument matters: without it, every render scrambles the points, which breaks reproducibility of the figure. The basic deck showed identity, dodge, stack, and fill for bars; here the same machinery is applied to points, where it is needed more often.
 :::
 ---
 
@@ -618,8 +609,8 @@ The left panel spreads the points, but the colour groups still overlap, so the e
 
 ::: {.columns}
 
-::: {.column width="50%"}
-### Four different intervals
+::: {.column width="45%"}
+### Five different intervals
 
 | Quantity | What it describes | Typical use |
 |---|---|---|
@@ -633,19 +624,128 @@ The left panel spreads the points, but the colour groups still overlap, so the e
 An error bar without a label is not information. "Mean ± SE" and "mean ± SD" can differ by a factor of $\sqrt{n}$.
 :::
 
-**Theory:** an interval is a claim about a **target**. The target can be an observation, a mean, an effect, or a future observation. The plot must name it.
+**Theory:** an interval is a claim about a **target**: the data (SD, PI) or an estimate of the mean (SE, CI, CrI).
 :::
 
-::: {.column width="50%"}
+::: {.column width="55%"}
+```{r}
+#| label: plot-intervals
+#| fig-width: 5.8
+#| fig-height: 3.3
+#| fig-alt: "Five horizontal intervals for the same sample mean body mass of 4,202 grams. The 95 percent prediction interval is widest, then the standard deviation; the standard error, 95 percent confidence interval and 95 percent credible interval are narrow around the mean. With a flat prior the credible interval coincides with the confidence interval."
+mass <- penguins$body_mass_g[!is.na(penguins$body_mass_g)]
+n <- length(mass)
+m <- mean(mass)
+s <- sd(mass)
+se <- s / sqrt(n)
+tcrit <- qt(0.975, n - 1)
+
+intervals <- data.frame(
+  interval = factor(c("SE", "95% CrI", "95% CI", "SD", "95% PI"),
+                    levels = c("SE", "95% CrI", "95% CI", "SD", "95% PI")),
+  lo = c(m - se, m - tcrit * se, m - tcrit * se, m - s,
+         m - tcrit * s * sqrt(1 + 1 / n)),
+  hi = c(m + se, m + tcrit * se, m + tcrit * se, m + s,
+         m + tcrit * s * sqrt(1 + 1 / n)),
+  target = c("estimate", "estimate", "estimate", "data", "data"))
+
+ggplot(intervals, aes(y = interval, colour = target)) +
+  geom_segment(aes(x = lo, xend = hi, yend = interval), linewidth = 1.8) +
+  geom_vline(xintercept = m, linetype = 2, colour = uzk_muted) +
+  scale_colour_manual(values = c(data = uzk_muted, estimate = uzk_coral),
+                      guide = "none") +
+  labs(title = "Same mean, five intervals",
+       subtitle = "flat prior: the CrI and CI coincide",
+       x = "Body mass (g)", y = NULL)
+```
+
+The grey intervals describe **observations**; the coral ones describe the **mean**.
+:::
+
+:::
+
+::: {.notes}
+The key distinction is target, not formula. Two intervals computed from the same data can differ by an order of magnitude because they answer different questions. The SD and PI describe where observations fall; the SE, CI and CrI describe where the mean is. Point out that with a flat prior the CrI and CI coincide numerically — the Bayesian and frequentist statements differ in meaning, not in this number. Many published error bars are unlabelled, which makes them uninterpretable.
+:::
+
+---
+
+## The trap: the wrong target {.smaller}
+
+```{r}
+#| label: plot-within
+#| fig-width: 9.6
+#| fig-height: 3.6
+#| fig-alt: "Three panels. Left: mean extra sleep for two groups with between-subject 95 percent confidence intervals, which overlap. Middle: one line per participant joining their Group 1 and Group 2 values, nine of ten rising. Right: the ten paired differences per participant, with a 95 percent confidence interval from 0.7 to 2.5 hours that excludes zero."
+sleep_means <- sleep |>
+  group_by(group) |>
+  summarise(m = mean(extra), se = sd(extra) / sqrt(n()), n = n(),
+            .groups = "drop") |>
+  mutate(lo = m - qt(0.975, n - 1) * se,
+         hi = m + qt(0.975, n - 1) * se)
+
+p_between <- ggplot(sleep_means, aes(group, m, colour = group)) +
+  geom_point(size = 2.6) +
+  geom_errorbar(aes(ymin = lo, ymax = hi), width = 0.12, linewidth = 0.9) +
+  geom_hline(yintercept = 0, linetype = 2, colour = uzk_muted) +
+  scale_colour_manual(values = c(uzk_blue, uzk_coral), guide = "none") +
+  scale_x_discrete(labels = c("Group 1", "Group 2")) +
+  labs(title = "Between-subject 95% CIs",
+       subtitle = "the two intervals overlap",
+       x = NULL, y = "Extra sleep (hours)")
+
+participant_lines <- sleep |>
+  arrange(ID, group) |>
+  group_by(ID) |>
+  mutate(rises = extra[2] > extra[1]) |>
+  ungroup()
+
+p_participants <- ggplot(participant_lines,
+                         aes(group, extra, group = ID, colour = rises)) +
+  geom_line(linewidth = 0.7) +
+  geom_point(size = 1.7) +
+  scale_colour_manual(values = c(`TRUE` = uzk_coral, `FALSE` = uzk_muted),
+                      guide = "none") +
+  scale_x_discrete(labels = c("Group 1", "Group 2")) +
+  labs(title = "By participant", subtitle = "nine of ten lines rise",
+       x = NULL, y = NULL)
+
+paired <- sleep |>
+  pivot_wider(id_cols = ID, names_from = group, values_from = extra,
+              names_prefix = "g") |>
+  mutate(diff = g2 - g1)
+
+diff_mean <- mean(paired$diff)
+diff_ci <- qt(0.975, nrow(paired) - 1) * sd(paired$diff) / sqrt(nrow(paired))
+
+p_within <- ggplot(paired, aes(1, diff)) +
+  geom_rect(aes(xmin = 0.85, xmax = 1.15,
+                ymin = diff_mean - diff_ci, ymax = diff_mean + diff_ci),
+            fill = uzk_coral, alpha = 0.22, inherit.aes = FALSE) +
+  geom_hline(yintercept = 0, linetype = 2, colour = uzk_muted) +
+  geom_point(size = 1.9, alpha = 0.75, colour = uzk_blue) +
+  scale_x_continuous(limits = c(0.7, 1.3)) +
+  labs(title = "Paired differences", subtitle = "the 95% CI excludes zero",
+       x = NULL, y = NULL) +
+  theme(axis.text.x = element_blank())
+
+p_between | p_participants | p_within
+```
+
+::: {.columns}
+
+::: {.column width="55%"}
 ### Within-subject data need within-subject intervals
 
-Between-subject CIs are too wide when the same participants contribute to every condition; they include stable individual differences.
+Between-subject CIs are too wide when the same participants contribute to every condition: they include stable individual differences, which the question does not ask about. In the sleep data the two group intervals overlap, yet every participant but one slept longer in Group 2.
 
 - normalise per participant, then compute the CI [@morey2008confidence]
-- bootstrap participants, not observations
+- bootstrap **participants**, not observations
 - plot **by-participant** effects or paired differences
 - use a multilevel model and plot its predictions
+:::
 
+::: {.column width="45%"}
 **Default trap:** [`stat_summary(fun.data = mean_se)`](https://ggplot2.tidyverse.org/reference/stat_summary.html) is between-subject.
 
 **Preferred:** [`plot_predictions(fit, condition = "condition")`](https://rdrr.io/cran/marginaleffects/man/plot_predictions.html).
@@ -658,185 +758,94 @@ When *N* is small, show every observation. A mean and an error bar can hide a bi
 :::
 
 ::: {.notes}
-The key distinction is target: SD describes data, SE describes an estimate, CI describes a procedure, CrI describes a posterior. Many published error bars are unlabelled, which makes them uninterpretable. For within-subject designs, the default `mean_se` is between-subject and therefore conservative; use a model or within-subject normalisation.
+The sleep dataset is paired: ten participants, each measured in both groups. The left panel shows the default — group means with between-subject confidence intervals — and the intervals overlap, which invites the conclusion that there is no effect. The middle panel shows every participant's pair of values; the lines make the consistent rise visible before any summary. The right panel shows the within-subject differences: nine of ten are positive and the CI excludes zero. The between-subject interval is not wrong, it answers a different question. For within-subject designs, the default `mean_se` is between-subject and therefore conservative; normalise, plot paired differences, or fit a model and plot its predictions.
 :::
 
 ---
 
 ## Model-based visualization {.smaller}
 
-::: {.columns}
-
-::: {.column width="45%"}
-### Plot the model, not only the means
-
-A model-based plot shows **conditional expectations** and their uncertainty.
-
-```r
-fit <- lm(body_mass_g ~ flipper_length_mm * species,
-          data = penguins)
-
-# conditional predictions (ggeffects)
-ggpredict(fit, terms = c("flipper_length_mm", "species"))
-
-# counterfactual predictions (marginaleffects)
-plot_predictions(fit,
-  condition = c("flipper_length_mm", "species"))
-
-plot_slopes(fit, variables = "flipper_length_mm",
-            condition = "species")
-```
-
-- [`ggpredict()`](https://strengejacke.github.io/ggeffects/reference/ggpredict.html): holds other predictors at typical values
-- [`marginaleffects`](https://marginaleffects.com/): averages over the observed sample by default
-- [`plot_slopes()`](https://rdrr.io/cran/marginaleffects/man/plot_slopes.html): the quantity of interest is a **slope**, not a level
-:::
-
-::: {.column width="55%"}
 ```{r}
 #| label: plot-model
-#| fig-width: 6.6
-#| fig-height: 4.2
-#| fig-alt: "Line chart of predicted body mass against flipper length for three penguin species, with shaded 95 percent confidence bands and faint raw observations; the lines differ in level and slope."
-fit <- lm(body_mass_g ~ flipper_length_mm * species, data = penguins)
+#| fig-width: 9.6
+#| fig-height: 3.9
+#| fig-alt: "Two panels showing the same penguin data as grey points with 95 percent confidence ribbons. Left: marginaleffects avg_predictions(), averaged over the sample, with the three species curves sitting about 260 grams lower. Right: ggeffects ggpredict(), holding sex at its mode. Both show non-parallel species curves, an interaction on this scale."
+fit <- lm(body_mass_g ~ flipper_length_mm * species + sex, data = penguins)
+mass_scale <- function() scale_y_continuous(limits = c(2600, 6400))
+raw_points <- function() geom_point(
+  data = penguins, aes(flipper_length_mm, body_mass_g),
+  colour = "grey65", alpha = 0.25, size = 0.6, inherit.aes = FALSE)
 
-plot_predictions(
-  fit,
-  condition = c("flipper_length_mm", "species"),
-  points = 0.35
-) +
-  labs(title = "Conditional predictions with 95% confidence bands",
+pred_mfx <- avg_predictions(fit, variables = c("flipper_length_mm", "species"))
+pred_mfx$species <- factor(pred_mfx$species,
+                           levels = c("Adelie", "Chinstrap", "Gentoo"))
+
+p_mfx <- ggplot(pred_mfx, aes(flipper_length_mm, estimate,
+                              colour = species, fill = species)) +
+  raw_points() +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.18,
+              colour = NA) +
+  geom_line(linewidth = 0.9) +
+  mass_scale() +
+  labs(title = "marginaleffects: avg_predictions()",
+       subtitle = "averaged over the sample: the sex mix",
        x = "Flipper length (mm)", y = "Body mass (g)",
-       colour = NULL, fill = NULL) +
+       colour = NULL, fill = NULL)
+
+pred_gg <- as.data.frame(
+  ggeffects::ggpredict(fit, terms = c("flipper_length_mm", "species"))
+)
+pred_gg$group <- factor(pred_gg$group,
+                        levels = c("Adelie", "Chinstrap", "Gentoo"))
+
+p_gg <- ggplot(pred_gg, aes(x, predicted, colour = group, fill = group)) +
+  raw_points() +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.18,
+              colour = NA) +
+  geom_line(linewidth = 0.9) +
+  mass_scale() +
+  labs(title = "ggeffects: ggpredict()",
+       subtitle = "typical values: sex held at its mode",
+       x = "Flipper length (mm)", y = NULL,
+       colour = NULL, fill = NULL)
+
+(p_mfx | p_gg) +
+  plot_layout(guides = "collect") &
   theme(legend.position = "bottom")
 ```
-
-::: {.callout-important}
-**Interaction is scale-dependent.** Non-parallel lines on the **link** scale indicate an interaction; on the response scale, a logit model can show divergent curves even with no link-scale interaction. Plot on the scale you want to interpret — and say which one.
-:::
-:::
-
-:::
-
-::: {.notes}
-This slide connects visualisation to modelling. The plot shows three lines with different slopes: the relation between flipper length and body mass differs by species. `ggpredict` and `marginaleffects` answer slightly different questions; both are legitimate, but the caption must say which. The confidence bands are for the mean, not for new observations — a common confusion.
-:::
-
----
-
-## Uncertainty from a model {.smaller}
 
 ::: {.columns}
 
-::: {.column width="55%"}
-```{r}
-#| label: plot-uncertainty-model
-#| fig-width: 6.4
-#| fig-height: 4.6
-#| fig-alt: "Line chart of average predicted body mass against flipper length for three species with 95 percent confidence ribbons; Gentoo predictions rise most steeply."
-ggplot(ggeffects::ggpredict(
-  fit, terms = c("flipper_length_mm", "species")
-), aes(x, predicted, colour = group, fill = group)) +
-  geom_ribbon(aes(ymin = conf.low, ymax = conf.high),
-              alpha = 0.18, colour = NA) +
-  geom_line(linewidth = 0.9) +
-  labs(title = "Average predictions with 95% CIs",
-       x = "Flipper length (mm)", y = "Body mass (g)",
-       colour = NULL, fill = NULL) +
-  theme(legend.position = "bottom")
-```
+::: {.column width="56%"}
+### Same model, two questions
 
+Both panels come from `lm(body_mass_g ~ flipper_length_mm * species + sex)` and share the same y scale. The ~260 g gap is **sex**, the predictor neither panel conditions on:
+
+- [`avg_predictions()`](https://rdrr.io/cran/marginaleffects/man/predictions.html) averages over the observed sample: every participant contributes
+- [`ggpredict()`](https://strengejacke.github.io/ggeffects/reference/ggpredict.html) reports typical values: sex is held at its mode (male)
+- both can do either — `datagrid(sex = "female")` versus `newdata = "average"`, and `condition = list(sex = "female")` versus `ggaverage()`
+
+Non-parallel lines mean the interaction is present **on this scale**; the caption must name the scale and the setting.
 :::
 
-::: {.column width="45%"}
-### Three layers of evidence
-
-A good model plot can show all three:
-
-1. **raw observations** — the data and their spread
-2. **conditional mean** — the fitted relation
-3. **uncertainty** — a confidence band for the mean
-
-```r
-plot_predictions(
-  fit,
-  condition = c("flipper_length_mm", "species"),
-  points = 0.35
-)
-```
-
+::: {.column width="44%"}
 ::: {.callout-important}
 ### Name the interval
 
-- CI for the **mean**: narrower; answers "where is the average?"
-- PI for an **observation**: wider; answers "where will a new case fall?"
-- CrI: a posterior probability statement, not a repeated-sampling one
+- **CI for the mean:** narrower; "where is the average?"
+- **PI for an observation:** wider; "where will a new case fall?"
+- **CrI:** a posterior statement, not repeated sampling
 
-[`geom_smooth(se = TRUE)`](https://ggplot2.tidyverse.org/reference/geom_smooth.html) gives a CI for the mean, not a prediction interval.
+`geom_smooth(se = TRUE)` gives a CI for the mean, not a prediction interval.
 :::
 
-:::
-
-:::
-
-::: {.notes}
-This is the same model as the previous slide, plotted with `ggpredict` rather than `marginaleffects`. The practical difference is usually small for a simple linear model, but the interpretation differs: `ggpredict` holds other predictors at typical values; `marginaleffects` averages over the sample. The band is for the mean. If you want to show where new observations fall, add a prediction interval or plot the raw points.
-:::
-
----
-
-## Marginal effects and interactions {.smaller}
-
-::: {.columns}
-
-::: {.column width="50%"}
-### Predictions, slopes, comparisons
-
-A model is a function. Different plots ask different questions of it:
-
-- **prediction:** what outcome do we expect at these values?
-- **slope:** how much does the outcome change per unit of *x*?
-- **comparison:** what is the difference between two conditions?
-
-[`marginaleffects`](https://marginaleffects.com/) computes all three on the scale you choose.
-
-```r
-plot_slopes(fit, variables = "flipper_length_mm",
-            condition = "species")
-
-plot_comparisons(fit,
-  variables = list(flipper_length_mm = c(190, 210)),
-  by = "species")
-```
-
-An interaction means the **slope** depends on the group. A plot of predictions can show it; a plot of slopes names it.
-:::
-
-::: {.column width="50%"}
-```{r}
-#| label: plot-slopes
-#| fig-width: 6.4
-#| fig-height: 4.2
-#| fig-alt: "Dot plot of the estimated slope of body mass on flipper length for Adelie, Chinstrap, and Gentoo, with confidence intervals; Gentoo has the steepest slope."
-plot_slopes(fit, variables = "flipper_length_mm",
-            condition = "species") +
-  labs(title = "Slope of body mass on flipper length",
-       x = "Species", y = "Slope (g per mm)",
-       colour = NULL, fill = NULL) +
-  theme(legend.position = "none")
-```
-
-::: {.callout-important}
-### The scale is part of the claim
-
-A slope on the link scale is not a slope on the response scale. For a logistic model, a constant log-odds slope becomes a varying probability slope. State the scale in the caption.
-:::
+**Preferred for models:** [`plot_predictions()`](https://rdrr.io/cran/marginaleffects/man/plot_predictions.html) for levels, [`plot_slopes()`](https://rdrr.io/cran/marginaleffects/man/plot_slopes.html) for rates.
 :::
 
 :::
 
 ::: {.notes}
-The model is the same as the previous two slides. Predictions show levels; slopes show rates of change. The Gentoo slope is much steeper, which is the interaction. plot_comparisons() is often easier to communicate: it reports the difference between two flipper lengths within each species. Always say whether the interval is for a prediction, a slope, or a comparison.
+Measured at 190 mm for Adelie: the sample-averaged prediction is 3,707 g, the typical-value prediction 3,965 g. The gap is the sex effect (522 g) times the share of females, so it is real and predictable. Two lessons: the two packages agree when asked the same question — `plot_predictions()` uses typical values and matches `ggpredict()` — and they answer different questions when one averages. Say in the caption whether the curves are averaged or held at typical values, and whether the interval is for the mean or for an observation. `avg_predictions()` is the averaging counterpart in marginaleffects; `plot_predictions()` is the typical-values one.
 :::
 
 ---
@@ -914,7 +923,7 @@ Themes do not change the data or the statistical claim; they change readability.
 #| label: plot-composition
 #| fig-width: 8.8
 #| fig-height: 4.6
-#| fig-alt: "Four-panel composite figure labelled A to D showing the penguin body-mass distribution, boxplots by species, the flipper-to-mass relationship, and species composition by island, with species legends at the bottom."
+#| fig-alt: "Four-panel composite figure labelled A to D showing the penguin body-mass distribution, boxplots by species, the flipper-to-mass relationship, and species composition by island, with one shared species legend at the bottom."
 p_a <- ggplot(penguins, aes(body_mass_g, fill = species)) +
   geom_density(alpha = 0.4, colour = NA, show.legend = FALSE) +
   labs(title = "Distribution", x = NULL, y = NULL)
@@ -930,11 +939,12 @@ p_c <- ggplot(penguins, aes(flipper_length_mm, body_mass_g,
 
 p_d <- penguins |> count(island, species) |>
   ggplot(aes(island, n, fill = species)) +
-  geom_col(position = "fill") +
+  geom_col(position = "fill", show.legend = FALSE) +
   labs(title = "Composition", x = NULL, y = NULL)
 
 (p_a | p_b) / (p_c | p_d) +
-  plot_annotation(tag_levels = "A") &
+  plot_annotation(tag_levels = "A") +
+  plot_layout(guides = "collect") &
   theme(legend.position = "bottom")
 ```
 
@@ -967,7 +977,7 @@ p_d <- penguins |> count(island, species) |>
 :::
 
 ::: {.notes}
-The four panels show four different views of the same data. Tags A–D let the caption refer to panels. `guides = "collect"` avoids four copies of the same legend. If the panels need different themes or scales, check whether they belong in the same figure at all.
+The four panels show four different views of the same data. Tags A–D let the caption refer to panels. Patchwork cannot merge a colour guide (points) with a fill guide (bars), so panel D's legend is suppressed and its bar colours are read from panel C's key; `guides = "collect"` then centres the single legend. If the panels need different themes or scales, check whether they belong in the same figure at all.
 :::
 
 ---
