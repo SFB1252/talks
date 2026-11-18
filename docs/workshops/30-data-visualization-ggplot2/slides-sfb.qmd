@@ -46,6 +46,17 @@ library(viridis)
 library(mgcv)
 library(broom)
 
+# Domain packages, used in the two "in practice" slides near the end.
+# install.packages(c("vowels", "phonR", "quanteda", "tidytext"))
+library(vowels)
+library(phonR)
+library(quanteda)
+library(tidytext)
+
+# Datasets shipped with the packages; library() does not attach them.
+data(ohiovowels, package = "vowels")
+data(data_corpus_inaugural, package = "quanteda")
+
 systemfonts::register_font(
   "Albert Sans",
   plain  = "../../stylesheets/fonts/AlbertSans-400.ttf",
@@ -1003,6 +1014,8 @@ Most of what this deck builds by hand has a maintained extension. Install only w
 - [`quanteda`](https://cran.r-project.org/package=quanteda) — corpus statistics that feed the plots
 - [`tidytext`](https://cran.r-project.org/package=tidytext) — token and frequency tables in tidy shape
 - [`lingtypology`](https://cran.r-project.org/package=lingtypology) — typological features and maps
+
+The next two slides run `phonR`, `vowels`, `quanteda`, and `tidytext` on real data.
 :::
 
 ::: {.column width="50%"}
@@ -1025,6 +1038,146 @@ If the extension saves you a paragraph of explanation in the methods section, ke
 
 ::: {.notes}
 The domain packages are not ggplot2 extensions; they produce the data frame that ggplot2 draws. That separation is the point: `wrassp` or `emuR` gives you F0 tracks, `phonR` normalises them, and the plotting grammar is unchanged. On choosing: the failure mode in published work is a figure that cannot be rebuilt because a helper package changed its defaults. Ask the room which packages they already use and whether the figures still render.
+:::
+
+---
+
+## In practice: acoustic data {.smaller}
+
+```{r}
+#| label: plot-domain-acoustic
+#| fig-width: 10.2
+#| fig-height: 3.5
+#| fig-alt: "Two panels of the same 426 vowel tokens from two speakers in the ohiovowels data. Left: raw F1 and F2 in Hz, where the two speakers form separate vertical bands. Right: the same tokens after Lobanov normalisation with phonR, where the two speakers overlap and the vowel space is shared."
+# Real data: 2 speakers, 24 vowel classes, 426 tokens (vowels::ohiovowels).
+# Keep only speaker-by-vowel cells with at least 5 tokens; a single token has
+# no standard deviation, and normLobanov() returns NaN for it.
+ohio <- ohiovowels |>
+  select(speaker, vowel.frame, F1, F2) |>
+  group_by(speaker, vowel.frame) |>
+  filter(n() >= 5) |>
+  ungroup() |>
+  mutate(vowel.frame = droplevels(vowel.frame))
+
+# phonR does the normalisation; the output is a plain data frame, so ggplot2
+# draws it exactly as before. This is the whole point of the separation.
+ohio_norm <- ohio |>
+  group_by(speaker) |>
+  group_modify(~ as_tibble(normLobanov(.x[, c("F1", "F2")], group = .x$vowel.frame))) |>
+  ungroup()
+
+speaker_cols <- c(JOHG09 = uzk_blue, OHDMTV_M = uzk_coral)
+
+p_raw <- ggplot(ohio, aes(F2, F1, colour = speaker)) +
+  geom_point(alpha = 0.45, size = 0.9) +
+  scale_x_reverse() + scale_y_reverse() +
+  scale_colour_manual(values = speaker_cols) +
+  labs(title = "Raw Hz", subtitle = "two speakers, two bands",
+       x = "F2 (Hz)", y = "F1 (Hz)", colour = NULL)
+
+p_norm <- ggplot(ohio_norm, aes(F2, F1, colour = speaker)) +
+  geom_point(alpha = 0.45, size = 0.9) +
+  scale_x_reverse() + scale_y_reverse() +
+  scale_colour_manual(values = speaker_cols) +
+  labs(title = "Lobanov, via phonR", subtitle = "one shared space",
+       x = "F2 (z)", y = "F1 (z)", colour = NULL)
+
+p_raw | p_norm
+```
+
+::: {.columns}
+
+::: {.column width="52%"}
+- `vowels::ohiovowels` is real data: 2 speakers, 24 vowel classes, 426 tokens after filtering.
+- Raw speaker means differ by **105 Hz in F1** and **340 Hz in F2**; after Lobanov both are exactly 0.
+- `phonR::normLobanov()` returns a plain data frame, so the plotting grammar does not change.
+:::
+
+::: {.column width="48%"}
+- `phonR::vowelMeansPolygonArea()` gives vowel-space area: 146,000 vs 74,000 Hz² here — a size difference, not a vowel difference.
+- Filter before you normalise: a cell with one token has no SD, and the function returns `NaN` rather than warning.
+- `vowels::vowelplot()` is the package's own base-graphics plot; use it to check, then rebuild in ggplot2.
+:::
+
+:::
+
+::: {.notes}
+This is the normalisation claim from the vowel-space slide, now with real data and a real package. The left panel is the problem: the two speakers occupy separate vertical bands, so a reader sees speaker, not vowel. The right panel is the same tokens after Lobanov. Note that the normalisation is per speaker and uses each speaker's own mean and SD, which is why both speaker means become exactly zero. The NaN is a genuine trap: `normLobanov()` divides by the SD of the group, and a group of one has no SD, so you get NaN silently. Filter first. The polygon area is the other phonR function worth knowing; it turns "this speaker has a bigger vowel space" into a number you can plot.
+:::
+
+---
+
+## In practice: corpus data {.smaller}
+
+```{r}
+#| label: plot-domain-corpus
+#| fig-width: 10.2
+#| fig-height: 3.5
+#| fig-alt: "Two panels from the US presidential inaugural addresses. Left: the frequency of five words per 10,000 words against year, as points with a smooth trend line; nation and freedom rise, people stays flat. Right: the seven most frequent content words for Democratic and Republican speeches as horizontal bars."
+# quanteda builds the document-feature matrix; ggplot2 draws it.
+inaug_tokens <- tokens(data_corpus_inaugural, remove_punct = TRUE, remove_numbers = TRUE)
+inaug_full   <- dfm(inaug_tokens)
+inaug_sel    <- dfm_select(inaug_full, pattern = c("freedom", "liberty", "nation", "people", "power"))
+
+inaug_counts <- convert(inaug_sel, to = "data.frame") |>
+  select(-doc_id) |>
+  mutate(Year = docvars(data_corpus_inaugural)$Year,
+         total = ntoken(inaug_full)) |>
+  pivot_longer(-c(Year, total), names_to = "word", values_to = "n") |>
+  mutate(per10k = n / total * 1e4)
+
+p_time <- ggplot(inaug_counts, aes(Year, per10k, colour = word)) +
+  geom_point(alpha = 0.3, size = 0.8) +
+  geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"),
+              se = FALSE, linewidth = 0.85) +
+  scale_colour_viridis_d(end = 0.9) +
+  labs(title = "Frequency over time", subtitle = "quanteda",
+       x = NULL, y = "Per 10k words", colour = NULL)
+
+# tidytext: one row per token, which is the shape most dplyr verbs expect.
+inaug_tidy <- convert(data_corpus_inaugural, to = "data.frame") |>
+  select(doc_id, text, Party) |>
+  unnest_tokens(word, text) |>
+  anti_join(get_stopwords(), by = "word")
+
+inaug_top <- inaug_tidy |>
+  filter(Party %in% c("Democratic", "Republican")) |>
+  count(Party, word, sort = TRUE) |>
+  group_by(Party) |>
+  slice_max(n, n = 7) |>
+  ungroup() |>
+  mutate(word = reorder_within(word, n, Party))
+
+p_party <- ggplot(inaug_top, aes(n, word, fill = Party)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~Party, scales = "free_y") +
+  scale_y_reordered() +
+  scale_fill_manual(values = c(Democratic = uzk_blue, Republican = uzk_coral)) +
+  labs(title = "Top words by party", subtitle = "tidytext",
+       x = NULL, y = NULL) +
+  theme(axis.text.y = element_text(size = rel(0.8)))
+
+p_time | p_party
+```
+
+::: {.columns}
+
+::: {.column width="52%"}
+- `quanteda` gives a document-feature matrix; `convert()` turns it into a data frame that ggplot2 can draw.
+- Divide by **document length** (`ntoken()`), not by the count of the words you selected — the first version of this figure did the latter and produced nonsense.
+- `tidytext::unnest_tokens()` gives one row per token, the shape `dplyr` verbs expect.
+:::
+
+::: {.column width="48%"}
+- `reorder_within()` + `scale_y_reordered()` are what make per-facet ordering work; without them both facets share one order.
+- `anti_join(get_stopwords())` is a one-line stop-word filter that keeps the pipeline readable.
+- Both packages stop at the data frame. The grammar, the theme, and the honesty rules are unchanged.
+:::
+
+:::
+
+::: {.notes}
+Two packages, one grammar. `quanteda` is the right tool when you want a document-feature matrix and the operations that go with it: selecting features, weighting, and per-document counts. `tidytext` is the right tool when you want one row per token so that ordinary `dplyr` verbs work. They compose: convert the corpus once and use both. The denominator mistake is worth dwelling on, because it is the most common error in corpus frequency plots: if you divide by the sum of the words you selected, every line is a share of a handful of words and the axis means nothing. Use the document length. The `reorder_within()` point is small but it is the difference between a readable faceted bar chart and a wrong one.
 :::
 
 ---

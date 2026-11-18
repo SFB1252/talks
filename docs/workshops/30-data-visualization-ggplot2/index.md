@@ -151,6 +151,15 @@ The SFB domain deck closes with a tour of extensions. The short version:
 - [tidytext](https://cran.r-project.org/package=tidytext) — token and frequency tables in tidy shape
 - [lingtypology](https://cran.r-project.org/package=lingtypology) — typological features and maps
 
+**Worked examples in the deck.** Two slides run four of these packages on real data, so the pattern is visible rather than described:
+
+| Slide | Packages | Data | What it shows |
+| --- | --- | --- | --- |
+| In practice: acoustic data | `vowels`, `phonR` | `vowels::ohiovowels` — 2 speakers, 24 vowel classes, 426 tokens | Raw Hz separates the two speakers into bands; `normLobanov()` collapses them into one shared space. Speaker means differ by 105 Hz (F1) and 340 Hz (F2) before, and by exactly 0 after. |
+| In practice: corpus data | `quanteda`, `tidytext` | `quanteda::data_corpus_inaugural` — 60 speeches, 1789–2025 | `dfm()` → `convert()` → ggplot2 for frequency over time; `unnest_tokens()` → `count()` for per-party top words. |
+
+Both slides make the same point: the domain package stops at the data frame, and the grammar, theme, and honesty rules are unchanged. Two traps are shown explicitly — `normLobanov()` returns `NaN` for a speaker-by-vowel cell with a single token, and dividing corpus counts by the sum of the *selected* words instead of by `ntoken()` produces a meaningless axis.
+
 **How to choose one**
 
 - **Does it still build?** Check the CRAN checks page and the last release date before depending on it in a paper.
