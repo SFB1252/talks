@@ -54,7 +54,13 @@ systemfonts::register_font(
 )
 knitr::opts_chunk$set(dev = "ragg_png", dev.args = list(bg = "white"))
 
-penguins <- read.csv("data/penguins.csv")
+# Simulated prominence data: F0 peak and duration per trial, with speaker,
+# item, condition, and speech rate. See scripts/make-prominence-data.R.
+prominence <- read.csv("data/prominence_trials.csv") |>
+  mutate(
+    condition = factor(condition, levels = c("plain", "focus", "contrast")),
+    sex = factor(sex, levels = c("f", "m"), labels = c("female", "male"))
+  )
 
 uzk_blue      <- "#005176"
 uzk_turquoise <- "#009dcc"
@@ -104,7 +110,7 @@ The first two decks teach the grammar and the machinery. This one covers the **d
 [`slides.qmd`](slides.html) covers the grammar and integrity; [`slides-advanced.qmd`](slides-advanced.html) covers scales, models, and publication. Everything here assumes those two.
 :::
 
-**Examples:** simulated data, marked as such in each subtitle, plus `data/penguins.csv` for the coefficient plot.
+**Examples:** simulated data, marked as such in each subtitle, plus `data/prominence_trials.csv` for the coefficient plot.
 
 **Prerequisites:** the basic workshop or equivalent experience with `ggplot2`.
 :::
@@ -153,17 +159,22 @@ contour_means <- sim_contours |>
   summarise(m = mean(f0), se = sd(f0) / sqrt(n()), .groups = "drop") |>
   mutate(lo = m - 1.96 * se, hi = m + 1.96 * se)
 
+condition_cols <- c(unaccented = uzk_muted, accented = uzk_coral)
+
 p_all <- ggplot(
   sim_contours,
   aes(time, f0, colour = condition, group = interaction(speaker, condition))
 ) +
-  geom_line(alpha = 0.25, linewidth = 0.4) +
+  geom_line(alpha = 0.35, linewidth = 0.4) +
+  scale_colour_manual(values = condition_cols) +
   labs(title = "Every speaker", x = "Normalised time", y = "F0 (Hz)") +
   theme(legend.position = "none")
 
 p_mean <- ggplot(contour_means, aes(time, m, colour = condition, fill = condition)) +
   geom_ribbon(aes(ymin = lo, ymax = hi), alpha = 0.2, colour = NA) +
   geom_line(linewidth = 0.9) +
+  scale_colour_manual(values = condition_cols) +
+  scale_fill_manual(values = condition_cols) +
   labs(title = "Mean ± 95% CI", x = "Normalised time", y = NULL)
 
 p_all | p_mean
@@ -387,7 +398,7 @@ Simulated: speaker effects vary around 8 Hz with SD 6, item effects are near zer
 #| label: plot-ratings
 #| fig-width: 9.0
 #| fig-height: 3.6
-#| fig-alt: "Stacked bars of simulated acceptability ratings, 1 to 7, for four constructions. Each bar is the share of ratings per construction, coloured from red for 1 to blue for 7; construction A is concentrated at 6 and 7, construction D spreads across 2 to 5."
+#| fig-alt: "Stacked bars of simulated acceptability ratings, 1 to 7, for four constructions. Each bar is the share of ratings per construction, coloured from red for 1 at the bottom to blue for 7 at the top; construction A is concentrated at 5 to 7, construction D spreads across 1 to 5."
 set.seed(1252)
 condition_means <- c(A = 5.6, B = 4.9, C = 4.0, D = 3.2)
 sim_ratings <- expand.grid(
@@ -408,9 +419,9 @@ rating_props <- sim_ratings |>
   mutate(p = n / sum(n)) |>
   ungroup()
 
-ggplot(rating_props, aes(construction, p, fill = factor(rating))) +
+ggplot(rating_props, aes(construction, p, fill = factor(rating, levels = 7:1))) +
   geom_col(width = 0.7) +
-  scale_fill_brewer(palette = "RdBu", direction = -1) +
+  scale_fill_brewer(palette = "RdBu", direction = -1, breaks = 1:7) +
   scale_y_continuous(labels = percent_format()) +
   labs(title = "Ratings, not means", subtitle = "simulated; 1 = unacceptable, 7 = fully acceptable",
        x = NULL, y = "Share of ratings", fill = "Rating")
@@ -444,15 +455,16 @@ The simulated means differ by less than the spread: C is centred at 4 and D at 3
 #| label: plot-proportions
 #| fig-width: 9.0
 #| fig-height: 3.4
-#| fig-alt: "Four simulated accuracy proportions with two confidence intervals each. Wald intervals (blue) extend past 100 percent for the higher proportions; Wilson intervals (coral) stay inside the bounds and are asymmetric near the edges."
+#| fig-alt: "Four simulated accuracy proportions with two confidence intervals each. Wald intervals (coral) extend past the 100 percent boundary for the higher proportions; Wilson intervals (turquoise) stay inside the bounds and are asymmetric near the edges."
 set.seed(1252)
 z <- qnorm(0.975)
 prop_data <- tibble(
   condition = c("A", "B", "C", "D"),
   n = 20,
-  true_p = c(0.95, 0.90, 0.80, 0.60)
+  true_p = c(0.95, 0.90, 0.80, 0.60),
+  hits = c(19, 18, 16, 12)
 ) |>
-  mutate(hits = rbinom(n(), n, true_p), p = hits / n) |>
+  mutate(p = hits / n) |>
   mutate(
     wald_lo = p - z * sqrt(p * (1 - p) / n),
     wald_hi = p + z * sqrt(p * (1 - p) / n),
@@ -467,8 +479,12 @@ prop_data <- tibble(
                names_pattern = "(wald|wilson)_(lo|hi)")
 
 ggplot(prop_data, aes(p, condition, colour = method)) +
+  geom_vline(xintercept = 1, linetype = 2, colour = uzk_muted) +
+  annotate("text", x = 1, y = Inf, label = "100%", vjust = 1.6, hjust = -0.1,
+           size = 3.2, colour = uzk_muted) +
   geom_pointrange(aes(xmin = lo, xmax = hi),
                   position = position_dodge(width = 0.45), size = 0.5) +
+  scale_colour_manual(values = c(wald = uzk_coral, wilson = uzk_turquoise)) +
   scale_x_continuous(limits = c(0, 1.1), labels = percent_format()) +
   labs(title = "Two intervals for the same proportion",
        subtitle = "simulated; Wald (asymptotic) runs past 100%, Wilson does not",
@@ -566,18 +582,24 @@ Simulated: one word is clustered around the middle of the corpus, the other two 
 #| label: plot-coefficients
 #| fig-width: 9.0
 #| fig-height: 3.4
-#| fig-alt: "A coefficient plot for a linear model of penguin body mass. Flipper length and Gentoo species have large positive effects with intervals far from zero; sex and Chinstrap have smaller effects; every interval is drawn with a zero reference line."
-fit_mass <- lm(body_mass_g ~ flipper_length_mm + species + sex, data = penguins)
-coef_mass <- tidy(fit_mass, conf.int = TRUE) |>
-  filter(term != "(Intercept)")
+#| fig-alt: "A coefficient plot for a linear model of F0 peak. Contrast and focus conditions have large positive effects with intervals far from zero; male sex and faster speech rate have negative effects; every interval is drawn with a zero reference line."
+fit_f0 <- lm(f0_peak ~ condition + sex + speech_rate, data = prominence)
+coef_f0 <- tidy(fit_f0, conf.int = TRUE) |>
+  filter(term != "(Intercept)") |>
+  mutate(term = recode(term,
+    "conditionfocus"    = "condition: focus",
+    "conditioncontrast" = "condition: contrast",
+    "sexmale"           = "sex: male",
+    "speech_rate"       = "speech rate (syll/s)"
+  ))
 
-ggplot(coef_mass, aes(estimate, reorder(term, estimate))) +
+ggplot(coef_f0, aes(estimate, reorder(term, estimate))) +
   geom_vline(xintercept = 0, linetype = 2, colour = uzk_muted) +
   geom_pointrange(aes(xmin = conf.low, xmax = conf.high),
                   colour = uzk_blue, size = 0.45) +
   labs(title = "The table, as a picture",
-       subtitle = "lm(body_mass_g ~ flipper_length_mm + species + sex)",
-       x = "Effect on body mass (g)", y = NULL)
+       subtitle = "lm(f0_peak ~ condition + sex + speech_rate)",
+       x = "Effect on F0 peak (Hz)", y = NULL)
 ```
 
 ::: {.columns}
@@ -597,7 +619,7 @@ ggplot(coef_mass, aes(estimate, reorder(term, estimate))) +
 :::
 
 ::: {.notes}
-A coefficient table is a list of numbers; the plot makes the comparison of magnitudes immediate. Note that flipper length is in millimetres and body mass in grams, so the coefficient is grams per millimetre; species effects are offsets relative to Adelie. For interaction models, switch to predictions.
+A coefficient table is a list of numbers; the plot makes the comparison of magnitudes immediate. Note the units: condition effects are offsets in Hz relative to the plain condition, sex is an offset in Hz relative to female speakers, and speech rate is Hz per syllable per second. Mixing units on one axis is acceptable here only because all four are Hz; if you add a duration coefficient in milliseconds, split the figure or use facets. For interaction models, switch to predictions.
 :::
 
 ---
@@ -611,7 +633,10 @@ A coefficient table is a list of numbers; the plot makes the comparison of magni
 #| fig-alt: "Three posterior densities from simulated draws: a focus effect centred at 8 Hz, a speaker standard deviation near 12, and an item standard deviation near 6. Each density carries a bar marking the 95 percent credible interval."
 set.seed(1252)
 posterior <- tibble(
-  parameter = rep(c("focus effect (Hz)", "speaker SD (Hz)", "item SD (Hz)"), each = 4000),
+  parameter = factor(
+    rep(c("focus effect (Hz)", "speaker SD (Hz)", "item SD (Hz)"), each = 4000),
+    levels = c("focus effect (Hz)", "speaker SD (Hz)", "item SD (Hz)")
+  ),
   draw = c(rnorm(4000, 8, 2.5), abs(rnorm(4000, 12, 2)), abs(rnorm(4000, 6, 1.5)))
 )
 posterior_summary <- posterior |>
@@ -747,7 +772,7 @@ Small N is the norm in experimental linguistics. A plot with participant codes a
 ```{r}
 #| label: plot-missing
 #| fig-width: 9.6
-#| fig-height: 3.4
+#| fig-height: 3.6
 #| fig-alt: "Two panels. Left: a tile grid of missingness by item and condition, showing that the focus condition loses more trials. Right: a density of reaction times on a log axis with a dashed line at the 95th percentile marking a possible exclusion threshold."
 set.seed(1252)
 trial_data <- expand.grid(
@@ -766,9 +791,12 @@ missing_item <- trial_data |>
 
 p_missing <- ggplot(missing_item, aes(item, condition, fill = p_missing)) +
   geom_tile(colour = "white", linewidth = 0.4) +
-  scale_fill_viridis_c(labels = percent_format(), option = "C") +
+  scale_fill_viridis_c(labels = percent_format(accuracy = 1), option = "C",
+                       breaks = c(0.1, 0.2, 0.3, 0.4),
+                       guide = guide_colourbar(barwidth = unit(5, "cm"))) +
   labs(title = "Missingness by item", subtitle = "simulated", x = NULL, y = NULL,
-       fill = "Missing")
+       fill = "Missing") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = rel(0.7)))
 
 p_rt <- ggplot(trial_data, aes(rt)) +
   geom_density(fill = uzk_blue, alpha = 0.25, colour = NA) +
@@ -778,7 +806,7 @@ p_rt <- ggplot(trial_data, aes(rt)) +
   labs(title = "Reaction times", subtitle = "where would you cut?",
        x = "RT (ms, log scale)", y = NULL)
 
-p_missing / p_rt
+p_missing | p_rt
 ```
 
 ::: {.columns}
@@ -837,6 +865,90 @@ Close by mapping the five points onto the four parts. The common thread is that 
 
 ---
 
+## Extensions: distributions and labels {.smaller}
+
+Most of what this deck builds by hand has a maintained extension. Install only what you need: every package is a dependency you have to keep working.
+
+| Package | What it adds | Where it helps in prominence work |
+| --- | --- | --- |
+| [`ggdist`](https://cran.r-project.org/package=ggdist) | Half-eye, dot, and gradient intervals; ROPE shading | Posterior draws, per-speaker effects, anything with a distribution |
+| [`ggridges`](https://cran.r-project.org/package=ggridges) | Ridgeline densities | F0 or duration distributions per speaker, stacked and comparable |
+| [`ggbeeswarm`](https://cran.r-project.org/package=ggbeeswarm) | Quasirandom and swarm jitter | Ratings and accuracy with few observations per cell |
+| [`ggrepel`](https://cran.r-project.org/package=ggrepel) | Labels that push away from each other | Vowel labels, speaker IDs, item names |
+| [`ggtext`](https://cran.r-project.org/package=ggtext) | Markdown and HTML in labels | *Italics*, F~0~, IPA, coloured words in titles |
+| [`ggpmisc`](https://cran.r-project.org/package=ggpmisc) | Equations, tables, and annotations as layers | Model equations and small tables inside a panel |
+| [`ggfittext`](https://cran.r-project.org/package=ggfittext) | Text that shrinks to fit its box | Labels inside bars and tiles |
+
+::: {.notes}
+`ggdist` is the one to install first if you work with Bayesian models; it replaces most hand-built interval code. `ggtext` matters for linguistics specifically: it is the practical way to get italics, subscripts, and IPA into a title without pasting plotmath expressions. `ggbeeswarm` solves the ratings problem from Part III when each cell has only a handful of observations.
+:::
+
+---
+
+## Extensions: layout, categories, colour {.smaller}
+
+| Package | What it adds | Where it helps in prominence work |
+| --- | --- | --- |
+| [`ggforce`](https://cran.r-project.org/package=ggforce) | `facet_zoom()`, `geom_mark_ellipse()`, `geom_sina()` | Zoom into a crowded vowel region without changing the scale |
+| [`ggnewscale`](https://cran.r-project.org/package=ggnewscale) | A second colour or fill scale in one plot | Points coloured by vowel plus tiles shaded by probability |
+| [`ggalluvial`](https://cran.r-project.org/package=ggalluvial) | Alluvial and Sankey flows | How annotation categories change across turns or raters |
+| [`ggmosaic`](https://cran.r-project.org/package=ggmosaic) | Mosaic plots | Two categorical variables, e.g. condition × response category |
+| [`ggseqplot`](https://cran.r-project.org/package=ggseqplot) | Sequence plots, built on `TraMineR` | Gaze, gesture phase, or annotation state over time |
+| [`ggupset`](https://cran.r-project.org/package=ggupset) | UpSet plots | Which participants or items fall in which condition sets |
+| [`ggbreak`](https://cran.r-project.org/package=ggbreak) | Axis breaks | A gap you must show — label it, or use a facet instead |
+| [`scico`](https://cran.r-project.org/package=scico) | Scientific, perceptually uniform palettes | Sequential and diverging scales that survive a projector |
+| [`ggokabeito`](https://cran.r-project.org/package=ggokabeito) | Okabe–Ito colour-blind-safe palette | Categorical scales for talks and print |
+
+::: {.notes}
+`ggforce::facet_zoom()` is the honest alternative to truncating an axis: it keeps the full range visible and adds a magnified panel. `ggnewscale` is what you reach for when one plot needs two colour meanings. `ggbreak` is listed with a warning — a broken axis is easy to misread, so prefer a facet or a log scale, and if you must break, label the break.
+:::
+
+---
+
+## Domain packages, and how to choose {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Acoustic and phonetic
+
+- [`phonR`](https://cran.r-project.org/package=phonR) — Lobanov and other normalisations, vowel plotting helpers
+- [`vowels`](https://cran.r-project.org/package=vowels) — reference vowel data and normalisation methods
+- [`wrassp`](https://cran.r-project.org/package=wrassp) — F0, formants, and intensity from the ASSP library
+- [`emuR`](https://cran.r-project.org/package=emuR) — query and plot from speech databases
+- [`praatR`](https://cran.r-project.org/package=praatR) — drive Praat from R
+
+### Corpus and text
+
+- [`quanteda`](https://cran.r-project.org/package=quanteda) — corpus statistics that feed the plots
+- [`tidytext`](https://cran.r-project.org/package=tidytext) — token and frequency tables in tidy shape
+- [`lingtypology`](https://cran.r-project.org/package=lingtypology) — typological features and maps
+:::
+
+::: {.column width="50%"}
+### How to choose an extension
+
+- **Does it still build?** Check the CRAN checks page and the last release date before you depend on it in a paper.
+- **Does it compose with the grammar?** A geom or scale you can place in a pipeline is safer than a function that returns a finished picture.
+- **Can you read the source?** Most extensions are a few hundred lines; the ones that are not are the ones that surprise you.
+- **Prefer the layer you understand.** A hand-built `geom_segment()` you can explain beats a helper you cannot.
+- **For a paper, fewer dependencies.** Reproducibility is easier when the figure needs three packages, not thirteen.
+
+::: {.callout-tip}
+### The rule of thumb
+
+If the extension saves you a paragraph of explanation in the methods section, keep it. If it hides a choice you would have to defend, build the layer yourself.
+:::
+:::
+
+:::
+
+::: {.notes}
+The domain packages are not ggplot2 extensions; they produce the data frame that ggplot2 draws. That separation is the point: `wrassp` or `emuR` gives you F0 tracks, `phonR` normalises them, and the plotting grammar is unchanged. On choosing: the failure mode in published work is a figure that cannot be rebuilt because a helper package changed its defaults. Ask the room which packages they already use and whether the figures still render.
+:::
+
+---
+
 ## Further reading {.smaller}
 
 ::: {.columns}
@@ -849,6 +961,7 @@ Close by mapping the five points onto the four parts. The common thread is that 
 - [`mgcv`](https://cran.r-project.org/package=mgcv) and [`gratia`](https://gavinsimpson.github.io/gratia/) for GAMM plots
 - [`ggdist`](https://mjskay.github.io/ggdist/) for posterior and uncertainty geoms [@kay2024ggdist]
 - [`marginaleffects`](https://marginaleffects.com/) for predictions and slopes
+- [ggplot2 extension gallery](https://exts.ggplot2.tidyverse.org/gallery/) — browse by geom, scale, or task
 :::
 
 ::: {.column width="50%"}
@@ -857,15 +970,11 @@ Close by mapping the five points onto the four parts. The common thread is that 
 - [`phonTools`](https://cran.r-project.org/package=phonTools) and [`praatR`](https://cran.r-project.org/package=praatR) for acoustic data in R
 - [`naniar`](https://naniar.njtierney.com/) for missing-data visualisation
 - [`viridis`](https://sjmgarnier.github.io/viridis/) and [ColorBrewer](https://colorbrewer2.org/) for palettes
-- SFB 1252 [Open Science](https://sfb1252.uni-koeln.de/open-science/) — data sharing and sustainability
 - [`reprex`](https://reprex.tidyverse.org/) for asking questions with a reproducible example
 :::
 
 :::
 
-::: {.notes}
-Point people at the SFB Open Science pages for data-sharing questions, and at the ggplot2 book for the grammar. The domain packages are starting points; the plotting advice in this deck applies to whatever tool produces the data frame.
-:::
 
 ---
 
@@ -874,9 +983,9 @@ Point people at the SFB Open Science pages for data-sharing questions, and at th
 ::: {.columns}
 
 ::: {.column width="58%"}
-This deck was written for the SFB 1252 "Prominence in Language" workshop series. Thanks to the [Data Center for the Humanities (DCH)](https://dch.phil-fak.uni-koeln.de/) and the [Cologne Competence Center for Research Data Management (C3RDM)](https://fdm.uni-koeln.de/home) for advice on content, and to the open-source community behind `ggplot2`, `mgcv`, `patchwork`, `scales`, and `viridis`.
+This deck was written for the SFB 1252 "Prominence in Language" workshop series.
 
-The examples are simulated unless stated otherwise; the penguin data are from [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/).
+The examples are simulated unless stated otherwise; `data/prominence_trials.csv` is generated by `scripts/make-prominence-data.R` and is not a measurement of any real speaker.
 
 **Contact:** [job.schepens@uni-koeln.de](mailto:job.schepens@uni-koeln.de)
 
