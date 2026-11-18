@@ -319,9 +319,10 @@ The reversed axes are the first thing reviewers notice. The second is normalisat
 #| label: plot-individuals
 #| fig-width: 9.6
 #| fig-height: 4.2
-#| fig-alt: "Two caterpillar plots of simulated effects. Left: the focus-minus-plain F0 difference for each of 20 speakers with 95 percent confidence intervals, ordered by size, some near zero and some above 15 Hz. Right: the same for 20 items, less variable."
+#| fig-alt: "Two caterpillar plots of simulated effects. Left: the focus-minus-plain F0 difference for each of 20 speakers with 95 percent confidence intervals, ordered by size, ranging from about minus 2 to plus 27 Hz, with two intervals crossing zero. Right: the same for 20 items, ranging from about 2 to 24 Hz, with three intervals crossing zero."
 set.seed(1252)
 speaker_effect <- rnorm(20, 8, 6)
+item_effect <- rnorm(20, 0, 6)
 sim_trials <- expand.grid(
   speaker = factor(sprintf("S%02d", 1:20)),
   item = factor(sprintf("I%02d", 1:20)),
@@ -331,7 +332,7 @@ sim_trials <- expand.grid(
     s = as.integer(speaker),
     i = as.integer(item),
     f0 = 120 + rnorm(20, 0, 12)[s] + rnorm(20, 0, 6)[i] +
-      speaker_effect[s] * (condition == "focus") +
+      (speaker_effect[s] + item_effect[i]) * (condition == "focus") +
       rnorm(n(), 0, 5)
   )
 
@@ -381,7 +382,7 @@ p_speakers | p_items
 :::
 
 ::: {.notes}
-Simulated: speaker effects vary around 8 Hz with SD 6, item effects are near zero. The figure makes the difference between "the effect exists" and "the effect is general" visible. This is the visual counterpart of random slopes and by-unit variability; it also prepares the reader for a mixed model.
+Simulated: speaker effects vary around 8 Hz with SD 6; item effects vary around 0 Hz with SD 6, so the item panel is centred on zero and three of its intervals cross it. The figure makes the difference between "the effect exists" and "the effect is general" visible: a focus effect that holds for speakers but not for words generalises to speakers, not to the lexicon. This is the visual counterpart of random slopes and by-unit variability; it also prepares the reader for a mixed model.
 :::
 
 ---
@@ -879,6 +880,12 @@ Most of what this deck builds by hand has a maintained extension. Install only w
 | [`ggpmisc`](https://cran.r-project.org/package=ggpmisc) | Equations, tables, and annotations as layers | Model equations and small tables inside a panel |
 | [`ggfittext`](https://cran.r-project.org/package=ggfittext) | Text that shrinks to fit its box | Labels inside bars and tiles |
 
+::: {.callout-tip}
+### Start with two
+
+`ggdist` and `ggtext` cover most of what this deck builds by hand. Add `ggbeeswarm` if your cells are small, and `ggrepel` the first time two vowel labels collide.
+:::
+
 ::: {.notes}
 `ggdist` is the one to install first if you work with Bayesian models; it replaces most hand-built interval code. `ggtext` matters for linguistics specifically: it is the practical way to get italics, subscripts, and IPA into a title without pasting plotmath expressions. `ggbeeswarm` solves the ratings problem from Part III when each cell has only a handful of observations.
 :::
@@ -898,6 +905,12 @@ Most of what this deck builds by hand has a maintained extension. Install only w
 | [`ggbreak`](https://cran.r-project.org/package=ggbreak) | Axis breaks | A gap you must show — label it, or use a facet instead |
 | [`scico`](https://cran.r-project.org/package=scico) | Scientific, perceptually uniform palettes | Sequential and diverging scales that survive a projector |
 | [`ggokabeito`](https://cran.r-project.org/package=ggokabeito) | Okabe–Ito colour-blind-safe palette | Categorical scales for talks and print |
+
+::: {.callout-warning}
+### Two to treat with care
+
+`ggbreak` hides part of the axis; a reader who skips the label will misread the figure. `ggalluvial` and `ggseqplot` are excellent but assume a data shape (one row per transition or per time point) that most acoustic data frames do not have yet — reshape first, then plot.
+:::
 
 ::: {.notes}
 `ggforce::facet_zoom()` is the honest alternative to truncating an axis: it keeps the full range visible and adds a magnified panel. `ggnewscale` is what you reach for when one plot needs two colour meanings. `ggbreak` is listed with a warning — a broken axis is easy to misread, so prefer a facet or a log scale, and if you must break, label the break.
