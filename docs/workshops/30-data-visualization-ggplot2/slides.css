@@ -1,0 +1,93 @@
+/* Shared slide styles for the Workshop 30 decks (core + advanced).
+   Included with `css: slides.css` in both .qmd files. */
+
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-300.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-500.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-600.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../../stylesheets/fonts/AlbertSans-700.ttf") format("truetype");
+}
+
+/* Compact, readable slides */
+.reveal .slides section.smaller {
+  font-size: 0.66em;
+}
+.reveal table {
+  font-size: 0.70em;
+}
+.reveal pre code {
+  font-size: 0.60em;
+  line-height: 1.25;
+}
+.reveal .callout {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  padding: 0.3em 0.6em;
+  font-size: 0.80em;
+}
+.reveal h2 {
+  margin-top: 0;
+  margin-bottom: 0.35em;
+}
+.reveal h3 {
+  margin-top: 0.1em;
+  margin-bottom: 0.25em;
+}
+.reveal p {
+  margin-bottom: 0.45em;
+}
+.reveal ul, .reveal ol {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+.reveal li {
+  margin-top: 0.08em;
+  margin-bottom: 0.08em;
+}
+.reveal .columns {
+  gap: 1.1em;
+}
+.reveal .cell-output img {
+  border-radius: 4px;
+}
+
+/* Two-column reference list so the bibliography fits one slide */
+#refs {
+  column-count: 2;
+  column-gap: 1.6em;
+  font-size: 0.60em;
+  line-height: 1.25;
+}
+#refs .csl-entry {
+  break-inside: avoid;
+  margin-bottom: 0.35em;
+}

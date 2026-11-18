@@ -24,6 +24,7 @@ format:
     transition: none
     background-transition: none
     code-overflow: wrap
+    css: slides.css
 bibliography: "references.bib"
 csl: "../24-latex-thesis-workflows/apa.csl"
 execute:
@@ -80,99 +81,6 @@ theme_set(
 ---
 
 ## Overview {.smaller}
-
-<style>
-@font-face {
-  font-family: 'Albert Sans';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("../../stylesheets/fonts/AlbertSans-300.ttf") format("truetype");
-}
-@font-face {
-  font-family: 'Albert Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("../../stylesheets/fonts/AlbertSans-400.ttf") format("truetype");
-}
-@font-face {
-  font-family: 'Albert Sans';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("../../stylesheets/fonts/AlbertSans-500.ttf") format("truetype");
-}
-@font-face {
-  font-family: 'Albert Sans';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("../../stylesheets/fonts/AlbertSans-600.ttf") format("truetype");
-}
-@font-face {
-  font-family: 'Albert Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("../../stylesheets/fonts/AlbertSans-700.ttf") format("truetype");
-}
-
-/* Compact, readable slides */
-.reveal .slides section.smaller {
-  font-size: 0.66em;
-}
-.reveal table {
-  font-size: 0.70em;
-}
-.reveal pre code {
-  font-size: 0.60em;
-  line-height: 1.25;
-}
-.reveal .callout {
-  margin-top: 0.25em;
-  margin-bottom: 0.25em;
-  padding: 0.3em 0.6em;
-  font-size: 0.80em;
-}
-.reveal h2 {
-  margin-top: 0;
-  margin-bottom: 0.35em;
-}
-.reveal h3 {
-  margin-top: 0.1em;
-  margin-bottom: 0.25em;
-}
-.reveal p {
-  margin-bottom: 0.45em;
-}
-.reveal ul, .reveal ol {
-  margin-top: 0.1em;
-  margin-bottom: 0.1em;
-}
-.reveal li {
-  margin-top: 0.08em;
-  margin-bottom: 0.08em;
-}
-.reveal .columns {
-  gap: 1.1em;
-}
-.reveal .cell-output img {
-  border-radius: 4px;
-}
-
-/* Two-column reference list so the bibliography fits one slide */
-#refs {
-  column-count: 2;
-  column-gap: 1.6em;
-  font-size: 0.60em;
-  line-height: 1.25;
-}
-#refs .csl-entry {
-  break-inside: avoid;
-  margin-bottom: 0.35em;
-}
-</style>
 
 ::: {.columns}
 
@@ -275,70 +183,72 @@ Use this slide as a checkpoint, not a re-teach. Ask for one example of a plot th
 
 ---
 
-## Scales: the bridge from data to pixels {.smaller}
+## Transform before or after the stat {.smaller}
 
 ```{r}
-#| label: plot-scales
+#| label: plot-transform
 #| fig-width: 9.6
-#| fig-height: 3.5
-#| fig-alt: "Two bubble plots of life expectancy against GDP per capita in 2007: the linear x-axis compresses most countries at the left, while the log10 axis spreads them out and reveals a positive relation."
+#| fig-height: 3.6
+#| fig-alt: "Two scatter plots of life expectancy against GDP per capita in 2007. Left: scale_x_log10(), where the fitted line is straight because the model was fitted to log GDP. Right: coord_trans(x = 'log10') with the same raw-scale linear model, which appears curved on the log axis."
 g2007 <- gapminder |> filter(year == 2007)
 dollar_k <- function(x) paste0("$", format(x / 1000, trim = TRUE, scientific = FALSE), "k")
 
-p_linear <- ggplot(g2007, aes(gdpPercap, lifeExp,
-                              colour = continent, size = pop)) +
-  geom_point(alpha = 0.7) +
-  scale_size_area(max_size = 7, guide = "none") +
-  scale_x_continuous(labels = dollar_k,
-                     breaks = c(0, 20000, 40000, 60000, 80000)) +
-  labs(title = "Linear x scale", x = "GDP per capita",
-       y = "Life expectancy", colour = NULL) +
-  theme(legend.position = "right")
+p_scale <- ggplot(g2007, aes(gdpPercap, lifeExp)) +
+  geom_point(alpha = 0.5, colour = uzk_blue) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE,
+              colour = uzk_coral, linewidth = 0.9) +
+  scale_x_log10(breaks = c(1000, 3000, 10000, 30000), labels = dollar_k) +
+  labs(title = "scale_x_log10()",
+       subtitle = "the model is fitted to log GDP: a straight line",
+       x = "GDP per capita", y = "Life expectancy")
 
-p_log <- p_linear +
-  scale_x_log10(labels = dollar_k,
-                breaks = c(1000, 3000, 10000, 30000, 100000)) +
-  labs(title = "Log10 x scale")
+p_coord <- ggplot(g2007, aes(gdpPercap, lifeExp)) +
+  geom_point(alpha = 0.5, colour = uzk_blue) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE,
+              colour = uzk_coral, linewidth = 0.9) +
+  scale_x_continuous(breaks = c(1000, 3000, 10000, 30000), labels = dollar_k) +
+  coord_trans(x = "log10") +
+  labs(title = 'coord_trans(x = "log10")',
+       subtitle = "the same raw-scale model, warped by the axis",
+       x = "GDP per capita", y = NULL)
 
-p_linear | p_log
+p_scale | p_coord
 ```
 
 ::: {.columns}
 
 ::: {.column width="55%"}
-### A scale is a function — with an inverse
+### Where the transformation sits changes the model
 
-- **domain:** the data range
-- **range:** the visual range (pixels, colours, sizes)
-- **transformation:** linear, log, reverse, sqrt
-- **breaks and labels:** the reader-facing grid
-- **guide:** axis or legend
+- `scale_x_log10()` transforms the **data before the stat**: the smooth is fitted to log GDP
+- `coord_trans()` transforms the **plane after the stat**: the smooth is fitted to raw GDP and the axis warps the result
+- Both panels plot life expectancy against income; only the left one is a log-linear model
 
-`scale_*_*()` names follow `scale_<aesthetic>_<type>()`; scales also create the **guides** that let readers invert the mapping.
+Breaks and labels remain scale arguments in both cases. The scale form and the coordinate form are not interchangeable, even though the axes look similar.
 :::
 
 ::: {.column width="45%"}
 ```r
+# data transformed, then modelled
 scale_x_log10()
-scale_colour_viridis_d()
-scale_fill_brewer(palette = "Set2")
-scale_size_area()
-scale_alpha_manual(values = c(.3, .7))
+
+# model on the raw scale,
+# display transformed
+coord_trans(x = "log10")
 ```
 
 ::: {.callout-important}
-### Transformations happen before stats
+### The caption must name the model
 
-`scale_x_log10()` changes the **data** seen by the stat, not just the axis. A smooth on a log scale is a different model from a smooth on the raw scale.
+"Life expectancy rises with income" means something different in the two panels: one is a log-linear relation, the other a linear one drawn on a log axis.
 :::
 :::
 
 :::
 
 ::: {.notes}
-The gapminder example makes the log scale intuitive: GDP per capita spans several orders of magnitude, so the linear scale compresses most countries into the left edge. On the log scale, the relation with life expectancy becomes visible. Note that the size scale is also a scale, and size is a less accurate encoding than position.
+Same data, same geom, same formula; only the placement of the log10 differs. On the left it acts before the smoother, so the model is linear in log GDP and the line is straight. On the right it acts after the smoother, so the model is linear in GDP and the line curves upward on screen. Ask which panel answers "does each doubling of income buy the same gain in life expectancy?" — the left one. This is the same mechanism as on the limits slide: a scale changes the data the stat sees; a coordinate changes only the view.
 :::
-
 ---
 
 ## Limits are not zoom {.smaller}
@@ -425,7 +335,7 @@ p_bar_pie | p_bar_flat
 - `coord_fixed(ratio = ...)`: lock the aspect ratio; essential for maps and shapes
 - `coord_flip()`: swap axes (now usually replaced by mapping the discrete variable to *y*)
 - `coord_polar()`: wrap a linear axis around a circle
-- `coord_radial()`: modern radial coordinates with partial circles
+- `coord_radial()`: modern radial coordinates with partial circles (ggplot2 ≥ 3.5.0)
 :::
 
 ::: {.column width="50%"}
@@ -518,7 +428,7 @@ p <- ggplot(penguins,
             aes(flipper_length_mm, body_mass_g)) +
   geom_point()
 
-class(p)                 # "ggplot"
+class(p)                 # "gg" "ggplot"
 length(p$layers)         # 1
 p                        # renders now
 ggplot_build(p)$data[[1]] # computed values
@@ -580,7 +490,7 @@ Every geom has a default stat; every stat has a default geom.
 | `geom_smooth` | `stat_smooth` | `y`, `ymin`, `ymax`, `se` |
 | `geom_density` | `stat_density` | `density`, `count`, `scaled` |
 
-`stat_ecdf()` is the exception: its default geom is `geom_step()`.
+`stat_ecdf()` has no `geom_ecdf()`: its default geom is `geom_step()`.
 
 `after_stat()` maps a **computed** variable; `..count..` is the older syntax.
 
@@ -598,7 +508,9 @@ ggplot(diamonds, aes(cut)) +
                group = 1))
 
 # identity: the data already contain y
-ggplot(penguins, aes(species, n)) +
+penguins |>
+  count(species) |>
+  ggplot(aes(species, n)) +
   geom_col()
 ```
 
@@ -626,60 +538,62 @@ This is where the grammar pays off: `geom_bar()` vs `geom_col()` is not a quirky
 
 ---
 
-## Position adjustments {.smaller}
+## Positions for points: jitter and jitterdodge {.smaller}
 
 ```{r}
-#| label: plot-positions
-#| fig-width: 9.6
+#| label: plot-jitter
+#| fig-width: 9.2
 #| fig-height: 3.6
-#| fig-alt: "Four bar charts of penguin counts by species and sex using identity, dodge, stack, and fill positions, showing overlap, side-by-side comparison, totals, and proportions."
-pos_data <- penguins |> filter(!is.na(sex))
+#| fig-alt: "Two scatter plots of body mass by species and sex. Left, position_jitter() spreads the points but female and male observations still overlap; right, position_jitterdodge() spreads and separates the sexes within each species."
+pos_data <- penguins |> filter(!is.na(sex), !is.na(body_mass_g))
 
-p_identity <- ggplot(pos_data, aes(species, fill = sex)) +
-  geom_bar(position = "identity", alpha = 0.55) +
-  labs(title = "identity (overlap)", x = NULL, y = NULL)
+p_jitter <- ggplot(pos_data, aes(species, body_mass_g, colour = sex)) +
+  geom_point(position = position_jitter(width = 0.15, height = 0, seed = 1),
+             alpha = 0.5, size = 1.6) +
+  labs(title = "position_jitter()",
+       subtitle = "spread, but the sexes still mix", x = NULL, y = "Body mass (g)")
 
-p_dodge <- ggplot(pos_data, aes(species, fill = sex)) +
-  geom_bar(position = "dodge") +
-  labs(title = "dodge (side by side)", x = NULL, y = NULL)
+p_jd <- ggplot(pos_data, aes(species, body_mass_g, colour = sex)) +
+  geom_point(position = position_jitterdodge(jitter.width = 0.12,
+                                             dodge.width = 0.75,
+                                             seed = 1),
+             alpha = 0.5, size = 1.6) +
+  labs(title = "position_jitterdodge()",
+       subtitle = "jitter inside each dodge slot", x = NULL, y = NULL)
 
-p_stack <- ggplot(pos_data, aes(species, fill = sex)) +
-  geom_bar(position = "stack") +
-  labs(title = "stack (parts of total)", x = NULL, y = NULL)
-
-p_fill <- ggplot(pos_data, aes(species, fill = sex)) +
-  geom_bar(position = "fill") +
-  labs(title = "fill (proportions)", x = NULL, y = NULL)
-
-(p_identity | p_dodge) / (p_stack | p_fill)
+p_jitter | p_jd
 ```
 
 ::: {.columns}
 
-::: {.column width="50%"}
-- `identity`: marks overlap; use transparency to reveal density
-- `dodge`: compare adjacent categories; `preserve = "single"` when a group is absent
-- `stack`: totals; only the bottom segment shares a baseline
+::: {.column width="52%"}
+### Positions also apply to points
+
+The core deck used positions for bars; points need them more often, because measurements are rounded and marks coincide.
+
+- `position_jitter(width, height)`: spreads coincident points
+- `position_jitterdodge()`: jitter **inside** dodged groups — the standard for paired groups
+- `seed` fixes the layout, so the figure is reproducible
+- `position_dodge2(preserve = "single")`: dodges boxes and violins and closes gaps left by absent groups
 :::
 
-::: {.column width="50%"}
-- `fill`: conditional proportions; the total disappears
-- `jitter` / `jitterdodge`: separate coincident points
-- `position_*()` operates **after** the stat
+::: {.column width="48%"}
+- `geom_jitter()` is `geom_point(position = "jitter")`, with the same caveats
+- jitter hides exact values: do not use it when the precise coordinate is the message
+- positions run **after** the stat: counts and fits are unchanged, only the marks move
 
-::: {.callout-warning}
-### Stacking changes the question
+::: {.callout-note}
+### Jitter is a drawing device, not a transformation
 
-A stacked bar encodes **counts**; a filled bar encodes **proportions**. They are not interchangeable.
+The data do not change; only the drawn position does. If a reader might take the offsets for measurements, say so in the caption.
 :::
 :::
 
 :::
 
 ::: {.notes}
-The four panels use the same data and the same stat. Only the position changes. Ask which panel answers "which species has more females?" and which answers "what proportion of each species is female?" The answer differs, and the visualisation should differ too.
+The left panel spreads the points, but the colour groups still overlap, so the eye cannot compare the sexes within a species. The right panel separates the sexes and keeps the spread. The seed argument matters: without it, every render scrambles the points, which breaks reproducibility of the figure. The core deck showed identity, dodge, stack, and fill for bars; here the same machinery is applied to points, where it is needed more often.
 :::
-
 ---
 
 ## Part III: Models and uncertainty {.center}
@@ -988,7 +902,7 @@ Themes do not change the data or the statistical claim; they change readability.
 #| label: plot-composition
 #| fig-width: 8.8
 #| fig-height: 4.6
-#| fig-alt: "Four-panel composite figure labelled A to D showing the penguin body-mass distribution, boxplots by species, the flipper-to-mass relationship, and species composition by island, with one shared legend."
+#| fig-alt: "Four-panel composite figure labelled A to D showing the penguin body-mass distribution, boxplots by species, the flipper-to-mass relationship, and species composition by island, with species legends at the bottom."
 p_a <- ggplot(penguins, aes(body_mass_g, fill = species)) +
   geom_density(alpha = 0.4, colour = NA, show.legend = FALSE) +
   labs(title = "Distribution", x = NULL, y = NULL)
@@ -1032,7 +946,7 @@ p_d <- penguins |> count(island, species) |>
   )
 ```
 
-- `plot_layout(guides = "collect")`: one shared legend
+- `plot_layout(guides = "collect")`: collects the panels' guides into one legend row; identical guides merge
 - `& theme(...)`: apply a theme to every panel
 - `cowplot::plot_grid()` and `ggdraw()` are alternatives, especially for insets
 - compose panels only when they answer **one** question
