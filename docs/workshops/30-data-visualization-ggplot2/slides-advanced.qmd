@@ -561,7 +561,8 @@ p_jd <- ggplot(pos_data, aes(species, body_mass_g, colour = sex)) +
   labs(title = "position_jitterdodge()",
        subtitle = "jitter inside each dodge slot", x = NULL, y = NULL)
 
-p_jitter | p_jd
+(p_jitter | p_jd) +
+  plot_layout(guides = "collect")
 ```
 
 ::: {.columns}
@@ -1272,8 +1273,6 @@ The methods references are the ones to read next if you plot models. The composi
 ::: {.columns}
 
 ::: {.column width="58%"}
-We thank the [Data Center for the Humanities (DCH)](https://dch.phil-fak.uni-koeln.de/) and the [Cologne Competence Center for Research Data Management (C3RDM)](https://fdm.uni-koeln.de/home) for their input and advice on the content of this workshop.
-
 Thanks also to the open-source community behind `ggplot2`, the tidyverse, `patchwork`, `ggeffects`, `marginaleffects`, and the data providers: [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/), [Gapminder](https://www.gapminder.org/), [Software Carpentry](https://swcarpentry.github.io/), [Data Carpentry](https://datacarpentry.github.io/), and [datasauRus](https://github.com/lockedata/datasauRus).
 
 **Contact:** [job.schepens@uni-koeln.de](mailto:job.schepens@uni-koeln.de)

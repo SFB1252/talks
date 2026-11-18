@@ -702,7 +702,10 @@ p_fill <- ggplot(pos_data, aes(species, fill = sex)) +
   geom_bar(position = "fill") +
   labs(title = "fill (proportions)", x = NULL, y = NULL)
 
-(p_identity | p_dodge) / (p_stack | p_fill)
+(p_identity | p_dodge) / (p_stack | p_fill) +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "right") &
+  guides(fill = guide_legend(override.aes = list(alpha = 1)))
 ```
 
 ::: {.columns}
@@ -728,7 +731,7 @@ A stacked bar encodes **counts**; a filled bar encodes **proportions**. They are
 :::
 
 ::: {.notes}
-The four panels use the same data and the same stat. Only the position changes. Ask which panel answers "which species has more females?" and which answers "what proportion of each species is female?" The answer differs, and the visualisation should differ too.
+The four panels use the same data and the same stat. Only the position changes. One collected legend now serves all four panels; the alpha override keeps the keys readable even though the identity panel draws its bars semi-transparently. Ask which panel answers "which species has more females?" and which answers "what proportion of each species is female?" The answer differs, and the visualisation should differ too.
 :::
 
 ---
@@ -758,7 +761,9 @@ p_log <- p_linear +
                 breaks = c(1000, 3000, 10000, 30000, 100000)) +
   labs(title = "Log10 x scale")
 
-p_linear | p_log
+(p_linear | p_log) +
+  plot_layout(guides = "collect") &
+  theme(legend.position = "right")
 ```
 
 ::: {.columns}
@@ -984,6 +989,82 @@ The two panels show the same means. Only the y-axis changes. This is the most co
 | **Area for counts** | area grows quadratically, so a 2× value looks 4× larger | length or position |
 | **Rainbow palettes** | false boundaries, not perceptually uniform, not CVD-safe | viridis or a documented palette |
 
+```{r}
+#| label: plot-traps
+#| fig-width: 9.6
+#| fig-height: 3.4
+#| fig-alt: "Four examples of the traps. Top left: two series on dual y-axes, whose arbitrary alignment makes their trends look parallel. Top right: a 3-D bar chart whose depth distorts the bars. Bottom left: three circles where doubling the radius quadruples the ink, labelled 1x, 2x, 4x and ink 1x, 4x, 16x. Bottom right: a scatter plot coloured with a rainbow palette, creating false boundaries between continents."
+trap_theme <- theme_minimal(base_size = 10, base_family = "Albert Sans") +
+  theme(panel.grid.minor = element_blank(),
+        legend.position = "none",
+        plot.title = element_text(face = "bold", size = rel(1.05)))
+
+# 1. dual y-axes: the alignment of the scales is arbitrary
+de <- gapminder |> filter(country == "Germany")
+scale_gdp <- max(de$lifeExp) / max(de$gdpPercap)
+
+p_dual <- ggplot(de, aes(year)) +
+  geom_line(aes(y = lifeExp), colour = uzk_blue, linewidth = 0.8) +
+  geom_line(aes(y = gdpPercap * scale_gdp), colour = uzk_coral, linewidth = 0.8) +
+  scale_y_continuous(sec.axis = sec_axis(~ . / scale_gdp,
+                                         name = "GDP per capita")) +
+  labs(title = "Dual y-axes", x = NULL, y = "Life expectancy") +
+  trap_theme
+
+# 2. a 3-D bar chart, drawn by hand: depth distorts and hides
+bars <- data.frame(cat = factor(c("A", "B", "C")), value = c(55, 38, 72)) |>
+  mutate(x = as.numeric(cat), xmin = x - 0.3, xmax = x + 0.3, ymax = value)
+dx <- 0.25
+dy <- 5
+faces <- do.call(rbind, lapply(seq_len(nrow(bars)), function(i) {
+  r <- bars[i, ]
+  data.frame(
+    id = as.character(r$cat),
+    face = rep(c("front", "top", "side"), each = 4),
+    x = c(r$xmin, r$xmax, r$xmax, r$xmin,
+          r$xmin, r$xmin + dx, r$xmax + dx, r$xmax,
+          r$xmax, r$xmax, r$xmax + dx, r$xmax + dx),
+    y = c(0, 0, r$ymax, r$ymax,
+          r$ymax, r$ymax + dy, r$ymax + dy, r$ymax,
+          0, r$ymax, r$ymax + dy, dy)
+  )
+}))
+
+p_3d <- ggplot(faces, aes(x, y, group = interaction(id, face), fill = face)) +
+  geom_polygon(colour = "white", linewidth = 0.2) +
+  scale_fill_manual(values = c(front = uzk_blue, top = "#3d7f9e", side = "#7faec4")) +
+  labs(title = "3-D bars") +
+  theme_void(base_size = 10) +
+  theme(legend.position = "none",
+        plot.title = element_text(face = "bold", size = rel(1.05)))
+
+# 3. radius encoding: the ink grows quadratically
+sizes <- data.frame(value = c(1, 2, 4), label = c("1x", "2x", "4x"),
+                    ink = c("1x", "4x", "16x"))
+
+p_area <- ggplot(sizes, aes(value, 1, size = value)) +
+  geom_point(colour = uzk_blue) +
+  geom_text(aes(label = label), y = 1.055, size = 3, fontface = "bold") +
+  geom_text(aes(label = paste("ink", ink)), y = 0.945, size = 2.8, colour = "grey35") +
+  scale_size(range = c(3, 15), guide = "none") +
+  scale_x_continuous(limits = c(0.5, 4.5)) +
+  ylim(0.93, 1.07) +
+  labs(title = "Area for counts") +
+  trap_theme +
+  theme(axis.text = element_blank(), axis.title = element_blank())
+
+# 4. a rainbow palette invents boundaries
+p_rainbow <- ggplot(filter(gapminder, year == 2007),
+                    aes(gdpPercap, lifeExp, colour = continent)) +
+  geom_point(size = 1.5, alpha = 0.85) +
+  scale_x_log10() +
+  scale_colour_manual(values = rainbow(5)) +
+  labs(title = "Rainbow palette", x = NULL, y = NULL) +
+  trap_theme
+
+(p_dual | p_3d) / (p_area | p_rainbow)
+```
+
 ::: {.callout-note}
 ### Above all else, show the data
 
@@ -991,7 +1072,7 @@ Every trap replaces a direct encoding with an indirect one. The reader should be
 :::
 
 ::: {.notes}
-Dual axes are seductive because they can make two unrelated series look correlated. 3-D pie charts and bars are common in office software and should be avoided. Area encodings are quadratic; if you must use them, label the values. Rainbow palettes are the most common colour error in science.
+The panels draw each trap deliberately: the dual axis aligns two arbitrary scales, the 3-D bars distort by depth, the circles grow by radius, and the rainbow invents boundaries. Dual axes are seductive because they can make two unrelated series look correlated. 3-D pie charts and bars are common in office software and should be avoided. Area encodings are quadratic; if you must use them, label the values. Rainbow palettes are the most common colour error in science.
 :::
 
 ---
@@ -1061,22 +1142,100 @@ The diamonds data have 53,940 rows; we sample 12,000 for speed. The plain scatte
 ```{r}
 #| label: plot-colour
 #| fig-width: 9.6
-#| fig-height: 3.2
-#| fig-alt: "Three versions of the same species scatter plot using the default hue, viridis, and Okabe-Ito colour palettes."
-p_col <- ggplot(penguins, aes(bill_length_mm, body_mass_g,
-                              colour = species)) +
-  geom_point(alpha = 0.8, size = 1.8) +
-  labs(x = NULL, y = NULL) +
-  theme(legend.position = "none")
+#| fig-height: 3.9
+#| fig-alt: "Twelve panels in two rows, six pairs of bad and good colour choices. Top row, coral titles: a rainbow gradient on ordered life expectancy, red-green for two species, eight arbitrary hues for eight diamond grades, hue repeating the x categories, a sequential scale on signed deviations, and pastel colours on white. Bottom row, blue titles: viridis for the same ordered values, blue-orange for the same species, an ordered scale for the grades, grey bars with one highlight, a diverging scale centred at zero, and a higher-contrast qualitative palette."
+bad_t <- theme_minimal(base_size = 8, base_family = "Albert Sans") +
+  theme(panel.grid.minor = element_blank(),
+        legend.position = "none",
+        plot.title = element_text(face = "bold", size = rel(1.12),
+                                  colour = uzk_coral))
+good_t <- theme_minimal(base_size = 8, base_family = "Albert Sans") +
+  theme(panel.grid.minor = element_blank(),
+        legend.position = "none",
+        plot.title = element_text(face = "bold", size = rel(1.12),
+                                  colour = uzk_blue))
 
-p_default <- p_col + labs(title = "Default hue")
-p_viridis <- p_col + scale_colour_viridis_d(end = 0.85) +
-  labs(title = "Viridis")
-p_okabe <- p_col +
-  scale_colour_manual(values = c("#E69F00", "#56B4E9", "#009E73")) +
-  labs(title = "Okabe–Ito")
+g2007 <- gapminder |> filter(year == 2007)
+dev <- g2007 |> mutate(dev = lifeExp - mean(lifeExp))
+dev_max <- max(abs(dev$dev))
+two <- penguins |> filter(species %in% c("Adelie", "Gentoo"))
+set.seed(7)
+eight <- diamonds[sample(nrow(diamonds), 3000), ]
+cuts <- diamonds |> count(cut)
 
-p_default | p_viridis | p_okabe
+dollar_k <- function(x) paste0("$", format(x / 1000, trim = TRUE, scientific = FALSE), "k")
+log_x <- function() scale_x_log10(breaks = c(1000, 10000), labels = dollar_k)
+bars_theme <- theme(axis.text.x = element_text(angle = 40, hjust = 1, size = 6.5))
+
+# 1. ordered magnitude: uniform lightness or not
+c_bad_1 <- ggplot(g2007, aes(gdpPercap, lifeExp, colour = lifeExp)) +
+  geom_point(size = 0.8) + log_x() +
+  scale_colour_gradientn(colours = rainbow(7)) +
+  labs(title = "Bad: rainbow", x = NULL, y = NULL) + bad_t
+
+c_good_1 <- ggplot(g2007, aes(gdpPercap, lifeExp, colour = lifeExp)) +
+  geom_point(size = 0.8) + log_x() +
+  scale_colour_viridis_c() +
+  labs(title = "Good: viridis", x = NULL, y = NULL) + good_t
+
+# 2. two groups: colour-vision safety
+c_bad_2 <- ggplot(two, aes(bill_length_mm, body_mass_g, colour = species)) +
+  geom_point(size = 0.8) +
+  scale_colour_manual(values = c("#e41a1c", "#4daf4a")) +
+  labs(title = "Bad: red-green", x = NULL, y = NULL) + bad_t
+
+c_good_2 <- ggplot(two, aes(bill_length_mm, body_mass_g, colour = species)) +
+  geom_point(size = 0.8) +
+  scale_colour_manual(values = c("#E69F00", "#0072B2")) +
+  labs(title = "Good: blue-orange", x = NULL, y = NULL) + good_t
+
+# 3. eight ordered grades: too many hues
+c_bad_3 <- ggplot(eight, aes(carat, price, colour = clarity)) +
+  geom_point(size = 0.6) +
+  scale_colour_hue() +
+  labs(title = "Bad: 8 hues", x = NULL, y = NULL) + bad_t
+
+c_good_3 <- ggplot(eight, aes(carat, price, colour = clarity)) +
+  geom_point(size = 0.6) +
+  scale_colour_viridis_d() +
+  labs(title = "Good: ordered", x = NULL, y = NULL) + good_t
+
+# 4. colour that repeats the x-axis
+c_bad_4 <- ggplot(cuts, aes(cut, n, fill = cut)) +
+  geom_col() +
+  scale_fill_hue() +
+  labs(title = "Bad: repeats x", x = NULL, y = NULL) + bad_t + bars_theme
+
+c_good_4 <- ggplot(cuts, aes(cut, n, fill = cut == "Ideal")) +
+  geom_col() +
+  scale_fill_manual(values = c("grey55", uzk_blue)) +
+  labs(title = "Good: highlight", x = NULL, y = NULL) + good_t + bars_theme
+
+# 5. signed deviations: the midpoint must be visible
+c_bad_5 <- ggplot(dev, aes(gdpPercap, dev, colour = dev)) +
+  geom_point(size = 0.8) + log_x() +
+  scale_colour_viridis_c() +
+  labs(title = "Bad: no midpoint", x = NULL, y = NULL) + bad_t
+
+c_good_5 <- ggplot(dev, aes(gdpPercap, dev, colour = dev)) +
+  geom_point(size = 0.8) + log_x() +
+  scale_colour_gradient2(low = "#2166ac", mid = "grey92", high = "#b2182b",
+                         midpoint = 0, limits = c(-dev_max, dev_max)) +
+  labs(title = "Good: zero-centred", x = NULL, y = NULL) + good_t
+
+# 6. contrast: pastels vanish on white
+c_bad_6 <- ggplot(penguins, aes(bill_length_mm, body_mass_g, colour = species)) +
+  geom_point(size = 0.8) +
+  scale_colour_brewer(palette = "Pastel1") +
+  labs(title = "Bad: pastel", x = NULL, y = NULL) + bad_t
+
+c_good_6 <- ggplot(penguins, aes(bill_length_mm, body_mass_g, colour = species)) +
+  geom_point(size = 0.8) +
+  scale_colour_brewer(palette = "Dark2") +
+  labs(title = "Good: contrast", x = NULL, y = NULL) + good_t
+
+(c_bad_1 | c_bad_2 | c_bad_3 | c_bad_4 | c_bad_5 | c_bad_6) /
+  (c_good_1 | c_good_2 | c_good_3 | c_good_4 | c_good_5 | c_good_6)
 ```
 
 ::: {.columns}
@@ -1088,14 +1247,6 @@ p_default | p_viridis | p_okabe
 - **Diverging:** deviation around a meaningful midpoint (ColorBrewer `RdBu`)
 - **Qualitative:** unordered categories (Okabe–Ito, `Set2`)
 
-### Three rules
-
-1. Perceptual uniformity: equal steps in data should look like equal steps in colour [@crameri2020misuse]
-2. Colour-vision safety: avoid red–green contrasts; test with a simulator
-3. Redundancy: do not encode the same variable twice (colour **and** shape **and** size)
-:::
-
-::: {.column width="50%"}
 ```r
 scale_colour_viridis_d(option = "D")
 scale_fill_brewer(palette = "Set2")
@@ -1103,16 +1254,26 @@ scale_colour_manual(
   values = c("#E69F00", "#56B4E9", "#009E73")
 )
 ```
+:::
+
+::: {.column width="50%"}
+
+### Three rules
+
+1. Equal steps in data should look like equal steps in colour [@crameri2020misuse]
+2. Colour-vision: avoid red–green contrasts
+3. Redundancy: do not use colour **and** shape (**and** size)
 
 ::: {.callout-warning}
 Rainbow and jet palettes create false boundaries, are not perceptually uniform, and fail for colour-vision deficiency. Use viridis or a documented scientific palette [@zeileis2009escaping].
 :::
+
 :::
 
 :::
 
 ::: {.notes}
-The default hue palette is not terrible for three categories, but it is not designed for colour-vision deficiency or print. Viridis is a safe default for ordered and unordered data; Okabe–Ito is a strong qualitative alternative. Point out that the three panels use the same data and the same mapping — only the scale changes.
+The top row is deliberately bad, the bottom row is the repair. Each column tests one rule: perceptual uniformity for ordered data (rainbow vs viridis), colour-vision safety for two groups (red–green vs blue–orange), too many hue steps for eight ordered grades (hue vs a sequential scale), colour used only to repeat the x-axis (hue vs a single highlight), signed deviations that need a visible midpoint (sequential vs diverging at zero), and contrast on white (pastel vs Dark2). Colour should carry a variable, not decorate a category the reader can already see.
 :::
 
 ---
@@ -1170,6 +1331,46 @@ This deck is a Quarto document. The figures are generated at render time from th
 
 ::: {.notes}
 The workshop materials are themselves an example: `slides.qmd` contains the figure code, `scripts/ggplot2-intro.R` is the standalone companion, and `data/` contains the inputs. If a figure is wrong, fix the code and re-render — do not edit the image.
+:::
+
+---
+
+## Making plots in practice {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Tools
+
+- **RStudio:** Plots pane → *Zoom* and *Export*; `ggsave()` for exact sizes
+- **`esquisse` addin:** explore with drag-and-drop, then copy the code it wrote
+- **`colorspace::choose_palette()`:** pick a palette interactively and copy the values
+- **`colorblindr`** (GitHub): simulate colour-vision deficiency on your plot
+- **`ragg` / `svglite`:** sharp PNG and vector SVG output
+
+::: {.callout-tip}
+### Explore in a GUI, keep a script
+
+The addins are for exploring. Copy the code they generate into your script and delete what you do not need.
+:::
+:::
+
+::: {.column width="50%"}
+### Help
+
+1. `?geom_point`, `?scale_x_log10`: the help page lists required aesthetics and defaults
+2. `vignette("ggplot2-specs")`: how aesthetics become drawn geoms
+3. The [ggplot2 book](https://ggplot2-book.org/), by component
+4. The [reference index](https://ggplot2.tidyverse.org/reference/): every geom, scale, and theme element
+5. The [ggplot2 cheat sheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf)
+
+**When it breaks:** `layer_data(p, 1)` shows what a layer computed
+:::
+
+:::
+
+::: {.notes}
+Walk through one example live: type `?geom_point`, point at the Aesthetics section, then show `layer_data(last_plot(), 1)` when a plot misbehaves.
 :::
 
 ---
@@ -1323,9 +1524,7 @@ Point participants to the local `materials/` snapshots if the network is unrelia
 ::: {.columns}
 
 ::: {.column width="58%"}
-We thank the [Data Center for the Humanities (DCH)](https://dch.phil-fak.uni-koeln.de/) and the [Cologne Competence Center for Research Data Management (C3RDM)](https://fdm.uni-koeln.de/home) for their input and advice on the content of this workshop.
-
-Thanks also to the open-source community behind `ggplot2`, the tidyverse, `patchwork`, `ggeffects`, `marginaleffects`, and the data providers: [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/), [Gapminder](https://www.gapminder.org/), [Software Carpentry](https://swcarpentry.github.io/), [Data Carpentry](https://datacarpentry.github.io/), and [datasauRus](https://github.com/lockedata/datasauRus).
+Thanks to the open-source community behind `ggplot2`, the tidyverse, `patchwork`, `ggeffects`, `marginaleffects`, and the data providers: [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/), [Gapminder](https://www.gapminder.org/), [Software Carpentry](https://swcarpentry.github.io/), [Data Carpentry](https://datacarpentry.github.io/), and [datasauRus](https://github.com/lockedata/datasauRus).
 
 **Contact:** [job.schepens@uni-koeln.de](mailto:job.schepens@uni-koeln.de)
 
