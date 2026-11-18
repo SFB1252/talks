@@ -680,31 +680,98 @@ Simulated draws. The focus effect is well away from zero; the item SD is small, 
 
 ## IPA, scripts, and fonts {.smaller}
 
+```{r}
+#| label: plot-ipa-fonts
+#| fig-width: 10.4
+#| fig-height: 3.3
+#| fig-alt: "Two panels. Left: a simulated vowel space with IPA labels i, small capital I, epsilon, ash, script a, and upsilon, all rendering correctly. Right: a grid of 16 IPA symbols by two fonts, showing that Albert Sans lacks 13 of the 16 glyphs while DejaVu Sans has all of them."
+# The deck's own font, and a font with full IPA coverage.
+ipa_symbols <- c("\u026a", "\u025b", "\u00e6", "\u0251", "\u0254", "\u028a",
+                 "\u0283", "\u0292", "\u03b8", "\u00f0", "\u014b", "\u0294",
+                 "\u027e", "\u02b0", "\u02e5", "\u02e9")
+
+# glyph_info() returns index 0 for a codepoint the font file does not contain.
+coverage <- tibble(symbol = ipa_symbols) |>
+  mutate(
+    albert = systemfonts::glyph_info(symbol, family = "Albert Sans", size = 12)$index > 0,
+    dejavu = systemfonts::glyph_info(symbol, family = "DejaVu Sans", size = 12)$index > 0
+  ) |>
+  pivot_longer(c(albert, dejavu), names_to = "font", values_to = "present") |>
+  mutate(
+    font = recode(font, albert = "Albert Sans", dejavu = "DejaVu Sans"),
+    font = factor(font, levels = c("DejaVu Sans", "Albert Sans")),
+    symbol = factor(symbol, levels = ipa_symbols)
+  )
+
+n_missing <- sum(!coverage$present[coverage$font == "Albert Sans"])
+
+p_coverage <- ggplot(coverage, aes(symbol, font, fill = present)) +
+  geom_tile(colour = "white", linewidth = 1.1) +
+  geom_text(aes(label = ifelse(present, "\u2713", "\u2717")), size = 4.2,
+            colour = "white", family = "DejaVu Sans") +
+  scale_fill_manual(values = c(`TRUE` = uzk_turquoise, `FALSE` = uzk_coral), guide = "none") +
+  scale_x_discrete(position = "top") +
+  labs(title = "What the font file contains",
+       subtitle = sprintf("Albert Sans is missing %d of %d IPA glyphs", n_missing, length(ipa_symbols)),
+       x = NULL, y = NULL) +
+  theme(panel.grid = element_blank(),
+        axis.text.x.top = element_text(size = rel(1.0)),
+        axis.text.y = element_text(size = rel(0.9)))
+
+# The same vowel space as before, now labelled in IPA.
+set.seed(1252)
+vowel_centres_ipa <- data.frame(
+  vowel = c("\u0069", "\u026a", "\u025b", "\u00e6", "\u0251", "\u028a"),
+  F1 = c(280, 400, 550, 700, 750, 320),
+  F2 = c(2300, 2000, 1900, 1700, 1100, 900)
+)
+speaker_f1_ipa <- rnorm(8, 0, 25)
+speaker_f2_ipa <- rnorm(8, 0, 70)
+
+sim_vowels_ipa <- expand.grid(
+  speaker = factor(1:8),
+  vowel = vowel_centres_ipa$vowel,
+  token = 1:25
+) |>
+  left_join(vowel_centres_ipa, by = "vowel") |>
+  mutate(
+    s = as.integer(speaker),
+    F1 = F1 + speaker_f1_ipa[s] + rnorm(n(), 0, 30),
+    F2 = F2 + speaker_f2_ipa[s] + rnorm(n(), 0, 80)
+  )
+
+vowel_labels <- sim_vowels_ipa |>
+  group_by(vowel) |>
+  summarise(F1 = mean(F1), F2 = mean(F2), .groups = "drop")
+
+p_ipa_labels <- ggplot(sim_vowels_ipa, aes(F2, F1)) +
+  geom_point(aes(colour = vowel), alpha = 0.22, size = 0.6) +
+  stat_ellipse(aes(colour = vowel), level = 0.68, linewidth = 0.55, show.legend = FALSE) +
+  geom_label(data = vowel_labels, aes(label = vowel), family = "Albert Sans",
+             size = 5.2, colour = uzk_blue, fill = "white",
+             label.padding = unit(0.1, "lines")) +
+  scale_x_reverse() +
+  scale_y_reverse() +
+  scale_colour_viridis_d(guide = "none") +
+  labs(title = "What you see", subtitle = "the labels render anyway",
+       x = "F2 (Hz)", y = "F1 (Hz)")
+
+p_ipa_labels | p_coverage
+```
+
 ::: {.columns}
 
 ::: {.column width="55%"}
-### The glyph problem
-
-- IPA symbols, combining diacritics, tone letters, and non-Latin scripts depend on the **font**, not on R.
-- A figure can render on your laptop and show boxes on the projector or in the journal's PDF.
-- Test the exact output: **PNG/PDF from `ragg`**, not only the RStudio viewer.
+- IPA, combining diacritics, tone letters, and non-Latin scripts depend on the **font**, not on R.
+- `ragg` **falls back silently**: the left panel looks right because the missing glyphs come from another font. The figure is fine; the typography is not.
+- Check coverage with `systemfonts::glyph_info()`; an index of `0` means the glyph is absent.
 - For PDF, embed fonts (`cairo_pdf`, `svglite`) or the glyphs will be substituted.
-
-**Check what a font contains:**
-
-```r
-systemfonts::font_info("Albert Sans")$path
-systemfonts::string_width("ɪ ɛ æ ɑ", family = "Albert Sans")
-```
 :::
 
 ::: {.column width="45%"}
-### Practical rules
-
-- Pick a font with wide coverage for labels: DejaVu Sans, Noto Sans, Charis SIL, Doulos SIL.
-- Use `ragg::agg_png()` (already the deck default) and test on the presentation machine.
+- Pick a font with wide coverage: DejaVu Sans, Noto Sans, Charis SIL, Doulos SIL.
+- Set the family per layer when scripts differ: `geom_text(family = "Noto Sans")`.
 - Put IPA in **labels and alt text**, not only in the legend.
-- For multi-script figures, set the family per layer: `geom_text(family = "Noto Sans")`.
 - If a glyph still fails, spell it out in the caption.
 
 ::: {.callout-tip}
@@ -716,7 +783,7 @@ Render the actual PDF or PNG and open it on the machine you will present from. T
 :::
 
 ::: {.notes}
-IPA problems are font-coverage problems. Albert Sans covers common IPA; rarer symbols or combining marks may not. `ragg` can fall back to other installed fonts, but the fallback is not guaranteed on another machine. For journals, embed fonts or convert text to outlines. The last slide of the advanced deck covers export; this is the linguistic special case.
+The point of the figure is the mismatch. Albert Sans is the deck's own font and it lacks 13 of these 16 IPA glyphs, yet the left panel renders perfectly because ragg substitutes from a fallback font. So "it looks fine on my machine" is not evidence. `systemfonts::glyph_info()` returns the glyph index; 0 means the codepoint is not in the file. Ask the room to run it on their own house font. The fallback is not guaranteed on another machine, and in a PDF the substitution is baked in or the glyph is dropped. For journals, embed fonts or convert text to outlines. The advanced deck covers export; this is the linguistic special case.
 :::
 
 ---
