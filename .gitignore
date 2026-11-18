@@ -125,3 +125,4 @@ mkdocs-env/
 
 # Generated web files
 agenda/Research Data and Methods_files/
+.Rproj.user
