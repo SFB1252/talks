@@ -1,0 +1,909 @@
+---
+title: "Visualizing Linguistic Data"
+subtitle: "Domain patterns for prominence research"
+author:
+  - name: "Job Schepens"
+    affiliation:
+      - name: Universität zu Köln
+        department: CRC 1252 Prominence in Language
+        city: Cologne, Germany
+date: "18 November 2026"
+date-format: "D MMMM YYYY"
+ai-assistance: heavy
+format:
+  revealjs:
+    theme: [default, ../../stylesheets/mytheme.scss]
+    logo: ../../logo.png
+    slide-number: true
+    scrollable: true
+    mouse-wheel: true
+    footer: "SFB 1252 Prominence in Language · Universität zu Köln · AI assistance: heavy"
+    output-file: slides-sfb.html
+    include-in-header: ai-assistance-meta.html
+    transition: none
+    background-transition: none
+    code-overflow: wrap
+    css: slides.css
+bibliography: "references.bib"
+csl: "../24-latex-thesis-workflows/apa.csl"
+execute:
+  echo: false
+  warning: false
+  message: false
+  fig-dpi: 220
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(patchwork)
+library(scales)
+library(viridis)
+library(mgcv)
+library(broom)
+
+systemfonts::register_font(
+  "Albert Sans",
+  plain  = "../../stylesheets/fonts/AlbertSans-400.ttf",
+  bold   = "../../stylesheets/fonts/AlbertSans-700.ttf",
+  italic = "../../stylesheets/fonts/AlbertSans-400.ttf"
+)
+knitr::opts_chunk$set(dev = "ragg_png", dev.args = list(bg = "white"))
+
+penguins <- read.csv("data/penguins.csv")
+
+uzk_blue      <- "#005176"
+uzk_turquoise <- "#009dcc"
+uzk_coral     <- "#ea564f"
+uzk_muted     <- "#547685"
+
+theme_set(
+  theme_minimal(base_family = "Albert Sans", base_size = 15) +
+    theme(
+      panel.grid.minor = element_blank(),
+      plot.title.position = "plot",
+      plot.title = element_text(face = "bold", size = rel(1.05)),
+      plot.subtitle = element_text(colour = uzk_muted),
+      legend.position = "bottom"
+    )
+)
+```
+
+## Overview {.smaller}
+
+::: {.columns}
+
+::: {.column width="55%"}
+### What this deck adds
+
+The first two decks teach the grammar and the machinery. This one covers the **data shapes of prominence research**:
+
+1. **Contours and spaces** — F0 over time, vowel formants
+2. **Individuals** — speaker and item effects, not only means
+3. **Ordinal, proportion, and count data** — ratings, accuracy, corpora
+4. **Models and data care** — coefficient plots, posteriors, fonts, disclosure, missing data
+
+### Plan
+
+- **Contours and spaces:** 20 min
+- **Individuals:** 10 min
+- **Ratings and counts:** 20 min
+- **Models and data care:** 20 min
+
+*Total: 70 minutes.*
+:::
+
+::: {.column width="45%"}
+::: {.callout-note}
+### Relationship to the other decks
+
+[`slides.qmd`](slides.html) covers the grammar and integrity; [`slides-advanced.qmd`](slides-advanced.html) covers scales, models, and publication. Everything here assumes those two.
+:::
+
+**Examples:** simulated data, marked as such in each subtitle, plus `data/penguins.csv` for the coefficient plot.
+
+**Prerequisites:** the basic workshop or equivalent experience with `ggplot2`.
+:::
+
+:::
+
+::: {.notes}
+This is a domain appendix, not a replacement. The examples are simulated so that the intended pattern is visible; the code runs unchanged on real data. Emphasise that the plotting grammar stays the same — what changes is the shape of the data (time within trial, formants per token, ordinal responses) and the figures that answer those questions.
+:::
+
+---
+
+## Part I: Contours and spaces {.center}
+
+### After this part: plot a trajectory without lying
+
+---
+
+## F0 contours over time {.smaller}
+
+```{r}
+#| label: plot-contours
+#| fig-width: 9.6
+#| fig-height: 3.8
+#| fig-alt: "Two panels of simulated F0 contours for 12 speakers, accented and unaccented. Left: every speaker's contour as a thin line, showing a peak around the middle for accented items. Right: the mean contour per condition with a 95 percent confidence band."
+set.seed(1252)
+contour_times <- seq(0, 1, length.out = 21)
+contour_speakers <- factor(sprintf("S%02d", 1:12))
+speaker_offset <- rnorm(12, 0, 10)
+
+sim_contours <- expand.grid(
+  speaker = contour_speakers,
+  condition = c("unaccented", "accented"),
+  time = contour_times
+) |>
+  mutate(
+    s = as.integer(speaker),
+    f0 = 115 + speaker_offset[s] +
+      ifelse(condition == "accented", 18, 0) *
+        exp(-((time - 0.5)^2) / (2 * 0.13^2)) +
+      rnorm(n(), 0, 3)
+  )
+
+contour_means <- sim_contours |>
+  group_by(condition, time) |>
+  summarise(m = mean(f0), se = sd(f0) / sqrt(n()), .groups = "drop") |>
+  mutate(lo = m - 1.96 * se, hi = m + 1.96 * se)
+
+p_all <- ggplot(
+  sim_contours,
+  aes(time, f0, colour = condition, group = interaction(speaker, condition))
+) +
+  geom_line(alpha = 0.25, linewidth = 0.4) +
+  labs(title = "Every speaker", x = "Normalised time", y = "F0 (Hz)") +
+  theme(legend.position = "none")
+
+p_mean <- ggplot(contour_means, aes(time, m, colour = condition, fill = condition)) +
+  geom_ribbon(aes(ymin = lo, ymax = hi), alpha = 0.2, colour = NA) +
+  geom_line(linewidth = 0.9) +
+  labs(title = "Mean ± 95% CI", x = "Normalised time", y = NULL)
+
+p_all | p_mean
+```
+
+::: {.columns}
+
+::: {.column width="50%"}
+- **Normalise time** per token before averaging; raw milliseconds are not comparable across segments.
+- Draw **every speaker** thin and the summary thick; a bar of means hides the trajectories.
+- The band is a CI for the **mean contour**, not for a new speaker.
+:::
+
+::: {.column width="50%"}
+- Facet by condition or colour by it, but keep the same y scale.
+- Say whether the contour is raw, z-scored per speaker, or in semitones.
+- Simulated here; the code is identical on real tracks.
+:::
+
+:::
+
+::: {.notes}
+Point at the peak in the accented condition around the middle of the window. The left panel shows that the peak is consistent across speakers but the levels differ; the right panel shows the summary. The common mistake is a bar chart of mean F0 per condition, which discards the trajectory entirely.
+:::
+
+---
+
+## Difference curves {.smaller}
+
+```{r}
+#| label: plot-difference
+#| fig-width: 9.0
+#| fig-height: 3.2
+#| fig-alt: "A difference curve over normalised time: the mean difference in F0 between accented and unaccented items, with a 95 percent confidence band, rising from zero to about 18 Hz in the middle and returning to zero. A dashed line marks zero."
+diff_curves <- sim_contours |>
+  select(speaker, condition, time, f0) |>
+  pivot_wider(names_from = condition, values_from = f0) |>
+  mutate(diff = accented - unaccented) |>
+  group_by(time) |>
+  summarise(m = mean(diff), se = sd(diff) / sqrt(n()), .groups = "drop") |>
+  mutate(lo = m - 1.96 * se, hi = m + 1.96 * se)
+
+ggplot(diff_curves, aes(time, m)) +
+  geom_ribbon(aes(ymin = lo, ymax = hi), fill = uzk_coral, alpha = 0.2) +
+  geom_line(colour = uzk_coral, linewidth = 1) +
+  geom_hline(yintercept = 0, linetype = 2, colour = uzk_muted) +
+  labs(title = "Difference curve: accented − unaccented",
+       subtitle = "simulated data; where the band leaves zero, the contrast is there",
+       x = "Normalised time", y = "Difference in F0 (Hz)")
+```
+
+::: {.columns}
+
+::: {.column width="50%"}
+- A difference curve answers **where** an effect lives, not only whether it exists.
+- The zero line is the null; the band is the uncertainty about the mean difference.
+- Normalise time first, then subtract within speaker and item.
+:::
+
+::: {.column width="50%"}
+- In papers, add a horizontal bar marking the window used for analysis.
+- Prefer this to two separate mean plots whose scales invite misreading.
+- The same recipe works for ERP amplitudes, gaze proportions, and intensity.
+:::
+
+:::
+
+::: {.notes}
+This is the figure reviewers ask for when the claim is "the peak is delayed". Two condition means can look different without telling you where; the difference curve with its band does. Mention that the band narrows because the differences are paired within speaker.
+:::
+
+---
+
+## Vowel spaces {.smaller}
+
+```{r}
+#| label: plot-vowels
+#| fig-width: 8.6
+#| fig-height: 4.2
+#| fig-alt: "A simulated vowel space with F2 on the reversed x-axis and F1 on the reversed y-axis. Six vowels are shown as clouds of points with 68 percent ellipses: high vowels i and u at the top, open vowels at the bottom, front vowels to the right."
+set.seed(1252)
+vowel_centres <- data.frame(
+  vowel = c("i", "ɪ", "ɛ", "æ", "ɑ", "u"),
+  F1 = c(280, 400, 550, 700, 750, 320),
+  F2 = c(2300, 2000, 1900, 1700, 1100, 900)
+)
+speaker_f1 <- rnorm(8, 0, 25)
+speaker_f2 <- rnorm(8, 0, 70)
+
+sim_vowels <- expand.grid(
+  speaker = factor(1:8),
+  vowel = vowel_centres$vowel,
+  token = 1:25
+) |>
+  left_join(vowel_centres, by = "vowel") |>
+  mutate(
+    s = as.integer(speaker),
+    F1 = F1 + speaker_f1[s] + rnorm(n(), 0, 30),
+    F2 = F2 + speaker_f2[s] + rnorm(n(), 0, 80)
+  )
+
+ggplot(sim_vowels, aes(F2, F1, colour = vowel)) +
+  geom_point(alpha = 0.3, size = 0.8) +
+  stat_ellipse(level = 0.68, linewidth = 0.7) +
+  scale_x_reverse() +
+  scale_y_reverse() +
+  labs(title = "Vowel space", subtitle = "simulated tokens; axes reversed, as in the vowel chart",
+       x = "F2 (Hz)", y = "F1 (Hz)", colour = "Vowel")
+```
+
+::: {.columns}
+
+::: {.column width="55%"}
+- **Reverse the axes** (`scale_x_reverse()`, `scale_y_reverse()`): the chart convention is high vowels at the top, front vowels at the right.
+- **Normalise before plotting** across speakers (Lobanov or a speaker-specific scaling), or the clouds separate by speaker rather than by vowel.
+- Ellipses show spread; points show the tokens. Do not plot centroids only.
+:::
+
+::: {.column width="45%"}
+- The axes are **Hz, not a metric space**; distances are not comparable across the two dimensions.
+- Facet by speaker when individual differences are the question.
+- For trajectories (diphthongs), draw the path per token with time as a gradient.
+:::
+
+:::
+
+::: {.notes}
+The reversed axes are the first thing reviewers notice. The second is normalisation: without it, a figure of raw Hz mostly shows who has a longer vocal tract. Ask the room which speakers sit high or low, and whether that is vowel quality or speaker size. Mention `scale_x_reverse()` and `stat_ellipse(level = 0.68)`.
+:::
+
+---
+
+## Part II: Individuals {.center}
+
+### After this part: show both speakers and items
+
+---
+
+## Speaker and item effects {.smaller}
+
+```{r}
+#| label: plot-individuals
+#| fig-width: 9.6
+#| fig-height: 4.2
+#| fig-alt: "Two caterpillar plots of simulated effects. Left: the focus-minus-plain F0 difference for each of 20 speakers with 95 percent confidence intervals, ordered by size, some near zero and some above 15 Hz. Right: the same for 20 items, less variable."
+set.seed(1252)
+speaker_effect <- rnorm(20, 8, 6)
+sim_trials <- expand.grid(
+  speaker = factor(sprintf("S%02d", 1:20)),
+  item = factor(sprintf("I%02d", 1:20)),
+  condition = c("plain", "focus")
+) |>
+  mutate(
+    s = as.integer(speaker),
+    i = as.integer(item),
+    f0 = 120 + rnorm(20, 0, 12)[s] + rnorm(20, 0, 6)[i] +
+      speaker_effect[s] * (condition == "focus") +
+      rnorm(n(), 0, 5)
+  )
+
+speaker_effects <- sim_trials |>
+  select(speaker, item, condition, f0) |>
+  pivot_wider(names_from = condition, values_from = f0) |>
+  mutate(diff = focus - plain) |>
+  group_by(speaker) |>
+  summarise(m = mean(diff), se = sd(diff) / sqrt(n()), .groups = "drop") |>
+  mutate(lo = m - 1.96 * se, hi = m + 1.96 * se)
+
+item_effects <- sim_trials |>
+  select(speaker, item, condition, f0) |>
+  pivot_wider(names_from = condition, values_from = f0) |>
+  mutate(diff = focus - plain) |>
+  group_by(item) |>
+  summarise(m = mean(diff), se = sd(diff) / sqrt(n()), .groups = "drop") |>
+  mutate(lo = m - 1.96 * se, hi = m + 1.96 * se)
+
+p_speakers <- ggplot(speaker_effects, aes(m, reorder(speaker, m))) +
+  geom_vline(xintercept = 0, linetype = 2, colour = uzk_muted) +
+  geom_pointrange(aes(xmin = lo, xmax = hi), colour = uzk_blue, size = 0.35) +
+  labs(title = "Speakers", subtitle = "n = 20", x = "Focus − plain (Hz)", y = NULL)
+
+p_items <- ggplot(item_effects, aes(m, reorder(item, m))) +
+  geom_vline(xintercept = 0, linetype = 2, colour = uzk_muted) +
+  geom_pointrange(aes(xmin = lo, xmax = hi), colour = uzk_turquoise, size = 0.35) +
+  labs(title = "Items", subtitle = "n = 20", x = "Focus − plain (Hz)", y = NULL)
+
+p_speakers | p_items
+```
+
+::: {.columns}
+
+::: {.column width="50%"}
+- A mean ± SE collapses **two** variance sources: who was measured (speakers) and what was measured (items).
+- Caterpillar plots show both: order by size, show the interval, keep the zero line.
+- The same layout works for random effects from `lme4` or posterior draws from `brms`.
+:::
+
+::: {.column width="50%"}
+- If the effect is consistent for speakers but not items, the generalisation is about speakers, not words.
+- Show the raw per-unit estimates before the model; the model is a summary, not a substitute.
+- Facet by condition when there are more than two.
+:::
+
+:::
+
+::: {.notes}
+Simulated: speaker effects vary around 8 Hz with SD 6, item effects are near zero. The figure makes the difference between "the effect exists" and "the effect is general" visible. This is the visual counterpart of random slopes and by-unit variability; it also prepares the reader for a mixed model.
+:::
+
+---
+
+## Part III: Ratings and counts {.center}
+
+### After this part: plot the distribution, not only the mean
+
+---
+
+## Ordinal ratings {.smaller}
+
+```{r}
+#| label: plot-ratings
+#| fig-width: 9.0
+#| fig-height: 3.6
+#| fig-alt: "Stacked bars of simulated acceptability ratings, 1 to 7, for four constructions. Each bar is the share of ratings per construction, coloured from red for 1 to blue for 7; construction A is concentrated at 6 and 7, construction D spreads across 2 to 5."
+set.seed(1252)
+condition_means <- c(A = 5.6, B = 4.9, C = 4.0, D = 3.2)
+sim_ratings <- expand.grid(
+  construction = names(condition_means),
+  rater = factor(1:40),
+  item = 1:12
+) |>
+  mutate(
+    r = as.integer(rater),
+    latent = condition_means[construction] +
+      rnorm(40, 0, 0.7)[r] + rnorm(n(), 0, 0.9),
+    rating = pmin(7, pmax(1, round(latent)))
+  )
+
+rating_props <- sim_ratings |>
+  count(construction, rating) |>
+  group_by(construction) |>
+  mutate(p = n / sum(n)) |>
+  ungroup()
+
+ggplot(rating_props, aes(construction, p, fill = factor(rating))) +
+  geom_col(width = 0.7) +
+  scale_fill_brewer(palette = "RdBu", direction = -1) +
+  scale_y_continuous(labels = percent_format()) +
+  labs(title = "Ratings, not means", subtitle = "simulated; 1 = unacceptable, 7 = fully acceptable",
+       x = NULL, y = "Share of ratings", fill = "Rating")
+```
+
+::: {.columns}
+
+::: {.column width="55%"}
+- A mean of 4.0 can come from "everyone is neutral" or "half love it, half hate it". The stacked distribution separates them.
+- Keep the ordinal scale; do not treat 1–7 as interval data in the figure.
+- A diverging palette centred on the neutral category makes the direction visible.
+:::
+
+::: {.column width="45%"}
+- For models, ordinal regression gives predicted **probabilities** per category; plot those rather than a single mean.
+- Report the number of raters and items; the share is only as stable as the sample.
+- A stacked bar and a density of ratings tell the same story; choose one and label it.
+:::
+
+:::
+
+::: {.notes}
+The simulated means differ by less than the spread: C is centred at 4 and D at 3.2, but the bars show that D has more mass at 2 and 3 while C still has support at 5. This is the argument against mean ± SE ratings. Mention that neutral categories should be visually central for diverging scales.
+:::
+
+---
+
+## Proportions with honest intervals {.smaller}
+
+```{r}
+#| label: plot-proportions
+#| fig-width: 9.0
+#| fig-height: 3.4
+#| fig-alt: "Four simulated accuracy proportions with two confidence intervals each. Wald intervals (blue) extend past 100 percent for the higher proportions; Wilson intervals (coral) stay inside the bounds and are asymmetric near the edges."
+set.seed(1252)
+z <- qnorm(0.975)
+prop_data <- tibble(
+  condition = c("A", "B", "C", "D"),
+  n = 20,
+  true_p = c(0.95, 0.90, 0.80, 0.60)
+) |>
+  mutate(hits = rbinom(n(), n, true_p), p = hits / n) |>
+  mutate(
+    wald_lo = p - z * sqrt(p * (1 - p) / n),
+    wald_hi = p + z * sqrt(p * (1 - p) / n),
+    denom = 1 + z^2 / n,
+    centre = (p + z^2 / (2 * n)) / denom,
+    half = z * sqrt(p * (1 - p) / n + z^2 / (4 * n^2)) / denom,
+    wilson_lo = centre - half,
+    wilson_hi = centre + half
+  ) |>
+  select(condition, p, wald_lo, wald_hi, wilson_lo, wilson_hi) |>
+  pivot_longer(-c(condition, p), names_to = c("method", ".value"),
+               names_pattern = "(wald|wilson)_(lo|hi)")
+
+ggplot(prop_data, aes(p, condition, colour = method)) +
+  geom_pointrange(aes(xmin = lo, xmax = hi),
+                  position = position_dodge(width = 0.45), size = 0.5) +
+  scale_x_continuous(limits = c(0, 1.1), labels = percent_format()) +
+  labs(title = "Two intervals for the same proportion",
+       subtitle = "simulated; Wald (asymptotic) runs past 100%, Wilson does not",
+       x = "Proportion", y = NULL, colour = "Method")
+```
+
+::: {.columns}
+
+::: {.column width="55%"}
+- Proportions are bounded; the Wald interval is not. Near 0 or 1 it can cross the boundary and collapse to zero width.
+- **Wilson** (or Clopper–Pearson) intervals stay inside and are asymmetric where they should be.
+- A logit axis (`scale_y_continuous(trans = "logit")`) spreads the ends; name the scale.
+:::
+
+::: {.column width="45%"}
+- Report *n* per cell; an interval on 5 trials is mostly the prior, not the data.
+- For repeated measures, the interval must respect the design (see the intervals slide in the advanced deck).
+- Same advice for accuracy, agreement rates, and proportions of annotated categories.
+:::
+
+:::
+
+::: {.notes}
+The Wald interval for p = 0.95 with n = 20 runs above 1, which the figure shows. Wilson is the practical default; Clopper–Pearson is more conservative. The point is not the formula but that a bounded quantity needs a bounded interval.
+:::
+
+---
+
+## Corpus counts {.smaller}
+
+```{r}
+#| label: plot-counts
+#| fig-width: 9.6
+#| fig-height: 3.4
+#| fig-alt: "Two panels. Left: simulated word frequencies against rank on log-log axes, with a straight fitted line showing Zipf's law. Right: a dispersion plot with corpus position on the x-axis and three words on the y-axis; one word is clustered in the middle, the others are spread out."
+set.seed(1252)
+zipf_data <- tibble(
+  rank = 1:300,
+  frequency = 1e6 * rank^(-1.05) * exp(rnorm(300, 0, 0.15))
+)
+
+p_zipf <- ggplot(zipf_data, aes(rank, frequency)) +
+  geom_point(size = 0.8, colour = uzk_blue, alpha = 0.7) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE,
+              colour = uzk_coral, linewidth = 0.9) +
+  scale_x_log10() + scale_y_log10() +
+  labs(title = "Zipf: log–log", x = "Rank", y = "Frequency")
+
+dispersion <- tibble(
+  word = rep(c("the", "prominence", "um"), c(220, 40, 90)),
+  position = c(runif(220, 0, 5000), rnorm(40, 2500, 350), runif(90, 0, 5000))
+)
+
+p_disp <- ggplot(dispersion, aes(position, word, colour = word)) +
+  geom_point(size = 0.7, alpha = 0.6,
+             position = position_jitter(height = 0.12, seed = 1)) +
+  scale_x_continuous(labels = comma_format()) +
+  labs(title = "Lexical dispersion", x = "Corpus position (tokens)", y = NULL) +
+  theme(legend.position = "none")
+
+p_zipf | p_disp
+```
+
+::: {.columns}
+
+::: {.column width="50%"}
+- Frequencies span orders of magnitude: **log–log** axes turn Zipf's law into a line and keep rare words visible.
+- A straight line on log–log axes is a description, not a law; fit it and say so.
+- Counts have no upper bound, so bars of raw counts invite wrong comparisons across corpora.
+:::
+
+::: {.column width="50%"}
+- Frequency alone hides **clustering**: a word can be frequent but concentrated in one register or speaker.
+- Dispersion plots put occurrences in corpus order; x is position, y is the word.
+- Report both frequency and dispersion when the claim is about typicality.
+:::
+
+:::
+
+::: {.notes}
+Simulated: one word is clustered around the middle of the corpus, the other two are spread out. A frequency table would treat the clustered word as representative; the dispersion plot shows it is not. Mention `position_jitter(height = ...)` to separate overlapping occurrences without moving the corpus position.
+:::
+
+---
+
+## Part IV: Models and data care {.center}
+
+### After this part: report the model, protect the data
+
+---
+
+## Coefficient plots {.smaller}
+
+```{r}
+#| label: plot-coefficients
+#| fig-width: 9.0
+#| fig-height: 3.4
+#| fig-alt: "A coefficient plot for a linear model of penguin body mass. Flipper length and Gentoo species have large positive effects with intervals far from zero; sex and Chinstrap have smaller effects; every interval is drawn with a zero reference line."
+fit_mass <- lm(body_mass_g ~ flipper_length_mm + species + sex, data = penguins)
+coef_mass <- tidy(fit_mass, conf.int = TRUE) |>
+  filter(term != "(Intercept)")
+
+ggplot(coef_mass, aes(estimate, reorder(term, estimate))) +
+  geom_vline(xintercept = 0, linetype = 2, colour = uzk_muted) +
+  geom_pointrange(aes(xmin = conf.low, xmax = conf.high),
+                  colour = uzk_blue, size = 0.45) +
+  labs(title = "The table, as a picture",
+       subtitle = "lm(body_mass_g ~ flipper_length_mm + species + sex)",
+       x = "Effect on body mass (g)", y = NULL)
+```
+
+::: {.columns}
+
+::: {.column width="55%"}
+- A coefficient plot is a forest plot for one model: estimates on the x-axis, terms on the y-axis, intervals and a zero line.
+- Order terms by size; readers compare lengths, which is the most accurate encoding.
+- Keep the units in the axis label; a coefficient without units is unreadable.
+:::
+
+::: {.column width="45%"}
+- For interactions, a coefficient plot is not enough; plot predictions or slopes (advanced deck).
+- For models on a link scale, say whether the axis is log-odds, probability, or the response.
+- The same layout serves `broom`, `modelsummary`, and posterior draws.
+:::
+
+:::
+
+::: {.notes}
+A coefficient table is a list of numbers; the plot makes the comparison of magnitudes immediate. Note that flipper length is in millimetres and body mass in grams, so the coefficient is grams per millimetre; species effects are offsets relative to Adelie. For interaction models, switch to predictions.
+:::
+
+---
+
+## Posterior distributions {.smaller}
+
+```{r}
+#| label: plot-posterior
+#| fig-width: 9.6
+#| fig-height: 3.2
+#| fig-alt: "Three posterior densities from simulated draws: a focus effect centred at 8 Hz, a speaker standard deviation near 12, and an item standard deviation near 6. Each density carries a bar marking the 95 percent credible interval."
+set.seed(1252)
+posterior <- tibble(
+  parameter = rep(c("focus effect (Hz)", "speaker SD (Hz)", "item SD (Hz)"), each = 4000),
+  draw = c(rnorm(4000, 8, 2.5), abs(rnorm(4000, 12, 2)), abs(rnorm(4000, 6, 1.5)))
+)
+posterior_summary <- posterior |>
+  group_by(parameter) |>
+  summarise(m = mean(draw), lo = quantile(draw, 0.025), hi = quantile(draw, 0.975),
+            .groups = "drop")
+
+ggplot(posterior, aes(draw)) +
+  geom_density(fill = uzk_blue, alpha = 0.25, colour = NA) +
+  geom_segment(data = posterior_summary,
+               aes(x = lo, xend = hi, y = 0, yend = 0),
+               inherit.aes = FALSE, colour = uzk_coral, linewidth = 1.4) +
+  facet_wrap(~ parameter, scales = "free") +
+  labs(title = "The whole estimate, not a point",
+       subtitle = "simulated draws; the bar is the 95% credible interval",
+       x = NULL, y = NULL)
+```
+
+::: {.columns}
+
+::: {.column width="55%"}
+- A posterior is a distribution; a point estimate and an interval are summaries of it.
+- Densities show skew and multimodality that an interval hides.
+- `ggdist` provides half-eye, ridgeline, and dot-interval geoms for this; the hand-built version needs no extra package.
+:::
+
+::: {.column width="45%"}
+- For a decision, shade a **ROPE** and report the mass inside it.
+- Mixed-model variance components (speaker SD, item SD) deserve a plot too; they are often the story.
+- Say whether the draws are from a model, a bootstrap, or a simulation.
+:::
+
+:::
+
+::: {.notes}
+Simulated draws. The focus effect is well away from zero; the item SD is small, which says the effect generalises across items better than across speakers. Plotting variance components is uncommon and therefore informative. Mention `ggdist` and `brms::posterior_predict` for real workflows.
+:::
+
+---
+
+## IPA, scripts, and fonts {.smaller}
+
+::: {.columns}
+
+::: {.column width="55%"}
+### The glyph problem
+
+- IPA symbols, combining diacritics, tone letters, and non-Latin scripts depend on the **font**, not on R.
+- A figure can render on your laptop and show boxes on the projector or in the journal's PDF.
+- Test the exact output: **PNG/PDF from `ragg`**, not only the RStudio viewer.
+- For PDF, embed fonts (`cairo_pdf`, `svglite`) or the glyphs will be substituted.
+
+**Check what a font contains:**
+
+```r
+systemfonts::font_info("Albert Sans")$path
+systemfonts::string_width("ɪ ɛ æ ɑ", family = "Albert Sans")
+```
+:::
+
+::: {.column width="45%"}
+### Practical rules
+
+- Pick a font with wide coverage for labels: DejaVu Sans, Noto Sans, Charis SIL, Doulos SIL.
+- Use `ragg::agg_png()` (already the deck default) and test on the presentation machine.
+- Put IPA in **labels and alt text**, not only in the legend.
+- For multi-script figures, set the family per layer: `geom_text(family = "Noto Sans")`.
+- If a glyph still fails, spell it out in the caption.
+
+::: {.callout-tip}
+### Test on the target
+Render the actual PDF or PNG and open it on the machine you will present from. The viewer lies.
+:::
+:::
+
+:::
+
+::: {.notes}
+IPA problems are font-coverage problems. Albert Sans covers common IPA; rarer symbols or combining marks may not. `ragg` can fall back to other installed fonts, but the fallback is not guaranteed on another machine. For journals, embed fonts or convert text to outlines. The last slide of the advanced deck covers export; this is the linguistic special case.
+:::
+
+---
+
+## Small N and disclosure {.smaller}
+
+```{r}
+#| label: plot-smalln
+#| fig-width: 9.0
+#| fig-height: 3.4
+#| fig-alt: "Two panels. Left, labelled points for six simulated participants, each identified by a code; right, the same scores as anonymised points with a mean and 95 percent confidence interval. The left panel would allow re-identification; the right does not."
+set.seed(1252)
+small_data <- tibble(
+  participant = sprintf("P%02d", 1:6),
+  score = rnorm(6, 50, 10)
+)
+p_identified <- ggplot(small_data, aes(score, participant)) +
+  geom_point(size = 2, colour = uzk_coral) +
+  labs(title = "Identifiable", subtitle = "codes + exact values", x = "Score", y = NULL)
+p_anonymous <- ggplot(small_data, aes(1, score)) +
+  geom_jitter(width = 0.05, height = 0, size = 1.8, alpha = 0.7, colour = uzk_blue) +
+  stat_summary(fun.data = mean_se, colour = uzk_coral, linewidth = 0.8) +
+  scale_x_continuous(limits = c(0.8, 1.2)) +
+  labs(title = "Disclosed", subtitle = "aggregate + interval", x = NULL, y = NULL) +
+  theme(axis.text.x = element_blank())
+p_identified | p_anonymous
+```
+
+::: {.columns}
+
+::: {.column width="55%"}
+- Participant codes, exact dates, and rare combinations can re-identify people, especially in small samples.
+- Do not put raw IDs, session dates, or free-text responses in figures.
+- Suppress small cells; report aggregates with *n*.
+- Audio examples need consent for **sharing**, not only for collection.
+:::
+
+::: {.column width="45%"}
+- Keep the analysis reproducible with pseudonymous keys stored separately.
+- For qualitative examples, quote with permission and remove identifying details.
+- Check your ethics approval and the CRC's data policy; when in doubt, aggregate.
+:::
+
+:::
+
+::: {.notes}
+Small N is the norm in experimental linguistics. A plot with participant codes and exact scores is often enough to identify a colleague's child or a clinical participant. The right panel keeps the distribution and the interval but drops the identifiers. The SFB's data and sustainability project has guidance; point people there rather than improvising.
+:::
+
+---
+
+## Missing data and exclusions {.smaller}
+
+```{r}
+#| label: plot-missing
+#| fig-width: 9.6
+#| fig-height: 3.4
+#| fig-alt: "Two panels. Left: a tile grid of missingness by item and condition, showing that the focus condition loses more trials. Right: a density of reaction times on a log axis with a dashed line at the 95th percentile marking a possible exclusion threshold."
+set.seed(1252)
+trial_data <- expand.grid(
+  participant = factor(1:40),
+  item = factor(sprintf("I%02d", 1:20)),
+  condition = c("plain", "focus")
+) |>
+  mutate(
+    drop = rbinom(n(), 1, ifelse(condition == "focus", 0.25, 0.10)),
+    rt = rlnorm(n(), log(600), 0.35)
+  )
+
+missing_item <- trial_data |>
+  group_by(condition, item) |>
+  summarise(p_missing = mean(drop), .groups = "drop")
+
+p_missing <- ggplot(missing_item, aes(item, condition, fill = p_missing)) +
+  geom_tile(colour = "white", linewidth = 0.4) +
+  scale_fill_viridis_c(labels = percent_format(), option = "C") +
+  labs(title = "Missingness by item", subtitle = "simulated", x = NULL, y = NULL,
+       fill = "Missing")
+
+p_rt <- ggplot(trial_data, aes(rt)) +
+  geom_density(fill = uzk_blue, alpha = 0.25, colour = NA) +
+  geom_vline(xintercept = quantile(trial_data$rt, 0.95),
+             linetype = 2, colour = uzk_coral, linewidth = 0.8) +
+  scale_x_log10() +
+  labs(title = "Reaction times", subtitle = "where would you cut?",
+       x = "RT (ms, log scale)", y = NULL)
+
+p_missing / p_rt
+```
+
+::: {.columns}
+
+::: {.column width="50%"}
+- Show **where** data are missing, not only how much: a condition that loses trials changes the estimate.
+- Report *n* per cell and the exclusion rule; a symmetry assumption is a claim.
+- Compare results with and without exclusions (sensitivity), and say so.
+:::
+
+::: {.column width="50%"}
+- Show the distribution before cutting outliers; a density with a threshold is honest.
+- RTs are skewed: log axes and medians, not means of raw milliseconds.
+- Never drop "outliers" silently; the figure should make the rule visible.
+:::
+
+:::
+
+::: {.notes}
+Simulated: the focus condition loses about 25% of trials, so a naïve comparison of condition means is biased. The tile grid shows the pattern; the RT density shows where a cut would fall. Ask the room where they would draw the line and what they would report. The advanced deck's interval and model slides cover the estimation side.
+:::
+
+---
+
+## Five takeaways {.smaller}
+
+::: {.columns}
+
+::: {.column width="55%"}
+1. **Match the figure to the data shape.** Time within trial, formants per token, ordinal ratings, and corpus positions each need their own idiom.
+2. **Show individuals.** Every-speaker lines, caterpillars, and per-unit effects prevent over-generalising from a mean.
+3. **Distributions beat means** for ratings and proportions; intervals must respect bounds and design.
+4. **Plot the model.** Coefficients and posteriors are more informative than tables, and variance components are part of the story.
+5. **The output is part of the analysis.** Fonts, disclosure, missingness, and exclusions are scientific choices, not formatting.
+:::
+
+::: {.column width="45%"}
+::: {.callout-important}
+### The grammar travels
+
+The same `ggplot2` grammar covers all of this. What changes is the data shape and the question — not the layers, scales, or facets you already know.
+:::
+
+**Next steps**
+
+- Re-plot one figure from your own project using the shape of its data.
+- Try a difference curve, a caterpillar plot, or a coefficient plot this week.
+- Check one figure for font coverage and disclosure before the next talk.
+:::
+
+:::
+
+::: {.notes}
+Close by mapping the five points onto the four parts. The common thread is that the grammar is fixed; the domain supplies the data shapes. If the room is mixed, ask each person to name their data shape and the idiom that fits it.
+:::
+
+---
+
+## Further reading {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Time, space, and models
+
+- [ggplot2 book](https://ggplot2-book.org/) chapters on layers and scales [@wickham2024ggplot2]
+- Wood, *Generalized Additive Models* — for contour smooths [@wood2017gam]
+- [`mgcv`](https://cran.r-project.org/package=mgcv) and [`gratia`](https://gavinsimpson.github.io/gratia/) for GAMM plots
+- [`ggdist`](https://mjskay.github.io/ggdist/) for posterior and uncertainty geoms [@kay2024ggdist]
+- [`marginaleffects`](https://marginaleffects.com/) for predictions and slopes
+:::
+
+::: {.column width="50%"}
+### Linguistics and data care
+
+- [`phonTools`](https://cran.r-project.org/package=phonTools) and [`praatR`](https://cran.r-project.org/package=praatR) for acoustic data in R
+- [`naniar`](https://naniar.njtierney.com/) for missing-data visualisation
+- [`viridis`](https://sjmgarnier.github.io/viridis/) and [ColorBrewer](https://colorbrewer2.org/) for palettes
+- SFB 1252 [Open Science](https://sfb1252.uni-koeln.de/open-science/) — data sharing and sustainability
+- [`reprex`](https://reprex.tidyverse.org/) for asking questions with a reproducible example
+:::
+
+:::
+
+::: {.notes}
+Point people at the SFB Open Science pages for data-sharing questions, and at the ggplot2 book for the grammar. The domain packages are starting points; the plotting advice in this deck applies to whatever tool produces the data frame.
+:::
+
+---
+
+## Acknowledgements {.smaller}
+
+::: {.columns}
+
+::: {.column width="58%"}
+This deck was written for the SFB 1252 "Prominence in Language" workshop series. Thanks to the [Data Center for the Humanities (DCH)](https://dch.phil-fak.uni-koeln.de/) and the [Cologne Competence Center for Research Data Management (C3RDM)](https://fdm.uni-koeln.de/home) for advice on content, and to the open-source community behind `ggplot2`, `mgcv`, `patchwork`, `scales`, and `viridis`.
+
+The examples are simulated unless stated otherwise; the penguin data are from [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/).
+
+**Contact:** [job.schepens@uni-koeln.de](mailto:job.schepens@uni-koeln.de)
+
+**Materials:** [SFB 1252 talks repository](https://github.com/SFB1252/talks)
+:::
+
+::: {.column width="42%"}
+::: {.callout-note}
+### Reuse
+
+- Slides: CC BY 4.0
+- Code: MIT
+- Data: see `data/README.md`
+
+If you reuse the slides, keep the attribution.
+:::
+
+**AI assistance: heavy.** Text and structure were primarily drafted with
+DeepSeek v4.1 Flash via SAIA (AcademicCloud) from human-provided material, then
+reviewed and edited by the author.
+[What this means](https://sfb1252.github.io/talks/about/ai-assistance-levels/)
+
+**Companion decks:** [basic](slides.html) · [advanced](slides-advanced.html)
+:::
+
+:::
+
+::: {.notes}
+Thank the SFB and the data services. Remind participants that the simulated examples are there to be swapped for their own data, and that the repository contains the source.
+:::
