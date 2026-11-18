@@ -9,9 +9,14 @@ max_redirects = 10
 
 # Healthy status codes (was aliveStatusCodes). 403 is accepted because some
 # sites block automated clients; without it those links would fail every run.
-accept = ["200", "201", "204", "206", "301", "302", "304", "403"]
+# 202 is accepted because some repositories (e.g. figshare) answer with
+# "Accepted" while they render the page client-side.
+accept = ["200", "201", "202", "204", "206", "301", "302", "304", "403"]
 
 # Also validate heading anchors, matching what linkspector checked.
+# This is worth keeping: it is what caught the bayescogsci book renaming its
+# section IDs. Single-page apps that put a route in the fragment are excluded
+# below instead, because their fragments are not anchors.
 include_fragments = "full"
 
 extensions = ["md"]
@@ -54,4 +59,15 @@ exclude = [
   'https://web\.dev/mobile',
   'https://standards\.ieee\.org/initiatives/artificial-intelligence-systems',
   'https://archive\.mpi\.nl/tla/elan',
+
+  # Single-page apps that put a client-side route in the fragment. The fragment
+  # is not a heading anchor, so include_fragments cannot resolve it.
+  '^https://matrix\.to/#',
+  '^https://app\.element\.io/#',
+  '^https://app\.nitro\.chat/#',
+  '^https://geoserver\.dainst\.org/catalogue/#',
+
+  # Login-gated: the redirect chain ends at an SSO form, which answers 400/401.
+  '^https://saia\.gwdg\.de/?$',
+  '^https://uni-koeln\.sciebo\.de/apps/overleaf_nextcloud/',
 ]

@@ -83,6 +83,7 @@ docs/resources/**/slides.html
 docs/resources/**/slides.pdf
 !docs/resources/crc-day-2026/slides.pdf
 docs/resources/**/*_files/
+docs/workshops/**/*_files/
 
 # Build Outputs
 _site/

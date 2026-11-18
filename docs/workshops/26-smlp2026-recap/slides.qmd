@@ -96,13 +96,13 @@ csl: "../24-latex-thesis-workflows/apa.csl"
 
 ::: {.column width="58%"}
 ### Session Agenda
-- **SMLP** 
-- **Participants** 
-- **Keynotes** 
-- **5 Classes** 
-- **"Maximal Models"** 
-- **Contrast Coding** 
-- **CRC 1252** 
+- **SMLP**
+- **Participants**
+- **Keynotes**
+- **5 Classes**
+- **"Maximal Models"**
+- **Contrast Coding**
+- **CRC 1252**
 :::
 
 ::: {.column width="42%"}
@@ -117,7 +117,7 @@ csl: "../24-latex-thesis-workflows/apa.csl"
 ::: {.columns}
 
 ::: {.column width="50%"}
-### 10-Years 
+### 10-Years
 *   **Founded by** Shravan Vasishth (Uni Potsdam, 2017).
 *   **Origin:** Funded as part of SFB 1287 (*Limits of Variability in Language*).
 *   **Target audience:** cognitive scientists and linguists.
@@ -128,7 +128,7 @@ csl: "../24-latex-thesis-workflows/apa.csl"
 ### 2026 Edition
 *   **5 parallel streams**.
 *   **Keynotes:** Lisa DeBruine & Dale Barr.
-*   **Many CRC 1252 Participants:** 
+*   **Many CRC 1252 Participants:**
 :::
 
 :::
@@ -265,8 +265,8 @@ Speaker Notes:
 *   **Workflow:** Prior $\to$ Likelihood $\to$ Posterior.
 *   **Syntax:** Familiar `lme4`-style syntax via `brms`:
     ```r
-    brm(rt ~ prominence * focus + 
-          (1 + prominence | subj) + 
+    brm(rt ~ prominence * focus +
+          (1 + prominence | subj) +
           (1 + focus | item),
         data = dat, family = lognormal(),
         prior = priors)
@@ -302,13 +302,13 @@ Speaker Notes:
 priors <- c(
   # Baseline intercept ~ 400 ms
   prior(normal(6, 0.5), class = "Intercept"),
-  
+
   # Plausible effect size bounds
   prior(normal(0, 0.1), class = "b"),
-  
+
   # Regularize random slope variances
   prior(exponential(2), class = "sd"),
-  
+
   # Discourage extreme +/- 1 correlations
   prior(lkj(2), class = "cor")
 )
@@ -407,7 +407,7 @@ Speaker Notes:
 ### R Default (Treatment Coding)
 ```r
 # Default R: contr.treatment
-fit <- lmer(RT ~ Prominence * Focus + 
+fit <- lmer(RT ~ Prominence * Focus +
               (1 | Subj), data = dat)
 ```
 *   `Prominence` coefficient is **NOT** the main effect of prominence; it is the difference between the reference level and the other level.
@@ -430,7 +430,7 @@ contrasts(dat$Focus) <- contr.sum(2)
 
 ::: {.notes}
 Speaker Notes:
-- Schad et al. (2020) 
+- Schad et al. (2020)
 - Never report "main effects" from models with interactions without verifying contrast coding!
 :::
 
@@ -502,8 +502,8 @@ julia_library("DataFrames")
 julia_assign("df", crc_data)
 
 # Fit model at compiled C-speed
-julia_command("m1 = fit(MixedModel, 
-  @formula(RT ~ Prom * Ctx + (1 + Prom | Subj)), 
+julia_command("m1 = fit(MixedModel,
+  @formula(RT ~ Prom * Ctx + (1 + Prom | Subj)),
   df)")
 
 # 1,000 bootstraps in seconds
@@ -596,11 +596,11 @@ The foundational `brms` methods taught at SMLP directly mirror our SFB 1252 RDM 
 
 | Core Bayesian Topic | SMLP Book Chapters (Nicenboim et al.) | Relevant SFB 1252 RDM Workshops & Notebooks |
 |---|---|---|
-| **Bayesian Workflow & Priors** | [Ch. 4: Regression Models](https://bruno.nicenboim.me/bayescogsci/ch-reg.html#sec-brms) · [Ch. 5: Hierarchical](https://bruno.nicenboim.me/bayescogsci/ch-hierarchical.html#sec-brms-hierarchical) | **[Workshop 11: Regression with brms](../11-bayesian-regression-models/)** · [01_setting_priors](https://jobschepens.github.io/brms-ws/01_setting_priors.html) |
-| **Prior & Posterior Checks** | [Ch. 4: Prior Checks (§4.2)](https://bruno.nicenboim.me/bayescogsci/ch-reg.html#sec-priorpred) · [Ch. 4: Posterior Checks (§4.4)](https://bruno.nicenboim.me/bayescogsci/ch-reg.html#sec-ppchecks) | **[Workshop 11](../11-bayesian-regression-models/)** · [02_prior_checks](https://jobschepens.github.io/brms-ws/02_prior_predictive_checks_rt.html) · [03_posterior_checks](https://jobschepens.github.io/brms-ws/03_posterior_predictive_checks_rt.html) |
-| **MCMC Convergence & Diagnostics** | [Ch. 3: Computational BDA (§3.3)](https://bruno.nicenboim.me/bayescogsci/ch-compbda.html#sec-diagnostics) ($\hat{R}$, ESS, divergences) | **[Workshop 11](../11-bayesian-regression-models/)** · [08_convergence](https://jobschepens.github.io/brms-ws/08_convergence.html) |
-| **Model Comparison (LOO-CV)** | [Ch. 12: Comparison](https://bruno.nicenboim.me/bayescogsci/ch-comparison.html) · [Ch. 14: Cross-Validation](https://bruno.nicenboim.me/bayescogsci/ch-cv.html#sec-cvbrms) | **[Workshop 13: Cross-Validation](../13-bayesian-model-comparison-cv/)** · [05_loo](https://jobschepens.github.io/brms-ws/05_loo.html) |
-| **Bayes Factors & Point Hypotheses** | [Ch. 13: Bayes Factors (§13.1)](https://bruno.nicenboim.me/bayescogsci/ch-bf.html#sec-bfsavage) (Bridge sampling / Savage-Dickey) | **[Workshop 15: Bayes Factors](../15-bayes-factor/)** · [07_bayes_factors](https://jobschepens.github.io/brms-ws/07_bayes_factors.html) |
+| **Bayesian Workflow & Priors** | [Ch. 4: Regression Models](https://bruno.nicenboim.me/bayescogsci/ch-reg.html#the-brms-model) · [Ch. 5: Hierarchical](https://bruno.nicenboim.me/bayescogsci/ch-hierarchical.html#exchangeability-and-hierarchical-models) | **[Workshop 11: Regression with brms](../11-bayesian-regression-models/)** · [01_setting_priors](https://jobschepens.github.io/brms-ws/01_setting_priors.html) |
+| **Prior & Posterior Checks** | [Ch. 6: Prior Checks](https://bruno.nicenboim.me/bayescogsci/ch-workflow.html#checking-whether-assumptions-are-consistent-with-domain-expertise-prior-predictive-checks) · [Ch. 6: Posterior Checks](https://bruno.nicenboim.me/bayescogsci/ch-workflow.html#does-the-model-adequately-capture-the-dataposterior-predictive-checks) | **[Workshop 11](../11-bayesian-regression-models/)** · [02_prior_checks](https://jobschepens.github.io/brms-ws/02_prior_predictive_checks_rt.html) · [03_posterior_checks](https://jobschepens.github.io/brms-ws/03_posterior_predictive_checks_rt.html) |
+| **MCMC Convergence & Diagnostics** | [Ch. 3: Computational BDA](https://bruno.nicenboim.me/bayescogsci/ch-compbda.html#sec-convergencenut) ($\hat{R}$, ESS, divergences) | **[Workshop 11](../11-bayesian-regression-models/)** · [08_convergence](https://jobschepens.github.io/brms-ws/08_convergence.html) |
+| **Model Comparison (LOO-CV)** | [Ch. 12: Comparison](https://bruno.nicenboim.me/bayescogsci/ch-comparison.html) · [Ch. 14: Cross-Validation](https://bruno.nicenboim.me/bayescogsci/ch-cv.html#cross-validation-in-stan) | **[Workshop 13: Cross-Validation](../13-bayesian-model-comparison-cv/)** · [05_loo](https://jobschepens.github.io/brms-ws/05_loo.html) |
+| **Bayes Factors & Point Hypotheses** | [Ch. 13: Bayes Factors](https://bruno.nicenboim.me/bayescogsci/ch-bf.html#marginal-likelihood) (Bridge sampling / Savage-Dickey) | **[Workshop 15: Bayes Factors](../15-bayes-factor/)** · [07_bayes_factors](https://jobschepens.github.io/brms-ws/07_bayes_factors.html) |
 | **Simulation-Based Power** | [Ch. 3: Power & Sample Size (§3.5)](https://bruno.nicenboim.me/bayescogsci/ch-compbda.html) (Generative models) | **[Workshop 18: Power Analysis](../18-power-analysis/)** · [Sequential Simulation Report](https://jobschepens.github.io/samplesize/) |
 
 

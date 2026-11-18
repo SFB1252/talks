@@ -310,7 +310,7 @@ Part II
 - A lot of data is unpublished
 - Organization of raw data in some projects is not documented and it’s nearly impossible for people from outside to work or even understand the data
 - The researches know this issue (method to protect the data?)
-- One project lost huge amounts of data (hard drives got lost). 
+- One project lost huge amounts of data (hard drives got lost).
 - A DMP can help to avoid these situations
 
 :::
@@ -429,7 +429,7 @@ The choice for a repository can shape your DMP very much, e.g.:
 
 ::: {#refs}
 - Slide "3. My experiences with DMPS": Simon Kellers, [DAI Geoserver](https://geoserver.dainst.org/catalogue/#/map/8374)
-- Slide "6.1 Lessons learned", DCH Demerit Badges: RDM Demerit Badges, CC-BY 4.0 Elisabeth Mollenhauer (badges) and Felix Rau (text), [DCH Uni Köln](https://dch.phil-fak.uni-koeln.de/rdm-demerit)
+- Slide "6.1 Lessons learned", DCH Demerit Badges: RDM Demerit Badges, CC-BY 4.0 Elisabeth Mollenhauer (badges) and Felix Rau (text), [DCH Uni Köln](https://dch.phil-fak.uni-koeln.de/lehrangebote/nachnutzbare-fdm-materialien/rdm-demerit)
 - Slide "9. Research Data Lifecycle": SZF TU Berlin, CC BY 4.0, [TU Berlin SZF](https://www.tu.berlin/en/ub/szf/tips-tools/what-is-research-data-management)
 
 :::

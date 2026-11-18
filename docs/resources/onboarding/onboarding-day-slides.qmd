@@ -5,8 +5,8 @@ author:
   - "Job Schepens"
   - "Luke Günther"
 # titlegraphic: logo_prominence-in-language.png
-format: 
-  beamer: 
+format:
+  beamer:
     aspectratio: 32
     navigation: horizontal
     theme: default
@@ -75,12 +75,12 @@ TODO: Ask for confirmation? Spreadsheet on Sciebo?
 	- 21 May | *Research Data Management* by Felix Rau \
     (Data Center for the Humanities)
 - [**Digital Humanities Colloquium**](https://lehre.idh.uni-koeln.de/lehrveranstaltungen/sommersemester-2025/digital-humanities-cologne/)
-  - 22 May | *Adapting Language Models for the Analysis of Real World Textual Data* 
+  - 22 May | *Adapting Language Models for the Analysis of Real World Textual Data*
     by Roman Klinger (Uni Bamberg)
 - [**ReproducibiliTea in the HumaniTeas**](https://ub.uni-koeln.de/en/courses-consultations/specials/reproducibilitea-in-the-humaniteas)
 	- 26 May | *Reproducibility when working with large language models: A hallucination?*
     by Nils Reiter (Project C11 & S)
-- [**Diversity Week**](https://vielfalt.uni-koeln.de/en/news/diversity-week-you-make-the-difference)
+- [**Diversity Week**](https://vielfalt.uni-koeln.de/en/news)
   - 3 June | FLINTA* discussion group on learning to code \
     by Elen Le Foll (Project B10)
 

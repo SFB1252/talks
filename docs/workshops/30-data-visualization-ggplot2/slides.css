@@ -91,3 +91,9 @@
   break-inside: avoid;
   margin-bottom: 0.35em;
 }
+
+/* Interactive widgets: let plotly fill its column */
+.reveal .plotly.html-widget {
+  width: 100% !important;
+  max-width: 100%;
+}

@@ -1007,7 +1007,7 @@ Lambda calculus and model-theoretic notation use standard LaTeX math mode — no
 ::::
 
 ::: {.callout-tip}
-Key packages: [`stmaryrd`](https://ctan.org/pkg/stmaryrd) for `\llbracket`/`\rrbracket` brackets; [`amssymb`](https://ctan.org/pkg/amssymb) for logical operators (`\forall`, `\exists`, `\wedge` …); [`mathtools`](https://ctan.org/pkg/mathtools) for extended math syntax. For frequently used brackets, define shorthands: `\newcommand{\sv}[1]{\llbracket #1 \rrbracket}` so you can write `\sv{\text{runs}}` instead of the full bracket pair each time.
+Key packages: [`stmaryrd`](https://ctan.org/pkg/stmaryrd) for `\llbracket`/`\rrbracket` brackets; [`amsfonts`](https://ctan.org/pkg/amsfonts) (which provides `amssymb`) for logical operators (`\forall`, `\exists`, `\wedge` …); [`mathtools`](https://ctan.org/pkg/mathtools) for extended math syntax. For frequently used brackets, define shorthands: `\newcommand{\sv}[1]{\llbracket #1 \rrbracket}` so you can write `\sv{\text{runs}}` instead of the full bracket pair each time.
 :::
 
 
