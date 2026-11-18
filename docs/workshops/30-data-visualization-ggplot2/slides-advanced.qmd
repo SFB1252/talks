@@ -111,14 +111,14 @@ By the end of this session, you can:
 ::: {.callout-note}
 ### This is the sequel
 
-We assume you can build a plot with [`aes()`](https://ggplot2.tidyverse.org/reference/aes.html), `geom_*()`, and [`labs()`](https://ggplot2.tidyverse.org/reference/labs.html). The core workshop is `slides.qmd`.
+We assume you can build a plot with [`aes()`](https://ggplot2.tidyverse.org/reference/aes.html), `geom_*()`, and [`labs()`](https://ggplot2.tidyverse.org/reference/labs.html). The core workshop is [`slides.qmd`](slides.html).
 :::
 
 **Prerequisites:** the core workshop or equivalent experience with `ggplot2`.
 
-**Materials:** `slides-advanced.qmd`, `scripts/ggplot2-advanced.R`, and the `data/` folder.
+**Materials:** [`slides-advanced.qmd`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/slides-advanced.qmd), [`scripts/ggplot2-advanced.R`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/scripts/ggplot2-advanced.R), and the [`data/` folder](https://github.com/SFB1252/talks/tree/main/docs/workshops/30-data-visualization-ggplot2/data).
 
-**Core deck:** `slides.qmd` covers perception, the grammar, mappings, geoms, facets, colour, and integrity traps.
+**Core deck:** [`slides.qmd`](slides.html) covers perception, the grammar, mappings, geoms, facets, colour, and integrity traps.
 :::
 
 :::
@@ -1074,35 +1074,35 @@ This checklist is deliberately long; nobody applies all of it to every explorato
 ::: {.column width="50%"}
 ### Core and scales
 
-- **ggplot2** — grammar, geoms, scales, themes
-- **scales** — breaks, labels, transformations
-- **viridis** — perceptually uniform palettes
-- **colorspace** — HCL colour spaces, CVD checks
+- [**ggplot2**](https://ggplot2.tidyverse.org/) — grammar, geoms, scales, themes
+- [**scales**](https://scales.r-lib.org/) — breaks, labels, transformations
+- [**viridis**](https://sjmgarnier.github.io/viridis/) — perceptually uniform palettes
+- [**colorspace**](https://colorspace.r-forge.r-project.org/) — HCL colour spaces, CVD checks
 
 ### Distributions and uncertainty
 
-- **ggdist** — half-eye, dot, gradient, and interval geoms [@kay2024ggdist]
-- **ggridges** — ridgeline plots
-- **bayesplot** — posterior diagnostics
-- **ggeffects** — tidy marginal predictions [@ludecke2018ggeffects]
-- **marginaleffects** — predictions, slopes, comparisons [@arel2024marginaleffects]
+- [**ggdist**](https://mjskay.github.io/ggdist/) — half-eye, dot, gradient, and interval geoms [@kay2024ggdist]
+- [**ggridges**](https://wilkelab.org/ggridges/) — ridgeline plots
+- [**bayesplot**](https://mc-stan.org/bayesplot/) — posterior diagnostics
+- [**ggeffects**](https://strengejacke.github.io/ggeffects/) — tidy marginal predictions [@ludecke2018ggeffects]
+- [**marginaleffects**](https://marginaleffects.com/) — predictions, slopes, comparisons [@arel2024marginaleffects]
 
 :::
 
 ::: {.column width="50%"}
 ### Composition and annotation
 
-- **patchwork** — compose and align panels
-- **cowplot** — grids, insets, annotations
-- **ggrepel** — non-overlapping labels
-- **ggtext** — rich text and markdown in labels
+- [**patchwork**](https://patchwork.data-imaginist.com/) — compose and align panels
+- [**cowplot**](https://wilkelab.org/cowplot/) — grids, insets, annotations
+- [**ggrepel**](https://ggrepel.slowkow.com/) — non-overlapping labels
+- [**ggtext**](https://wilkelab.org/ggtext/) — rich text and markdown in labels
 
 ### Data, maps, and interaction
 
-- **sf** — simple features and maps
-- **ggraph** — networks and trees
-- **plotly** — interactive HTML plots
-- **gt** — publication tables
+- [**sf**](https://r-spatial.github.io/sf/) — simple features and maps
+- [**ggraph**](https://ggraph.data-imaginist.com/) — networks and trees
+- [**plotly**](https://plotly.com/r/) — interactive HTML plots
+- [**gt**](https://gt.rstudio.com/) — publication tables
 
 ::: {.callout-tip}
 Browse the [ggplot2 extension gallery](https://exts.ggplot2.tidyverse.org/gallery/) before writing a new geom. Someone has probably solved your problem.
@@ -1124,7 +1124,7 @@ Do not install everything. Start with ggplot2 + scales + patchwork + one uncerta
 ::: {.column width="55%"}
 ### 20 minutes, in pairs
 
-Use `data/penguins.csv`.
+Use [`data/penguins.csv`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/data/penguins.csv).
 
 1. **Fit** `lm(body_mass_g ~ flipper_length_mm * species)` and plot predictions. Does the interaction change the interpretation?
 2. **Plot slopes** with `plot_slopes()`. Which group has the steepest relation?
@@ -1256,7 +1256,7 @@ The advanced deck ends where publication begins. The grammar is still the transf
 ::: {.callout-note}
 ### Local files
 
-`materials/` contains offline HTML snapshots of the core tutorials; see `materials/README.md` for provenance.
+`materials/` contains offline HTML snapshots of the core tutorials; see [`materials/README.md`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/materials/README.md) for provenance.
 :::
 :::
 
@@ -1286,8 +1286,8 @@ Thanks also to the open-source community behind `ggplot2`, the tidyverse, `patch
 
 - Slides: CC BY 4.0
 - Code: MIT
-- Data: see `data/README.md`
-- Downloaded reference materials: see `materials/README.md`
+- Data: see [`data/README.md`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/data/README.md)
+- Downloaded reference materials: see [`materials/README.md`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/materials/README.md)
 
 If you reuse the slides, please keep the attribution and the data-source notes.
 :::

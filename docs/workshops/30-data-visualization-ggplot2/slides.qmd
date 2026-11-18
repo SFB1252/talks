@@ -114,9 +114,9 @@ Learn to **specify, critique, and rebuild** a plot from its grammar — not mere
 
 **Prerequisites:** basic familiarity with R and RStudio.
 
-**Materials:** `slides.qmd`, `scripts/ggplot2-intro.R`, and the `data/` folder.
+**Materials:** [`slides.qmd`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/slides.qmd), [`scripts/ggplot2-intro.R`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/scripts/ggplot2-intro.R), and the [`data/` folder](https://github.com/SFB1252/talks/tree/main/docs/workshops/30-data-visualization-ggplot2/data).
 
-**Next:** `slides-advanced.qmd` covers scales, models, uncertainty, composition, and export.
+**Next:** [`slides-advanced.qmd`](slides-advanced.html) covers scales, models, uncertainty, composition, and export.
 :::
 
 :::
@@ -301,41 +301,111 @@ Cleveland & McGill's ranking is about relative accuracy for elementary judgments
 
 ::: {.columns}
 
-::: {.column width="54%"}
+::: {.column width="45%"}
 ### Graphics as a language
 
 Wilkinson (2005) proposed that statistical graphics can be described by a **formal grammar** rather than a catalogue of chart types [@wilkinson2005grammar].
 
 A graphic is built from:
 
-- **data:** variables and their values
-- **mappings:** variables to visual properties
-- **scales:** data space to visual space
-- **geometry:** points, lines, areas, text
-- **statistics:** transformations of the data
+- **theme:** axes, legends, labels
 - **coordinates:** the space in which geoms are placed
-- **guides:** axes, legends, labels
+- **statistics:** transformations of the data
+- **facets:** data space to visual space
+- **geometry:** points, lines, areas, text
+- **mappings:** variables to visual properties
+- **data:** variables and their values
 
 The grammar is **compositional**: a small vocabulary plus rules generates an unbounded family of plots.
 
-Each arrow has a **default**, which is why a single [`geom_point()`](https://ggplot2.tidyverse.org/reference/geom_point.html) is enough to produce a complete plot.
+Each layer has a **default**, which is why a single [`geom_point()`](https://ggplot2.tidyverse.org/reference/geom_point.html) is enough to produce a complete plot.
 
 :::
 
-::: {.column width="46%"}
+::: {.column width="55%"}
 ### From grammar to `ggplot2`
 
-Wickham (2010) adapted the grammar into a **layered** system [@wickham2010layered].
+Wickham (2010) adapted the grammar into a **layered** system [@wickham2010layered]. Each label below opens the reference page for that component.
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="110 10 680 545" role="group" style="width:100%;height:auto;aspect-ratio:680 / 545;display:block" aria-label="The layered grammar of graphics: data, aesthetics, geometries, facets, statistics, coordinates and theme, stacked as planes; each label links to its reference page.">
+<style>
+  text { font-family: 'Albert Sans', Arial, sans-serif; }
+  .lbl { font-size: 26px; font-weight: 600; }
+  .fn  { font-family: 'Fira Code', monospace; font-size: 14px; }
+  .glyph { font-family: 'Fira Code', monospace; font-size: 11px; }
+  a:hover .lbl, a:hover .fn { text-decoration: underline; }
+</style>
+
+<a href="https://ggplot2.tidyverse.org/reference/theme.html">
+<polygon points="320,92 700,92 788,38 408,38" fill="#F2DDEA" stroke="#ffffff" stroke-width="2"/>
+<text class="lbl" x="285" y="72" text-anchor="end" fill="#8E4A6F">Theme</text>
+<text class="fn" x="285" y="92" text-anchor="end" fill="#547685">theme()</text>
+<circle cx="502.0" cy="65.0" r="8" fill="#D55E00" opacity="0.8"/>
+<circle cx="528.0" cy="65.0" r="8" fill="#E69F00" opacity="0.8"/>
+<circle cx="554.0" cy="65.0" r="8" fill="#009E73" opacity="0.8"/>
+<circle cx="580.0" cy="65.0" r="8" fill="#56B4E9" opacity="0.8"/>
+<circle cx="606.0" cy="65.0" r="8" fill="#CC79A7" opacity="0.8"/>
+</a>
+<a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">
+<polygon points="320,158 700,158 788,104 408,104" fill="#DBEEF8" stroke="#ffffff" stroke-width="2"/>
+<text class="lbl" x="285" y="138" text-anchor="end" fill="#2A7FA8">Coordinates</text>
+<text class="fn" x="285" y="158" text-anchor="end" fill="#547685">coord_cartesian()</text>
+<line x1="509.0" y1="149.0" x2="609.0" y2="149.0" stroke="#2A7FA8" stroke-width="2.5"/>
+<polygon points="609.0,149.0 597.0,143.0 597.0,155.0" fill="#2A7FA8"/>
+<line x1="509.0" y1="149.0" x2="509.0" y2="99.0" stroke="#2A7FA8" stroke-width="2.5"/>
+<polygon points="509.0,99.0 503.0,111.0 515.0,111.0" fill="#2A7FA8"/>
+</a>
+<a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">
+<polygon points="320,224 700,224 788,170 408,170" fill="#CDEBDF" stroke="#ffffff" stroke-width="2"/>
+<text class="lbl" x="285" y="204" text-anchor="end" fill="#00795A">Statistics</text>
+<text class="fn" x="285" y="224" text-anchor="end" fill="#547685">stat_smooth()</text>
+<path d="M 474.0 217.0 C 514.0 217.0, 524.0 169.0, 564.0 169.0 S 609.0 217.0, 634.0 217.0" fill="none" stroke="#00795A" stroke-width="2.5"/>
+<line x1="474.0" y1="219.0" x2="634.0" y2="219.0" stroke="#00795A" stroke-width="1.5" opacity="0.5"/>
+</a>
+<a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">
+<polygon points="320,290 700,290 788,236 408,236" fill="#FCE7C4" stroke="#ffffff" stroke-width="2"/>
+<text class="lbl" x="285" y="270" text-anchor="end" fill="#A66A00">Facets</text>
+<text class="fn" x="285" y="290" text-anchor="end" fill="#547685">facet_wrap()</text>
+<rect x="488.0" y="233.0" width="38" height="24" fill="#ffffff" stroke="#A66A00" stroke-width="1.8"/>
+<rect x="534.0" y="233.0" width="38" height="24" fill="#ffffff" stroke="#A66A00" stroke-width="1.8"/>
+<rect x="580.0" y="233.0" width="38" height="24" fill="#ffffff" stroke="#A66A00" stroke-width="1.8"/>
+<rect x="488.0" y="265.0" width="38" height="24" fill="#ffffff" stroke="#A66A00" stroke-width="1.8"/>
+<rect x="534.0" y="265.0" width="38" height="24" fill="#ffffff" stroke="#A66A00" stroke-width="1.8"/>
+<rect x="580.0" y="265.0" width="38" height="24" fill="#ffffff" stroke="#A66A00" stroke-width="1.8"/>
+</a>
+<a href="https://ggplot2.tidyverse.org/reference/geom_point.html">
+<polygon points="320,356 700,356 788,302 408,302" fill="#D3E3F0" stroke="#ffffff" stroke-width="2"/>
+<text class="lbl" x="285" y="336" text-anchor="end" fill="#005176">Geometries</text>
+<text class="fn" x="285" y="356" text-anchor="end" fill="#547685">geom_point()</text>
+<circle cx="514.0" cy="339.0" r="14" fill="none" stroke="#005176" stroke-width="2.5"/>
+<polygon points="548.0,305.0 572.0,339.0 524.0,339.0" fill="none" stroke="#005176" stroke-width="2.5"/>
+<line x1="584.0" y1="339.0" x2="626.0" y2="313.0" stroke="#005176" stroke-width="2.5"/>
+</a>
+<a href="https://ggplot2.tidyverse.org/reference/aes.html">
+<polygon points="320,422 700,422 788,368 408,368" fill="#F7DBD0" stroke="#ffffff" stroke-width="2"/>
+<text class="lbl" x="285" y="402" text-anchor="end" fill="#B23A32">Aesthetics</text>
+<text class="fn" x="285" y="422" text-anchor="end" fill="#547685">aes()</text>
+<text x="494.0" y="403.0" text-anchor="middle" font-size="22" font-weight="600" fill="#B23A32">x</text>
+<line x1="512.0" y1="395.0" x2="546.0" y2="395.0" stroke="#B23A32" stroke-width="2"/>
+<polygon points="546.0,395.0 536.0,390.0 536.0,400.0" fill="#B23A32"/>
+<text x="568.0" y="403.0" font-size="15" fill="#B23A32">colour</text>
+<text x="564.0" y="423.0" font-size="11" fill="#B23A32" opacity="0.85">y → size</text>
+</a>
+<a href="https://ggplot2.tidyverse.org/reference/ggplot.html">
+<polygon points="320,488 700,488 788,434 408,434" fill="#E2E7E9" stroke="#ffffff" stroke-width="2"/>
+<text class="lbl" x="285" y="468" text-anchor="end" fill="#445A66">Data</text>
+<text class="fn" x="285" y="488" text-anchor="end" fill="#547685">data frame</text>
+<g class="glyph" fill="#445A66" opacity="0.85">
+<text x="554.0" y="451.0" text-anchor="middle">2.3  4.1  5.0</text>
+<text x="554.0" y="467.0" text-anchor="middle">1.9  3.8  4.6</text>
+<text x="554.0" y="483.0" text-anchor="middle">2.7  4.4  5.3</text>
+</g>
+</a>
+</svg>
 
 :::
 
 :::
-
-```{mermaid}
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '13px', 'fontFamily': 'Albert Sans, sans-serif'}, 'flowchart': {'nodeSpacing': 12, 'rankSpacing': 18}}}%%
-flowchart LR
-    D["Data"] --> M["Mapping<br/>aes()"] --> L["Layer<br/>geom_*()"] --> S["Stat +<br/>position"] --> SC["Scale<br/>scale_*_*()"] --> C["Coordinate<br/>+ facet"] --> T["Theme"]
-```
 
 ::: {.notes}
 The key theoretical move: a chart type is not primitive. It is a composition of data, mapping, geometry, statistic, scale, coordinate, and facet choices. Once you see this, unfamiliar plots become analysable: which component is doing the work?
@@ -1243,9 +1313,9 @@ c_good_6 <- ggplot(penguins, aes(bill_length_mm, body_mass_g, colour = species))
 ::: {.column width="50%"}
 ### Three palette types
 
-- **Sequential:** ordered magnitude (light → dark, viridis)
-- **Diverging:** deviation around a meaningful midpoint (ColorBrewer `RdBu`)
-- **Qualitative:** unordered categories (Okabe–Ito, `Set2`)
+- **Sequential:** ordered magnitude (light → dark, [viridis](https://sjmgarnier.github.io/viridis/))
+- **Diverging:** deviation around a meaningful midpoint ([ColorBrewer](https://colorbrewer2.org/) `RdBu`)
+- **Qualitative:** unordered categories ([Okabe–Ito](https://jfly.uni-koeln.de/color/), `Set2`)
 
 ```r
 scale_colour_viridis_d(option = "D")
@@ -1342,11 +1412,11 @@ The workshop materials are themselves an example: `slides.qmd` contains the figu
 ::: {.column width="50%"}
 ### Tools
 
-- **RStudio:** Plots pane → *Zoom* and *Export*; [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html) for exact sizes
-- **`esquisse` addin:** explore with drag-and-drop, then copy the code it wrote
-- **`colorspace::choose_palette()`:** pick a palette interactively and copy the values
-- **`colorblindr`** (GitHub): simulate colour-vision deficiency on your plot
-- **`ragg` / `svglite`:** sharp PNG and vector SVG output
+- [**RStudio**](https://posit.co/download/rstudio-desktop/): Plots pane → *Zoom* and *Export*; [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html) for exact sizes
+- [**`esquisse`**](https://dreamrs.github.io/esquisse/) **addin:** explore with drag-and-drop, then copy the code it wrote
+- [**`colorspace::choose_palette()`**](https://colorspace.r-forge.r-project.org/reference/choose_palette.html): pick a palette interactively and copy the values
+- [**`colorblindr`**](https://github.com/clauswilke/colorblindr) (GitHub): simulate colour-vision deficiency on your plot
+- [**`ragg`**](https://ragg.r-lib.org/) / [**`svglite`**](https://svglite.r-lib.org/): sharp PNG and vector SVG output
 
 ::: {.callout-tip}
 ### Explore in a GUI, keep a script
@@ -1364,7 +1434,7 @@ The addins are for exploring. Copy the code they generate into your script and d
 4. The [reference index](https://ggplot2.tidyverse.org/reference/): every geom, scale, and theme element
 5. The [ggplot2 cheat sheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf)
 
-**When it breaks:** `layer_data(p, 1)` shows what a layer computed
+**When it breaks:** [`layer_data(p, 1)`](https://ggplot2.tidyverse.org/reference/layer_data.html) shows what a layer computed
 :::
 
 :::
@@ -1382,7 +1452,7 @@ Walk through one example live: type `?geom_point`, point at the Aesthetics secti
 ::: {.column width="55%"}
 ### 15 minutes, in pairs
 
-Use `data/penguins.csv` (or `gapminder.csv`).
+Use [`data/penguins.csv`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/data/penguins.csv) (or [`gapminder.csv`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/data/gapminder.csv)).
 
 1. **Rebuild** the first scatter plot with proper labels, a colour scale, and a theme.
 2. **Facet** by island. Are the species differences consistent across islands?
@@ -1417,7 +1487,7 @@ ggplot(penguins, aes(species, body_mass_g)) +
 Which figure would you put in a paper — and what would you write in the caption?
 :::
 
-**Advanced follow-up:** model plots, composition, and export are in `slides-advanced.qmd`.
+**Advanced follow-up:** model plots, composition, and export are in [`slides-advanced.qmd`](slides-advanced.html).
 :::
 
 :::
@@ -1489,7 +1559,7 @@ End with the grammar, not with a package. The five points map onto the five part
 ::: {.callout-note}
 ### Local files
 
-`materials/` contains offline HTML snapshots of the core tutorials; see `materials/README.md` for provenance.
+`materials/` contains offline HTML snapshots of the core tutorials; see [`materials/README.md`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/materials/README.md) for provenance.
 :::
 
 :::
@@ -1537,8 +1607,8 @@ Thanks to the open-source community behind `ggplot2`, the tidyverse, `patchwork`
 
 - Slides: CC BY 4.0
 - Code: MIT
-- Data: see `data/README.md`
-- Downloaded reference materials: see `materials/README.md`
+- Data: see [`data/README.md`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/data/README.md)
+- Downloaded reference materials: see [`materials/README.md`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/materials/README.md)
 
 If you reuse the slides, please keep the attribution and the data-source notes.
 :::
