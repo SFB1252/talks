@@ -90,7 +90,7 @@ By the end of this session, you can:
 1. **Name** the components of a plot and explain the claim each one makes.
 2. **Translate** a question into a data mapping, a geom, and a scale.
 3. **Critique** misleading figures: dynamite plots, truncated axes, overplotting, colour.
-4. **Rebuild** a publication-ready figure in `ggplot2`.
+4. **Rebuild** a publication-ready figure in [`ggplot2`](https://ggplot2.tidyverse.org/).
 
 ### Session plan
 
@@ -418,7 +418,7 @@ The key theoretical move: a chart type is not primitive. It is a composition of 
 | Component | Question it answers | In `ggplot2` |
 |---|---|---|
 | **Data** | What is being plotted? | a data frame, one row per observation |
-| **Mapping** | Which variable becomes which visual property? | `aes(x, y, colour, fill, size, shape, alpha)` |
+| **Mapping** | Which variable becomes which visual property? | [`aes(x, y, colour, fill, size, shape, alpha)`](https://ggplot2.tidyverse.org/reference/aes.html) |
 | **Layer** | Which geoms represent observations? | [`geom_point()`](https://ggplot2.tidyverse.org/reference/geom_point.html), [`geom_line()`](https://ggplot2.tidyverse.org/reference/geom_path.html), [`geom_col()`](https://ggplot2.tidyverse.org/reference/geom_bar.html), … |
 | **Stat** | Which summary is computed before drawing? | [`stat_count()`](https://ggplot2.tidyverse.org/reference/geom_bar.html), [`stat_bin()`](https://ggplot2.tidyverse.org/reference/geom_histogram.html), [`stat_smooth()`](https://ggplot2.tidyverse.org/reference/geom_smooth.html), … |
 | **Position** | How are overlapping geoms arranged? | [`position_dodge()`](https://ggplot2.tidyverse.org/reference/position_dodge.html), [`position_stack()`](https://ggplot2.tidyverse.org/reference/position_stack.html), [`position_jitter()`](https://ggplot2.tidyverse.org/reference/position_jitter.html) |
@@ -522,17 +522,17 @@ set_colour / map_colour
 ::: {.column width="46%"}
 ### The rule
 
-- **Inside [`aes()`](https://ggplot2.tidyverse.org/reference/aes.html)** a variable is **mapped**: `aes(colour = species)`
+- **Inside [`aes()`](https://ggplot2.tidyverse.org/reference/aes.html)** a variable is **mapped**: [`aes(colour = species)`](https://ggplot2.tidyverse.org/reference/aes.html)
   - creates a scale and a legend
   - colour varies with the data
-- **Outside `aes()`** a constant is **set**: `colour = "black"`
+- **Outside [`aes()`](https://ggplot2.tidyverse.org/reference/aes.html)** a constant is **set**: `colour = "black"`
   - no scale, no legend
   - every point looks the same
 
 ::: {.callout-warning}
 ### The classic mistake
 
-`aes(colour = "black")` does **not** paint the points black. It maps the *constant string* `"black"` to colour, producing a one-item legend — usually in the default hue, not black.
+[`aes(colour = "black")`](https://ggplot2.tidyverse.org/reference/aes.html) does **not** paint the points black. It maps the *constant string* `"black"` to colour, producing a one-item legend — usually in the default hue, not black.
 
 ```r
 geom_point(aes(colour = "black"))   # mistake
@@ -591,7 +591,7 @@ p_ungrouped | p_grouped
 2. an explicit `group = country`
 3. `interaction()` for combinations: `group = interaction(site, year)`
 
-[`geom_path()`](https://ggplot2.tidyverse.org/reference/geom_path.html) follows data order; `geom_line()` sorts by *x* first.
+[`geom_path()`](https://ggplot2.tidyverse.org/reference/geom_path.html) follows data order; [`geom_line()`](https://ggplot2.tidyverse.org/reference/geom_path.html) sorts by *x* first.
 :::
 
 **Theory:** grouping defines the **unit of a collective geom**. Wrong grouping is wrong aggregation.
@@ -708,7 +708,7 @@ This is the chart-selection slide. Ask participants to name a recent figure from
 - [`after_stat()`](https://ggplot2.tidyverse.org/reference/aes_eval.html) maps a computed variable; `..count..` is the older syntax
 
 ::: {.callout-important}
-If you already computed the summary, use `geom_col()`, not `geom_bar()`. The geom does not know that your `y` is a mean; it only knows whether a stat is needed.
+If you already computed the summary, use [`geom_col()`](https://ggplot2.tidyverse.org/reference/geom_bar.html), not [`geom_bar()`](https://ggplot2.tidyverse.org/reference/geom_bar.html). The geom does not know that your `y` is a mean; it only knows whether a stat is needed.
 :::
 
 **Theory:** statistics are **first-class** plot components. A bar chart of counts is a statistical claim, not a raw data display.
@@ -895,8 +895,8 @@ gapminder |>
 ::: {.column width="55%"}
 ### Conditioning the data
 
-- `facet_wrap(~ variable, nrow = 2)`: one variable, wrapped layout
-- `facet_grid(rows ~ cols)`: two variables, fixed grid
+- [`facet_wrap(~ variable, nrow = 2)`](https://ggplot2.tidyverse.org/reference/facet_wrap.html): one variable, wrapped layout
+- [`facet_grid(rows ~ cols)`](https://ggplot2.tidyverse.org/reference/facet_grid.html): two variables, fixed grid
 - `scales = "fixed"` (default): one common scale; **comparisons are valid**
 - `scales = "free_y"`: each panel gets its own range; trends look similar even when magnitudes differ
 - [`labeller`](https://ggplot2.tidyverse.org/reference/labeller.html), `strip.position`, `space = "free"`: layout control
@@ -1193,7 +1193,7 @@ Strategies, in order of preference:
 6. **sampling** — only with a clear caption and seed
 
 ::: {.callout-tip}
-`geom_hex()` needs the `hexbin` package. For very large data, binning is often more honest than a scatter plot of 100,000 invisible points.
+[`geom_hex()`](https://ggplot2.tidyverse.org/reference/geom_hex.html) needs the [`hexbin`](https://cran.r-project.org/package=hexbin) package. For very large data, binning is often more honest than a scatter plot of 100,000 invisible points.
 :::
 
 **Theory:** a scatter plot is a **bivariate** display. When data are dense, the relevant variable is the **local density**, which needs its own encoding.
@@ -1366,7 +1366,7 @@ The top row is deliberately bad, the bottom row is the repair. Each column tests
 3. **Specify** the final plot as code, not as a sequence of mouse clicks
 4. **Critique** the encoding: is the question answered? is the scale honest?
 5. **Export** at final size, with a caption and a meaningful file name
-6. **Record** the session: `sessionInfo()`, `renv::snapshot()`
+6. **Record** the session: `sessionInfo()`, [`renv::snapshot()`](https://rstudio.github.io/renv/reference/snapshot.html)
 
 ```r
 # A small, reusable theme
@@ -1384,7 +1384,7 @@ theme_set(theme_uzk())
 ::: {.column width="48%"}
 ### What to commit
 
-- **commit:** code, data (if small and licensed), README, `renv.lock`
+- **commit:** code, data (if small and licensed), README, [`renv.lock`](https://rstudio.github.io/renv/articles/lockfile.html)
 - **do not commit:** rendered figures that can be regenerated, large raw data, credentials
 - **do commit:** the final figure *if* it is part of the publication record, with the code that made it
 
@@ -1461,8 +1461,8 @@ Use [`data/penguins.csv`](https://github.com/SFB1252/talks/blob/main/docs/worksh
 ::: {.callout-tip}
 ### Hints
 
-- `facet_wrap(~island)`
-- [`geom_violin()`](https://ggplot2.tidyverse.org/reference/geom_violin.html) + `geom_boxplot(width = .1)` + [`geom_jitter()`](https://ggplot2.tidyverse.org/reference/geom_jitter.html)
+- [`facet_wrap(~island)`](https://ggplot2.tidyverse.org/reference/facet_wrap.html)
+- [`geom_violin()`](https://ggplot2.tidyverse.org/reference/geom_violin.html) + [`geom_boxplot(width = .1)`](https://ggplot2.tidyverse.org/reference/geom_boxplot.html) + [`geom_jitter()`](https://ggplot2.tidyverse.org/reference/geom_jitter.html)
 - [`scale_colour_viridis_d()`](https://ggplot2.tidyverse.org/reference/scale_viridis.html)
 :::
 :::
@@ -1517,7 +1517,7 @@ Circulate and look for the three common errors: colour constants inside aes(), a
 ::: {.callout-important}
 ### The grammar is the transferable skill
 
-Functions change; the grammar does not. Once you can name the components of a plot, you can critique a figure in any tool — and rebuild it in `ggplot2`.
+Functions change; the grammar does not. Once you can name the components of a plot, you can critique a figure in any tool — and rebuild it in [`ggplot2`](https://ggplot2.tidyverse.org/).
 :::
 
 **Next steps**
@@ -1594,7 +1594,7 @@ Point participants to the local `materials/` snapshots if the network is unrelia
 ::: {.columns}
 
 ::: {.column width="58%"}
-Thanks to the open-source community behind `ggplot2`, the tidyverse, `patchwork`, `ggeffects`, `marginaleffects`, and the data providers: [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/), [Gapminder](https://www.gapminder.org/), [Software Carpentry](https://swcarpentry.github.io/), [Data Carpentry](https://datacarpentry.github.io/), and [datasauRus](https://github.com/lockedata/datasauRus).
+Thanks to the open-source community behind [`ggplot2`](https://ggplot2.tidyverse.org/), the [tidyverse](https://www.tidyverse.org/), [`patchwork`](https://patchwork.data-imaginist.com/), [`ggeffects`](https://strengejacke.github.io/ggeffects/), [`marginaleffects`](https://marginaleffects.com/), and the data providers: [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/), [Gapminder](https://www.gapminder.org/), [Software Carpentry](https://swcarpentry.github.io/), [Data Carpentry](https://datacarpentry.github.io/), and [datasauRus](https://github.com/lockedata/datasauRus).
 
 **Contact:** [job.schepens@uni-koeln.de](mailto:job.schepens@uni-koeln.de)
 

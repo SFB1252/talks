@@ -46,6 +46,7 @@ library(scales)
 library(viridis)
 library(ggeffects)
 library(marginaleffects)
+library(plotly)
 
 systemfonts::register_font(
   "Albert Sans",
@@ -91,7 +92,7 @@ By the end of this session, you can:
 
 1. **Control** scales, guides, limits, and coordinates deliberately.
 2. **Explain** how stats and positions change what a geom represents.
-3. **Plot** model predictions, slopes, and uncertainty with `marginaleffects` and `ggeffects`.
+3. **Plot** model predictions, slopes, and uncertainty with [`marginaleffects`](https://marginaleffects.com/) and [`ggeffects`](https://strengejacke.github.io/ggeffects/).
 4. **Compose**, export, and audit a publication-ready figure.
 
 ### Session plan
@@ -114,7 +115,7 @@ By the end of this session, you can:
 We assume you can build a plot with [`aes()`](https://ggplot2.tidyverse.org/reference/aes.html), `geom_*()`, and [`labs()`](https://ggplot2.tidyverse.org/reference/labs.html). The core workshop is [`slides.qmd`](slides.html).
 :::
 
-**Prerequisites:** the core workshop or equivalent experience with `ggplot2`.
+**Prerequisites:** the core workshop or equivalent experience with [`ggplot2`](https://ggplot2.tidyverse.org/).
 
 **Materials:** [`slides-advanced.qmd`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/slides-advanced.qmd), [`scripts/ggplot2-advanced.R`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/scripts/ggplot2-advanced.R), and the [`data/` folder](https://github.com/SFB1252/talks/tree/main/docs/workshops/30-data-visualization-ggplot2/data).
 
@@ -193,11 +194,15 @@ Use this slide as a checkpoint, not a re-teach. Ask for one example of a plot th
 g2007 <- gapminder |> filter(year == 2007)
 dollar_k <- function(x) paste0("$", format(x / 1000, trim = TRUE, scientific = FALSE), "k")
 
+life_y <- function() scale_y_continuous(limits = c(38, 92),
+                                         breaks = seq(40, 90, 10))
+
 p_scale <- ggplot(g2007, aes(gdpPercap, lifeExp)) +
   geom_point(alpha = 0.5, colour = uzk_blue) +
   geom_smooth(method = "lm", formula = y ~ x, se = FALSE,
               colour = uzk_coral, linewidth = 0.9) +
   scale_x_log10(breaks = c(1000, 3000, 10000, 30000), labels = dollar_k) +
+  life_y() +
   labs(title = "scale_x_log10()",
        subtitle = "the model is fitted to log GDP: a straight line",
        x = "GDP per capita", y = "Life expectancy")
@@ -207,6 +212,7 @@ p_coord <- ggplot(g2007, aes(gdpPercap, lifeExp)) +
   geom_smooth(method = "lm", formula = y ~ x, se = FALSE,
               colour = uzk_coral, linewidth = 0.9) +
   scale_x_continuous(breaks = c(1000, 3000, 10000, 30000), labels = dollar_k) +
+  life_y() +
   coord_trans(x = "log10") +
   labs(title = 'coord_trans(x = "log10")',
        subtitle = "the same raw-scale model, warped by the axis",
@@ -258,10 +264,15 @@ Same data, same geom, same formula; only the placement of the log10 differs. On 
 #| fig-width: 9.6
 #| fig-height: 3.3
 #| fig-alt: "Two scatter plots of body mass against bill length restricted to 40 to 50 millimetres: scale limits drop outlying data and change the fitted line, while coord_cartesian keeps all data and only zooms the view."
+mass_y <- function() scale_y_continuous(
+  limits = range(penguins$body_mass_g, na.rm = TRUE),
+  breaks = c(3000, 4000, 5000, 6000))
+
 p_base <- ggplot(penguins, aes(bill_length_mm, body_mass_g)) +
   geom_point(alpha = 0.35, colour = uzk_blue) +
   geom_smooth(method = "lm", formula = y ~ x, se = FALSE,
-              colour = uzk_coral, linewidth = 0.9)
+              colour = uzk_coral, linewidth = 0.9) +
+  mass_y()
 
 p_crop <- p_base +
   scale_x_continuous(limits = c(40, 50)) +
@@ -280,7 +291,7 @@ p_crop | p_zoom
 
 ::: {.column width="55%"}
 - `scale_*_*(limits = ...)` **removes** data outside the limits, then computes the stat. Means, smooths, and summaries change.
-- `coord_cartesian(xlim = ...)` **zooms** the viewport. All data contribute to the stat; only the visible window changes.
+- [`coord_cartesian(xlim = ...)`](https://ggplot2.tidyverse.org/reference/coord_cartesian.html) **zooms** the viewport. All data contribute to the stat; only the visible window changes.
 :::
 
 ::: {.column width="45%"}
@@ -332,7 +343,7 @@ p_bar_pie | p_bar_flat
 ### The coordinate system is part of the grammar
 
 - [`coord_cartesian()`](https://ggplot2.tidyverse.org/reference/coord_cartesian.html): default Cartesian plane; zoom and set limits
-- `coord_fixed(ratio = ...)`: lock the aspect ratio; essential for maps and shapes
+- [`coord_fixed(ratio = ...)`](https://ggplot2.tidyverse.org/reference/coord_fixed.html): lock the aspect ratio; essential for maps and shapes
 - [`coord_flip()`](https://ggplot2.tidyverse.org/reference/coord_flip.html): swap axes (now usually replaced by mapping the discrete variable to *y*)
 - [`coord_polar()`](https://ggplot2.tidyverse.org/reference/coord_radial.html): wrap a linear axis around a circle
 - [`coord_radial()`](https://ggplot2.tidyverse.org/reference/coord_radial.html): modern radial coordinates with partial circles (ggplot2 ≥ 3.5.0)
@@ -367,10 +378,10 @@ The pie and bar show exactly the same counts. The bar is easier to compare becau
 
 Axes, legends, and colourbars let the reader recover the data values from the plotted geoms.
 
-- `guides(colour = "none")` removes a guide but keeps the scale
-- `guide_legend(nrow = 1, override.aes = list(size = 3))` controls the keys
-- `guide_axis(angle = 45)` handles crowded labels
-- `theme(legend.position = "top")` moves the legend; [`guides()`](https://ggplot2.tidyverse.org/reference/guides.html) controls its content
+- [`guides(colour = "none")`](https://ggplot2.tidyverse.org/reference/guides.html) removes a guide but keeps the scale
+- [`guide_legend(nrow = 1, override.aes = list(size = 3))`](https://ggplot2.tidyverse.org/reference/guide_legend.html) controls the keys
+- [`guide_axis(angle = 45)`](https://ggplot2.tidyverse.org/reference/guide_axis.html) handles crowded labels
+- [`theme(legend.position = "top")`](https://ggplot2.tidyverse.org/reference/theme.html) moves the legend; [`guides()`](https://ggplot2.tidyverse.org/reference/guides.html) controls its content
 - direct labels often beat a legend, especially for few groups
 
 **Rule:** if the legend repeats information the reader can see on the geoms, replace it with a direct label.
@@ -440,8 +451,8 @@ Consequences:
 
 - layers can be added, removed, reused, and composed
 - [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html) renders without displaying
-- `ggplot_build()` exposes the output of stats and scales
-- functions can return plots; loops and `purrr::map()` work
+- [`ggplot_build()`](https://ggplot2.tidyverse.org/reference/ggplot_build.html) exposes the output of stats and scales
+- functions can return plots; loops and [`purrr::map()`](https://purrr.tidyverse.org/reference/map.html) work
 - Quarto renders the object at the point where it is printed
 
 :::
@@ -461,7 +472,7 @@ This is also why debugging is possible: a wrong plot is usually a wrong *specifi
 ::: {.callout-tip}
 ### Inspect the pipeline
 
-`ggplot_build(p)$data` shows what the stats computed; `ggplot_gtable()` shows the rendered grobs. Use them when a plot looks wrong and you cannot tell which layer is responsible.
+`ggplot_build(p)$data` shows what the stats computed; [`ggplot_gtable()`](https://ggplot2.tidyverse.org/reference/ggplot_gtable.html) shows the rendered grobs. Use them when a plot looks wrong and you cannot tell which layer is responsible.
 :::
 :::
 
@@ -572,14 +583,14 @@ p_jd <- ggplot(pos_data, aes(species, body_mass_g, colour = sex)) +
 
 The core deck used positions for bars; points need them more often, because measurements are rounded and points coincide.
 
-- `position_jitter(width, height)`: spreads coincident points
+- [`position_jitter(width, height)`](https://ggplot2.tidyverse.org/reference/position_jitter.html): spreads coincident points
 - [`position_jitterdodge()`](https://ggplot2.tidyverse.org/reference/position_jitterdodge.html): jitter **inside** dodged groups — the standard for paired groups
 - `seed` fixes the layout, so the figure is reproducible
-- `position_dodge2(preserve = "single")`: dodges boxes and violins and closes gaps left by absent groups
+- [`position_dodge2(preserve = "single")`](https://ggplot2.tidyverse.org/reference/position_dodge.html): dodges boxes and violins and closes gaps left by absent groups
 :::
 
 ::: {.column width="48%"}
-- [`geom_jitter()`](https://ggplot2.tidyverse.org/reference/geom_jitter.html) is `geom_point(position = "jitter")`, with the same caveats
+- [`geom_jitter()`](https://ggplot2.tidyverse.org/reference/geom_jitter.html) is [`geom_point(position = "jitter")`](https://ggplot2.tidyverse.org/reference/geom_point.html), with the same caveats
 - jitter hides exact values: do not use it when the precise coordinate is the message
 - positions run **after** the stat: counts and fits are unchanged, only the points move
 
@@ -635,9 +646,9 @@ Between-subject CIs are too wide when the same participants contribute to every 
 - plot **by-participant** effects or paired differences
 - use a multilevel model and plot its predictions
 
-**Default trap:** `stat_summary(fun.data = mean_se)` is between-subject.
+**Default trap:** [`stat_summary(fun.data = mean_se)`](https://ggplot2.tidyverse.org/reference/stat_summary.html) is between-subject.
 
-**Preferred:** `plot_predictions(fit, condition = "condition")`.
+**Preferred:** [`plot_predictions(fit, condition = "condition")`](https://rdrr.io/cran/marginaleffects/man/plot_predictions.html).
 
 ::: {.callout-tip}
 When *N* is small, show every observation. A mean and an error bar can hide a bimodal or skewed distribution.
@@ -676,9 +687,9 @@ plot_slopes(fit, variables = "flipper_length_mm",
             condition = "species")
 ```
 
-- `ggpredict()`: holds other predictors at typical values
-- `marginaleffects`: averages over the observed sample by default
-- `plot_slopes()`: the quantity of interest is a **slope**, not a level
+- [`ggpredict()`](https://strengejacke.github.io/ggeffects/reference/ggpredict.html): holds other predictors at typical values
+- [`marginaleffects`](https://marginaleffects.com/): averages over the observed sample by default
+- [`plot_slopes()`](https://rdrr.io/cran/marginaleffects/man/plot_slopes.html): the quantity of interest is a **slope**, not a level
 :::
 
 ::: {.column width="55%"}
@@ -761,7 +772,7 @@ plot_predictions(
 - PI for an **observation**: wider; answers "where will a new case fall?"
 - CrI: a posterior probability statement, not a repeated-sampling one
 
-`geom_smooth(se = TRUE)` gives a CI for the mean, not a prediction interval.
+[`geom_smooth(se = TRUE)`](https://ggplot2.tidyverse.org/reference/geom_smooth.html) gives a CI for the mean, not a prediction interval.
 :::
 
 :::
@@ -787,7 +798,7 @@ A model is a function. Different plots ask different questions of it:
 - **slope:** how much does the outcome change per unit of *x*?
 - **comparison:** what is the difference between two conditions?
 
-`marginaleffects` computes all three on the scale you choose.
+[`marginaleffects`](https://marginaleffects.com/) computes all three on the scale you choose.
 
 ```r
 plot_slopes(fit, variables = "flipper_length_mm",
@@ -932,7 +943,7 @@ p_d <- penguins |> count(island, species) |>
 ::: {.column width="42%"}
 ### The figure is a layout, too
 
-`patchwork` composes ggplot objects with operators: `p1 + p2`, `p1 | p2`, `p1 / p2`, `(p1 | p2) / p3`.
+[`patchwork`](https://patchwork.data-imaginist.com/) composes ggplot objects with operators: `p1 + p2`, `p1 | p2`, `p1 / p2`, `(p1 | p2) / p3`.
 
 ```r
 (p1 | p2) / (p3 | p4) +
@@ -947,7 +958,7 @@ p_d <- penguins |> count(island, species) |>
   )
 ```
 
-- `plot_layout(guides = "collect")`: collects the panels' guides into one legend row; identical guides merge
+- [`plot_layout(guides = "collect")`](https://patchwork.data-imaginist.com/reference/plot_layout.html): collects the panels' guides into one legend row; identical guides merge
 - `& theme(...)`: apply a theme to every panel
 - `cowplot::plot_grid()` and `ggdraw()` are alternatives, especially for insets
 - compose panels only when they answer **one** question
@@ -983,8 +994,8 @@ ggsave(
 - `dpi = 300` (or 600) for raster; vector formats ignore dpi
 - `bg = "white"` avoids transparent backgrounds in Word
 - pass `plot =` explicitly in scripts; the default is the last plot
-- `ragg::agg_png` gives better text and anti-aliasing than the default PNG device
-- `svglite::svglite` for SVG; `cairo_pdf` for PDF with embedded fonts
+- [`ragg::agg_png`](https://ragg.r-lib.org/reference/agg_png.html) gives better text and anti-aliasing than the default PNG device
+- [`svglite::svglite`](https://svglite.r-lib.org/reference/svglite.html) for SVG; `cairo_pdf` for PDF with embedded fonts
 - **design at final size:** do not export large and shrink in Word
 :::
 
@@ -1067,6 +1078,71 @@ This checklist is deliberately long; nobody applies all of it to every explorato
 
 ---
 
+## When interactivity helps {.smaller}
+
+::: {.columns}
+
+::: {.column width="50%"}
+### A dense cloud: hover to read a point
+
+```{r}
+#| label: plotly-overplot
+set.seed(42)
+diamonds_small <- diamonds[sample(nrow(diamonds), 12000), ]
+
+p_dense <- ggplot(diamonds_small,
+                  aes(carat, price,
+                      text = paste0("Carat: ", carat,
+                                    "<br>Price: $", format(price, big.mark = ",")))) +
+  geom_point(colour = uzk_blue, alpha = 0.35, size = 0.6) +
+  labs(x = "Carat", y = "Price (USD)")
+
+ggplotly(p_dense, tooltip = "text", width = 460, height = 300) |>
+  config(displayModeBar = FALSE, scrollZoom = FALSE)
+```
+:::
+
+::: {.column width="50%"}
+### A log scale: read exact values
+
+```{r}
+#| label: plotly-gapminder
+g2007 <- gapminder |> filter(year == 2007)
+
+p_gdp <- ggplot(g2007,
+                aes(gdpPercap, lifeExp, size = pop, colour = continent,
+                    text = paste0(country, " · ", continent,
+                                  "<br>GDP per capita: $", round(gdpPercap),
+                                  "<br>Life expectancy: ", round(lifeExp, 1)))) +
+  geom_point(alpha = 0.85) +
+  scale_x_log10(labels = scales::label_dollar(scale = 1/1000, suffix = "k",
+                                              accuracy = 1)) +
+  scale_size_area(max_size = 7, guide = "none") +
+  theme(legend.position = "none") +
+  labs(x = "GDP per capita", y = "Life expectancy")
+
+ggplotly(p_gdp, tooltip = "text", width = 460, height = 300) |>
+  config(displayModeBar = FALSE, scrollZoom = FALSE)
+```
+:::
+
+:::
+
+::: {.callout-warning}
+### What interactivity costs
+
+- **Size:** plotly.js is embedded once (3.6 MB here), plus 0.6 MB of figure data for the diamonds
+- **Print:** widgets vanish from PDF and handout exports
+- **Alt text:** `fig-alt` does not reach a widget; screen readers get far less than from a static figure with a caption
+- **Navigation:** hover and drag compete with the slide controls; disable the mode bar and scroll zoom, and never make a click part of the talk
+:::
+
+::: {.notes}
+Hover a point in the dense cloud to read carat and price, then drag a box around the 1–2 carat band to zoom. The same question — where is the mass? — is answered statically by alpha, binning, or faceting; interactivity adds reading of individual values. The gapminder panel shows the other gain: a log axis makes exact values hard to read, and a tooltip fixes that. Both are exploration tools, not headline figures. If a figure must print, fall back to the static versions. Watch the deck size when you build: this slide embeds plotly.js once.
+:::
+
+---
+
 ## The ecosystem {.smaller}
 
 ::: {.columns}
@@ -1127,18 +1203,18 @@ Do not install everything. Start with ggplot2 + scales + patchwork + one uncerta
 Use [`data/penguins.csv`](https://github.com/SFB1252/talks/blob/main/docs/workshops/30-data-visualization-ggplot2/data/penguins.csv).
 
 1. **Fit** `lm(body_mass_g ~ flipper_length_mm * species)` and plot predictions. Does the interaction change the interpretation?
-2. **Plot slopes** with `plot_slopes()`. Which group has the steepest relation?
-3. **Compose** two panels with `patchwork` and collect the legend.
+2. **Plot slopes** with [`plot_slopes()`](https://rdrr.io/cran/marginaleffects/man/plot_slopes.html). Which group has the steepest relation?
+3. **Compose** two panels with [`patchwork`](https://patchwork.data-imaginist.com/) and collect the legend.
 4. **Export** at 16 × 10 cm, 300 dpi. Is the text readable at final size?
 5. **Audit** the figure: is the interval a CI or a PI? Is colour the only encoding?
 
 ::: {.callout-tip}
 ### Hints
 
-- `plot_predictions(fit, condition = c("flipper_length_mm", "species"))`
-- `plot_slopes(fit, variables = "flipper_length_mm", condition = "species")`
+- [`plot_predictions(fit, condition = c("flipper_length_mm", "species"))`](https://rdrr.io/cran/marginaleffects/man/plot_predictions.html)
+- [`plot_slopes(fit, variables = "flipper_length_mm", condition = "species")`](https://rdrr.io/cran/marginaleffects/man/plot_slopes.html)
 - `(p1 | p2) + plot_layout(guides = "collect")`
-- `ggsave(..., width = 16, height = 10, units = "cm", dpi = 300)`
+- [`ggsave(..., width = 16, height = 10, units = "cm", dpi = 300)`](https://ggplot2.tidyverse.org/reference/ggsave.html)
 :::
 :::
 
@@ -1203,7 +1279,7 @@ A plot of predictions is a view of a model, not the model itself. Show the data,
 **Next steps**
 
 - Read the [ggplot2 book](https://ggplot2-book.org/) chapters on scales, guides, and extensions.
-- Try `ggdist`, `patchwork`, `ggeffects`, and `marginaleffects` on your own data.
+- Try [`ggdist`](https://mjskay.github.io/ggdist/), [`patchwork`](https://patchwork.data-imaginist.com/), [`ggeffects`](https://strengejacke.github.io/ggeffects/), and [`marginaleffects`](https://marginaleffects.com/) on your own data.
 - Audit one figure from your last paper with the accessibility checklist.
 - Bring a model or a composite figure to the next RDM session.
 
@@ -1273,7 +1349,7 @@ The methods references are the ones to read next if you plot models. The composi
 ::: {.columns}
 
 ::: {.column width="58%"}
-Thanks also to the open-source community behind `ggplot2`, the tidyverse, `patchwork`, `ggeffects`, `marginaleffects`, and the data providers: [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/), [Gapminder](https://www.gapminder.org/), [Software Carpentry](https://swcarpentry.github.io/), [Data Carpentry](https://datacarpentry.github.io/), and [datasauRus](https://github.com/lockedata/datasauRus).
+Thanks also to the open-source community behind [`ggplot2`](https://ggplot2.tidyverse.org/), the [tidyverse](https://www.tidyverse.org/), [`patchwork`](https://patchwork.data-imaginist.com/), [`ggeffects`](https://strengejacke.github.io/ggeffects/), [`marginaleffects`](https://marginaleffects.com/), and the data providers: [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/), [Gapminder](https://www.gapminder.org/), [Software Carpentry](https://swcarpentry.github.io/), [Data Carpentry](https://datacarpentry.github.io/), and [datasauRus](https://github.com/lockedata/datasauRus).
 
 **Contact:** [job.schepens@uni-koeln.de](mailto:job.schepens@uni-koeln.de)
 
